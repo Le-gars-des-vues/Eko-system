@@ -47,7 +47,7 @@ namespace TerraTiler2D
 
             if (texture.width != sizeX || texture.height != sizeY)
             {
-                texture.Resize(sizeX, sizeY);
+                texture.Reinitialize(sizeX, sizeY);
             }
 
             return texture;

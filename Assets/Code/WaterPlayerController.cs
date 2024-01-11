@@ -11,9 +11,10 @@ public class WaterPlayerController : MonoBehaviour
 
     [Header("Movement Variables")]
     Vector2 movement;
-    public float speed = 10f;
+    public float uwSpeed = 2f;
+    public float uwDashSpeed = 10f;
     public float swimDelay = 0.7f;
-    public bool swimming;
+    private bool swimming = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,22 +27,30 @@ public class WaterPlayerController : MonoBehaviour
     void Update()
     {
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (CanDash())
+                StartCoroutine(UnderwaterDash());
+        }
     }
 
     private void FixedUpdate()
     {
-        if (!swimming)
-            StartCoroutine(Move());
+        rb.AddForce(movement * uwSpeed, ForceMode2D.Force);
     }
 
-    IEnumerator Move()
+    IEnumerator UnderwaterDash()
     {
         swimming = true;
         rb.velocity = new Vector2(rb.velocity.x / 2, rb.velocity.y / 2);
-        rb.AddForce(movement * speed, ForceMode2D.Impulse);
+        rb.AddForce(movement * uwDashSpeed, ForceMode2D.Impulse);
         yield return new WaitForSeconds(swimDelay);
         swimming = false;
+    }
+
+    private bool CanDash()
+    {
+        return swimming == false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
