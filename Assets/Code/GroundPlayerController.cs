@@ -8,7 +8,9 @@ public class GroundPlayerController : MonoBehaviour
     public Rigidbody2D rb;
 
     [Header("Mouvement Variables")]
-    public float maxSpeed = 6f;
+    public float walkSpeed;
+    public float runSpeed;
+    public float maxSpeed = 2f;
     private float targetSpeed;
     private float speedDif;
     private float mouvement;
@@ -136,12 +138,12 @@ public class GroundPlayerController : MonoBehaviour
         {
             if (isGrounded)
             {
-                maxSpeed = 9f;
+                maxSpeed = runSpeed;
             }     
         }
         else
         {
-            maxSpeed = 6f;
+            maxSpeed = walkSpeed;
         }
             
         if (Input.GetKeyDown(KeyCode.Space))
