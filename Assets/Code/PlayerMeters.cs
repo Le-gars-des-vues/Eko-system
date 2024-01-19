@@ -37,6 +37,7 @@ public class PlayerMeters : MonoBehaviour
     private float staminaCountdown;
 
     public bool survivalMode;
+    public bool leftHandEmpty = true;
 
     // Start is called before the first frame update
     void Start()
