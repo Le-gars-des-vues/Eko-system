@@ -19,6 +19,7 @@ public class PickableObject : MonoBehaviour
     void Start()
     {
         ogColor = GetComponent<SpriteRenderer>().color;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMeters>();
         rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
         leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
     }
@@ -66,6 +67,11 @@ public class PickableObject : MonoBehaviour
             sprite.color = ogColor;
         }
         if (!CanBePickedUp())
+        {
+            sprite.color = ogColor;
+            yield break;
+        }
+        if (isPickedUp)
         {
             sprite.color = ogColor;
             yield break;

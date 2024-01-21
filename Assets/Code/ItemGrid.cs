@@ -6,8 +6,9 @@ public class ItemGrid : MonoBehaviour
 {
     [Header("Tile Format")]
     //Faut somehow mentir au code pour qu'il marche
-    const float tileSizeWidth = 32;
-    const float tileSizeHeight = 32;
+    private float tileSizeWidth = 32;
+    private float tileSizeHeight = 32;
+    private Canvas rootCanvas;
 
     [Header("Transform of Grid")]
     RectTransform rectTransform;
@@ -23,6 +24,9 @@ public class ItemGrid : MonoBehaviour
 
     private void Start()
     {
+        //tileSizeWidth = Screen.width / 60;
+        //tileSizeHeight = Screen.height / 33.75f;
+        rootCanvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         Init(gridSizeWidth, gridSizeHeight);
     }
@@ -43,9 +47,13 @@ public class ItemGrid : MonoBehaviour
         positionOnTheGrid.x = mousePosition.x-rectTransform.position.x;
         positionOnTheGrid.y = rectTransform.position.y - mousePosition.y;
 
+        Vector2 scaledGridPosition = new Vector2();
+        scaledGridPosition.x = positionOnTheGrid.x / Screen.width * 1920;
+        scaledGridPosition.y = positionOnTheGrid.y / Screen.height * 1080;
+
         //Transform la position en Int pour identifier la bonne case. Le second diviseur est en fonction du Scale du RectTransform, pas besoin de changer le code si on change le scale!
-        tileGridPosition.x = (int)(positionOnTheGrid.x / tileSizeWidth) / (int)rectTransform.localScale.x;
-        tileGridPosition.y = (int)(positionOnTheGrid.y / tileSizeHeight) / (int)rectTransform.localScale.y;
+        tileGridPosition.x = (int)(scaledGridPosition.x / tileSizeWidth) / (int)rectTransform.localScale.x;
+        tileGridPosition.y = (int)(scaledGridPosition.y / tileSizeHeight) / (int)rectTransform.localScale.y;
 
         return tileGridPosition;
     }
