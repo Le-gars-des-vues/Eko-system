@@ -29,18 +29,30 @@ public class FootPositionner : MonoBehaviour
     public float stepSpeed = 3f;
 
     // the foot's displacement from body center on the X axis
-    public float footDisplacementOnX = 0.25f;
+    public float footDisplacementOnX;
+    private float otherFootOvershoot;
 
+    //Position du pied au milieu de la step
     private Vector3 midPos;
+
+    //Check direction
+    private bool isFacingRight;
 
     private void Start()
     {
+        isFacingRight = true;
         startPos = midPos = endPos = target.position;
+        otherFootOvershoot = otherFoot.overShootFactor;
     }
 
     private void Update()
     {
         UpdateBalance();
+
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            CheckDirectionToFace(Input.GetAxis("Horizontal") > 0);
+        }
 
         // this foot can only move when: (1) the other foot finishes moving, (2) the other foot made the last step
         bool thisFootCanMove = otherFoot.lerp > 1 && lerp > otherFoot.lerp;
@@ -98,14 +110,14 @@ public class FootPositionner : MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(playerObj.transform.position + new Vector3(footDisplacementOnX, 0, 0), Vector2.down, 10);
 
         // consider the overshoot factor
-        Vector3 posDiff = ((Vector3)ray.point - target.position) * (GetComponent<GroundPlayerController>().maxSpeed) * overShootFactor;
+        Vector3 posDiff = ((Vector3)ray.point - target.position) * (1 + overShootFactor);
 
         // find end target position
         endPos = target.position + posDiff;
 
         // midPos is the mid point between startPos and endPos, but lifted up a bit depending on stepSize
         float stepSize = Vector3.Distance(startPos, endPos);
-        midPos = startPos + posDiff / 2f + new Vector3(0, stepSize * 0.8f);
+        midPos = startPos + posDiff / 2f + new Vector3(0, stepSize * 0.2f);
     }
 
     /// This helps visualize the target position in run time
@@ -113,6 +125,22 @@ public class FootPositionner : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(endPos, 0.1f);
+    }
+
+    private void Turn()
+    {
+        overShootFactor = otherFootOvershoot;
+        otherFootOvershoot = otherFoot.overShootFactor;
+        footDisplacementOnX *= -1;
+        isFacingRight = !isFacingRight;
+    }
+
+    public void CheckDirectionToFace(bool isMovingRight)
+    {
+        if (isMovingRight != isFacingRight)
+        {
+            Turn();
+        }
     }
 }
 

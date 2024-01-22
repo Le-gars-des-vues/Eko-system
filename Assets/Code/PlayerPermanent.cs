@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMeters : MonoBehaviour
+public class PlayerPermanent : MonoBehaviour
 {
     [Header("Oxygen Variable")]
     public float maxOxygen;
@@ -38,6 +38,7 @@ public class PlayerMeters : MonoBehaviour
 
     public bool survivalMode;
     public bool leftHandEmpty = true;
+    public Camera cameraPixel;
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +77,17 @@ public class PlayerMeters : MonoBehaviour
             SetBar(staminaSlider, currentStamina);
         }
     }
+    /*
+    private void FixedUpdate()
+    {
+        cameraPixel.enabled = true;
+    }
+
+    private void LateUpdate()
+    {
+        cameraPixel.enabled = false;
+    }
+    */
 
     //Pour remettre tout les values au maximum
     public void ResetToMax()

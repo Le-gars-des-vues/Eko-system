@@ -16,6 +16,7 @@ public class MainCamera : MonoBehaviour
 
     private void Update()
     {
+        /*
         float interpolation = speed * Time.deltaTime;
 
         Vector3 position = this.transform.position;
@@ -23,5 +24,7 @@ public class MainCamera : MonoBehaviour
         position.x = Mathf.Lerp(this.transform.position.x, player.transform.position.x, interpolation);
 
         this.transform.position = position;
+        */
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10f);
     }
 }

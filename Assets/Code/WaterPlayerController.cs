@@ -8,7 +8,7 @@ public class WaterPlayerController : MonoBehaviour
     [Header("GameObjects")]
     private Rigidbody2D rb;
     private GroundPlayerController groundController;
-    private PlayerMeters playerMeters;
+    private PlayerPermanent player;
 
     [Header("Movement Variables")]
     Vector2 movement;
@@ -24,7 +24,7 @@ public class WaterPlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         groundController = GetComponent<GroundPlayerController>();
-        playerMeters = GetComponent<PlayerMeters>();
+        player = GetComponent<PlayerPermanent>();
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class WaterPlayerController : MonoBehaviour
     {
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (Mathf.Abs(movement.x) > 0.1f || Mathf.Abs(movement.y) > 0.1f)
-            playerMeters.ChangeStamina(-swimStaminaCost * Time.deltaTime);
+            player.ChangeStamina(-swimStaminaCost * Time.deltaTime);
         if (Input.GetButtonDown("Jump"))
         {
             if (CanDash())
@@ -50,7 +50,7 @@ public class WaterPlayerController : MonoBehaviour
         dashing = true;
         rb.velocity = new Vector2(rb.velocity.x / 2, rb.velocity.y / 2);
         rb.AddForce(movement * uwDashSpeed, ForceMode2D.Impulse);
-        playerMeters.ChangeStamina(-dashStaminaCost);
+        player.ChangeStamina(-dashStaminaCost);
         yield return new WaitForSeconds(swimDelay);
         dashing = false;
     }
