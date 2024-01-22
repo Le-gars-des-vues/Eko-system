@@ -10,7 +10,7 @@ public class PickableObject : MonoBehaviour
 
     private GameObject rightHand;
     private GameObject leftHand;
-    private PlayerMeters player;
+    private PlayerPermanent player;
 
     public bool hasFlashed;
     public bool isPickedUp = false;
@@ -19,7 +19,7 @@ public class PickableObject : MonoBehaviour
     void Start()
     {
         ogColor = GetComponent<SpriteRenderer>().color;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMeters>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
         rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
         leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
     }

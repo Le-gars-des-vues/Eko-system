@@ -133,6 +133,7 @@ public class GroundPlayerController : MonoBehaviour
             CheckDirectionToFace(GetInput().x > 0);
         }
 
+        /*
         //Courir
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -145,6 +146,7 @@ public class GroundPlayerController : MonoBehaviour
         {
             maxSpeed = walkSpeed;
         }
+        */
             
         if (Input.GetKeyDown(KeyCode.Space))
         {

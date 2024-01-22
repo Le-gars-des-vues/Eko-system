@@ -9,7 +9,6 @@ public class ItemGrid : MonoBehaviour
 
     public const float tileSizeWidth = 32;
     public const float tileSizeHeight = 32;
-    private Canvas rootCanvas;
 
     [Header("Transform of Grid")]
     RectTransform rectTransform;
@@ -28,13 +27,8 @@ public class ItemGrid : MonoBehaviour
 
     private void Start()
     {
-        //tileSizeWidth = Screen.width / 60;
-        //tileSizeHeight = Screen.height / 33.75f;
-        rootCanvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         Init(gridSizeWidth, gridSizeHeight);
-
-        
     }
 
     //Initialise la grille a la taille desire selon les parametres gridSizeWitdh/Height
