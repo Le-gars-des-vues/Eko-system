@@ -37,8 +37,7 @@ public class PlayerPermanent : MonoBehaviour
     private float staminaCountdown;
 
     public bool survivalMode;
-    public bool leftHandEmpty = true;
-    public Camera cameraPixel;
+    public bool rightHandEmpty = true;
 
     // Start is called before the first frame update
     void Start()
@@ -77,17 +76,6 @@ public class PlayerPermanent : MonoBehaviour
             SetBar(staminaSlider, currentStamina);
         }
     }
-    /*
-    private void FixedUpdate()
-    {
-        cameraPixel.enabled = true;
-    }
-
-    private void LateUpdate()
-    {
-        cameraPixel.enabled = false;
-    }
-    */
 
     //Pour remettre tout les values au maximum
     public void ResetToMax()
