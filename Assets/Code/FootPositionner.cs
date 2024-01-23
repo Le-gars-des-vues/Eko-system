@@ -49,10 +49,12 @@ public class FootPositionner : MonoBehaviour
     {
         UpdateBalance();
 
+        
         if (Input.GetAxis("Horizontal") != 0)
         {
             CheckDirectionToFace(Input.GetAxis("Horizontal") > 0);
         }
+        
 
         // this foot can only move when: (1) the other foot finishes moving, (2) the other foot made the last step
         bool thisFootCanMove = otherFoot.lerp > 1 && lerp > otherFoot.lerp;

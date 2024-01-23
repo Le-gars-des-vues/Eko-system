@@ -20,8 +20,8 @@ public class PickableObject : MonoBehaviour
     {
         ogColor = GetComponent<SpriteRenderer>().color;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-        rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
-        leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
+        rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
+        leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
     }
 
     // Update is called once per frame
@@ -43,12 +43,12 @@ public class PickableObject : MonoBehaviour
             isPickedUp = true;
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<Rigidbody2D>().isKinematic = true;
-            if (player.leftHandEmpty)
+            if (player.rightHandEmpty)
             {
-                transform.position = leftHand.transform.Find("LeftArmEffector").transform.position;
-                transform.eulerAngles = new Vector3(0, 0, (-90 - leftHand.transform.rotation.z));
-                gameObject.transform.SetParent(leftHand.transform);
-                player.leftHandEmpty = false;
+                transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
+                transform.eulerAngles = new Vector3(0, 0, (-90 - rightHand.transform.rotation.z));
+                gameObject.transform.SetParent(rightHand.transform);
+                player.rightHandEmpty = false;
             }
         }
     }
