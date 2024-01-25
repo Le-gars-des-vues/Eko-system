@@ -8,34 +8,60 @@ public class GroundPlayerController : MonoBehaviour
     public Rigidbody2D rb;
 
     [Header("Mouvement Variables")]
+    //Vitesse de marche
     public float walkSpeed;
+    //Vitesse de course
     public float runSpeed;
+    //Vitesse maximum
     public float maxSpeed = 2f;
+    //Actual vitesse du personnage in-game
     private float targetSpeed;
+    //Permet de changer de direction tout en gardant sa vitesse
     private float speedDif;
+    //Force du mouvement (physic-based!)
     private float mouvement;
+    //Acceleration
     public float mouveAcceleration;
+    //Temps pour atteindre la vitesse maximale
     public float accelTime;
+    //Force d'acceleration
     private float accelForce;
+    //Temps pour ralentir
     public float deccelTime;
+    //Force de decceleration
     private float deccelForce;
+    //Check de direction
     public bool isFacingRight;
+    //Temps de "grace" ou le joueur peut encore sauter meme s'il n'est plus sur le sol
     public float coyoteTime;
+    //Acceleration et decceleration dans les airs
     [Range(0.01f, 1)] public float accelAir;
     [Range(0.01f, 1)] public float deccelAir;
 
     [Header("Jump Variables")]
+    //Force du jump
     public float jumpForce;
+    //Checks de saut
     private bool isJumping;
+    //Check si le joueur a arreter son saut
     private bool isJumpCut;
+    //Check si le joueur est en train de tomber
     private bool isJumpFalling;
+    //Temps durant lequel le joueur est considerer a l'apex de son saut
     public float jumpHangTimeThreshold;
+    //Multiplicateur de vitesse quand le joueur est a l'apex de son saut
     public float jumpHangAccelMult;
+    //Multiplicateur maximum de vitesse quand le joueur est a l'apex de son saut
     public float jumpHangMaxSpeedMult;
+    //Timer qui empeche au joueur de sauter plusieurs en une touche au clavier
     public float pressedJumpTime;
+    //Buffer durant lequel le joueur peut appuyer sur le bouton saut pour sauter meme s'il n'a pas encore toucher le sol
     public float jumpBuffer = 0.1f;
+    //Hauteur du saut
     public float jumpHeight;
+    //Temps que le joueur prend pour atteindre l'apex de son saut
     public float jumpTimeToApex;
+    //Check pour le double jump
     public bool jumpedOnce => isGrounded ? false : true;
     public bool jumpedTwiced;
 
@@ -61,7 +87,8 @@ public class GroundPlayerController : MonoBehaviour
     public LayerMask groundLayer;
     //Taille du raycast de collision avec le sol
     public float groundRaycastLength;
-    public bool isGrounded;
+    //Check si le joueur est au sol
+    private bool isGrounded;
 
     [Header("Corner Collision Variables")]
     //Layer pour corriger les collisions avec les coins
@@ -95,13 +122,12 @@ public class GroundPlayerController : MonoBehaviour
     private float wallJumpStartTime;
     private int lastWallJumpDir;
 
-    [Header("Miscellaneous Variables")]
-    [Range(0f, 1f)] public float blastRunLerp;
-
     [Header("Slide Variables")]
-    //Check
+    //Check si le joueur est en train de slide
     private bool isSliding;
+    //Vitesse de slide
     public float slideSpeed;
+    //Acceleration quand le joueur slide
     public float slideAccel;
 
     // Start is called before the first frame update
@@ -354,8 +380,8 @@ public class GroundPlayerController : MonoBehaviour
     //Checks Functions
     private void CheckCollision()
     {
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastLength, groundLayer);
-            
+        isGrounded = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Vector2.down, groundRaycastLength, groundLayer);
+        
         if (!isJumping)
         {
             //Right Wall Check
@@ -373,7 +399,6 @@ public class GroundPlayerController : MonoBehaviour
             //Two checks needed for both left and right walls since whenever the play turns the wall checkPoints swap sides
             lastOnWallTime = Mathf.Max(lastOnWallLeftTime, lastOnWallRightTime);
         }
-        
 
         canCornerCorrect = Physics2D.Raycast(transform.position + edgeRaycastOffset, Vector2.up, topRaycastLength, cornerCorrectLayer) && 
                             !Physics2D.Raycast(transform.position + innerRaycastOffset, Vector2.up, topRaycastLength, cornerCorrectLayer) ||
@@ -473,7 +498,7 @@ public class GroundPlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundRaycastLength);
+        Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z) + Vector3.down * groundRaycastLength);
 
         //Corner Check
         Gizmos.DrawLine(transform.position + edgeRaycastOffset, transform.position + edgeRaycastOffset + Vector3.up * topRaycastLength);
