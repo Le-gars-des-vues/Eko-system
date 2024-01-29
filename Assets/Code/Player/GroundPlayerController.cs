@@ -106,9 +106,9 @@ public class GroundPlayerController : MonoBehaviour
     //Taille des boite invisibles qui check les collisions avec les murs pour les walljump
     public Vector2 wallCheckSize = new Vector2(0.5f, 1f);
     //Timers
-    private float lastOnWallTime;
-    private float lastOnWallRightTime;
-    private float lastOnWallLeftTime;
+    public float lastOnWallTime;
+    public float lastOnWallRightTime;
+    public float lastOnWallLeftTime;
 
     [Header("Wall Jump Variables")]
     //Force du saut
@@ -390,7 +390,7 @@ public class GroundPlayerController : MonoBehaviour
                 lastOnWallRightTime = coyoteTime;
             }
                 
-            //Right Wall Check
+            //Left Wall Check
             if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight)) && !isWallJumping)
             {
                 lastOnWallLeftTime = coyoteTime;
