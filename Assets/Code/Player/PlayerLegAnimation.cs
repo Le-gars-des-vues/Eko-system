@@ -48,7 +48,7 @@ public class PlayerLegAnimation : MonoBehaviour
         footMovement = Vector2.Distance(transform.position, currentTarget.position);
 
         //Si le pied est en train de bouger
-        if (footMovement > 0.1f && isRunning)
+        if (footMovement > 0.1f)
         {
             //On augmente le timer pour la courbe d'animation
             stepTimer += Time.deltaTime;
@@ -72,6 +72,7 @@ public class PlayerLegAnimation : MonoBehaviour
         else
         {
             isRunning = false;
+            currentTarget.position = transform.position;
         }
 
         if (!isRunning)
