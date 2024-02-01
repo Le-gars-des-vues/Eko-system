@@ -31,68 +31,125 @@ public class PlayerArmAnimation : MonoBehaviour
     private Vector3 backwardArmPos;
 
     public bool goingForward;
-    public bool isRunning;
+    private bool isRunning;
     private bool reachedPos = false;
     private float targetDistance;
     private float stepTimer;
 
+    public bool somethingClose = false;
+    [SerializeField] private Vector2 jumpUpOffsets;
+    [SerializeField] private Vector2 jumpDownOffsets;
+
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(player.transform.position.x + armXOffset, player.transform.position.y + armYOffset, transform.position.z);
+        transform.position = new Vector2(player.transform.position.x + armXOffset, player.transform.position.y + armYOffset);
     }
 
     // Update is called once per frame
     void Update()
     {
-        targetDistance = Mathf.Abs(Vector2.Distance(transform.position, armTarget.position));
-        stepTimer += Time.deltaTime;
-
-        float facingDirection = player.GetComponent<GroundPlayerController>().isFacingRight ? 1 : -1;
-
-        forwardArmPos = new Vector3(player.transform.position.x + fXOffset * facingDirection, player.transform.position.y + fYOffset, transform.position.z);
-        backwardArmPos = new Vector3(player.transform.position.x + bXOffset * facingDirection, player.transform.position.y + bYOffset, transform.position.z);
-
-        armTarget.position = goingForward ? forwardArmPos : backwardArmPos;
-
-        if (targetDistance <= 0.01f && stepTimer > 0.2f)
-            reachedPos = true;
-
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (player.GetComponent<GroundPlayerController>().enabled && !somethingClose)
         {
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-            reachedPos = false;
-            stepTimer = 0;
-        }
+            float facingDirection = player.GetComponent<PlayerPermanent>().isFacingRight ? 1 : -1;
 
-        if (isRunning)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector3(armTarget.position.x, armTarget.position.y + yCurve.Evaluate(stepTimer), transform.position.z), speed * Time.deltaTime);
-            if (reachedPos == true && otherArm.targetDistance < 0.01f)
+            //Si le joueur appui sur A et qu'il est grounded
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && player.GetComponent<GroundPlayerController>().isGrounded))
             {
+                isRunning = true;
+            }
+            else
+            {
+                isRunning = false;
                 reachedPos = false;
-                goingForward = !goingForward;
-                //Debug.Log(stepTimer);
                 stepTimer = 0;
             }
-        }
-        else
-        {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + armXOffset * facingDirection, player.transform.position.y + armYOffset, transform.position.z), speed * Time.deltaTime);
-            if (otherArm.goingForward == true)
-                goingForward = false;
+            //Si le joueur est en train de courrir
+            if (isRunning)
+            {
+                //Mesure la distance entre la cible et notre position
+                targetDistance = Mathf.Abs(Vector2.Distance(transform.position, armTarget.position));
+                stepTimer += Time.deltaTime;
+
+                //Cree la position a l'avant et l'arriere du joueur ou va venir se placer la cible
+                forwardArmPos = new Vector2(player.transform.position.x + fXOffset * facingDirection, player.transform.position.y + fYOffset);
+                backwardArmPos = new Vector2(player.transform.position.x + bXOffset * facingDirection, player.transform.position.y + bYOffset);
+
+                //Dependement de si le bras doit aller vers l'avant ou vers l'arriere, la position de la cible est assigne a l'un des deux emplacements
+                armTarget.position = goingForward ? forwardArmPos : backwardArmPos;
+
+                //Si la distance est assez petite. Le timer previent que le bras revienne vers la meme cible
+                if (targetDistance <= 0.01f && stepTimer > 0.2f)
+                    reachedPos = true;
+
+                //La position du bras lerp vers celle de la cible
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(armTarget.position.x, armTarget.position.y + yCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
+
+                //Si la position de la cible est atteinte pour les deux bras
+                if (reachedPos == true && otherArm.targetDistance < 0.01f)
+                {
+                    //La cible va a l'autre position (avant ou arriere) car le bras change de direction
+                    reachedPos = false;
+                    goingForward = !goingForward;
+                    stepTimer = 0;
+                }
+            }
+            else
+            {
+                if (player.GetComponent<GroundPlayerController>().isGrounded)
+                {
+                    //Reset la position initiale
+                    transform.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + armXOffset * facingDirection, player.transform.position.y + armYOffset), speed * Time.deltaTime);
+
+                    //Un des deux bras va vers l'arriere en premier
+                    goingForward = true;
+                    if (otherArm.goingForward == true)
+                        goingForward = false;
+                }
+                else
+                {
+                    if (player.GetComponent<Rigidbody2D>().velocity.y > 0)
+                    {
+                        armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), speed * Time.deltaTime);
+                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), speed * Time.deltaTime);
+                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                    }
+                }
+            }
         }
     }
+
+    /*
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Vine")
+        {
+            somethingClose = true;
+            armTarget.position = collision.transform.position;
+            transform.position = Vector2.MoveTowards(transform.position, new Vector3(armTarget.position.x, armTarget.position.y, transform.position.z), speed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Vine")
+        {
+            somethingClose = false;
+        }
+    }
+    */
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(new Vector3(player.transform.position.x + armXOffset, player.transform.position.y + armYOffset, transform.position.z), 0.05f);
-        Gizmos.DrawSphere(forwardArmPos, 0.05f);
-        Gizmos.DrawSphere(backwardArmPos, 0.05f);
+        //Gizmos.DrawSphere(new Vector3(player.transform.position.x + armXOffset, player.transform.position.y + armYOffset, transform.position.z), 0.05f);
+        //Gizmos.DrawSphere(forwardArmPos, 0.05f);
+        //Gizmos.DrawSphere(backwardArmPos, 0.05f);
+        Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), 0.05f);
+        Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), 0.05f);
     }
 }

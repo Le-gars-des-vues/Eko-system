@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.U2D.IK;
 
 public class PlayerPermanent : MonoBehaviour
 {
@@ -38,11 +39,27 @@ public class PlayerPermanent : MonoBehaviour
 
     public bool survivalMode;
     public bool rightHandEmpty = true;
+    public bool isFacingRight;
+
+    [Header("Ragdoll Variables")]
+    [SerializeField] private Animator anim;
+    [SerializeField] private List<Collider2D> colliders;
+    [SerializeField] private List<Rigidbody2D> rbs;
+    [SerializeField] private List<HingeJoint2D> joints;
+    [SerializeField] private List<LimbSolver2D> limbs;
+    [SerializeField] private Rigidbody2D playerRb;
+    [SerializeField] private CapsuleCollider2D playerCollider;
+
+    private void Awake()
+    {
+        isFacingRight = true;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         ResetToMax();
+        ToggleRagdoll(false);
     }
 
     // Update is called once per frame
@@ -74,6 +91,11 @@ public class PlayerPermanent : MonoBehaviour
         {
             currentStamina += staminaRegainRate * Time.deltaTime;
             SetBar(staminaSlider, currentStamina);
+        }
+
+        if (GetInput().x != 0)
+        {
+            CheckDirectionToFace(GetInput().x > 0);
         }
     }
 
@@ -135,5 +157,50 @@ public class PlayerPermanent : MonoBehaviour
     {
         currentOxygen += value;
         SetBar(oxygenSlider, currentOxygen);
+    }
+
+    public void ToggleRagdoll(bool ragdollOn)
+    {
+        anim.enabled = !ragdollOn;
+        playerRb.simulated = !ragdollOn;
+        playerCollider.enabled = !ragdollOn;
+        foreach(var col in colliders)
+        {
+            col.enabled = ragdollOn;
+        }
+        foreach (var rb in rbs)
+        {
+            rb.simulated = ragdollOn;
+        }
+        foreach (var limb in limbs)
+        {
+            limb.weight = ragdollOn ? 0 : 1;
+        }
+        foreach (var joint in joints)
+        {
+            joint.enabled = ragdollOn;
+        }
+    }
+
+    private void Turn()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+
+        isFacingRight = !isFacingRight;
+    }
+
+    public void CheckDirectionToFace(bool isMovingRight)
+    {
+        if (isMovingRight != isFacingRight)
+        {
+            Turn();
+        }
+    }
+
+    private Vector2 GetInput()
+    {
+        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 }
