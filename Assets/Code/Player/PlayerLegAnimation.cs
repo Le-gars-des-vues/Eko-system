@@ -10,8 +10,9 @@ public class PlayerLegAnimation : MonoBehaviour
     [SerializeField] private GameObject player;
 
     [Header("Animation Variables")]
-    public float speed;
-    public float threshold;
+    [SerializeField]private float speed;
+    [SerializeField] private float jumpAnimSpeed;
+    [SerializeField] private float threshold;
     float targetDistance;
     float footMovement;
     float stepTimer;
@@ -112,14 +113,14 @@ public class PlayerLegAnimation : MonoBehaviour
             }
             else
             {
-                if (player.GetComponent<Rigidbody2D>().velocity.y > 0)
+                if (player.GetComponent<Rigidbody2D>().velocity.y > 0.25f)
                 {
-                    currentTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), speed * Time.deltaTime);
+                    currentTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + (jumpUpOffsets.x * facingDirection), player.transform.position.y + jumpUpOffsets.y), jumpAnimSpeed * Time.deltaTime);
                     transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
                 }
                 else
                 {
-                    currentTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), speed * Time.deltaTime);
+                    currentTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y), jumpAnimSpeed * Time.deltaTime);
                     transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
                 }
             }

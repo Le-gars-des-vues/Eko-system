@@ -13,6 +13,7 @@ public class PlayerArmAnimation : MonoBehaviour
 
     //Vitesse de mouvement des bras
     [SerializeField] private float speed;
+    [SerializeField] private float jumpAnimSpeed;
 
     //Cible pour les bras
     [SerializeField] private Transform armTarget;
@@ -108,14 +109,14 @@ public class PlayerArmAnimation : MonoBehaviour
                 }
                 else
                 {
-                    if (player.GetComponent<Rigidbody2D>().velocity.y > 0)
+                    if (player.GetComponent<Rigidbody2D>().velocity.y > 0.25f)
                     {
-                        armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), speed * Time.deltaTime);
+                        armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + (jumpUpOffsets.x * facingDirection), player.transform.position.y + jumpUpOffsets.y), jumpAnimSpeed * Time.deltaTime);
                         transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                     }
                     else
                     {
-                        armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), speed * Time.deltaTime);
+                        armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y), jumpAnimSpeed * Time.deltaTime);
                         transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                     }
                 }
