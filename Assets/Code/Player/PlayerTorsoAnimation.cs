@@ -19,35 +19,30 @@ public class PlayerTorsoAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float facingDirection = player.GetComponent<GroundPlayerController>().isFacingRight ? 1 : -1;
-        //leanAngle = player.GetComponent<GroundPlayerController>().isFacingRight ? -15f : 15f;
+        if (player.enabled)
+        {
+            float facingDirection = player.GetComponent<PlayerPermanent>().isFacingRight ? 1 : -1;
 
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !isRunning)
-        {
-            isRunning = true;
-            float leanAngle = transform.eulerAngles.z - leanFactor * facingDirection;
-            StartCoroutine(RotateTorso(leanAngle));
-            //transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - (leanAngle * facingDirection));
-        }
-        else if (IsNotMoving() && isRunning)
-        {
-            isRunning = false;
-            float neutralAngle = transform.eulerAngles.z + leanFactor * facingDirection;
-            StartCoroutine(RotateTorso(neutralAngle));
-            //transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + (leanAngle * facingDirection));
-            transform.position = torsoNeutralPos.position;
-        }
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !isRunning)
+            {
+                isRunning = true;
+                float leanAngle = transform.eulerAngles.z - leanFactor * facingDirection;
+                StartCoroutine(RotateTorso(leanAngle));
+            }
+            else if (IsNotMoving() && isRunning)
+            {
+                isRunning = false;
+                float neutralAngle = transform.eulerAngles.z + leanFactor * facingDirection;
+                StartCoroutine(RotateTorso(neutralAngle));
+                transform.position = torsoNeutralPos.position;
+            }
 
-        if (isRunning)
-        {
-            //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0, 0, leanAngle), leanSpeed * Time.deltaTime);
-            float torsoHeight = torsoNeutralPos.position.y + yCurve.Evaluate((Time.time % yCurve.length));
-            transform.position = new Vector3(transform.position.x, torsoHeight, transform.position.z);
+            if (isRunning)
+            {
+                float torsoHeight = torsoNeutralPos.position.y + yCurve.Evaluate((Time.time % yCurve.length));
+                transform.position = new Vector2(transform.position.x, torsoHeight);
+            }
         }
-        /*
-        else
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0, 0, neutralAngle), leanSpeed * Time.deltaTime);
-        */
     }
 
     bool IsNotMoving()
@@ -61,7 +56,6 @@ public class PlayerTorsoAnimation : MonoBehaviour
         {
             transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0, 0, angle), Time.deltaTime * leanSpeed);
         }
-        //transform.eulerAngles = new Vector3(0, 0, angle);
         yield return null;
     }
 }

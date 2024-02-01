@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GroundPlayerController : MonoBehaviour
 {
-    [Header("GameObjects")]
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     [Header("Mouvement Variables")]
     //Vitesse de marche
@@ -31,7 +30,7 @@ public class GroundPlayerController : MonoBehaviour
     //Force de decceleration
     private float deccelForce;
     //Check de direction
-    public bool isFacingRight;
+    private bool isFacingRight;
     //Temps de "grace" ou le joueur peut encore sauter meme s'il n'est plus sur le sol
     public float coyoteTime;
     //Acceleration et decceleration dans les airs
@@ -40,7 +39,7 @@ public class GroundPlayerController : MonoBehaviour
 
     [Header("Jump Variables")]
     //Force du jump
-    public float jumpForce;
+    private float jumpForce;
     //Checks de saut
     private bool isJumping;
     //Check si le joueur a arreter son saut
@@ -62,7 +61,7 @@ public class GroundPlayerController : MonoBehaviour
     //Temps que le joueur prend pour atteindre l'apex de son saut
     public float jumpTimeToApex;
     //Check pour le double jump
-    public bool jumpedOnce => isGrounded ? false : true;
+    public bool jumpedOnce = true;
     public bool jumpedTwiced;
 
     [Header("Gravity Variables")]
@@ -88,16 +87,16 @@ public class GroundPlayerController : MonoBehaviour
     //Taille du raycast de collision avec le sol
     public float groundRaycastLength;
     //Check si le joueur est au sol
-    private bool isGrounded;
+    public bool isGrounded;
 
     [Header("Corner Collision Variables")]
     //Layer pour corriger les collisions avec les coins
     public LayerMask cornerCorrectLayer;
     //Taille des raycasts de collisions avec les coins
     public float topRaycastLength;
-    public Vector3 edgeRaycastOffset;
-    public Vector3 innerRaycastOffset;
-    public bool canCornerCorrect;
+    [SerializeField]private Vector3 edgeRaycastOffset;
+    [SerializeField] private Vector3 innerRaycastOffset;
+    [SerializeField] private bool canCornerCorrect;
 
     [Header("Wall Collision Variables")]
     //Boites de collision avec les murs pour les walljump
@@ -106,13 +105,13 @@ public class GroundPlayerController : MonoBehaviour
     //Taille des boite invisibles qui check les collisions avec les murs pour les walljump
     public Vector2 wallCheckSize = new Vector2(0.5f, 1f);
     //Timers
-    public float lastOnWallTime;
-    public float lastOnWallRightTime;
-    public float lastOnWallLeftTime;
+    [SerializeField] private float lastOnWallTime;
+    private float lastOnWallRightTime;
+    private float lastOnWallLeftTime;
 
     [Header("Wall Jump Variables")]
     //Force du saut
-    public Vector2 wallJumpForce;
+    [SerializeField]private Vector2 wallJumpForce;
     //A quel point le joueur controlle sont personnage lors d'un wall jump
     [Range(0f, 1f)] public float wallJumpRunLerp;
     //Pendant combien de temps est-ce que le joueur perd controlle de son personnage lors du walljump
@@ -126,9 +125,27 @@ public class GroundPlayerController : MonoBehaviour
     //Check si le joueur est en train de slide
     private bool isSliding;
     //Vitesse de slide
-    public float slideSpeed;
+    [SerializeField] private float slideSpeed;
     //Acceleration quand le joueur slide
-    public float slideAccel;
+    [SerializeField]private float slideAccel;
+
+    [Header("Vine Variables")]
+    private List<Collider2D> vineParts = new List<Collider2D>();
+    private Collider2D nearestVine = null;
+    private float nearestVineDistance = 100f;
+    public bool isVineJumping;
+    private float vineTimer;
+    [SerializeField] [Range(0f, 1f)] private float vineLerp;
+    [SerializeField] [Range(0f, 1f)] private float vineLerpTime;
+    //[SerializeField] private float launchForce;
+    [SerializeField] private Vector2 launchForce;
+    private float vineJumpStartTime;
+
+    private void OnEnable()
+    {
+        vineTimer = 0.35f;
+        isFacingRight = GetComponent<PlayerPermanent>().isFacingRight;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -140,7 +157,6 @@ public class GroundPlayerController : MonoBehaviour
         accelForce = (50 * accelTime) / maxSpeed;
         deccelForce = (50 * deccelTime) / maxSpeed;
         jumpForce = Mathf.Abs(gravityStrength) * jumpTimeToApex;
-        isFacingRight = true;
         //On set up la gravite de notre personnage
         SetGravityScale(gravityScale);
     }
@@ -173,7 +189,7 @@ public class GroundPlayerController : MonoBehaviour
             maxSpeed = walkSpeed;
         }
         */
-            
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnJumpInput();
@@ -182,6 +198,7 @@ public class GroundPlayerController : MonoBehaviour
         {
             OnJumpUpInput();
         }
+
         //State
         if (isJumping && rb.velocity.y < 0)
         {
@@ -192,6 +209,9 @@ public class GroundPlayerController : MonoBehaviour
         {
             isWallJumping = false;
         }
+        if (isVineJumping && Time.time - vineJumpStartTime > vineLerpTime)
+            isVineJumping = false;
+
         if (isGrounded && !isJumping && !isWallJumping)
         {
             isJumpCut = false;
@@ -235,7 +255,7 @@ public class GroundPlayerController : MonoBehaviour
         {
             SetGravityScale(0f);
         }
-        else if (rb.velocity.y < 00 && GetInput().y < 0)
+        else if (rb.velocity.y < 0 && GetInput().y < 0)
         {
             SetGravityScale(gravityScale * fastFallGravMult);
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFastFallSpeed));
@@ -245,7 +265,7 @@ public class GroundPlayerController : MonoBehaviour
             SetGravityScale(gravityScale * jumpCutGravMult);
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFallSpeed));
         }
-        else if ((isJumping || isWallJumping || isJumpFalling) && Mathf.Abs(rb.velocity.y) < jumpHangTimeThreshold)
+        else if ((isJumping || isWallJumping || isJumpFalling || isVineJumping) && Mathf.Abs(rb.velocity.y) < jumpHangTimeThreshold)
         {
             SetGravityScale(gravityScale * jumpHangGravMult);
         }
@@ -258,27 +278,67 @@ public class GroundPlayerController : MonoBehaviour
         {
             SetGravityScale(gravityScale);
         }
+
+        //Empeche de se reaccrocher a une vigne quand on se detache
+        if (vineTimer > 0)
+            vineTimer -= Time.deltaTime;
+
+        //Si il y a au moins une vigne a portee
+        if (vineParts.Count >= 1)
+        {
+            //Si on appui sur la touche W
+            if ((Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.W)) && vineTimer <= 0)
+            {
+                //Pour chaque vigne a portee, on check celle qui est la plus proche du corps
+                foreach (var col in vineParts)
+                {
+                    float distance = Vector2.Distance(transform.position, col.gameObject.transform.position);
+                    if (distance < nearestVineDistance)
+                    {
+                        nearestVineDistance = distance;
+                        nearestVine = col;
+                    }
+                }
+                //On active le script de vigne et on s'attache a la vigne
+                GetComponent<VinePlayerController>().enabled = true;
+                GetComponent<VinePlayerController>().Attach(nearestVine, rb.velocity);
+
+                //Desactive le rigidbody
+                rb.simulated = false;
+
+                //Reinitialise la vigne la plus proche
+                nearestVine = null;
+                nearestVineDistance = 100;
+
+                //Assure que la gravite est normale quand on sort de la vigne
+                isJumpCut = false;
+                isJumpFalling = false;
+                isWallJumping = false;
+                isVineJumping = false;
+
+                //Desactive le controller au sol
+                GetComponent<GroundPlayerController>().enabled = false;
+            }
+        }
     }
 
     private void FixedUpdate()
     {
         CheckCollision();
         if (isWallJumping)
-        {
             MoveCharacter(wallJumpRunLerp);
-        }
+
+        else if (isVineJumping)
+            MoveCharacter(vineLerp);
+
         else
-        {
             MoveCharacter(1);
-        }
+
         if (canCornerCorrect)
-        {
             CornerCorrect();
-        }
+
         if (isSliding)
-        {
             Slide();
-        }
     }
 
     //Inputs Functions
@@ -289,7 +349,7 @@ public class GroundPlayerController : MonoBehaviour
 
     public void OnJumpUpInput()
     {
-        if (CanJumpCut() || CanWallJumpCut())
+        if (CanJumpCut() || CanWallJumpCut() || CanVineJumpCut())
         {
             isJumpCut = true;
         }
@@ -323,7 +383,7 @@ public class GroundPlayerController : MonoBehaviour
         rb.AddForce(mouvement * Vector2.right, ForceMode2D.Force);
     }
 
-    private void Jump()
+    public void Jump()
     {
         if (jumpedOnce == true)
         {
@@ -377,6 +437,28 @@ public class GroundPlayerController : MonoBehaviour
         rb.AddForce(movement * Vector2.up);
     }
 
+    public void VineJump()
+    {
+        isVineJumping = true;
+        vineJumpStartTime = Time.time;
+
+        float direction = isFacingRight ? 1 : -1;
+        Vector2 force = new Vector2(launchForce.x, launchForce.y);
+        force.x *= direction; //Applique la force dans la direction que la personnage regarde
+
+        //Reset la velocite du personnage avant de le faire sauter
+        //rb.velocity = new Vector2(0, 0);
+
+        //Annule la velocite en X et Y pour que le saut soit toujours de la meme longueur et hauteur
+        if (Mathf.Sign(rb.velocity.x) != Mathf.Sign(force.x))
+            force.x -= rb.velocity.x;
+
+        if (rb.velocity.y < 0) 
+            force.y -= rb.velocity.y;
+
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
+
     //Checks Functions
     private void CheckCollision()
     {
@@ -408,9 +490,6 @@ public class GroundPlayerController : MonoBehaviour
 
     private void Turn()
     {
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
         isFacingRight = !isFacingRight;
     }
 
@@ -435,6 +514,11 @@ public class GroundPlayerController : MonoBehaviour
     private bool CanJumpCut()
     {
         return isJumping && rb.velocity.y > 0;
+    }
+
+    private bool CanVineJumpCut()
+    {
+        return isVineJumping && rb.velocity.y > 0;
     }
 
     private bool CanWallJumpCut()
@@ -493,6 +577,20 @@ public class GroundPlayerController : MonoBehaviour
             rb.drag = 1f;
             GetComponent<GroundPlayerController>().enabled = false;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!vineParts.Contains(collision) && collision.gameObject.tag == "Vine")
+        {
+            vineParts.Add(collision);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (vineParts.Contains(collision) && collision.gameObject.tag == "Vine")
+            vineParts.Remove(collision);
     }
 
     private void OnDrawGizmos()
