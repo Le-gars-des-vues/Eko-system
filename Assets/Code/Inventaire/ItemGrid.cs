@@ -170,7 +170,7 @@ public class ItemGrid : MonoBehaviour
             for (int y = 0; y < width; y++)
             {
 
-                if (inventoryItemSlot[posX + x, posY + y] != null)
+                if (inventoryItemSlot[posX + x, posY + y] == null)
                 {
                    
                  return false;
