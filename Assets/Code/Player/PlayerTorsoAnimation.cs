@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerTorsoAnimation : MonoBehaviour
 {
-    public bool isRunning;
+    private bool isRunning;
     [SerializeField] private AnimationCurve yCurve;
     [SerializeField] private Transform torsoNeutralPos;
     [SerializeField] private float leanFactor;
-    [SerializeField] private float leanSpeed;
+    //[SerializeField] private float leanAngle;
     [SerializeField] private GroundPlayerController player;
+    [SerializeField] private float duration;
+    public float timer;
 
     private void Start()
     {
@@ -22,25 +24,47 @@ public class PlayerTorsoAnimation : MonoBehaviour
         if (player.enabled)
         {
             float facingDirection = player.GetComponent<PlayerPermanent>().isFacingRight ? 1 : -1;
+            bool isMovingRight = Input.GetAxis("Horizontal") >= 0 ? true : false;
+            //float walkAngle = player.GetComponent<PlayerPermanent>().isFacingRight ? 75 : 105
 
             if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !isRunning)
             {
                 isRunning = true;
-                float leanAngle = transform.eulerAngles.z - leanFactor * facingDirection;
-                StartCoroutine(RotateTorso(leanAngle));
+                timer = 0;
+                //leanAngle = transform.eulerAngles.z - leanFactor * facingDirection;
+                //StartCoroutine(RotateTorso(leanAngle));
             }
             else if (IsNotMoving() && isRunning)
             {
                 isRunning = false;
-                float neutralAngle = transform.eulerAngles.z + leanFactor * facingDirection;
-                StartCoroutine(RotateTorso(neutralAngle));
+                timer = 0;
+                //float neutralAngle = transform.eulerAngles.z + leanFactor * facingDirection;
+                //StartCoroutine(RotateTorso(neutralAngle));
                 transform.position = torsoNeutralPos.position;
             }
+            
 
             if (isRunning)
             {
                 float torsoHeight = torsoNeutralPos.position.y + yCurve.Evaluate((Time.time % yCurve.length));
                 transform.position = new Vector2(transform.position.x, torsoHeight);
+                timer += Time.deltaTime;
+                if (isMovingRight == player.GetComponent<PlayerPermanent>().isFacingRight)
+                {
+                    float angle = Mathf.LerpAngle(transform.eulerAngles.z, 75 * facingDirection, timer / duration);
+                    transform.eulerAngles = new Vector3(0, 0, angle);
+                }
+                else
+                {
+                    float angle = Mathf.LerpAngle(transform.eulerAngles.z, 105 * facingDirection, timer / duration);
+                    transform.eulerAngles = new Vector3(0, 0, angle);
+                }
+            }
+            else
+            {
+                timer += Time.deltaTime;
+                float angle = Mathf.LerpAngle(transform.eulerAngles.z, 90 * facingDirection, timer / duration);
+                transform.eulerAngles = new Vector3(0, 0, angle);
             }
         }
     }
@@ -52,10 +76,13 @@ public class PlayerTorsoAnimation : MonoBehaviour
 
     IEnumerator RotateTorso(float angle)
     {
-        for (float t = 0f; t < 5f; t += Time.deltaTime)
+        timer = 0;
+        while (timer < duration)
         {
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0, 0, angle), Time.deltaTime * leanSpeed);
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0, 0, 75), timer / duration);
+            yield return null;
         }
+        transform.eulerAngles = new Vector3(0, 0, 75);
         yield return null;
     }
 }

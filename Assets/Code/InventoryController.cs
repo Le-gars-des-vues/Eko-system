@@ -41,8 +41,6 @@ public class InventoryController : MonoBehaviour
     {
         ItemIconDrag();
 
-        
-
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (selectedItem == null)
@@ -51,10 +49,13 @@ public class InventoryController : MonoBehaviour
             }
         }
 
+        //Temporairement disabled, mais pourrait etre utile pour ajouter des items a l'inventaire quand on les pick up
+        /*
         if (Input.GetKeyDown(KeyCode.E))
         {
             InsertRandomItem();
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -66,7 +67,8 @@ public class InventoryController : MonoBehaviour
             return;
         }
 
-        HandleHighlight();
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().inventoryOpen)
+            HandleHighlight();
 
         if (Input.GetMouseButtonDown(0))
         {
