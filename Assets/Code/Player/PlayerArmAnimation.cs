@@ -13,13 +13,15 @@ public class PlayerArmAnimation : MonoBehaviour
 
     //Vitesse de mouvement des bras
     [SerializeField] private float speed;
-    [SerializeField] private float jumpAnimSpeed;
+    [SerializeField] private float normalAnimSpeed;
+    [SerializeField] private float fastAnimSpeed;
 
     //Cible pour les bras
     [SerializeField] private Transform armTarget;
 
     //Courbe d'animation pour la position en Y des bras
     [SerializeField] private AnimationCurve yCurve;
+    private float curveSpeed = 1f;
 
     //Offset pour les points ou la cible va s'arreter
     [HideInInspector] public float fXOffset;
@@ -36,8 +38,10 @@ public class PlayerArmAnimation : MonoBehaviour
     private bool reachedPos = false;
     private float targetDistance;
     private float stepTimer;
+    private float facingDirection;
 
     public bool somethingClose = false;
+    [SerializeField] private Vector2 armUpOffsets;
     [SerializeField] private Vector2 jumpUpOffsets;
     [SerializeField] private Vector2 jumpDownOffsets;
 
@@ -45,79 +49,122 @@ public class PlayerArmAnimation : MonoBehaviour
     void Start()
     {
         transform.position = new Vector2(player.transform.position.x + armXOffset, player.transform.position.y + armYOffset);
+        speed = normalAnimSpeed;
+    }
+
+    private void OnEnable()
+    {
+        facingDirection = player.GetComponent<PlayerPermanent>().isFacingRight ? 1 : -1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<GroundPlayerController>().enabled && !somethingClose)
+        facingDirection = player.GetComponent<PlayerPermanent>().isFacingRight ? 1 : -1;
+
+        if (player.GetComponent<GroundPlayerController>().enabled)
         {
-            float facingDirection = player.GetComponent<PlayerPermanent>().isFacingRight ? 1 : -1;
-
-            //Si le joueur appui sur A et qu'il est grounded
-            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && player.GetComponent<GroundPlayerController>().isGrounded))
+            if (!player.GetComponent<GroundPlayerController>().isGrounded)
             {
-                isRunning = true;
-            }
-            else
-            {
-                isRunning = false;
-                reachedPos = false;
-                stepTimer = 0;
-            }
-            //Si le joueur est en train de courrir
-            if (isRunning)
-            {
-                //Mesure la distance entre la cible et notre position
-                targetDistance = Mathf.Abs(Vector2.Distance(transform.position, armTarget.position));
-                stepTimer += Time.deltaTime;
-
-                //Cree la position a l'avant et l'arriere du joueur ou va venir se placer la cible
-                forwardArmPos = new Vector2(player.transform.position.x + fXOffset * facingDirection, player.transform.position.y + fYOffset);
-                backwardArmPos = new Vector2(player.transform.position.x + bXOffset * facingDirection, player.transform.position.y + bYOffset);
-
-                //Dependement de si le bras doit aller vers l'avant ou vers l'arriere, la position de la cible est assigne a l'un des deux emplacements
-                armTarget.position = goingForward ? forwardArmPos : backwardArmPos;
-
-                //Si la distance est assez petite. Le timer previent que le bras revienne vers la meme cible
-                if (targetDistance <= 0.01f && stepTimer > 0.2f)
-                    reachedPos = true;
-
-                //La position du bras lerp vers celle de la cible
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(armTarget.position.x, armTarget.position.y + yCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
-
-                //Si la position de la cible est atteinte pour les deux bras
-                if (reachedPos == true && otherArm.targetDistance < 0.01f)
+                if (player.GetComponent<Rigidbody2D>().velocity.y > 0.25f)
                 {
-                    //La cible va a l'autre position (avant ou arriere) car le bras change de direction
-                    reachedPos = false;
-                    goingForward = !goingForward;
-                    stepTimer = 0;
-                }
-            }
-            else
-            {
-                if (player.GetComponent<GroundPlayerController>().isGrounded)
-                {
-                    //Reset la position initiale
-                    transform.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + armXOffset * facingDirection, player.transform.position.y + armYOffset), speed * Time.deltaTime);
-
-                    //Un des deux bras va vers l'arriere en premier
-                    goingForward = true;
-                    if (otherArm.goingForward == true)
-                        goingForward = false;
+                    armTarget.position = new Vector2(player.transform.position.x + (jumpUpOffsets.x * facingDirection), player.transform.position.y + jumpUpOffsets.y);
+                    transform.position = Vector2.MoveTowards(transform.position, armTarget.position, normalAnimSpeed * Time.deltaTime);
                 }
                 else
                 {
-                    if (player.GetComponent<Rigidbody2D>().velocity.y > 0.25f)
+                    armTarget.position = new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y);
+                    transform.position = Vector2.MoveTowards(transform.position, armTarget.position, normalAnimSpeed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                if (player.GetComponent<PlayerPermanent>().objectInRightHand != null && gameObject.name == "RightArmSolver_Target")
+                {
+                    if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Javelin")
                     {
-                        armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + (jumpUpOffsets.x * facingDirection), player.transform.position.y + jumpUpOffsets.y), jumpAnimSpeed * Time.deltaTime);
+                        armTarget.position = new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y);
                         transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                    }
+                }
+                else if (player.GetComponent<PlayerPermanent>().objectInLeftHand != null && gameObject.name == "LeftArmSolver_Target")
+                {
+                    if (player.GetComponent<PlayerPermanent>().objectInLeftHand.tag == "Javelin")
+                    {
+                        armTarget.position = new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y);
+                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                    }
+                }
+                else
+                {
+                    if (somethingClose)
+                    {
+
                     }
                     else
                     {
-                        armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y), jumpAnimSpeed * Time.deltaTime);
-                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                        //Si le joueur appui sur A et qu'il est grounded
+                        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && player.GetComponent<GroundPlayerController>().isGrounded))
+                        {
+                            isRunning = true;
+                        }
+                        else
+                        {
+                            isRunning = false;
+                            reachedPos = false;
+                            stepTimer = 0;
+                        }
+                        //Si le joueur est en train de courrir
+                        if (isRunning)
+                        {
+                            if (Input.GetKey(KeyCode.LeftShift))
+                            {
+                                speed = fastAnimSpeed;
+                                curveSpeed = 2f;
+                            }
+                            else
+                            {
+                                speed = normalAnimSpeed;
+                                curveSpeed = 1f;
+                            }
+
+                            //Mesure la distance entre la cible et notre position
+                            targetDistance = Mathf.Abs(Vector2.Distance(transform.position, armTarget.position));
+                            stepTimer += Time.deltaTime * curveSpeed;
+
+                            //Cree la position a l'avant et l'arriere du joueur ou va venir se placer la cible
+                            forwardArmPos = new Vector2(player.transform.position.x + fXOffset * facingDirection, player.transform.position.y + fYOffset);
+                            backwardArmPos = new Vector2(player.transform.position.x + bXOffset * facingDirection, player.transform.position.y + bYOffset);
+
+                            //Dependement de si le bras doit aller vers l'avant ou vers l'arriere, la position de la cible est assigne a l'un des deux emplacements
+                            armTarget.position = goingForward ? forwardArmPos : backwardArmPos;
+
+                            //Si la distance est assez petite. Le timer previent que le bras revienne vers la meme cible
+                            if (targetDistance <= 0.01f && stepTimer > 0.2f)
+                                reachedPos = true;
+
+                            //La position du bras lerp vers celle de la cible
+                            transform.position = Vector2.MoveTowards(transform.position, new Vector2(armTarget.position.x, armTarget.position.y + yCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
+
+                            //Si la position de la cible est atteinte pour les deux bras
+                            if (reachedPos == true && otherArm.targetDistance < 0.01f)
+                            {
+                                //La cible va a l'autre position (avant ou arriere) car le bras change de direction
+                                reachedPos = false;
+                                goingForward = !goingForward;
+                                stepTimer = 0;
+                            }
+                        }
+                        else
+                        {
+                            //Reset la position initiale
+                            transform.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + armXOffset * facingDirection, player.transform.position.y + armYOffset), speed * Time.deltaTime);
+
+                            //Un des deux bras va vers l'arriere en premier
+                            goingForward = true;
+                            if (otherArm.goingForward == true)
+                                goingForward = false;
+                        }
                     }
                 }
             }

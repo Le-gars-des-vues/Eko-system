@@ -40,16 +40,37 @@ public class PickableObject : MonoBehaviour
         //Pick up
         if (hasFlashed && Input.GetKeyDown(KeyCode.E))
         {
-            isPickedUp = true;
-            GetComponent<BoxCollider2D>().enabled = false;
-            GetComponent<Rigidbody2D>().isKinematic = true;
-            if (player.rightHandEmpty)
+            if (!isPickedUp)
             {
-                transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
-                transform.eulerAngles = new Vector3(0, 0, (-90 - rightHand.transform.rotation.z));
-                gameObject.transform.SetParent(rightHand.transform);
-                player.rightHandEmpty = false;
+                if (player.objectInRightHand == null)
+                {
+                    isPickedUp = true;
+                    GetComponent<BoxCollider2D>().enabled = false;
+                    GetComponent<Rigidbody2D>().simulated = false;
+                    transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
+                    transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
+                    gameObject.transform.SetParent(rightHand.transform);
+                    GetComponent<SpriteRenderer>().sortingOrder = 7;
+                    player.EquipObject(gameObject, true);
+                }
+                else if (player.objectInLeftHand == null)
+                {
+                    isPickedUp = true;
+                    GetComponent<BoxCollider2D>().enabled = false;
+                    GetComponent<Rigidbody2D>().simulated = false;
+                    transform.position = leftHand.transform.Find("LeftArmEffector").transform.position;
+                    transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - leftHand.transform.rotation.z);
+                    gameObject.transform.SetParent(leftHand.transform);
+                    GetComponent<SpriteRenderer>().sortingOrder = 2;
+                    player.EquipObject(gameObject, false);
+                }
             }
+        }
+        if (gameObject.tag == "Javelin" && isPickedUp)
+        {
+            Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
@@ -80,6 +101,6 @@ public class PickableObject : MonoBehaviour
 
     bool CanBePickedUp()
     {
-        return Mathf.Abs(Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position)) <= 1f;
+        return Mathf.Abs(Vector2.Distance(new Vector2(GameObject.FindGameObjectWithTag("Player").transform.position.x, 0), new Vector2(transform.position.x, 0))) <= 1f;
     }
 }

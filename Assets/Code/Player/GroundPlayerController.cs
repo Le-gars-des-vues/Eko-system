@@ -141,6 +141,8 @@ public class GroundPlayerController : MonoBehaviour
     [SerializeField] private Vector2 launchForce;
     private float vineJumpStartTime;
 
+    private PlayerPermanent player;
+    [SerializeField] private float runStaminaCost;
     private void OnEnable()
     {
         vineTimer = 0.35f;
@@ -150,6 +152,8 @@ public class GroundPlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GetComponent<PlayerPermanent>();
+
         //On set up quelques variables pour le deplacement
         rb = gameObject.GetComponent<Rigidbody2D>();
         gravityStrength = -(2 * jumpHeight) / (jumpTimeToApex * jumpTimeToApex);
@@ -175,20 +179,24 @@ public class GroundPlayerController : MonoBehaviour
             CheckDirectionToFace(GetInput().x > 0);
         }
 
-        /*
+        
         //Courir
         if (Input.GetKey(KeyCode.LeftShift))
         {
             if (isGrounded)
             {
-                maxSpeed = runSpeed;
+                if (player.currentStamina > 0)
+                {
+                    maxSpeed = runSpeed;
+                    player.ChangeStamina(-runStaminaCost);
+                }
             }     
         }
         else
         {
             maxSpeed = walkSpeed;
         }
-        */
+        
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

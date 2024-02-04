@@ -37,9 +37,18 @@ public class PlayerPermanent : MonoBehaviour
     public Slider staminaSlider;
     private float staminaCountdown;
 
+    [Header("Exploration Variables")]
     public bool survivalMode;
-    public bool rightHandEmpty = true;
+    public GameObject objectInRightHand = null;
+    public GameObject objectInLeftHand = null;
     public bool isFacingRight;
+
+    [Header("Inventory Variables")]
+    public bool inventoryOpen = false;
+    [SerializeField] private GameObject playerInventory;
+    [SerializeField] private GameObject storageInventory;
+    [SerializeField] private List<GameObject> itemList = new List<GameObject>();
+    [SerializeField] private float gridOffset;
 
     [Header("Ragdoll Variables")]
     [SerializeField] private Animator anim;
@@ -49,6 +58,8 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private List<LimbSolver2D> limbs;
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private CapsuleCollider2D playerCollider;
+
+    private VinePlayerController vineController;
 
     private void Awake()
     {
@@ -60,6 +71,10 @@ public class PlayerPermanent : MonoBehaviour
     {
         ResetToMax();
         ToggleRagdoll(false);
+        playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+        storageInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+        playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+        vineController = GetComponent<VinePlayerController>();
     }
 
     // Update is called once per frame
@@ -93,9 +108,37 @@ public class PlayerPermanent : MonoBehaviour
             SetBar(staminaSlider, currentStamina);
         }
 
-        if (GetInput().x != 0)
+        if (vineController.enabled)
         {
-            CheckDirectionToFace(GetInput().x > 0);
+            if (GetInput().x != 0)
+            {
+                CheckDirectionToFace(GetInput().x > 0);
+            }
+        }
+        else
+        {
+            Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
+            {
+                Turn();
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (!inventoryOpen)
+            {
+                inventoryOpen = true;
+                playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
+                playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            }
+            else
+            {
+                inventoryOpen = false;
+                playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+                playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            }
         }
     }
 
@@ -180,6 +223,22 @@ public class PlayerPermanent : MonoBehaviour
         {
             joint.enabled = ragdollOn;
         }
+    }
+
+    public void EquipObject(GameObject obj, bool isRightHand)
+    {
+        if (isRightHand)
+            objectInRightHand = obj;
+        else
+            objectInLeftHand = obj;
+    }
+
+    public void UnequipObject(bool isRightHand)
+    {
+        if (isRightHand)
+            objectInRightHand = null;
+        else
+            objectInLeftHand = null;
     }
 
     private void Turn()
