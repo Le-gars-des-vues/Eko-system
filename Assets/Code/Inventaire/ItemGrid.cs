@@ -186,6 +186,30 @@ public class ItemGrid : MonoBehaviour
 
     }
 
+    public InventoryItem CheckIfItemPresent(int posX, int posY)
+    {
+        if (inventoryItemSlot[posX, posY] != null)
+        {
+            return null;
+
+        }
+        else
+        {
+            return inventoryItemSlot[posX, posY];
+        }
+
+    }
+
+    public int GetGridSizeWidth()
+    {
+        return gridSizeWidth;
+    }
+
+    public int GetGridSizeHeight() 
+    {
+        return gridSizeHeight; 
+    }
+
     bool PositionCheck(int posX, int posY)
     {
         if(posX < 0 || posY < 0)
