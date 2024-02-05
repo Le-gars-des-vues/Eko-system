@@ -114,7 +114,6 @@ public class ItemGrid : MonoBehaviour
         {
             for (int y = 0; y < inventoryItem.HEIGHT; y++)
             {
-                //Si la position de l'item + ses dimensions dépasse la taille de la grille, cela va renvoyer une erreur car on sort des limites de l'array (Index out of array bounds)
                 inventoryItemSlot[posX + x, posY + y] = inventoryItem;
             }
         }
@@ -140,7 +139,7 @@ public class ItemGrid : MonoBehaviour
         for (int x = 0; x < width; x++)
         {
             for(int y = 0; y < width; y ++){
-                //Si la position de l'item + ses dimensions dépasse la taille de la grille, cela va renvoyer une erreur car on sort des limites de l'array (Index out of array bounds)
+
                 if (inventoryItemSlot[posX+x, posY+y] != null)
                 {
                     if (overlapItem == null)
@@ -168,12 +167,10 @@ public class ItemGrid : MonoBehaviour
     {
         for (int x = 0; x < width; x++)
         {
-            //Deux fois fois width?
             for (int y = 0; y < width; y++)
             {
-                //Je pense que le != est sensé être un ==
-                //Si la position de l'item + ses dimensions dépasse la taille de la grille, cela va renvoyer une erreur car on sort des limites de l'array (Index out of array bounds)
-                if (inventoryItemSlot[posX + x, posY + y] != null)
+
+                if (inventoryItemSlot[posX + x, posY + y] == null)
                 {
                    
                  return false;
@@ -191,7 +188,6 @@ public class ItemGrid : MonoBehaviour
 
     public InventoryItem CheckIfItemPresent(int posX, int posY)
     {
-        //Si la position de l'item + ses dimensions dépasse la taille de la grille, cela va renvoyer une erreur car on sort des limites de l'array (Index out of array bounds)
         if (inventoryItemSlot[posX, posY] == null)
         {
             return null;
@@ -235,7 +231,7 @@ public class ItemGrid : MonoBehaviour
         {
             return false;
         }
-        //Quand on enleve les -1, le bug de l'arc qui dépasse de la grille de l'inventaire n'arrive plus
+
         posX += width-1;
         posY += height-1;
 
@@ -254,7 +250,6 @@ public class ItemGrid : MonoBehaviour
 
     public Vector2Int? FindSpaceForObject(InventoryItem itemToInsert)
     {
-        //Pas sur si width est sensé utiliser gridSizeHeight, aussi à quoi serve les +1?
         int height = gridSizeHeight-itemToInsert.HEIGHT+1;
         int width = gridSizeHeight-itemToInsert.WIDTH+1;
         for (int y = 0; y < height; y++)
