@@ -169,7 +169,6 @@ public class ItemGrid : MonoBehaviour
         {
             for (int y = 0; y < width; y++)
             {
-
                 if (inventoryItemSlot[posX + x, posY + y] == null)
                 {
                    
@@ -231,9 +230,9 @@ public class ItemGrid : MonoBehaviour
         {
             return false;
         }
-
-        posX += width-1;
-        posY += height-1;
+        
+        posX += width/*-1*/;
+        posY += height/*-1*/;
 
         if (PositionCheck(posX, posY) == false)
         {
@@ -251,7 +250,7 @@ public class ItemGrid : MonoBehaviour
     public Vector2Int? FindSpaceForObject(InventoryItem itemToInsert)
     {
         int height = gridSizeHeight-itemToInsert.HEIGHT+1;
-        int width = gridSizeHeight-itemToInsert.WIDTH+1;
+        int width = gridSizeWidth-itemToInsert.WIDTH+1;
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)

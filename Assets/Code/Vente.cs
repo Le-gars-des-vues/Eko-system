@@ -28,8 +28,8 @@ public class Vente : MonoBehaviour
               anItem=theItemGrid.CheckIfItemPresent(x, y);
               if (anItem != null)
                  {
-
                     profit += anItem.itemData.value;
+                    Debug.Log(profit);
                     for (int ix = x; ix < x + anItem.itemData.width - 1; ix++)
                     {
                         for (int iy = x; iy < y + anItem.itemData.height - 1; iy++)
