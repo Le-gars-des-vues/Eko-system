@@ -91,7 +91,7 @@ public class InventoryController : MonoBehaviour
         InsertItem(itemToInsert);
     }
 
-    private void InsertItem(InventoryItem itemToInsert)
+    public void InsertItem(InventoryItem itemToInsert)
     {
         Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
 
