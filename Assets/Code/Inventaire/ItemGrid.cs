@@ -188,7 +188,7 @@ public class ItemGrid : MonoBehaviour
 
     public InventoryItem CheckIfItemPresent(int posX, int posY)
     {
-        if (inventoryItemSlot[posX, posY] != null)
+        if (inventoryItemSlot[posX, posY] == null)
         {
             return null;
 
