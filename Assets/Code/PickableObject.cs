@@ -5,12 +5,17 @@ using UnityEngine;
 public class PickableObject : MonoBehaviour
 {
     private Material ogMaterial;
-    public Material flashMaterial;
+    [SerializeField] private Material flashMaterial;
     private Color ogColor;
 
     private GameObject rightHand;
     private GameObject leftHand;
     private PlayerPermanent player;
+
+    [SerializeField] private InventoryItem item;
+    [SerializeField] private ItemGrid inventory;
+    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private GameObject itemInInventory;
 
     public bool hasFlashed;
     public bool isPickedUp = false;
@@ -20,8 +25,12 @@ public class PickableObject : MonoBehaviour
     {
         ogColor = GetComponent<SpriteRenderer>().color;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+
         rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
         leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
+
+        inventory = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
+        item = GetComponent<InventoryItem>();
     }
 
     // Update is called once per frame
@@ -64,6 +73,10 @@ public class PickableObject : MonoBehaviour
                     GetComponent<SpriteRenderer>().sortingOrder = 2;
                     player.EquipObject(gameObject, false);
                 }
+                InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+                inventoryItem.Set(item.itemData);
+                InsertItem(inventoryItem);
+                itemInInventory = inventoryItem.gameObject;
             }
         }
         if (gameObject.tag == "Javelin" && isPickedUp)
@@ -71,6 +84,12 @@ public class PickableObject : MonoBehaviour
             Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
+        if (isPickedUp)
+        {
+            item.onGridPositionX = itemInInventory.GetComponent<InventoryItem>().onGridPositionX;
+            item.onGridPositionY = itemInInventory.GetComponent<InventoryItem>().onGridPositionY;
         }
     }
 
@@ -102,5 +121,14 @@ public class PickableObject : MonoBehaviour
     bool CanBePickedUp()
     {
         return Mathf.Abs(Vector2.Distance(new Vector2(GameObject.FindGameObjectWithTag("Player").transform.position.x, 0), new Vector2(transform.position.x, 0))) <= 1f;
+    }
+
+    private void InsertItem(InventoryItem itemToInsert)
+    {
+        Vector2Int? posOnGrid = inventory.FindSpaceForObject(itemToInsert);
+
+        if (posOnGrid == null) { return; }
+
+        inventory.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
     }
 }

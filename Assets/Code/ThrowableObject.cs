@@ -19,40 +19,43 @@ public class ThrowableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (GetComponent<PickableObject>().isPickedUp)
+        if (!player.inventoryOpen)
         {
-            if (Input.GetMouseButtonDown(0))
-                timer = 0;
-
-            if (Input.GetMouseButton(0))
+            timer += Time.deltaTime;
+            if (GetComponent<PickableObject>().isPickedUp)
             {
-                if (player.objectInRightHand != null)
+                if (Input.GetMouseButtonDown(0))
+                    timer = 0;
+
+                if (Input.GetMouseButton(0))
                 {
-                    if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
+                    if (player.objectInRightHand != null)
                     {
-                        force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
+                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
+                        {
+                            force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
+                        }
+                    }
+                    else if (player.objectInLeftHand != null)
+                    {
+                        if (player.objectInLeftHand == gameObject && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
+                        {
+                            force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
+                        }
                     }
                 }
-                else if (player.objectInLeftHand != null)
+                if (Input.GetMouseButtonUp(0))
                 {
-                    if (player.objectInLeftHand == gameObject && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
+                    if (player.objectInRightHand != null)
                     {
-                        force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
-                    }  
-                }
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                if (player.objectInRightHand != null)
-                {
-                    if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
-                        StartCoroutine(Throw(player.objectInRightHand));
-                }
-                else if (player.objectInLeftHand != null)
-                {
-                    if (player.objectInLeftHand == gameObject && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
-                        StartCoroutine(Throw(player.objectInLeftHand));
+                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
+                            StartCoroutine(Throw(player.objectInRightHand));
+                    }
+                    else if (player.objectInLeftHand != null)
+                    {
+                        if (player.objectInLeftHand == gameObject && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
+                            StartCoroutine(Throw(player.objectInLeftHand));
+                    }
                 }
             }
         }
