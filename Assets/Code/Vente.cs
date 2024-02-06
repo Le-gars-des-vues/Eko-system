@@ -1,16 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Vente : MonoBehaviour
 {
-    [SerializeField] private GameObject inventaireVente;
+    [SerializeField] private RectTransform inventaireVente;
 
     private int tempHeight;
     private int tempWidth;
     public float profit = 0;
     ItemGrid theItemGrid;
     InventoryItem anItem;
+
+    [SerializeField] private int quota;
+    [SerializeField] private TextMeshProUGUI quotaText;
+
+    private void Start()
+    {
+        quotaText.text = profit.ToString() + " / " + quota.ToString();
+    }
 
     public void VenteItem()
     {
@@ -26,10 +35,10 @@ public class Vente : MonoBehaviour
              {
                 //Not working
               anItem=theItemGrid.CheckIfItemPresent(x, y);
-              if (anItem != null)
-                 {
+                if (anItem != null)
+                {
                     profit += (float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height);
-                    Debug.Log(profit);
+                    quotaText.text = profit.ToString() + " / " + quota.ToString(); 
                     anItem.Delete();
                     /*
                     for (int ix = x; ix < x + anItem.itemData.width - 1; ix++)
