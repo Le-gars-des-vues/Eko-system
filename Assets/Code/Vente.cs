@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vente : MonoBehaviour
 {
-    [SerializeField] private GameObject inventaireVente;
+    [SerializeField] private RectTransform inventaireVente;
 
     private int tempHeight;
     private int tempWidth;
