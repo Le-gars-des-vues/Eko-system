@@ -71,12 +71,10 @@ public class PlayerPermanent : MonoBehaviour
     {
         ResetToMax();
         ToggleRagdoll(false);
-        /*
         playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
         storageInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
         playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
         storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-        */
         vineController = GetComponent<VinePlayerController>();
     }
 
