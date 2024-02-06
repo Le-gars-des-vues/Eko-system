@@ -232,7 +232,7 @@ public class ItemGrid : MonoBehaviour
         }
         
         posX += width/*-1*/;
-        posY += height/*-1*/;
+        posY += height-1;
 
         if (PositionCheck(posX, posY) == false)
         {
