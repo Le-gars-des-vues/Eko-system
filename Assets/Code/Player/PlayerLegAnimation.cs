@@ -10,8 +10,9 @@ public class PlayerLegAnimation : MonoBehaviour
     [SerializeField] private GameObject player;
 
     [Header("Animation Variables")]
-    [SerializeField]private float speed;
-    [SerializeField] private float jumpAnimSpeed;
+    [SerializeField] private float speed;
+    [SerializeField] private float normalAnimSpeed;
+    [SerializeField] private float fastAnimSpeed;
     [SerializeField] private float threshold;
     float targetDistance;
     float footMovement;
@@ -20,10 +21,14 @@ public class PlayerLegAnimation : MonoBehaviour
     private bool isRunning = false;
     private bool thereIsAWall;
     [SerializeField] private float legOffset;
-    [SerializeField]private Vector2 jumpUpOffsets;
+    [SerializeField] private Vector2 jumpUpOffsets;
+    [SerializeField] private Vector2 jumpMidOffsets;
     [SerializeField] private Vector2 jumpDownOffsets;
+    [SerializeField] private float legAirMotion;
     private float facingDirection;
     private bool isFacingRight;
+    private bool isMovingRight;
+    private bool isWalkingBack = false;
 
     //Pour regarder la position de l'autre pied
     [SerializeField] private PlayerLegAnimation otherfoot;
@@ -41,6 +46,12 @@ public class PlayerLegAnimation : MonoBehaviour
 
         //Commence en regardant vers la droite
         isFacingRight = true;
+        speed = normalAnimSpeed;
+    }
+
+    private void OnEnable()
+    {
+        facingDirection = player.GetComponent<PlayerPermanent>().isFacingRight ? 1 : -1;
     }
 
     // Update is called once per frame
@@ -52,10 +63,10 @@ public class PlayerLegAnimation : MonoBehaviour
             {
                 //Adapte le code en fonction de si on regarde a gauche ou a droite
                 facingDirection = isFacingRight ? 1 : -1;
+                isMovingRight = Input.GetAxis("Horizontal") >= 0 ? true : false;
 
                 //Detecte le changement de direction pour reinitialiser la position des pieds;
-                if (Input.GetAxis("Horizontal") != 0)
-                    CheckDirectionToFace(Input.GetAxis("Horizontal") > 0);
+                CheckDirectionToFace(player.GetComponent<PlayerPermanent>().isFacingRight);
 
                 //Empeche l'animation des jambes s'il y a un mur devant
                 RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y), Vector2.right * facingDirection, 0.5f, LayerMask.GetMask("Ground"));
@@ -64,9 +75,13 @@ public class PlayerLegAnimation : MonoBehaviour
                 else
                     thereIsAWall = false;
 
+                if (isMovingRight != isFacingRight && !isWalkingBack && Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
+                    ChangeDirection();
+                else if (isMovingRight == isFacingRight && isWalkingBack)
+                    ChangeDirection();
+
                 //Calcule la distance entre la cible du pied et sa position actuelle
                 targetDistance = Vector2.Distance(currentTarget.position, desiredTarget.position);
-
 
                 //Si la distance depasse le seuile et qu'il n'y a pas de mur devant, la position du pied devient celle de la cible
                 if (targetDistance > threshold && otherfoot.targetDistance > 1.2f && !thereIsAWall)
@@ -110,27 +125,33 @@ public class PlayerLegAnimation : MonoBehaviour
                     if (hit.collider != null)
                         currentTarget.position = Vector2.Lerp(currentTarget.position, new Vector2(hit.point.x, hit.point.y), speed * Time.deltaTime);
                 }
+
+                if (Input.GetKey(KeyCode.LeftShift))
+                    speed = fastAnimSpeed;
+                else
+                    speed = normalAnimSpeed;
+
             }
             else
             {
-                if (player.GetComponent<Rigidbody2D>().velocity.y > 0.25f)
+                if (player.GetComponent<Rigidbody2D>().velocity.y > -4f)
                 {
-                    currentTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + (jumpUpOffsets.x * facingDirection), player.transform.position.y + jumpUpOffsets.y), jumpAnimSpeed * Time.deltaTime);
-                    transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
+                    currentTarget.position = new Vector2(player.transform.position.x + (jumpMidOffsets.x * facingDirection), player.transform.position.y + jumpMidOffsets.y);
+                    transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, 3 * Time.deltaTime);
                 }
                 else
                 {
-                    currentTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y), jumpAnimSpeed * Time.deltaTime);
-                    transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
+                    currentTarget.position = new Vector2(player.transform.position.x + (jumpDownOffsets.x + player.GetComponent<Rigidbody2D>().velocity.x * legAirMotion), player.transform.position.y + jumpDownOffsets.y);
+                    transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, 3 * Time.deltaTime);
                 }
             }
         }
     }
 
     
-    public void CheckDirectionToFace(bool isMovingRight)
+    public void CheckDirectionToFace(bool isLookingRight)
     {
-        if (isMovingRight != isFacingRight)
+        if (isLookingRight != isFacingRight)
         {
             Turn();
         }
@@ -147,12 +168,21 @@ public class PlayerLegAnimation : MonoBehaviour
         isFacingRight = !isFacingRight;
     }
 
+    void ChangeDirection()
+    {
+        isWalkingBack = !isWalkingBack;
+        Vector2 position = desiredTarget.localPosition;
+        position.x *= -1;
+        desiredTarget.localPosition = position;
+    }
+
     
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), 0.05f);
         Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), 0.05f);
+        Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpMidOffsets.x, player.transform.position.y + jumpMidOffsets.y), 0.05f);
     }
     
 }

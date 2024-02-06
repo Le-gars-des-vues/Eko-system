@@ -41,8 +41,6 @@ public class InventoryController : MonoBehaviour
     {
         ItemIconDrag();
 
-        
-
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (selectedItem == null)
@@ -51,10 +49,13 @@ public class InventoryController : MonoBehaviour
             }
         }
 
+        //Temporairement disabled, mais pourrait etre utile pour ajouter des items a l'inventaire quand on les pick up
+        /*
         if (Input.GetKeyDown(KeyCode.E))
         {
             InsertRandomItem();
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -66,7 +67,8 @@ public class InventoryController : MonoBehaviour
             return;
         }
 
-        HandleHighlight();
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().inventoryOpen)
+            HandleHighlight();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -89,7 +91,7 @@ public class InventoryController : MonoBehaviour
         InsertItem(itemToInsert);
     }
 
-    private void InsertItem(InventoryItem itemToInsert)
+    public void InsertItem(InventoryItem itemToInsert)
     {
         Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
 
@@ -162,8 +164,8 @@ public class InventoryController : MonoBehaviour
 
         if (selectedItem != null)
         {
-            position.x += (selectedItem.WIDTH - 1) * ItemGrid.tileSizeWidth / 2;
-            position.y += (selectedItem.HEIGHT - 1) * ItemGrid.tileSizeHeight / 2;
+            position.x += (selectedItem.WIDTH - (1 * selectedItem.WIDTH)) * ItemGrid.tileSizeWidth / 2;
+            position.y += (selectedItem.HEIGHT- (1 * selectedItem.HEIGHT)) * ItemGrid.tileSizeHeight / 2;
         }
 
         return selectedItemGrid.GetTileGridPosition(position);

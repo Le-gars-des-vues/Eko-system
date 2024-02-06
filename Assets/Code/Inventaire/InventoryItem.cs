@@ -56,4 +56,9 @@ public class InventoryItem : MonoBehaviour
         size.y = HEIGHT * ItemGrid.tileSizeHeight;
         GetComponent<RectTransform>().sizeDelta = size;
     }
+
+    public void Delete()
+    {
+        Destroy(this.gameObject);
+    }
 }
