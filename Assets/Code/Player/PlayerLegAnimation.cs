@@ -29,6 +29,7 @@ public class PlayerLegAnimation : MonoBehaviour
     private bool isFacingRight;
     private bool isMovingRight;
     private bool isWalkingBack = false;
+    private bool isLanding = false;
 
     //Pour regarder la position de l'autre pied
     [SerializeField] private PlayerLegAnimation otherfoot;
@@ -59,6 +60,12 @@ public class PlayerLegAnimation : MonoBehaviour
     {
         if (player.GetComponent<GroundPlayerController>().enabled)
         {
+            if (player.GetComponent<GroundPlayerController>().isGrounded != isLanding)
+            {
+                ResetPosition();
+            }
+            isLanding = player.GetComponent<GroundPlayerController>().isGrounded;
+
             if (player.GetComponent<GroundPlayerController>().isGrounded)
             {
                 //Adapte le code en fonction de si on regarde a gauche ou a droite
@@ -126,7 +133,7 @@ public class PlayerLegAnimation : MonoBehaviour
                         currentTarget.position = Vector2.Lerp(currentTarget.position, new Vector2(hit.point.x, hit.point.y), speed * Time.deltaTime);
                 }
 
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.LeftShift) && !player.GetComponent<PlayerPermanent>().staminaDepleted)
                     speed = fastAnimSpeed;
                 else
                     speed = normalAnimSpeed;
@@ -137,7 +144,7 @@ public class PlayerLegAnimation : MonoBehaviour
                 if (player.GetComponent<Rigidbody2D>().velocity.y > -4f)
                 {
                     currentTarget.position = new Vector2(player.transform.position.x + (jumpMidOffsets.x * facingDirection), player.transform.position.y + jumpMidOffsets.y);
-                    transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, 3 * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, 5 * Time.deltaTime);
                 }
                 else
                 {
@@ -176,6 +183,15 @@ public class PlayerLegAnimation : MonoBehaviour
         desiredTarget.localPosition = position;
     }
 
+    void ResetPosition()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 2f, LayerMask.GetMask("Ground"));
+        if (hit.collider != null)
+        {
+            currentTarget.position = hit.point;
+            transform.position = hit.point;
+        }
+    }
     
     private void OnDrawGizmos()
     {

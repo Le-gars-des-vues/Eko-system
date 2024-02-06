@@ -36,12 +36,16 @@ public class PlayerPermanent : MonoBehaviour
     public float staminaRegainRate;
     public Slider staminaSlider;
     private float staminaCountdown;
+    public bool staminaDepleted = false;
 
     [Header("Exploration Variables")]
     public bool survivalMode;
     public GameObject objectInRightHand = null;
-    public GameObject objectInLeftHand = null;
+    //public GameObject objectInLeftHand = null; Utilisation de la main gauche
     public bool isFacingRight;
+    public List<GameObject> ressourcesNear = new List<GameObject>();
+    public float nearestRessourceDistance = 10;
+    private GameObject nearestRessource;
 
     [Header("Inventory Variables")]
     public bool inventoryOpen = false;
@@ -103,10 +107,12 @@ public class PlayerPermanent : MonoBehaviour
         }
 
         //Timer de 2 seconds avec que le joueur commence a regagner de la stamina, reset a chaque fois qu'il utilise de la stamina
-        if (Time.time - staminaCountdown > 2 && currentStamina < maxStamina)
+        if (Time.time - staminaCountdown > 2 && currentStamina <= maxStamina)
         {
             currentStamina += staminaRegainRate * Time.deltaTime;
             SetBar(staminaSlider, currentStamina);
+            if (currentStamina >= maxStamina)
+                staminaDepleted = false;
         }
 
         if (vineController.enabled)
@@ -125,7 +131,6 @@ public class PlayerPermanent : MonoBehaviour
             }
         }
 
-
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (!inventoryOpen)
@@ -141,6 +146,26 @@ public class PlayerPermanent : MonoBehaviour
                 playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             }
         }
+
+        if (ressourcesNear.Count >= 1)
+        {
+            foreach (var ressource in ressourcesNear)
+            {
+                float distance = Vector2.Distance(transform.position, ressource.transform.position);
+                if (distance < nearestRessourceDistance)
+                {
+                    if (nearestRessource != null)
+                    {
+                        ressource.GetComponent<PickableObject>().isSelected = false;
+                    }
+                    nearestRessourceDistance = distance;
+                    nearestRessource = ressource;
+                    ressource.GetComponent<PickableObject>().isSelected = true;
+                }
+            }
+        }
+        else
+            nearestRessourceDistance = 10;
     }
 
     //Pour remettre tout les values au maximum
@@ -177,6 +202,8 @@ public class PlayerPermanent : MonoBehaviour
         currentStamina += value;
         SetBar(staminaSlider, currentStamina);
         staminaCountdown = Time.time;
+        if (currentStamina <= 0)
+            staminaDepleted = true;
     }
 
     public void ChangeHp(float value)
@@ -230,16 +257,22 @@ public class PlayerPermanent : MonoBehaviour
     {
         if (isRightHand)
             objectInRightHand = obj;
+
+        /* Utilisation de la main gauche
         else
             objectInLeftHand = obj;
+        */
     }
 
     public void UnequipObject(bool isRightHand)
     {
         if (isRightHand)
             objectInRightHand = null;
+
+        /* Utilisation de la main gauche
         else
             objectInLeftHand = null;
+        */
     }
 
     private void Turn()

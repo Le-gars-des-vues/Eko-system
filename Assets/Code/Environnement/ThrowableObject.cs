@@ -36,6 +36,7 @@ public class ThrowableObject : MonoBehaviour
                             force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
                         }
                     }
+                    /* Utilisation de la main gauche
                     else if (player.objectInLeftHand != null)
                     {
                         if (player.objectInLeftHand == gameObject && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
@@ -43,6 +44,7 @@ public class ThrowableObject : MonoBehaviour
                             force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
                         }
                     }
+                    */
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
@@ -51,11 +53,13 @@ public class ThrowableObject : MonoBehaviour
                         if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
                             StartCoroutine(Throw(player.objectInRightHand));
                     }
+                    /* Utilisation de la main gauche
                     else if (player.objectInLeftHand != null)
                     {
                         if (player.objectInLeftHand == gameObject && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
                             StartCoroutine(Throw(player.objectInLeftHand));
                     }
+                    */
                 }
             }
         }
@@ -78,8 +82,12 @@ public class ThrowableObject : MonoBehaviour
 
         if (gameObject == player.objectInRightHand)
             player.UnequipObject(true);
+
+        var toDestroy = item.inventory.GetItem(item.item.onGridPositionX, item.item.onGridPositionY);
+        toDestroy.Delete();
+        /* Utilisation de la main gauche
         else if (gameObject == player.objectInLeftHand)
             player.UnequipObject(false);
-
+        */
     }
 }

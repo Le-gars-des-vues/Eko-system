@@ -51,7 +51,7 @@ public class InventoryController : MonoBehaviour
 
         //Temporairement disabled, mais pourrait etre utile pour ajouter des items a l'inventaire quand on les pick up
         /*
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             InsertRandomItem();
         }
