@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 4799404432869947377}
   - component: {fileID: -8924136207749339527}
   - component: {fileID: 7219834760413220488}
+  - component: {fileID: -7769815578384886981}
+  - component: {fileID: -6286538404300590474}
   m_Layer: 0
   m_Name: RessourceTest
-  m_TagString: Untagged
+  m_TagString: Ressource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.8144, y: 1.8107, z: 0}
-  m_LocalScale: {x: 0.1609, y: 0.1609, z: 0.1609}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.1609}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.08237815, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6a1f067d50ffb534faacb64bf31cd3b1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -172,3 +174,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 1
+--- !u!114 &-7769815578384886981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819707360973039860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88ba682e0affa5479a68d8d2b3bdbc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: ef2a4423f7675fd42a1bd3ff2b9f196d, type: 2}
+  item: {fileID: 0}
+  inventory: {fileID: 0}
+  itemPrefab: {fileID: 839064163631031773, guid: dedee1f75c5bdc649afdb5672ecbc9dc, type: 3}
+  hasFlashed: 0
+  isFlashing: 0
+  isSelected: 0
+  isPickedUp: 0
+--- !u!114 &-6286538404300590474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819707360973039860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc39c51400369df45826f26e5a8aeedf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 31d96b9638d37d34fb545da07b7c2a51, type: 2}
+  onGridPositionX: 0
+  onGridPositionY: 0
+  rotated: 0

@@ -66,7 +66,7 @@ public class PlayerArmAnimation : MonoBehaviour
         {
             if (!player.GetComponent<GroundPlayerController>().isGrounded)
             {
-                if (player.GetComponent<Rigidbody2D>().velocity.y > 0.25f)
+                if (player.GetComponent<Rigidbody2D>().velocity.y > 0f)
                 {
                     armTarget.position = new Vector2(player.transform.position.x + (jumpUpOffsets.x * facingDirection), player.transform.position.y + jumpUpOffsets.y);
                     transform.position = Vector2.MoveTowards(transform.position, armTarget.position, normalAnimSpeed * Time.deltaTime);
@@ -87,6 +87,7 @@ public class PlayerArmAnimation : MonoBehaviour
                         transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                     }
                 }
+                /* Utilisation de la main gauche
                 else if (player.GetComponent<PlayerPermanent>().objectInLeftHand != null && gameObject.name == "LeftArmSolver_Target")
                 {
                     if (player.GetComponent<PlayerPermanent>().objectInLeftHand.tag == "Javelin")
@@ -95,6 +96,7 @@ public class PlayerArmAnimation : MonoBehaviour
                         transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                     }
                 }
+                */
                 else
                 {
                     if (somethingClose)
@@ -117,7 +119,7 @@ public class PlayerArmAnimation : MonoBehaviour
                         //Si le joueur est en train de courrir
                         if (isRunning)
                         {
-                            if (Input.GetKey(KeyCode.LeftShift))
+                            if (Input.GetKey(KeyCode.LeftShift) && !player.GetComponent<PlayerPermanent>().staminaDepleted)
                             {
                                 speed = fastAnimSpeed;
                                 curveSpeed = 2f;
@@ -161,8 +163,9 @@ public class PlayerArmAnimation : MonoBehaviour
                             transform.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + armXOffset * facingDirection, player.transform.position.y + armYOffset), speed * Time.deltaTime);
 
                             //Un des deux bras va vers l'arriere en premier
-                            goingForward = true;
-                            if (otherArm.goingForward == true)
+                            if (gameObject.name == "RightArmSolver_Target")
+                                goingForward = true;
+                            else
                                 goingForward = false;
                         }
                     }
@@ -191,7 +194,7 @@ public class PlayerArmAnimation : MonoBehaviour
     }
     */
 
-    private void OnDrawGizmos()
+                private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         //Gizmos.DrawSphere(new Vector3(player.transform.position.x + armXOffset, player.transform.position.y + armYOffset, transform.position.z), 0.05f);

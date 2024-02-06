@@ -108,6 +108,8 @@ public class GroundPlayerController : MonoBehaviour
     [SerializeField] private float lastOnWallTime;
     private float lastOnWallRightTime;
     private float lastOnWallLeftTime;
+    [SerializeField] private PhysicsMaterial2D noFriction;
+    [SerializeField] private PhysicsMaterial2D friction;
 
     [Header("Wall Jump Variables")]
     //Force du saut
@@ -185,11 +187,13 @@ public class GroundPlayerController : MonoBehaviour
         {
             if (isGrounded)
             {
-                if (player.currentStamina > 0)
+                if (!player.staminaDepleted)
                 {
                     maxSpeed = runSpeed;
                     player.ChangeStamina(-runStaminaCost);
                 }
+                else
+                    maxSpeed = walkSpeed;
             }     
         }
         else
@@ -478,12 +482,28 @@ public class GroundPlayerController : MonoBehaviour
             if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight)) && !isWallJumping)
             {
                 lastOnWallRightTime = coyoteTime;
+
+                if (GetComponent<CapsuleCollider2D>().sharedMaterial == friction)
+                    GetComponent<CapsuleCollider2D>().sharedMaterial = noFriction;
             }
-                
+            else
+            {
+                //GetComponent<CapsuleCollider2D>().sharedMaterial = null;
+                GetComponent<CapsuleCollider2D>().sharedMaterial = friction;
+            }
+
             //Left Wall Check
             if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight)) && !isWallJumping)
             {
                 lastOnWallLeftTime = coyoteTime;
+
+                if (GetComponent<CapsuleCollider2D>().sharedMaterial == friction)
+                    GetComponent<CapsuleCollider2D>().sharedMaterial = noFriction;
+            }
+            else
+            {
+               // GetComponent<CapsuleCollider2D>().sharedMaterial = null;
+                GetComponent<CapsuleCollider2D>().sharedMaterial = friction;
             }
 
             //Two checks needed for both left and right walls since whenever the play turns the wall checkPoints swap sides

@@ -138,7 +138,7 @@ public class ItemGrid : MonoBehaviour
     {
         for (int x = 0; x < width; x++)
         {
-            for(int y = 0; y < width; y ++){
+            for(int y = 0; y < height; y ++){
 
                 if (inventoryItemSlot[posX+x, posY+y] != null)
                 {
@@ -167,9 +167,9 @@ public class ItemGrid : MonoBehaviour
     {
         for (int x = 0; x < width; x++)
         {
-            for (int y = 0; y < width; y++)
+            for (int y = 0; y < height; y++)
             {
-                if (inventoryItemSlot[posX + x, posY + y] == null)
+                if (inventoryItemSlot[posX + x, posY + y] != null)
                 {
                    
                  return false;
@@ -232,7 +232,7 @@ public class ItemGrid : MonoBehaviour
         }
         
         posX += width/*-1*/;
-        posY += height-1;
+        posY += height;
 
         if (PositionCheck(posX, posY) == false)
         {
@@ -249,14 +249,15 @@ public class ItemGrid : MonoBehaviour
 
     public Vector2Int? FindSpaceForObject(InventoryItem itemToInsert)
     {
-        int height = gridSizeHeight-itemToInsert.HEIGHT+1;
-        int width = gridSizeWidth-itemToInsert.WIDTH+1;
+        int height = gridSizeHeight-itemToInsert.HEIGHT;
+        int width = gridSizeWidth-itemToInsert.WIDTH;
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
                 if(CheckAvailableSpace(x, y, itemToInsert.WIDTH, itemToInsert.HEIGHT) == true)
                 {
+                    Debug.Log(new Vector2Int(x, y));
                     return new Vector2Int(x, y);
                 }
             }
