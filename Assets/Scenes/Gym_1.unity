@@ -911,6 +911,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1078447187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &242806588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 242806589}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &242806589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242806588}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 862334676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &246660457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,7 +1128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &276095684
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2467,8 +2498,8 @@ GameObject:
   - component: {fileID: 862334674}
   - component: {fileID: 862334678}
   - component: {fileID: 862334679}
-  - component: {fileID: 862334681}
   - component: {fileID: 862334677}
+  - component: {fileID: 862334681}
   - component: {fileID: 862334680}
   m_Layer: 0
   m_Name: Square
@@ -2581,6 +2612,7 @@ Transform:
   - {fileID: 1597596750}
   - {fileID: 1471709112}
   - {fileID: 1800252012}
+  - {fileID: 242806589}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &862334677
@@ -2596,14 +2628,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1826305634}
-  speed: 50
+  speed: 8
   nextWaypointDistance: 3
   groundCheckLenght: 2.5
   monkeyHeight: 2
   forwardGroundCheckOffset: 3.58
   maxHoleDistanceOffset: 6.55
-  climbUpOffsets: {x: 0, y: 0}
-  climbDownOffsets: {x: 0, y: 0}
+  tempTarget: {fileID: 242806589}
+  climbUpOffsets: {x: 5.56, y: 2.12}
+  climbDownOffsets: {x: 5.51, y: -2.16}
 --- !u!50 &862334678
 Rigidbody2D:
   serializedVersion: 4
@@ -2619,7 +2652,7 @@ Rigidbody2D:
   m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3722,7 +3755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1287663531
 Transform:
   m_ObjectHideFlags: 0
