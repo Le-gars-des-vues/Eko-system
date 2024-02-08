@@ -34,7 +34,7 @@ public class SpikeTrap : MonoBehaviour
             if (hit.collider != null && hit.collider.gameObject.tag == "Player" && !hasSpiked)
             {
                 hasSpiked = true;
-                hit.collider.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage);
+                hit.collider.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, gameObject, true);
             }
         }
         else

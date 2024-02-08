@@ -17,6 +17,16 @@ public class PlayerPermanent : MonoBehaviour
     public float maxHp;
     public float currentHp;
     public Slider hpSlider;
+    private bool isInvincible;
+    private Color invisible;
+    private List<Material> ogMaterials = new List<Material>();
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private List<SpriteRenderer> playerGFX = new List<SpriteRenderer>();
+    [SerializeField] private float flashWhiteDuration;
+    [SerializeField] private float invincibilityDuration;
+    [SerializeField] private float invisibilityDuration;
+    [SerializeField] private float hitStunDuration;
+    [SerializeField] private float knockBackForce;
 
     [Header("Hunger Variables")]
     public float maxHunger;
@@ -53,6 +63,7 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private GameObject storageInventory;
     [SerializeField] private List<GameObject> itemList = new List<GameObject>();
     [SerializeField] private float gridOffset;
+    private bool isInBase = false;
 
     [Header("Ragdoll Variables")]
     [SerializeField] private Animator anim;
@@ -73,12 +84,13 @@ public class PlayerPermanent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Au depart du jeu, on set tout les bars au max et on desactive le ragdoll
         ResetToMax();
         ToggleRagdoll(false);
-        playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
-        storageInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
-        playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-        storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+
+        ShowOrHideInventory(false, true);
+
+        //On va chercher le script de vigne
         vineController = GetComponent<VinePlayerController>();
     }
 
@@ -134,17 +146,9 @@ public class PlayerPermanent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (!inventoryOpen)
-            {
-                inventoryOpen = true;
-                playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
-                playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 255);
-            }
+                ShowOrHideInventory(true, CanOpenStorage());
             else
-            {
-                inventoryOpen = false;
-                playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
-                playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-            }
+                ShowOrHideInventory(false, CanOpenStorage());
         }
 
         if (ressourcesNear.Count >= 1)
@@ -206,10 +210,27 @@ public class PlayerPermanent : MonoBehaviour
             staminaDepleted = true;
     }
 
-    public void ChangeHp(float value)
+    public void ChangeHp(float value, GameObject otherObject, bool isLosingHp)
     {
-        currentHp += value;
-        SetBar(hpSlider, currentHp);
+        if (isLosingHp && !isInvincible)
+        {
+            isInvincible = true;
+
+            //Hitstun
+            StartCoroutine(Hitstun(hitStunDuration));
+
+            //Si le joueur n'est pas mort, il flash blanc et profite d'un moment d'invincibilite
+            if (currentHp > 0)
+            {
+                StartCoroutine(FlashWhite(playerGFX, flashWhiteDuration));
+                StartCoroutine(InvicibilityFrames(invisibilityDuration));
+            }
+            Vector2 direction = transform.position - otherObject.transform.position;
+            playerRb.AddForce(new Vector2(direction.x, 0.1f).normalized * knockBackForce, ForceMode2D.Impulse);
+
+            currentHp += value;
+            SetBar(hpSlider, currentHp);
+        }
     }
 
     public void ChangeHunger(float value)
@@ -290,6 +311,91 @@ public class PlayerPermanent : MonoBehaviour
         {
             Turn();
         }
+    }
+
+    private void ShowOrHideInventory(bool show, bool storage)
+    {
+        if (show)
+        {
+            inventoryOpen = true;
+            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            if (storage)
+            {
+                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
+                storageInventory.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            }
+        }
+        else
+        {
+            inventoryOpen = false;
+            playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            if (storage)
+            {
+                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+                storageInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+            }
+        }
+    }
+
+    //Arrete le temps pour la duree choisit
+    private IEnumerator Hitstun(float duration)
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1;
+    }
+
+    //Flash en blanc en changeant le materiel du joueur
+    private IEnumerator FlashWhite(List<SpriteRenderer> spriteList, float duration)
+    {
+        foreach (var sprite in spriteList)
+        {
+            ogMaterials.Add(sprite.material);
+            sprite.material = flashMaterial;
+        }
+        yield return new WaitForSecondsRealtime(duration);
+        int i = 0;
+        foreach (var sprite in spriteList)
+        {
+            sprite.material = ogMaterials[i];
+            i++;
+        }
+    }
+
+    IEnumerator InvicibilityFrames(float duration)
+    {
+        yield return new WaitForSeconds(flashWhiteDuration);
+        //Le joueur flash pendant quelques secondes entre visible et invisible
+        for (float i = 0; i < invincibilityDuration; i += Time.deltaTime)
+        {
+            // Si le joueur est deja invisible, il devient visible et vice-versa
+            foreach (var sprite in playerGFX)
+            {
+                if (sprite.color == invisible)
+                {
+                    sprite.color = new Color(1, 1, 1, 1);
+                }
+                else
+                {
+                    sprite.color = invisible;
+                }
+            }
+            yield return new WaitForSeconds(duration);
+        }
+
+        //On reactive le collider et on s'assure que le joueur est a nouveau visible
+        foreach (var sprite in playerGFX)
+            sprite.color = new Color(1, 1, 1, 1);
+
+        //Le joueur peut a nouveau subir du degat
+        isInvincible = false;
+    }
+
+    private bool CanOpenStorage()
+    {
+        return isInBase;
     }
 
     private Vector2 GetInput()
