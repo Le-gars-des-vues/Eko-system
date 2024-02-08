@@ -57,6 +57,10 @@ public class MonkeyAI : MonoBehaviour
         {
             reachedEndOfPath = false;
         }
+
+        //transform.position = Vector2.MoveTowards(transform.position, ((Vector2)path.vectorPath[currentWaypoint]), Time.deltaTime * speed);
+
+        /*
         RaycastHit2D forwardGroundCheck = Physics2D.Raycast(new Vector2(transform.position.x + forwardGroundCheckOffset, transform.position.y), Vector2.down, groundCheckLenght, LayerMask.GetMask("Ground"));
         if (forwardGroundCheck.collider != null)
         {
@@ -77,12 +81,11 @@ public class MonkeyAI : MonoBehaviour
                 }
             }
         }
+        */
 
-        /*
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position);
         Vector2 force = direction * speed * Time.deltaTime;
         rb.AddForce(force);
-        */
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 

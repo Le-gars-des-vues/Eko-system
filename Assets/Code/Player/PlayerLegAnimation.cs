@@ -115,7 +115,7 @@ public class PlayerLegAnimation : MonoBehaviour
                     stepTimer = 0;
                     transform.position = currentTarget.position;
                 }
-
+                
                 if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
                 {
                     isRunning = true;
