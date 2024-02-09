@@ -18,7 +18,9 @@ public class MonkeyAI : MonoBehaviour
     [Header("Ground Variables")]
     [SerializeField] private float groundCheckLenght;
     [SerializeField] private float monkeyHeight;
-    [SerializeField] private float forwardGroundCheckOffset;
+    [SerializeField] private float forwardGroundOffset1;
+    [SerializeField] private float forwardGroundOffset2;
+    [SerializeField] private float forwardGroundOffset3;
     [SerializeField] private float maxHoleDistanceOffset;
 
     [Header("Climb Variables")]
@@ -67,6 +69,7 @@ public class MonkeyAI : MonoBehaviour
 
         //transform.position = Vector2.MoveTowards(transform.position, ((Vector2)path.vectorPath[currentWaypoint]), Time.deltaTime * speed);
 
+        /*
         RaycastHit2D forwardGroundCheck = Physics2D.Raycast(new Vector2(transform.position.x + forwardGroundCheckOffset, transform.position.y), Vector2.down, groundCheckLenght, LayerMask.GetMask("Ground"));
         if (forwardGroundCheck.collider != null)
         {
@@ -74,7 +77,7 @@ public class MonkeyAI : MonoBehaviour
         }
         else
         {
-            RaycastHit2D maxHoleDistance = Physics2D.Raycast(new Vector2(transform.position.x + maxHoleDistanceOffset, transform.position.y), Vector2.down, groundCheckLenght, LayerMask.GetMask("Ground"));
+            RaycastHit2D maxHoleDistance = Physics2D.Raycast(new Vector2(transform.position.x + forwardGroundCheck3, transform.position.y), Vector2.down, groundCheckLenght, LayerMask.GetMask("Ground"));
             if (maxHoleDistance.collider != null)
             {
                 transform.position = Vector2.MoveTowards(transform.position, new Vector2(path.vectorPath[currentWaypoint].x, maxHoleDistance.point.y + monkeyHeight), Time.deltaTime * speed);
@@ -137,12 +140,23 @@ public class MonkeyAI : MonoBehaviour
                 }
             }
         }
-
+        */
         /*
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position);
         Vector2 force = direction * speed * Time.deltaTime;
         rb.AddForce(force);
         */
+
+        RaycastHit2D forwardGroundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x + forwardGroundOffset1, transform.position.y), Vector2.down, groundCheckLenght, LayerMask.GetMask("Ground"));
+        RaycastHit2D forwardGroundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + forwardGroundOffset2, transform.position.y), Vector2.down, groundCheckLenght, LayerMask.GetMask("Ground"));
+        if (forwardGroundCheck1.collider != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(path.vectorPath[currentWaypoint].x, forwardGroundCheck1.point.y + monkeyHeight), Time.deltaTime * speed);
+        }
+        else if (forwardGroundCheck2.collider != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(path.vectorPath[currentWaypoint].x, forwardGroundCheck1.point.y + monkeyHeight), Time.deltaTime * speed);
+        }
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -159,7 +173,7 @@ public class MonkeyAI : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(new Vector2(transform.position.x + forwardGroundCheckOffset, transform.position.y), Vector2.down * groundCheckLenght);
+        Gizmos.DrawRay(new Vector2(transform.position.x + forwardGroundOffset1, transform.position.y), Vector2.down * groundCheckLenght);
         Gizmos.DrawRay(new Vector2(transform.position.x + maxHoleDistanceOffset, transform.position.y), Vector2.down * groundCheckLenght);
         Gizmos.DrawRay(new Vector2(transform.position.x + climbUpOffsets.x, transform.position.y + climbUpOffsets.y), Vector2.left * groundCheckLenght);
         Gizmos.DrawRay(new Vector2(transform.position.x + climbDownOffsets.x, transform.position.y + climbDownOffsets.y), Vector2.left * groundCheckLenght);
