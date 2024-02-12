@@ -475,40 +475,37 @@ public class GroundPlayerController : MonoBehaviour
     private void CheckCollision()
     {
         isGrounded = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Vector2.down, groundRaycastLength, groundLayer);
-        
-        if (!isJumping)
+
+        //Right Wall Check
+        if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight)) && !isWallJumping)
         {
-            //Right Wall Check
-            if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight)) && !isWallJumping)
-            {
-                lastOnWallRightTime = coyoteTime;
+            lastOnWallRightTime = coyoteTime;
 
-                if (GetComponent<CapsuleCollider2D>().sharedMaterial == friction)
-                    GetComponent<CapsuleCollider2D>().sharedMaterial = noFriction;
-            }
-            else
-            {
-                //GetComponent<CapsuleCollider2D>().sharedMaterial = null;
-                GetComponent<CapsuleCollider2D>().sharedMaterial = friction;
-            }
-
-            //Left Wall Check
-            if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight)) && !isWallJumping)
-            {
-                lastOnWallLeftTime = coyoteTime;
-
-                if (GetComponent<CapsuleCollider2D>().sharedMaterial == friction)
-                    GetComponent<CapsuleCollider2D>().sharedMaterial = noFriction;
-            }
-            else
-            {
-               // GetComponent<CapsuleCollider2D>().sharedMaterial = null;
-                GetComponent<CapsuleCollider2D>().sharedMaterial = friction;
-            }
-
-            //Two checks needed for both left and right walls since whenever the play turns the wall checkPoints swap sides
-            lastOnWallTime = Mathf.Max(lastOnWallLeftTime, lastOnWallRightTime);
+            if (GetComponent<CapsuleCollider2D>().sharedMaterial == friction)
+                GetComponent<CapsuleCollider2D>().sharedMaterial = noFriction;
         }
+        else
+        {
+            //GetComponent<CapsuleCollider2D>().sharedMaterial = null;
+            GetComponent<CapsuleCollider2D>().sharedMaterial = friction;
+        }
+
+        //Left Wall Check
+        if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight)) && !isWallJumping)
+        {
+            lastOnWallLeftTime = coyoteTime;
+
+            if (GetComponent<CapsuleCollider2D>().sharedMaterial == friction)
+                GetComponent<CapsuleCollider2D>().sharedMaterial = noFriction;
+        }
+        else
+        {
+            // GetComponent<CapsuleCollider2D>().sharedMaterial = null;
+            GetComponent<CapsuleCollider2D>().sharedMaterial = friction;
+        }
+
+        //Two checks needed for both left and right walls since whenever the play turns the wall checkPoints swap sides
+        lastOnWallTime = Mathf.Max(lastOnWallLeftTime, lastOnWallRightTime);
 
         canCornerCorrect = Physics2D.Raycast(transform.position + edgeRaycastOffset, Vector2.up, topRaycastLength, cornerCorrectLayer) && 
                             !Physics2D.Raycast(transform.position + innerRaycastOffset, Vector2.up, topRaycastLength, cornerCorrectLayer) ||

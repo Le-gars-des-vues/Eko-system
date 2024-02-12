@@ -31,7 +31,7 @@ public class ThrowableObject : MonoBehaviour
                 {
                     if (player.objectInRightHand != null)
                     {
-                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
+                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear"))
                         {
                             force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
                         }
@@ -50,7 +50,7 @@ public class ThrowableObject : MonoBehaviour
                 {
                     if (player.objectInRightHand != null)
                     {
-                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
+                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear"))
                             StartCoroutine(Throw(player.objectInRightHand));
                     }
                     /* Utilisation de la main gauche
@@ -76,7 +76,7 @@ public class ThrowableObject : MonoBehaviour
 
         objectToThrow.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
         yield return new WaitForSecondsRealtime(0.1f);
-        objectToThrow.GetComponent<BoxCollider2D>().enabled = true;
+        objectToThrow.GetComponent<CapsuleCollider2D>().enabled = true;
         objectToThrow.GetComponent<PickableObject>().isPickedUp = false;
         objectToThrow.GetComponent<PickableObject>().hasFlashed = false;
 

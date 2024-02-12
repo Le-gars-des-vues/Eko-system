@@ -81,7 +81,7 @@ public class PlayerArmAnimation : MonoBehaviour
             {
                 if (player.GetComponent<PlayerPermanent>().objectInRightHand != null && gameObject.name == "RightArmSolver_Target")
                 {
-                    if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Javelin")
+                    if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Spear")
                     {
                         armTarget.position = new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y);
                         transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
