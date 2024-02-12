@@ -92,6 +92,7 @@ public class PlayerPermanent : MonoBehaviour
 
         //On va chercher le script de vigne
         vineController = GetComponent<VinePlayerController>();
+        invisible = new Color(255, 255, 255, 0);
     }
 
     // Update is called once per frame

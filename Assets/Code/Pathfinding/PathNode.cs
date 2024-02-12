@@ -2,52 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-//Class pour creer les objets PathNode qui seront utiliser pour le pathfinding
-public class PathNode 
+public class PathNode : IHeapItem<PathNode>
 {
-    //Prend la grille dans laquelle les PathNode sont creer
-    private GridMap<PathNode> gridMap;
-    //Emplacement des nodes en X et Y
-    public int x;
-    public int y;
-
-    //Cout pour se rendre a la cible
-    public int gCost;
-    //Cout depuis la case de depart
-    public int hCost;
-    //Combinaison du gCost et hCost
-    public int fCost;
-
-    //Est-ce que la surface est marchable?
     public bool isWalkable;
-    //La derniere node passee dans le pathfinding
+    public Vector2 worldPos;
+    public int gridPosX;
+    public int gridPosY;
+    public bool isCloseToGround;
+    public int movementPenalty;
+    public int airPenalty;
+
+    public int gCost;
+    public int hCost;
     public PathNode cameFromNode;
+    int heapIndex;
 
-    //Constructeur de PathNode
-    public PathNode(GridMap<PathNode> gridMap, int x, int y)
+    public PathNode(bool _isWalkable, Vector2 _worldPos, int _gridPosX, int _gridPosY, bool _closeToGRound, int _penalty, int __airPenalty)
     {
-        this.gridMap = gridMap;
-        this.x = x;
-        this.y = y;
-        isWalkable = true;
+        isWalkable = _isWalkable;
+        worldPos = _worldPos;
+        gridPosX = _gridPosX;
+        gridPosY = _gridPosY;
+        isCloseToGround = _closeToGRound;
+        movementPenalty = _penalty;
+        airPenalty = __airPenalty;
     }
 
-    //Fonction pour calculer le fCost
-    public void CalculateFCost()
+    public int fCost
     {
-        fCost = gCost + hCost;
+        get { return hCost + gCost; }
     }
 
-    public void SetIsWalkable(bool isWalkable)
+    public int HeapIndex
     {
-        this.isWalkable = isWalkable;
-        gridMap.TriggerGridObjectChanged(x, y);
+        get { return heapIndex; }
+        set { heapIndex = value; }
     }
 
-    //Utilise pour le debug
-    public override string ToString()
+    public int CompareTo(PathNode nodeToCompare)
     {
-        return x + "," + y;
+        int compare = fCost.CompareTo(nodeToCompare.fCost);
+        if (compare == 0)
+        {
+            compare = hCost.CompareTo(nodeToCompare.hCost);
+        }
+
+        return -compare;
     }
 }
