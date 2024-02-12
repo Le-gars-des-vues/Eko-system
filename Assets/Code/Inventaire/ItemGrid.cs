@@ -257,7 +257,6 @@ public class ItemGrid : MonoBehaviour
             {
                 if(CheckAvailableSpace(x, y, itemToInsert.WIDTH, itemToInsert.HEIGHT) == true)
                 {
-                    Debug.Log(new Vector2Int(x, y));
                     return new Vector2Int(x, y);
                 }
             }

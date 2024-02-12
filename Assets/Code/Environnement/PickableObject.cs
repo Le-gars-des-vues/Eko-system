@@ -21,6 +21,8 @@ public class PickableObject : MonoBehaviour
     public bool isFlashing; //Pour les ressources
     public bool isSelected;
     public bool isPickedUp = false;
+    [SerializeField] private float rotateSpeed;
+    private bool isFacingRight;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,7 @@ public class PickableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (gameObject.tag != "Ressource")
         {
             //Debug.Log(Mathf.Abs(Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position)));
@@ -86,8 +89,10 @@ public class PickableObject : MonoBehaviour
                 {
                     if (player.objectInRightHand == null)
                     {
+
+                        isFacingRight = player.isFacingRight;
                         isPickedUp = true;
-                        GetComponent<BoxCollider2D>().enabled = false;
+                        GetComponent<CapsuleCollider2D>().enabled = false;
                         GetComponent<Rigidbody2D>().simulated = false;
                         transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
                         transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
@@ -127,13 +132,29 @@ public class PickableObject : MonoBehaviour
             item.onGridPositionX = itemInInventory.GetComponent<InventoryItem>().onGridPositionX;
             item.onGridPositionY = itemInInventory.GetComponent<InventoryItem>().onGridPositionY;
 
-            if (gameObject.tag == "Javelin")
+            if (gameObject.tag == "Spear")
             {
+                Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
+                {
+                    Turn();
+                }
+
                 Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(0, 0, angle);
             }
         }
+    }
+
+    private void Turn()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+
+        isFacingRight = !isFacingRight;
     }
 
     //Flash en blanc en changeant le materiel du joueur
