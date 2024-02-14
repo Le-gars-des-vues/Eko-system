@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CarnivorousPlant : MonoBehaviour
@@ -24,11 +25,18 @@ public class CarnivorousPlant : MonoBehaviour
     [SerializeField] private float damage;
 
     private bool isOpened = false;
-    public float playerDist;
-    public float playerDistCheck;
+    private float playerDist;
+    private bool isAttacking;
+    private float attackTimer;
+
+    [SerializeField] private float attackThreshold;
+    [SerializeField] private float attackGracePeriod;
+    [SerializeField] private float attackCooldown;
 
     private bool goingRight = true;
-    private bool isDrawingGizmos = true;
+    public bool isFacingRight;
+    public bool playerToTheRight;
+    private bool isDrawingGizmos;
 
     //public float angle;
 
@@ -37,51 +45,93 @@ public class CarnivorousPlant : MonoBehaviour
     {
         pos1 = new Vector2(transform.position.x + pos1Offsets.x, transform.position.y + pos1Offsets.y);
         pos2 = new Vector2(transform.position.x + pos2Offsets.x, transform.position.y + pos2Offsets.y);
+
         isDrawingGizmos = false;
         target.position = pos1;
+
+        attackTimer = 0;
+        isFacingRight = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Vector2.Distance(transform.parent.transform.position, transform.position));
         vineTarget.position = transform.position;
-        /*
-        if (Mathf.DeltaAngle(transform.rotation.z, angle) < 0.1f)
-            transform.position = Vector2.MoveTowards(transform.position, pos2, speed * Time.deltaTime);
-        */
+
+        if (player != null)
+            playerToTheRight = target.position.x - transform.position.x > 0 ? true : false;
 
         if (isOpened)
         {
+            attackTimer += Time.deltaTime;
+
             target.position = player.transform.position;
 
             Vector2 direction = (target.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             //Quaternion startAngle = transform.rotation;
             //Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0, 0, angle);
 
             playerDist = Vector2.Distance(target.position, transform.position);
 
-            if (playerDist > distanceFromPlayer && Vector2.Distance(transform.parent.transform.position, transform.position) <= distanceFromBase)
-                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-            else if (playerDist < distanceFromPlayer - 0.1f)
+            if (!isAttacking)
             {
-                Vector3 awayDir = (transform.position - target.position).normalized;
-                transform.position = Vector2.MoveTowards(transform.position, transform.position + awayDir, speed * Time.deltaTime);
+                if (playerDist > distanceFromPlayer && Vector2.Distance(transform.parent.transform.position, transform.position) <= distanceFromBase)
+                    transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+
+                else if (playerDist < distanceFromPlayer - 0.1f && Vector2.Distance(transform.parent.transform.position, transform.position) <= distanceFromBase)
+                {
+                    Vector3 awayDir = (transform.position - target.position).normalized;
+                    transform.position = Vector2.MoveTowards(transform.position, transform.position + awayDir, speed * Time.deltaTime);
+                }
+            }
+
+            if (attackTimer > attackThreshold)
+            {
+                Vector3 attackPoint = target.position;
+                isAttacking = true;
+                if (attackTimer > attackThreshold + attackGracePeriod)
+                {
+                    if (Vector2.Distance(transform.parent.transform.position, transform.position) <= distanceFromBase)
+                        transform.position = Vector2.MoveTowards(transform.position, attackPoint, (speed * 10) * Time.deltaTime);
+
+                    if (attackTimer > attackThreshold + attackGracePeriod + attackCooldown)
+                    {
+                        float pos1Dist = Vector2.Distance(transform.position, pos1);
+                        float pos2Dist = Vector2.Distance(transform.position, pos2);
+
+                        goingRight = (pos1Dist < pos2Dist) ? false : true;
+
+                        if (goingRight)
+                            target.position = pos1;
+                        else 
+                            target.position = pos2;
+
+                        isFacingRight = playerToTheRight;
+                        if (!isFacingRight)
+                            Turn(false);
+
+                        isAttacking = false;
+                        isOpened = false;
+                        attackTimer = 0;
+                    }
+
+                }
             }
         }
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-            Debug.Log(Vector2.Distance(transform.position, pos1));
 
             if (goingRight)
             {
                 if (Vector2.Distance(transform.position, pos1) < 0.1f)
                 {
                     goingRight = false;
-                    Turn();
+                    Turn(true);
                     target.position = pos2;
                 }
             }
@@ -90,18 +140,20 @@ public class CarnivorousPlant : MonoBehaviour
                 if (Vector2.Distance(transform.position, pos2) < 0.1f)
                 {
                     goingRight = true;
-                    Turn();
+                    Turn(true);
                     target.position = pos1;
                 }
             }
         }
     }
 
-    void Turn()
+    void Turn(bool isTurning)
     {
         Vector2 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+
+        if (isTurning) isFacingRight = !isFacingRight;
 
         foreach (Transform target in tentacleTargets)
             target.right = -target.right;
@@ -114,9 +166,12 @@ public class CarnivorousPlant : MonoBehaviour
             if (!isOpened)
             {
                 Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction.x, 0.2f) * collision.gameObject.GetComponent<PlayerPermanent>().knockBackForce * 1.5f, ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction.x, 0.1f) * collision.gameObject.GetComponent<PlayerPermanent>().knockBackForce * 1.5f, ForceMode2D.Impulse);
                 player = collision.gameObject;
-                Turn();
+
+                if (!isFacingRight)
+                    Turn(false);
+
                 isOpened = true;
             }
             else

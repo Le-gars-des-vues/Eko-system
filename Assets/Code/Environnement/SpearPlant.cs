@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpearPlant : MonoBehaviour
 {
     [SerializeField] private GameObject consummable;
-    [SerializeField] private GameObject plantConsummable;
+    [SerializeField] private GameObject plantConsummableGFX;
     bool canPickUpConsummable;
     public bool hasPickedUpConsummable;
 
@@ -17,7 +17,7 @@ public class SpearPlant : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canPickUpConsummable = true;
-            StartCoroutine(FlashWhite(plantConsummable.GetComponent<SpriteRenderer>(), 0.05f, 5));
+            StartCoroutine(FlashWhite(plantConsummableGFX.GetComponent<SpriteRenderer>(), 0.05f, 5));
         }
     }
 
@@ -31,7 +31,7 @@ public class SpearPlant : MonoBehaviour
                 hasPickedUpConsummable = true;
                 var spear = Instantiate(consummable, transform.position, transform.rotation);
                 spear.GetComponent<PickableObject>().PickUp();
-                plantConsummable.SetActive(false);
+                plantConsummableGFX.SetActive(false);
             }
         }
     }
