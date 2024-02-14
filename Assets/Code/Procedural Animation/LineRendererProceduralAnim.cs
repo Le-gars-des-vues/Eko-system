@@ -59,8 +59,10 @@ public class LineRendererProceduralAnim : MonoBehaviour
         }
         else
             targetPosition = plantTransform.position;
+
         Follow();
         DrawSegments(segments);
+
         if (MyRenderer == null)
             MyRenderer = this.GetComponent<Renderer>();
         MyRenderer.sortingLayerName = MySortingLayer;
@@ -70,7 +72,7 @@ public class LineRendererProceduralAnim : MonoBehaviour
     void Follow()
     {
         segments[segmentAmount - 1].Follow(targetPosition);
-        for (int i = segmentAmount - 2; i >= 0; i--)
+        for (int i = segmentAmount - 2; i >= (segmentAmount / 5); i--)
         {
             segments[i].Follow(segments[i + 1]);
         }
@@ -94,7 +96,7 @@ public class LineRendererProceduralAnim : MonoBehaviour
             points.Add(segments[i].startingPosition);
         }
         points.Add(segments[segmentAmount - 1].endingPosition);
-        lineRenderer.sortingLayerName = "PixelateBackground";
+        //lineRenderer.sortingLayerName = "PixelateBackground";
         lineRenderer.SetPositions(points.ToArray());
     }
 

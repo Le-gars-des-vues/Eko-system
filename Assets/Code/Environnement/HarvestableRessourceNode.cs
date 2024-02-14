@@ -7,16 +7,18 @@ public class HarvestableRessourceNode : MonoBehaviour
     [Header("Materials")]
     Material ogMaterial;
     public Material outlineMaterial;
+    [SerializeField] private SpriteRenderer sprite;
 
     [Header("Harvest Variables")]
     private float timeToHarvest;
-    public GameObject ressourceToSpawn;
-    public float ressourceAmount;
+    [SerializeField] GameObject ressourceToSpawn;
+    [SerializeField] float ressourceAmount;
+    [SerializeField] float minDistanceToHarvest;
 
     // Start is called before the first frame update
     void Start()
     {
-        ogMaterial = GetComponent<SpriteRenderer>().material;
+        ogMaterial = sprite.material;
     }
 
     private void Update()
@@ -35,14 +37,15 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        GetComponent<SpriteRenderer>().material = outlineMaterial;
+        if (Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) < minDistanceToHarvest)
+            sprite.material = outlineMaterial;
     }
 
     private void OnMouseExit()
     {
-        GetComponent<SpriteRenderer>().material = ogMaterial;
+        sprite.material = ogMaterial;
         timeToHarvest = 0f;
-        GetComponent<SpriteRenderer>().color = Color.white;
+        sprite.color = Color.white;
     }
 
     private void OnMouseOver()
@@ -50,13 +53,13 @@ public class HarvestableRessourceNode : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             timeToHarvest += Time.deltaTime;
-            GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, Color.red, timeToHarvest * Time.deltaTime);
+            sprite.color = Color.Lerp(GetComponent<SpriteRenderer>().color, Color.red, timeToHarvest * Time.deltaTime);
         }
             
         if (Input.GetMouseButtonUp(0))
         {
             timeToHarvest = 0f;
-            GetComponent<SpriteRenderer>().color = Color.white;
+            sprite.color = Color.white;
         }
     }
 }
