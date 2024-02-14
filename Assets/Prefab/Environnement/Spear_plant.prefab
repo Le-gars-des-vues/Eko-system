@@ -470,6 +470,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4798573387908955044}
+  - component: {fileID: 5174192052608214945}
+  - component: {fileID: 5509752033827681509}
   m_Layer: 0
   m_Name: Spear_plant
   m_TagString: Untagged
@@ -494,6 +496,57 @@ Transform:
   - {fileID: 9029502000227214937}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &5174192052608214945
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466962883721627640}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12, y: -0.6}
+  m_Size: {x: 1.93, y: 1.85}
+  m_Direction: 0
+--- !u!114 &5509752033827681509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466962883721627640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80417413db38f24e80e032c12f85a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consummable: {fileID: 8464576285592840343, guid: bb42c8b55b829944ea868fa63593ee9d, type: 3}
+  plantConsummable: {fileID: 9115997635117227740}
+  hasPickedUpConsummable: 0
+  flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
 --- !u!1 &7493119791588490654
 GameObject:
   m_ObjectHideFlags: 0

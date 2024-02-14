@@ -26,7 +26,7 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private float invincibilityDuration;
     [SerializeField] private float invisibilityDuration;
     [SerializeField] private float hitStunDuration;
-    [SerializeField] private float knockBackForce;
+    public float knockBackForce;
 
     [Header("Hunger Variables")]
     public float maxHunger;
@@ -226,8 +226,8 @@ public class PlayerPermanent : MonoBehaviour
                 StartCoroutine(FlashWhite(playerGFX, flashWhiteDuration));
                 StartCoroutine(InvicibilityFrames(invisibilityDuration));
             }
-            Vector2 direction = transform.position - otherObject.transform.position;
-            playerRb.AddForce(new Vector2(direction.x, 0.1f).normalized * knockBackForce, ForceMode2D.Impulse);
+            Vector2 direction = (transform.position - otherObject.transform.position).normalized;
+            playerRb.AddForce(new Vector2(direction.x, 0.2f) * knockBackForce, ForceMode2D.Impulse);
 
             currentHp += value;
             SetBar(hpSlider, currentHp);

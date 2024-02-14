@@ -25,7 +25,20 @@ public class PickableObject : MonoBehaviour
     private bool isFacingRight;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
+    {
+        ogColor = GetComponent<SpriteRenderer>().color;
+        ogMaterial = GetComponent<SpriteRenderer>().material;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+
+        rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
+        //leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
+
+        inventory = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
+        item = GetComponent<InventoryItem>();
+    }
+
+    public void CustomStart()
     {
         ogColor = GetComponent<SpriteRenderer>().color;
         ogMaterial = GetComponent<SpriteRenderer>().material;
@@ -85,45 +98,7 @@ public class PickableObject : MonoBehaviour
         {
             if (!isPickedUp)
             {
-                if (gameObject.tag != "Ressource")
-                {
-                    if (player.objectInRightHand == null)
-                    {
-
-                        isFacingRight = player.isFacingRight;
-                        isPickedUp = true;
-                        GetComponent<CapsuleCollider2D>().enabled = false;
-                        GetComponent<Rigidbody2D>().simulated = false;
-                        transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
-                        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
-                        gameObject.transform.SetParent(rightHand.transform);
-                        GetComponent<SpriteRenderer>().sortingOrder = 7;
-                        player.EquipObject(gameObject, true);
-                    }
-                    /* Utilisation de la main gauche
-                    else if (player.objectInLeftHand == null)
-                    {
-                        isPickedUp = true;
-                        GetComponent<BoxCollider2D>().enabled = false;
-                        GetComponent<Rigidbody2D>().simulated = false;
-                        transform.position = leftHand.transform.Find("LeftArmEffector").transform.position;
-                        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - leftHand.transform.rotation.z);
-                        gameObject.transform.SetParent(leftHand.transform);
-                        GetComponent<SpriteRenderer>().sortingOrder = 2;
-                        player.EquipObject(gameObject, false);
-                    }
-                    */
-                }
-                else
-                {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Clear();
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessourceDistance = 10;
-                    Destroy(gameObject);
-                }
-                InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
-                inventoryItem.Set(item.itemData);
-                InsertItem(inventoryItem);
-                itemInInventory = inventoryItem.gameObject;
+                PickUp();
             }
         }
 
@@ -148,6 +123,49 @@ public class PickableObject : MonoBehaviour
         }
     }
 
+    public void PickUp()
+    {
+        if (gameObject.tag != "Ressource")
+        {
+            if (player.objectInRightHand == null)
+            {
+
+                isFacingRight = player.isFacingRight;
+                isPickedUp = true;
+                GetComponent<CapsuleCollider2D>().enabled = false;
+                GetComponent<Rigidbody2D>().simulated = false;
+                transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
+                transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
+                gameObject.transform.SetParent(rightHand.transform);
+                GetComponent<SpriteRenderer>().sortingOrder = 7;
+                player.EquipObject(gameObject, true);
+            }
+            /* Utilisation de la main gauche
+            else if (player.objectInLeftHand == null)
+            {
+                isPickedUp = true;
+                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<Rigidbody2D>().simulated = false;
+                transform.position = leftHand.transform.Find("LeftArmEffector").transform.position;
+                transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - leftHand.transform.rotation.z);
+                gameObject.transform.SetParent(leftHand.transform);
+                GetComponent<SpriteRenderer>().sortingOrder = 2;
+                player.EquipObject(gameObject, false);
+            }
+            */
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Clear();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessourceDistance = 10;
+            Destroy(gameObject);
+        }
+        InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+        inventoryItem.Set(item.itemData);
+        InsertItem(inventoryItem);
+        itemInInventory = inventoryItem.gameObject;
+    }
+
     private void Turn()
     {
         Vector3 scale = transform.localScale;
@@ -169,16 +187,16 @@ public class PickableObject : MonoBehaviour
             yield return new WaitForSecondsRealtime(duration);
             //sprite.material = ogMaterial;
             sprite.color = ogColor;
-        }
-        if (!CanBePickedUp())
-        {
-            sprite.color = ogColor;
-            yield break;
-        }
-        if (isPickedUp)
-        {
-            sprite.color = ogColor;
-            yield break;
+            if (!CanBePickedUp())
+            {
+                sprite.color = ogColor;
+                yield break;
+            }
+            if (isPickedUp)
+            {
+                sprite.color = ogColor;
+                yield break;
+            }
         }
     }
 
