@@ -59,13 +59,14 @@ public class Recipes
 
     }
 
-    public Dictionary<Recipes, int> listOfRecipes = new Dictionary<Recipes, int>()
+    public static Dictionary<int,Recipes> listOfRecipes = new()
     {
-        {new Recipes("Reparer le MultiTool", "Shockbulb", 3), 0 },
+        {0,new Recipes("Reparer le MultiTool", "Shockbulb", 3)},
+        {1 , new Recipes("Diamond", "Bow", 1) }
     };
-    public Dictionary<Recipes, int> listOfBasePods = new Dictionary<Recipes, int>()
+    public static Dictionary<int,Recipes> listOfBasePods = new()
     {
-        {new Recipes("Enclos", "Shockbulb", 3), 0 },
-        {new Recipes("Planter", "Crystal", 4, "Bone",2), 1}
+        {0 , new Recipes("Enclos", "Shockbulb", 3) },
+        {2 , new Recipes("Planter", "Crystal", 4, "Bone", 2)}
     };
 }
