@@ -46,7 +46,7 @@ public class CarnivorousPlant : MonoBehaviour
         pos1 = new Vector2(transform.position.x + pos1Offsets.x, transform.position.y + pos1Offsets.y);
         pos2 = new Vector2(transform.position.x + pos2Offsets.x, transform.position.y + pos2Offsets.y);
 
-        isDrawingGizmos = false;
+        isDrawingGizmos = true;
         target.position = pos1;
 
         attackTimer = 0;
@@ -183,12 +183,9 @@ public class CarnivorousPlant : MonoBehaviour
     {
         Gizmos.color = Color.green;
 
-        if (isDrawingGizmos)
-        {
-            Gizmos.DrawSphere(new Vector2(transform.position.x + pos1Offsets.x, transform.position.y + pos1Offsets.y), 0.1f);
-            Gizmos.DrawSphere(new Vector2(transform.position.x + pos2Offsets.x, transform.position.y + pos2Offsets.y), 0.1f);
-        }
-        
+        Gizmos.DrawSphere(new Vector2(transform.position.x + pos1Offsets.x, transform.position.y + pos1Offsets.y), 0.1f);
+        Gizmos.DrawSphere(new Vector2(transform.position.x + pos2Offsets.x, transform.position.y + pos2Offsets.y), 0.1f);
+
         Gizmos.DrawSphere(pos1, 0.1f);
         Gizmos.DrawSphere(pos2, 0.1f);
     }
