@@ -61,8 +61,9 @@ public class Recipes
 
     public static Dictionary<int,Recipes> listOfRecipes = new()
     {
-        {0,new Recipes("Reparer le MultiTool", "Shockbulb", 3)},
-        {1 , new Recipes("Diamond", "Bow", 1) }
+        {0, new Recipes("Reparer le MultiTool", "Shockbulb", 3)},
+        {1 , new Recipes("Diamond", "Bow", 1) },
+        {2 , new Recipes("North Korea", "Diamond", 1, "Plutonium", 5,"Gun",2) }
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {
