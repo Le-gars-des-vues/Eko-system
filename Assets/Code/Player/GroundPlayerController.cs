@@ -106,8 +106,8 @@ public class GroundPlayerController : MonoBehaviour
     public Vector2 wallCheckSize = new Vector2(0.5f, 1f);
     //Timers
     [SerializeField] private float lastOnWallTime;
-    private float lastOnWallRightTime;
-    private float lastOnWallLeftTime;
+    public float lastOnWallRightTime;
+    public float lastOnWallLeftTime;
     [SerializeField] private PhysicsMaterial2D noFriction;
     [SerializeField] private PhysicsMaterial2D friction;
 
@@ -478,31 +478,21 @@ public class GroundPlayerController : MonoBehaviour
 
         //Right Wall Check
         if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight)) && !isWallJumping)
-        {
             lastOnWallRightTime = coyoteTime;
-
-            if (GetComponent<CapsuleCollider2D>().sharedMaterial == friction)
-                GetComponent<CapsuleCollider2D>().sharedMaterial = noFriction;
-        }
-        else
-        {
-            //GetComponent<CapsuleCollider2D>().sharedMaterial = null;
-            GetComponent<CapsuleCollider2D>().sharedMaterial = friction;
-        }
 
         //Left Wall Check
         if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight)) && !isWallJumping)
-        {
             lastOnWallLeftTime = coyoteTime;
 
+        if (lastOnWallTime > 0)
+        {
             if (GetComponent<CapsuleCollider2D>().sharedMaterial == friction)
+            {
                 GetComponent<CapsuleCollider2D>().sharedMaterial = noFriction;
+            }
         }
         else
-        {
-            // GetComponent<CapsuleCollider2D>().sharedMaterial = null;
             GetComponent<CapsuleCollider2D>().sharedMaterial = friction;
-        }
 
         //Two checks needed for both left and right walls since whenever the play turns the wall checkPoints swap sides
         lastOnWallTime = Mathf.Max(lastOnWallLeftTime, lastOnWallRightTime);

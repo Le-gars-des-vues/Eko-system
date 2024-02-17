@@ -27,11 +27,14 @@ public class SpearPlant : MonoBehaviour
         {
             if ((Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.E)) && canPickUpConsummable)
             {
-                canPickUpConsummable = false;
-                hasPickedUpConsummable = true;
-                var spear = Instantiate(consummable, transform.position, transform.rotation);
-                spear.GetComponent<PickableObject>().PickUp();
-                plantConsummableGFX.SetActive(false);
+                if (!hasPickedUpConsummable)
+                {
+                    canPickUpConsummable = false;
+                    var spear = Instantiate(consummable, transform.position, transform.rotation);
+                    spear.GetComponent<PickableObject>().PickUp();
+                    hasPickedUpConsummable = true;
+                    plantConsummableGFX.SetActive(false);
+                }
             }
         }
     }
