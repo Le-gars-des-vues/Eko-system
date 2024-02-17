@@ -50,7 +50,7 @@ public class VinePlayerController : MonoBehaviour
             
             if (attachedVine.GetComponent<RopeSegment>().connectedBelow != null)
             {
-                float distanceDown = Vector2.Distance(transform.position, new Vector2(attachedVine.GetComponent<RopeSegment>().connectedAbove.transform.position.x + (vineOffset * facingDirection), attachedVine.GetComponent<RopeSegment>().connectedAbove.transform.position.y));
+                float distanceDown = Vector2.Distance(transform.position, new Vector2(attachedVine.GetComponent<RopeSegment>().connectedBelow.transform.position.x + (vineOffset * facingDirection), attachedVine.GetComponent<RopeSegment>().connectedBelow.transform.position.y));
                 if (distanceDown < 0.1f && attachedVine.GetComponent<RopeSegment>().connectedBelow != null)
                 {
                     attachedVine = attachedVine.GetComponent<RopeSegment>().connectedBelow;
