@@ -383,13 +383,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951687052009252968}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7078159, w: 0.70639694}
-  m_LocalPosition: {x: -1.493, y: -1.616, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.66, y: -0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2964855243513959291}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.115}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &9128848938108204776
 LineRenderer:
   serializedVersion: 2
@@ -437,13 +437,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 10
+    widthMultiplier: 5
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.0054244995
-        value: 0.51953125
+        time: 0
+        value: 0.9439326
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -452,7 +452,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.07421875
+        value: 0.19972695
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -492,7 +492,7 @@ LineRenderer:
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
+    numCornerVertices: 50
     numCapVertices: 50
     alignment: 0
     textureMode: 0
@@ -518,10 +518,13 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   isFixed: 1
   anchoredStart: {fileID: 0}
-  segmentAmount: 40
+  segmentAmount: 50
   segmentsLength: 0.2
   followMouse: 0
   plantTransform: {fileID: 7642557985948974014}
+  MyRenderer: {fileID: 0}
+  MySortingLayer: PixelateBackground
+  MySortingOrderInLayer: 0
 --- !u!1 &2140150246248909465
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,15 +3228,54 @@ MonoBehaviour:
   - {fileID: 5778366208800145391}
   vineTarget: {fileID: 2929505181962994321}
   distanceFromPlayer: 3
-  distanceFromBase: 6.5
+  distanceFromBase: 10
   getawayDistance: 0
-  pos1Offsets: {x: 5.22, y: 0}
-  pos2Offsets: {x: -4.9, y: 0}
+  pos1Offsets: {x: 5, y: 0}
+  pos2Offsets: {x: -5, y: 0}
   speed: 3
   rotateSpeed: 5
   damage: 3
-  playerDist: 0
-  playerDistCheck: 0
+  attackThreshold: 3
+  attackGracePeriod: 0.5
+  attackCooldown: 2
+  isFacingRight: 0
+  playerToTheRight: 0
+  isDrawingGizmos: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.812751
+      outSlope: 3.812751
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.056573786
+    - serializedVersion: 3
+      time: 1.3779305
+      value: 2.0085273
+      inSlope: -0.0018715977
+      outSlope: -0.0018715977
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1875061
+    - serializedVersion: 3
+      time: 2.744156
+      value: 0.009590149
+      inSlope: -4.357375
+      outSlope: -4.357375
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06440963
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stepTimer: 0
+  vine: {fileID: 1951687052009252968}
 --- !u!95 &3812365771650902351
 Animator:
   serializedVersion: 5
