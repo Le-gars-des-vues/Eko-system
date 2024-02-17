@@ -9,7 +9,7 @@ public static class SceneLoader
     {
         Forest_Test, 
         CharacterController,
-        HUD,
+        CameraAndHUD,
     }
 
     public static void LoadAdditive(Scene scene)

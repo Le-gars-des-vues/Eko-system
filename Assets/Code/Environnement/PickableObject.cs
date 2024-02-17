@@ -7,6 +7,7 @@ public class PickableObject : MonoBehaviour
     private Material ogMaterial;
     [SerializeField] private Material flashMaterial;
     private Color ogColor;
+    private SpriteRenderer sprite;
 
     private GameObject rightHand;
     //private GameObject leftHand;
@@ -22,26 +23,16 @@ public class PickableObject : MonoBehaviour
     public bool isSelected;
     public bool isPickedUp = false;
     [SerializeField] private float rotateSpeed;
+    [SerializeField] private float pickUpPos;
     private bool isFacingRight;
 
     // Start is called before the first frame update
     void OnEnable()
     {
-        ogColor = GetComponent<SpriteRenderer>().color;
-        ogMaterial = GetComponent<SpriteRenderer>().material;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+        sprite = GetComponent<SpriteRenderer>();
+        ogColor = sprite.color;
+        ogMaterial = sprite.material;
 
-        rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
-        //leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
-
-        inventory = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
-        item = GetComponent<InventoryItem>();
-    }
-
-    public void CustomStart()
-    {
-        ogColor = GetComponent<SpriteRenderer>().color;
-        ogMaterial = GetComponent<SpriteRenderer>().material;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
 
         rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
@@ -54,14 +45,13 @@ public class PickableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (gameObject.tag != "Ressource")
         {
             //Debug.Log(Mathf.Abs(Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position)));
             if (CanBePickedUp() && !hasFlashed)
             {
                 hasFlashed = true;
-                StartCoroutine(FlashWhite(GetComponent<SpriteRenderer>(), 0.05f, 5));
+                StartCoroutine(FlashWhite(sprite, 0.05f, 5));
             }
             else if (!CanBePickedUp() && hasFlashed)
                 hasFlashed = false;
@@ -71,12 +61,12 @@ public class PickableObject : MonoBehaviour
             if (isSelected && !isFlashing)
             {
                 isFlashing = true;
-                GetComponent<SpriteRenderer>().material = flashMaterial;
+                sprite.material = flashMaterial;
             }
             else if (!isSelected && isFlashing)
             {
                 isFlashing = false;
-                GetComponent<SpriteRenderer>().material = flashMaterial;
+                sprite.material = flashMaterial;
             }
 
             if (Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 3f)
@@ -87,7 +77,7 @@ public class PickableObject : MonoBehaviour
             else
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Remove(gameObject);
-                GetComponent<SpriteRenderer>().material = ogMaterial;
+                sprite.material = ogMaterial;
                 isSelected = false;
                 isFlashing = false;
             }
@@ -109,16 +99,20 @@ public class PickableObject : MonoBehaviour
 
             if (gameObject.tag == "Spear")
             {
+                transform.position = new Vector2(rightHand.transform.Find("RightArmEffector").transform.position.x + (transform.right.x * pickUpPos), rightHand.transform.Find("RightArmEffector").transform.position.y);
+                
+                /*
                 Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
                 if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
                 {
                     Turn();
                 }
+                */
 
                 Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
-                transform.rotation = Quaternion.Euler(0, 0, angle);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
+                //transform.rotation = Quaternion.Euler(0, 0, angle);
             }
         }
     }
@@ -129,16 +123,21 @@ public class PickableObject : MonoBehaviour
         {
             if (player.objectInRightHand == null)
             {
-
                 isFacingRight = player.isFacingRight;
-                isPickedUp = true;
+
                 GetComponent<CapsuleCollider2D>().enabled = false;
                 GetComponent<Rigidbody2D>().simulated = false;
-                transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
+
+                float facingAngle = player.isFacingRight ? 0 : 180;
+                transform.eulerAngles = new Vector3(0, 0, facingAngle);
+
+                transform.position = new Vector2(rightHand.transform.Find("RightArmEffector").transform.position.x + (transform.right.x * pickUpPos), rightHand.transform.Find("RightArmEffector").transform.position.y);
                 transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
-                gameObject.transform.SetParent(rightHand.transform);
-                GetComponent<SpriteRenderer>().sortingOrder = 7;
+
+                //gameObject.transform.SetParent(rightHand.transform);
+                sprite.sortingOrder = 7;
                 player.EquipObject(gameObject, true);
+                isPickedUp = true;
             }
             /* Utilisation de la main gauche
             else if (player.objectInLeftHand == null)
