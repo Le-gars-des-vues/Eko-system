@@ -75,7 +75,7 @@ public class SpikeTrap : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        //Gizmos.DrawLine(transform.position,transform.position + Vector3.up * detectionRaycastRange);
+        Gizmos.DrawLine(transform.position,transform.position + Vector3.up * detectionRaycastRange);
         Gizmos.DrawLine(transform.position, transform.position + Vector3.up * spikeRaycastRange);
         Gizmos.DrawSphere(new Vector2(transform.position.x, transform.position.y + spikeUpHeight), 0.1f);
     }

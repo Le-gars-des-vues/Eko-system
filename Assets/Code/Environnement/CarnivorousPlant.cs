@@ -36,7 +36,14 @@ public class CarnivorousPlant : MonoBehaviour
     private bool goingRight = true;
     public bool isFacingRight;
     public bool playerToTheRight;
-    private bool isDrawingGizmos;
+    public bool isDrawingGizmos;
+
+    [SerializeField] private AnimationCurve curve;
+    private float animSpeed;
+    public float stepTimer;
+
+    [SerializeField] private GameObject vine;
+    private Vector3 attackPoint;
 
     //public float angle;
 
@@ -46,17 +53,21 @@ public class CarnivorousPlant : MonoBehaviour
         pos1 = new Vector2(transform.position.x + pos1Offsets.x, transform.position.y + pos1Offsets.y);
         pos2 = new Vector2(transform.position.x + pos2Offsets.x, transform.position.y + pos2Offsets.y);
 
-        isDrawingGizmos = false;
         target.position = pos1;
 
         attackTimer = 0;
         isFacingRight = true;
+
+        float difference = pos1.x - pos2.x;
+        animSpeed = (difference / (difference * (difference / 10)) * (speed / 3));
+
+        distanceFromBase = vine.GetComponent<LineRendererProceduralAnim>().segmentAmount * vine.GetComponent<LineRendererProceduralAnim>().segmentsLength;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Vector2.Distance(transform.parent.transform.position, transform.position));
+        //Debug.Log(Vector2.Distance(vine.transform.position, transform.position));
         vineTarget.position = transform.position;
 
         if (player != null)
@@ -79,52 +90,54 @@ public class CarnivorousPlant : MonoBehaviour
 
             if (!isAttacking)
             {
-                if (playerDist > distanceFromPlayer && Vector2.Distance(transform.parent.transform.position, transform.position) <= distanceFromBase)
+                if (playerDist > distanceFromPlayer && Vector2.Distance(vine.transform.position, transform.position) <= distanceFromBase)
                     transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
-                else if (playerDist < distanceFromPlayer - 0.1f && Vector2.Distance(transform.parent.transform.position, transform.position) <= distanceFromBase)
+                else if (playerDist < distanceFromPlayer - 0.1f && Vector2.Distance(vine.transform.position, transform.position) <= distanceFromBase)
                 {
                     Vector3 awayDir = (transform.position - target.position).normalized;
                     transform.position = Vector2.MoveTowards(transform.position, transform.position + awayDir, speed * Time.deltaTime);
                 }
             }
 
-            if (attackTimer > attackThreshold)
+            if (attackTimer > attackThreshold && !isAttacking)
             {
-                Vector3 attackPoint = target.position;
+                attackPoint = target.position;
                 isAttacking = true;
-                if (attackTimer > attackThreshold + attackGracePeriod)
+            }
+            if (attackTimer > attackThreshold + attackGracePeriod)
+            {
+                if (Vector2.Distance(vine.transform.position, transform.position) <= distanceFromBase)
+                    transform.position = Vector2.MoveTowards(transform.position, attackPoint, (speed * 10) * Time.deltaTime);
+
+                if (attackTimer > attackThreshold + attackGracePeriod + attackCooldown)
                 {
-                    if (Vector2.Distance(transform.parent.transform.position, transform.position) <= distanceFromBase)
-                        transform.position = Vector2.MoveTowards(transform.position, attackPoint, (speed * 10) * Time.deltaTime);
+                    float pos1Dist = Vector2.Distance(transform.position, pos1);
+                    float pos2Dist = Vector2.Distance(transform.position, pos2);
 
-                    if (attackTimer > attackThreshold + attackGracePeriod + attackCooldown)
-                    {
-                        float pos1Dist = Vector2.Distance(transform.position, pos1);
-                        float pos2Dist = Vector2.Distance(transform.position, pos2);
+                    goingRight = (pos1Dist < pos2Dist) ? false : true;
 
-                        goingRight = (pos1Dist < pos2Dist) ? false : true;
+                    if (goingRight)
+                        target.position = pos1;
+                    else
+                        target.position = pos2;
 
-                        if (goingRight)
-                            target.position = pos1;
-                        else 
-                            target.position = pos2;
+                    isFacingRight = playerToTheRight;
+                    if (!isFacingRight)
+                        Turn(false);
 
-                        isFacingRight = playerToTheRight;
-                        if (!isFacingRight)
-                            Turn(false);
-
-                        isAttacking = false;
-                        isOpened = false;
-                        attackTimer = 0;
-                    }
-
+                    isAttacking = false;
+                    isOpened = false;
+                    attackTimer = 0;
+                    stepTimer = 0;
                 }
             }
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            float facingDirection = goingRight ? -1 : 1;
+            stepTimer += Time.deltaTime * animSpeed;
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y + (curve.Evaluate(stepTimer) * facingDirection)), speed * Time.deltaTime);
 
             if (goingRight)
             {
@@ -133,6 +146,7 @@ public class CarnivorousPlant : MonoBehaviour
                     goingRight = false;
                     Turn(true);
                     target.position = pos2;
+                    stepTimer = 0;
                 }
             }
             else
@@ -142,6 +156,7 @@ public class CarnivorousPlant : MonoBehaviour
                     goingRight = true;
                     Turn(true);
                     target.position = pos1;
+                    stepTimer = 0;
                 }
             }
         }
@@ -188,7 +203,7 @@ public class CarnivorousPlant : MonoBehaviour
             Gizmos.DrawSphere(new Vector2(transform.position.x + pos1Offsets.x, transform.position.y + pos1Offsets.y), 0.1f);
             Gizmos.DrawSphere(new Vector2(transform.position.x + pos2Offsets.x, transform.position.y + pos2Offsets.y), 0.1f);
         }
-        
+
         Gizmos.DrawSphere(pos1, 0.1f);
         Gizmos.DrawSphere(pos2, 0.1f);
     }

@@ -28,6 +28,7 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private float hitStunDuration;
     public float knockBackForce;
 
+    /*
     [Header("Hunger Variables")]
     public float maxHunger;
     public float currentHunger;
@@ -39,6 +40,7 @@ public class PlayerPermanent : MonoBehaviour
     public float currentThirst;
     public float thirstDepleteRate;
     public Slider thirstSlider;
+    */
 
     [Header("Stamina Variables")]
     public float maxStamina;
@@ -59,9 +61,7 @@ public class PlayerPermanent : MonoBehaviour
 
     [Header("Inventory Variables")]
     public bool inventoryOpen = false;
-    [SerializeField] private GameObject playerInventory;
-    [SerializeField] private GameObject storageInventory;
-    [SerializeField] private List<GameObject> itemList = new List<GameObject>();
+    [SerializeField] private GameObject[] inventories;
     [SerializeField] private float gridOffset;
     private bool isInBase = false;
 
@@ -88,7 +88,9 @@ public class PlayerPermanent : MonoBehaviour
         ResetToMax();
         ToggleRagdoll(false);
 
-        ShowOrHideInventory(false, true);
+        inventories = GameObject.FindGameObjectsWithTag("Inventory");
+
+        ShowOrHideInventory(false, true, true);
 
         //On va chercher le script de vigne
         vineController = GetComponent<VinePlayerController>();
@@ -98,7 +100,8 @@ public class PlayerPermanent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Vaariable simplement la pour le playtest, quand elle est active, les jauges de faim et de soif du joueur descendent lentement
+        /*
+        //Variable simplement la pour le playtest, quand elle est active, les jauges de faim et de soif du joueur descendent lentement
         if (survivalMode)
         {
             currentHunger -= hungerDepleteRate * Time.deltaTime;
@@ -106,6 +109,7 @@ public class PlayerPermanent : MonoBehaviour
             currentThirst -= thirstDepleteRate * Time.deltaTime;
             SetBar(thirstSlider, currentThirst);
         }
+        */
 
         //Dans l'eau, l'oxygen descend
         if (GetComponent<WaterPlayerController>().enabled == true)
@@ -143,15 +147,15 @@ public class PlayerPermanent : MonoBehaviour
                 Turn();
             }
         }
-
+        
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (!inventoryOpen)
-                ShowOrHideInventory(true, CanOpenStorage());
+                ShowOrHideInventory(true, CanOpenStorage(), false);
             else
-                ShowOrHideInventory(false, CanOpenStorage());
+                ShowOrHideInventory(false, CanOpenStorage(), false);
         }
-
+        
         if (ressourcesNear.Count >= 1)
         {
             foreach (var ressource in ressourcesNear)
@@ -178,13 +182,13 @@ public class PlayerPermanent : MonoBehaviour
     {
         currentOxygen = maxOxygen;
         currentHp = maxHp;
-        currentHunger = maxHunger;
-        currentThirst = maxThirst;
+        //currentHunger = maxHunger;
+        //currentThirst = maxThirst;
         currentStamina = maxStamina;
         SetMaxBar(oxygenSlider, maxOxygen);
         SetMaxBar(hpSlider, maxHp);
-        SetMaxBar(hungerSlider, maxHunger);
-        SetMaxBar(thirstSlider, maxThirst);
+        //SetMaxBar(hungerSlider, maxHunger);
+        //SetMaxBar(thirstSlider, maxThirst);
         SetMaxBar(staminaSlider, maxStamina);
     }
 
@@ -234,6 +238,7 @@ public class PlayerPermanent : MonoBehaviour
         }
     }
 
+    /*
     public void ChangeHunger(float value)
     {
         currentHunger += value;
@@ -245,6 +250,7 @@ public class PlayerPermanent : MonoBehaviour
         currentThirst += value;
         SetBar(thirstSlider, currentThirst);
     }
+    */
 
     public void ChangeOxygen(float value)
     {
@@ -313,32 +319,47 @@ public class PlayerPermanent : MonoBehaviour
             Turn();
         }
     }
-
-    private void ShowOrHideInventory(bool show, bool storage)
+    
+    private void ShowOrHideInventory(bool show, bool storage, bool market)
     {
         if (show)
         {
             inventoryOpen = true;
-            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
-            playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            inventories[2].GetComponent<RectTransform>().localPosition = new Vector2(inventories[2].GetComponent<RectTransform>().localPosition.x, inventories[2].GetComponent<RectTransform>().localPosition.y + gridOffset);
+            inventories[2].GetComponent<Image>().color = new Color(255, 255, 255, 255);
             if (storage)
             {
-                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
-                storageInventory.GetComponent<Image>().color = new Color(255, 255, 255, 255);
+                inventories[0].GetComponent<RectTransform>().localPosition = new Vector2(inventories[0].GetComponent<RectTransform>().localPosition.x, inventories[0].GetComponent<RectTransform>().localPosition.y + gridOffset);
+                inventories[0].GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            }
+            if (market)
+            {
+                inventories[1].GetComponent<RectTransform>().localPosition = new Vector2(inventories[1].GetComponent<RectTransform>().localPosition.x, inventories[1].GetComponent<RectTransform>().localPosition.y + gridOffset);
+                inventories[1].GetComponent<Image>().color = new Color(255, 255, 255, 255);
+                inventories[3].GetComponent<RectTransform>().localPosition = new Vector2(inventories[1].GetComponent<RectTransform>().localPosition.x, inventories[1].GetComponent<RectTransform>().localPosition.y + gridOffset);
+                inventories[3].GetComponent<Image>().color = new Color(255, 255, 255, 255);
             }
         }
         else
         {
             inventoryOpen = false;
-            playerInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
-            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            inventories[2].GetComponent<Image>().color = new Color(255, 255, 255, 0);
+            inventories[2].GetComponent<RectTransform>().localPosition = new Vector2(inventories[2].GetComponent<RectTransform>().localPosition.x, inventories[2].GetComponent<RectTransform>().localPosition.y - gridOffset);
             if (storage)
             {
-                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-                storageInventory.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+                inventories[0].GetComponent<RectTransform>().localPosition = new Vector2(inventories[0].GetComponent<RectTransform>().localPosition.x, inventories[0].GetComponent<RectTransform>().localPosition.y - gridOffset);
+                inventories[0].GetComponent<Image>().color = new Color(255, 255, 255, 0);
+            }
+            if (market)
+            {
+                inventories[1].GetComponent<RectTransform>().localPosition = new Vector2(inventories[1].GetComponent<RectTransform>().localPosition.x, inventories[1].GetComponent<RectTransform>().localPosition.y - gridOffset);
+                inventories[1].GetComponent<Image>().color = new Color(255, 255, 255, 0);
+                inventories[3].GetComponent<RectTransform>().localPosition = new Vector2(inventories[1].GetComponent<RectTransform>().localPosition.x, inventories[1].GetComponent<RectTransform>().localPosition.y - gridOffset);
+                inventories[3].GetComponent<Image>().color = new Color(255, 255, 255, 0);
             }
         }
     }
+    
 
     //Arrete le temps pour la duree choisit
     private IEnumerator Hitstun(float duration)

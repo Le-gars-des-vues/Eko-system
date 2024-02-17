@@ -72,7 +72,7 @@ public class LineRendererProceduralAnim : MonoBehaviour
     void Follow()
     {
         segments[segmentAmount - 1].Follow(targetPosition);
-        for (int i = segmentAmount - 2; i >= (segmentAmount / 5); i--)
+        for (int i = segmentAmount - 2; i >= Mathf.RoundToInt(segmentAmount / 10); i--)
         {
             segments[i].Follow(segments[i + 1]);
         }
