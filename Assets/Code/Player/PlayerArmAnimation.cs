@@ -41,9 +41,14 @@ public class PlayerArmAnimation : MonoBehaviour
     private float facingDirection;
 
     public bool somethingClose = false;
-    [SerializeField] private Vector2 armUpOffsets;
-    [SerializeField] private Vector2 jumpUpOffsets;
-    [SerializeField] private Vector2 jumpDownOffsets;
+    [SerializeField] private Vector2 pickupInitialPos;
+    [SerializeField] private float armMovementRadius;
+    [SerializeField] private float armMovementTime;
+    [SerializeField] private float armMovementCooldown;
+    [SerializeField] private Vector2 armWeaponOffsets;
+    private Vector2 armUpOffsets;
+    private Vector2 jumpUpOffsets;
+    private Vector2 jumpDownOffsets;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +65,7 @@ public class PlayerArmAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(Input.GetAxis("Mouse X") + " / " + Input.GetAxis("Mouse Y"));
         facingDirection = player.GetComponent<PlayerPermanent>().isFacingRight ? 1 : -1;
 
         if (player.GetComponent<GroundPlayerController>().enabled)
@@ -83,20 +89,59 @@ public class PlayerArmAnimation : MonoBehaviour
                 {
                     if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Spear")
                     {
+                        //Position initiale de la main sur la lance
+                        pickupInitialPos = new Vector2(player.transform.position.x + (armWeaponOffsets.x * facingDirection), player.transform.position.y + armWeaponOffsets.y);
+                        //Position de la souris et direction du mouvement de la souris
+                        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        Vector2 mouseDirection = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
+                        //Check pour voir si la souris va dans la meme direction que celle qui fait face au joueur
+                        float isPointingRight = mouseDirection.x > 0 ? 1 : -1;
+                        bool lookingUp = mousePos.y - transform.position.y >= 0 ? true : false;
+                        bool isPointingUp = mouseDirection.y > 0 ? true : false;
+
+                        //Si on bouge la souris
+                        if (mouseDirection.magnitude != 0)
+                        {
+                            armMovementTime = Time.time;
+
+                            //Si la souris de ne va pas dans la meme direction que le joueur regarde
+                            if (isPointingRight != facingDirection && lookingUp != isPointingUp)
+                            {
+                                //La main recule
+                                Vector2 offset = pickupInitialPos - mousePos;
+                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * 2 * Time.deltaTime);
+                            }
+                            //Sinon la main avance
+                            else
+                            {
+                                Vector2 offset = mousePos - pickupInitialPos;
+                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * 2 * Time.deltaTime);
+                            }
+                        }
+
+                        //Si cela fait un moment que la souris n'a pas bouge, la main revient a sa position initiale
+                        if (Time.time - armMovementTime > armMovementCooldown)
+                        {
+                            armTarget.position = pickupInitialPos;
+                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                        }
+                        /*
                         armTarget.position = new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y);
                         transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                        */
                     }
                 }
-                /* Utilisation de la main gauche
-                else if (player.GetComponent<PlayerPermanent>().objectInLeftHand != null && gameObject.name == "LeftArmSolver_Target")
+                else if (player.GetComponent<PlayerPermanent>().objectInRightHand != null && gameObject.name == "LeftArmSolver_Target")
                 {
-                    if (player.GetComponent<PlayerPermanent>().objectInLeftHand.tag == "Javelin")
+                    if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Spear")
                     {
-                        armTarget.position = new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y);
-                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                        armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
+                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
                     }
                 }
-                */
                 else
                 {
                     if (somethingClose)
@@ -202,5 +247,6 @@ public class PlayerArmAnimation : MonoBehaviour
         //Gizmos.DrawSphere(backwardArmPos, 0.05f);
         Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), 0.05f);
         Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), 0.05f);
+        Gizmos.DrawSphere(new Vector2(player.transform.position.x + armWeaponOffsets.x, player.transform.position.y + armWeaponOffsets.y), 0.05f);
     }
 }

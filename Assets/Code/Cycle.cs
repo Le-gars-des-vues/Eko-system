@@ -12,6 +12,7 @@ public class Cycle : MonoBehaviour
 
     void Start()
     {
+        TimerTxt = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
         TimerOn = true;
     }
 

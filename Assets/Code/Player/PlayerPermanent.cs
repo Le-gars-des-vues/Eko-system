@@ -28,6 +28,14 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private float hitStunDuration;
     public float knockBackForce;
 
+    [Header("Stamina Variables")]
+    public float maxStamina;
+    public float currentStamina;
+    public float staminaRegainRate;
+    public Slider staminaSlider;
+    private float staminaCountdown;
+    public bool staminaDepleted = false;
+
     /*
     [Header("Hunger Variables")]
     public float maxHunger;
@@ -42,14 +50,6 @@ public class PlayerPermanent : MonoBehaviour
     public Slider thirstSlider;
     */
 
-    [Header("Stamina Variables")]
-    public float maxStamina;
-    public float currentStamina;
-    public float staminaRegainRate;
-    public Slider staminaSlider;
-    private float staminaCountdown;
-    public bool staminaDepleted = false;
-
     [Header("Exploration Variables")]
     public bool survivalMode;
     public GameObject objectInRightHand = null;
@@ -61,9 +61,13 @@ public class PlayerPermanent : MonoBehaviour
 
     [Header("Inventory Variables")]
     public bool inventoryOpen = false;
-    [SerializeField] private GameObject[] inventories;
+    [SerializeField] private GameObject playerInventory;
+    [SerializeField] private GameObject storageInventory;
+    [SerializeField] private GameObject market;
+    [SerializeField] private GameObject crafting;
     [SerializeField] private float gridOffset;
     private bool isInBase = false;
+    private bool hasBuiltStorage = false;
 
     [Header("Ragdoll Variables")]
     [SerializeField] private Animator anim;
@@ -84,11 +88,19 @@ public class PlayerPermanent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //On assigne tout les elements relevant
+        oxygenSlider = GameObject.Find("oxygenBar").GetComponent<Slider>();
+        hpSlider = GameObject.Find("healthBar").GetComponent<Slider>();
+        staminaSlider = GameObject.Find("staminaBar").GetComponent<Slider>();
+
+        playerInventory = GameObject.Find("GridInventaire");
+        storageInventory = GameObject.Find("GridStorage");
+        market = GameObject.Find("Vente");
+        crafting = GameObject.Find("Crafting");
+
         //Au depart du jeu, on set tout les bars au max et on desactive le ragdoll
         ResetToMax();
         ToggleRagdoll(false);
-
-        inventories = GameObject.FindGameObjectsWithTag("Inventory");
 
         ShowOrHideInventory(false, true, true);
 
@@ -320,42 +332,38 @@ public class PlayerPermanent : MonoBehaviour
         }
     }
     
-    private void ShowOrHideInventory(bool show, bool storage, bool market)
+    private void ShowOrHideInventory(bool show, bool storage, bool isInBase)
     {
-        if (show)
+        if (show && playerInventory != null)
         {
             inventoryOpen = true;
-            inventories[2].GetComponent<RectTransform>().localPosition = new Vector2(inventories[2].GetComponent<RectTransform>().localPosition.x, inventories[2].GetComponent<RectTransform>().localPosition.y + gridOffset);
-            inventories[2].GetComponent<Image>().color = new Color(255, 255, 255, 255);
-            if (storage)
+            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            if (storage && storageInventory != null)
             {
-                inventories[0].GetComponent<RectTransform>().localPosition = new Vector2(inventories[0].GetComponent<RectTransform>().localPosition.x, inventories[0].GetComponent<RectTransform>().localPosition.y + gridOffset);
-                inventories[0].GetComponent<Image>().color = new Color(255, 255, 255, 255);
+                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
             }
-            if (market)
+            if (isInBase)
             {
-                inventories[1].GetComponent<RectTransform>().localPosition = new Vector2(inventories[1].GetComponent<RectTransform>().localPosition.x, inventories[1].GetComponent<RectTransform>().localPosition.y + gridOffset);
-                inventories[1].GetComponent<Image>().color = new Color(255, 255, 255, 255);
-                inventories[3].GetComponent<RectTransform>().localPosition = new Vector2(inventories[1].GetComponent<RectTransform>().localPosition.x, inventories[1].GetComponent<RectTransform>().localPosition.y + gridOffset);
-                inventories[3].GetComponent<Image>().color = new Color(255, 255, 255, 255);
+                if (market != null)
+                    market.GetComponent<RectTransform>().localPosition = new Vector2(market.GetComponent<RectTransform>().localPosition.x, market.GetComponent<RectTransform>().localPosition.y + gridOffset);
+                if (crafting != null)
+                    crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y + gridOffset);
             }
         }
-        else
+        else if (!show && playerInventory != null)
         {
             inventoryOpen = false;
-            inventories[2].GetComponent<Image>().color = new Color(255, 255, 255, 0);
-            inventories[2].GetComponent<RectTransform>().localPosition = new Vector2(inventories[2].GetComponent<RectTransform>().localPosition.x, inventories[2].GetComponent<RectTransform>().localPosition.y - gridOffset);
-            if (storage)
+            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            if (storage && storageInventory != null)
             {
-                inventories[0].GetComponent<RectTransform>().localPosition = new Vector2(inventories[0].GetComponent<RectTransform>().localPosition.x, inventories[0].GetComponent<RectTransform>().localPosition.y - gridOffset);
-                inventories[0].GetComponent<Image>().color = new Color(255, 255, 255, 0);
+                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             }
-            if (market)
+            if (isInBase)
             {
-                inventories[1].GetComponent<RectTransform>().localPosition = new Vector2(inventories[1].GetComponent<RectTransform>().localPosition.x, inventories[1].GetComponent<RectTransform>().localPosition.y - gridOffset);
-                inventories[1].GetComponent<Image>().color = new Color(255, 255, 255, 0);
-                inventories[3].GetComponent<RectTransform>().localPosition = new Vector2(inventories[1].GetComponent<RectTransform>().localPosition.x, inventories[1].GetComponent<RectTransform>().localPosition.y - gridOffset);
-                inventories[3].GetComponent<Image>().color = new Color(255, 255, 255, 0);
+                if (market != null)
+                    market.GetComponent<RectTransform>().localPosition = new Vector2(market.GetComponent<RectTransform>().localPosition.x, market.GetComponent<RectTransform>().localPosition.y - gridOffset);
+                if (crafting != null)
+                    crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y - gridOffset);
             }
         }
     }
@@ -417,7 +425,7 @@ public class PlayerPermanent : MonoBehaviour
 
     private bool CanOpenStorage()
     {
-        return isInBase;
+        return isInBase && hasBuiltStorage;
     }
 
     private Vector2 GetInput()

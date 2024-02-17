@@ -40,7 +40,7 @@ public class CarnivorousPlant : MonoBehaviour
 
     [SerializeField] private AnimationCurve curve;
     private float animSpeed;
-    public float stepTimer;
+    private float stepTimer;
 
     [SerializeField] private GameObject vine;
     private Vector3 attackPoint;
@@ -105,7 +105,7 @@ public class CarnivorousPlant : MonoBehaviour
                 attackPoint = target.position;
                 isAttacking = true;
             }
-            if (attackTimer > attackThreshold + attackGracePeriod)
+            if (attackTimer > attackThreshold + attackGracePeriod && isAttacking)
             {
                 if (Vector2.Distance(vine.transform.position, transform.position) <= distanceFromBase)
                     transform.position = Vector2.MoveTowards(transform.position, attackPoint, (speed * 10) * Time.deltaTime);
@@ -115,7 +115,7 @@ public class CarnivorousPlant : MonoBehaviour
                     float pos1Dist = Vector2.Distance(transform.position, pos1);
                     float pos2Dist = Vector2.Distance(transform.position, pos2);
 
-                    goingRight = (pos1Dist < pos2Dist) ? false : true;
+                    goingRight = (pos1Dist < pos2Dist) ? true : false;
 
                     if (goingRight)
                         target.position = pos1;

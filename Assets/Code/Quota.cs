@@ -12,6 +12,7 @@ public class Quota : MonoBehaviour
 
     private void Start()
     {
+        textQuota = GameObject.Find("QuotaText").GetComponent<TextMeshProUGUI>();
         textQuota.text = profitActuels + " / " + quota + "$";
     }
 }
