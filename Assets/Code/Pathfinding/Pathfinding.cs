@@ -7,34 +7,25 @@ public class Pathfinding : MonoBehaviour
 {
     //Le grid utiliser pour le pathfinding
     NodeGrid grid;
-    PathRequestManager requestManager;
+
     //Les cout de mouvements de case
     private const int MOVE_HORIZONTAL = 10;
     private const int MOVE_DIAGONAL = 14;
 
     private void Awake()
     {
-        requestManager = GetComponent<PathRequestManager>();
         grid = GetComponent<NodeGrid>();
     }
 
-    public void StartFindPath(Vector2 startPos, Vector2 targetPos, bool isFlying)
-    {
-        if (isFlying)
-            StartCoroutine(FindPath(startPos, targetPos, true));
-        else
-            StartCoroutine(FindPath(startPos, targetPos, false));
-    }
-
     //Methode pour creer un path
-    IEnumerator FindPath(Vector2 startPos, Vector2 targetPos, bool isFlying)
+    public void FindPath(PathRequest request, Action<PathResult> callback, bool isFlying)
     {
         Vector2[] waypoints = new Vector2[0];
         bool pathSuccess = false;
 
         //On definit les points de depart et d'arriver
-        PathNode startNode = grid.NodeFromWorldPoint(startPos);
-        PathNode targetNode = grid.NodeFromWorldPoint(targetPos);
+        PathNode startNode = grid.NodeFromWorldPoint(request.pathStart);
+        PathNode targetNode = grid.NodeFromWorldPoint(request.pathEnd);
 
         if (startNode.isWalkable && targetNode.isWalkable)
         {
@@ -90,13 +81,13 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
-        yield return null;
 
         if (pathSuccess)
         {
             waypoints = RetracePath(startNode, targetNode);
+            pathSuccess = waypoints.Length > 0;
         }
-        requestManager.FinishedProcessingPath(waypoints, pathSuccess, isFlying);
+        callback(new PathResult(waypoints, pathSuccess, request.callback));
     }
 
     Vector2[] RetracePath(PathNode startNode, PathNode endNode)

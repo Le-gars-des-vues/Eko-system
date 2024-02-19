@@ -89,6 +89,7 @@ public class PlayerArmAnimation : MonoBehaviour
                 {
                     if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Spear")
                     {
+                        Debug.Log("ok");
                         //Position initiale de la main sur la lance
                         pickupInitialPos = new Vector2(player.transform.position.x + (armWeaponOffsets.x * facingDirection), player.transform.position.y + armWeaponOffsets.y);
                         //Position de la souris et direction du mouvement de la souris
