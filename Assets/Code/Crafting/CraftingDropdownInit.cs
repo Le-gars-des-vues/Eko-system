@@ -19,6 +19,8 @@ public class CraftingDropdownInit : MonoBehaviour
     public TextMeshProUGUI mat3Nom;
     public TextMeshProUGUI nombreMat3;
 
+    public GameObject theCraftingSystem;
+
     private void Start()
     {
         mat1Quant = 0;
@@ -30,19 +32,40 @@ public class CraftingDropdownInit : MonoBehaviour
         for (int i = 0; i < Recipes.listOfRecipes.Count; i++)
         {
             this.gameObject.GetComponent<TMP_Dropdown>().options.Add(new TMP_Dropdown.OptionData {text = Recipes.listOfRecipes[i].recipeResult });
-            changementInfo();
+            currentRecipe = 0;
         }
+        //changementInfo();
     }
-
+    public void SetMat1(int leMat)
+    {
+        mat1Quant = leMat;
+    }
+    public int GetMat1()
+    {
+        return mat1Quant;
+    }
+    public void SetMat2(int leMat)
+    {
+        mat2Quant = leMat;
+    }
+    public int? GetMat2()
+    {
+        return mat2Quant;
+    }
+    public void SetMat3(int leMat)
+    {
+        mat3Quant = leMat;
+    }
+    public int? GetMat3()
+    {
+        return mat3Quant;
+    }
 
     public void changementInfo()
     {
         currentRecipe = this.gameObject.GetComponent<TMP_Dropdown>().value;
 
-        mat1Quant = 0;
-        mat2Quant = 0;
-        mat3Quant = 0;
-
+        theCraftingSystem.GetComponent<CraftingSystem>().CraftCheck();
 
         mat1Nom.text = Recipes.listOfRecipes[currentRecipe].firstMaterial;
         nombreMat1.text = mat1Quant.ToString()+" / "+Recipes.listOfRecipes[currentRecipe].firstMatQuantity.ToString();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class InventoryController : MonoBehaviour
 
 
     [SerializeField] List<ItemData> items;
+    [SerializeField] List<ItemData> craftables;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
 
@@ -36,6 +38,7 @@ public class InventoryController : MonoBehaviour
     private void Awake()
     {
         inventoryHighlight = GetComponent<InventoryHighlight>();
+        
     }
 
     private void Update()
@@ -145,6 +148,19 @@ public class InventoryController : MonoBehaviour
         inventoryItem.Set(items[selectedItemID]);
     }
 
+    public void CreateRecipeItem(int recipeChoice)
+    {
+        InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+        selectedItem = inventoryItem;
+
+        rectTransform = inventoryItem.GetComponent<RectTransform>();
+        rectTransform.SetParent(canvasTransform);
+        rectTransform.SetAsLastSibling();
+
+        int selectedItemID = recipeChoice;
+        inventoryItem.Set(craftables[selectedItemID]);
+    }
+
     private void LeftMouseButtonPress()
     {
         Vector2Int tileGridPosition = GetTileGridPosition();
@@ -202,6 +218,8 @@ public class InventoryController : MonoBehaviour
         if (selectedItem != null)
         {
             rectTransform.position = Input.mousePosition;
+            rectTransform.SetParent(canvasTransform);
+            rectTransform.SetAsLastSibling();
         }
     }
 }

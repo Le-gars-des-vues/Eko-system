@@ -25,9 +25,13 @@ public class ItemData : ScriptableObject
 
     public int value=1;
 
+    [HideInInspector]
+    public bool markedForDestroy;
+
     private void OnEnable()
     {
         width = initialWidth;
         height = initialHeight;
+        markedForDestroy = false;
     }
 }
