@@ -66,7 +66,7 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private GameObject market;
     [SerializeField] private GameObject crafting;
     [SerializeField] private float gridOffset;
-    private bool isInBase = false;
+    public bool isInBase;
     private bool hasBuiltStorage = false;
 
     [Header("Ragdoll Variables")]
@@ -163,9 +163,9 @@ public class PlayerPermanent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (!inventoryOpen)
-                ShowOrHideInventory(true, CanOpenStorage(), false);
+                ShowOrHideInventory(true, CanOpenStorage(), isInBase);
             else
-                ShowOrHideInventory(false, CanOpenStorage(), false);
+                ShowOrHideInventory(false, CanOpenStorage(), isInBase);
         }
         
         if (ressourcesNear.Count >= 1)
