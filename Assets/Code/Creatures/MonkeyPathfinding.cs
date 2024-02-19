@@ -5,52 +5,94 @@ using UnityEngine;
 
 public class MonkeyPathfinding : MonoBehaviour
 {
+    const float MIN_PATH_UPDATE_TIME = 0.2f;
+    const float PATH_UPDATE_MOVE_THRESHOLD = 0.5f;
+
     public Transform target;
-    [SerializeField] private float followPathSpeed;
-    Rigidbody2D rb;
-    Vector2[] path;
-    int targetIndex;
+    public float followPathSpeed;
+    [SerializeField] float turnDist = 5;
+    [SerializeField] float stoppingDistance = 10;
+
+    public Path path;
+    public int pathIndex;
+
+    public bool isPathfinding;
+    public float speedPercent;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound, false);
+        StartCoroutine(UpdatePath());
     }
 
-    public void OnPathFound(Vector2[] newPath, bool pathSuccessful)
+    public void OnPathFound(Vector2[] waypoints, bool pathSuccessful)
     {
         if (pathSuccessful)
         {
-            path = newPath;
+            path = new Path(waypoints, transform.position, turnDist, stoppingDistance);
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
         }
     }
 
-    IEnumerator FollowPath()
+    IEnumerator UpdatePath()
     {
-        Vector2 currentWaypoint = path[0];
+        if (Time.timeSinceLevelLoad < 0.3f)
+        {
+            yield return new WaitForSeconds(0.3f);
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+
+        PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound), false);
+
+        float sqrMoveThreshold = PATH_UPDATE_MOVE_THRESHOLD * PATH_UPDATE_MOVE_THRESHOLD;
+        Vector2 targetPosOld = target.position;
 
         while (true)
         {
-            if (Vector2.Distance(new Vector2(transform.position.x, transform.position.y), currentWaypoint) < 0.85f)
+            yield return new WaitForSeconds(MIN_PATH_UPDATE_TIME);
+            //Debug.Log((new Vector2(target.position.x, transform.position.y) - targetPosOld).sqrMagnitude);
+            if ((new Vector2(target.position.x, target.position.y) - targetPosOld).sqrMagnitude > sqrMoveThreshold)
             {
-                targetIndex++;
-                if (targetIndex >= path.Length)
-                {
-                    targetIndex = 0;
-                    path = new Vector2[0];
-                    yield break;
-                }
-                currentWaypoint = path[targetIndex];
+                PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound), false);
+                targetPosOld = new Vector2(transform.position.x, transform.position.y);
             }
-            //transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, followPathSpeed * Time.deltaTime);
-            //FaceWaypoint();
+        }
+    }
 
-            Vector2 direction = (currentWaypoint - rb.position).normalized;
-            Vector2 force = new Vector2(direction.x, direction.y * 0.8f) * followPathSpeed * Time.deltaTime;
-            rb.AddForce(force);
+    IEnumerator FollowPath()
+    {
+        bool followingPath = true;
+        pathIndex = 0;
+        //transform.LookAt(path.lookPoints[0]);
 
+        speedPercent = 1;
+
+        while (followingPath)
+        {
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+            while (path.turnBoundaries[pathIndex].HasCrossedLine(pos))
+            {
+                if (pathIndex == path.finishLineIndex)
+                {
+                    followingPath = false;
+                    break;
+                }
+                else
+                    pathIndex++;
+            }
+
+            if (followingPath)
+            {
+                if (pathIndex >= path.slowDownIndex && stoppingDistance > 0)
+                {
+                    speedPercent = Mathf.Clamp01(path.turnBoundaries[path.finishLineIndex].DistanceFromPoint(pos / stoppingDistance));
+                    if (speedPercent < 0.01f)
+                        followingPath = false;
+                }
+
+                //Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - new Vector2(transform.position.x, transform.position.y));
+                //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
+            }
             yield return null;
         }
     }
@@ -59,25 +101,7 @@ public class MonkeyPathfinding : MonoBehaviour
     {
         if (path != null)
         {
-            for (int i = targetIndex; i < path.Length; i++)
-            {
-                Gizmos.color = Color.green;
-                Gizmos.DrawCube(path[i], Vector2.one * 0.2f);
-
-                if (i == targetIndex)
-                {
-                    Gizmos.DrawLine(transform.position, path[i]);
-                }
-                else
-                    Gizmos.DrawLine(path[i - 1], path[i]);
-            }
+            path.DrawWithGizmos();
         }
-    }
-
-    void FaceWaypoint()
-    {
-        Vector2 direction = path[targetIndex] - new Vector2(transform.position.x, transform.position.y).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }

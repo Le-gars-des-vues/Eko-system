@@ -63,7 +63,7 @@ public class NodeGrid : MonoBehaviour
             for (int y = 0; y < gridSizeY; y++)
             {
                 Vector2 worldPoint = worldBottomLeft + Vector2.right * (x * nodeDiameter + nodeRadius) + Vector2.up * (y * nodeDiameter + nodeRadius);
-                bool walkable = !Physics2D.OverlapBox(worldPoint, new Vector2(nodeDiameter, nodeDiameter), 0, unWalkableMask);
+                bool walkable = !Physics2D.OverlapBox(worldPoint, new Vector2(nodeDiameter * 0.95f, nodeDiameter * 0.95f), 0, unWalkableMask);
 
                 int movementPenalty = 0;
                 int airPenalty = 0;

@@ -6,17 +6,17 @@ public class MonkeyLegTarget : MonoBehaviour
 {
     Vector2 desiredPosition;
     [SerializeField] private float Offset;
-    private MonkeyGFX gfx;
+    private MonkeyMovement monkey;
 
     private void Start()
     {
-        gfx = transform.parent.gameObject.GetComponent<MonkeyGFX>();
+        monkey = transform.parent.gameObject.GetComponent<MonkeyMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float facingDirection = gfx.isFacingRight ? -1 : 1;
+        float facingDirection = monkey.isFacingRight ? -1 : 1;
 
         //Raycast qui entre en collision avec le sol
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.parent.position.x + Offset * facingDirection, transform.parent.position.y), -transform.parent.up, 5f, LayerMask.GetMask("Ground"));

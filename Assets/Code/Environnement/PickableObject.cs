@@ -201,7 +201,15 @@ public class PickableObject : MonoBehaviour
 
     bool CanBePickedUp()
     {
-        return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 2f;
+        if (gameObject.tag == "Spear")
+        {
+            if (GameObject.FindGameObjectWithTag("Player").transform.position.x - transform.position.x > 0)
+                return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 1.5f;
+            else
+                return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 2.5f;
+        }
+        else
+            return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 2f;
     }
 
     private void InsertItem(InventoryItem itemToInsert)
