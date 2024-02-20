@@ -5,8 +5,8 @@ using UnityEngine;
 public class ThrowableObject : MonoBehaviour
 {
     [SerializeField] private float force;
-    [SerializeField] private float timeToMaxThrow;
-    private float timer;
+    public float timeToMaxThrow;
+    public float timer;
     private PickableObject item;
     private PlayerPermanent player;
 
@@ -21,7 +21,6 @@ public class ThrowableObject : MonoBehaviour
     {
         if (!player.inventoryOpen)
         {
-            timer += Time.deltaTime;
             if (GetComponent<PickableObject>().isPickedUp)
             {
                 if (Input.GetMouseButtonDown(0))
@@ -33,6 +32,7 @@ public class ThrowableObject : MonoBehaviour
                     {
                         if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear"))
                         {
+                            timer += Time.deltaTime;
                             force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
                         }
                     }
@@ -68,7 +68,7 @@ public class ThrowableObject : MonoBehaviour
     IEnumerator Throw(GameObject objectToThrow)
     {
         objectToThrow.transform.parent = null;
-        objectToThrow.GetComponent<Rigidbody2D>().simulated = true;
+        //objectToThrow.GetComponent<Rigidbody2D>().simulated = true;
 
         Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectToThrow.transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -76,7 +76,11 @@ public class ThrowableObject : MonoBehaviour
 
         objectToThrow.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
         yield return new WaitForSecondsRealtime(0.1f);
-        objectToThrow.GetComponent<CapsuleCollider2D>().enabled = true;
+
+        Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
+        GetComponent<Rigidbody2D>().gravityScale = 1;
+        //objectToThrow.GetComponent<CapsuleCollider2D>().enabled = true;
+
         objectToThrow.GetComponent<PickableObject>().isPickedUp = false;
         objectToThrow.GetComponent<PickableObject>().hasFlashed = false;
 

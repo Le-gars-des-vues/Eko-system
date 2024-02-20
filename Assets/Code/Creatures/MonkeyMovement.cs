@@ -22,8 +22,11 @@ public class MonkeyMovement : MonoBehaviour
     public bool isFacingRight = false;
     public bool targetIsRight;
     float facingDirection;
-    bool isClimbing;
     public bool isGrounded;
+
+    [SerializeField] float speedFactor;
+    [SerializeField] float fakeGravity;
+    private bool isOnDifficultTerrain;
 
 
     // Start is called before the first frame update
@@ -38,82 +41,113 @@ public class MonkeyMovement : MonoBehaviour
     {
         facingDirection = isFacingRight ? 1 : -1;
 
-        if (Time.timeSinceLevelLoad > 0.7f)
+        if (pathfinding.isPathfinding)
         {
             if (Mathf.Abs(rb.velocity.x) > Mathf.Abs(rb.velocity.y))
             {
                 //Debug.Log(pathfinding.target.position.x - transform.position.x);
-                targetIsRight = (pathfinding.target.position.x - transform.position.x) > 0 ? true : false;
+                targetIsRight = (pathfinding.path.lookPoints[pathfinding.pathIndex].x - transform.position.x) > 0 ? true : false;
                 if (targetIsRight != isFacingRight)
                 {
                     Turn();
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!isOnDifficultTerrain)
+                DifficultTerrainMode(true);
+            else
+                DifficultTerrainMode(false);
+        }
     }
     
     private void FixedUpdate()
     {
-        //climbUpAngle = Mathf.Lerp(-climbUpAngle, climbUpAngle)
-        groundCheckOffsets.y = Mathf.Lerp(-1.55f, 1.55f, transform.rotation.z / climbUpAngle);
-        groundCheckOffsets.x = Mathf.Lerp(1.55f, 0, Mathf.Abs(transform.rotation.z) + 1 / climbUpAngle);
-
-        isGrounded = Physics2D.Raycast(new Vector2(transform.position.x + 0.5f * facingDirection, transform.position.y), Vector2.down, 3f, LayerMask.GetMask("Ground"));
-
-        if (Time.timeSinceLevelLoad > 0.7f)
+        if (!isOnDifficultTerrain)
         {
-            Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
-            Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * pathfinding.speedPercent * Time.deltaTime;
-            rb.AddForce(force);
-        }
+            RaycastHit2D hit = Physics2D.Raycast(origin: new Vector2(transform.position.x + 0.5f * facingDirection, transform.position.y), direction: Vector2.down, 3f, LayerMask.GetMask("Ground"));
+            isGrounded = hit;
+            transform.up = Vector2.Lerp(transform.up, hit.normal, rotateSpeed * Time.deltaTime);
 
-        RaycastHit2D climbWalls1 = Physics2D.Raycast(transform.position, Vector2.right, wallsCheckOffset, LayerMask.GetMask("Ground"));
-        RaycastHit2D climbWalls2 = Physics2D.Raycast(transform.position, Vector2.left, wallsCheckOffset, LayerMask.GetMask("Ground"));
-        if (climbWalls1.collider != null || climbWalls2.collider != null)
-        {
-            isClimbing = true;
-            rb.AddForce(new Vector2(0.1f * facingDirection, 1) * climbUpForce);
-            float angle = Mathf.LerpAngle(transform.eulerAngles.z, climbUpAngle * facingDirection, rotateSpeed * Time.deltaTime);
-            transform.eulerAngles = new Vector3(0, 0, angle);
+            if (pathfinding.isPathfinding)
+            {
+                Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
+                Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * pathfinding.speedPercent * Time.deltaTime;
+                rb.AddForce(force);
+            }
+
+            RaycastHit2D climbWalls1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 1f), Vector2.right, wallsCheckOffset, LayerMask.GetMask("Ground"));
+            RaycastHit2D climbWalls2 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 1f), Vector2.left, wallsCheckOffset, LayerMask.GetMask("Ground"));
+            if (climbWalls1.collider != null || climbWalls2.collider != null)
+            {
+                rb.AddForce(new Vector2(0.1f * facingDirection, 1) * climbUpForce);
+                float angle = Mathf.LerpAngle(transform.eulerAngles.z, climbUpAngle * facingDirection, rotateSpeed * Time.deltaTime);
+                transform.eulerAngles = new Vector3(0, 0, angle);
+            }
+            else
+            {
+                float angle = Mathf.LerpAngle(transform.eulerAngles.z, 0, rotateSpeed * Time.deltaTime);
+                transform.eulerAngles = new Vector3(0, 0, angle);
+
+                RaycastHit2D hover1 = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x, transform.position.y), Vector2.down, monkeyHeight * 2, LayerMask.GetMask("Ground"));
+                RaycastHit2D hover2 = Physics2D.Raycast(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y), Vector2.down, monkeyHeight * 2, LayerMask.GetMask("Ground"));
+                if (hover1.collider != null)
+                {
+                    float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
+
+                    float difference = hover1.distance - monkeyHeight;
+                    float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
+
+                    rb.AddForce(Vector2.down * springForce);
+
+                    if (hover2.collider == null && !isFacingRight && !isGrounded)
+                    {
+                        rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
+                    }
+                }
+                else if (hover2.collider != null)
+                {
+                    float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
+
+                    float difference = hover2.distance - monkeyHeight;
+                    float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
+
+                    rb.AddForce(Vector2.down * springForce);
+
+                    if (hover1.collider == null && isFacingRight && !isGrounded)
+                    {
+                        rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
+                    }
+                }
+            }
         }
         else
         {
-            isClimbing = false;
-            RaycastHit2D hover1 = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x, transform.position.y - groundCheckOffsets.y), -transform.up, monkeyHeight * 2, LayerMask.GetMask("Ground"));
-            RaycastHit2D hover2 = Physics2D.Raycast(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y + groundCheckOffsets.y), -transform.up, monkeyHeight * 2, LayerMask.GetMask("Ground"));
-            if (hover1.collider != null)
+            if (pathfinding.isPathfinding)
             {
-                transform.up = Vector2.Lerp(transform.up, hover1.normal, rotateSpeed * Time.deltaTime);
+                Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
+                Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * speedFactor * pathfinding.speedPercent * Time.deltaTime;
+                rb.AddForce(force);
 
-                float rayDirVel = Vector2.Dot(-transform.up, rb.velocity);
+                Vector2 lookDir = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
+                transform.right = Vector2.Lerp(transform.right, lookDir * facingDirection, rotateSpeed * Time.deltaTime);
 
-                float difference = hover1.distance - monkeyHeight;
-                float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
-
-                rb.AddForce(Vector2.down * springForce);
-
-                if (hover2.collider == null && !isFacingRight && !isGrounded)
+                RaycastHit2D closeToGround = Physics2D.Raycast(transform.position, -transform.up, monkeyHeight, LayerMask.GetMask("Ground"));
+                if (closeToGround.collider == null)
                 {
-                    rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
-                }
-            }
-            else if (hover2.collider != null)
-            {
-                transform.up = Vector2.Lerp(transform.up, hover1.normal, rotateSpeed * Time.deltaTime);
-
-                float rayDirVel = Vector2.Dot(-transform.up, rb.velocity);
-
-                float difference = hover2.distance - monkeyHeight;
-                float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
-
-                rb.AddForce(Vector2.down * springForce);
-
-                if (hover1.collider == null && isFacingRight && !isGrounded)
-                {
-                    rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
+                    rb.AddForce(-transform.up * fakeGravity);
                 }
             }
         }
+    }
+
+    void DifficultTerrainMode(bool activated)
+    {
+        isOnDifficultTerrain = activated;
+        rb.gravityScale = activated ? 0 : 1;
+        rb.drag = activated ? 1.5f : 0.5f;
     }
     
 
@@ -130,8 +164,8 @@ public class MonkeyMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x, transform.position.y - groundCheckOffsets.y), -transform.up * monkeyHeight * 2);
-        Gizmos.DrawRay(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y + groundCheckOffsets.y), -transform.up * monkeyHeight * 2);
+        Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x, transform.position.y), Vector2.down * monkeyHeight * 2);
+        Gizmos.DrawRay(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y), Vector2.down * monkeyHeight * 2);
         Gizmos.DrawRay(new Vector2(transform.position.x + 0.5f * facingDirection, transform.position.y), Vector2.down * 3f);
         Gizmos.DrawRay(transform.position, Vector2.right * wallsCheckOffset);
         Gizmos.DrawRay(transform.position, Vector2.left * wallsCheckOffset);
