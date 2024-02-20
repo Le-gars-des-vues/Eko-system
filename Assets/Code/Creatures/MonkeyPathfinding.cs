@@ -19,8 +19,10 @@ public class MonkeyPathfinding : MonoBehaviour
     public bool isPathfinding;
     public float speedPercent;
 
-    private void Start()
+    public void NewTarget(GameObject _target)
     {
+        StopCoroutine(UpdatePath());
+        target = _target.transform;
         StartCoroutine(UpdatePath());
     }
 
@@ -39,55 +41,57 @@ public class MonkeyPathfinding : MonoBehaviour
         if (Time.timeSinceLevelLoad < 0.3f)
         {
             yield return new WaitForSeconds(0.3f);
-            target = GameObject.FindGameObjectWithTag("Player").transform;
         }
-
-        PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound), false);
-
-        float sqrMoveThreshold = PATH_UPDATE_MOVE_THRESHOLD * PATH_UPDATE_MOVE_THRESHOLD;
-        Vector2 targetPosOld = target.position;
-
-        while (true)
+        
+        if (target != null)
         {
-            yield return new WaitForSeconds(MIN_PATH_UPDATE_TIME);
-            //Debug.Log((new Vector2(target.position.x, transform.position.y) - targetPosOld).sqrMagnitude);
-            if ((new Vector2(target.position.x, target.position.y) - targetPosOld).sqrMagnitude > sqrMoveThreshold)
+            PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound), false);
+
+            float sqrMoveThreshold = PATH_UPDATE_MOVE_THRESHOLD * PATH_UPDATE_MOVE_THRESHOLD;
+            Vector2 targetPosOld = target.position;
+
+            while (true)
             {
-                PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound), false);
-                targetPosOld = new Vector2(transform.position.x, transform.position.y);
+                yield return new WaitForSeconds(MIN_PATH_UPDATE_TIME);
+                //Debug.Log((new Vector2(target.position.x, transform.position.y) - targetPosOld).sqrMagnitude);
+                if ((new Vector2(target.position.x, target.position.y) - targetPosOld).sqrMagnitude > sqrMoveThreshold)
+                {
+                    PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound), false);
+                    targetPosOld = new Vector2(transform.position.x, transform.position.y);
+                }
             }
         }
     }
 
     IEnumerator FollowPath()
     {
-        bool followingPath = true;
+        isPathfinding = true;
         pathIndex = 0;
         //transform.LookAt(path.lookPoints[0]);
 
         speedPercent = 1;
 
-        while (followingPath)
+        while (isPathfinding)
         {
             Vector2 pos = new Vector2(transform.position.x, transform.position.y);
             while (path.turnBoundaries[pathIndex].HasCrossedLine(pos))
             {
                 if (pathIndex == path.finishLineIndex)
                 {
-                    followingPath = false;
+                    isPathfinding = false;
                     break;
                 }
                 else
                     pathIndex++;
             }
 
-            if (followingPath)
+            if (isPathfinding)
             {
                 if (pathIndex >= path.slowDownIndex && stoppingDistance > 0)
                 {
                     speedPercent = Mathf.Clamp01(path.turnBoundaries[path.finishLineIndex].DistanceFromPoint(pos / stoppingDistance));
                     if (speedPercent < 0.01f)
-                        followingPath = false;
+                        isPathfinding = false;
                 }
 
                 //Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - new Vector2(transform.position.x, transform.position.y));

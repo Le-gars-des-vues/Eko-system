@@ -23,7 +23,6 @@ public class PickableObject : MonoBehaviour
     public bool isSelected;
     public bool isPickedUp = false;
     [SerializeField] private float rotateSpeed;
-    [SerializeField] private float pickUpPos;
     private bool isFacingRight;
 
     // Start is called before the first frame update
@@ -97,10 +96,10 @@ public class PickableObject : MonoBehaviour
             item.onGridPositionX = itemInInventory.GetComponent<InventoryItem>().onGridPositionX;
             item.onGridPositionY = itemInInventory.GetComponent<InventoryItem>().onGridPositionY;
 
+            transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
+
             if (gameObject.tag == "Spear")
-            {
-                transform.position = new Vector2(rightHand.transform.Find("RightArmEffector").transform.position.x + (transform.right.x * pickUpPos), rightHand.transform.Find("RightArmEffector").transform.position.y);
-                
+            {   
                 /*
                 Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
                 if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
@@ -125,13 +124,16 @@ public class PickableObject : MonoBehaviour
             {
                 isFacingRight = player.isFacingRight;
 
-                GetComponent<CapsuleCollider2D>().enabled = false;
-                GetComponent<Rigidbody2D>().simulated = false;
+                //GetComponent<CapsuleCollider2D>().enabled = false;
+                //GetComponent<Rigidbody2D>().simulated = false;
+
+                Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), true);
+                GetComponent<Rigidbody2D>().gravityScale = 0;
 
                 float facingAngle = player.isFacingRight ? 0 : 180;
                 transform.eulerAngles = new Vector3(0, 0, facingAngle);
 
-                transform.position = new Vector2(rightHand.transform.Find("RightArmEffector").transform.position.x + (transform.right.x * pickUpPos), rightHand.transform.Find("RightArmEffector").transform.position.y);
+                transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
                 transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
 
                 //gameObject.transform.SetParent(rightHand.transform);
@@ -203,10 +205,7 @@ public class PickableObject : MonoBehaviour
     {
         if (gameObject.tag == "Spear")
         {
-            if (GameObject.FindGameObjectWithTag("Player").transform.position.x - transform.position.x > 0)
-                return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 1.5f;
-            else
-                return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 2.5f;
+            return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.Find("LeftHandPos").transform.position) <= 2f;
         }
         else
             return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 2f;

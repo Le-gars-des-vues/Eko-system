@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 826847736493343692}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.222, y: 0, z: 0}
+  m_LocalPosition: {x: 0.169, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6294870198350254413}
   - component: {fileID: 8883043491066735300}
   - component: {fileID: 2939226134400925877}
+  - component: {fileID: 5602378740412526921}
   m_Layer: 7
   m_Name: Spear
   m_TagString: Spear
@@ -153,8 +154,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21, y: 0}
-  m_Size: {x: 0.74, y: 0.05}
+  m_Offset: {x: 0.17, y: 0}
+  m_Size: {x: 0.64, y: 0.05}
   m_Direction: 1
 --- !u!50 &5498859812744822716
 Rigidbody2D:
@@ -235,3 +236,18 @@ MonoBehaviour:
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
+--- !u!114 &5602378740412526921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072813460289546999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5273be7ef24af144da972502ea50b1c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgRayLenght: 1.45
+  baseDamage: 0.5
+  maxDamage: 8
