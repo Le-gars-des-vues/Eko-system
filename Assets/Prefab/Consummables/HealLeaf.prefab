@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 8616704724922122496}
   - component: {fileID: 2551410454996898421}
   - component: {fileID: 2662406934285148511}
-  - component: {fileID: 5575527363715661371}
   - component: {fileID: 9211541607449099893}
   m_Layer: 7
-  m_Name: FlashNut
-  m_TagString: Throwable
+  m_Name: HealLeaf
+  m_TagString: Usable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 460698447
   m_SortingLayer: 1
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: 349681c4729d3fc4188db62b4b7e82fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff2f508a75d15f6429e258629dc32d05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -172,22 +171,6 @@ MonoBehaviour:
   isSelected: 0
   isPickedUp: 0
   rotateSpeed: 0
---- !u!114 &5575527363715661371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783711716595685549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f815772709fc5644f98a7864b13823a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 50
-  consummalbePrefab: {fileID: 6783711716595685549}
-  timeToMaxThrow: 1.5
-  timer: 0
 --- !u!114 &9211541607449099893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,10 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc39c51400369df45826f26e5a8aeedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 5b13f2a970553c740a0e63debdc06cad, type: 2}
-  stackAmount: 2
-  sprites:
-  - {fileID: 21300000, guid: bafd7b2b05885e5428854bee16d0b13f, type: 3}
+  itemData: {fileID: 11400000, guid: 8f5148c2f8f2d6040bc4faf65bb9841b, type: 2}
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0

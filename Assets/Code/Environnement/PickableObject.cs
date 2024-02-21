@@ -163,6 +163,7 @@ public class PickableObject : MonoBehaviour
         }
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
         inventoryItem.Set(item.itemData);
+        inventoryItem.stackAmount = item.stackAmount;
         InsertItem(inventoryItem);
         itemInInventory = inventoryItem.gameObject;
     }
