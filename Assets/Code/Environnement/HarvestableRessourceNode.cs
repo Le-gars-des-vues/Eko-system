@@ -32,7 +32,7 @@ public class HarvestableRessourceNode : MonoBehaviour
                 i++;
                 Instantiate(ressourceToSpawn, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), transform.rotation);
             }
-            if (gameObject.tag == "Plant" && !GetComponent<SpearPlant>().hasPickedUpConsummable)
+            if (gameObject.tag == "Plant" && !GetComponent<PlantConsummable>().hasPickedUpConsummable)
                 Instantiate(consummableToSpawn, transform.position, transform.rotation);
 
             gameObject.SetActive(false);

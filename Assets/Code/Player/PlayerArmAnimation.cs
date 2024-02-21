@@ -71,87 +71,7 @@ public class PlayerArmAnimation : MonoBehaviour
 
         if (player.GetComponent<GroundPlayerController>().enabled)
         {
-            if (player.GetComponent<PlayerPermanent>().objectInRightHand != null && gameObject.name == "RightArmSolver_Target")
-            {
-                if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Spear")
-                {
-                    if (!player.GetComponent<PlayerPermanent>().inventoryOpen)
-                    {
-                        if (Input.GetMouseButton(0))
-                        {
-                            Vector2 throwPos = Vector2.Lerp(new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y),
-                                new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
-                                player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timer / player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
-
-                            armTarget.position = throwPos;
-                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
-                        }
-                        else
-                        {
-                            //Position initiale de la main sur la lance
-                            pickupInitialPos = new Vector2(player.transform.position.x + (armWeaponOffsets.x * facingDirection), player.transform.position.y + armWeaponOffsets.y);
-                            //Position de la souris et direction du mouvement de la souris
-                            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                            Vector2 mouseDirection = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-
-                            //Check pour voir si la souris va dans la meme direction que celle qui fait face au joueur
-                            float isPointingRight = mouseDirection.x > 0 ? 1 : -1;
-                            bool lookingUp = mousePos.y - transform.position.y >= 0 ? true : false;
-                            bool isPointingUp = mouseDirection.y > 0 ? true : false;
-
-                            //Si on bouge la souris
-                            if (mouseDirection.magnitude != 0)
-                            {
-                                armMovementTime = Time.time;
-
-                                //Si la souris de ne va pas dans la meme direction que le joueur regarde
-                                if ((isPointingRight != facingDirection && lookingUp != isPointingUp) && Vector2.Distance(player.transform.position, mousePos) < 10f)
-                                {
-                                    //La main recule
-                                    Vector2 offset = pickupInitialPos - mousePos;
-                                    armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Time.deltaTime);
-                                }
-                                //Sinon la main avance
-                                else
-                                {
-                                    Vector2 offset = mousePos - pickupInitialPos;
-                                    armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Mathf.Max(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * Time.deltaTime);
-                                }
-                            }
-
-                            //Si cela fait un moment que la souris n'a pas bouge, la main revient a sa position initiale
-                            if (Time.time - armMovementTime > armMovementCooldown)
-                            {
-                                armTarget.position = pickupInitialPos;
-                                transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
-                            }
-                        }
-                    }
-                }
-                else if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Throwable")
-                {
-                    Vector2 throwPos = Vector2.Lerp(new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y),
-                                new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
-                                player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timer / player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
-
-                    armTarget.position = throwPos;
-                    transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
-                }
-            }
-            else if (player.GetComponent<PlayerPermanent>().objectInRightHand != null && gameObject.name == "LeftArmSolver_Target")
-            {
-                if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Spear")
-                {
-                    if (!Input.GetMouseButton(0))
-                    {
-                        armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
-                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
-                    }
-                }
-            }
-            else
+            if (player.GetComponent<PlayerPermanent>().objectInRightHand == null || (player.GetComponent<PlayerPermanent>().objectInRightHand != null && player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Usable"))
             {
                 if (somethingClose)
                 {
@@ -234,6 +154,90 @@ public class PlayerArmAnimation : MonoBehaviour
                             goingForward = true;
                         else
                             goingForward = false;
+                    }
+                }
+            }
+            else if (player.GetComponent<PlayerPermanent>().objectInRightHand != null && gameObject.name == "RightArmSolver_Target")
+            {
+                if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Spear")
+                {
+                    if (!player.GetComponent<PlayerPermanent>().inventoryOpen)
+                    {
+                        if (Input.GetMouseButton(0))
+                        {
+                            Vector2 throwPos = Vector2.Lerp(new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y),
+                                new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
+                                player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timer / player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
+
+                            armTarget.position = throwPos;
+                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            //Position initiale de la main sur la lance
+                            pickupInitialPos = new Vector2(player.transform.position.x + (armWeaponOffsets.x * facingDirection), player.transform.position.y + armWeaponOffsets.y);
+                            //Position de la souris et direction du mouvement de la souris
+                            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                            Vector2 mouseDirection = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
+                            //Check pour voir si la souris va dans la meme direction que celle qui fait face au joueur
+                            float isPointingRight = mouseDirection.x > 0 ? 1 : -1;
+                            bool lookingUp = mousePos.y - transform.position.y >= 0 ? true : false;
+                            bool isPointingUp = mouseDirection.y > 0 ? true : false;
+
+                            //Si on bouge la souris
+                            if (mouseDirection.magnitude != 0)
+                            {
+                                armMovementTime = Time.time;
+
+                                //Si la souris de ne va pas dans la meme direction que le joueur regarde
+                                if ((isPointingRight != facingDirection && lookingUp != isPointingUp) && Vector2.Distance(player.transform.position, mousePos) < 10f)
+                                {
+                                    //La main recule
+                                    Vector2 offset = pickupInitialPos - mousePos;
+                                    armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Time.deltaTime);
+                                }
+                                //Sinon la main avance
+                                else
+                                {
+                                    Vector2 offset = mousePos - pickupInitialPos;
+                                    armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Mathf.Max(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * Time.deltaTime);
+                                }
+                            }
+
+                            //Si cela fait un moment que la souris n'a pas bouge, la main revient a sa position initiale
+                            if (Time.time - armMovementTime > armMovementCooldown)
+                            {
+                                armTarget.position = pickupInitialPos;
+                                transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                            }
+                        }
+                    }
+                }
+                else if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Throwable")
+                {
+                    Vector2 throwPos = Vector2.Lerp(new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y),
+                                new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
+                                player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timer / player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
+
+                    armTarget.position = throwPos;
+                    transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                }
+                else if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Usable")
+                {
+
+                }
+            }
+            else if (player.GetComponent<PlayerPermanent>().objectInRightHand != null && gameObject.name == "LeftArmSolver_Target")
+            {
+                if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Spear")
+                {
+                    if (!Input.GetMouseButton(0))
+                    {
+                        armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
+                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
                     }
                 }
             }

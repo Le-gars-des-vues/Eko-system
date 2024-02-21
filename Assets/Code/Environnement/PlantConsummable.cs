@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpearPlant : MonoBehaviour
+public class PlantConsummable : MonoBehaviour
 {
     [SerializeField] private GameObject consummable;
-    [SerializeField] private GameObject plantConsummableGFX;
+    [SerializeField] private GameObject ConsummableGFX;
     bool canPickUpConsummable;
     public bool hasPickedUpConsummable;
 
@@ -17,7 +17,7 @@ public class SpearPlant : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canPickUpConsummable = true;
-            StartCoroutine(FlashWhite(plantConsummableGFX.GetComponent<SpriteRenderer>(), 0.05f, 5));
+            StartCoroutine(FlashWhite(ConsummableGFX.GetComponent<SpriteRenderer>(), 0.05f, 5));
         }
     }
 
@@ -33,7 +33,7 @@ public class SpearPlant : MonoBehaviour
                     var spear = Instantiate(consummable, transform.position, transform.rotation);
                     spear.GetComponent<PickableObject>().PickUp();
                     hasPickedUpConsummable = true;
-                    plantConsummableGFX.SetActive(false);
+                    ConsummableGFX.SetActive(false);
                 }
             }
         }

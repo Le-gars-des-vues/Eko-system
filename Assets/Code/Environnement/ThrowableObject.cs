@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThrowableObject : MonoBehaviour
 {
     [SerializeField] private float force;
+    [SerializeField] private GameObject consummalbePrefab;
     public float timeToMaxThrow;
     public float timer;
-    private PickableObject item;
     private PlayerPermanent player;
 
     private void Start()
     {
-        item = GetComponent<PickableObject>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
@@ -67,31 +67,59 @@ public class ThrowableObject : MonoBehaviour
 
     IEnumerator Throw(GameObject objectToThrow)
     {
-        objectToThrow.transform.parent = null;
-        //objectToThrow.GetComponent<Rigidbody2D>().simulated = true;
+        if (objectToThrow.tag == "Spear" || objectToThrow.GetComponent<InventoryItem>().stackAmount == 1)
+        {
+            objectToThrow.transform.parent = null;
 
-        Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectToThrow.transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        objectToThrow.transform.rotation = Quaternion.Euler(0, 0, angle);
+            Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectToThrow.transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            objectToThrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        objectToThrow.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
-        yield return new WaitForSecondsRealtime(0.1f);
+            objectToThrow.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
+            yield return new WaitForSecondsRealtime(0.1f);
 
-        Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
-        GetComponent<Rigidbody2D>().gravityScale = 1;
-        //objectToThrow.GetComponent<CapsuleCollider2D>().enabled = true;
+            Physics2D.IgnoreCollision(objectToThrow.GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
+            objectToThrow.GetComponent<Rigidbody2D>().gravityScale = 1;
 
-        objectToThrow.GetComponent<PickableObject>().isPickedUp = false;
-        objectToThrow.GetComponent<PickableObject>().hasFlashed = false;
+            objectToThrow.GetComponent<PickableObject>().isPickedUp = false;
+            objectToThrow.GetComponent<PickableObject>().hasFlashed = false;
 
-        if (gameObject == player.objectInRightHand)
-            player.UnequipObject(true);
+            if (objectToThrow == player.objectInRightHand)
+                player.UnequipObject(true);
 
-        var toDestroy = item.inventory.GetItem(item.item.onGridPositionX, item.item.onGridPositionY);
-        toDestroy.Delete();
-        /* Utilisation de la main gauche
-        else if (gameObject == player.objectInLeftHand)
-            player.UnequipObject(false);
-        */
+            objectToThrow.GetComponent<InventoryItem>().stackAmount--;
+
+            var toDestroy = objectToThrow.GetComponent<PickableObject>().inventory.GetItem(objectToThrow.GetComponent<InventoryItem>().onGridPositionX,
+                objectToThrow.GetComponent<InventoryItem>().onGridPositionY);
+            toDestroy.Delete();
+
+            /* Utilisation de la main gauche
+            else if (gameObject == player.objectInLeftHand)
+                player.UnequipObject(false);
+            */
+        }
+        else
+        {
+            var objectCloned = Instantiate(consummalbePrefab, transform.position, transform.rotation);
+
+            Physics2D.IgnoreCollision(objectCloned.GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), true);
+            objectCloned.GetComponent<Rigidbody2D>().gravityScale = 0;
+
+            Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectCloned.transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            objectCloned.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            objectCloned.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
+            yield return new WaitForSecondsRealtime(0.1f);
+
+            Physics2D.IgnoreCollision(objectToThrow.GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
+            objectCloned.GetComponent<Rigidbody2D>().gravityScale = 1;
+
+            objectToThrow.GetComponent<InventoryItem>().stackAmount--;
+
+            objectToThrow.GetComponent<PickableObject>().inventory.GetItem(objectToThrow.GetComponent<InventoryItem>().onGridPositionX,
+                objectToThrow.GetComponent<InventoryItem>().onGridPositionY).GetComponent<Image>().sprite =
+                objectToThrow.GetComponent<InventoryItem>().sprites[(objectToThrow.GetComponent<InventoryItem>().sprites.Length + 1) - objectToThrow.GetComponent<InventoryItem>().stackAmount];
+        }
     }
 }
