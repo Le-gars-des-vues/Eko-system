@@ -7,8 +7,11 @@ public class ItemGrid : MonoBehaviour
 {
     [Header("Tile Format")]
 
-    public const float tileSizeWidth = 32;
-    public const float tileSizeHeight = 32;
+    //CHANGEMENT ICI------
+    [HideInInspector]
+    public float tileSizeWidth;
+    [HideInInspector]
+    public float tileSizeHeight;
 
     [Header("Transform of Grid")]
     RectTransform rectTransform;
@@ -28,6 +31,16 @@ public class ItemGrid : MonoBehaviour
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        if (gameObject.tag == "Hotbar")
+        {
+            tileSizeWidth = 96;
+            tileSizeHeight = 96;
+        }
+        else
+        {
+            tileSizeWidth = 32;
+            tileSizeHeight = 32;
+        }
         Init(gridSizeWidth, gridSizeHeight);
     }
 
@@ -37,7 +50,8 @@ public class ItemGrid : MonoBehaviour
         //Cree autant de case dans le array que de case sur la grille
         inventoryItemSlot = new InventoryItem[width, height];
         //Multiplie le nombre de case par leur taille
-        Vector2 size= new Vector2(width*tileSizeWidth, height*tileSizeHeight);
+
+        Vector2 size = new Vector2(width * tileSizeWidth, height * tileSizeHeight);
         rectTransform.sizeDelta = size;
     }
     

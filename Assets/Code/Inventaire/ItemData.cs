@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-
-
 public class ItemData : ScriptableObject
 {
     public int width=1;
@@ -15,11 +13,13 @@ public class ItemData : ScriptableObject
     public int initialWidth=1;
     public int initialHeight=1;
 
+    //CHANGEMENT ICI -----------------------------------
     [HideInInspector]
-    public int hotbarWidth = 3;
+    public int hotbarWidth = 1;
     [HideInInspector]
-    public int hotbarHeight = 3;
+    public int hotbarHeight = 1;
 
+    public GameObject objectToSpawn;
 
     public Sprite itemIcon;
 

@@ -7,12 +7,20 @@ public class HotbarManager : MonoBehaviour
     public GameObject[] hotbars;
     public GameObject[] hotbarHighlights;
 
-    private int currentlySelected;
+    public int currentlySelected;
 
+    public PlayerPermanent player;
+    public List<ItemGrid> grids;
 
     private void Start()
     {
+        grids = new List<ItemGrid>();
+        for (int i = 0; i < hotbars.Length; i++)
+        {
+            grids.Add(hotbars[i].GetComponent<ItemGrid>());
+        }
         currentlySelected = 0;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
 
         for (int i = 0; i < hotbars.Length; i++)
         {
@@ -37,25 +45,8 @@ public class HotbarManager : MonoBehaviour
                 currentlySelected = hotbars.Length - 1;
             }
 
-            for (int i = 0; i < hotbars.Length; i++)
-            {
-                if (hotbars[i] == hotbars[currentlySelected])
-                {
-                    hotbarHighlights[i].SetActive(true);
-                }
-                else
-                {
-                    hotbarHighlights[i].SetActive(false);
-                }
-            }
-        }else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            currentlySelected++;
-            if (currentlySelected == hotbars.Length)
-            {
-
-                currentlySelected = 0;
-            }
+            if (grids[currentlySelected].GetItem(0, 0) != null)
+                SwitchItem();
 
             for (int i = 0; i < hotbars.Length; i++)
             {
@@ -69,7 +60,48 @@ public class HotbarManager : MonoBehaviour
                 }
             }
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            currentlySelected++;
+            if (currentlySelected == hotbars.Length)
+            {
 
+                currentlySelected = 0;
+            }
 
+            if (grids[currentlySelected].GetItem(0, 0) != null)
+                SwitchItem();
+
+            for (int i = 0; i < hotbars.Length; i++)
+            {
+                if (hotbars[i] == hotbars[currentlySelected])
+                {
+                    hotbarHighlights[i].SetActive(true);
+                }
+                else
+                {
+                    hotbarHighlights[i].SetActive(false);
+                }
+            }
+        }
+    }
+
+    void SwitchItem()
+    {
+        if (player.objectInRightHand != null)
+            Destroy(player.objectInRightHand);
+        player.UnequipObject();
+        SpawnObject(currentlySelected, out GameObject objectSpawned);
+        player.EquipObject(objectSpawned);
+    }
+
+    public void SpawnObject(int index, out GameObject objectSpawned)
+    {
+        var objectToSpawn = Instantiate(grids[index].GetItem(0, 0).itemData.objectToSpawn);
+        objectToSpawn.GetComponent<PickableObject>().itemInInventory = grids[index].GetItem(0, 0).gameObject;
+        objectToSpawn.GetComponent<InventoryItem>().stackAmount = grids[index].GetItem(0, 0).stackAmount;
+        objectToSpawn.GetComponent<PickableObject>().PickUp(true, true);
+        objectToSpawn.GetComponent<PickableObject>().inventory = grids[index];
+        objectSpawned = objectToSpawn;
     }
 }
