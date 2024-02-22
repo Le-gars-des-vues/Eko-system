@@ -14,8 +14,9 @@ public class PickableObject : MonoBehaviour
     private PlayerPermanent player;
 
     [HideInInspector] public InventoryItem item;
-    [HideInInspector] public ItemGrid inventory;
-    private GameObject itemInInventory;
+    public ItemGrid inventory, playerInventory;
+    public List<GameObject> hotbar = new List<GameObject>();
+    public GameObject itemInInventory;
     [SerializeField] private GameObject itemPrefab;
 
     public bool hasFlashed; //Pour les consommable
@@ -23,7 +24,6 @@ public class PickableObject : MonoBehaviour
     public bool isSelected;
     public bool isPickedUp = false;
     [SerializeField] private float rotateSpeed;
-    private bool isFacingRight;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -37,8 +37,16 @@ public class PickableObject : MonoBehaviour
         rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
         //leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
 
-        inventory = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
+        playerInventory = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
         item = GetComponent<InventoryItem>();
+
+        foreach (GameObject hb in GameObject.FindGameObjectsWithTag("Hotbar"))
+        {
+            if (hb.GetComponent<ItemGrid>() != null)
+            {
+                hotbar.Add(hb);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -87,7 +95,7 @@ public class PickableObject : MonoBehaviour
         {
             if (!isPickedUp)
             {
-                PickUp();
+                PickUp(false, false);
             }
         }
 
@@ -116,18 +124,47 @@ public class PickableObject : MonoBehaviour
         }
     }
 
-    public void PickUp()
+    public void PickUp(bool isAlreadyInInventory, bool bypassObjectInHand)
     {
+        if (!isAlreadyInInventory)
+        {
+            bool hasBeenPlaced = false;
+            InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+            ItemData itemData = Instantiate(item.itemData);
+            for (int i = hotbar.Count - 1; i > 0; i--)
+            {
+                if (hotbar[i].GetComponent<ItemGrid>().GetItem(0, 0) == null)
+                {
+                    inventory = hotbar[i].GetComponent<ItemGrid>();
+                    itemData.width = itemData.hotbarWidth;
+                    itemData.height = itemData.hotbarHeight;
+
+                    inventoryItem.Set(itemData, inventory);
+                    inventoryItem.stackAmount = item.stackAmount;
+
+                    inventory.PlaceItem(inventoryItem, 0, 0);
+                    hasBeenPlaced = true;
+                    break;
+                }
+            }
+            if (inventory == null)
+                inventory = playerInventory;
+
+            inventoryItem.Set(itemData, inventory);
+            inventoryItem.stackAmount = item.stackAmount;
+
+            if (hasBeenPlaced)
+                InsertItem(inventoryItem);
+
+            itemInInventory = inventoryItem.gameObject;
+        }
+
         if (gameObject.tag != "Ressource")
         {
-            if (player.objectInRightHand == null)
+            if (player.objectInRightHand == null || (bypassObjectInHand && player.objectInRightHand != null))
             {
-                isFacingRight = player.isFacingRight;
-
-                //GetComponent<CapsuleCollider2D>().enabled = false;
-                //GetComponent<Rigidbody2D>().simulated = false;
-
                 Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), true);
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 GetComponent<Rigidbody2D>().gravityScale = 0;
 
                 float facingAngle = player.isFacingRight ? 0 : 180;
@@ -137,9 +174,13 @@ public class PickableObject : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
 
                 //gameObject.transform.SetParent(rightHand.transform);
-                sprite.sortingOrder = 7;
-                player.EquipObject(gameObject, true);
+                sprite.sortingOrder = 8;
+                player.EquipObject(gameObject);
                 isPickedUp = true;
+            }
+            else
+            {
+                Destroy(gameObject);
             }
             /* Utilisation de la main gauche
             else if (player.objectInLeftHand == null)
@@ -159,22 +200,9 @@ public class PickableObject : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Clear();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessourceDistance = 10;
+
             Destroy(gameObject);
         }
-        InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
-        inventoryItem.Set(item.itemData);
-        inventoryItem.stackAmount = item.stackAmount;
-        InsertItem(inventoryItem);
-        itemInInventory = inventoryItem.gameObject;
-    }
-
-    private void Turn()
-    {
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-
-        isFacingRight = !isFacingRight;
     }
 
     //Flash en blanc en changeant le materiel du joueur
@@ -216,7 +244,11 @@ public class PickableObject : MonoBehaviour
     {
         Vector2Int? posOnGrid = inventory.FindSpaceForObject(itemToInsert);
 
-        if (posOnGrid == null) { return; }
+        if (posOnGrid == null) 
+        {
+            Debug.Log("OH OH");
+            return; 
+        }
 
         inventory.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
     }

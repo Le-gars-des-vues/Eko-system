@@ -26,7 +26,6 @@ public class GridInterract : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             rectTransform.SetParent(canvasTransform);
             rectTransform.SetAsLastSibling();
         }
-        
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -29,10 +29,10 @@ public class PlantConsummable : MonoBehaviour
             {
                 if (!hasPickedUpConsummable)
                 {
-                    canPickUpConsummable = false;
-                    var spear = Instantiate(consummable, transform.position, transform.rotation);
-                    spear.GetComponent<PickableObject>().PickUp();
                     hasPickedUpConsummable = true;
+                    canPickUpConsummable = false;
+                    var cons = Instantiate(consummable, transform.position, transform.rotation);
+                    cons.GetComponent<PickableObject>().PickUp(false, false);
                     ConsummableGFX.SetActive(false);
                 }
             }

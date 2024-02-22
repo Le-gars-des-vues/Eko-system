@@ -58,6 +58,7 @@ public class PlayerPermanent : MonoBehaviour
     public List<GameObject> ressourcesNear = new List<GameObject>();
     public float nearestRessourceDistance = 10;
     private GameObject nearestRessource;
+    public bool isThrowing = false;
 
     [Header("Inventory Variables")]
     public bool inventoryOpen = false;
@@ -293,10 +294,9 @@ public class PlayerPermanent : MonoBehaviour
         }
     }
 
-    public void EquipObject(GameObject obj, bool isRightHand)
+    public void EquipObject(GameObject obj)
     {
-        if (isRightHand)
-            objectInRightHand = obj;
+        objectInRightHand = obj;
 
         /* Utilisation de la main gauche
         else
@@ -304,10 +304,9 @@ public class PlayerPermanent : MonoBehaviour
         */
     }
 
-    public void UnequipObject(bool isRightHand)
+    public void UnequipObject()
     {
-        if (isRightHand)
-            objectInRightHand = null;
+        objectInRightHand = null;
 
         /* Utilisation de la main gauche
         else
