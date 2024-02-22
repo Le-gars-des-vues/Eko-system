@@ -10,6 +10,8 @@ public class InventoryItem : MonoBehaviour
     public int stackAmount;
     public Sprite[] sprites;
 
+    public bool markedForDestroy;
+
     public int HEIGHT
     {
         get { 
@@ -45,6 +47,11 @@ public class InventoryItem : MonoBehaviour
 
         RectTransform rectTransform = GetComponent<RectTransform>();
         rectTransform.rotation = Quaternion.Euler(0,0,rotated == true ? 90f : 0f);
+    }
+
+    private void OnEnable()
+    {
+        markedForDestroy = false;
     }
 
     internal void Set(ItemData itemData, ItemGrid itemGrid)
