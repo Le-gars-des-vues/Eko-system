@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
     [HideInInspector]
     private ItemGrid selectedItemGrid;
+    private ItemGrid defaultItemGrid;
 
     public ItemGrid SelectedItemGrid { get => selectedItemGrid;
         set { 
@@ -32,13 +34,17 @@ public class InventoryController : MonoBehaviour
 
     InventoryItem itemToHighlight;
 
+    HotbarManager hotbar;
+
     Vector2Int oldPosition;
+    string gridName;
 
 
     private void Awake()
     {
         inventoryHighlight = GetComponent<InventoryHighlight>();
-        
+        hotbar = GameObject.Find("Hotbar").GetComponent<HotbarManager>();
+        defaultItemGrid = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
     }
 
     private void Update()
@@ -106,17 +112,20 @@ public class InventoryController : MonoBehaviour
 
     private void HandleHighlight()
     {
-
         Vector2Int positionOnGrid = GetTileGridPosition();
-        if (oldPosition == positionOnGrid) { return;  }
+
+        //CHANGEMENT ICI---------
+        if (oldPosition == positionOnGrid && gridName == selectedItemGrid.gameObject.name && inventoryHighlight.gameObject.activeSelf) { return;  }
         oldPosition = positionOnGrid;
-        if(selectedItem == null)
+        gridName = selectedItemGrid.gameObject.name;
+
+        if (selectedItem == null)
         {
             itemToHighlight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
 
             if (itemToHighlight != null){
                 inventoryHighlight.Show(true);
-                inventoryHighlight.SetSize(itemToHighlight);
+                inventoryHighlight.SetSize(itemToHighlight, selectedItemGrid);
                 //inventoryHighlight.SetParent(selectedItemGrid);
                 inventoryHighlight.SetPosition(selectedItemGrid, itemToHighlight);
             }
@@ -129,7 +138,7 @@ public class InventoryController : MonoBehaviour
         else
         {
             inventoryHighlight.Show(selectedItemGrid.BoundryCheck(positionOnGrid.x, positionOnGrid.y, selectedItem.WIDTH, selectedItem.HEIGHT));
-            inventoryHighlight.SetSize(selectedItem);
+            inventoryHighlight.SetSize(selectedItem, selectedItemGrid);
             //inventoryHighlight.SetParent(selectedItemGrid);
             inventoryHighlight.SetPosition(selectedItemGrid, selectedItem, positionOnGrid.x, positionOnGrid.y);
         }
@@ -145,7 +154,7 @@ public class InventoryController : MonoBehaviour
         rectTransform.SetAsLastSibling();
 
         int selectedItemID = UnityEngine.Random.Range(0, items.Count);
-        inventoryItem.Set(items[selectedItemID]);
+        inventoryItem.Set(items[selectedItemID], defaultItemGrid);
     }
 
     public void CreateRecipeItem(int recipeChoice)
@@ -158,12 +167,13 @@ public class InventoryController : MonoBehaviour
         rectTransform.SetAsLastSibling();
 
         int selectedItemID = recipeChoice;
-        inventoryItem.Set(craftables[selectedItemID]);
+        inventoryItem.Set(craftables[selectedItemID], defaultItemGrid);
     }
 
     private void LeftMouseButtonPress()
     {
         Vector2Int tileGridPosition = GetTileGridPosition();
+        Debug.Log(tileGridPosition);
 
         if (selectedItem == null)
         {
@@ -181,8 +191,8 @@ public class InventoryController : MonoBehaviour
 
         if (selectedItem != null)
         {
-            position.x += (selectedItem.WIDTH - (1 * selectedItem.WIDTH)) * ItemGrid.tileSizeWidth / 2;
-            position.y += (selectedItem.HEIGHT- (1 * selectedItem.HEIGHT)) * ItemGrid.tileSizeHeight / 2;
+            position.x += (selectedItem.WIDTH - (1 * selectedItem.WIDTH)) * selectedItemGrid.tileSizeWidth / 2;
+            position.y += (selectedItem.HEIGHT- (1 * selectedItem.HEIGHT)) * selectedItemGrid.tileSizeHeight / 2;
         }
 
         return selectedItemGrid.GetTileGridPosition(position);
@@ -193,6 +203,16 @@ public class InventoryController : MonoBehaviour
         bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem);
         if (complete)
         {
+            rectTransform.sizeDelta = new Vector2(selectedItem.WIDTH * selectedItemGrid.tileSizeWidth, selectedItem.HEIGHT * selectedItemGrid.tileSizeHeight);
+            if (selectedItemGrid.gameObject.tag == "Hotbar")
+            {
+                if (selectedItemGrid == hotbar.grids[hotbar.currentlySelected])
+                {
+                    hotbar.SpawnObject(hotbar.currentlySelected, out GameObject objectSpawned);
+                    hotbar.player.EquipObject(objectSpawned);
+                }
+            }
+
             selectedItem = null;
             if (overlapItem != null)
             {
@@ -210,6 +230,14 @@ public class InventoryController : MonoBehaviour
         if (selectedItem != null)
         {
             rectTransform = selectedItem.GetComponent<RectTransform>();
+            if (selectedItemGrid.gameObject.tag == "Hotbar")
+            {
+                if (selectedItemGrid = hotbar.grids[hotbar.currentlySelected])
+                {
+                    Destroy(hotbar.player.objectInRightHand);
+                    hotbar.player.UnequipObject();
+                }
+            }
         }
     }
 

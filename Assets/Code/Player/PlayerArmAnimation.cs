@@ -71,9 +71,21 @@ public class PlayerArmAnimation : MonoBehaviour
 
         if (player.GetComponent<GroundPlayerController>().enabled)
         {
-            if (player.GetComponent<PlayerPermanent>().objectInRightHand == null || (player.GetComponent<PlayerPermanent>().objectInRightHand != null && player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Usable"))
+            if (player.GetComponent<PlayerPermanent>().objectInRightHand == null || (player.GetComponent<PlayerPermanent>().objectInRightHand != null && (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Usable" || player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Throwable")))
             {
-                if (somethingClose)
+                if (player.GetComponent<PlayerPermanent>().objectInRightHand != null && gameObject.name == "RightArmSolver_Target" && player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Throwable" && Input.GetMouseButton(0))
+                {
+                    if (!player.GetComponent<PlayerPermanent>().inventoryOpen)
+                    {
+                        Vector2 throwPos = Vector2.Lerp(new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y),
+                                    new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
+                                    player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timer / player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
+
+                        armTarget.position = throwPos;
+                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                    }
+                }
+                else if (somethingClose)
                 {
 
                 }
@@ -191,7 +203,7 @@ public class PlayerArmAnimation : MonoBehaviour
                                 armMovementTime = Time.time;
 
                                 //Si la souris de ne va pas dans la meme direction que le joueur regarde
-                                if ((isPointingRight != facingDirection && lookingUp != isPointingUp) && Vector2.Distance(player.transform.position, mousePos) < 10f)
+                                if ((isPointingRight != facingDirection && lookingUp != isPointingUp) && Vector2.Distance(player.transform.position, mousePos) < 15f)
                                 {
                                     //La main recule
                                     Vector2 offset = pickupInitialPos - mousePos;
@@ -203,7 +215,7 @@ public class PlayerArmAnimation : MonoBehaviour
                                 {
                                     Vector2 offset = mousePos - pickupInitialPos;
                                     armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Mathf.Max(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * Time.deltaTime);
+                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
                                 }
                             }
 
@@ -215,15 +227,6 @@ public class PlayerArmAnimation : MonoBehaviour
                             }
                         }
                     }
-                }
-                else if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Throwable")
-                {
-                    Vector2 throwPos = Vector2.Lerp(new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y),
-                                new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
-                                player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timer / player.GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
-
-                    armTarget.position = throwPos;
-                    transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                 }
                 else if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Usable")
                 {
@@ -264,7 +267,7 @@ public class PlayerArmAnimation : MonoBehaviour
     }
     */
 
-                private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         //Gizmos.DrawSphere(new Vector3(player.transform.position.x + armXOffset, player.transform.position.y + armYOffset, transform.position.z), 0.05f);
