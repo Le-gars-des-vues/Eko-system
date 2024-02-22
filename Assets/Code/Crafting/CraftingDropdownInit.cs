@@ -59,7 +59,7 @@ public class CraftingDropdownInit : MonoBehaviour
     {
         return mat3Quant;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         changementInfo();
     }
