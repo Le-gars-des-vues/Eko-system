@@ -34,7 +34,6 @@ public class CraftingDropdownInit : MonoBehaviour
             this.gameObject.GetComponent<TMP_Dropdown>().options.Add(new TMP_Dropdown.OptionData {text = Recipes.listOfRecipes[i].recipeResult });
             currentRecipe = 0;
         }
-        //changementInfo();
     }
     public void SetMat1(int leMat)
     {
@@ -60,7 +59,10 @@ public class CraftingDropdownInit : MonoBehaviour
     {
         return mat3Quant;
     }
-
+    private void Update()
+    {
+        changementInfo();
+    }
     public void changementInfo()
     {
         currentRecipe = this.gameObject.GetComponent<TMP_Dropdown>().value;
