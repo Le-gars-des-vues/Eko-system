@@ -26,13 +26,13 @@ public class CraftingSystem : MonoBehaviour
 
     public GameObject theCraftingDropdownInit;
     public GameObject theController;
-    
+
     // Start is called before the first frame update
+
+    
     public void CraftCheck()
     {
-        tempHeight = inventaireCrafting.GetComponent<ItemGrid>().GetGridSizeHeight();
-        tempWidth = inventaireCrafting.GetComponent<ItemGrid>().GetGridSizeWidth();
-
+        
         compteurItem1 = 0; 
         compteurItem2 = 0;
         compteurItem3 = 0;
@@ -43,7 +43,8 @@ public class CraftingSystem : MonoBehaviour
         
 
         theItemGrid = inventaireCrafting.GetComponent<ItemGrid>();
-
+        tempHeight = inventaireCrafting.GetComponent<ItemGrid>().GetGridSizeHeight();
+        tempWidth = inventaireCrafting.GetComponent<ItemGrid>().GetGridSizeWidth();
 
         for (int x = 0; x < tempWidth; x++)
         {
@@ -59,21 +60,17 @@ public class CraftingSystem : MonoBehaviour
                     if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].firstMaterial)
                     {
                         compteurItem1 += 1f / (anItem.itemData.width * anItem.itemData.height);
-                        Debug.Log(compteurItem1);
-                        theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().SetMat1(Mathf.RoundToInt(compteurItem1));
-                        anItem.itemData.markedForDestroy = true;
+                       
                     }
                     else if(anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].secondMaterial)
                     {
                         compteurItem2+= 1f / (anItem.itemData.width * anItem.itemData.height);
-                        theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().SetMat2(Mathf.RoundToInt(compteurItem2));
-                        anItem.itemData.markedForDestroy = true;
+
                     }
                     else if(anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].thirdMaterial)
                     {
                         compteurItem3 += 1f / (anItem.itemData.width * anItem.itemData.height);
-                        theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().SetMat3(Mathf.RoundToInt(compteurItem3));
-                        anItem.itemData.markedForDestroy = true;
+                        
                     }
                     
                     
@@ -81,15 +78,18 @@ public class CraftingSystem : MonoBehaviour
                 
             }
         }
-        if (theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().GetMat1() >= Recipes.listOfRecipes[laRecette].firstMatQuantity)
+        theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().SetMat1(Mathf.RoundToInt(compteurItem1));
+        theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().SetMat2(Mathf.RoundToInt(compteurItem2));
+        theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().SetMat3(Mathf.RoundToInt(compteurItem3));
+        if (Mathf.CeilToInt(compteurItem1) >= Recipes.listOfRecipes[laRecette].firstMatQuantity)
         {
             mat1Complete = true;
         }
-        if (theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().GetMat2() >= Recipes.listOfRecipes[laRecette].secondMatQuantity || Recipes.listOfRecipes[laRecette].secondMatQuantity==null)
+        if (Mathf.CeilToInt(compteurItem2) >= Recipes.listOfRecipes[laRecette].secondMatQuantity || Recipes.listOfRecipes[laRecette].secondMatQuantity==null)
         {
             mat2Complete = true;
         }
-        if (theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().GetMat3() >= Recipes.listOfRecipes[laRecette].thirdMatQuantity || Recipes.listOfRecipes[laRecette].thirdMatQuantity == null)
+        if (Mathf.CeilToInt(compteurItem3) >= Recipes.listOfRecipes[laRecette].thirdMatQuantity || Recipes.listOfRecipes[laRecette].thirdMatQuantity == null)
         {
             mat3Complete = true;
         }
@@ -98,9 +98,51 @@ public class CraftingSystem : MonoBehaviour
 
     public void Craft()
     {
-        if(mat1Complete && mat2Complete && mat3Complete)
+
+        if (mat1Complete && mat2Complete && mat3Complete)
         {
             theController.GetComponent<InventoryController>().CreateRecipeItem(laRecette);
+            int i1 = 0;
+            int i2 = 0;
+            int i3 = 0;
+            for (int x = 0; x < tempWidth; x++)
+            {
+
+                for (int y = 0; y < tempHeight; y++)
+                {
+                    
+                    anItem = theItemGrid.CheckIfItemPresent(x, y);
+                    if (anItem != null)
+                    {
+                        if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].firstMaterial && i1 < Recipes.listOfRecipes[laRecette].firstMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
+                        {
+                            anItem.Delete();
+                            compteurItem1--;
+                            i1++;
+                            anItem.GetComponent<InventoryItem>().markedForDestroy = true;
+                        }
+                        else if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].secondMaterial && i2 < Recipes.listOfRecipes[laRecette].secondMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
+                        {
+                            anItem.Delete();
+                            compteurItem2--;
+                            i2++;
+                            anItem.GetComponent<InventoryItem>().markedForDestroy = true;
+                        }
+                        else if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].thirdMaterial && i3 < Recipes.listOfRecipes[laRecette].thirdMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
+                        {
+                            anItem.Delete();
+                            compteurItem3--;
+                            i3++;
+                            anItem.GetComponent<InventoryItem>().markedForDestroy = true;
+                        }
+
+                    }
+
+                }
+            }
+
         }
+
+        CraftCheck();
     }
 }
