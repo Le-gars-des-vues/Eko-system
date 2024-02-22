@@ -47,15 +47,16 @@ public class InventoryItem : MonoBehaviour
         rectTransform.rotation = Quaternion.Euler(0,0,rotated == true ? 90f : 0f);
     }
 
-    internal void Set(ItemData itemData)
+    internal void Set(ItemData itemData, ItemGrid itemGrid)
     {
         this.itemData = itemData;
 
         GetComponent<Image>().sprite = itemData.itemIcon;
 
+        //CHANGEMENT ICI ---------------------------
         Vector2 size = new Vector2();
-        size.x = WIDTH * ItemGrid.tileSizeWidth;
-        size.y = HEIGHT * ItemGrid.tileSizeHeight;
+        size.x = WIDTH * itemGrid.tileSizeWidth;
+        size.y = HEIGHT * itemGrid.tileSizeHeight;
         GetComponent<RectTransform>().sizeDelta = size;
     }
 
