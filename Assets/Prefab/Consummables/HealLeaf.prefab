@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2551410454996898421}
   - component: {fileID: 2662406934285148511}
   - component: {fileID: 9211541607449099893}
+  - component: {fileID: -7373828824091821519}
   m_Layer: 7
   m_Name: HealLeaf
   m_TagString: Usable
@@ -165,6 +166,9 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
   item: {fileID: 0}
   inventory: {fileID: 0}
+  playerInventory: {fileID: 0}
+  hotbar: []
+  itemInInventory: {fileID: 0}
   itemPrefab: {fileID: 839064163631031773, guid: dedee1f75c5bdc649afdb5672ecbc9dc, type: 3}
   hasFlashed: 0
   isFlashing: 0
@@ -184,8 +188,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 8f5148c2f8f2d6040bc4faf65bb9841b, type: 2}
-  stackAmount: 0
+  stackAmount: 3
   sprites: []
+  markedForDestroy: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
+--- !u!114 &-7373828824091821519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783711716595685549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cbe7ea3f4d3bdd418d239957fdf7fab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectMagnitude: 5

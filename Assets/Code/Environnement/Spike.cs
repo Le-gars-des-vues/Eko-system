@@ -10,7 +10,7 @@ public class Spike : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, gameObject, true);
+            collision.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
         }
     }
 }

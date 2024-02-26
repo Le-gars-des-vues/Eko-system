@@ -61,7 +61,7 @@ public class GroundPlayerController : MonoBehaviour
     //Temps que le joueur prend pour atteindre l'apex de son saut
     public float jumpTimeToApex;
     //Check pour le double jump
-    public bool jumpedOnce = true;
+    public bool jumpedOnce;
     public bool jumpedTwiced;
 
     [Header("Gravity Variables")]
@@ -110,6 +110,7 @@ public class GroundPlayerController : MonoBehaviour
     public float lastOnWallLeftTime;
     [SerializeField] private PhysicsMaterial2D noFriction;
     [SerializeField] private PhysicsMaterial2D friction;
+    bool hasWallJumped;
 
     [Header("Wall Jump Variables")]
     //Force du saut
@@ -229,6 +230,11 @@ public class GroundPlayerController : MonoBehaviour
             isJumpCut = false;
             isJumpFalling = false;
             jumpedTwiced = false;
+            hasWallJumped = false;
+            if (GetComponent<PlayerPermanent>().hasDoubleJump)
+                jumpedOnce = false;
+            else
+                jumpedOnce = true;
         }
 
         //Checks
@@ -430,7 +436,8 @@ public class GroundPlayerController : MonoBehaviour
         //The default mode will apply are force instantly ignoring masss
         rb.AddForce(force, ForceMode2D.Impulse);
         Turn();
-        jumpedTwiced = false;
+        jumpedTwiced = true;
+        hasWallJumped = true;
     }
 
     private void Slide()
@@ -469,6 +476,8 @@ public class GroundPlayerController : MonoBehaviour
             force.y -= rb.velocity.y;
 
         rb.AddForce(force, ForceMode2D.Impulse);
+        if (hasWallJumped)
+            hasWallJumped = false;
     }
 
     //Checks Functions
@@ -523,7 +532,7 @@ public class GroundPlayerController : MonoBehaviour
 
     private bool CanWallJump()
     {
-        return pressedJumpTime > 0 && lastOnWallTime > 0 && !isGrounded && (!isWallJumping || (lastOnWallRightTime > 0 && lastWallJumpDir == 1) || (lastOnWallLeftTime > 0 && lastWallJumpDir == -1));
+        return pressedJumpTime > 0 && !hasWallJumped && lastOnWallTime > 0 && !isGrounded && (!isWallJumping || (lastOnWallRightTime > 0 && lastWallJumpDir == 1) || (lastOnWallLeftTime > 0 && lastWallJumpDir == -1));
     }
 
     private bool CanJumpCut()

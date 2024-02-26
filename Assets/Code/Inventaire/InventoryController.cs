@@ -39,12 +39,20 @@ public class InventoryController : MonoBehaviour
     Vector2Int oldPosition;
     string gridName;
 
+    [SerializeField] GameObject invalid;
+
 
     private void Awake()
     {
         inventoryHighlight = GetComponent<InventoryHighlight>();
         hotbar = GameObject.Find("Hotbar").GetComponent<HotbarManager>();
         defaultItemGrid = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
+    }
+
+    private void Start()
+    {
+        invalid = GameObject.Find("X");
+        invalid.SetActive(false);
     }
 
     private void Update()
@@ -248,6 +256,18 @@ public class InventoryController : MonoBehaviour
             rectTransform.position = Input.mousePosition;
             rectTransform.SetParent(canvasTransform);
             rectTransform.SetAsLastSibling();
+            if (selectedItem.tag == "Ressource")
+                invalid.SetActive(true);
+            else
+            {
+                if (invalid.activeSelf)
+                    invalid.SetActive(false);
+            }
+        }
+        else
+        {
+            if (invalid.activeSelf)
+                invalid.SetActive(false);
         }
     }
 }

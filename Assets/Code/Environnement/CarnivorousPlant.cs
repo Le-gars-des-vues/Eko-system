@@ -190,7 +190,7 @@ public class CarnivorousPlant : MonoBehaviour
                 isOpened = true;
             }
             else
-                collision.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, gameObject, true);
+                collision.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
         }
     }
 
