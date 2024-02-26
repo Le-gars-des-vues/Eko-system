@@ -18,6 +18,7 @@ public class Cycle : MonoBehaviour
         TimeLeft = initialTime;
         TimerTxt = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
         TimerOn = true;
+        theCharacter = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
