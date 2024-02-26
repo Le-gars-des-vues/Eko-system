@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CraftingDropdownInit : MonoBehaviour
+public class RoomDropdownInit : MonoBehaviour
 {
     public int currentRecipe;
     private int mat1Quant;
@@ -19,6 +20,9 @@ public class CraftingDropdownInit : MonoBehaviour
     public TextMeshProUGUI mat3Nom;
     public TextMeshProUGUI nombreMat3;
 
+    public TextMeshProUGUI lesFarms;
+    public TextMeshProUGUI lesEnclos;
+
     public GameObject theCraftingSystem;
 
     private void Start()
@@ -29,9 +33,9 @@ public class CraftingDropdownInit : MonoBehaviour
     }
     void Awake()
     {
-        for (int i = 0; i < Recipes.listOfRecipes.Count; i++)
+        for (int i = 0; i < Recipes.listOfBasePods.Count; i++)
         {
-            this.gameObject.GetComponent<TMP_Dropdown>().options.Add(new TMP_Dropdown.OptionData {text = Recipes.listOfRecipes[i].recipeResult });
+            this.gameObject.GetComponent<TMP_Dropdown>().options.Add(new TMP_Dropdown.OptionData {text = Recipes.listOfBasePods[i].recipeResult });
             currentRecipe = 0;
         }
     }
@@ -65,32 +69,36 @@ public class CraftingDropdownInit : MonoBehaviour
     }
     public void changementInfo()
     {
+        lesEnclos.text = "Enclos: "+theCraftingSystem.GetComponent<RoomCrafting>().GetEnclos().ToString();
+        lesFarms.text = "Fermes: "+theCraftingSystem.GetComponent<RoomCrafting>().GetFarms().ToString();
+
+
         currentRecipe = this.gameObject.GetComponent<TMP_Dropdown>().value;
 
-        theCraftingSystem.GetComponent<CraftingSystem>().CraftCheck();
+        theCraftingSystem.GetComponent<RoomCrafting>().RoomCraftCheck();
 
-        mat1Nom.text = Recipes.listOfRecipes[currentRecipe].firstMaterial;
-        nombreMat1.text = mat1Quant.ToString()+" / "+Recipes.listOfRecipes[currentRecipe].firstMatQuantity.ToString();
+        mat1Nom.text = Recipes.listOfBasePods[currentRecipe].firstMaterial;
+        nombreMat1.text = mat1Quant.ToString()+" / "+Recipes.listOfBasePods[currentRecipe].firstMatQuantity.ToString();
 
-        mat2Nom.text = Recipes.listOfRecipes[currentRecipe].secondMaterial;
+        mat2Nom.text = Recipes.listOfBasePods[currentRecipe].secondMaterial;
         
-        if (Recipes.listOfRecipes[currentRecipe].secondMatQuantity == null)
+        if (Recipes.listOfBasePods[currentRecipe].secondMatQuantity == null)
         {
             nombreMat2.text = null;
         }
         else
         {
-            nombreMat2.text = mat2Quant.ToString()+" / "+Recipes.listOfRecipes[currentRecipe].secondMatQuantity.ToString();
+            nombreMat2.text = mat2Quant.ToString()+" / "+Recipes.listOfBasePods[currentRecipe].secondMatQuantity.ToString();
         }
 
-        mat3Nom.text = Recipes.listOfRecipes[currentRecipe].thirdMaterial;
-        if (Recipes.listOfRecipes[currentRecipe].thirdMatQuantity == null)
+        mat3Nom.text = Recipes.listOfBasePods[currentRecipe].thirdMaterial;
+        if (Recipes.listOfBasePods[currentRecipe].thirdMatQuantity == null)
         {
             nombreMat3.text = null;
         }
         else
         {
-            nombreMat3.text = mat3Quant.ToString()+" / "+Recipes.listOfRecipes[currentRecipe].thirdMatQuantity.ToString();
+            nombreMat3.text = mat3Quant.ToString()+" / "+Recipes.listOfBasePods[currentRecipe].thirdMatQuantity.ToString();
         }
         
 
