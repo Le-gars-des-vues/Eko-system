@@ -131,32 +131,40 @@ public class PickableObject : MonoBehaviour
             bool hasBeenPlaced = false;
             InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
             ItemData itemData = Instantiate(item.itemData);
-            for (int i = hotbar.Count - 1; i > 0; i--)
+
+            if (gameObject.tag != "Ressource")
             {
-                if (hotbar[i].GetComponent<ItemGrid>().GetItem(0, 0) == null)
+                for (int i = hotbar.Count - 1; i > 0; i--)
                 {
-                    inventory = hotbar[i].GetComponent<ItemGrid>();
-                    itemData.width = itemData.hotbarWidth;
-                    itemData.height = itemData.hotbarHeight;
+                    if (hotbar[i].GetComponent<ItemGrid>().GetItem(0, 0) == null)
+                    {
+                        inventory = hotbar[i].GetComponent<ItemGrid>();
+                        itemData.width = itemData.hotbarWidth;
+                        itemData.height = itemData.hotbarHeight;
 
-                    inventoryItem.Set(itemData, inventory);
-                    inventoryItem.stackAmount = item.stackAmount;
+                        inventoryItem.Set(itemData, inventory);
+                        inventoryItem.stackAmount = item.stackAmount;
 
-                    inventory.PlaceItem(inventoryItem, 0, 0);
-                    hasBeenPlaced = true;
-                    break;
+                        inventory.PlaceItem(inventoryItem, 0, 0);
+                        hasBeenPlaced = true;
+                        break;
+                    }
                 }
             }
+            
             if (inventory == null)
                 inventory = playerInventory;
 
-            inventoryItem.Set(itemData, inventory);
-            inventoryItem.stackAmount = item.stackAmount;
-
             if (!hasBeenPlaced)
+            {
+                inventoryItem.Set(itemData, inventory);
+                inventoryItem.stackAmount = item.stackAmount;
                 InsertItem(inventoryItem);
+            }
 
             itemInInventory = inventoryItem.gameObject;
+            if (gameObject.tag == "Ressource")
+                itemInInventory.tag = "Ressource";
         }
 
         if (gameObject.tag != "Ressource")

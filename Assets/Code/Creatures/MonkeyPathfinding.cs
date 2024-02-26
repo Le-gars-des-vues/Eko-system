@@ -21,6 +21,8 @@ public class MonkeyPathfinding : MonoBehaviour
 
     [SerializeField] MonkeyMovement monkey;
     [SerializeField] float pathFollowThreshold;
+    [SerializeField] float pathFollowMaxDistance;
+    float closestWaypointDistance = 1000f;
 
     public void NewTarget(GameObject _target)
     {
@@ -107,6 +109,19 @@ public class MonkeyPathfinding : MonoBehaviour
 
                 //Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - new Vector2(transform.position.x, transform.position.y));
                 //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
+            }
+
+            if (Vector2.Distance(transform.position, path.lookPoints[pathIndex]) > pathFollowMaxDistance)
+            {
+                for (int i = pathIndex; i < path.lookPoints.Length; i++)
+                {
+                    float dist = Vector2.Distance(path.lookPoints[i], transform.position);
+                    if (dist < closestWaypointDistance)
+                    {
+                        closestWaypointDistance = dist;
+                        pathIndex = i;
+                    }
+                }
             }
             yield return null;
         }

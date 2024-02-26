@@ -82,6 +82,10 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private CapsuleCollider2D playerCollider;
 
     private VinePlayerController vineController;
+    private GameObject theBase;
+
+    [Header("Upgrade Variables")]
+    public bool hasDoubleJump;
 
     private void Awake()
     {
@@ -110,6 +114,8 @@ public class PlayerPermanent : MonoBehaviour
         //On va chercher le script de vigne
         vineController = GetComponent<VinePlayerController>();
         invisible = new Color(255, 255, 255, 0);
+
+        theBase = GameObject.FindGameObjectWithTag("Base");
     }
 
     // Update is called once per frame
@@ -125,6 +131,13 @@ public class PlayerPermanent : MonoBehaviour
             SetBar(thirstSlider, currentThirst);
         }
         */
+        if (theBase.GetComponent<Base>().isInside)
+        {
+            if (!isInBase)
+                isInBase = true;
+            else
+                isInBase = false;
+        }
 
         //Dans l'eau, l'oxygen descend
         if (GetComponent<WaterPlayerController>().enabled == true)
@@ -230,25 +243,41 @@ public class PlayerPermanent : MonoBehaviour
             staminaDepleted = true;
     }
 
-    public void ChangeHp(float value, GameObject otherObject, bool isLosingHp)
+    public void ChangeHp(float value, bool isLosingHp, GameObject otherObject = null)
     {
-        if (isLosingHp && !isInvincible)
+        if (isLosingHp)
         {
-            isInvincible = true;
-
-            //Hitstun
-            StartCoroutine(Hitstun(hitStunDuration));
-
-            //Si le joueur n'est pas mort, il flash blanc et profite d'un moment d'invincibilite
-            if (currentHp > 0)
+            if (!isInvincible)
             {
-                StartCoroutine(FlashWhite(playerGFX, flashWhiteDuration));
-                StartCoroutine(InvicibilityFrames(invisibilityDuration));
-            }
-            Vector2 direction = (transform.position - otherObject.transform.position).normalized;
-            playerRb.AddForce(new Vector2(direction.x, 0.2f) * knockBackForce, ForceMode2D.Impulse);
+                isInvincible = true;
 
-            currentHp += value;
+                //Hitstun
+                StartCoroutine(Hitstun(hitStunDuration));
+
+                //Si le joueur n'est pas mort, il flash blanc et profite d'un moment d'invincibilite
+                if (currentHp > 0)
+                {
+                    StartCoroutine(FlashWhite(playerGFX, flashWhiteDuration));
+                    StartCoroutine(InvicibilityFrames(invisibilityDuration));
+                }
+                Vector2 direction = (transform.position - otherObject.transform.position).normalized;
+                playerRb.AddForce(new Vector2(direction.x, 0.2f) * knockBackForce, ForceMode2D.Impulse);
+
+                if (currentHp + value > maxHp)
+                    currentHp = maxHp;
+                else
+                    currentHp += value;
+
+                SetBar(hpSlider, currentHp);
+            }
+        }
+        else
+        {
+            if (currentHp + value > maxHp)
+                currentHp = maxHp;
+            else
+                currentHp += value;
+
             SetBar(hpSlider, currentHp);
         }
     }
@@ -299,21 +328,11 @@ public class PlayerPermanent : MonoBehaviour
     public void EquipObject(GameObject obj)
     {
         objectInRightHand = obj;
-
-        /* Utilisation de la main gauche
-        else
-            objectInLeftHand = obj;
-        */
     }
 
     public void UnequipObject()
     {
         objectInRightHand = null;
-
-        /* Utilisation de la main gauche
-        else
-            objectInLeftHand = null;
-        */
     }
 
     public void EquipMultiTool(bool equipped)
@@ -347,7 +366,7 @@ public class PlayerPermanent : MonoBehaviour
         }
     }
     
-    private void ShowOrHideInventory(bool show, bool storage, bool isInBase)
+    public void ShowOrHideInventory(bool show, bool storage, bool isInBase)
     {
         if (show && playerInventory != null)
         {
@@ -438,7 +457,7 @@ public class PlayerPermanent : MonoBehaviour
         isInvincible = false;
     }
 
-    private bool CanOpenStorage()
+    public bool CanOpenStorage()
     {
         return isInBase && hasBuiltStorage;
     }

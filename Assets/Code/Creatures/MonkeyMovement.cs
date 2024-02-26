@@ -41,6 +41,7 @@ public class MonkeyMovement : MonoBehaviour
     [SerializeField] Vector2 ledgePos;
     [SerializeField] float ledgeOffset;
     [SerializeField] [Range(0, 1)] float ledgeRaysStep;
+    bool sensorUp = false;
 
     [Header("Sight Variables")]
     [SerializeField] Transform monkeyHead;
@@ -60,7 +61,8 @@ public class MonkeyMovement : MonoBehaviour
     float startAngle;
 
     [SerializeField] Transform target;
-    [SerializeField] Transform testTarget;
+    bool isSearchingForTarget;
+    [SerializeField] Transform jumpTarget;
 
 
     // Start is called before the first frame update
@@ -82,6 +84,10 @@ public class MonkeyMovement : MonoBehaviour
 
         if (pathfinding.isPathfinding)
         {
+            if (isSearchingForTarget)
+                isSearchingForTarget = false;
+
+            Debug.Log(Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], transform.position));
             if (Mathf.Abs(rb.velocity.x) > Mathf.Abs(rb.velocity.y))
             {
                 if (pathfinding.path != null)
@@ -92,15 +98,19 @@ public class MonkeyMovement : MonoBehaviour
                 }
             }
         }
-        else if (target != null)
+        else
         {
-            //if (Mathf.Abs(rb.velocity.x) > Mathf.Abs(rb.velocity.y)
+            if (!isSearchingForTarget)
+                isSearchingForTarget = true;
 
-            //Debug.Log(pathfinding.target.position.x - transform.position.x);
-            targetIsRight = (target.position.x - transform.position.x) > 0 ? true : false;
-            if (targetIsRight != isFacingRight)
+            if (isSearchingForTarget)
             {
-                Turn();
+                //Debug.Log(pathfinding.target.position.x - transform.position.x);
+                targetIsRight = (target.position.x - transform.position.x) > 0 ? true : false;
+                if (targetIsRight != isFacingRight)
+                {
+                    Turn();
+                }
             }
         }
 
@@ -109,10 +119,18 @@ public class MonkeyMovement : MonoBehaviour
             target.position = new Vector2(ledgePos.x + ledgeOffset, transform.position.y);
             if (Vector2.Distance(target.position, transform.position) < 0.7f)
             {
-                pathfinding.NewTarget(GameObject.FindGameObjectWithTag("Player"));
-                target.position = ledgePos;
-                StartCoroutine(Jump(1));
-                ledgeFound = false;
+                if (sensorUp)
+                {
+                    pathfinding.NewTarget(GameObject.FindGameObjectWithTag("Player"));
+                    target.position = ledgePos;
+                    StartCoroutine(Jump(1));
+                    ledgeFound = false;
+                }
+                else
+                {
+                    pathfinding.NewTarget(GameObject.FindGameObjectWithTag("Player"));
+                    ledgeFound = false;
+                }
             }
         }
     }
@@ -156,12 +174,6 @@ public class MonkeyMovement : MonoBehaviour
                     {
                         upwardSensor[i] = (Physics2D.Raycast(new Vector2((transform.position.x - ((upwardSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + 2), Vector2.up, 5f, LayerMask.GetMask("Ground")));
                     }
-                    /*
-                    for (int i = upwardSensor.Length / 2; i < upwardSensor.Length; i++)
-                    {
-                        upwardSensor[i] = (Physics2D.Raycast(new Vector2((transform.position.x + (i - upwardSensor.Length / 2) * ledgeRaysStep), transform.position.y + 2), Vector2.up, 5f, LayerMask.GetMask("Ground")));
-                    }
-                    */
                     for (int i = upwardSensor.Length / 2; i < upwardSensor.Length; i++)
                     {
                         if (upwardSensor[i] && i != upwardSensor.Length - 1)
@@ -171,6 +183,7 @@ public class MonkeyMovement : MonoBehaviour
                             {
                                 ledgePos = upwardSensor[i].point;
                                 ledgeFound = true;
+                                sensorUp = true;
                                 pathfinding.isPathfinding = false;
                                 ledgeOffset = Mathf.Abs(ledgeOffset);
                                 Debug.Log("Right");
@@ -188,6 +201,7 @@ public class MonkeyMovement : MonoBehaviour
                                 {
                                     ledgePos = upwardSensor[i].point;
                                     ledgeFound = true;
+                                    sensorUp = true;
                                     pathfinding.isPathfinding = false;
                                     ledgeOffset *= -1;
                                     Debug.Log("Left");
@@ -202,9 +216,52 @@ public class MonkeyMovement : MonoBehaviour
                         wallsCheckOffset = 3f;
                     }
                 }
+                else if (pathfinding.path.lookPoints[pathfinding.pathIndex].y - rb.position.y < 0 && !ledgeFound && isGrounded)
+                {
+                    for (int i = 0; i < upwardSensor.Length; i++)
+                    {
+                        upwardSensor[i] = (Physics2D.Raycast(new Vector2((transform.position.x - ((upwardSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + 2), Vector2.down, 5f, LayerMask.GetMask("Ground")));
+                    }
+                    for (int i = upwardSensor.Length / 2; i < upwardSensor.Length; i++)
+                    {
+                        if (upwardSensor[i] && i != upwardSensor.Length - 1)
+                        {
+                            Debug.DrawLine(new Vector2((transform.position.x - ((upwardSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + 2), upwardSensor[i].point, Color.green);
+                            if (!upwardSensor[i + 1])
+                            {
+                                ledgePos = upwardSensor[i].point;
+                                ledgeFound = true;
+                                sensorUp = false;
+                                pathfinding.isPathfinding = false;
+                                ledgeOffset = Mathf.Abs(ledgeOffset);
+                                Debug.Log("Right");
+                                break;
+                            }
+                        }
+                    }
+                    if (!ledgeFound)
+                    {
+                        for (int i = 0; i < upwardSensor.Length / 2; i++)
+                        {
+                            if (upwardSensor[i] && i != 0)
+                            {
+                                if (!upwardSensor[i - 1])
+                                {
+                                    ledgePos = upwardSensor[i].point;
+                                    ledgeFound = true;
+                                    sensorUp = false;
+                                    pathfinding.isPathfinding = false;
+                                    ledgeOffset *= -1;
+                                    Debug.Log("Left");
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
-        else if (target != null)
+        else if (isSearchingForTarget)
         {
             if (Mathf.Abs(target.position.x - rb.position.x) > 0.1f)
             {
@@ -253,11 +310,9 @@ public class MonkeyMovement : MonoBehaviour
                     {
                         if (!isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
                         {
-                            Debug.Log("ready to jump");
                             target.position = Vision(pathfinding.path.lookPoints[pathfinding.pathIndex]);
                             if (new Vector2(target.position.x, target.position.y) != Vector2.zero)
                             {
-                                Debug.Log("Jumping");
                                 StartCoroutine(Jump(-1));
                             }
                         }
@@ -287,11 +342,9 @@ public class MonkeyMovement : MonoBehaviour
                     {
                         if (isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
                         {
-                            Debug.Log("ready to jump");
                             target.position = Vision(pathfinding.path.lookPoints[pathfinding.pathIndex]);
                             if (new Vector2(target.position.x, target.position.y) != Vector2.zero)
                             {
-                                Debug.Log("Jumping");
                                 StartCoroutine(Jump(-1));
                             }
                         }
@@ -364,7 +417,7 @@ if (pathfinding.isPathfinding)
         jumpDirection.y += jumpYOffset;
         Vector2 jumpPoint = rb.position + jumpDirection;
 
-        testTarget.position = jumpPoint;
+        jumpTarget.position = jumpPoint;
         Debug.Log(Vector2.Distance(new Vector2(target.position.x, target.position.y), rb.position));
 
         float timer = 0;

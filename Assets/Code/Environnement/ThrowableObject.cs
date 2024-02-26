@@ -70,8 +70,6 @@ public class ThrowableObject : MonoBehaviour
     {
         if (objectToThrow.tag == "Spear" || objectToThrow.GetComponent<InventoryItem>().stackAmount == 1)
         {
-            objectToThrow.transform.parent = null;
-
             Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectToThrow.transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             objectToThrow.transform.rotation = Quaternion.Euler(0, 0, angle);
