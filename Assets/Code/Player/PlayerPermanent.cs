@@ -59,6 +59,8 @@ public class PlayerPermanent : MonoBehaviour
     public float nearestRessourceDistance = 10;
     private GameObject nearestRessource;
     public bool isThrowing = false;
+    [SerializeField] MultiTool multiTool;
+    public bool isUsingMultiTool;
 
     [Header("Inventory Variables")]
     public bool inventoryOpen = false;
@@ -314,6 +316,20 @@ public class PlayerPermanent : MonoBehaviour
         */
     }
 
+    public void EquipMultiTool(bool equipped)
+    {
+        if (equipped)
+        {
+            objectInRightHand = multiTool.gameObject;
+            multiTool.UseMultiTool(true);
+        }
+        else
+        {
+            objectInRightHand = null;
+            multiTool.UseMultiTool(false);
+        }
+    }
+
     private void Turn()
     {
         Vector3 scale = transform.localScale;
@@ -430,5 +446,11 @@ public class PlayerPermanent : MonoBehaviour
     private Vector2 GetInput()
     {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    }
+
+    public void ResetFeetPosition()
+    {
+        gameObject.transform.Find("RightLegSolver").transform.Find("RightLegSolver_Target").GetComponent<PlayerLegAnimation>().ResetPosition();
+        gameObject.transform.Find("LeftLegSolver").transform.Find("LeftLegSolver_Target").GetComponent<PlayerLegAnimation>().ResetPosition();
     }
 }

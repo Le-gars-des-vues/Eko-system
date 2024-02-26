@@ -14,6 +14,7 @@ public class CameraLookAt : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        vCam.Follow = player;
     }
 
     private void Update()
@@ -35,6 +36,7 @@ public class CameraLookAt : MonoBehaviour
 
         targetPos.x = Mathf.Clamp(targetPos.x, -xThreshold + player.position.x, xThreshold + player.position.x);
         targetPos.y = Mathf.Clamp(targetPos.y, -yThreshold + player.position.y, yThreshold + player.position.y);
+        targetPos.z = 0;
 
         this.transform.position = targetPos;
     }

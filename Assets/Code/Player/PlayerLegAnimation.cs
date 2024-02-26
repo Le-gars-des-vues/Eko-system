@@ -39,11 +39,7 @@ public class PlayerLegAnimation : MonoBehaviour
     void Start()
     {
         //On fixe la cible initiale au sol
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -Vector2.up, 12f, LayerMask.GetMask("Ground"));
-        if (hit.collider != null)
-        {
-            currentTarget.position = new Vector2(hit.point.x, hit.point.y);
-        }
+        ResetPosition();
 
         //Commence en regardant vers la droite
         isFacingRight = true;
@@ -183,7 +179,7 @@ public class PlayerLegAnimation : MonoBehaviour
         desiredTarget.localPosition = position;
     }
 
-    void ResetPosition()
+    public void ResetPosition()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 2f, LayerMask.GetMask("Ground"));
         if (hit.collider != null)

@@ -203,7 +203,7 @@ public class PlayerArmAnimation : MonoBehaviour
                                 armMovementTime = Time.time;
 
                                 //Si la souris de ne va pas dans la meme direction que le joueur regarde
-                                if ((isPointingRight != facingDirection && lookingUp != isPointingUp) && Vector2.Distance(player.transform.position, mousePos) < 15f)
+                                if ((isPointingRight != facingDirection && lookingUp != isPointingUp) && Vector2.Distance(player.transform.position, mousePos) < 25f)
                                 {
                                     //La main recule
                                     Vector2 offset = pickupInitialPos - mousePos;
@@ -228,9 +228,13 @@ public class PlayerArmAnimation : MonoBehaviour
                         }
                     }
                 }
-                else if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "Usable")
+                else if (player.GetComponent<PlayerPermanent>().objectInRightHand.tag == "MultiTool")
                 {
-
+                    pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
+                    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Vector2 offset = mousePos - pickupInitialPos;
+                    armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Time.deltaTime);
                 }
             }
             else if (player.GetComponent<PlayerPermanent>().objectInRightHand != null && gameObject.name == "LeftArmSolver_Target")

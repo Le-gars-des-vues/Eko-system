@@ -8,7 +8,7 @@ public class MonkeyPathfinding : MonoBehaviour
     const float MIN_PATH_UPDATE_TIME = 0.2f;
     const float PATH_UPDATE_MOVE_THRESHOLD = 0.5f;
 
-    public Transform target;
+    public Transform pathTarget;
     public float followPathSpeed;
     [SerializeField] float turnDist = 5;
     [SerializeField] float stoppingDistance = 10;
@@ -19,11 +19,21 @@ public class MonkeyPathfinding : MonoBehaviour
     public bool isPathfinding;
     public float speedPercent;
 
+    [SerializeField] MonkeyMovement monkey;
+    [SerializeField] float pathFollowThreshold;
+
     public void NewTarget(GameObject _target)
     {
         StopCoroutine(UpdatePath());
-        target = _target.transform;
+        isPathfinding = true;
+        pathTarget = _target.transform;
         StartCoroutine(UpdatePath());
+    }
+
+    public void StopPathFinding()
+    {
+        StopCoroutine(UpdatePath());
+        isPathfinding = false;
     }
 
     public void OnPathFound(Vector2[] waypoints, bool pathSuccessful)
@@ -43,20 +53,20 @@ public class MonkeyPathfinding : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
         
-        if (target != null)
+        if (pathTarget != null)
         {
-            PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound), false);
+            PathRequestManager.RequestPath(new PathRequest(transform.position, pathTarget.position, OnPathFound), false);
 
             float sqrMoveThreshold = PATH_UPDATE_MOVE_THRESHOLD * PATH_UPDATE_MOVE_THRESHOLD;
-            Vector2 targetPosOld = target.position;
+            Vector2 targetPosOld = pathTarget.position;
 
             while (true)
             {
                 yield return new WaitForSeconds(MIN_PATH_UPDATE_TIME);
                 //Debug.Log((new Vector2(target.position.x, transform.position.y) - targetPosOld).sqrMagnitude);
-                if ((new Vector2(target.position.x, target.position.y) - targetPosOld).sqrMagnitude > sqrMoveThreshold)
+                if ((new Vector2(pathTarget.position.x, pathTarget.position.y) - targetPosOld).sqrMagnitude > sqrMoveThreshold)
                 {
-                    PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound), false);
+                    PathRequestManager.RequestPath(new PathRequest(transform.position, pathTarget.position, OnPathFound), false);
                     targetPosOld = new Vector2(transform.position.x, transform.position.y);
                 }
             }
@@ -74,7 +84,8 @@ public class MonkeyPathfinding : MonoBehaviour
         while (isPathfinding)
         {
             Vector2 pos = new Vector2(transform.position.x, transform.position.y);
-            while (path.turnBoundaries[pathIndex].HasCrossedLine(pos))
+            //Debug.Log(Vector2.Distance(transform.position, path.lookPoints[pathIndex]));
+            while (path.turnBoundaries[pathIndex].HasCrossedLine(pos) && Vector2.Distance(transform.position, path.lookPoints[pathIndex]) < pathFollowThreshold)
             {
                 if (pathIndex == path.finishLineIndex)
                 {
@@ -106,6 +117,8 @@ public class MonkeyPathfinding : MonoBehaviour
         if (path != null)
         {
             path.DrawWithGizmos();
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(path.lookPoints[pathIndex], transform.position);
         }
     }
 }

@@ -68,7 +68,6 @@ public class ThrowableObject : MonoBehaviour
 
     IEnumerator Throw(GameObject objectToThrow)
     {
-        Debug.Log("OK");
         if (objectToThrow.tag == "Spear" || objectToThrow.GetComponent<InventoryItem>().stackAmount == 1)
         {
             objectToThrow.transform.parent = null;
@@ -121,6 +120,7 @@ public class ThrowableObject : MonoBehaviour
                 objectToThrow.GetComponent<InventoryItem>().onGridPositionY).GetComponent<Image>().sprite =
                 objectToThrow.GetComponent<InventoryItem>().sprites[(objectToThrow.GetComponent<InventoryItem>().sprites.Length + 1) - objectToThrow.GetComponent<InventoryItem>().stackAmount];
 
+            objectToThrow.GetComponent<InventoryItem>().stackAmount--;
             objectToThrow.GetComponent<PickableObject>().itemInInventory.GetComponent<InventoryItem>().stackAmount--;
 
             yield return new WaitForSecondsRealtime(0.5f);
