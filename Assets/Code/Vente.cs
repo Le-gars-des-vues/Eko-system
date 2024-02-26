@@ -18,6 +18,11 @@ public class Vente : MonoBehaviour
     public GameObject quotaManager;
     [SerializeField] private TextMeshProUGUI quotaText;
 
+    private void Start()
+    {
+        quotaManager = GameObject.Find("Cycle");
+    }
+
     public void VenteItem()
     {
         tempHeight=inventaireVente.GetComponent<ItemGrid>().GetGridSizeHeight();
