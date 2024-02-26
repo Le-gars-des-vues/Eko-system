@@ -453,4 +453,23 @@ public class PlayerPermanent : MonoBehaviour
         gameObject.transform.Find("RightLegSolver").transform.Find("RightLegSolver_Target").GetComponent<PlayerLegAnimation>().ResetPosition();
         gameObject.transform.Find("LeftLegSolver").transform.Find("LeftLegSolver_Target").GetComponent<PlayerLegAnimation>().ResetPosition();
     }
+
+    //Je met ça la pour mettre une manière de voir si on est dans la base ou non, tu peux changer ça si tu veux! -Pascal
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Base")
+        {
+            isInBase = true;
+            Debug.Log(isInBase);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Base")
+        {
+            isInBase = false;
+            Debug.Log(isInBase);
+        }
+    }
 }

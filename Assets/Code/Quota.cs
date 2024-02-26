@@ -5,14 +5,26 @@ using UnityEngine;
 
 public class Quota : MonoBehaviour
 {
-    public int quota=0;
-    public int profitActuels=0;
+    public float quota;
+    public GameObject gestionnaireVente;
     public TextMeshProUGUI textQuota;
 
+    public float getQuota()
+    {
+        return quota;
+    }
+
+    public void nouveauQuota()
+    {
+        gestionnaireVente.GetComponent<Vente>().profit = 0;
+        quota += (quota * 1.1f) + (gestionnaireVente.GetComponent<Vente>().calculStorage()*0.1f);
+        quota = Mathf.RoundToInt(quota);
+        textQuota.text = 0 + " / " + quota + "$";
+    }
 
     private void Start()
     {
         textQuota = GameObject.Find("QuotaText").GetComponent<TextMeshProUGUI>();
-        textQuota.text = profitActuels + " / " + quota + "$";
+        textQuota.text = 0 + " / " + quota + "$";
     }
 }
