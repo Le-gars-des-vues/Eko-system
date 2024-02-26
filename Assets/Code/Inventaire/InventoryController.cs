@@ -26,7 +26,7 @@ public class InventoryController : MonoBehaviour
 
 
     [SerializeField] List<ItemData> items;
-    [SerializeField] List<ItemData> craftables;
+    [SerializeField] List<ItemData> craftables = new List<ItemData>();
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
 

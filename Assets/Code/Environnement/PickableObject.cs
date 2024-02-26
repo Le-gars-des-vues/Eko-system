@@ -153,7 +153,7 @@ public class PickableObject : MonoBehaviour
             inventoryItem.Set(itemData, inventory);
             inventoryItem.stackAmount = item.stackAmount;
 
-            if (hasBeenPlaced)
+            if (!hasBeenPlaced)
                 InsertItem(inventoryItem);
 
             itemInInventory = inventoryItem.gameObject;
@@ -174,7 +174,7 @@ public class PickableObject : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
 
                 //gameObject.transform.SetParent(rightHand.transform);
-                sprite.sortingOrder = 8;
+                sprite.sortingOrder = 7;
                 player.EquipObject(gameObject);
                 isPickedUp = true;
             }
@@ -246,7 +246,6 @@ public class PickableObject : MonoBehaviour
 
         if (posOnGrid == null) 
         {
-            Debug.Log("OH OH");
             return; 
         }
 

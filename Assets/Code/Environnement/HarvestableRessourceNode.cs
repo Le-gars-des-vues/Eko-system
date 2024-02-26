@@ -16,10 +16,13 @@ public class HarvestableRessourceNode : MonoBehaviour
     [SerializeField] float ressourceAmount;
     [SerializeField] float minDistanceToHarvest;
 
+    PlayerPermanent player;
+
     // Start is called before the first frame update
     void Start()
     {
         ogMaterial = sprite.material;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
     private void Update()
@@ -41,7 +44,7 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) < minDistanceToHarvest)
+        if (Vector2.Distance(player.gameObject.transform.position, transform.position) < minDistanceToHarvest && player.isUsingMultiTool)
             sprite.material = outlineMaterial;
     }
 
@@ -54,7 +57,7 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) < minDistanceToHarvest)
+        if (Vector2.Distance(player.gameObject.transform.position, transform.position) < minDistanceToHarvest && player.isUsingMultiTool)
             sprite.material = outlineMaterial;
         else
             sprite.material = ogMaterial;

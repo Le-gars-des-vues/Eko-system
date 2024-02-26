@@ -12,6 +12,8 @@ public class HotbarManager : MonoBehaviour
     public PlayerPermanent player;
     public List<ItemGrid> grids;
 
+    [SerializeField] GameObject multiToolHighlight;
+
     private void Start()
     {
         grids = new List<ItemGrid>();
@@ -45,6 +47,12 @@ public class HotbarManager : MonoBehaviour
                 currentlySelected = hotbars.Length - 1;
             }
 
+            if (player.isUsingMultiTool)
+            {
+                multiToolHighlight.SetActive(false);
+                player.EquipMultiTool(false);
+            }
+
             if (grids[currentlySelected].GetItem(0, 0) != null)
                 SwitchItem();
 
@@ -69,6 +77,12 @@ public class HotbarManager : MonoBehaviour
                 currentlySelected = 0;
             }
 
+            if (player.isUsingMultiTool)
+            {
+                multiToolHighlight.SetActive(false);
+                player.EquipMultiTool(false);
+            }
+
             if (grids[currentlySelected].GetItem(0, 0) != null)
                 SwitchItem();
 
@@ -81,6 +95,35 @@ public class HotbarManager : MonoBehaviour
                 else
                 {
                     hotbarHighlights[i].SetActive(false);
+                }
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            if (multiToolHighlight != null)
+            {
+                if (!player.isUsingMultiTool)
+                {
+                    hotbarHighlights[currentlySelected].SetActive(false);
+                    multiToolHighlight.SetActive(true);
+
+                    if (player.objectInRightHand != null)
+                        Destroy(player.objectInRightHand);
+                    player.UnequipObject();
+
+                    player.EquipMultiTool(true);
+                }
+                else
+                {
+                    hotbarHighlights[currentlySelected].SetActive(true);
+                    multiToolHighlight.SetActive(false);
+                    player.EquipMultiTool(false);
+
+                    if (grids[currentlySelected].GetItem(0, 0) != null)
+                    {
+                        SpawnObject(currentlySelected, out GameObject objectSpawned);
+                        player.EquipObject(objectSpawned);
+                    }
                 }
             }
         }

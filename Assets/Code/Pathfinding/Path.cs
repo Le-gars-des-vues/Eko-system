@@ -42,7 +42,7 @@ public class Path
         Gizmos.color = Color.green;
         foreach (Vector2 p in lookPoints)
         {
-            Gizmos.DrawCube(p + Vector2.up, new Vector2(0.5f, 0.5f));
+            Gizmos.DrawCube(p, new Vector2(0.5f, 0.5f));
         }
 
         /*

@@ -4,29 +4,63 @@ using UnityEngine;
 
 public class MonkeyMovement : MonoBehaviour
 {
-    private MonkeyPathfinding pathfinding;
+    [SerializeField] MonkeyPathfinding pathfinding;
     private Rigidbody2D rb;
+
+    [Header("Hover Variables")]
     [SerializeField] private float monkeyHeight;
     [SerializeField] float springStrenght;
     [SerializeField] float springDamper;
+    [SerializeField] float uprightSpringStrenght;
+    [SerializeField] float uprightSpringDamper;
 
     [SerializeField] private float speed;
     [SerializeField] float rotateSpeed;
+
+    [Header("Ground Variables")]
     [SerializeField] Vector2 groundCheckOffsets;
     [SerializeField] float groundCheckAngle;
     [SerializeField] float wallsCheckOffset;
+
+    [Header("Climb Variables")]
     [SerializeField] float climbUpForce;
     [SerializeField] float climbUpAngle;
-    [SerializeField] float jumpForce;
+    [SerializeField] float climbUpOffset;
+    bool isClimbing;
 
     public bool isFacingRight = false;
-    public bool targetIsRight;
+    private bool targetIsRight;
+
     float facingDirection;
     public bool isGrounded;
 
-    [SerializeField] float speedFactor;
-    [SerializeField] float fakeGravity;
-    private bool isOnDifficultTerrain;
+    [Header("Sensor Variables")]
+    [SerializeField] int numberOfRays;
+    RaycastHit2D[] upwardSensor;
+    public bool ledgeFound = false;
+    [SerializeField] Vector2 ledgePos;
+    [SerializeField] float ledgeOffset;
+    [SerializeField] [Range(0, 1)] float ledgeRaysStep;
+
+    [Header("Sight Variables")]
+    [SerializeField] Transform monkeyHead;
+    [SerializeField] float sightAngle = 90f;
+    [SerializeField] int rayCount = 10;
+    [SerializeField] float rayDistance = 5f;
+    [SerializeField] LayerMask layerMask;
+
+    [Header("Jump Variables")]
+    [SerializeField] float jumpYOffset;
+    [SerializeField] float jumpDownAngle;
+    [SerializeField] Vector2 jumpForce;
+
+    bool isJumping;
+
+    float angleStep;
+    float startAngle;
+
+    [SerializeField] Transform target;
+    [SerializeField] Transform testTarget;
 
 
     // Start is called before the first frame update
@@ -34,122 +68,325 @@ public class MonkeyMovement : MonoBehaviour
     {
         pathfinding = GetComponent<MonkeyPathfinding>();
         rb = GetComponent<Rigidbody2D>();
+        upwardSensor = new RaycastHit2D[numberOfRays];
+        layerMask = LayerMask.GetMask("Ground");
+        Debug.DrawLine(transform.position, target.position, Color.red, 25);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Vision();
+
         facingDirection = isFacingRight ? 1 : -1;
 
         if (pathfinding.isPathfinding)
         {
             if (Mathf.Abs(rb.velocity.x) > Mathf.Abs(rb.velocity.y))
             {
-                //Debug.Log(pathfinding.target.position.x - transform.position.x);
-                targetIsRight = (pathfinding.path.lookPoints[pathfinding.pathIndex].x - transform.position.x) > 0 ? true : false;
+                if (pathfinding.path != null)
+                    targetIsRight = (pathfinding.path.lookPoints[pathfinding.pathIndex].x - transform.position.x) > 0 ? true : false;
                 if (targetIsRight != isFacingRight)
                 {
                     Turn();
                 }
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.P))
+        else if (target != null)
         {
-            if (!isOnDifficultTerrain)
-                DifficultTerrainMode(true);
-            else
-                DifficultTerrainMode(false);
+            //if (Mathf.Abs(rb.velocity.x) > Mathf.Abs(rb.velocity.y)
+
+            //Debug.Log(pathfinding.target.position.x - transform.position.x);
+            targetIsRight = (target.position.x - transform.position.x) > 0 ? true : false;
+            if (targetIsRight != isFacingRight)
+            {
+                Turn();
+            }
+        }
+
+        if (ledgeFound)
+        {
+            target.position = new Vector2(ledgePos.x + ledgeOffset, transform.position.y);
+            if (Vector2.Distance(target.position, transform.position) < 0.7f)
+            {
+                pathfinding.NewTarget(GameObject.FindGameObjectWithTag("Player"));
+                target.position = ledgePos;
+                StartCoroutine(Jump(1));
+                ledgeFound = false;
+            }
         }
     }
     
     private void FixedUpdate()
     {
-        if (!isOnDifficultTerrain)
+        //Navigation
+        RaycastHit2D grounded = Physics2D.Raycast(origin: new Vector2(transform.position.x + 0.75f * facingDirection, transform.position.y), direction: Vector2.down, monkeyHeight * 1.75f, LayerMask.GetMask("Ground"));
+        isGrounded = grounded;
+        /*
+        if (grounded.collider != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(origin: new Vector2(transform.position.x + 0.5f * facingDirection, transform.position.y), direction: Vector2.down, 3f, LayerMask.GetMask("Ground"));
-            isGrounded = hit;
-            transform.up = Vector2.Lerp(transform.up, hit.normal, rotateSpeed * Time.deltaTime);
+            transform.up = Vector2.Lerp(transform.up, grounded.normal, rotateSpeed * Time.deltaTime);
+            Debug.Log(transform.up);
+        }
+        */
 
-            if (pathfinding.isPathfinding)
+        if (pathfinding.isPathfinding)
+        {
+            //Debug.Log(Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - rb.position.x));
+            if (Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - rb.position.x) > 0.1f)
             {
-                Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
-                Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * pathfinding.speedPercent * Time.deltaTime;
-                rb.AddForce(force);
-            }
-
-            RaycastHit2D climbWalls1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 1f), Vector2.right, wallsCheckOffset, LayerMask.GetMask("Ground"));
-            RaycastHit2D climbWalls2 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 1f), Vector2.left, wallsCheckOffset, LayerMask.GetMask("Ground"));
-            if (climbWalls1.collider != null || climbWalls2.collider != null)
-            {
-                rb.AddForce(new Vector2(0.1f * facingDirection, 1) * climbUpForce);
-                float angle = Mathf.LerpAngle(transform.eulerAngles.z, climbUpAngle * facingDirection, rotateSpeed * Time.deltaTime);
-                transform.eulerAngles = new Vector3(0, 0, angle);
+                if (!isClimbing)
+                {
+                    climbUpOffset = 0f;
+                    wallsCheckOffset = 2.07f;
+                }
+                if (isGrounded || rb.velocity.y >= 0)
+                {
+                    Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
+                    Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * pathfinding.speedPercent * Time.deltaTime;
+                    rb.AddForce(force);
+                }
             }
             else
             {
-                float angle = Mathf.LerpAngle(transform.eulerAngles.z, 0, rotateSpeed * Time.deltaTime);
-                transform.eulerAngles = new Vector3(0, 0, angle);
-
-                RaycastHit2D hover1 = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x, transform.position.y), Vector2.down, monkeyHeight * 2, LayerMask.GetMask("Ground"));
-                RaycastHit2D hover2 = Physics2D.Raycast(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y), Vector2.down, monkeyHeight * 2, LayerMask.GetMask("Ground"));
-                if (hover1.collider != null)
+                //isSearching = true;
+                if (pathfinding.path.lookPoints[pathfinding.pathIndex].y - rb.position.y > 0 && !ledgeFound && isGrounded)
                 {
-                    float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
-
-                    float difference = hover1.distance - monkeyHeight;
-                    float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
-
-                    rb.AddForce(Vector2.down * springForce);
-
-                    if (hover2.collider == null && !isFacingRight && !isGrounded)
+                    for (int i = 0; i < upwardSensor.Length; i++)
                     {
-                        rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
+                        upwardSensor[i] = (Physics2D.Raycast(new Vector2((transform.position.x - ((upwardSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + 2), Vector2.up, 5f, LayerMask.GetMask("Ground")));
                     }
-                }
-                else if (hover2.collider != null)
-                {
-                    float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
-
-                    float difference = hover2.distance - monkeyHeight;
-                    float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
-
-                    rb.AddForce(Vector2.down * springForce);
-
-                    if (hover1.collider == null && isFacingRight && !isGrounded)
+                    /*
+                    for (int i = upwardSensor.Length / 2; i < upwardSensor.Length; i++)
                     {
-                        rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
+                        upwardSensor[i] = (Physics2D.Raycast(new Vector2((transform.position.x + (i - upwardSensor.Length / 2) * ledgeRaysStep), transform.position.y + 2), Vector2.up, 5f, LayerMask.GetMask("Ground")));
+                    }
+                    */
+                    for (int i = upwardSensor.Length / 2; i < upwardSensor.Length; i++)
+                    {
+                        if (upwardSensor[i] && i != upwardSensor.Length - 1)
+                        {
+                            Debug.DrawLine(new Vector2((transform.position.x - ((upwardSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + 2), upwardSensor[i].point, Color.green);
+                            if (!upwardSensor[i + 1])
+                            {
+                                ledgePos = upwardSensor[i].point;
+                                ledgeFound = true;
+                                pathfinding.isPathfinding = false;
+                                ledgeOffset = Mathf.Abs(ledgeOffset);
+                                Debug.Log("Right");
+                                break;
+                            }
+                        }
+                    }
+                    if (!ledgeFound)
+                    {
+                        for (int i = 0; i < upwardSensor.Length / 2; i++)
+                        {
+                            if (upwardSensor[i] && i != 0)
+                            {
+                                if (!upwardSensor[i - 1])
+                                {
+                                    ledgePos = upwardSensor[i].point;
+                                    ledgeFound = true;
+                                    pathfinding.isPathfinding = false;
+                                    ledgeOffset *= -1;
+                                    Debug.Log("Left");
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (!ledgeFound)
+                    {
+                        climbUpOffset = 2.5f;
+                        wallsCheckOffset = 3f;
                     }
                 }
             }
+        }
+        else if (target != null)
+        {
+            if (Mathf.Abs(target.position.x - rb.position.x) > 0.1f)
+            {
+                Vector2 direction = (new Vector2(target.position.x, target.position.y) - rb.position).normalized;
+                Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * Time.deltaTime;
+                rb.AddForce(force);
+            }
+        }
+
+
+        //Mouvement
+        RaycastHit2D wallCheckRight = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.right, wallsCheckOffset, LayerMask.GetMask("Ground"));
+        RaycastHit2D wallCheckLeft = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.left, wallsCheckOffset, LayerMask.GetMask("Ground"));
+        RaycastHit2D climbWalls1 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.5f), Vector2.right, wallsCheckOffset, LayerMask.GetMask("Ground"));
+        RaycastHit2D climbWalls2 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.5f), Vector2.left, wallsCheckOffset, LayerMask.GetMask("Ground"));
+        RaycastHit2D climbWalls3 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + climbUpOffset), Vector2.left, wallsCheckOffset, LayerMask.GetMask("Ground"));
+        RaycastHit2D climbWalls4 = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + climbUpOffset), Vector2.right, wallsCheckOffset, LayerMask.GetMask("Ground"));
+        if (climbWalls1.collider != null || climbWalls2.collider != null || climbWalls3.collider != null || climbWalls4.collider != null)
+        {
+            isClimbing = true;
+            rb.AddForce(new Vector2(0.1f * facingDirection, 1) * climbUpForce);
+            float angle = Mathf.LerpAngle(transform.eulerAngles.z, climbUpAngle * facingDirection, rotateSpeed * Time.deltaTime);
+            transform.eulerAngles = new Vector3(0, 0, angle);
         }
         else
         {
-            if (pathfinding.isPathfinding)
+            if (isClimbing)
+                rb.AddForce(Vector2.right * facingDirection, ForceMode2D.Impulse);
+            isClimbing = false;
+            RaycastHit2D hover1 = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x, transform.position.y), Vector2.down, monkeyHeight * 1.5f, LayerMask.GetMask("Ground"));
+            RaycastHit2D hover2 = Physics2D.Raycast(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y), Vector2.down, monkeyHeight * 1.5f, LayerMask.GetMask("Ground"));
+            if (hover1.collider != null)
             {
-                Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
-                Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * speedFactor * pathfinding.speedPercent * Time.deltaTime;
-                rb.AddForce(force);
+                float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
 
-                Vector2 lookDir = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
-                transform.right = Vector2.Lerp(transform.right, lookDir * facingDirection, rotateSpeed * Time.deltaTime);
+                float difference = hover1.distance - monkeyHeight;
+                float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
 
-                RaycastHit2D closeToGround = Physics2D.Raycast(transform.position, -transform.up, monkeyHeight, LayerMask.GetMask("Ground"));
-                if (closeToGround.collider == null)
+                rb.AddForce(Vector2.down * springForce);
+
+                if (hover2.collider == null)
                 {
-                    rb.AddForce(-transform.up * fakeGravity);
+                    monkeyHeight = 1.20f;
+                    RaycastHit2D jumpCheck = Physics2D.Raycast(transform.position, Vector2.left, 7f, LayerMask.GetMask("Ground"));
+                    if (!jumpCheck)
+                    {
+                        if (!isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
+                        {
+                            Debug.Log("ready to jump");
+                            target.position = Vision(pathfinding.path.lookPoints[pathfinding.pathIndex]);
+                            if (new Vector2(target.position.x, target.position.y) != Vector2.zero)
+                            {
+                                Debug.Log("Jumping");
+                                StartCoroutine(Jump(-1));
+                            }
+                        }
+                        //rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
+                    }
+                }
+                else
+                {
+                    monkeyHeight = 1.5f;
+                    isJumping = false;
+                }
+            }
+            else if (hover2.collider != null)
+            {
+                float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
+
+                float difference = hover2.distance - monkeyHeight;
+                float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
+
+                rb.AddForce(Vector2.down * springForce);
+
+                if (hover1.collider == null)
+                {
+                    monkeyHeight = 1.20f;
+                    RaycastHit2D jumpCheck = Physics2D.Raycast(transform.position, Vector2.right, 7f, LayerMask.GetMask("Ground"));
+                    if (!jumpCheck)
+                    {
+                        if (isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
+                        {
+                            Debug.Log("ready to jump");
+                            target.position = Vision(pathfinding.path.lookPoints[pathfinding.pathIndex]);
+                            if (new Vector2(target.position.x, target.position.y) != Vector2.zero)
+                            {
+                                Debug.Log("Jumping");
+                                StartCoroutine(Jump(-1));
+                            }
+                        }
+                        //rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
+                    }
+                }
+                else
+                {
+                    monkeyHeight = 1.5f;
+                    isJumping = false;
+                }
+            }
+
+            if (grounded.collider != null)
+            {
+                Quaternion targetRot = Quaternion.Euler(grounded.normal);
+
+                Quaternion currentRot = transform.rotation;
+                Quaternion goalRot = ShortestRotation(targetRot, currentRot);
+
+                Vector3 rotAxis;
+                float rotDegrees;
+
+                goalRot.ToAngleAxis(out rotDegrees, out rotAxis);
+                rotAxis.Normalize();
+
+                float rotRadians = rotDegrees * Mathf.Deg2Rad;
+
+                rb.AddTorque((rotAxis.z * (rotRadians * uprightSpringStrenght)) - (rb.angularVelocity * uprightSpringDamper));
+            }
+            else
+            {
+                if (rb.velocity.y > 0 && !(hover1 || hover2))
+                {
+                    float angle = Mathf.LerpAngle(transform.eulerAngles.z, climbUpAngle * facingDirection, (rotateSpeed / 3) * Time.deltaTime);
+                    transform.eulerAngles = new Vector3(0, 0, angle);
+                }
+                else if (rb.velocity.y < 0)
+                {
+                    float angle = Mathf.LerpAngle(transform.eulerAngles.z, -jumpDownAngle * facingDirection, (rotateSpeed / 3) * Time.deltaTime);
+                    transform.eulerAngles = new Vector3(0, 0, angle);
                 }
             }
         }
     }
 
-    void DifficultTerrainMode(bool activated)
+    /*
+if (pathfinding.isPathfinding)
+{
+    Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
+    Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * speedFactor * pathfinding.speedPercent * Time.deltaTime;
+    rb.AddForce(force);
+
+    Vector2 lookDir = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
+    transform.right = Vector2.Lerp(transform.right, lookDir * facingDirection, rotateSpeed * Time.deltaTime);
+
+    RaycastHit2D closeToGround = Physics2D.Raycast(transform.position, -transform.up, monkeyHeight, LayerMask.GetMask("Ground"));
+    if (closeToGround.collider == null)
     {
-        isOnDifficultTerrain = activated;
-        rb.gravityScale = activated ? 0 : 1;
-        rb.drag = activated ? 1.5f : 0.5f;
+        rb.AddForce(-transform.up * fakeGravity);
     }
+}
+*/
     
+    IEnumerator Jump(int direction)
+    {
+        isJumping = true;
+        Vector2 jumpDirection = new Vector2(target.position.x, target.position.y) - rb.position;
+        jumpDirection.x -= (jumpDirection.x / 2) * facingDirection * direction;
+        jumpDirection.y += jumpYOffset;
+        Vector2 jumpPoint = rb.position + jumpDirection;
+
+        testTarget.position = jumpPoint;
+        Debug.Log(Vector2.Distance(new Vector2(target.position.x, target.position.y), rb.position));
+
+        float timer = 0;
+        float duration = 0.5f;
+        
+        float speedX = jumpPoint.x - rb.position.x;
+        float speedY = Mathf.Sqrt(2 * Physics.gravity.magnitude * Mathf.Max(jumpPoint.y - rb.position.y, 3f));
+        jumpForce = new Vector2(speedX, speedY);
+
+        //Debug.Log(jumpForce);
+        rb.velocity = Vector2.zero;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float targetAngle = Mathf.Lerp(0, 80, (target.position.y - rb.position.y) / 5);
+            float angle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle * facingDirection, timer / duration);
+            transform.eulerAngles = new Vector3(0, 0, angle);
+            yield return null;
+        }
+        //rb.AddForce(jumpForce, ForceMode2D.Impulse);
+        rb.velocity = jumpForce;
+    }
 
     void Turn()
     {
@@ -158,16 +395,88 @@ public class MonkeyMovement : MonoBehaviour
         gameObject.transform.localScale = scale;
 
         isFacingRight = !isFacingRight;
-        Debug.Log("OK");
+    }
+
+    Vector2 Vision(Vector2 target)
+    {
+        angleStep = sightAngle / (rayCount - 1);
+
+        // Start angle from left limit of sight angle
+        startAngle = -sightAngle / 2;
+
+        float distanceFromTarget = 1000f;
+
+        Vector2 targetPosition = Vector2.zero;
+
+        for (int i = 0; i < rayCount; i++)
+        {
+            // Calculate current angle
+            float angle = startAngle + angleStep * i;
+
+            // Calculate direction of the ray
+            Vector3 direction = Quaternion.Euler(0, 0, angle) * monkeyHead.transform.right * facingDirection;
+
+            // Cast a ray in the calculated direction
+            RaycastHit2D hit = Physics2D.Raycast(monkeyHead.transform.position, direction, rayDistance, layerMask);
+
+            // Check if the ray hits a platform collider
+            if (hit.collider != null)
+            {
+                Debug.DrawLine(monkeyHead.transform.position, hit.point, Color.green); // Visualize the ray
+                if (Vector2.Distance(target, hit.point) < distanceFromTarget)
+                {
+                    distanceFromTarget = Vector2.Distance(target, hit.point);
+                    targetPosition = hit.point;
+                }
+            }
+        }
+        //Debug.Log(targetPosition);
+        return targetPosition;
+    }
+
+    public static Quaternion ShortestRotation(Quaternion a, Quaternion b)
+    {
+        if (Quaternion.Dot(a, b) < 0)
+        {
+            return a * Quaternion.Inverse(Multiply(b, -1));
+        }
+        else return a * Quaternion.Inverse(b);
+    }
+
+    public static Quaternion Multiply(Quaternion input, float scalar)
+    {
+        return new Quaternion(input.x * scalar, input.y * scalar, input.z * scalar, input.w * scalar);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x, transform.position.y), Vector2.down * monkeyHeight * 2);
-        Gizmos.DrawRay(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y), Vector2.down * monkeyHeight * 2);
-        Gizmos.DrawRay(new Vector2(transform.position.x + 0.5f * facingDirection, transform.position.y), Vector2.down * 3f);
-        Gizmos.DrawRay(transform.position, Vector2.right * wallsCheckOffset);
-        Gizmos.DrawRay(transform.position, Vector2.left * wallsCheckOffset);
+        //HoverCheck
+        Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x, transform.position.y), Vector2.down * monkeyHeight * 1.5f);
+        Gizmos.DrawRay(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y), Vector2.down * monkeyHeight * 1.5f);
+        //Ground Check
+        Gizmos.DrawRay(new Vector2(transform.position.x + 0.75f * facingDirection, transform.position.y), Vector2.down * monkeyHeight * 1.75f);
+
+        //Wall Check
+        Gizmos.DrawRay(new Vector2(transform.position.x, transform.position.y - 0.5f), Vector2.left * wallsCheckOffset);
+        Gizmos.DrawRay(new Vector2(transform.position.x, transform.position.y + climbUpOffset), Vector2.left * wallsCheckOffset);
+        Gizmos.DrawRay(new Vector2(transform.position.x, transform.position.y - 0.5f), Vector2.right * wallsCheckOffset);
+        Gizmos.DrawRay(new Vector2(transform.position.x, transform.position.y + climbUpOffset), Vector2.right * wallsCheckOffset);
+
+        Gizmos.DrawRay(transform.position, Vector2.right * 7f);
+        Gizmos.DrawRay(transform.position, Vector2.left * 7f);
+        /*
+        if (pathfinding.isPathfinding)
+        {
+            for (int i = 0; i < upwardSensor.Length; i++)
+            {
+                Gizmos.DrawRay(new Vector2((transform.position.x - ((upwardSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + 2), Vector2.up * 5f);
+            }
+        }
+        */
+        if (ledgeFound)
+        {
+            Gizmos.DrawSphere(new Vector3(ledgePos.x, ledgePos.y, 0), 0.4f);
+        }
     }
 }
