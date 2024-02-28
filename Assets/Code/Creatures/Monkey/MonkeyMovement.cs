@@ -19,7 +19,6 @@ public class MonkeyMovement : MonoBehaviour
 
     [Header("Ground Variables")]
     [SerializeField] Vector2 groundCheckOffsets;
-    [SerializeField] float groundCheckAngle;
     [SerializeField] float wallsCheckOffset;
 
     [Header("Climb Variables")]
@@ -87,7 +86,7 @@ public class MonkeyMovement : MonoBehaviour
             if (isSearchingForTarget)
                 isSearchingForTarget = false;
 
-            Debug.Log(Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], transform.position));
+            //Debug.Log(Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], transform.position));
             if (Mathf.Abs(rb.velocity.x) > Mathf.Abs(rb.velocity.y))
             {
                 if (pathfinding.path != null)
@@ -148,7 +147,7 @@ public class MonkeyMovement : MonoBehaviour
         }
         */
 
-        if (pathfinding.isPathfinding)
+        if (pathfinding.isPathfinding && pathfinding.path != null)
         {
             //Debug.Log(Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - rb.position.x));
             if (Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - rb.position.x) > 0.1f)
@@ -308,12 +307,26 @@ public class MonkeyMovement : MonoBehaviour
                     RaycastHit2D jumpCheck = Physics2D.Raycast(transform.position, Vector2.left, 7f, LayerMask.GetMask("Ground"));
                     if (!jumpCheck)
                     {
-                        if (!isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
+                        if (pathfinding.isPathfinding)
                         {
-                            target.position = Vision(pathfinding.path.lookPoints[pathfinding.pathIndex]);
-                            if (new Vector2(target.position.x, target.position.y) != Vector2.zero)
+                            if (!isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
                             {
-                                StartCoroutine(Jump(-1));
+                                jumpTarget.position = Vision(pathfinding.path.lookPoints[pathfinding.pathIndex]);
+                                if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
+                                {
+                                    StartCoroutine(Jump(-1));
+                                }
+                            }
+                        }
+                        else if (isSearchingForTarget)
+                        {
+                            if (!isFacingRight && !isGrounded && Vector2.Distance(target.position, rb.position) > 3f && !isJumping)
+                            {
+                                jumpTarget.position = Vision(target.position);
+                                if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
+                                {
+                                    StartCoroutine(Jump(-1));
+                                }
                             }
                         }
                         //rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
@@ -340,14 +353,29 @@ public class MonkeyMovement : MonoBehaviour
                     RaycastHit2D jumpCheck = Physics2D.Raycast(transform.position, Vector2.right, 7f, LayerMask.GetMask("Ground"));
                     if (!jumpCheck)
                     {
-                        if (isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
+                        if (pathfinding.isPathfinding)
                         {
-                            target.position = Vision(pathfinding.path.lookPoints[pathfinding.pathIndex]);
-                            if (new Vector2(target.position.x, target.position.y) != Vector2.zero)
+                            if (isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
                             {
-                                StartCoroutine(Jump(-1));
+                                jumpTarget.position = Vision(pathfinding.path.lookPoints[pathfinding.pathIndex]);
+                                if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
+                                {
+                                    StartCoroutine(Jump(-1));
+                                }
                             }
                         }
+                        else if (isSearchingForTarget)
+                        {
+                            if (isFacingRight && !isGrounded && Vector2.Distance(target.position, rb.position) > 3f && !isJumping)
+                            {
+                                jumpTarget.position = Vision(target.position);
+                                if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
+                                {
+                                    StartCoroutine(Jump(-1));
+                                }
+                            }
+                        }
+
                         //rb.AddForce(new Vector2(jumpForce * facingDirection, jumpForce), ForceMode2D.Impulse);
                     }
                 }
@@ -363,7 +391,7 @@ public class MonkeyMovement : MonoBehaviour
                 Quaternion targetRot = Quaternion.Euler(grounded.normal);
 
                 Quaternion currentRot = transform.rotation;
-                Quaternion goalRot = ShortestRotation(targetRot, currentRot);
+                Quaternion goalRot = Utilities.ShortestRotation(targetRot, currentRot);
 
                 Vector3 rotAxis;
                 float rotDegrees;
@@ -411,14 +439,15 @@ if (pathfinding.isPathfinding)
     
     IEnumerator Jump(int direction)
     {
+        rb.drag = 0;
         isJumping = true;
-        Vector2 jumpDirection = new Vector2(target.position.x, target.position.y) - rb.position;
+        Vector2 jumpDirection = new Vector2(jumpTarget.position.x, jumpTarget.position.y) - rb.position;
         jumpDirection.x -= (jumpDirection.x / 2) * facingDirection * direction;
         jumpDirection.y += jumpYOffset;
         Vector2 jumpPoint = rb.position + jumpDirection;
 
         jumpTarget.position = jumpPoint;
-        Debug.Log(Vector2.Distance(new Vector2(target.position.x, target.position.y), rb.position));
+        Debug.Log(Vector2.Distance(new Vector2(jumpTarget.position.x, jumpTarget.position.y), rb.position));
 
         float timer = 0;
         float duration = 0.5f;
@@ -432,13 +461,12 @@ if (pathfinding.isPathfinding)
         while (timer < duration)
         {
             timer += Time.deltaTime;
-            float targetAngle = Mathf.Lerp(0, 80, (target.position.y - rb.position.y) / 5);
+            float targetAngle = Mathf.Lerp(0, 80, (jumpTarget.position.y - rb.position.y) / 5);
             float angle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle * facingDirection, timer / duration);
             transform.eulerAngles = new Vector3(0, 0, angle);
             yield return null;
         }
-        //rb.AddForce(jumpForce, ForceMode2D.Impulse);
-        rb.velocity = jumpForce;
+        rb.AddForce(jumpForce, ForceMode2D.Impulse);
     }
 
     void Turn()
@@ -475,7 +503,7 @@ if (pathfinding.isPathfinding)
             // Check if the ray hits a platform collider
             if (hit.collider != null)
             {
-                Debug.DrawLine(monkeyHead.transform.position, hit.point, Color.green); // Visualize the ray
+                Debug.DrawLine(monkeyHead.transform.position, hit.point, Color.green, 10); // Visualize the ray
                 if (Vector2.Distance(target, hit.point) < distanceFromTarget)
                 {
                     distanceFromTarget = Vector2.Distance(target, hit.point);
@@ -485,20 +513,6 @@ if (pathfinding.isPathfinding)
         }
         //Debug.Log(targetPosition);
         return targetPosition;
-    }
-
-    public static Quaternion ShortestRotation(Quaternion a, Quaternion b)
-    {
-        if (Quaternion.Dot(a, b) < 0)
-        {
-            return a * Quaternion.Inverse(Multiply(b, -1));
-        }
-        else return a * Quaternion.Inverse(b);
-    }
-
-    public static Quaternion Multiply(Quaternion input, float scalar)
-    {
-        return new Quaternion(input.x * scalar, input.y * scalar, input.z * scalar, input.w * scalar);
     }
 
     private void OnDrawGizmos()

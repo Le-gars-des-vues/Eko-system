@@ -203,7 +203,7 @@ public class PlayerArmAnimation : MonoBehaviour
                                 armMovementTime = Time.time;
 
                                 //Si la souris de ne va pas dans la meme direction que le joueur regarde
-                                if ((isPointingRight != facingDirection && lookingUp != isPointingUp) && Vector2.Distance(player.transform.position, mousePos) < 25f)
+                                if ((isPointingRight != facingDirection && lookingUp != isPointingUp))
                                 {
                                     //La main recule
                                     Vector2 offset = pickupInitialPos - mousePos;

@@ -154,8 +154,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.17, y: 0}
-  m_Size: {x: 0.64, y: 0.05}
+  m_Offset: {x: 0.36807188, y: 0.0063264123}
+  m_Size: {x: 1.5118996, y: 0.10820493}
   m_Direction: 1
 --- !u!50 &5498859812744822716
 Rigidbody2D:
@@ -199,6 +199,9 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
   item: {fileID: 0}
   inventory: {fileID: 0}
+  playerInventory: {fileID: 0}
+  hotbar: []
+  itemInInventory: {fileID: 0}
   itemPrefab: {fileID: 839064163631031773, guid: dedee1f75c5bdc649afdb5672ecbc9dc, type: 3}
   hasFlashed: 0
   isFlashing: 0
@@ -236,6 +239,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 9f27aedca19ed5c4c8a7f926f45f827f, type: 2}
   stackAmount: 0
   sprites: []
+  markedForDestroy: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
@@ -252,5 +256,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmgRayLenght: 1.45
-  baseDamage: 0.5
-  maxDamage: 8
+  baseDamage: 1
+  maxDamage: 20
