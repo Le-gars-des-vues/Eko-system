@@ -5,9 +5,11 @@ using UnityEngine;
 public class HarvestableRessourceNode : MonoBehaviour
 {
     [Header("Materials")]
-    Material ogMaterial;
+    Material ogMaterial1;
+    Material ogMaterial2;
     public Material outlineMaterial;
-    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private SpriteRenderer sprite_empty;
+    [SerializeField] private SpriteRenderer sprite_full;
 
     [Header("Harvest Variables")]
     private float timeToHarvest;
@@ -21,7 +23,8 @@ public class HarvestableRessourceNode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ogMaterial = sprite.material;
+        ogMaterial1 = sprite_empty.material;
+        ogMaterial2 = sprite_full.material;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
@@ -45,33 +48,46 @@ public class HarvestableRessourceNode : MonoBehaviour
     private void OnMouseEnter()
     {
         if (Vector2.Distance(player.gameObject.transform.position, transform.position) < minDistanceToHarvest && player.isUsingMultiTool)
-            sprite.material = outlineMaterial;
+        {
+            sprite_empty.material = outlineMaterial;
+            sprite_full.material = outlineMaterial;
+        }
     }
 
     private void OnMouseExit()
     {
-        sprite.material = ogMaterial;
+        sprite_empty.material = ogMaterial1;
+        sprite_full.material = ogMaterial2;
         timeToHarvest = 0f;
-        sprite.color = Color.white;
+        sprite_empty.color = Color.white;
+        sprite_full.color = Color.white;
     }
 
     private void OnMouseOver()
     {
         if (Vector2.Distance(player.gameObject.transform.position, transform.position) < minDistanceToHarvest && player.isUsingMultiTool)
-            sprite.material = outlineMaterial;
+        {
+            sprite_empty.material = outlineMaterial;
+            sprite_full.material = outlineMaterial;
+        }
         else
-            sprite.material = ogMaterial;
+        {
+            sprite_empty.material = ogMaterial1;
+            sprite_full.material = ogMaterial2;
+        }
 
         if (Input.GetMouseButton(0))
         {
             timeToHarvest += Time.deltaTime;
-            sprite.color = Color.Lerp(sprite.color, Color.red, timeToHarvest * Time.deltaTime);
+            sprite_empty.color = Color.Lerp(sprite_empty.color, Color.red, timeToHarvest * Time.deltaTime);
+            sprite_full.color = Color.Lerp(sprite_full.color, Color.red, timeToHarvest * Time.deltaTime);
         }
             
         if (Input.GetMouseButtonUp(0))
         {
             timeToHarvest = 0f;
-            sprite.color = Color.white;
+            sprite_empty.color = Color.white;
+            sprite_full.color = Color.white;
         }
     }
 }
