@@ -36,7 +36,7 @@ namespace BehaviorTree
 
         private void Attach(BehaviorNode node)
         {
-            node.parent = null;
+            node.parent = this;
             children.Add(node);
         }
 

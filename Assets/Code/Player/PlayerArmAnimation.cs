@@ -207,13 +207,15 @@ public class PlayerArmAnimation : MonoBehaviour
                                 {
                                     //La main recule
                                     Vector2 offset = pickupInitialPos - mousePos;
+                                    Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
                                     armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Time.deltaTime);
+                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * 1.5f * Time.deltaTime);
                                 }
                                 //Sinon la main avance
                                 else
                                 {
                                     Vector2 offset = mousePos - pickupInitialPos;
+                                    Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
                                     armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
                                     transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
                                 }

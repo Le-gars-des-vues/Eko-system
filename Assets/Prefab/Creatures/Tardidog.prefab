@@ -397,10 +397,11 @@ GameObject:
   - component: {fileID: 7163264113067079540}
   - component: {fileID: 8102471959790583535}
   - component: {fileID: 4473523068497175590}
+  - component: {fileID: 3509843861052164604}
   - component: {fileID: 1035557664498064151}
   m_Layer: 0
   m_Name: Tardidog
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -522,6 +523,11 @@ MonoBehaviour:
   isGrounded: 1
   territory: {fileID: 0}
   maxMovingDistance: 20
+  dog: {fileID: 4473523068497175590}
+  senseOfSmell: 0
+  fovRange: 0
+  minFollowDistance: 0
+  foodName: 
 --- !u!114 &4473523068497175590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +564,38 @@ MonoBehaviour:
   isStopped: 0
   isFacingRight: 0
   facingDirection: 0
+  head: {fileID: 0}
+  startAngle: 0
+  angleStep: 0
+  sightAngle: 0
+  rayCount: 0
+  rayDistance: 0
+--- !u!114 &3509843861052164604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375505516168346676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e5e18db3e08104fb889a07e48044eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 20
+  currentHp: 0
+  isInvincible: 0
+  flashWhiteDuration: 0.3
+  flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
+  creatureGFX:
+  - {fileID: 3726093027737853353}
+  - {fileID: 9211857471532988250}
+  - {fileID: 2659378737473582786}
+  - {fileID: 4601213932094966989}
+  - {fileID: 4337143653910874290}
+  - {fileID: 2608522728892360947}
+  - {fileID: 5241061563424271989}
+  ogMaterials: []
 --- !u!114 &1035557664498064151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,6 +1675,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4967605987420374319, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
   m_PrefabInstance: {fileID: 2011732898046039617}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &2608522728892360947 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4600508316499132082, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
+  m_PrefabInstance: {fileID: 2011732898046039617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2659378737473582786 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: -4682865417661276029, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
+  m_PrefabInstance: {fileID: 2011732898046039617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &3726093027737853353 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2908940205763300328, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
+  m_PrefabInstance: {fileID: 2011732898046039617}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3902803389803868006 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3297364353584691495, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
@@ -1663,9 +1716,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &4337143653910874290 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2872097291633876723, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
+  m_PrefabInstance: {fileID: 2011732898046039617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &4601213932094966989 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2608102985780763276, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
+  m_PrefabInstance: {fileID: 2011732898046039617}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4911713978983066964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2323024258548401387, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
+  m_PrefabInstance: {fileID: 2011732898046039617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5241061563424271989 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6003546589956356148, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
   m_PrefabInstance: {fileID: 2011732898046039617}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5567461318500784449 stripped
@@ -1686,5 +1754,10 @@ Transform:
 --- !u!4 &9031027704495540485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1819529356487467196, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
+  m_PrefabInstance: {fileID: 2011732898046039617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &9211857471532988250 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7222661070148608283, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
   m_PrefabInstance: {fileID: 2011732898046039617}
   m_PrefabAsset: {fileID: 0}

@@ -36,8 +36,16 @@ public class TardidogMovement : MonoBehaviour
     public bool isStopped;
     bool isGrounded;
     public bool isFacingRight = true;
-    public float facingDirection;
+    public int facingDirection;
     bool targetIsRight;
+
+    [Header("Sight Variables")]
+    public Transform head;
+    public float startAngle;
+    public float angleStep;
+    public float sightAngle;
+    public float rayCount;
+    public float rayDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +58,7 @@ public class TardidogMovement : MonoBehaviour
     void Update()
     {
         facingDirection = isFacingRight ? 1 : -1;
-
+        //Vision();
         targetIsRight = (target.position.x - transform.position.x) > 0 ? true : false;
         if (targetIsRight != isFacingRight)
         {
@@ -173,7 +181,7 @@ public class TardidogMovement : MonoBehaviour
         else if (dist < 0.1f)
             rb.velocity = Vector2.zero;
         else if (dist < slowDownThreshold)
-            moveSpeed = Mathf.Lerp(moveSpeed, 1f, (slowDownThreshold - dist / slowDownThreshold));
+            moveSpeed = Mathf.Lerp(moveSpeed, 1.5f, (slowDownThreshold - dist / slowDownThreshold));
 
         if (dist > 1f)
         {
@@ -258,6 +266,46 @@ public class TardidogMovement : MonoBehaviour
         gameObject.transform.localScale = scale;
 
         isFacingRight = !isFacingRight;
+    }
+
+    void Vision()
+    {
+        angleStep = sightAngle / (rayCount - 1);
+
+        // Start angle from left limit of sight angle
+        startAngle = -sightAngle / 2;
+
+        float distanceFromTarget = 1000f;
+
+        Vector2 targetPosition = Vector2.zero;
+
+        for (int i = 0; i < rayCount; i++)
+        {
+            // Calculate current angle
+            float angle = startAngle + angleStep * i;
+
+            // Calculate direction of the ray
+            Vector3 direction = Quaternion.Euler(0, 0, angle) * head.transform.right * facingDirection;
+
+            // Cast a ray in the calculated direction
+            RaycastHit2D hit = Physics2D.Raycast(head.transform.position, direction, rayDistance, LayerMask.GetMask("Ground"));
+
+            Debug.DrawRay(head.transform.position, direction * rayDistance, Color.green); // Visualize the ray
+            // Check if the ray hits a platform collider
+            /*
+            if (hit.collider != null)
+            {
+                
+                if (Vector2.Distance(target, hit.point) < distanceFromTarget)
+                {
+                    distanceFromTarget = Vector2.Distance(target, hit.point);
+                    targetPosition = hit.point;
+                }
+            }
+            */
+        }
+        //Debug.Log(targetPosition);
+        //return targetPosition;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
