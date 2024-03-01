@@ -8,9 +8,9 @@ public class ItemGrid : MonoBehaviour
     [Header("Tile Format")]
 
     //CHANGEMENT ICI------
-    [HideInInspector]
+    //[HideInInspector]
     public float tileSizeWidth;
-    [HideInInspector]
+    //[HideInInspector]
     public float tileSizeHeight;
 
     [Header("Transform of Grid")]
