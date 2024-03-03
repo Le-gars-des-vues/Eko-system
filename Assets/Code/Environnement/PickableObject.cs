@@ -182,7 +182,7 @@ public class PickableObject : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
 
                 //gameObject.transform.SetParent(rightHand.transform);
-                sprite.sortingOrder = 7;
+                sprite.sortingOrder = 8;
                 player.EquipObject(gameObject);
                 isPickedUp = true;
             }

@@ -70,16 +70,11 @@ public class Weapon : MonoBehaviour
                 ContactPoint2D contact = dmg.GetContact(0);
                 Vector2 hitDirection = contact.point - (Vector2)transform.position;
                 Vector2 normal = contact.normal;
-                //Debug.Log(hitDirection);
-                //Debug.Log(transform.right);
                 float angle = Vector2.Angle(hitDirection, -normal);
-                Debug.Log(Vector2.Angle(hitDirection, -normal));
-                //Debug.Log(transform.right);
 
                 // Check if the angle is within the piercing threshold
                 if (angle < piercingAngleThreshold)
                 {
-                    Debug.Log("Piercing worked");
                     if (!isDamaging && !dmg.collider.gameObject.GetComponent<CreatureHealth>().isInvincible)
                     {
                         isDamaging = true;

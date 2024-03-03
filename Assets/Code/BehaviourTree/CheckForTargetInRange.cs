@@ -6,7 +6,7 @@ using BehaviorTree;
 
 public class CheckForTargetInRange : BehaviorNode
 {
-    private LayerMask layerMask = LayerMask.GetMask("Pixelate");
+    private LayerMask layerMask = LayerMask.GetMask("Player", "Ressource");
 
     private Transform transform;
     private float senseOfSmell;
@@ -122,7 +122,7 @@ public class CheckForTargetInRange : BehaviorNode
             // Calculate direction of the ray
             Vector3 direction = Quaternion.Euler(0, 0, angle) * head.transform.right * facingDirection;
 
-            LayerMask layer = LayerMask.GetMask("Ground", "Pixelate");
+            LayerMask layer = LayerMask.GetMask("Ground", "Player");
 
             // Cast a ray in the calculated direction
             RaycastHit2D hit = Physics2D.Raycast(head.transform.position, direction, rayDistance, layer);

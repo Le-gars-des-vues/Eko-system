@@ -32,8 +32,8 @@ public class TardidogMovement : MonoBehaviour
     [SerializeField] List<TardidogLegAnimation> legs = new List<TardidogLegAnimation>();
 
     [Header("Checks")]
-    bool isJumping;
     public bool isStopped;
+    bool isJumping;
     bool isGrounded;
     public bool isFacingRight = true;
     public int facingDirection;
@@ -47,11 +47,15 @@ public class TardidogMovement : MonoBehaviour
     public float rayCount;
     public float rayDistance;
 
+    [SerializeField] CreatureState state;
+    [SerializeField] TardidogAttack atk;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         isFacingRight = transform.localScale.x == 1 ? true : false;
+        state = GetComponent<CreatureState>();
     }
 
     // Update is called once per frame
@@ -75,21 +79,22 @@ public class TardidogMovement : MonoBehaviour
         RaycastHit2D grounded = Physics2D.Raycast(origin: new Vector2(transform.position.x, transform.position.y), direction: Vector2.down, groundRaycastLenght, LayerMask.GetMask("Ground"));
         isGrounded = grounded;
 
-        RaycastHit2D hover1 = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x, transform.position.y), Vector2.down, hoverRaycastLenght, LayerMask.GetMask("Ground"));
-        RaycastHit2D hover2 = Physics2D.Raycast(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y), Vector2.down, hoverRaycastLenght, LayerMask.GetMask("Ground"));
-        if (hover1.collider != null)
+        RaycastHit2D frontCheck = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, hoverRaycastLenght, LayerMask.GetMask("Ground"));
+        RaycastHit2D backCheck = Physics2D.Raycast(new Vector2(transform.position.x - groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, hoverRaycastLenght, LayerMask.GetMask("Ground"));
+        if (frontCheck.collider != null)
         {
             float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
 
-            float difference = hover1.distance - creatureHeight;
+            float difference = frontCheck.distance - creatureHeight;
             float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
 
             rb.AddForce(Vector2.down * springForce);
 
-            if (hover2.collider == null)
+            if (backCheck.collider == null)
             {
-                //creatureHeight = 1.20f;
                 /*
+                creatureHeight = 1.20f;
+
                 RaycastHit2D jumpCheck = Physics2D.Raycast(transform.position, Vector2.left, 7f, LayerMask.GetMask("Ground"));
                 if (!jumpCheck)
                 {
@@ -125,19 +130,20 @@ public class TardidogMovement : MonoBehaviour
                 isJumping = false;
             }
         }
-        else if (hover2.collider != null)
+        else if (backCheck.collider != null)
         {
             float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
 
-            float difference = hover2.distance - creatureHeight;
+            float difference = backCheck.distance - creatureHeight;
             float springForce = (difference * springStrenght) - (rayDirVel * springDamper);
 
             rb.AddForce(Vector2.down * springForce);
 
-            if (hover1.collider == null)
+            if (frontCheck.collider == null)
             {
-                //creatureHeight = 1.20f;
                 /*
+                creatureHeight = 1.20f;
+
                 RaycastHit2D jumpCheck = Physics2D.Raycast(transform.position, Vector2.right, 7f, LayerMask.GetMask("Ground"));
                 if (!jumpCheck)
                 {
@@ -176,44 +182,45 @@ public class TardidogMovement : MonoBehaviour
         }
 
         float dist = Mathf.Abs(target.position.x - rb.position.x);
-        if (dist >= slowDownThreshold)
-            moveSpeed = 5;
-        else if (dist < 0.1f)
-            rb.velocity = Vector2.zero;
-        else if (dist < slowDownThreshold)
-            moveSpeed = Mathf.Lerp(moveSpeed, 1.5f, (slowDownThreshold - dist / slowDownThreshold));
-
-        if (dist > 1f)
+        if (!state.isAttacking)
         {
-            isStopped = false;
-            if (targetIsRight)
-                GoRight();
+            if (dist >= slowDownThreshold)
+                moveSpeed = 5;
+            else if (dist < 0.1f)
+                rb.velocity = Vector2.zero;
+            else if (dist < slowDownThreshold)
+                moveSpeed = Mathf.Lerp(moveSpeed, 1.5f, (slowDownThreshold - dist / slowDownThreshold));
+
+            if (dist > 1f)
+            {
+                isStopped = false;
+                if (targetIsRight)
+                    GoRight(1);
+                else
+                    GoLeft(1);
+            }
             else
-                GoLeft();
+                isStopped = true;
         }
         else
-            isStopped = true;
+        {
+            moveSpeed = 5;
+            if (dist > 0.5f)
+            {
+                isStopped = false;
+                if (targetIsRight)
+                    GoRight(1.5f);
+                else
+                    GoLeft(1.5f);
+            }
+            else
+                isStopped = true;
+        }
+
 
 
         if (isGrounded)
         {
-            /*
-            //Debug.DrawRay(grounded.point, grounded.normal, Color.blue, 10);
-            Quaternion targetRot = Quaternion.Euler(grounded.normal);
-
-            Quaternion currentRot = transform.rotation;
-            Quaternion goalRot = Utilities.ShortestRotation(currentRot, targetRot);
-
-            Vector3 rotAxis;
-            float rotDegrees;
-
-            goalRot.ToAngleAxis(out rotDegrees, out rotAxis);
-            rotAxis.Normalize();
-
-            float rotRadians = rotDegrees * Mathf.Deg2Rad;
-
-            rb.AddTorque((rotAxis.z * (rotRadians * uprightSpringStrenght)) - (rb.angularVelocity * uprightSpringDamper));
-            */
             if (grounded.normal != Vector2.up)
                 creatureHeight = 0.45f;
             else
@@ -222,7 +229,7 @@ public class TardidogMovement : MonoBehaviour
         }
         else
         {
-            if (rb.velocity.y > 0 && !(hover1 || hover2))
+            if (rb.velocity.y > 0 && !(frontCheck || backCheck))
             {
                 float angle = Mathf.LerpAngle(transform.eulerAngles.z, upAngle * facingDirection, (rotateSpeed / 3) * Time.deltaTime);
                 transform.eulerAngles = new Vector3(0, 0, angle);
@@ -235,9 +242,9 @@ public class TardidogMovement : MonoBehaviour
         }
     }
 
-    void GoRight()
+    void GoRight(float speedFactor)
     {
-        Vector2 force = new Vector2(moveSpeed, 0);
+        Vector2 force = new Vector2(moveSpeed * speedFactor, 0);
 
         if (rb.velocity.x < 0)
             force.x -= rb.velocity.x;
@@ -247,9 +254,9 @@ public class TardidogMovement : MonoBehaviour
         rb.AddForce(force);
     }
 
-    void GoLeft()
+    void GoLeft(float speedFactor)
     {
-        Vector2 force = new Vector2(-moveSpeed, 0);
+        Vector2 force = new Vector2(-moveSpeed * speedFactor, 0);
 
         if (rb.velocity.x > 0)
             force.x -= rb.velocity.x;
