@@ -19,8 +19,6 @@ public class TransferInfos : BehaviorNode
         if (GetData("isAttacking") != null && creature != null)
         {
             creature.GetComponent<CreatureState>().isAttacking = (bool)GetData("isAttacking");
-            Debug.Log((bool)GetData("isAttacking"));
-            Debug.Log(creature.GetComponent<CreatureState>().isAttacking);
         }
         state = NodeState.SUCCESS;
         return state;

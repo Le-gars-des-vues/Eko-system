@@ -20,7 +20,7 @@ public class SpikeTrap : MonoBehaviour
     void Update()
     {
 
-        RaycastHit2D detected = Physics2D.Raycast(transform.position, Vector2.up, detectionRaycastRange, LayerMask.GetMask("Pixelate"));
+        RaycastHit2D detected = Physics2D.Raycast(transform.position, Vector2.up, detectionRaycastRange, LayerMask.GetMask("Player", "Creature"));
         if (detected.collider != null && detected.collider.gameObject.tag == "Player" && !isSpiking)
         {
             isSpiking = true;
@@ -30,11 +30,14 @@ public class SpikeTrap : MonoBehaviour
 
         if (isSpiking)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, spikeRaycastRange, LayerMask.GetMask("Pixelate"));
-            if (hit.collider != null && hit.collider.gameObject.tag == "Player" && !hasSpiked)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, spikeRaycastRange, LayerMask.GetMask("Player", "Creature"));
+            if (hit.collider != null && !hasSpiked)
             {
-                hasSpiked = true;
-                hit.collider.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
+                if (hit.collider.gameObject.tag == "Player")
+                {
+                    hasSpiked = true;
+                    hit.collider.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
+                }
             }
         }
         else
