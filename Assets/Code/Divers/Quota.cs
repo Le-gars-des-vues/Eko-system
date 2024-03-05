@@ -17,7 +17,7 @@ public class Quota : MonoBehaviour
     public void nouveauQuota()
     {
         gestionnaireVente.GetComponent<Vente>().profit = 0;
-        quota += (quota * 1.1f) + (gestionnaireVente.GetComponent<Vente>().calculStorage()*0.1f);
+        quota = (quota * 1.1f) + (gestionnaireVente.GetComponent<Vente>().calculStorage()*0.1f);
         quota = Mathf.RoundToInt(quota);
         textQuota.text = 0 + " / " + quota + "$";
     }
