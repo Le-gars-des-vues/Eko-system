@@ -6,8 +6,8 @@ public class RoomInfo : MonoBehaviour
 {
     public int roomType; // 0=Empty, 1=Farm, 2=Enclos
 
-    public List<GameObject> itemFarm;
-    public List<GameObject> itemEnclos;
+    public GameObject itemFarm;
+    public GameObject itemEnclos;
 
     public GameObject rightWall;
     public GameObject nextRoom;
@@ -24,38 +24,28 @@ public class RoomInfo : MonoBehaviour
         if (laSalle == 0)
         {
             roomType = laSalle;
-            for (int i = 0; i == itemFarm.Count - 1; i++) {
-                itemFarm[i].SetActive(false);
-            }
-            for (int i = 0; i == itemEnclos.Count - 1; i++)
-            {
-                itemEnclos[i].SetActive(false);
-            }
+            
+                itemFarm.SetActive(false);
+                itemEnclos.SetActive(false);
         }
         else if (laSalle == 1)
         {
             roomType = laSalle;
-            for (int i = 0; i == itemFarm.Count - 1; i++)
-            {
-                itemFarm[i].SetActive(true);
-            }
-            for (int i = 0; i == itemEnclos.Count - 1; i++)
-            {
-                itemEnclos[i].SetActive(false);
-            }
+
+                itemFarm.SetActive(true);
+
+                itemEnclos.SetActive(false);
+
             UndoWall();
         }
         else if(laSalle == 2)
         {
             roomType = laSalle;
-            for (int i = 0; i == itemFarm.Count - 1; i++)
-            {
-                itemFarm[i].SetActive(false);
-            }
-            for (int i = 0; i == itemEnclos.Count - 1; i++)
-            {
-                itemEnclos[i].SetActive(true);
-            }
+
+                itemFarm.SetActive(false);
+
+                itemEnclos.SetActive(true);
+
             UndoWall();
         }
     }
