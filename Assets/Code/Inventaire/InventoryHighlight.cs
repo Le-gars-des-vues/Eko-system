@@ -10,7 +10,7 @@ public class InventoryHighlight : MonoBehaviour
     public void Show(bool b)
     {
 
-        //highlighter.gameObject.SetActive(b);
+        highlighter.gameObject.SetActive(b);
     }
 
 
