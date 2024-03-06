@@ -32,7 +32,15 @@ public class RoomCrafting : MonoBehaviour
 
     // Start is called before the first frame update
 
+    public void SetFarm(int theFarms)
+    {
+        farms = theFarms;
+    }
 
+    public void SetEnclos(int theEnclos)
+    {
+        enclos = theEnclos;
+    }
     public int GetFarms()
     {
         return farms;
