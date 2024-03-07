@@ -9,7 +9,7 @@ public class CreatureHealth : MonoBehaviour
 
     [Header("Flash White Variables")]
     public bool isInvincible;
-    [SerializeField] float flashWhiteDuration;
+    [SerializeField] float flashWhiteDuration = 0.3f;
     [SerializeField] Material flashMaterial;
     [SerializeField] private List<SpriteRenderer> creatureGFX = new List<SpriteRenderer>();
     [SerializeField] private List<Material> ogMaterials = new List<Material>();

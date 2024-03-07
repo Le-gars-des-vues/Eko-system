@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class HarvestableRessourceNode : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class HarvestableRessourceNode : MonoBehaviour
     [SerializeField] float ressourceAmount;
     [SerializeField] float minDistanceToHarvest;
 
+    public bool isPointing;
+    public bool isOutlined;
     PlayerPermanent player;
 
     // Start is called before the first frame update
@@ -42,7 +45,7 @@ public class HarvestableRessourceNode : MonoBehaviour
                 Instantiate(consummableToSpawn, transform.position, transform.rotation);
 
             gameObject.SetActive(false);
-        }  
+        }
     }
 
     private void OnMouseEnter()
@@ -65,29 +68,33 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Vector2.Distance(player.gameObject.transform.position, transform.position) < minDistanceToHarvest && player.isUsingMultiTool)
+        if (player.isUsingMultiTool)
         {
-            sprite_empty.material = outlineMaterial;
-            sprite_full.material = outlineMaterial;
-        }
-        else
-        {
-            sprite_empty.material = ogMaterial1;
-            sprite_full.material = ogMaterial2;
-        }
+            if (Vector2.Distance(player.gameObject.transform.position, transform.position) < minDistanceToHarvest)
+            {
+                Debug.Log("Harvestable");
+                sprite_empty.material = outlineMaterial;
+                sprite_full.material = outlineMaterial;
+            }
+            else
+            {
+                sprite_empty.material = ogMaterial1;
+                sprite_full.material = ogMaterial2;
+            }
 
-        if (Input.GetMouseButton(0))
-        {
-            timeToHarvest += Time.deltaTime;
-            sprite_empty.color = Color.Lerp(sprite_empty.color, Color.red, timeToHarvest * Time.deltaTime);
-            sprite_full.color = Color.Lerp(sprite_full.color, Color.red, timeToHarvest * Time.deltaTime);
-        }
-            
-        if (Input.GetMouseButtonUp(0))
-        {
-            timeToHarvest = 0f;
-            sprite_empty.color = Color.white;
-            sprite_full.color = Color.white;
+            if (Input.GetMouseButton(0))
+            {
+                timeToHarvest += Time.deltaTime;
+                sprite_empty.color = Color.Lerp(sprite_empty.color, Color.red, timeToHarvest * Time.deltaTime);
+                sprite_full.color = Color.Lerp(sprite_full.color, Color.red, timeToHarvest * Time.deltaTime);
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                timeToHarvest = 0f;
+                sprite_empty.color = Color.white;
+                sprite_full.color = Color.white;
+            }
         }
     }
 }

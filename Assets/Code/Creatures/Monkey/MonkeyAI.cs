@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MonkeyAI : MonoBehaviour
 {
-    private MonkeyPathfinding pathfinding;
+    private CreaturePathfinding pathfinding;
     private MonkeyMovement monkey;
     public bool followPath;
 
     private void OnEnable()
     {
-        pathfinding = GetComponent<MonkeyPathfinding>();
+        pathfinding = GetComponent<CreaturePathfinding>();
         monkey = GetComponent<MonkeyMovement>();
     }
 

@@ -66,7 +66,6 @@ namespace BehaviorTree
 
         public bool ClearData(string key)
         {
-            object value = null;
             if (dataContext.ContainsKey(key))
             {
                 dataContext.Remove(key);

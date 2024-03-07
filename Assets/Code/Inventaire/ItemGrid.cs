@@ -38,8 +38,8 @@ public class ItemGrid : MonoBehaviour
         }
         else
         {
-            tileSizeWidth = 32;
-            tileSizeHeight = 32;
+            tileSizeWidth = 64;
+            tileSizeHeight = 64;
         }
         Init(gridSizeWidth, gridSizeHeight);
     }

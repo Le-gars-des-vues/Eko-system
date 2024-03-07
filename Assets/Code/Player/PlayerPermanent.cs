@@ -87,6 +87,12 @@ public class PlayerPermanent : MonoBehaviour
     [Header("Upgrade Variables")]
     public bool hasDoubleJump;
 
+    [Header("UI Variables")]
+    [SerializeField] private GameObject map;
+    public bool mapIsOpen = true;
+    public bool marketIsOpen = true;
+    public bool craftingIsOpen = true;
+
     private void Awake()
     {
         isFacingRight = true;
@@ -105,11 +111,16 @@ public class PlayerPermanent : MonoBehaviour
         market = GameObject.Find("Vente");
         crafting = GameObject.Find("Crafting");
 
+        map = GameObject.Find("Map");
+
         //Au depart du jeu, on set tout les bars au max et on desactive le ragdoll
         ResetToMax();
         ToggleRagdoll(false);
 
-        ShowOrHideInventory(false, true, true);
+        ShowOrHideInventory(false, true);
+        ShowOrHideMarket();
+        ShowOrHideCrafting();
+        ShowOrHideMap();
 
         //On va chercher le script de vigne
         vineController = GetComponent<VinePlayerController>();
@@ -135,7 +146,10 @@ public class PlayerPermanent : MonoBehaviour
         {
             if (!isInBase)
                 isInBase = true;
-            else
+        }
+        else
+        {
+            if (isInBase)
                 isInBase = false;
         }
 
@@ -179,12 +193,17 @@ public class PlayerPermanent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (!inventoryOpen)
-                ShowOrHideInventory(true, CanOpenStorage(), isInBase);
+                ShowOrHideInventory(true, CanOpenStorage());
             else
-                ShowOrHideInventory(false, CanOpenStorage(), isInBase);
+                ShowOrHideInventory(false, CanOpenStorage());
         }
-        
-        if (ressourcesNear.Count >= 1)
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ShowOrHideMap();
+        }
+
+            if (ressourcesNear.Count >= 1)
         {
             foreach (var ressource in ressourcesNear)
             {
@@ -260,6 +279,7 @@ public class PlayerPermanent : MonoBehaviour
                     StartCoroutine(FlashWhite(playerGFX, flashWhiteDuration));
                     StartCoroutine(InvicibilityFrames(invisibilityDuration));
                 }
+                playerRb.velocity = Vector2.zero;
                 Vector2 direction = (transform.position - otherObject.transform.position).normalized;
                 playerRb.AddForce(new Vector2(direction.x, 0.2f) * knockBackForce, ForceMode2D.Impulse);
 
@@ -366,7 +386,7 @@ public class PlayerPermanent : MonoBehaviour
         }
     }
     
-    public void ShowOrHideInventory(bool show, bool storage, bool isInBase)
+    public void ShowOrHideInventory(bool show, bool storage)
     {
         if (show && playerInventory != null)
         {
@@ -376,12 +396,11 @@ public class PlayerPermanent : MonoBehaviour
             {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
             }
-            if (isInBase)
+
+            if (mapIsOpen)
             {
-                if (market != null)
-                    market.GetComponent<RectTransform>().localPosition = new Vector2(market.GetComponent<RectTransform>().localPosition.x, market.GetComponent<RectTransform>().localPosition.y + gridOffset);
-                if (crafting != null)
-                    crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y + gridOffset);
+                map.SetActive(false);
+                mapIsOpen = false;
             }
         }
         else if (!show && playerInventory != null)
@@ -392,13 +411,69 @@ public class PlayerPermanent : MonoBehaviour
             {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             }
-            if (isInBase)
+        }
+    }
+
+    public void ShowOrHideCrafting()
+    {
+        if (!craftingIsOpen)
+        {
+            if (crafting != null)
+                crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            craftingIsOpen = true;
+            if (mapIsOpen)
             {
-                if (market != null)
-                    market.GetComponent<RectTransform>().localPosition = new Vector2(market.GetComponent<RectTransform>().localPosition.x, market.GetComponent<RectTransform>().localPosition.y - gridOffset);
-                if (crafting != null)
-                    crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y - gridOffset);
+                map.SetActive(false);
+                mapIsOpen = false;
             }
+        }
+        else
+        {
+            if (crafting != null)
+                crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            craftingIsOpen = false;
+        }
+    }
+
+    public void ShowOrHideMarket()
+    {
+        if (!marketIsOpen)
+        {
+            if (market != null)
+                market.GetComponent<RectTransform>().localPosition = new Vector2(market.GetComponent<RectTransform>().localPosition.x, market.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            marketIsOpen = true;
+            if (mapIsOpen)
+            {
+                map.SetActive(false);
+                mapIsOpen = false;
+            }
+        }
+        else
+        {
+            if (market != null)
+                market.GetComponent<RectTransform>().localPosition = new Vector2(market.GetComponent<RectTransform>().localPosition.x, market.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            marketIsOpen = false;
+        }
+    }
+
+    public void ShowOrHideMap()
+    {
+        if (!mapIsOpen)
+        {
+            if (inventoryOpen)
+                ShowOrHideInventory(false, CanOpenStorage());
+            if (marketIsOpen)
+                ShowOrHideMarket();
+            if (craftingIsOpen)
+                ShowOrHideCrafting();
+
+            map.SetActive(true);
+            mapIsOpen = true;
+        }
+        else
+        {
+            map.SetActive(false);
+            mapIsOpen = false;
         }
     }
     
@@ -474,6 +549,7 @@ public class PlayerPermanent : MonoBehaviour
     }
 
     //Je met ça la pour mettre une manière de voir si on est dans la base ou non, tu peux changer ça si tu veux! -Pascal
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Base")
@@ -491,4 +567,5 @@ public class PlayerPermanent : MonoBehaviour
             Debug.Log(isInBase);
         }
     }
+    */
 }

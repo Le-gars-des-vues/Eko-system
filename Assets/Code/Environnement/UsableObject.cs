@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class UsableObject : MonoBehaviour
 {
     private PlayerPermanent player;
-    [SerializeField] float effectMagnitude;
+    [SerializeField] string effectName;
+
+    [SerializeField] ConsummableEffects effect;
 
     private void Start()
     {
@@ -36,7 +38,15 @@ public class UsableObject : MonoBehaviour
 
     IEnumerator UseObject(GameObject objectToUse)
     {
-        ConsummableEffects.Heal(player, effectMagnitude);
+        switch (effectName)
+        {
+            case "Heal":
+                effect.Heal(player, effect.effectMagnitude);
+                break;
+
+            default:
+                break;
+        }
 
         objectToUse.GetComponent<PickableObject>().itemInInventory.GetComponent<InventoryItem>().stackAmount--;
         objectToUse.GetComponent<InventoryItem>().stackAmount--;

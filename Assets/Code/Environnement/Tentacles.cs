@@ -6,7 +6,7 @@ public class Tentacles : MonoBehaviour
 {
     [SerializeField] private int length;
     [SerializeField] private LineRenderer lineRend;
-    [SerializeField] private Vector3[] segmentPoses;
+    public Vector3[] segmentPoses;
     private Vector3[] segmentV;
 
     //Position initiale
@@ -26,6 +26,10 @@ public class Tentacles : MonoBehaviour
 
     public bool canShorten = true;
 
+    [SerializeField] bool useBodyParts;
+    [SerializeField] Transform[] bodyParts;
+    [SerializeField] List<int> bodyPartPoses = new List<int>();
+
     private void Start()
     {
         //Initialise le line renderer avec le nombre de points
@@ -42,23 +46,49 @@ public class Tentacles : MonoBehaviour
 
         //Met la base du tentacule au target
         segmentPoses[0] = targetDir.position;
+        if (useBodyParts)
+            bodyParts[0].position = targetDir.position;
 
         //Si la tentacule peut changer de taille
         if (canShorten)
         {
+            int index = 1;
             //Pour chaque tentacule, on le fait bouger vers le bout precedent jusqu'a ce qu'il atteingne une certaine distance
             for (int i = 1; i < segmentPoses.Length; i++)
             {
                 segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], segmentPoses[i - 1] + targetDir.right * targetDist, ref segmentV[i], smoothSpeed + (i / trailSpeed));
+                if (useBodyParts)
+                {
+                    foreach (int p in bodyPartPoses)
+                    {
+                        if (i == p)
+                        {
+                            bodyParts[index].transform.position = segmentPoses[i];
+                            index++;
+                        }
+                    }
+                }
             }
         }
         //Sinon, les morceau de tentacule sont a une distance fixe les uns des autres
         else
         {
+            int index = 1;
             for (int i = 1; i < segmentPoses.Length; i++)
             {
                 Vector3 targetPos = segmentPoses[i - 1] + (segmentPoses[i] - segmentPoses[i - 1]).normalized * targetDist;
                 segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentV[i], smoothSpeed);
+                if (useBodyParts)
+                {
+                    foreach (int p in bodyPartPoses)
+                    {
+                        if (i == p)
+                        {
+                            bodyParts[index].transform.position = segmentPoses[i];
+                            index++;
+                        }
+                    }
+                }
             }
         }
 
@@ -73,5 +103,17 @@ public class Tentacles : MonoBehaviour
             segmentPoses[i] = segmentPoses[i - 1] + targetDir.right * targetDist;
         }
         lineRend.SetPositions(segmentPoses);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        if (segmentPoses != null)
+        {
+            for (int i = 0; i < segmentPoses.Length; i++)
+            {
+                Gizmos.DrawSphere(segmentPoses[i], 0.01f);
+            }
+        }
     }
 }

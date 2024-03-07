@@ -63,22 +63,24 @@ public class Weapon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D dmg)
     {
-        if (dmg.collider != null && dmg.collider.gameObject.tag == "Creature")
+        if (dmg.collider != null && dmg.collider.gameObject.tag == "Creature" && (GetComponent<PickableObject>().isPickedUp || GetComponent<ThrowableObject>().isThrown))
         {
+            CreatureHealth hp = GetScript(dmg.collider.gameObject);
             if (gameObject.tag == "Spear")
             {
-                ContactPoint2D contact = dmg.GetContact(0);
-                Vector2 hitDirection = contact.point - (Vector2)transform.position;
-                Vector2 normal = contact.normal;
-                float angle = Vector2.Angle(hitDirection, -normal);
-
-                // Check if the angle is within the piercing threshold
-                if (angle < piercingAngleThreshold)
+                if (!isDamaging && !hp.isInvincible)
                 {
-                    if (!isDamaging && !dmg.collider.gameObject.GetComponent<CreatureHealth>().isInvincible)
+                    ContactPoint2D contact = dmg.GetContact(0);
+                    Vector2 hitDirection = contact.point - (Vector2)transform.position;
+                    Vector2 normal = contact.normal;
+                    float angle = Vector2.Angle(hitDirection, -normal);
+
+                    //Debug.Log("Angle : " + angle + " Collider : " + dmg.collider.gameObject.name);
+                    // Check if the angle is within the piercing threshold
+                    if (angle < piercingAngleThreshold)
                     {
                         isDamaging = true;
-                        dmg.collider.gameObject.GetComponent<CreatureHealth>().LoseHealth(hitDamage);
+                        hp.LoseHealth(hitDamage);
                         int color = 0;
                         if (hitDamage < maxDamage / 3)
                             color = 0;
@@ -90,6 +92,19 @@ public class Weapon : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    CreatureHealth GetScript(GameObject objectToSearch)
+    {
+        if (objectToSearch.GetComponent<CreatureHealth>() != null)
+        {
+            //Debug.Log(objectToSearch.name);
+            return objectToSearch.GetComponent<CreatureHealth>();
+        }
+        else
+        {
+            return GetScript(objectToSearch.transform.parent.gameObject);
         }
     }
 

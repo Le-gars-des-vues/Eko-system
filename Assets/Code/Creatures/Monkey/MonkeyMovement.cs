@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MonkeyMovement : MonoBehaviour
 {
-    [SerializeField] MonkeyPathfinding pathfinding;
+    [SerializeField] CreatureState state;
+    [SerializeField] CreaturePathfinding pathfinding;
     private Rigidbody2D rb;
 
     [Header("Hover Variables")]
@@ -67,7 +68,8 @@ public class MonkeyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pathfinding = GetComponent<MonkeyPathfinding>();
+        state = GetComponent<CreatureState>();
+        pathfinding = GetComponent<CreaturePathfinding>();
         rb = GetComponent<Rigidbody2D>();
         upwardSensor = new RaycastHit2D[numberOfRays];
         layerMask = LayerMask.GetMask("Ground");
@@ -81,7 +83,7 @@ public class MonkeyMovement : MonoBehaviour
 
         facingDirection = isFacingRight ? 1 : -1;
 
-        if (pathfinding.isPathfinding)
+        if (state.isPathfinding)
         {
             if (isSearchingForTarget)
                 isSearchingForTarget = false;
@@ -147,7 +149,7 @@ public class MonkeyMovement : MonoBehaviour
         }
         */
 
-        if (pathfinding.isPathfinding && pathfinding.path != null)
+        if (state.isPathfinding && pathfinding.path != null)
         {
             //Debug.Log(Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - rb.position.x));
             if (Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - rb.position.x) > 0.1f)
@@ -183,7 +185,7 @@ public class MonkeyMovement : MonoBehaviour
                                 ledgePos = upwardSensor[i].point;
                                 ledgeFound = true;
                                 sensorUp = true;
-                                pathfinding.isPathfinding = false;
+                                state.isPathfinding = false;
                                 ledgeOffset = Mathf.Abs(ledgeOffset);
                                 Debug.Log("Right");
                                 break;
@@ -201,7 +203,7 @@ public class MonkeyMovement : MonoBehaviour
                                     ledgePos = upwardSensor[i].point;
                                     ledgeFound = true;
                                     sensorUp = true;
-                                    pathfinding.isPathfinding = false;
+                                    state.isPathfinding = false;
                                     ledgeOffset *= -1;
                                     Debug.Log("Left");
                                     break;
@@ -231,7 +233,7 @@ public class MonkeyMovement : MonoBehaviour
                                 ledgePos = upwardSensor[i].point;
                                 ledgeFound = true;
                                 sensorUp = false;
-                                pathfinding.isPathfinding = false;
+                                state.isPathfinding = false;
                                 ledgeOffset = Mathf.Abs(ledgeOffset);
                                 Debug.Log("Right");
                                 break;
@@ -249,7 +251,7 @@ public class MonkeyMovement : MonoBehaviour
                                     ledgePos = upwardSensor[i].point;
                                     ledgeFound = true;
                                     sensorUp = false;
-                                    pathfinding.isPathfinding = false;
+                                    state.isPathfinding = false;
                                     ledgeOffset *= -1;
                                     Debug.Log("Left");
                                     break;
@@ -307,7 +309,7 @@ public class MonkeyMovement : MonoBehaviour
                     RaycastHit2D jumpCheck = Physics2D.Raycast(transform.position, Vector2.left, 7f, LayerMask.GetMask("Ground"));
                     if (!jumpCheck)
                     {
-                        if (pathfinding.isPathfinding)
+                        if (state.isPathfinding)
                         {
                             if (!isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
                             {
@@ -353,7 +355,7 @@ public class MonkeyMovement : MonoBehaviour
                     RaycastHit2D jumpCheck = Physics2D.Raycast(transform.position, Vector2.right, 7f, LayerMask.GetMask("Ground"));
                     if (!jumpCheck)
                     {
-                        if (pathfinding.isPathfinding)
+                        if (state.isPathfinding)
                         {
                             if (isFacingRight && !isGrounded && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], rb.position) > 3f && !isJumping)
                             {
