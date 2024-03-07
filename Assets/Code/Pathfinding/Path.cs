@@ -45,12 +45,12 @@ public class Path
             Gizmos.DrawCube(p, new Vector2(0.5f, 0.5f));
         }
 
-        /*
+        
         Gizmos.color = Color.white;
         foreach (Line l in turnBoundaries)
         {
             l.DrawWithGizmos(10);
         }
-        */
+        
     }
 }

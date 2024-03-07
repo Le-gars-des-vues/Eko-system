@@ -83,7 +83,7 @@ public class GroundPlayerController : MonoBehaviour
 
     [Header("Ground Collision Variables")]
     //Layer de sol
-    public LayerMask groundLayer;
+    LayerMask groundLayer;
     //Taille du raycast de collision avec le sol
     public float groundRaycastLength;
     //Check si le joueur est au sol
@@ -166,6 +166,7 @@ public class GroundPlayerController : MonoBehaviour
         jumpForce = Mathf.Abs(gravityStrength) * jumpTimeToApex;
         //On set up la gravite de notre personnage
         SetGravityScale(gravityScale);
+        groundLayer = LayerMask.GetMask("Ground", "Creature");
     }
 
     // Update is called once per frame

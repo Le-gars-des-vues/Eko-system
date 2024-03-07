@@ -1586,6 +1586,7 @@ GameObject:
   - component: {fileID: 7010005298826148650}
   - component: {fileID: 1601061133604905117}
   - component: {fileID: 5882432474630253570}
+  - component: {fileID: 6744655100823499725}
   - component: {fileID: 3400643235529090245}
   m_Layer: 0
   m_Name: Arachno-monkey
@@ -1697,6 +1698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ae37a46c9eb1f4abd4c6c1031d92aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: 0}
   pathfinding: {fileID: 7010005298826148650}
   monkeyHeight: 1.25
   springStrenght: 40
@@ -1745,12 +1747,13 @@ MonoBehaviour:
   followPathSpeed: 100
   turnDist: 5
   stoppingDistance: 2
-  pathIndex: 0
-  isPathfinding: 0
   speedPercent: 0
-  monkey: {fileID: 0}
   pathFollowThreshold: 3.5
-  pathFollowMaxDistance: 0
+  pathFollowMaxDistance: 15
+  reachedEndOfPathThreshold: 0.7
+  pathIndex: 0
+  isFlying: 0
+  reachEndOfPath: 0
 --- !u!114 &1601061133604905117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,6 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 0
+  isInvincible: 0
   flashWhiteDuration: 0.3
   flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
   creatureGFX:
@@ -1793,6 +1797,33 @@ MonoBehaviour:
   - {fileID: 8137141706527050237}
   - {fileID: 106735188329330225}
   ogMaterials: []
+--- !u!114 &6744655100823499725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8830959597696478755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b478d0388098744a571f783ed99957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
+  isFleeing: 0
+  isEating: 0
+  isPathfinding: 0
+  currentFood: 0
+  maxFood: 0
+  digestRate: 0
+  isFull: 0
+  isFullCooldown: 0
+  isFullTime: 0
+  eatingTime: 0
+  senseOfSmell: 0
+  fovRange: 0
+  minFollowDistance: 0
+  foodName: 
 --- !u!114 &3400643235529090245
 MonoBehaviour:
   m_ObjectHideFlags: 0

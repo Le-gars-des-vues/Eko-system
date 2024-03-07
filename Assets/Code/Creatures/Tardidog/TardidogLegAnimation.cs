@@ -59,6 +59,7 @@ public class TardidogLegAnimation : MonoBehaviour
         }
         else
         {
+            //Debug.Log(stepTimer);
             //Reset le timer
             stepTimer = 0;
             transform.position = currentTarget.position;

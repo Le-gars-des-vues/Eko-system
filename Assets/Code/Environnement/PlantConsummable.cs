@@ -8,6 +8,7 @@ public class PlantConsummable : MonoBehaviour
     [SerializeField] private GameObject ConsummableGFX;
     bool canPickUpConsummable;
     public bool hasPickedUpConsummable;
+    public string foodName;
 
     private Material ogMaterial;
     [SerializeField] private Material flashMaterial;

@@ -7,7 +7,6 @@ public class CraftingBench : MonoBehaviour
 {
     PlayerPermanent player;
     bool isInRange;
-    bool isCrafting;
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +21,21 @@ public class CraftingBench : MonoBehaviour
         {
             if (isInRange)
             {
-                if (!player.inventoryOpen && !isCrafting)
+                if (player.inventoryOpen && player.craftingIsOpen)
                 {
-                    isCrafting = true;
-                    player.ShowOrHideInventory(true, player.CanOpenStorage(), true);
+                    player.ShowOrHideInventory(false, player.CanOpenStorage());
+                    player.ShowOrHideCrafting();
                 }
                 else
                 {
-                    isCrafting = false;
-                    player.ShowOrHideInventory(false, player.CanOpenStorage(), true);
+                    if (!player.inventoryOpen)
+                    {
+                        player.ShowOrHideInventory(true, player.CanOpenStorage());
+                    }
+                    if (!player.craftingIsOpen)
+                    {
+                        player.ShowOrHideCrafting();
+                    }
                 }
             }
         }
@@ -44,10 +49,9 @@ public class CraftingBench : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         isInRange = false;
-        if (player.inventoryOpen)
+        if (player.craftingIsOpen)
         {
-            player.ShowOrHideInventory(false, player.CanOpenStorage(), true);
+            player.ShowOrHideCrafting();
         }
-        isCrafting = false;
     }
 }

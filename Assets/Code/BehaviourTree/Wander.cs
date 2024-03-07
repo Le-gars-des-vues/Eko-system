@@ -66,6 +66,50 @@ public class Wander : BehaviorNode
                     }
                 }
             }
+            else
+            {
+                if (!isMoving)
+                {
+                    Vector2 tempPos = new Vector2(creature.position.x + Random.Range(-maxMovingDistance, maxMovingDistance), creature.position.y + Random.Range(-maxMovingDistance, maxMovingDistance));
+                    if (territory.bounds.Contains(tempPos))
+                    {
+                        //Debug.Log("Target is in bounds!");
+                        targetPos.position = tempPos;
+                        bool isWalkable = !Physics2D.OverlapCircle(targetPos.position, 0.4f, LayerMask.GetMask("Ground"));
+                        if (isWalkable)
+                        {
+                            //Debug.Log("Found target for path!");
+                            parent.SetData("target", targetPos);
+                            parent.SetData("pathTarget", "wandering");
+                            parent.SetData("pathState", 1);
+                            isMoving = true;
+                        }
+                        else
+                        {
+                            waitTime = 0;
+                            waitTimer = 0;
+                            isWaiting = true;
+                        }
+                    }
+                    else
+                    {
+                        //Debug.Log("Target is outside of bounds!");
+                        waitTime = 1;
+                        waitTimer = 0;
+                        isWaiting = true;
+                    }
+                }
+                else
+                {
+                    if (GetData("pathState") != null && (int)GetData("pathState") == 0)
+                    {
+                        //Debug.Log("Finished Wandering");
+                        isWaiting = true;
+                        isMoving = false;
+                        waitTimer = 0;
+                    }
+                }
+            }
         }
         state = NodeState.RUNNING;
         return state;

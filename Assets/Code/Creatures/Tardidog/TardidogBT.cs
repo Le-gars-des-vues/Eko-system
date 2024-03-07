@@ -11,13 +11,8 @@ public class TardidogBT : BTree
     [SerializeField] int maxMovingDistance;
     [SerializeField] int originalDirection;
 
-    [Header("Senses Variables")]
     [SerializeField] TardidogMovement dog;
-    [SerializeField] float senseOfSmell;
-    [SerializeField] float fovRange;
-    [SerializeField] float minFollowDistance;
-
-    [SerializeField] string foodName;
+    [SerializeField] CreatureState state;
 
     protected override BehaviorNode SetupTree()
     {
@@ -26,11 +21,20 @@ public class TardidogBT : BTree
             new TransferInfos(gameObject), 
             new Sequence(new List<BehaviorNode>
             {
-                new CheckForTargetInRange(transform, senseOfSmell, foodName, fovRange, dog.head, dog.startAngle, dog.angleStep, dog.sightAngle, dog.rayCount, dog.rayDistance, minFollowDistance, originalDirection),
-                new AssignTarget(target),
+                new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, dog.head, dog.startAngle, dog.angleStep, dog.sightAngle, dog.rayCount, dog.rayDistance, state.minFollowDistance, originalDirection, true),
+                new AssignTarget(target, gameObject),
             }),
             new Wander(gameObject.transform, target, isGrounded, territory, maxMovingDistance)
         });
         return root;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, state.fovRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, state.senseOfSmell);
     }
 }

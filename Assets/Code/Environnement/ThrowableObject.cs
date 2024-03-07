@@ -5,15 +5,22 @@ using UnityEngine.UI;
 
 public class ThrowableObject : MonoBehaviour
 {
-    [SerializeField] private float force;
+    public float force;
     [SerializeField] private GameObject consummalbePrefab;
     public float timeToMaxThrow;
     public float timer;
     private PlayerPermanent player;
+    [SerializeField] float minThrowForce;
+    [SerializeField] float maxThrowForce;
+    public bool isThrown;
+
+    [SerializeField] ConsummableEffects effect;
+    [SerializeField] string effectName;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+        force = minThrowForce;
     }
 
     // Update is called once per frame
@@ -32,8 +39,10 @@ public class ThrowableObject : MonoBehaviour
                     {
                         if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear"))
                         {
+                            GetComponent<LineRenderer>().enabled = true;
+                            GetComponent<TrajectoryLine>().CalculateTrajectory();
                             timer += Time.deltaTime;
-                            force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
+                            force = Mathf.Lerp(minThrowForce, maxThrowForce, timer / timeToMaxThrow);
                         }
                     }
                     /* Utilisation de la main gauche
@@ -51,7 +60,10 @@ public class ThrowableObject : MonoBehaviour
                     if (player.objectInRightHand != null)
                     {
                         if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear"))
+                        {
+                            GetComponent<LineRenderer>().enabled = false;
                             StartCoroutine(Throw(player.objectInRightHand));
+                        }
                     }
                     timer = 0;
                     /* Utilisation de la main gauche
@@ -86,12 +98,23 @@ public class ThrowableObject : MonoBehaviour
             if (objectToThrow.tag != "Spear")
                 objectToThrow.GetComponent<InventoryItem>().stackAmount--;
 
+            objectToThrow.GetComponent<ThrowableObject>().isThrown = true;
+
             var toDestroy = objectToThrow.GetComponent<PickableObject>().inventory.GetItem(objectToThrow.GetComponent<InventoryItem>().onGridPositionX,
                 objectToThrow.GetComponent<InventoryItem>().onGridPositionY);
             toDestroy.Delete();
 
             yield return new WaitForSecondsRealtime(0.5f);
             Physics2D.IgnoreCollision(objectToThrow.GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
+
+            switch (effectName)
+            {
+                case "Flash":
+                    yield return new WaitForSeconds(effect.effectCountdown);
+                    effect.Flash(objectToThrow.transform, effect.effectRange);
+                    Destroy(objectToThrow);
+                    break;
+            }
 
             /* Utilisation de la main gauche
             else if (gameObject == player.objectInLeftHand)
@@ -121,8 +144,27 @@ public class ThrowableObject : MonoBehaviour
             objectToThrow.GetComponent<InventoryItem>().stackAmount--;
             objectToThrow.GetComponent<PickableObject>().itemInInventory.GetComponent<InventoryItem>().stackAmount--;
 
+            objectCloned.GetComponent<ThrowableObject>().isThrown = true;
+
             yield return new WaitForSecondsRealtime(0.5f);
             Physics2D.IgnoreCollision(objectCloned.GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
+
+            switch (effectName)
+            {
+                case "Flash":
+                    yield return new WaitForSeconds(effect.effectCountdown);
+                    effect.Flash(objectCloned.transform, effect.effectRange);
+                    Destroy(objectCloned);
+                    break;
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.GetMask("Ground"))
+        {
+            isThrown = false;
         }
     }
 }

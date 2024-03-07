@@ -38,14 +38,14 @@ public class TardidogAttack : MonoBehaviour
             }
             else
             {
-                Debug.Log("Up");
+                //Debug.Log("Up");
                 StartCoroutine(BendNeck(false));
             }
 
         }
         else if (state.isAttacking && !isAttacking)
         {
-            Debug.Log("Down");
+            //Debug.Log("Down");
             //neck.transform.eulerAngles = new Vector3(0, 0, ogAngle);
             isAttacking = true;
             StartCoroutine(BendNeck(true));

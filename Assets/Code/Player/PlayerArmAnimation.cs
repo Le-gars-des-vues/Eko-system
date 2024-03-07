@@ -46,6 +46,7 @@ public class PlayerArmAnimation : MonoBehaviour
     [SerializeField] private float armMovementTime;
     [SerializeField] private float armMovementCooldown;
     [SerializeField] private Vector2 armWeaponOffsets;
+    [SerializeField] float weaponSpeed;
 
     [HideInInspector] [SerializeField] private Vector2 armUpOffsets;
     [HideInInspector] [SerializeField] private Vector2 jumpUpOffsets;
@@ -194,30 +195,72 @@ public class PlayerArmAnimation : MonoBehaviour
 
                             //Check pour voir si la souris va dans la meme direction que celle qui fait face au joueur
                             float isPointingRight = mouseDirection.x > 0 ? 1 : -1;
-                            bool lookingUp = mousePos.y - transform.position.y >= 0 ? true : false;
+                            bool lookingUp = mousePos.y - player.transform.position.y >= 0 ? true : false;
                             bool isPointingUp = mouseDirection.y > 0 ? true : false;
 
                             //Si on bouge la souris
                             if (mouseDirection.magnitude != 0)
                             {
                                 armMovementTime = Time.time;
-
-                                //Si la souris de ne va pas dans la meme direction que le joueur regarde
-                                if ((isPointingRight != facingDirection && lookingUp != isPointingUp))
+                                if (Mathf.Abs(mouseDirection.y) < 0.3f)
                                 {
-                                    //La main recule
-                                    Vector2 offset = pickupInitialPos - mousePos;
-                                    Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
-                                    armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * 1.5f * Time.deltaTime);
+                                    //Si la souris de ne va pas dans la meme direction que le joueur regarde
+                                    if (isPointingRight != facingDirection)
+                                    {
+                                        //La main recule
+                                        Vector2 offset = pickupInitialPos - mousePos;
+                                        Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
+                                        armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                        transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                    }
+                                    //Sinon la main avance
+                                    else
+                                    {
+                                        Vector2 offset = mousePos - pickupInitialPos;
+                                        Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
+                                        armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                        transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                    }
                                 }
-                                //Sinon la main avance
+                                else if (Mathf.Abs(mouseDirection.x) < 0.3f)
+                                {
+                                    //Si la souris de ne va pas dans la meme direction que le joueur regarde
+                                    if (lookingUp != isPointingUp)
+                                    {
+                                        //La main recule
+                                        Vector2 offset = pickupInitialPos - mousePos;
+                                        Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
+                                        armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                        transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                    }
+                                    //Sinon la main avance
+                                    else
+                                    {
+                                        Vector2 offset = mousePos - pickupInitialPos;
+                                        Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
+                                        armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                        transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                    }
+                                }
                                 else
                                 {
-                                    Vector2 offset = mousePos - pickupInitialPos;
-                                    Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
-                                    armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                    transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                    //Si la souris de ne va pas dans la meme direction que le joueur regarde
+                                    if ((isPointingRight != facingDirection && lookingUp != isPointingUp))
+                                    {
+                                        //La main recule
+                                        Vector2 offset = pickupInitialPos - mousePos;
+                                        Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
+                                        armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                        transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                    }
+                                    //Sinon la main avance
+                                    else
+                                    {
+                                        Vector2 offset = mousePos - pickupInitialPos;
+                                        Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
+                                        armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                        transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                    }
                                 }
                             }
 
