@@ -198,29 +198,34 @@ public class TardidogMovement : MonoBehaviour
 
         if (jumpCheck)
         {
-            //Debug.Log(Vector2.Distance(target.position, rb.position));
-            if (state.isPathfinding)
+            RaycastHit2D jumpCheckUp = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.up, jumpRayLength, LayerMask.GetMask("Ground"));
+            RaycastHit2D jumpCheckDown = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, jumpRayLength, LayerMask.GetMask("Ground"));
+            if (!jumpCheckUp)
             {
-                if (Mathf.Approximately(Mathf.Abs(jumpCheck.normal.x), 1f))
+                //Debug.Log(Vector2.Distance(target.position, rb.position));
+                if (state.isPathfinding)
                 {
-                    if (!isJumping && isGrounded)
+                    if (Mathf.Approximately(Mathf.Abs(jumpCheck.normal.x), 1f))
+                    {
+                        if (!isJumping && isGrounded)
+                        {
+                            jumpTarget.position = Vision(target.position, false);
+                            if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
+                            {
+                                StartCoroutine(Jump(1));
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (dist > 2f && !isJumping && isGrounded)
                     {
                         jumpTarget.position = Vision(target.position, false);
                         if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
                         {
                             StartCoroutine(Jump(1));
                         }
-                    }
-                }
-            }
-            else
-            {
-                if (dist > 2f && !isJumping && isGrounded)
-                {
-                    jumpTarget.position = Vision(target.position, false);
-                    if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
-                    {
-                        StartCoroutine(Jump(1));
                     }
                 }
             }
@@ -277,7 +282,7 @@ public class TardidogMovement : MonoBehaviour
 
     IEnumerator Jump(int direction)
     {
-        Debug.Log("isJumping");
+        //Debug.Log("isJumping");
         rb.drag = 0;
         isJumping = true;
         Vector2 jumpDirection = new Vector2(jumpTarget.position.x, jumpTarget.position.y) - rb.position;
@@ -286,7 +291,7 @@ public class TardidogMovement : MonoBehaviour
         Vector2 jumpPoint = rb.position + jumpDirection;
 
         jumpTarget.position = jumpPoint;
-        Debug.Log(Vector2.Distance(new Vector2(jumpTarget.position.x, jumpTarget.position.y), rb.position));
+        //Debug.Log(Vector2.Distance(new Vector2(jumpTarget.position.x, jumpTarget.position.y), rb.position));
 
         float timer = 0;
         float duration = 0.2f;
@@ -392,7 +397,7 @@ public class TardidogMovement : MonoBehaviour
 
     bool CanMove()
     {
-        return !state.isEating;
+        return !state.isEating && !state.isStunned;
     }
 
     private void OnCollisionStay2D(Collision2D collision)

@@ -216,6 +216,6 @@ public class FlumpfMovement : MonoBehaviour
 
     bool CanMove()
     {
-        return !state.isEating;
+        return !state.isEating && !state.isStunned;
     }
 }

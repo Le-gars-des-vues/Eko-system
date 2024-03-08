@@ -43,6 +43,7 @@ public class CheckForTargetInRange : BehaviorNode
 
     public override NodeState Evaluate()
     {
+        Debug.Log("Looking for target");
         object t = GetData("target");
         if  (t == null)
         {
@@ -57,7 +58,6 @@ public class CheckForTargetInRange : BehaviorNode
                         //Debug.Log(collider.gameObject.transform.position);
                         if (Vector2.Distance(collider.gameObject.transform.position, transform.position) < fovRange)
                         {
-                            //Debug.Log("Player is seen!");
                             parent.parent.SetData("target", collider.transform);
                             parent.parent.SetData("pathTarget", "player");
                             parent.parent.SetData("pathState", 1);
@@ -75,7 +75,7 @@ public class CheckForTargetInRange : BehaviorNode
                             {
                                 if (Vision())
                                 {
-                                    Debug.Log("Player is seen!");
+                                    //Debug.Log("Player is seen!");
                                     parent.parent.SetData("target", collider.transform);
                                     parent.parent.SetData("pathTarget", "player");
                                     parent.parent.SetData("pathState", 1);
@@ -117,6 +117,7 @@ public class CheckForTargetInRange : BehaviorNode
                     parent.parent.ClearData("target");
                     parent.parent.ClearData("pathTarget");
                     parent.parent.SetData("pathState", 0);
+                    transform.gameObject.GetComponent<CreaturePathfinding>().StopPathFinding();
                     if (GetData("isAttacking") != null && (bool)GetData("isAttacking") == true)
                         parent.parent.SetData("isAttacking", false);
 
@@ -160,7 +161,7 @@ public class CheckForTargetInRange : BehaviorNode
                                 {
                                     if (Vision())
                                     {
-                                        Debug.Log("Player is seen!");
+                                        //Debug.Log("Player is seen!");
                                         parent.parent.SetData("target", collider.transform);
                                         parent.parent.SetData("pathTarget", "player");
                                         parent.parent.SetData("pathState", 1);

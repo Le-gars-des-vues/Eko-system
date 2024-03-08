@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.Universal;
 
 public class ThrowableObject : MonoBehaviour
 {
@@ -112,6 +113,9 @@ public class ThrowableObject : MonoBehaviour
                 case "Flash":
                     yield return new WaitForSeconds(effect.effectCountdown);
                     effect.Flash(objectToThrow.transform, effect.effectRange);
+                    objectToThrow.GetComponentInChildren<Light2D>().enabled = true;
+                    objectToThrow.GetComponent<Flashbang>().enabled = true;
+                    yield return new WaitForSeconds(1.5f);
                     Destroy(objectToThrow);
                     break;
             }
@@ -154,6 +158,9 @@ public class ThrowableObject : MonoBehaviour
                 case "Flash":
                     yield return new WaitForSeconds(effect.effectCountdown);
                     effect.Flash(objectCloned.transform, effect.effectRange);
+                    objectCloned.GetComponentInChildren<Light2D>().enabled = true;
+                    objectCloned.GetComponent<Flashbang>().enabled = true;
+                    yield return new WaitForSeconds(1.5f);
                     Destroy(objectCloned);
                     break;
             }

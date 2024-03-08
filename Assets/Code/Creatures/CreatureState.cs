@@ -10,6 +10,7 @@ public class CreatureState : MonoBehaviour
     public bool isEating = false;
     public bool isPathfinding;
     public bool isStunned;
+    public bool isFlying;
 
     [Header("Hunger Variables")]
     public float currentFood;
@@ -17,7 +18,7 @@ public class CreatureState : MonoBehaviour
     [SerializeField] float digestRate = 1;
     public bool isFull;
     [SerializeField] float isFullCooldown = 120;
-    [SerializeField] float isFullTime;
+    [SerializeField] float isFullTime = 0;
     float minSenseOfSmellRadius;
     float maxSenseOfSmellRadius;
     [SerializeField] float eatingTime = 2;
@@ -28,12 +29,21 @@ public class CreatureState : MonoBehaviour
     public float minFollowDistance = 10f;
     public string foodName;
 
+    [Header("Stun Variables")]
+    [SerializeField] float stunDuration;
+    float stunnedTime;
+    bool stunTrigger;
+
+    [Header("Flee Variables")]
+    public GameObject lastSourceOfDamage;
+    public bool hasFled;
+
     private void OnEnable()
     {
         currentFood = maxFood;
         minSenseOfSmellRadius = senseOfSmell;
         maxSenseOfSmellRadius = senseOfSmell * 2;
-        Eat();
+        isFull = true;
     }
 
     // Update is called once per frame
@@ -49,6 +59,20 @@ public class CreatureState : MonoBehaviour
             currentFood -= digestRate * Time.deltaTime;
 
         senseOfSmell = Mathf.Lerp(minSenseOfSmellRadius, maxSenseOfSmellRadius, (maxFood - currentFood) / maxFood);
+
+        if (isStunned)
+        {
+            if (!stunTrigger)
+            {
+                stunTrigger = true;
+                stunnedTime = Time.time;
+            }
+            if (Time.time - stunnedTime > stunDuration)
+            {
+                isStunned = false;
+                stunTrigger = false;
+            }
+        }
     }
 
     public void Eat()

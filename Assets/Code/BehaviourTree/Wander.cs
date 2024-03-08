@@ -28,6 +28,7 @@ public class Wander : BehaviorNode
 
     public override NodeState Evaluate()
     {
+        Debug.Log("wandering");
         if (isWaiting)
         {
             waitTimer += Time.deltaTime;
@@ -39,7 +40,7 @@ public class Wander : BehaviorNode
         }
         else
         {
-            if (isGrounded)
+            if (GetData("isFlying") != null && !(bool)GetData("isFlying"))
             {
                 if (!isMoving)
                 {

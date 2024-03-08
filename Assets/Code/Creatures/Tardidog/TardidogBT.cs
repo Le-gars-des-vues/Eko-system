@@ -18,7 +18,12 @@ public class TardidogBT : BTree
     {
         BehaviorNode root = new Selector(new List<BehaviorNode>
         {
-            new TransferInfos(gameObject), 
+            new TransferInfos(gameObject),
+            new Sequence(new List<BehaviorNode>
+            {
+                new CheckHealth(gameObject),
+                new Flee(target, gameObject, maxMovingDistance),
+            }),
             new Sequence(new List<BehaviorNode>
             {
                 new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, dog.head, dog.startAngle, dog.angleStep, dog.sightAngle, dog.rayCount, dog.rayDistance, state.minFollowDistance, originalDirection, true),
