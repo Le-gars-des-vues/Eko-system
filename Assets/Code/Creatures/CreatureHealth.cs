@@ -6,6 +6,8 @@ public class CreatureHealth : MonoBehaviour
 {
     [SerializeField] float maxHp;
     [SerializeField] float currentHp;
+    [SerializeField] float lowHpThreshold;
+    [SerializeField] float healthRegenRate = 0.5f;
 
     [Header("Flash White Variables")]
     public bool isInvincible;
@@ -25,14 +27,22 @@ public class CreatureHealth : MonoBehaviour
     {
         if (currentHp <= 0)
         {
-            gameObject.SetActive(false);
+            GetComponent<CreatureDeath>().Death();
         }
+
+        if (currentHp < lowHpThreshold && !GetComponent<CreatureState>().hasFled)
+            GetComponent<CreatureState>().isFleeing = true;
+
+        if (GetComponent<CreatureState>().isFull)
+            currentHp += Time.deltaTime * healthRegenRate;
     }
 
-    public void LoseHealth(float value)
+    public void LoseHealth(float value, GameObject damageFrom)
     {
         if (!isInvincible)
         {
+            GetComponent<CreatureState>().lastSourceOfDamage = damageFrom;
+            GetComponent<CreatureState>().hasFled = false;
             currentHp -= value;
             StartCoroutine(FlashWhite(creatureGFX, flashWhiteDuration));
         }

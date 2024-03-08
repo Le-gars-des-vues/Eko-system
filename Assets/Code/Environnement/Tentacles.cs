@@ -19,9 +19,9 @@ public class Tentacles : MonoBehaviour
     [SerializeField] private float trailSpeed;
 
     //Vitesse du wiggle
-    [SerializeField] private float wiggleSpeed;
+    public float wiggleSpeed;
     //Amplitude du wiggle
-    [SerializeField] private float wiggleMagnitude;
+    public float wiggleMagnitude;
     [SerializeField] private Transform wiggleDir;
 
     public bool canShorten = true;

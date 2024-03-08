@@ -21,6 +21,11 @@ public class FlumpfBT : BTree
             new TransferInfos(gameObject), 
             new Sequence(new List<BehaviorNode>
             {
+                new CheckHealth(gameObject),
+                new Flee(target, gameObject, maxMovingDistance),
+            }),
+            new Sequence(new List<BehaviorNode>
+            {
                 new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, fly.head, fly.startAngle, fly.angleStep, fly.sightAngle, fly.rayCount, fly.rayDistance, state.minFollowDistance, originalDirection, false),
                 new AssignTarget(target, gameObject),
             }),

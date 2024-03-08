@@ -15,20 +15,30 @@ public class TransferInfos : BehaviorNode
 
     public override NodeState Evaluate()
     {
-        if (GetData("pathState") != null && (int)GetData("pathState") == 0)
+        //Check if the creature is flying or not
+        parent.SetData("isFlying", creature.GetComponent<CreatureState>().isFlying);
+
+        if (creature.GetComponent<CreatureState>().isFleeing)
         {
-            parent.SetData("pathState", -1);
-            creature.GetComponent<CreaturePathfinding>().StopPathFinding();
+            parent.SetData("isFleeing", true);
+        }
+        else
+        {
+            parent.SetData("isFleeing", false);
         }
 
+        //Check if creature has eaten recently or not
         parent.SetData("isFull", creature.GetComponent<CreatureState>().isFull);
 
+        //Check if creature is attacking
         if (GetData("isAttacking") != null && creature != null)
             creature.GetComponent<CreatureState>().isAttacking = (bool)GetData("isAttacking");
 
+        //Check if creature has reached end of path
         if (creature.GetComponent<CreaturePathfinding>().reachEndOfPath)
         {
             creature.GetComponent<CreaturePathfinding>().reachEndOfPath = false;
+            //If the path target was food, the creature eats
             if (GetData("pathTarget") != null)
             {
                 if ((string)GetData("pathTarget") == "food")
@@ -38,6 +48,7 @@ public class TransferInfos : BehaviorNode
                 }
                 parent.ClearData("pathTarget");
             }
+            //Pathfinding is set back to none
             parent.ClearData("target");
             parent.SetData("pathState", 0);
         }

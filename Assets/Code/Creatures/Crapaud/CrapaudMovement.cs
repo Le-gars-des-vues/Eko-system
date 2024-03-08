@@ -361,7 +361,7 @@ public class CrapaudMovement : MonoBehaviour
 
     bool CanMove()
     {
-        return !state.isEating;
+        return !state.isEating && !state.isStunned;
     }
 
     private void OnCollisionStay2D(Collision2D collision)

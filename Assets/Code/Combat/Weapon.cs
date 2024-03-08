@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] int maxDamage;
     [SerializeField] float piercingAngleThreshold;
     Vector3 previousPosition;
-    Vector3 velocity;
+    public Vector3 velocity;
     int hitDamage;
     bool isDamaging;
 
@@ -22,9 +22,6 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        velocity = (transform.position - previousPosition) / Time.deltaTime;
-        previousPosition = transform.position;
-
         hitDamage = Mathf.RoundToInt((baseDamage * velocity.magnitude) / 2);
         hitDamage = Mathf.Clamp(hitDamage, baseDamage, maxDamage);
 
@@ -61,6 +58,15 @@ public class Weapon : MonoBehaviour
         */
     }
 
+    private void FixedUpdate()
+    {
+        velocity = (transform.position - previousPosition) / Time.deltaTime;
+        velocity.x = Mathf.Abs(velocity.x);
+        velocity.y = Mathf.Abs(velocity.y);
+
+        previousPosition = transform.position;
+    }
+
     private void OnCollisionEnter2D(Collision2D dmg)
     {
         if (dmg.collider != null && dmg.collider.gameObject.tag == "Creature" && (GetComponent<PickableObject>().isPickedUp || GetComponent<ThrowableObject>().isThrown))
@@ -80,7 +86,7 @@ public class Weapon : MonoBehaviour
                     if (angle < piercingAngleThreshold)
                     {
                         isDamaging = true;
-                        hp.LoseHealth(hitDamage);
+                        hp.LoseHealth(hitDamage, GameObject.FindGameObjectWithTag("Player"));
                         int color = 0;
                         if (hitDamage < maxDamage / 3)
                             color = 0;
