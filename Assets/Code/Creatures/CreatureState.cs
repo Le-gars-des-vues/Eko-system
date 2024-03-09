@@ -38,12 +38,17 @@ public class CreatureState : MonoBehaviour
     public GameObject lastSourceOfDamage;
     public bool hasFled;
 
+    public BoxCollider2D territory;
+    bool hasATerritory = false;
+
     private void OnEnable()
     {
         currentFood = maxFood;
         minSenseOfSmellRadius = senseOfSmell;
         maxSenseOfSmellRadius = senseOfSmell * 2;
         isFull = true;
+
+        territory = (BoxCollider2D)Physics2D.OverlapCircle(transform.position, 1f, LayerMask.GetMask("SceneView"));
     }
 
     // Update is called once per frame
@@ -90,5 +95,13 @@ public class CreatureState : MonoBehaviour
         yield return new WaitForSeconds(eatingTime);
         Debug.Log("finished eating");
         isEating = false;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Territory")
+        {
+            if (!hasATerritory)
+                territory = (BoxCollider2D)collision;
+        }
     }
 }
