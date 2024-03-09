@@ -19,11 +19,14 @@ public class RoomManager : MonoBehaviour
         if(myRoom.GetComponent<RoomInfo>().roomType == 1)
         {
             roomAmountDataHolder.GetComponent<RoomCrafting>().SetFarm(roomAmountDataHolder.GetComponent<RoomCrafting>().GetFarms()+1);
-        }else if (myRoom.GetComponent<RoomInfo>().roomType == 2)
+            myRoom.GetComponent<RoomInfo>().ChangementSalle(0);
+        }
+        else if (myRoom.GetComponent<RoomInfo>().roomType == 2)
         {
             roomAmountDataHolder.GetComponent<RoomCrafting>().SetEnclos(roomAmountDataHolder.GetComponent<RoomCrafting>().GetEnclos() + 1);
+            myRoom.GetComponent<RoomInfo>().ChangementSalle(0);
         }
-        myRoom.GetComponent<RoomInfo>().ChangementSalle(0);
+        
 
         boutonNeutral.interactable = false;
         boutonEnclos.interactable = true;
@@ -35,13 +38,15 @@ public class RoomManager : MonoBehaviour
         if(roomAmountDataHolder.GetComponent<RoomCrafting>().GetFarms() >= 1)
         {
             roomAmountDataHolder.GetComponent<RoomCrafting>().SetFarm(roomAmountDataHolder.GetComponent<RoomCrafting>().GetFarms() - 1);
+            myRoom.GetComponent<RoomInfo>().ChangementSalle(1);
         }
         if (myRoom.GetComponent<RoomInfo>().roomType == 2)
         {
             roomAmountDataHolder.GetComponent<RoomCrafting>().SetEnclos(roomAmountDataHolder.GetComponent<RoomCrafting>().GetEnclos() + 1);
+            myRoom.GetComponent<RoomInfo>().ChangementSalle(1);
         }
 
-        myRoom.GetComponent<RoomInfo>().ChangementSalle(1);
+        
 
         boutonNeutral.interactable = true;
         boutonEnclos.interactable = true;
@@ -53,13 +58,15 @@ public class RoomManager : MonoBehaviour
         if (roomAmountDataHolder.GetComponent<RoomCrafting>().GetEnclos() >= 1)
         {
             roomAmountDataHolder.GetComponent<RoomCrafting>().SetEnclos(roomAmountDataHolder.GetComponent<RoomCrafting>().GetEnclos() - 1);
+            myRoom.GetComponent<RoomInfo>().ChangementSalle(2);
         }
         if (myRoom.GetComponent<RoomInfo>().roomType == 1)
         {
             roomAmountDataHolder.GetComponent<RoomCrafting>().SetFarm(roomAmountDataHolder.GetComponent<RoomCrafting>().GetFarms() + 1);
+            myRoom.GetComponent<RoomInfo>().ChangementSalle(2);
         }
 
-        myRoom.GetComponent<RoomInfo>().ChangementSalle(2);
+        
 
         boutonNeutral.interactable = true;
         boutonEnclos.interactable = false;
@@ -69,6 +76,7 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        myRoom.GetComponent<RoomCrafters>().SetItemToShowInSlot();
         if (collision.gameObject.tag == "Player")
         {
             roomMenu.SetActive(true);
@@ -107,5 +115,7 @@ public class RoomManager : MonoBehaviour
         boutonNeutral.onClick.RemoveAllListeners();
         boutonEnclos.onClick.RemoveAllListeners();
         boutonFarm.onClick.RemoveAllListeners();
+
+        myRoom.GetComponent<RoomCrafters>().SetItemToDuplicate();
     }
 }
