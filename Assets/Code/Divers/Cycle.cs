@@ -13,6 +13,8 @@ public class Cycle : MonoBehaviour
 
     public TextMeshProUGUI TimerTxt;
 
+    public GameObject[] theRooms;
+
     void Start()
     {
         TimeLeft = initialTime;
@@ -54,6 +56,10 @@ public class Cycle : MonoBehaviour
                 TimerOn=true;
                 Debug.Log("New Cycle");
                 this.gameObject.GetComponent<Quota>().nouveauQuota();
+                for(int i=0; i <= theRooms.Length - 1; i++)
+                {
+                    theRooms[i].GetComponent<RoomCrafters>().SpawnExtraItem();
+                }
             }
         }
     }
