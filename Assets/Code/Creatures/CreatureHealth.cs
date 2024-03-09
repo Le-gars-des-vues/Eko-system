@@ -33,7 +33,7 @@ public class CreatureHealth : MonoBehaviour
         if (currentHp < lowHpThreshold && !GetComponent<CreatureState>().hasFled)
             GetComponent<CreatureState>().isFleeing = true;
 
-        if (GetComponent<CreatureState>().isFull)
+        if (GetComponent<CreatureState>().isFull && currentHp < maxHp)
             currentHp += Time.deltaTime * healthRegenRate;
     }
 

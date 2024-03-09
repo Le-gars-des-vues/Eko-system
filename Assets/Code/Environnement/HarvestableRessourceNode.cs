@@ -23,6 +23,8 @@ public class HarvestableRessourceNode : MonoBehaviour
     public bool isOutlined;
     PlayerPermanent player;
 
+    [SerializeField] float groundRaycastLength;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,12 @@ public class HarvestableRessourceNode : MonoBehaviour
                 Instantiate(consummableToSpawn, transform.position, transform.rotation);
 
             gameObject.SetActive(false);
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastLength, LayerMask.GetMask("Ground"));
+        if (hit.collider == null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, transform.position.y - 0.1f), 0.1f);
         }
     }
 
@@ -96,5 +104,11 @@ public class HarvestableRessourceNode : MonoBehaviour
                 sprite_full.color = Color.white;
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, Vector2.down * groundRaycastLength);
     }
 }

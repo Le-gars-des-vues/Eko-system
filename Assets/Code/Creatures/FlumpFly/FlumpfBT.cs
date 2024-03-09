@@ -7,7 +7,6 @@ public class FlumpfBT : BTree
     [Header("Movement Variables")]
     [SerializeField] Transform target;
     [SerializeField] bool isGrounded;
-    [SerializeField] BoxCollider2D territory;
     [SerializeField] int maxMovingDistance;
     [SerializeField] int originalDirection;
 
@@ -29,7 +28,7 @@ public class FlumpfBT : BTree
                 new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, fly.head, fly.startAngle, fly.angleStep, fly.sightAngle, fly.rayCount, fly.rayDistance, state.minFollowDistance, originalDirection, false),
                 new AssignTarget(target, gameObject),
             }),
-            new Wander(gameObject.transform, target, isGrounded, territory, maxMovingDistance)
+            new Wander(gameObject.transform, target, isGrounded, state.territory, maxMovingDistance)
         });
         return root;
     }

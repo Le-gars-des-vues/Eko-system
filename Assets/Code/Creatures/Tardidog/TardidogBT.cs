@@ -7,7 +7,6 @@ public class TardidogBT : BTree
     [Header("Movement Variables")]
     [SerializeField] Transform target;
     [SerializeField] bool isGrounded;
-    [SerializeField] BoxCollider2D territory;
     [SerializeField] int maxMovingDistance;
     [SerializeField] int originalDirection;
 
@@ -29,7 +28,7 @@ public class TardidogBT : BTree
                 new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, dog.head, dog.startAngle, dog.angleStep, dog.sightAngle, dog.rayCount, dog.rayDistance, state.minFollowDistance, originalDirection, true),
                 new AssignTarget(target, gameObject),
             }),
-            new Wander(gameObject.transform, target, isGrounded, territory, maxMovingDistance)
+            new Wander(gameObject.transform, target, isGrounded, state.territory, maxMovingDistance)
         });
         return root;
     }

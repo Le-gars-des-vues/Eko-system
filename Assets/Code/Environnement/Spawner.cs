@@ -5,14 +5,10 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject objectToSpawn;
-    public bool spawnObject;
+    public string objectName;
 
-    private void Update()
+    public void Spawn()
     {
-        if (spawnObject)
-        {
-            spawnObject = false;
-            Instantiate(objectToSpawn, transform.position, transform.rotation);
-        }
+        Instantiate(objectToSpawn, transform.position, transform.rotation);
     }
 }

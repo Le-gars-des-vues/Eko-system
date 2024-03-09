@@ -80,9 +80,13 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private List<LimbSolver2D> limbs;
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private CapsuleCollider2D playerCollider;
+    [SerializeField] private List<GameObject> bones;
+    [SerializeField] private List<Vector3> bonesPosition;
+    [SerializeField] private List<Quaternion> bonesRotation;
 
     private VinePlayerController vineController;
     private GameObject theBase;
+    public GameObject gameOverScreen;
 
     [Header("Upgrade Variables")]
     public bool hasDoubleJump;
@@ -91,7 +95,7 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private GameObject map;
     public bool mapIsOpen = true;
     public bool marketIsOpen = true;
-    public bool craftingIsOpen = true;
+    public bool craftingIsOpen = false;
 
     private void Awake()
     {
@@ -106,21 +110,20 @@ public class PlayerPermanent : MonoBehaviour
         hpSlider = GameObject.Find("healthBar").GetComponent<Slider>();
         staminaSlider = GameObject.Find("staminaBar").GetComponent<Slider>();
 
-        playerInventory = GameObject.Find("GridInventaire");
-        storageInventory = GameObject.Find("GridStorage");
+        playerInventory = GameObject.Find("Inventaire");
+        storageInventory = GameObject.Find("Storage");
         market = GameObject.Find("Vente");
         crafting = GameObject.Find("Crafting");
-
         map = GameObject.Find("Map");
-
+        gameOverScreen = GameObject.Find("GameOverScreen");
         //Au depart du jeu, on set tout les bars au max et on desactive le ragdoll
-        ResetToMax();
+        for (int i = 0; i < bones.Count; i++)
+        {
+            bonesPosition.Add(bones[i].transform.position);
+            bonesRotation.Add(bones[i].transform.rotation);
+        }
+        Reset();
         ToggleRagdoll(false);
-
-        ShowOrHideInventory(false, true);
-        ShowOrHideMarket();
-        ShowOrHideCrafting();
-        ShowOrHideMap();
 
         //On va chercher le script de vigne
         vineController = GetComponent<VinePlayerController>();
@@ -142,6 +145,8 @@ public class PlayerPermanent : MonoBehaviour
             SetBar(thirstSlider, currentThirst);
         }
         */
+
+        //Check if player is in base
         if (theBase.GetComponent<Base>().isInside)
         {
             if (!isInBase)
@@ -174,6 +179,7 @@ public class PlayerPermanent : MonoBehaviour
                 staminaDepleted = false;
         }
 
+        //Vine controller
         if (vineController.enabled)
         {
             if (GetInput().x != 0)
@@ -190,6 +196,7 @@ public class PlayerPermanent : MonoBehaviour
             }
         }
         
+        //Open UI
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (!inventoryOpen)
@@ -203,7 +210,8 @@ public class PlayerPermanent : MonoBehaviour
             ShowOrHideMap();
         }
 
-            if (ressourcesNear.Count >= 1)
+        //Pick up ressources
+        if (ressourcesNear.Count >= 1)
         {
             foreach (var ressource in ressourcesNear)
             {
@@ -222,10 +230,15 @@ public class PlayerPermanent : MonoBehaviour
         }
         else
             nearestRessourceDistance = 10;
+
+        if (currentHp <= 0)
+        {
+            Death();
+        }
     }
 
     //Pour remettre tout les values au maximum
-    public void ResetToMax()
+    public void Reset()
     {
         currentOxygen = maxOxygen;
         currentHp = maxHp;
@@ -237,6 +250,67 @@ public class PlayerPermanent : MonoBehaviour
         //SetMaxBar(hungerSlider, maxHunger);
         //SetMaxBar(thirstSlider, maxThirst);
         SetMaxBar(staminaSlider, maxStamina);
+
+        if (inventoryOpen)
+            ShowOrHideInventory(false, true);
+        if (marketIsOpen)
+            ShowOrHideMarket();
+        if (craftingIsOpen)
+            ShowOrHideCrafting();
+        if (mapIsOpen)
+            ShowOrHideMap();
+
+        gameOverScreen.SetActive(false);
+    }
+
+    public void Death()
+    {
+        if (inventoryOpen)
+            ShowOrHideInventory(false, true);
+        if (marketIsOpen)
+            ShowOrHideMarket();
+        if (craftingIsOpen)
+            ShowOrHideCrafting();
+        if (mapIsOpen)
+            ShowOrHideMap();
+
+        ToggleRagdoll(true);
+        MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            script.enabled = false;
+        }
+
+        ItemGrid inventoryGrid = playerInventory.transform.Find("GridInventaire").gameObject.GetComponent<ItemGrid>();
+        InventoryItem anItem;
+        List<InventoryItem> itemsInInventory = new List<InventoryItem>();
+
+        float inventoryWidth = inventoryGrid.GetGridSizeWidth();
+        float inventoryHeight = inventoryGrid.GetGridSizeHeight();
+
+        for (int x = 0; x < inventoryWidth; x++)
+        {
+
+            for (int y = 0; y < inventoryHeight; y++)
+            {
+                anItem = inventoryGrid.CheckIfItemPresent(x, y);
+                if (anItem != null)
+                {
+                    if (!itemsInInventory.Contains(anItem))
+                        itemsInInventory.Add(anItem);
+                }
+            }
+        }
+        int numberOfItemToDestroy = itemsInInventory.Count / 2;
+        for (int i = 0; i < numberOfItemToDestroy; i++)
+        {
+            int index = Random.Range(0, itemsInInventory.Count - 1);
+            itemsInInventory[index].GetComponent<InventoryItem>().Delete();
+            itemsInInventory.RemoveAt(index);
+        }
+
+        gameOverScreen.SetActive(true);
+        gameOverScreen.GetComponent<GameOverScreen>().player = gameObject;
     }
 
     //Pour changer les slider, bar est le slider qu'on veut changer et value est la valeur qu'on veut lui donner
@@ -342,6 +416,15 @@ public class PlayerPermanent : MonoBehaviour
         foreach (var joint in joints)
         {
             joint.enabled = ragdollOn;
+        }
+
+        if (!ragdollOn)
+        {
+            for (int i = 0; i < bones.Count; i++)
+            {
+                bones[i].transform.position = bonesPosition[i];
+                bones[i].transform.rotation = bonesRotation[i];
+            }
         }
     }
 
