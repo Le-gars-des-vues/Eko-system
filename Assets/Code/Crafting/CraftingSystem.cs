@@ -60,17 +60,18 @@ public class CraftingSystem : MonoBehaviour
                     if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].firstMaterial)
                     {
                         compteurItem1 += 1f / (anItem.itemData.width * anItem.itemData.height);
+                        Debug.Log(compteurItem1);
                        
                     }
                     else if(anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].secondMaterial)
                     {
                         compteurItem2+= 1f / (anItem.itemData.width * anItem.itemData.height);
-
+                        Debug.Log(compteurItem2);
                     }
                     else if(anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].thirdMaterial)
                     {
                         compteurItem3 += 1f / (anItem.itemData.width * anItem.itemData.height);
-                        
+                        Debug.Log(compteurItem2);
                     }
                     
                     
@@ -101,7 +102,6 @@ public class CraftingSystem : MonoBehaviour
 
         if (mat1Complete && mat2Complete && mat3Complete)
         {
-            theController.GetComponent<InventoryController>().CreateRecipeItem(laRecette);
             int i1 = 0;
             int i2 = 0;
             int i3 = 0;
@@ -140,9 +140,8 @@ public class CraftingSystem : MonoBehaviour
 
                 }
             }
-
+            theController.GetComponent<InventoryController>().CreateRecipeItem(laRecette, theCraftingDropdownInit);
         }
-
         CraftCheck();
     }
 }

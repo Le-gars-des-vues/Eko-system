@@ -92,9 +92,5 @@ public class CraftingDropdownInit : MonoBehaviour
         {
             nombreMat3.text = mat3Quant.ToString()+" / "+Recipes.listOfRecipes[currentRecipe].thirdMatQuantity.ToString();
         }
-        
-
-
     }
-    
 }

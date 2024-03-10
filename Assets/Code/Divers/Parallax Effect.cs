@@ -40,10 +40,10 @@ public class ParallaxEffect : MonoBehaviour
         }
         if (infinityVertical)
         {
-            if (Mathf.Abs(cameraTransform.position.x - transform.position.x) >= textureUnitSizeX)
+            if (Mathf.Abs(cameraTransform.position.y - transform.position.y) >= textureUnitSizeY)
             {
                 float offsetPositionY = (cameraTransform.position.y - transform.position.y) % textureUnitSizeY;
-                transform.position = new Vector3(cameraTransform.position.x, transform.position.y + offsetPositionY);
+                transform.position = new Vector3(transform.position.x, cameraTransform.position.y + offsetPositionY);
             }
         }
     }

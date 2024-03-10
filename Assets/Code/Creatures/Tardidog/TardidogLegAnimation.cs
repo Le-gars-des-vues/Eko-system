@@ -20,7 +20,7 @@ public class TardidogLegAnimation : MonoBehaviour
     [SerializeField] TardidogMovement dog;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         dog = transform.parent.transform.parent.GetComponent<TardidogMovement>();
         //On fixe la cible initiale au sol

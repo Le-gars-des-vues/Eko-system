@@ -11,6 +11,7 @@ public class InventoryController : MonoBehaviour
     [HideInInspector]
     private ItemGrid selectedItemGrid;
     private ItemGrid defaultItemGrid;
+    private ItemGrid upgradeItemGrid;
 
     public ItemGrid SelectedItemGrid { get => selectedItemGrid;
         set { 
@@ -47,6 +48,7 @@ public class InventoryController : MonoBehaviour
         inventoryHighlight = GetComponent<InventoryHighlight>();
         hotbar = GameObject.Find("Hotbar").GetComponent<HotbarManager>();
         defaultItemGrid = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
+        upgradeItemGrid = GameObject.Find("GridUpgrade").GetComponent<ItemGrid>();
     }
 
     private void Start()
@@ -85,7 +87,7 @@ public class InventoryController : MonoBehaviour
             return;
         }
 
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().inventoryOpen)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().inventoryOpen || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().upgradeIsOpen)
             HandleHighlight();
 
         if (Input.GetMouseButtonDown(0))
@@ -129,7 +131,8 @@ public class InventoryController : MonoBehaviour
 
         if (selectedItem == null)
         {
-            itemToHighlight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
+            if (positionOnGrid.x < selectedItemGrid.GetGridSizeWidth() && positionOnGrid.y < selectedItemGrid.GetGridSizeHeight())
+                itemToHighlight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
 
             if (itemToHighlight != null){
                 inventoryHighlight.Show(true);
@@ -165,23 +168,55 @@ public class InventoryController : MonoBehaviour
         inventoryItem.Set(items[selectedItemID], defaultItemGrid);
     }
 
-    public void CreateRecipeItem(int recipeChoice)
+    public void CreateRecipeItem(int recipeChoice, GameObject dropDown)
     {
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
-        selectedItem = inventoryItem;
+        inventoryItem.Set(craftables[recipeChoice], defaultItemGrid);
+        if (craftables[recipeChoice].isUpgrade)
+        {
+            Vector2Int? posOnGrid = upgradeItemGrid.FindSpaceForObject(inventoryItem);
+            if (posOnGrid == null)
+            {
+                selectedItem = inventoryItem;
 
-        rectTransform = inventoryItem.GetComponent<RectTransform>();
-        rectTransform.SetParent(canvasTransform);
-        rectTransform.SetAsLastSibling();
+                rectTransform = inventoryItem.GetComponent<RectTransform>();
+                rectTransform.SetParent(canvasTransform);
+                rectTransform.SetAsLastSibling();
+                return; 
+            }
+            upgradeItemGrid.PlaceItem(inventoryItem, posOnGrid.Value.x, posOnGrid.Value.y);
+            Recipes.listOfRecipes.Remove(recipeChoice);
+            if (recipeChoice != Recipes.listOfRecipes.Count)
+            {
+                Recipes.listOfRecipes.Add(recipeChoice, Recipes.listOfRecipes[recipeChoice + 1]);
+                for (int i = recipeChoice + 1; i < Recipes.listOfRecipes.Count; i++)
+                {
+                    Recipes.listOfRecipes.Remove(i);
+                    if (i != Recipes.listOfRecipes.Count)
+                        Recipes.listOfRecipes.Add(i, Recipes.listOfRecipes[i + 1]);
+                }
+            }
+            dropDown.GetComponent<TMP_Dropdown>().value--;
+            dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(recipeChoice);
+            dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
+        }
+        else
+        {
+            selectedItem = inventoryItem;
 
-        int selectedItemID = recipeChoice;
-        inventoryItem.Set(craftables[selectedItemID], defaultItemGrid);
+            rectTransform = inventoryItem.GetComponent<RectTransform>();
+            rectTransform.SetParent(canvasTransform);
+            rectTransform.SetAsLastSibling();
+        }
+
+        //int selectedItemID = recipeChoice;
+        //inventoryItem.Set(craftables[selectedItemID], defaultItemGrid);
     }
 
     private void LeftMouseButtonPress()
     {
         Vector2Int tileGridPosition = GetTileGridPosition();
-        Debug.Log(tileGridPosition);
+        //Debug.Log(tileGridPosition);
 
         if (selectedItem == null)
         {
@@ -189,7 +224,18 @@ public class InventoryController : MonoBehaviour
         }
         else
         {
-            PlaceItem(tileGridPosition);
+            if (selectedItemGrid == upgradeItemGrid || selectedItemGrid.gameObject.tag == "Upgrade")
+            {
+                if (selectedItem.itemData.isUpgrade)
+                {
+                    selectedItem.isUpgrading = true;
+                    PlaceItem(tileGridPosition);
+                }
+                else
+                    Debug.Log("Can only place upgrades in this inventory!");
+            }
+            else
+                PlaceItem(tileGridPosition);
         }
     }
 

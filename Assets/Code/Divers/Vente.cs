@@ -17,6 +17,7 @@ public class Vente : MonoBehaviour
 
     public GameObject quotaManager;
     [SerializeField] private TextMeshProUGUI quotaText;
+    [SerializeField] private TextMeshProUGUI profitText;
 
     private void Start()
     {
@@ -41,6 +42,7 @@ public class Vente : MonoBehaviour
                 {
                     profit += (float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height);
                     quotaText.text = profit.ToString() + " / " + quotaManager.GetComponent<Quota>().quota.ToString() + "$";
+                    profitText.text = profit.ToString() + " %";
                     anItem.Delete();
                 }
              }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "ItemData", menuName = "Custom/ItemData")]
 public class ItemData : ScriptableObject
 {
     public int width=1;
@@ -13,7 +13,6 @@ public class ItemData : ScriptableObject
     public int initialWidth=1;
     public int initialHeight=1;
 
-    //CHANGEMENT ICI -----------------------------------
     [HideInInspector]
     public int hotbarWidth = 1;
     [HideInInspector]
@@ -24,6 +23,9 @@ public class ItemData : ScriptableObject
     public Sprite itemIcon;
 
     public int value=1;
+
+    public bool isUpgrade;
+    public string scriptToAttach;
 
     //public bool markedForDestroy;
 

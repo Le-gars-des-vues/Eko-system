@@ -15,7 +15,7 @@ public class CreatureDeath : MonoBehaviour
     [SerializeField] private List<HingeJoint2D> joints;
     [SerializeField] private List<LimbSolver2D> limbs;
 
-    [SerializeField] private Rigidbody2D creatureRb;
+    [SerializeField] private List<Rigidbody2D> creatureRbs;
     [SerializeField] private List<Collider2D> creatureColliders;
 
     [SerializeField] bool isLineRenderer;
@@ -27,12 +27,12 @@ public class CreatureDeath : MonoBehaviour
     [SerializeField] GameObject ressourceToHarvest;
     [SerializeField] float timeToHarvest;
     bool isInRangeToHarvest;
-    bool isDead;
+    public bool isDead;
     float timer;
     
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         ToggleRagdoll(false, false);
     }
@@ -49,6 +49,7 @@ public class CreatureDeath : MonoBehaviour
                 {
                     var ressourceSpawned = Instantiate(ressourceToHarvest, transform.position, transform.rotation);
                     ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
+                    gameObject.SetActive(false);
                 }
             }
             else if (Input.GetKeyUp(KeyCode.E))
@@ -76,7 +77,8 @@ public class CreatureDeath : MonoBehaviour
         }
 
         if (!lineRenderer)
-            creatureRb.simulated = !ragdollOn;
+            foreach (Rigidbody2D rb in creatureRbs)
+                rb.simulated = !ragdollOn;
         else
         {
             line.gameObject.GetComponent<Tentacles>().wiggleMagnitude = 0;
@@ -84,7 +86,8 @@ public class CreatureDeath : MonoBehaviour
         }
 
         if (lineRenderer && ragdollOn)
-            creatureRb.gravityScale = 1;
+            foreach (Rigidbody2D rb in creatureRbs)
+                rb.gravityScale = 1;
 
         foreach (var col in creatureColliders)
         {
