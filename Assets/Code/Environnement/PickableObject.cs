@@ -6,6 +6,7 @@ public class PickableObject : MonoBehaviour
 {
     private Material ogMaterial;
     [SerializeField] private Material flashMaterial;
+    [SerializeField] private GameObject arrow;
     private Color ogColor;
     private SpriteRenderer sprite;
 
@@ -68,25 +69,37 @@ public class PickableObject : MonoBehaviour
             if (isSelected && !isFlashing)
             {
                 isFlashing = true;
-                sprite.material = flashMaterial;
+                //sprite.material = flashMaterial;
+                arrow.SetActive(true);
+
             }
             else if (!isSelected && isFlashing)
             {
                 isFlashing = false;
-                sprite.material = flashMaterial;
+                //sprite.material = flashMaterial;
+                arrow.SetActive(false);
             }
+
+            if (isFlashing)
+                arrow.transform.localRotation = Quaternion.Inverse(transform.rotation);
 
             if (Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 3f)
             {
                 if (!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Contains(gameObject))
+                {
                     GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Add(gameObject);
+                }
             }
             else
             {
+                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessource == gameObject)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessource = null;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessourceDistance = 10f;
+                }
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Remove(gameObject);
-                sprite.material = ogMaterial;
+                //sprite.material = ogMaterial;
                 isSelected = false;
-                isFlashing = false;
             }
         }
 

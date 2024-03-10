@@ -15,6 +15,18 @@ public class RoomManager : MonoBehaviour
     public Button boutonEnclos;
     public Button boutonFarm;
 
+    private void Start()
+    {
+        roomAmountDataHolder = GameObject.Find("RoomCrafting").transform.Find("DropdownListOfCrafts").gameObject;
+        roomAmountDataHolder.gameObject.transform.parent.gameObject.SetActive(false);
+
+        boutonNeutral = GameObject.Find("ButtonNeutral").GetComponent<Button>();
+        boutonEnclos = GameObject.Find("ButtonEnclo").GetComponent<Button>();
+        boutonFarm = GameObject.Find("ButtonFerme").GetComponent<Button>();
+        roomMenu = GameObject.Find("RoomMenu");
+        roomMenu.SetActive(false);
+    }
+
     public void ButtonPressNeutral()
     {
         if(myRoom.GetComponent<RoomInfo>().roomType == 1)

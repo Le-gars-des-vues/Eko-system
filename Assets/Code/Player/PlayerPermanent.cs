@@ -58,7 +58,7 @@ public class PlayerPermanent : MonoBehaviour
     public bool isFacingRight;
     public List<GameObject> ressourcesNear = new List<GameObject>();
     public float nearestRessourceDistance = 10;
-    private GameObject nearestRessource;
+    public GameObject nearestRessource;
     public bool isThrowing = false;
     [SerializeField] MultiTool multiTool;
     public bool isUsingMultiTool;
@@ -203,6 +203,8 @@ public class PlayerPermanent : MonoBehaviour
                 staminaDepleted = false;
         }
 
+        CheckForClosestRessource();
+
         //Vine controller
         if (vineController.enabled)
         {
@@ -238,27 +240,6 @@ public class PlayerPermanent : MonoBehaviour
         {
             ShowOrHideUpgrades();
         }
-
-        //Pick up ressources
-        if (ressourcesNear.Count >= 1)
-        {
-            foreach (var ressource in ressourcesNear)
-            {
-                float distance = Vector2.Distance(transform.position, ressource.transform.position);
-                if (distance < nearestRessourceDistance)
-                {
-                    if (nearestRessource != null)
-                    {
-                        ressource.GetComponent<PickableObject>().isSelected = false;
-                    }
-                    nearestRessourceDistance = distance;
-                    nearestRessource = ressource;
-                    ressource.GetComponent<PickableObject>().isSelected = true;
-                }
-            }
-        }
-        else
-            nearestRessourceDistance = 10;
 
         if (currentHp <= 0)
         {
@@ -326,6 +307,29 @@ public class PlayerPermanent : MonoBehaviour
 
         gameOverScreen.SetActive(true);
         gameOverScreen.GetComponent<GameOverScreen>().player = gameObject;
+    }
+
+    public void CheckForClosestRessource()
+    {
+        //Pick up ressources
+        if (ressourcesNear.Count >= 1)
+        {
+            foreach (var ressource in ressourcesNear)
+            {
+                float distance = Vector2.Distance(transform.position, ressource.transform.position);
+                
+                if (distance < nearestRessourceDistance || nearestRessource == ressource)
+                {
+                    nearestRessourceDistance = distance;
+                    nearestRessource = ressource;
+                    ressource.GetComponent<PickableObject>().isSelected = true;
+                }
+                else
+                    ressource.GetComponent<PickableObject>().isSelected = false;
+            }
+        }
+        else
+            nearestRessourceDistance = 10;
     }
 
     void CloseUI()

@@ -18,10 +18,12 @@ public class Vente : MonoBehaviour
     public GameObject quotaManager;
     [SerializeField] private TextMeshProUGUI quotaText;
     [SerializeField] private TextMeshProUGUI profitText;
+    [SerializeField] private TextMeshPro profitTV;
 
     private void Start()
     {
         quotaManager = GameObject.Find("Cycle");
+        profitTV = GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>();
     }
 
     public void VenteItem()
@@ -41,8 +43,9 @@ public class Vente : MonoBehaviour
                 if (anItem != null)
                 {
                     profit += (float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height);
-                    quotaText.text = profit.ToString() + " / " + quotaManager.GetComponent<Quota>().quota.ToString() + "$";
-                    profitText.text = profit.ToString() + " %";
+                    quotaText.text = profit.ToString() + "/" + quotaManager.GetComponent<Quota>().quota.ToString() + "$";
+                    profitText.text = profit.ToString() + "$";
+                    profitTV.text = profit.ToString() + "$";
                     anItem.Delete();
                 }
              }
