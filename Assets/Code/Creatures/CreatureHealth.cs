@@ -28,6 +28,7 @@ public class CreatureHealth : MonoBehaviour
         if (currentHp <= 0)
         {
             GetComponent<CreatureDeath>().Death();
+            GetComponent<CreatureDeath>().isDead = true;
         }
 
         if (currentHp < lowHpThreshold && !GetComponent<CreatureState>().hasFled)

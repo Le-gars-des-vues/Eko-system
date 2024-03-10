@@ -61,9 +61,18 @@ public class Recipes
 
     public static Dictionary<int,Recipes> listOfRecipes = new()
     {
-        {0, new Recipes("Reparer le MultiTool", "Shockbulb", 3)},
-        {1 , new Recipes("Diamond", "Bow", 2, "Potion", 1) },
-        {2 , new Recipes("North Korea", "Diamond", 1, "Plutonium", 5,"Gun",2) }
+        {0, new Recipes("Reparer le MultiTool", "Roots", 1)},
+        {1, new Recipes("Microprocessor", "Magnetyne", 2, "Roots", 2) },
+        {2, new Recipes("Cured Leather", "Bark", 3)},
+        {3, new Recipes("Battery", "Rubiol", 3)},
+        {4, new Recipes("Metal Sheet", "Tugnstone", 3)},
+        {5, new Recipes("Wires", "Trunk", 1, "Roots", 2)},
+        {6, new Recipes("Utility Upgrade 1", "Microprocessor", 2, "Wires", 2)},
+        {7, new Recipes("Gathering Upgrade 1", "Microprocessor", 2, "Wires", 2)},
+        {8, new Recipes("Combat Upgrade 1", "Microprocessor", 2, "Wires", 2)},
+        {9, new Recipes("Shield Upgrade 1", "Microprocessor", 2, "Wires", 2)},
+        {10, new Recipes("Health Upgrade 1", "Microprocessor", 2, "Wires", 2)},
+        {11, new Recipes("Stamina Upgrade 1", "Microprocessor", 2, "Wires", 2)},
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {

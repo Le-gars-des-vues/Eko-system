@@ -256,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7748418108470937568}
   - component: {fileID: 4053852636424728535}
+  - component: {fileID: 8760482271706033860}
   m_Layer: 7
   m_Name: right_wings
   m_TagString: Untagged
@@ -330,6 +331,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8760482271706033860
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683147782231972579}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 07a908c619a693041bb6f996cd8a84d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2738479814323029469
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8416348710225360662}
   - component: {fileID: 8408453365779782253}
+  - component: {fileID: 964831289648665470}
   m_Layer: 0
   m_Name: left_wings
   m_TagString: Untagged
@@ -625,6 +648,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &964831289648665470
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330822757641621397}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4a63869b067bb6a419558fa09918a817, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5646593512024270212
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +684,8 @@ GameObject:
   - component: {fileID: 201787017169885574}
   - component: {fileID: 5567287950754150770}
   - component: {fileID: 2165007696987796265}
+  - component: {fileID: 1294391138471594184}
+  - component: {fileID: 4330047044230045639}
   m_Layer: 9
   m_Name: Flumpf
   m_TagString: Creature
@@ -713,7 +759,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 983182926786358263}
   isGrounded: 0
-  territory: {fileID: 0}
   maxMovingDistance: 20
   originalDirection: 1
   fly: {fileID: 364594435894759329}
@@ -774,6 +819,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 40
   currentHp: 0
+  lowHpThreshold: 10
+  healthRegenRate: 0.5
   isInvincible: 0
   flashWhiteDuration: 0.3
   flashMaterial: {fileID: 0}
@@ -828,6 +875,8 @@ MonoBehaviour:
   isFleeing: 0
   isEating: 0
   isPathfinding: 0
+  isStunned: 0
+  isFlying: 0
   currentFood: 0
   maxFood: 100
   digestRate: 1
@@ -839,6 +888,80 @@ MonoBehaviour:
   fovRange: 3.5
   minFollowDistance: 10
   foodName: Macrebosia
+  stunDuration: 5
+  lastSourceOfDamage: {fileID: 0}
+  hasFled: 0
+  territory: {fileID: 0}
+--- !u!114 &1294391138471594184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646593512024270212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84a865df2dad204b8e3d221c03c5c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creatureAnimators:
+  - {fileID: 964831289648665470}
+  - {fileID: 8760482271706033860}
+  colliders:
+  - {fileID: 4330047044230045639}
+  rbs: []
+  joints: []
+  limbs: []
+  creatureRbs:
+  - {fileID: 3464054497424672810}
+  creatureColliders:
+  - {fileID: 1658518980294979451}
+  isLineRenderer: 1
+  line: {fileID: 7933824538052503625}
+  scripts:
+  - {fileID: 2165007696987796265}
+  - {fileID: 5567287950754150770}
+  - {fileID: 201787017169885574}
+  - {fileID: 364594435894759329}
+  behaviorScript: {fileID: 646963907446535635}
+  ressourceToHarvest: {fileID: 8819707360973039860, guid: 5f9704b7669008242a9fdb6adb004d6b, type: 3}
+  timeToHarvest: 2
+  isDead: 0
+--- !u!70 &4330047044230045639
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646593512024270212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.11, y: 0.16}
+  m_Size: {x: 2.09, y: 0.69}
+  m_Direction: 1
 --- !u!1 &6072379775924433137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,7 +1206,7 @@ GameObject:
   - component: {fileID: 3070852988664592313}
   m_Layer: 7
   m_Name: FlyBody
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

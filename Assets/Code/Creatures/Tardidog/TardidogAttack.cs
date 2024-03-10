@@ -21,9 +21,15 @@ public class TardidogAttack : MonoBehaviour
     [SerializeField] CreatureState state;
     bool isAttacking;
 
+    [SerializeField] Collider2D headCollider;
+    [SerializeField] Collider2D bodyCollider;
+    [SerializeField] Collider2D hornCollider;
+
     private void OnEnable()
     {
         ogAngle = -15.25f;
+        Physics2D.IgnoreCollision(headCollider, bodyCollider);
+        Physics2D.IgnoreCollision(headCollider, hornCollider);
     }
 
     private void Update()

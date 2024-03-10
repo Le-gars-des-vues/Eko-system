@@ -62,7 +62,7 @@ public class TardidogMovement : MonoBehaviour
     [SerializeField] TardidogAttack atk;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
         isFacingRight = transform.localScale.x == 1 ? true : false;

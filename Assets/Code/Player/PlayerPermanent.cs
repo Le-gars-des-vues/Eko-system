@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.U2D.IK;
+using Cinemachine;
 
 public class PlayerPermanent : MonoBehaviour
 {
@@ -66,8 +67,6 @@ public class PlayerPermanent : MonoBehaviour
     public bool inventoryOpen = false;
     [SerializeField] private GameObject playerInventory;
     [SerializeField] private GameObject storageInventory;
-    [SerializeField] private GameObject market;
-    [SerializeField] private GameObject crafting;
     [SerializeField] private float gridOffset;
     public bool isInBase;
     private bool hasBuiltStorage = false;
@@ -92,10 +91,20 @@ public class PlayerPermanent : MonoBehaviour
     public bool hasDoubleJump;
 
     [Header("UI Variables")]
+    [SerializeField] CinemachineVirtualCamera vcam;
     [SerializeField] private GameObject map;
+    [SerializeField] private GameObject market;
+    [SerializeField] private GameObject crafting;
+    [SerializeField] private GameObject upgrade;
     public bool mapIsOpen = true;
-    public bool marketIsOpen = true;
+    public bool marketIsOpen = false;
     public bool craftingIsOpen = false;
+    public bool upgradeIsOpen = false;
+    public bool uiOpened;
+    bool inventoryTrigger = false;
+    bool wasOnGround = false;
+    bool wasInWater = false;
+    bool wasOnVine = false;
 
     private void Awake()
     {
@@ -115,6 +124,7 @@ public class PlayerPermanent : MonoBehaviour
         market = GameObject.Find("Vente");
         crafting = GameObject.Find("Crafting");
         map = GameObject.Find("Map");
+        upgrade = GameObject.Find("Upgrades");
         gameOverScreen = GameObject.Find("GameOverScreen");
         //Au depart du jeu, on set tout les bars au max et on desactive le ragdoll
         for (int i = 0; i < bones.Count; i++)
@@ -130,11 +140,25 @@ public class PlayerPermanent : MonoBehaviour
         invisible = new Color(255, 255, 255, 0);
 
         theBase = GameObject.FindGameObjectWithTag("Base");
+        vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        uiOpened = IsInUI();
+
+        if (uiOpened && !inventoryTrigger)
+        {
+            CheckIfUiIsOpen(uiOpened);
+            StartCoroutine(MoveCamera(true));
+        }
+        else if (!uiOpened && inventoryTrigger)
+        {
+            CheckIfUiIsOpen(uiOpened);
+            StartCoroutine(MoveCamera(false));
+        }
+
         /*
         //Variable simplement la pour le playtest, quand elle est active, les jauges de faim et de soif du joueur descendent lentement
         if (survivalMode)
@@ -197,17 +221,22 @@ public class PlayerPermanent : MonoBehaviour
         }
         
         //Open UI
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && !marketIsOpen && !craftingIsOpen)
         {
             if (!inventoryOpen)
-                ShowOrHideInventory(true, CanOpenStorage());
+                ShowOrHideInventory();
             else
-                ShowOrHideInventory(false, CanOpenStorage());
+                ShowOrHideInventory();
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) && !marketIsOpen && !craftingIsOpen)
         {
             ShowOrHideMap();
+        }
+
+        if (Input.GetKeyDown(KeyCode.U) && !marketIsOpen && !craftingIsOpen)
+        {
+            ShowOrHideUpgrades();
         }
 
         //Pick up ressources
@@ -251,28 +280,14 @@ public class PlayerPermanent : MonoBehaviour
         //SetMaxBar(thirstSlider, maxThirst);
         SetMaxBar(staminaSlider, maxStamina);
 
-        if (inventoryOpen)
-            ShowOrHideInventory(false, true);
-        if (marketIsOpen)
-            ShowOrHideMarket();
-        if (craftingIsOpen)
-            ShowOrHideCrafting();
-        if (mapIsOpen)
-            ShowOrHideMap();
+        CloseUI();
 
         gameOverScreen.SetActive(false);
     }
 
     public void Death()
     {
-        if (inventoryOpen)
-            ShowOrHideInventory(false, true);
-        if (marketIsOpen)
-            ShowOrHideMarket();
-        if (craftingIsOpen)
-            ShowOrHideCrafting();
-        if (mapIsOpen)
-            ShowOrHideMap();
+        CloseUI();
 
         ToggleRagdoll(true);
         MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
@@ -311,6 +326,20 @@ public class PlayerPermanent : MonoBehaviour
 
         gameOverScreen.SetActive(true);
         gameOverScreen.GetComponent<GameOverScreen>().player = gameObject;
+    }
+
+    void CloseUI()
+    {
+        if (inventoryOpen)
+            ShowOrHideInventory();
+        if (marketIsOpen)
+            ShowOrHideMarket();
+        if (craftingIsOpen)
+            ShowOrHideCrafting();
+        if (mapIsOpen)
+            ShowOrHideMap();
+        if (upgradeIsOpen)
+            ShowOrHideUpgrades();
     }
 
     //Pour changer les slider, bar est le slider qu'on veut changer et value est la valeur qu'on veut lui donner
@@ -469,13 +498,13 @@ public class PlayerPermanent : MonoBehaviour
         }
     }
     
-    public void ShowOrHideInventory(bool show, bool storage)
+    public void ShowOrHideInventory()
     {
-        if (show && playerInventory != null)
+        if (!inventoryOpen)
         {
             inventoryOpen = true;
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
-            if (storage && storageInventory != null)
+            if (CanOpenStorage() && storageInventory != null)
             {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
             }
@@ -485,15 +514,59 @@ public class PlayerPermanent : MonoBehaviour
                 map.SetActive(false);
                 mapIsOpen = false;
             }
+
+            if (upgradeIsOpen)
+            {
+                upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
+                upgradeIsOpen = false;
+            }
         }
-        else if (!show && playerInventory != null)
+        else
         {
             inventoryOpen = false;
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-            if (storage && storageInventory != null)
+            if (CanOpenStorage() && storageInventory != null)
             {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             }
+        }
+    }
+
+    public void ShowOrHideInventoryNoButtons()
+    {
+        if (!inventoryOpen)
+        {
+            inventoryOpen = true;
+            playerInventory.transform.Find("NextUI").gameObject.SetActive(false);
+            playerInventory.transform.Find("PreviousUI").gameObject.SetActive(false);
+            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            if (CanOpenStorage() && storageInventory != null)
+            {
+                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            }
+
+            if (mapIsOpen)
+            {
+                map.SetActive(false);
+                mapIsOpen = false;
+            }
+
+            if (upgradeIsOpen)
+            {
+                upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
+                upgradeIsOpen = false;
+            }
+        }
+        else
+        {
+            inventoryOpen = false;
+            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            if (CanOpenStorage() && storageInventory != null)
+            {
+                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            }
+            playerInventory.transform.Find("NextUI").gameObject.SetActive(true);
+            playerInventory.transform.Find("PreviousUI").gameObject.SetActive(true);
         }
     }
 
@@ -508,6 +581,11 @@ public class PlayerPermanent : MonoBehaviour
             {
                 map.SetActive(false);
                 mapIsOpen = false;
+            }
+            if (upgradeIsOpen)
+            {
+                upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
+                upgradeIsOpen = false;
             }
         }
         else
@@ -525,10 +603,16 @@ public class PlayerPermanent : MonoBehaviour
             if (market != null)
                 market.GetComponent<RectTransform>().localPosition = new Vector2(market.GetComponent<RectTransform>().localPosition.x, market.GetComponent<RectTransform>().localPosition.y + gridOffset);
             marketIsOpen = true;
+
             if (mapIsOpen)
             {
                 map.SetActive(false);
                 mapIsOpen = false;
+            }
+            if (upgradeIsOpen)
+            {
+                upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
+                upgradeIsOpen = false;
             }
         }
         else
@@ -544,11 +628,15 @@ public class PlayerPermanent : MonoBehaviour
         if (!mapIsOpen)
         {
             if (inventoryOpen)
-                ShowOrHideInventory(false, CanOpenStorage());
+                ShowOrHideInventory();
+            /*
             if (marketIsOpen)
                 ShowOrHideMarket();
             if (craftingIsOpen)
                 ShowOrHideCrafting();
+            */
+            if (upgradeIsOpen)
+                ShowOrHideUpgrades();
 
             map.SetActive(true);
             mapIsOpen = true;
@@ -559,7 +647,26 @@ public class PlayerPermanent : MonoBehaviour
             mapIsOpen = false;
         }
     }
-    
+
+    public void ShowOrHideUpgrades()
+    {
+        if (!upgradeIsOpen)
+        {
+            if (inventoryOpen)
+                ShowOrHideInventory();
+            if (mapIsOpen)
+                ShowOrHideMap();
+
+            upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            upgradeIsOpen = true;
+        }
+        else
+        {
+            upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            upgradeIsOpen = false;
+        }
+    }
+
 
     //Arrete le temps pour la duree choisit
     private IEnumerator Hitstun(float duration)
@@ -615,9 +722,77 @@ public class PlayerPermanent : MonoBehaviour
         isInvincible = false;
     }
 
+    void CheckIfUiIsOpen(bool isOpened)
+    {
+        if (isOpened)
+        {
+            inventoryTrigger = true;
+            if (GetComponent<GroundPlayerController>().enabled)
+            {
+                wasOnGround = true;
+                GetComponent<GroundPlayerController>().enabled = false;
+            }
+            else if (GetComponent<VinePlayerController>().enabled)
+            {
+                wasOnVine = true;
+                GetComponent<VinePlayerController>().enabled = false;
+            }
+            else if (GetComponent<WaterPlayerController>().enabled)
+            {
+                wasInWater = true;
+                GetComponent<WaterPlayerController>().enabled = false;
+            }
+        }
+        else
+        {
+            inventoryTrigger = false;
+            if (wasOnGround)
+            {
+                wasOnGround = false;
+                GetComponent<GroundPlayerController>().enabled = true;
+            }
+            else if (wasInWater)
+            {
+                wasInWater = false;
+                GetComponent<WaterPlayerController>().enabled = true;
+            }
+            else if (wasOnVine)
+            {
+                wasOnVine = false;
+                GetComponent<VinePlayerController>().enabled = true;
+            }
+        }
+    }
+
+    IEnumerator MoveCamera(bool up)
+    {
+        float timer = 0;
+        float duration = 0.1f;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            if (up)
+            {
+                if (vcam != null)
+                    vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = Mathf.Lerp(0.5f, 0.75f, timer / duration);
+            }
+            else
+            {
+                if (vcam != null)
+                    vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = Mathf.Lerp(0.75f, 0.5f, timer / duration);
+            }
+            yield return null;
+        }
+    }
+
     public bool CanOpenStorage()
     {
         return isInBase && hasBuiltStorage;
+    }
+
+    bool IsInUI()
+    {
+        return inventoryOpen || marketIsOpen || craftingIsOpen || mapIsOpen || upgradeIsOpen;
     }
 
     private Vector2 GetInput()

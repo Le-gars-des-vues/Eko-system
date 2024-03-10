@@ -15,7 +15,7 @@ public class GridInterract : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         inventoryController.SelectedItemGrid = itemGrid;
-        if(inventoryController.selectedItem != null && inventoryController.SelectedItemGrid.gameObject.tag == "Hotbar")
+        if(inventoryController.selectedItem != null && (inventoryController.SelectedItemGrid.gameObject.tag == "Hotbar" || inventoryController.SelectedItemGrid.gameObject.tag == "Upgrade"))
         {
             inventoryController.selectedItem.itemData.height = inventoryController.selectedItem.itemData.hotbarHeight;
             inventoryController.selectedItem.itemData.width = inventoryController.selectedItem.itemData.hotbarWidth;

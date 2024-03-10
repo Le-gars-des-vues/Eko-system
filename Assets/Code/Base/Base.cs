@@ -20,7 +20,7 @@ public class Base : MonoBehaviour
     void Start()
     {
         if (isSceneLoaded)
-            transform.position = new Vector2(0, 2.5f);
+            transform.position = new Vector2(135.3f, 4.6f);
         door = new Vector2(transform.position.x, transform.position.y - 4.5f);
         leftDoorAnim = transform.Find("LeftDoor").GetComponent<Animator>();
         rightDoorAnim = transform.Find("RightDoor").GetComponent<Animator>();
