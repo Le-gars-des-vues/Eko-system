@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -79,6 +80,7 @@ public class RoomManager : MonoBehaviour
         myRoom.GetComponent<RoomCrafters>().SetItemToShowInSlot();
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("hi");
             roomMenu.SetActive(true);
             if (myRoom.GetComponent<RoomInfo>().roomType == 0)
             {
