@@ -207,6 +207,7 @@ public class Cycle : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn();
+                availableSpawners.Remove(spawner);
             }
         }
 
@@ -242,6 +243,7 @@ public class Cycle : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn();
+                availableSpawners.Remove(spawner);
             }
         }
 
@@ -277,6 +279,7 @@ public class Cycle : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn();
+                availableSpawners.Remove(spawner);
             }
         }
         //Infpisum
@@ -311,6 +314,7 @@ public class Cycle : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn();
+                availableSpawners.Remove(spawner);
             }
         }
 
@@ -346,6 +350,7 @@ public class Cycle : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn();
+                availableSpawners.Remove(spawner);
             }
         }
 
@@ -381,6 +386,7 @@ public class Cycle : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn();
+                availableSpawners.Remove(spawner);
             }
         }
 
@@ -416,6 +422,7 @@ public class Cycle : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn();
+                availableSpawners.Remove(spawner);
             }
         }
 
@@ -451,6 +458,7 @@ public class Cycle : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn();
+                availableSpawners.Remove(spawner);
             }
         }
 
@@ -486,6 +494,7 @@ public class Cycle : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn();
+                availableSpawners.Remove(spawner);
             }
         }
     }

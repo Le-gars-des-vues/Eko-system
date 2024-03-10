@@ -48,7 +48,15 @@ public class Wander : BehaviorNode
                     if (territory.bounds.Contains(tempPos))
                     {
                         targetPos.position = tempPos;
-                        isMoving = true;
+                        bool isWalkable = !Physics2D.OverlapCircle(targetPos.position, 0.1f, LayerMask.GetMask("Ground"));
+                        if (isWalkable)
+                            isMoving = true;
+                        else
+                        {
+                            waitTime = 0;
+                            waitTimer = 0;
+                            isWaiting = true;
+                        }
                     }
                     else
                     {

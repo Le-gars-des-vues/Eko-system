@@ -55,11 +55,13 @@ public class TardidogMovement : MonoBehaviour
     [Header("Jump Variables")]
     [SerializeField] float jumpYOffset;
     [SerializeField] Vector2 jumpForce;
-    [SerializeField] float jumpRayLength;
+    [SerializeField] float jumpRayForwardLength;
+    [SerializeField] float jumpRayUpLength;
+    [SerializeField] float jumpRayDownLength;
 
     [SerializeField] CreatureState state;
     [SerializeField] CreaturePathfinding pathfinding;
-    [SerializeField] TardidogAttack atk;
+    //[SerializeField] TardidogAttack atk;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -97,7 +99,7 @@ public class TardidogMovement : MonoBehaviour
         isGrounded = grounded;
 
         //JumpCheck
-        RaycastHit2D jumpCheck = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.right * facingDirection, jumpRayLength * 1.5f, LayerMask.GetMask("Ground"));
+        RaycastHit2D jumpCheck = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.right * facingDirection, jumpRayForwardLength, LayerMask.GetMask("Ground"));
 
 
         //Hovering
@@ -123,8 +125,8 @@ public class TardidogMovement : MonoBehaviour
 
             if (frontCheck.collider == null)
             {
-                RaycastHit2D jumpCheckUp = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.up, jumpRayLength, LayerMask.GetMask("Ground"));
-                RaycastHit2D jumpCheckDown = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, jumpRayLength, LayerMask.GetMask("Ground"));
+                RaycastHit2D jumpCheckUp = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.up, jumpRayUpLength, LayerMask.GetMask("Ground"));
+                RaycastHit2D jumpCheckDown = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, jumpRayDownLength, LayerMask.GetMask("Ground"));
                 if (!(jumpCheck || jumpCheckUp || jumpCheckDown))
                 {
                     if (Vector2.Distance(target.position, rb.position) > 3f && !isJumping && isGrounded)
@@ -198,8 +200,8 @@ public class TardidogMovement : MonoBehaviour
 
         if (jumpCheck)
         {
-            RaycastHit2D jumpCheckUp = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.up, jumpRayLength, LayerMask.GetMask("Ground"));
-            RaycastHit2D jumpCheckDown = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, jumpRayLength, LayerMask.GetMask("Ground"));
+            RaycastHit2D jumpCheckUp = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.up, jumpRayUpLength, LayerMask.GetMask("Ground"));
+            RaycastHit2D jumpCheckDown = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, jumpRayDownLength, LayerMask.GetMask("Ground"));
             if (!jumpCheckUp)
             {
                 //Debug.Log(Vector2.Distance(target.position, rb.position));
@@ -282,7 +284,7 @@ public class TardidogMovement : MonoBehaviour
 
     IEnumerator Jump(int direction)
     {
-        //Debug.Log("isJumping");
+        Debug.Log("isJumping");
         rb.drag = 0;
         isJumping = true;
         Vector2 jumpDirection = new Vector2(jumpTarget.position.x, jumpTarget.position.y) - rb.position;
@@ -323,7 +325,7 @@ public class TardidogMovement : MonoBehaviour
         }
         rb.AddForce(jumpForce, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         isJumping = false;
     }
 
@@ -418,9 +420,9 @@ public class TardidogMovement : MonoBehaviour
         //Ground Check
         Gizmos.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector2.down * groundRaycastLenght);
 
-        Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down * jumpRayLength);
-        Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.up * jumpRayLength);
-        Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.right * facingDirection * jumpRayLength * 1.5f);
+        Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down * jumpRayDownLength);
+        Gizmos.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector2.up * jumpRayUpLength);
+        Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.right * facingDirection * jumpRayForwardLength);
 
         /*
         for (int i = 0; i < rayCount; i++)
