@@ -63,6 +63,11 @@ public class TardidogMovement : MonoBehaviour
     [SerializeField] CreaturePathfinding pathfinding;
     //[SerializeField] TardidogAttack atk;
 
+    [SerializeField] float movementThreshold = 1f; // Minimum movement distance to consider the creature stuck
+    [SerializeField] float checkInterval = 15f; // Time interval to check for stuck condition
+    private Vector3 lastPosition; // Last recorded position of the creature
+    private float timeSinceLastCheck = 0f;
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -73,6 +78,7 @@ public class TardidogMovement : MonoBehaviour
         dragForce = rb.drag;
         maxMoveSpeed *= rb.mass;
         minMoveSpeed *= rb.mass;
+        lastPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -90,6 +96,23 @@ public class TardidogMovement : MonoBehaviour
             targetIsRight = (target.position.x - transform.position.x) > 0 ? true : false;
             dist = Mathf.Abs(target.position.x - rb.position.x);
         }
+
+        // Calculate movement since the last frame
+        float distanceMoved = Vector3.Distance(transform.position, lastPosition);
+
+        // Update time since last check
+        timeSinceLastCheck += Time.deltaTime;
+        if (timeSinceLastCheck > checkInterval)
+        {
+            timeSinceLastCheck = 0;
+            if (distanceMoved < movementThreshold)
+            {
+                // The creature is stuck, stop its movement
+                pathfinding.reachEndOfPath = true;
+                pathfinding.StopPathFinding();
+            }
+            lastPosition = transform.position;
+        }
     }
 
     private void FixedUpdate()
@@ -105,7 +128,7 @@ public class TardidogMovement : MonoBehaviour
         //Hovering
         RaycastHit2D frontCheck = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, hoverRaycastLenght, LayerMask.GetMask("Ground"));
         RaycastHit2D backCheck = Physics2D.Raycast(new Vector2(transform.position.x - groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, hoverRaycastLenght, LayerMask.GetMask("Ground"));
-        if (frontCheck.collider != null)
+        if (frontCheck.collider != null && isGrounded)
         {
             float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
 
@@ -114,7 +137,7 @@ public class TardidogMovement : MonoBehaviour
 
             rb.AddForce(Vector2.down * springForce);
         }
-        else if (backCheck.collider != null)
+        else if (backCheck.collider != null && isGrounded)
         {
             float rayDirVel = Vector2.Dot(Vector2.down, rb.velocity);
 
@@ -129,7 +152,18 @@ public class TardidogMovement : MonoBehaviour
                 RaycastHit2D jumpCheckDown = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, jumpRayDownLength, LayerMask.GetMask("Ground"));
                 if (!(jumpCheck || jumpCheckUp || jumpCheckDown))
                 {
-                    if (Vector2.Distance(target.position, rb.position) > 3f && !isJumping && isGrounded)
+                    if (state.isPathfinding && pathfinding.path != null)
+                    {
+                        if (!isJumping && isGrounded && (Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - transform.position.x) > 3f || pathfinding.path.lookPoints[pathfinding.pathIndex].y - transform.position.y > 0))
+                        {
+                            jumpTarget.position = Vision(target.position, true);
+                            if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
+                            {
+                                StartCoroutine(Jump(1));
+                            }
+                        }
+                    }
+                    else if (Vector2.Distance(target.position, rb.position) > 3f && !isJumping && isGrounded)
                     {
                         jumpTarget.position = Vision(target.position, true);
                         if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
@@ -205,9 +239,9 @@ public class TardidogMovement : MonoBehaviour
             if (!jumpCheckUp)
             {
                 //Debug.Log(Vector2.Distance(target.position, rb.position));
-                if (state.isPathfinding)
+                if (state.isPathfinding && pathfinding.path != null)
                 {
-                    if (Mathf.Approximately(Mathf.Abs(jumpCheck.normal.x), 1f))
+                    if (Mathf.Approximately(Mathf.Abs(jumpCheck.normal.x), 1f) && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], transform.position) > 3f)
                     {
                         if (!isJumping && isGrounded)
                         {
@@ -416,7 +450,7 @@ public class TardidogMovement : MonoBehaviour
         Gizmos.color = Color.green;
         //HoverCheck
         Gizmos.DrawRay(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down * hoverRaycastLenght);
-        //Gizmos.DrawRay(new Vector2(transform.position.x - groundCheckOffsets.x, transform.position.y), Vector2.down * hoverRaycastLenght);
+        Gizmos.DrawRay(new Vector2(transform.position.x - groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down * hoverRaycastLenght);
         //Ground Check
         Gizmos.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector2.down * groundRaycastLenght);
 

@@ -17,4 +17,9 @@ public static class SceneLoader
     {
         SceneManager.LoadScene(scene.ToString(), LoadSceneMode.Additive);
     }
+
+    public static void MakeActiveScene(Scene scene)
+    {
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene.ToString()));
+    }
 }

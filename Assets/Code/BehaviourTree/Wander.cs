@@ -28,7 +28,7 @@ public class Wander : BehaviorNode
 
     public override NodeState Evaluate()
     {
-        Debug.Log("wandering");
+        //Debug.Log("wandering");
         if (isWaiting)
         {
             waitTimer += Time.deltaTime;
@@ -48,9 +48,16 @@ public class Wander : BehaviorNode
                     if (territory.bounds.Contains(tempPos))
                     {
                         targetPos.position = tempPos;
-                        bool isWalkable = !Physics2D.OverlapCircle(targetPos.position, 0.1f, LayerMask.GetMask("Ground"));
-                        if (isWalkable)
+                        bool unWalkable = Physics2D.OverlapCircle(targetPos.position, 0.1f, LayerMask.GetMask("Ground"));
+                        bool isWalkable = Physics2D.Raycast(targetPos.position, Vector2.down, 3f, LayerMask.GetMask("Ground"));
+                        if (!unWalkable && isWalkable)
+                        {
+                            //Debug.Log("Found target for path!");
+                            parent.SetData("target", targetPos);
+                            parent.SetData("pathTarget", "wandering");
+                            parent.SetData("pathState", 1);
                             isMoving = true;
+                        }
                         else
                         {
                             waitTime = 0;
@@ -67,7 +74,7 @@ public class Wander : BehaviorNode
                 }
                 else
                 {
-                    if (Mathf.Abs(creature.position.x - targetPos.position.x) < 1f)
+                    if (Vector2.Distance(creature.position, targetPos.position) < 3f)
                     {
                         isWaiting = true;
                         isMoving = false;

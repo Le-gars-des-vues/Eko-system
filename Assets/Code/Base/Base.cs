@@ -12,6 +12,7 @@ public class Base : MonoBehaviour
     [SerializeField] float baseEntryThreshold;
     [SerializeField] Animator leftDoorAnim;
     [SerializeField] Animator rightDoorAnim;
+    [SerializeField] GameObject buildButton;
 
     public bool isSceneLoaded = true;
 
@@ -25,6 +26,7 @@ public class Base : MonoBehaviour
         door = new Vector2(transform.position.x, transform.position.y - 4.5f);
         leftDoorAnim = transform.Find("Outside").Find("LeftDoor").GetComponent<Animator>();
         rightDoorAnim = transform.Find("Outside").Find("RightDoor").GetComponent<Animator>();
+        buildButton.SetActive(true);
     }
 
     // Update is called once per frame
