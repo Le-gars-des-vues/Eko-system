@@ -7,10 +7,12 @@ using BehaviorTree;
 public class TransferInfos : BehaviorNode
 {
     GameObject creature;
+    Transform target;
 
-    public TransferInfos(GameObject _creature)
+    public TransferInfos(GameObject _creature, Transform _target)
     {
         creature = _creature;
+        target = _target;
     }
 
     public override NodeState Evaluate()
@@ -46,11 +48,29 @@ public class TransferInfos : BehaviorNode
                     creature.GetComponent<CreatureState>().Eat();
                     parent.SetData("isFull", creature.GetComponent<CreatureState>().isFull);
                 }
+                else if ((string)GetData("pathTarget") == "bait")
+                {
+                    creature.GetComponent<CreatureState>().EatBait();
+                    int index = 0;
+                    Collider2D[] colliders = Physics2D.OverlapCircleAll(creature.transform.position, 2, LayerMask.GetMask("Pixelate"));
+                    foreach (Collider2D collider in colliders)
+                    {
+                        if (collider.gameObject.tag == "Bait" && index < 1)
+                            creature.GetComponent<CreatureState>().EatObject(collider.gameObject);
+                    }
+                }
                 parent.ClearData("pathTarget");
             }
             //Pathfinding is set back to none
             parent.ClearData("target");
             parent.SetData("pathState", 0);
+        }
+
+        if (creature.GetComponent<CreatureState>().isTamed && (Transform)GetData("target") != target)
+        {
+            parent.SetData("target", target);
+            parent.SetData("pathTarget", "ally");
+            parent.SetData("pathState", 1);
         }
 
         state = NodeState.SUCCESS;

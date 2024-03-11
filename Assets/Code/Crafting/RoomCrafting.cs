@@ -10,15 +10,18 @@ public class RoomCrafting : MonoBehaviour
     [SerializeField] private RectTransform inventaireCrafting;
 
     private int tempHeight;
+    private int tempHeightStorage;
     private int tempWidth;
-    ItemGrid theItemGrid;
+    private int tempWidthStorage;
+    ItemGrid inventoryItemGrid;
+    ItemGrid storageItemGrid;
     InventoryItem anItem;
 
     private int farms=0;
     private int enclos=0;
 
 
-    private int laRecette;
+    public int laRecette;
     private float compteurItem1;
     private float compteurItem2;
     private float compteurItem3;
@@ -61,21 +64,20 @@ public class RoomCrafting : MonoBehaviour
         mat3Complete = false;
         
 
-        theItemGrid = inventaireCrafting.GetComponent<ItemGrid>();
+        inventoryItemGrid = inventaireCrafting.GetComponent<ItemGrid>();
         tempHeight = inventaireCrafting.GetComponent<ItemGrid>().GetGridSizeHeight();
         tempWidth = inventaireCrafting.GetComponent<ItemGrid>().GetGridSizeWidth();
 
+        laRecette = theCraftingDropdownInit.GetComponent<TMP_Dropdown>().value;
         for (int x = 0; x < tempWidth; x++)
         {
 
             for (int y = 0; y < tempHeight; y++)
             {
                
-                anItem = theItemGrid.CheckIfItemPresent(x, y);
+                anItem = inventoryItemGrid.CheckIfItemPresent(x, y);
                 if (anItem != null)
                 {
-                   
-                    laRecette = theCraftingDropdownInit.GetComponent<TMP_Dropdown>().value;
                     if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].firstMaterial)
                     {
                         compteurItem1 += 1f / (anItem.itemData.width * anItem.itemData.height);
@@ -97,6 +99,44 @@ public class RoomCrafting : MonoBehaviour
                 
             }
         }
+        if (GameObject.Find("Player").GetComponent<PlayerPermanent>().CanOpenStorage())
+        {
+            storageItemGrid = GameObject.Find("GridStorage").GetComponent<ItemGrid>();
+            tempHeightStorage = storageItemGrid.GetGridSizeHeight();
+            tempWidthStorage = storageItemGrid.GetGridSizeWidth();
+            for (int x = 0; x < tempWidthStorage; x++)
+            {
+
+                for (int y = 0; y < tempHeightStorage; y++)
+                {
+
+                    anItem = inventoryItemGrid.CheckIfItemPresent(x, y);
+                    if (anItem != null)
+                    {
+
+                        laRecette = theCraftingDropdownInit.GetComponent<TMP_Dropdown>().value;
+                        if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].firstMaterial)
+                        {
+                            compteurItem1 += 1f / (anItem.itemData.width * anItem.itemData.height);
+
+                        }
+                        else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].secondMaterial)
+                        {
+                            compteurItem2 += 1f / (anItem.itemData.width * anItem.itemData.height);
+
+                        }
+                        else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].thirdMaterial)
+                        {
+                            compteurItem3 += 1f / (anItem.itemData.width * anItem.itemData.height);
+
+                        }
+
+
+                    }
+
+                }
+            }
+        }
         theCraftingDropdownInit.GetComponent<RoomDropdownInit>().SetMat1(Mathf.RoundToInt(compteurItem1));
         theCraftingDropdownInit.GetComponent<RoomDropdownInit>().SetMat2(Mathf.RoundToInt(compteurItem2));
         theCraftingDropdownInit.GetComponent<RoomDropdownInit>().SetMat3(Mathf.RoundToInt(compteurItem3));
@@ -115,19 +155,20 @@ public class RoomCrafting : MonoBehaviour
     }
 
 
-    public void RoomCraft()
+    public int RoomCraft()
     {
-
         if (mat1Complete && mat2Complete && mat3Complete)
         {
+            /*
             if (laRecette == 0)
             {
                 enclos++;
             }
-            else if(laRecette == 1)
+            else if (laRecette == 1)
             {
                 farms++;
             }
+            */
             int i1 = 0;
             int i2 = 0;
             int i3 = 0;
@@ -136,8 +177,8 @@ public class RoomCrafting : MonoBehaviour
 
                 for (int y = 0; y < tempHeight; y++)
                 {
-                    
-                    anItem = theItemGrid.CheckIfItemPresent(x, y);
+
+                    anItem = inventoryItemGrid.CheckIfItemPresent(x, y);
                     if (anItem != null)
                     {
                         if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].firstMaterial && i1 < Recipes.listOfBasePods[laRecette].firstMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
@@ -161,14 +202,52 @@ public class RoomCrafting : MonoBehaviour
                             i3++;
                             anItem.GetComponent<InventoryItem>().markedForDestroy = true;
                         }
-
                     }
-
                 }
             }
+            if (GameObject.Find("Player").GetComponent<PlayerPermanent>().CanOpenStorage())
+            {
+                for (int x = 0; x < tempWidthStorage; x++)
+                {
 
+                    for (int y = 0; y < tempHeightStorage; y++)
+                    {
+
+                        anItem = inventoryItemGrid.CheckIfItemPresent(x, y);
+                        if (anItem != null)
+                        {
+                            if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].firstMaterial && i1 < Recipes.listOfBasePods[laRecette].firstMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
+                            {
+                                anItem.Delete();
+                                compteurItem1--;
+                                i1++;
+                                anItem.GetComponent<InventoryItem>().markedForDestroy = true;
+                            }
+                            else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].secondMaterial && i2 < Recipes.listOfBasePods[laRecette].secondMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
+                            {
+                                anItem.Delete();
+                                compteurItem2--;
+                                i2++;
+                                anItem.GetComponent<InventoryItem>().markedForDestroy = true;
+                            }
+                            else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].thirdMaterial && i3 < Recipes.listOfBasePods[laRecette].thirdMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
+                            {
+                                anItem.Delete();
+                                compteurItem3--;
+                                i3++;
+                                anItem.GetComponent<InventoryItem>().markedForDestroy = true;
+                            }
+                        }
+                    }
+                }
+            }
+            return laRecette;
         }
-
-        RoomCraftCheck();
+        else
+        {
+            Debug.Log("Not enough materials!");
+            return -1;
+        }
+        //RoomCraftCheck();
     }
 }

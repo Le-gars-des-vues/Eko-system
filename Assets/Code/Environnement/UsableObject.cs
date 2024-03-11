@@ -48,15 +48,15 @@ public class UsableObject : MonoBehaviour
                 break;
         }
 
-        objectToUse.GetComponent<PickableObject>().itemInInventory.GetComponent<InventoryItem>().stackAmount--;
-        objectToUse.GetComponent<InventoryItem>().stackAmount--;
-
         if (objectToUse.GetComponent<InventoryItem>().sprites.Length >= 1)
         {
             objectToUse.GetComponent<PickableObject>().inventory.GetItem(objectToUse.GetComponent<InventoryItem>().onGridPositionX,
                 objectToUse.GetComponent<InventoryItem>().onGridPositionY).GetComponent<Image>().sprite =
                 objectToUse.GetComponent<InventoryItem>().sprites[(objectToUse.GetComponent<InventoryItem>().sprites.Length + 1) - objectToUse.GetComponent<InventoryItem>().stackAmount];
         }
+
+        objectToUse.GetComponent<PickableObject>().itemInInventory.GetComponent<InventoryItem>().stackAmount--;
+        objectToUse.GetComponent<InventoryItem>().stackAmount--;
 
         if (objectToUse.GetComponent<InventoryItem>().stackAmount <= 0)
         {

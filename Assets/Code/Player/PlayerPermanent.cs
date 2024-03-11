@@ -95,13 +95,15 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private GameObject map;
     [SerializeField] private GameObject market;
     [SerializeField] private GameObject crafting;
+    [SerializeField] private GameObject building;
     [SerializeField] private GameObject upgrade;
     public bool mapIsOpen = true;
     public bool marketIsOpen = false;
     public bool craftingIsOpen = false;
+    public bool buildingIsOpen = false;
     public bool upgradeIsOpen = false;
     public bool uiOpened;
-    bool inventoryTrigger = false;
+    public bool cameraTrigger = false;
     bool wasOnGround = false;
     bool wasInWater = false;
     bool wasOnVine = false;
@@ -123,6 +125,7 @@ public class PlayerPermanent : MonoBehaviour
         storageInventory = GameObject.Find("Storage");
         market = GameObject.Find("Vente");
         crafting = GameObject.Find("Crafting");
+        building = GameObject.Find("RoomCrafting");
         map = GameObject.Find("Map");
         upgrade = GameObject.Find("Upgrades");
         gameOverScreen = GameObject.Find("GameOverScreen");
@@ -132,8 +135,7 @@ public class PlayerPermanent : MonoBehaviour
             bonesPosition.Add(bones[i].transform.position);
             bonesRotation.Add(bones[i].transform.rotation);
         }
-        Reset();
-        ToggleRagdoll(false);
+
 
         //On va chercher le script de vigne
         vineController = GetComponent<VinePlayerController>();
@@ -141,6 +143,8 @@ public class PlayerPermanent : MonoBehaviour
 
         theBase = GameObject.FindGameObjectWithTag("Base");
         vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        Reset();
+        ToggleRagdoll(false);
     }
 
     // Update is called once per frame
@@ -148,15 +152,15 @@ public class PlayerPermanent : MonoBehaviour
     {
         uiOpened = IsInUI();
 
-        if (uiOpened && !inventoryTrigger)
+        if (uiOpened && !cameraTrigger)
         {
+            StartCoroutine(MoveCamera("GoUp"));
             CheckIfUiIsOpen(uiOpened);
-            StartCoroutine(MoveCamera(true));
         }
-        else if (!uiOpened && inventoryTrigger)
+        else if (!uiOpened && cameraTrigger && !buildingIsOpen)
         {
+            StartCoroutine(MoveCamera("GoDown"));
             CheckIfUiIsOpen(uiOpened);
-            StartCoroutine(MoveCamera(false));
         }
 
         /*
@@ -174,7 +178,14 @@ public class PlayerPermanent : MonoBehaviour
         if (theBase.GetComponent<Base>().isInside)
         {
             if (!isInBase)
+            {
+                if (isUsingMultiTool)
+                {
+                    Debug.Log("Unequipping multitool");
+                    EquipMultiTool(false);
+                }
                 isInBase = true;
+            }
         }
         else
         {
@@ -224,21 +235,20 @@ public class PlayerPermanent : MonoBehaviour
         
         //Open UI
         if (Input.GetKeyDown(KeyCode.I) && !marketIsOpen && !craftingIsOpen)
-        {
-            if (!inventoryOpen)
-                ShowOrHideInventory();
-            else
-                ShowOrHideInventory();
-        }
+            ShowOrHideInventory();
 
         if (Input.GetKeyDown(KeyCode.M) && !marketIsOpen && !craftingIsOpen)
-        {
             ShowOrHideMap();
-        }
 
         if (Input.GetKeyDown(KeyCode.U) && !marketIsOpen && !craftingIsOpen)
-        {
             ShowOrHideUpgrades();
+
+        if (Input.GetKeyDown(KeyCode.LeftAlt) && !marketIsOpen && !craftingIsOpen)
+        {
+            if (isInBase)
+            {
+                ShowOrHideBuilding();
+            }
         }
 
         if (currentHp <= 0)
@@ -250,6 +260,9 @@ public class PlayerPermanent : MonoBehaviour
     //Pour remettre tout les values au maximum
     public void Reset()
     {
+        transform.position = theBase.GetComponent<Base>().baseSpawnPoint.position;
+        theBase.GetComponent<Base>().isInside = true;
+
         currentOxygen = maxOxygen;
         currentHp = maxHp;
         //currentHunger = maxHunger;
@@ -344,6 +357,8 @@ public class PlayerPermanent : MonoBehaviour
             ShowOrHideMap();
         if (upgradeIsOpen)
             ShowOrHideUpgrades();
+        if (buildingIsOpen)
+            ShowOrHideBuilding();
     }
 
     //Pour changer les slider, bar est le slider qu'on veut changer et value est la valeur qu'on veut lui donner
@@ -550,16 +565,13 @@ public class PlayerPermanent : MonoBehaviour
             }
 
             if (mapIsOpen)
-            {
-                map.SetActive(false);
-                mapIsOpen = false;
-            }
+                ShowOrHideMap();
 
             if (upgradeIsOpen)
-            {
-                upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
-                upgradeIsOpen = false;
-            }
+                ShowOrHideUpgrades();
+
+            if (buildingIsOpen)
+                ShowOrHideBuilding();
         }
         else
         {
@@ -582,21 +594,50 @@ public class PlayerPermanent : MonoBehaviour
                 crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y + gridOffset);
             craftingIsOpen = true;
             if (mapIsOpen)
-            {
-                map.SetActive(false);
-                mapIsOpen = false;
-            }
+                ShowOrHideMap();
             if (upgradeIsOpen)
-            {
-                upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
-                upgradeIsOpen = false;
-            }
+                ShowOrHideUpgrades();
+            if (buildingIsOpen)
+                ShowOrHideBuilding();
         }
         else
         {
             if (crafting != null)
                 crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y - gridOffset);
             craftingIsOpen = false;
+        }
+    }
+
+    public void ShowOrHideBuilding()
+    {
+        if (!buildingIsOpen)
+        {
+            if (!cameraTrigger)
+            {
+                cameraTrigger = true;
+                StartCoroutine(MoveCamera("ZoomOut"));
+            }
+            if (building != null)
+                building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            buildingIsOpen = true;
+
+            if (mapIsOpen)
+                ShowOrHideMap();
+            if (upgradeIsOpen)
+                ShowOrHideUpgrades();
+            if (inventoryOpen)
+                ShowOrHideInventory();
+        }
+        else
+        {
+            if (cameraTrigger)
+            {
+                cameraTrigger = false;
+                StartCoroutine(MoveCamera("ZoomIn"));
+            }
+            if (building != null)
+                building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            buildingIsOpen = false;
         }
     }
 
@@ -609,15 +650,11 @@ public class PlayerPermanent : MonoBehaviour
             marketIsOpen = true;
 
             if (mapIsOpen)
-            {
-                map.SetActive(false);
-                mapIsOpen = false;
-            }
+                ShowOrHideMap();
             if (upgradeIsOpen)
-            {
-                upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
-                upgradeIsOpen = false;
-            }
+                ShowOrHideUpgrades();
+            if (buildingIsOpen)
+                ShowOrHideBuilding();
         }
         else
         {
@@ -641,6 +678,7 @@ public class PlayerPermanent : MonoBehaviour
             */
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
+
 
             map.SetActive(true);
             mapIsOpen = true;
@@ -730,7 +768,7 @@ public class PlayerPermanent : MonoBehaviour
     {
         if (isOpened)
         {
-            inventoryTrigger = true;
+            cameraTrigger = true;
             if (GetComponent<GroundPlayerController>().enabled)
             {
                 wasOnGround = true;
@@ -749,7 +787,7 @@ public class PlayerPermanent : MonoBehaviour
         }
         else
         {
-            inventoryTrigger = false;
+            cameraTrigger = false;
             if (wasOnGround)
             {
                 wasOnGround = false;
@@ -768,22 +806,32 @@ public class PlayerPermanent : MonoBehaviour
         }
     }
 
-    IEnumerator MoveCamera(bool up)
+    IEnumerator MoveCamera(string effect)
     {
         float timer = 0;
         float duration = 0.1f;
         while (timer < duration)
         {
             timer += Time.deltaTime;
-            if (up)
+            if (effect == "GoUp")
             {
                 if (vcam != null)
                     vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = Mathf.Lerp(0.5f, 0.75f, timer / duration);
             }
-            else
+            else if (effect == "GoDown")
             {
                 if (vcam != null)
                     vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = Mathf.Lerp(0.75f, 0.5f, timer / duration);
+            }
+            else if (effect == "ZoomIn")
+            {
+                if (vcam != null)
+                    vcam.m_Lens.OrthographicSize = Mathf.Lerp(20f, 8.2f, timer / duration);
+            }
+            else if (effect == "ZoomOut")
+            {
+                if (vcam != null)
+                    vcam.m_Lens.OrthographicSize = Mathf.Lerp(8.2f, 20f, timer / duration);
             }
             yield return null;
         }

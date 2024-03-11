@@ -38,7 +38,7 @@ public class ThrowableObject : MonoBehaviour
                 {
                     if (player.objectInRightHand != null)
                     {
-                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear"))
+                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear" || gameObject.tag == "Bait"))
                         {
                             GetComponent<LineRenderer>().enabled = true;
                             GetComponent<TrajectoryLine>().CalculateTrajectory();
@@ -60,7 +60,7 @@ public class ThrowableObject : MonoBehaviour
                 {
                     if (player.objectInRightHand != null)
                     {
-                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear"))
+                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear" || gameObject.tag == "Bait"))
                         {
                             GetComponent<LineRenderer>().enabled = false;
                             StartCoroutine(Throw(player.objectInRightHand));
@@ -81,7 +81,7 @@ public class ThrowableObject : MonoBehaviour
 
     IEnumerator Throw(GameObject objectToThrow)
     {
-        if (objectToThrow.tag == "Spear" || objectToThrow.GetComponent<InventoryItem>().stackAmount == 1)
+        if (objectToThrow.tag == "Spear" || objectToThrow.GetComponent<InventoryItem>().stackAmount <= 1)
         {
             Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectToThrow.transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

@@ -26,9 +26,10 @@ public class CreatureDeath : MonoBehaviour
     [SerializeField] BTree behaviorScript;
     [SerializeField] GameObject ressourceToHarvest;
     [SerializeField] float timeToHarvest;
-    bool isInRangeToHarvest;
+    [SerializeField] float rangeToHarvest;
+    public bool isInRangeToHarvest;
     public bool isDead;
-    float timer;
+    public float timer;
     
 
     // Start is called before the first frame update
@@ -42,8 +43,10 @@ public class CreatureDeath : MonoBehaviour
     {
         if (CanHarvest())
         {
+            Debug.Log("can harvest");
             if (Input.GetKey(KeyCode.E))
             {
+                Debug.Log("Is harvesting");
                 timer += Time.deltaTime;
                 if (timer > timeToHarvest)
                 {
@@ -54,6 +57,15 @@ public class CreatureDeath : MonoBehaviour
             }
             else if (Input.GetKeyUp(KeyCode.E))
                 timer = 0;
+        }
+        if (isDead)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            float dist = Vector2.Distance(player.transform.position, transform.position);
+            if (dist < rangeToHarvest)
+                isInRangeToHarvest = true;
+            else
+                isInRangeToHarvest = false;
         }
     }
 
@@ -114,22 +126,5 @@ public class CreatureDeath : MonoBehaviour
     bool CanHarvest()
     {
         return isDead && isInRangeToHarvest;
-    }
-
-    private void OnTriggerEnter2D()
-    {
-        isInRangeToHarvest = true;
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (!isInRangeToHarvest)
-            isInRangeToHarvest = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isInRangeToHarvest = false;
-        timer = 0;
     }
 }

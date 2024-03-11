@@ -57,6 +57,9 @@ public class TardidogHead : MonoBehaviour
             isAttacking = true;
             StartCoroutine(BendNeck(true));
         }
+
+        if (creature.GetComponent<CreatureState>().isTamed)
+            Physics2D.IgnoreCollision(hornCollider, GameObject.FindGameObjectWithTag("Player").GetComponent<CapsuleCollider2D>());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

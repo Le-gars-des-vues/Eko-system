@@ -6,7 +6,7 @@ using BehaviorTree;
 
 public class CheckForTargetInRange : BehaviorNode
 {
-    private LayerMask layerMask = LayerMask.GetMask("Player", "Default");
+    private LayerMask layerMask = LayerMask.GetMask("Player", "Default", "Pixelate");
 
     private Transform transform;
     private float senseOfSmell;
@@ -86,6 +86,20 @@ public class CheckForTargetInRange : BehaviorNode
                             }
                         }
                     }
+                    else if (collider.gameObject.tag == "Bait")
+                    {
+                        //Debug.Log(collider.gameObject.transform.position);
+                        if (Vector2.Distance(collider.gameObject.transform.position, transform.position) < fovRange)
+                        {
+                            //Debug.Log("Player is seen!");
+                            parent.parent.SetData("target", collider.transform);
+                            parent.parent.SetData("pathTarget", "bait");
+                            parent.parent.SetData("pathState", 1);
+                            parent.parent.SetData("checkState", collider.gameObject);
+                            state = NodeState.SUCCESS;
+                            return state;
+                        }
+                    }
                     else if (collider.gameObject.tag == "Plant")
                     {
                         if (collider.gameObject.GetComponent<PlantConsummable>().foodName == foodName)
@@ -108,7 +122,12 @@ public class CheckForTargetInRange : BehaviorNode
         }
         else
         {
-            if (GetData("pathTarget") != null && (string)GetData("pathTarget") == "player")
+            if (GetData("pathTarget") != null && (string)GetData("pathTarget") == "ally")
+            {
+                state = NodeState.SUCCESS;
+                return state;
+            }
+            else if (GetData("pathTarget") != null && (string)GetData("pathTarget") == "player")
             {
                 var pos = (Transform)GetData("target");
                 if (Vector2.Distance(pos.position, transform.position) > minFollowDistance)
@@ -121,6 +140,24 @@ public class CheckForTargetInRange : BehaviorNode
                     if (GetData("isAttacking") != null && (bool)GetData("isAttacking") == true)
                         parent.parent.SetData("isAttacking", false);
 
+                    state = NodeState.FAILURE;
+                    return state;
+                }
+                else
+                {
+                    state = NodeState.SUCCESS;
+                    return state;
+                }
+            }
+            else if (GetData("pathTarget") != null && (string)GetData("pathTarget") == "bait")
+            {
+                if ((GameObject)GetData("checkState") == null)
+                {
+                    //Debug.Log("player is too far");
+                    parent.parent.ClearData("target");
+                    parent.parent.ClearData("pathTarget");
+                    parent.parent.SetData("pathState", 0);
+                    transform.gameObject.GetComponent<CreaturePathfinding>().StopPathFinding();
                     state = NodeState.FAILURE;
                     return state;
                 }
@@ -170,6 +207,20 @@ public class CheckForTargetInRange : BehaviorNode
                                         return state;
                                     }
                                 }
+                            }
+                        }
+                        else if (collider.gameObject.tag == "Bait")
+                        {
+                            //Debug.Log(collider.gameObject.transform.position);
+                            if (Vector2.Distance(collider.gameObject.transform.position, transform.position) < fovRange)
+                            {
+                                //Debug.Log("Player is seen!");
+                                parent.parent.SetData("target", collider.transform);
+                                parent.parent.SetData("pathTarget", "bait");
+                                parent.parent.SetData("pathState", 1);
+                                parent.parent.SetData("checkState", collider.gameObject);
+                                state = NodeState.SUCCESS;
+                                return state;
                             }
                         }
                         else

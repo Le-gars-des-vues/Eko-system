@@ -17,12 +17,12 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
-        roomAmountDataHolder = GameObject.Find("RoomCrafting").transform.Find("DropdownListOfCrafts").gameObject;
-        roomAmountDataHolder.gameObject.transform.parent.gameObject.SetActive(false);
+        //roomAmountDataHolder = GameObject.Find("RoomCrafting").transform.Find("DropdownListOfCrafts").gameObject;
+        //roomAmountDataHolder.gameObject.transform.parent.gameObject.SetActive(false);
 
-        boutonNeutral = GameObject.Find("ButtonNeutral").GetComponent<Button>();
-        boutonEnclos = GameObject.Find("ButtonEnclo").GetComponent<Button>();
-        boutonFarm = GameObject.Find("ButtonFerme").GetComponent<Button>();
+        //boutonNeutral = GameObject.Find("ButtonNeutral").GetComponent<Button>();
+        //boutonEnclos = GameObject.Find("ButtonEnclo").GetComponent<Button>();
+        //boutonFarm = GameObject.Find("ButtonFerme").GetComponent<Button>();
         roomMenu = GameObject.Find("RoomMenu");
         roomMenu.SetActive(false);
     }
@@ -94,6 +94,7 @@ public class RoomManager : MonoBehaviour
         {
             Debug.Log("hi");
             roomMenu.SetActive(true);
+            /*
             if (myRoom.GetComponent<RoomInfo>().roomType == 0)
             {
                 boutonNeutral.interactable = false;
@@ -114,10 +115,11 @@ public class RoomManager : MonoBehaviour
                 boutonFarm.interactable = true;
 
             }
+            */
         }
-        boutonEnclos.onClick.AddListener(this.gameObject.GetComponent<RoomManager>().ButtonPressEnclos);
-        boutonNeutral.onClick.AddListener(this.gameObject.GetComponent<RoomManager>().ButtonPressNeutral);
-        boutonFarm.onClick.AddListener(this.gameObject.GetComponent<RoomManager>().ButtonPressFarm);
+        //boutonEnclos.onClick.AddListener(this.gameObject.GetComponent<RoomManager>().ButtonPressEnclos);
+        //boutonNeutral.onClick.AddListener(this.gameObject.GetComponent<RoomManager>().ButtonPressNeutral);
+        //boutonFarm.onClick.AddListener(this.gameObject.GetComponent<RoomManager>().ButtonPressFarm);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -126,9 +128,9 @@ public class RoomManager : MonoBehaviour
         {
             roomMenu.SetActive(false);
         }
-        boutonNeutral.onClick.RemoveAllListeners();
-        boutonEnclos.onClick.RemoveAllListeners();
-        boutonFarm.onClick.RemoveAllListeners();
+        //boutonNeutral.onClick.RemoveAllListeners();
+        //boutonEnclos.onClick.RemoveAllListeners();
+        //boutonFarm.onClick.RemoveAllListeners();
 
         myRoom.GetComponent<RoomCrafters>().SetItemToDuplicate();
     }
