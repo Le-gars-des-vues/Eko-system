@@ -43,7 +43,7 @@ public class CheckForTargetInRange : BehaviorNode
 
     public override NodeState Evaluate()
     {
-        Debug.Log("Looking for target");
+        //Debug.Log("Looking for target");
         object t = GetData("target");
         if  (t == null)
         {

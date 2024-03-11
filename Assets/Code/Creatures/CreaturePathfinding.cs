@@ -58,6 +58,8 @@ public class CreaturePathfinding : MonoBehaviour
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
         }
+        else
+            Debug.Log("Problem with pathfinding");
     }
 
     IEnumerator UpdatePath()
@@ -93,7 +95,7 @@ public class CreaturePathfinding : MonoBehaviour
         state.isPathfinding = true;
         pathIndex = 0;
 
-        //speedPercent = 1;
+        speedPercent = 1;
 
         while (state.isPathfinding)
         {
@@ -105,7 +107,7 @@ public class CreaturePathfinding : MonoBehaviour
                 //Debug.Log(path.finishLineIndex);
                 if (pathIndex == path.finishLineIndex)
                 {
-                    //Debug.Log("Reached end of path1!");
+                    Debug.Log("Reached end of path1!");
                     reachEndOfPath = true;
                     StopPathFinding();
                     break;
@@ -119,9 +121,9 @@ public class CreaturePathfinding : MonoBehaviour
                 if ((pathIndex >= path.slowDownIndex && stoppingDistance > 0) || (pathIndex == 0))
                 {
                     speedPercent = Mathf.Clamp01(path.turnBoundaries[path.finishLineIndex].DistanceFromPoint(pos / stoppingDistance));
-                    if (speedPercent < 0.11f)
+                    if (speedPercent < 0.5f)
                     {
-                        //Debug.Log("Reached end of path2!");
+                        Debug.Log("Reached end of path2!");
                         reachEndOfPath = true;
                         StopPathFinding();
                     }

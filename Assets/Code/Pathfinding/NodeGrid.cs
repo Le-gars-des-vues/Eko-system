@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NodeGrid : MonoBehaviour
 {
@@ -45,6 +46,24 @@ public class NodeGrid : MonoBehaviour
         }
 
         CreateGrid();
+        Debug.Log("Grid created");
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        // Unregistering the OnSceneLoaded callback to prevent memory leaks
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // This method will be called when a new scene is loaded
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneLoader.MakeActiveScene(SceneLoader.Scene.Forest_Test);
     }
 
     public int MaxSize

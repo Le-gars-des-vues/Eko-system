@@ -87,6 +87,8 @@ public class Pathfinding : MonoBehaviour
             waypoints = RetracePath(startNode, targetNode);
             pathSuccess = waypoints.Length > 0;
         }
+        else
+            Debug.Log("Can't find path");
         callback(new PathResult(waypoints, pathSuccess, request.callback));
     }
 
