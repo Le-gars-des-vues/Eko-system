@@ -13,7 +13,7 @@ public class Cycle : MonoBehaviour
 
     public TextMeshProUGUI TimerTxt;
 
-    public GameObject[] theRooms;
+    public List<GameObject> theRooms = new List<GameObject>();
 
     [Header("New Cycle Variables")]
     [SerializeField] GameObject newCycleScreen;
@@ -117,22 +117,6 @@ public class Cycle : MonoBehaviour
                 }
             }
         }
-        /*
-        else
-        {
-            if (!theCharacter.GetComponent<PlayerPermanent>().isInBase && TimerOn == false)
-            {
-                TimeLeft = initialTime;
-                TimerOn=true;
-                Debug.Log("New Cycle");
-                this.gameObject.GetComponent<Quota>().nouveauQuota();
-                for(int i=0; i <= theRooms.Length - 1; i++)
-                {
-                    theRooms[i].GetComponent<RoomCrafters>().SpawnExtraItem();
-                }
-            }
-        }
-        */
     }
 
     void updateTimer(float currentTime)
@@ -163,7 +147,7 @@ public class Cycle : MonoBehaviour
         TimeLeft = initialTime;
         TimerOn = true;
         Debug.Log("New Cycle");
-        for (int i = 0; i <= theRooms.Length - 1; i++)
+        for (int i = 0; i <= theRooms.Count - 1; i++)
         {
             theRooms[i].GetComponent<RoomCrafters>().SpawnExtraItem();
         }

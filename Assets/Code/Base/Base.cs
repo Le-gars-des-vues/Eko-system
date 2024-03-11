@@ -7,6 +7,7 @@ public class Base : MonoBehaviour
     Vector2 door;
     GameObject player;
     [SerializeField] Transform baseEntryPoint;
+    public Transform baseSpawnPoint;
     [SerializeField] float distanceOpenThreshold;
     [SerializeField] float baseEntryThreshold;
     [SerializeField] Animator leftDoorAnim;
@@ -22,8 +23,8 @@ public class Base : MonoBehaviour
         if (isSceneLoaded)
             transform.position = new Vector2(135.3f, 4.6f);
         door = new Vector2(transform.position.x, transform.position.y - 4.5f);
-        leftDoorAnim = transform.Find("LeftDoor").GetComponent<Animator>();
-        rightDoorAnim = transform.Find("RightDoor").GetComponent<Animator>();
+        leftDoorAnim = transform.Find("Outside").Find("LeftDoor").GetComponent<Animator>();
+        rightDoorAnim = transform.Find("Outside").Find("RightDoor").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -59,6 +60,8 @@ public class Base : MonoBehaviour
                 }
             }
         }
+        if (isInside && player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void OnDrawGizmos()

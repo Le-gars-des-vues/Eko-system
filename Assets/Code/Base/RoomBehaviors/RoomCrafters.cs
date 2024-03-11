@@ -23,7 +23,6 @@ public class RoomCrafters : MonoBehaviour
                 craftingSlots[i].GetItem(1, 1).Delete();
             }
         }
-
     }
 
     public void SetItemToShowInSlot()
@@ -38,10 +37,8 @@ public class RoomCrafters : MonoBehaviour
                 {
                     craftingSlots[i].PlaceItem(Instantiate(fabricatedItems[i]), 1, 1);
                 }
-
             }
         }
-        
     }
 
     public void SpawnExtraItem()
@@ -55,10 +52,7 @@ public class RoomCrafters : MonoBehaviour
                     fabricatedItems[i] = itemToDuplicateSave;
                     i = craftingSlots.Length;
                 }
-
             }
         }
-
-        
     }
 }

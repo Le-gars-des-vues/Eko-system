@@ -17,7 +17,7 @@ public class TardidogBT : BTree
     {
         BehaviorNode root = new Selector(new List<BehaviorNode>
         {
-            new TransferInfos(gameObject),
+            new TransferInfos(gameObject, target),
             new Sequence(new List<BehaviorNode>
             {
                 new CheckHealth(gameObject),

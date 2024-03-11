@@ -72,7 +72,6 @@ public class RoomDropdownInit : MonoBehaviour
         lesEnclos.text = "Enclos: "+theCraftingSystem.GetComponent<RoomCrafting>().GetEnclos().ToString();
         lesFarms.text = "Fermes: "+theCraftingSystem.GetComponent<RoomCrafting>().GetFarms().ToString();
 
-
         currentRecipe = this.gameObject.GetComponent<TMP_Dropdown>().value;
 
         theCraftingSystem.GetComponent<RoomCrafting>().RoomCraftCheck();

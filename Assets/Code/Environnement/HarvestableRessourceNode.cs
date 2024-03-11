@@ -80,7 +80,6 @@ public class HarvestableRessourceNode : MonoBehaviour
         {
             if (Vector2.Distance(player.gameObject.transform.position, transform.position) < minDistanceToHarvest)
             {
-                Debug.Log("Harvestable");
                 sprite_empty.material = outlineMaterial;
                 sprite_full.material = outlineMaterial;
             }

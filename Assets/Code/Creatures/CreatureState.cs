@@ -41,6 +41,12 @@ public class CreatureState : MonoBehaviour
     public BoxCollider2D territory;
     bool hasATerritory = false;
 
+    public int levelOfAffection = 0;
+    [SerializeField] int tamedAffectionThreshold;
+    public bool isTamed;
+
+    [SerializeField] Transform target;
+
     private void OnEnable()
     {
         currentFood = maxFood;
@@ -78,6 +84,17 @@ public class CreatureState : MonoBehaviour
                 stunTrigger = false;
             }
         }
+
+        if (levelOfAffection >= tamedAffectionThreshold && !isTamed)
+        {
+            isTamed = true;
+        }
+
+        if (isTamed)
+        {
+            target.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+            isFull = true;
+        }
     }
 
     public void Eat()
@@ -86,6 +103,17 @@ public class CreatureState : MonoBehaviour
         isFullTime = Time.time;
         currentFood = maxFood;
         StartCoroutine(Eating());
+    }
+
+    public void EatBait()
+    {
+        levelOfAffection++;
+        StartCoroutine(Eating());
+    }
+
+    public void EatObject(GameObject objectToEat)
+    {
+        Destroy(objectToEat);
     }
 
     IEnumerator Eating()
