@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NodeGrid : MonoBehaviour
 {
+    public bool isSceneLoading = false;
     //Pour voir la grille
     public bool DisplayGridGizmos;
     public Transform seeker;
@@ -51,19 +52,22 @@ public class NodeGrid : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (isSceneLoading)
+            SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
-        // Unregistering the OnSceneLoaded callback to prevent memory leaks
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        if (isSceneLoading)
+            // Unregistering the OnSceneLoaded callback to prevent memory leaks
+            SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     // This method will be called when a new scene is loaded
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SceneLoader.MakeActiveScene(SceneLoader.Scene.Forest_Test);
+        if (isSceneLoading)
+            SceneLoader.MakeActiveScene(SceneLoader.Scene.Forest_Test);
     }
 
     public int MaxSize

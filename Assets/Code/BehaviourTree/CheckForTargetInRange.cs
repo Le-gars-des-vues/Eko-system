@@ -43,10 +43,11 @@ public class CheckForTargetInRange : BehaviorNode
 
     public override NodeState Evaluate()
     {
-        //Debug.Log("Looking for target");
         object t = GetData("target");
         if  (t == null)
         {
+            if ((bool)GetData("debug"))
+                Debug.Log("Looking for target");
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, senseOfSmell, layerMask);
 
             if (colliders.Length > 0)

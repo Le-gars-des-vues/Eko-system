@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Cycle : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public float TimeLeft;
     public float initialTime;
@@ -46,6 +46,11 @@ public class Cycle : MonoBehaviour
     [SerializeField] int magnetyneSpawnerFraction;
     [SerializeField] int tugnstoneSpawnerFraction;
 
+    [Header("Creature Variables")]
+    public List<GameObject> dogs = new List<GameObject>();
+    public List<GameObject> flys = new List<GameObject>();
+    public List<GameObject> frogs = new List<GameObject>();
+
     void Start()
     {
         TimeLeft = initialTime;
@@ -61,32 +66,42 @@ public class Cycle : MonoBehaviour
             {
                 case "Dog":
                     dogSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = dogSpawner.Count;
                     break;
                 case "Fly":
                     flySpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = flySpawner.Count;
                     break;
                 case "Frog":
                     frogSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = frogSpawner.Count;
                     break;
                 case "Macrebosia":
                     macrebosiaSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = macrebosiaSpawner.Count;
                     break;
                 case "Caeruletam":
                     caeruletamSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = caeruletamSpawner.Count;
                     break;
                 case "Infpisum":
                     infpisumSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = infpisumSpawner.Count;
                     break;
                 case "Magnetyne":
                     magnetyneSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = magnetyneSpawner.Count;
                     break;
                 case "Rubiol":
                     rubiolSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = rubiolSpawner.Count;
                     break;
                 case "Tugnstone":
                     tugnstoneSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = tugnstoneSpawner.Count;
                     break;
             }
+            spawner.gameObject.name = spawner.GetComponent<Spawner>().objectName + " spawner " + spawner.GetComponent<Spawner>().index;
         }
 
         SpawnNewObjects(true);
@@ -133,17 +148,19 @@ public class Cycle : MonoBehaviour
     {
         newCycleScreen.SetActive(true);
         this.gameObject.GetComponent<Quota>().nouveauQuota();
-        textToWrite = "////////////<br><br>SYSTEM.REBOOT<br>TERRAFORMA CORP.<br><br>NEW TRANSMISSION<br>.<br>.<br>.<br>.<br><br>GOOD MORNING EMPLOYEE 1212781827!<br>.<br>.<br>.<br>.<br><br>CYCLE : " + cycleCount.ToString("000") + "<br>.<br>.<br><br>QUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $<br><br>END TRANSMISSION<br><br>/////////////";
+        textToWrite = "////////////\n\nSYSTEM.REBOOT\nTERRAFORMA CORP.\n\nNEW TRANSMISSION\n.\n.\n.\n.\n\nGOOD MORNING EMPLOYEE 1212781827!\n.\n.\n.\n.\n\nCYCLE : " + cycleCount.ToString("000") + "\n.\n.\n\nQUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $\n\nEND TRANSMISSION\n\n/////////////";
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
         yield return new WaitForSeconds(3f);
         newCycleText.text = "";
         foreach(char letter in textToWrite.ToCharArray())
         {
             newCycleText.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(0.03f);
         }
         yield return new WaitForSeconds(2f);
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", false);
+        yield return new WaitForSeconds(2f);
+        newCycleScreen.SetActive(false);
         TimeLeft = initialTime;
         TimerOn = true;
         Debug.Log("New Cycle");
@@ -151,7 +168,6 @@ public class Cycle : MonoBehaviour
         {
             theRooms[i].GetComponent<RoomCrafters>().SpawnExtraItem();
         }
-        newCycleScreen.SetActive(false);
         cycleCount++;
         SpawnNewObjects(false);
     }
@@ -172,7 +188,7 @@ public class Cycle : MonoBehaviour
             }
             else
             {
-                if (spawner.GetComponent<Spawner>().objectSpawned.GetComponent<CreatureDeath>().isDead || !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && (spawner.GetComponent<Spawner>().objectSpawned.GetComponentInChildren<CreatureDeath>().isDead || !spawner.GetComponent<Spawner>().objectSpawned.activeSelf))
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -190,7 +206,7 @@ public class Cycle : MonoBehaviour
             for (int i = 0; i < numberToSpawn; i++)
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
-                spawner.Spawn();
+                spawner.Spawn(dogs);
                 availableSpawners.Remove(spawner);
             }
         }
@@ -208,7 +224,7 @@ public class Cycle : MonoBehaviour
             }
             else
             {
-                if (spawner.GetComponent<Spawner>().objectSpawned.GetComponent<CreatureDeath>().isDead || !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && (spawner.GetComponent<Spawner>().objectSpawned.GetComponentInChildren<CreatureDeath>().isDead || !spawner.GetComponent<Spawner>().objectSpawned.activeSelf))
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -226,7 +242,7 @@ public class Cycle : MonoBehaviour
             for (int i = 0; i < numberToSpawn; i++)
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
-                spawner.Spawn();
+                spawner.Spawn(flys);
                 availableSpawners.Remove(spawner);
             }
         }
@@ -244,7 +260,7 @@ public class Cycle : MonoBehaviour
             }
             else
             {
-                if (spawner.GetComponent<Spawner>().objectSpawned.GetComponent<CreatureDeath>().isDead || !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && (spawner.GetComponent<Spawner>().objectSpawned.GetComponentInChildren<CreatureDeath>().isDead || !spawner.GetComponent<Spawner>().objectSpawned.activeSelf))
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -262,7 +278,7 @@ public class Cycle : MonoBehaviour
             for (int i = 0; i < numberToSpawn; i++)
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
-                spawner.Spawn();
+                spawner.Spawn(frogs);
                 availableSpawners.Remove(spawner);
             }
         }
@@ -279,7 +295,7 @@ public class Cycle : MonoBehaviour
             }
             else
             {
-                if (!spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -315,7 +331,7 @@ public class Cycle : MonoBehaviour
             }
             else
             {
-                if (!spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -351,7 +367,7 @@ public class Cycle : MonoBehaviour
             }
             else
             {
-                if (!spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -387,7 +403,7 @@ public class Cycle : MonoBehaviour
             }
             else
             {
-                if (!spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -423,7 +439,7 @@ public class Cycle : MonoBehaviour
             }
             else
             {
-                if (!spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -459,7 +475,7 @@ public class Cycle : MonoBehaviour
             }
             else
             {
-                if (!spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());

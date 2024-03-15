@@ -41,8 +41,9 @@ public class TardidogMovement : MonoBehaviour
     public bool isFacingRight = true;
     public int facingDirection = 1;
     bool targetIsRight;
+    bool targetIsInFront;
     float dist = 0;
-    float distanceFromNextPoint = 0;
+    bool nextPointIsRight;
 
     [Header("Sight Variables")]
     public Transform head;
@@ -52,17 +53,31 @@ public class TardidogMovement : MonoBehaviour
     public float rayCount;
     public float rayDistance;
 
+    [Header("Sensor Variables")]
+    [SerializeField] int numberOfRays;
+    RaycastHit2D[] ledgeSensor;
+    public bool ledgeFound = false;
+    [SerializeField] Vector2 ledgePos;
+    [SerializeField] float ledgeOffset;
+    Vector2 ledgeTempPos;
+    [SerializeField] [Range(0, 1)] float ledgeRaysStep;
+    [SerializeField] float sensorRayLength;
+    [SerializeField] float sensorStartOffset;
+    bool sensorUp = false;
+
     [Header("Jump Variables")]
     [SerializeField] float jumpYOffset;
     [SerializeField] Vector2 jumpForce;
     [SerializeField] float jumpRayForwardLength;
     [SerializeField] float jumpRayUpLength;
     [SerializeField] float jumpRayDownLength;
+    float speedFactor = 1;
 
     [SerializeField] CreatureState state;
     [SerializeField] CreaturePathfinding pathfinding;
     //[SerializeField] TardidogAttack atk;
 
+    [Header("Safeguard Variables")]
     [SerializeField] float movementThreshold = 1f; // Minimum movement distance to consider the creature stuck
     [SerializeField] float checkInterval = 15f; // Time interval to check for stuck condition
     private Vector3 lastPosition; // Last recorded position of the creature
@@ -75,6 +90,7 @@ public class TardidogMovement : MonoBehaviour
         isFacingRight = transform.localScale.x == 1 ? true : false;
         state = GetComponent<CreatureState>();
         pathfinding = GetComponent<CreaturePathfinding>();
+        ledgeSensor = new RaycastHit2D[numberOfRays];
         dragForce = rb.drag;
         maxMoveSpeed *= rb.mass;
         minMoveSpeed *= rb.mass;
@@ -88,8 +104,11 @@ public class TardidogMovement : MonoBehaviour
         if (state.isPathfinding && pathfinding.path != null)
         {
             targetIsRight = (pathfinding.path.lookPoints[pathfinding.pathIndex].x - transform.position.x) > 0 ? true : false;
-            dist = Mathf.Abs(pathfinding.path.lookPoints[pathfinding.path.lookPoints.Length - 1].x - transform.position.x);
-            distanceFromNextPoint = Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], transform.position);
+            dist = Vector2.Distance(pathfinding.path.lookPoints[pathfinding.path.lookPoints.Length - 1], transform.position);
+            if (pathfinding.pathIndex < pathfinding.path.lookPoints.Length - 3)
+                nextPointIsRight = (pathfinding.path.lookPoints[pathfinding.pathIndex + 2].x - transform.position.x) > 0 ? true : false;
+            else
+                nextPointIsRight = (target.position.x - transform.position.x) > 0 ? true : false;
         }
         else if (!state.isPathfinding)
         {
@@ -97,22 +116,211 @@ public class TardidogMovement : MonoBehaviour
             dist = Mathf.Abs(target.position.x - rb.position.x);
         }
 
-        // Calculate movement since the last frame
-        float distanceMoved = Vector3.Distance(transform.position, lastPosition);
-
-        // Update time since last check
-        timeSinceLastCheck += Time.deltaTime;
-        if (timeSinceLastCheck > checkInterval)
+        if (state.isPathfinding)
         {
-            timeSinceLastCheck = 0;
-            if (distanceMoved < movementThreshold)
+            // Calculate movement since the last frame
+            float distanceMoved = Vector3.Distance(transform.position, lastPosition);
+
+            // Update time since last check
+            timeSinceLastCheck += Time.deltaTime;
+            if (timeSinceLastCheck > checkInterval)
             {
-                // The creature is stuck, stop its movement
-                pathfinding.reachEndOfPath = true;
-                pathfinding.StopPathFinding();
+                timeSinceLastCheck = 0;
+                if (distanceMoved < movementThreshold)
+                {
+                    // The creature is stuck, stop its movement
+                    target.position = transform.position;
+                    pathfinding.reachEndOfPath = true;
+                    pathfinding.StopPathFinding();
+                }
+                lastPosition = transform.position;
             }
-            lastPosition = transform.position;
         }
+
+        if (isFacingRight == targetIsRight)
+            targetIsInFront = true;
+        else
+            targetIsInFront = false;
+
+        if (state.isPathfinding && pathfinding.path != null)
+        {
+            if (Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - rb.position.x) < 0.1f)
+            {
+                //isSearching = true;
+                //Debug.Log("Looking for ledge");
+                if (pathfinding.path.lookPoints[pathfinding.pathIndex].y - rb.position.y > 0 && !ledgeFound && isGrounded)
+                {
+                    for (int i = 0; i < ledgeSensor.Length; i++)
+                    {
+                        //Debug.Log("Ray created");
+                        ledgeSensor[i] = Physics2D.Raycast(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), Vector2.up, sensorRayLength, LayerMask.GetMask("Ground"));
+                    }
+                    for (int i = 0; i < ledgeSensor.Length; i++)
+                    {
+                        if ((i != 0 && i != ledgeSensor.Length - 1) && ledgeSensor[i])
+                        {
+                            if (nextPointIsRight)
+                            {
+                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
+                                if (!ledgeSensor[i + 1])
+                                {
+                                    PrepareLedgeJump(true, ledgeSensor[i].point, false);
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
+                                if (!ledgeSensor[i - 1])
+                                {
+                                    PrepareLedgeJump(true, ledgeSensor[i].point, true);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    /*
+                    for (int i = ledgeSensor.Length / 2; i < ledgeSensor.Length; i++)
+                    {
+                        Debug.Log(ledgeSensor[i]);
+                        if (ledgeSensor[i].collider != null && i != ledgeSensor.Length - 1)
+                        {
+                            Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
+                            if (ledgeSensor[i + 1].collider == null)
+                            {
+                                PrepareLedgeJump(true, true, ledgeSensor[i].point, false);
+                                break;
+                            }
+                        }
+                    }
+                    if (!ledgeFound)
+                    {
+                        for (int i = 0; i <= ledgeSensor.Length / 2; i++)
+                        {
+                            Debug.Log(ledgeSensor[i]);
+                            if (ledgeSensor[i].collider != null && i != 0)
+                            {
+                                if (ledgeSensor[i - 1].collider == null)
+                                {
+                                    PrepareLedgeJump(true, true, ledgeSensor[i].point, true);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    */
+                }
+                else if (pathfinding.path.lookPoints[pathfinding.pathIndex].y - rb.position.y < 0 && !ledgeFound && isGrounded)
+                {
+                    for (int i = 0; i < ledgeSensor.Length; i++)
+                    {
+                        ledgeSensor[i] = Physics2D.Raycast(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), Vector2.down, sensorRayLength, LayerMask.GetMask("Ground"));
+                    }
+                    
+                    for (int i = 0; i < ledgeSensor.Length; i++)
+                    {
+                        if ((i != 0 && i != ledgeSensor.Length - 1) && ledgeSensor[i])
+                        {
+                            if (nextPointIsRight)
+                            {
+                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
+                                if (!ledgeSensor[i + 1])
+                                {
+                                    PrepareLedgeJump(false, ledgeSensor[i].point, false);
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
+                                if (!ledgeSensor[i - 1])
+                                {
+                                    PrepareLedgeJump(false, ledgeSensor[i].point, true);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    /*
+                    for (int i = ledgeSensor.Length / 2; i < ledgeSensor.Length; i++)
+                    {
+                        Debug.Log(ledgeSensor[i]);
+                        if (ledgeSensor[i].collider != null && i != ledgeSensor.Length - 1)
+                        {
+                            Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
+                            if (ledgeSensor[i + 1].collider == null)
+                            {
+                                PrepareLedgeJump(true, false, ledgeSensor[i].point, false);
+                                break;
+                            }
+                        }
+                    }
+                    if (!ledgeFound)
+                    {
+                        for (int i = 0; i <= ledgeSensor.Length / 2; i++)
+                        {
+                            Debug.Log(ledgeSensor[i]);
+                            if (ledgeSensor[i].collider != null && i != 0)
+                            {
+                                if (ledgeSensor[i - 1].collider == null)
+                                {
+                                    PrepareLedgeJump(true, false, ledgeSensor[i].point, true);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    */
+                }
+            }
+        }
+        if (ledgeFound)
+        {
+            target.position = new Vector2(ledgePos.x + ledgeOffset, transform.position.y);
+            if (Mathf.Abs(target.position.x - transform.position.x) < 0.5f && isGrounded)
+            {
+                if (sensorUp)
+                {
+                    for (int i = 0; i < rayCount; i++)
+                    {
+                        float ledgeDirection = nextPointIsRight ? -1 : 1;
+                        // Cast a ray in the calculated direction
+                        RaycastHit2D hit = Physics2D.Raycast(new Vector2(ledgePos.x, ledgePos.y + ((float)i / 6)), Vector2.left * ledgeDirection, rayDistance, LayerMask.GetMask("Ground"));
+
+                        // Check if the ray hits a platform collider
+                        if (hit.collider != null)
+                        {
+                            if (i != rayCount - 1)
+                            {
+                                Debug.DrawRay(new Vector2(ledgePos.x + 1, ledgePos.y + ((float)i / 3)), Vector2.left * ledgeDirection, Color.green, 5); // Visualize the ray
+                                jumpTarget.position = hit.point;
+                            }
+                        }
+                    }
+                    target.position = ledgeTempPos;
+                    pathfinding.NewTarget(target.gameObject);
+                    StartCoroutine(Jump());
+                    ledgeFound = false;
+                }
+                else
+                {
+                    target.position = ledgeTempPos;
+                    pathfinding.NewTarget(target.gameObject);
+                    ledgeFound = false;
+                }
+            }
+        }
+    }
+
+    void PrepareLedgeJump(bool targetIsUp, Vector2 _ledgePos, bool ToTheleft)
+    {
+        ledgeTempPos = target.position;
+        ledgePos = _ledgePos;
+        ledgeFound = true;
+        sensorUp = targetIsUp;
+        pathfinding.StopPathFinding();
+        float _ledgeOffset = ledgeOffset;
+        ledgeOffset = ToTheleft ? _ledgeOffset * -1 : Mathf.Abs(ledgeOffset);
     }
 
     private void FixedUpdate()
@@ -150,16 +358,16 @@ public class TardidogMovement : MonoBehaviour
             {
                 RaycastHit2D jumpCheckUp = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.up, jumpRayUpLength, LayerMask.GetMask("Ground"));
                 RaycastHit2D jumpCheckDown = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, jumpRayDownLength, LayerMask.GetMask("Ground"));
-                if (!(jumpCheck || jumpCheckUp || jumpCheckDown))
+                if (!(jumpCheck || jumpCheckUp || jumpCheckDown) && targetIsInFront)
                 {
                     if (state.isPathfinding && pathfinding.path != null)
                     {
-                        if (!isJumping && isGrounded && (Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - transform.position.x) > 3f || pathfinding.path.lookPoints[pathfinding.pathIndex].y - transform.position.y > 0))
+                        if (!isJumping && isGrounded && (Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - transform.position.x) > 2.5f || pathfinding.path.lookPoints[pathfinding.pathIndex].y - transform.position.y > 0))
                         {
                             jumpTarget.position = Vision(target.position, true);
                             if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
                             {
-                                StartCoroutine(Jump(1));
+                                StartCoroutine(Jump());
                             }
                         }
                     }
@@ -168,7 +376,7 @@ public class TardidogMovement : MonoBehaviour
                         jumpTarget.position = Vision(target.position, true);
                         if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
                         {
-                            StartCoroutine(Jump(1));
+                            StartCoroutine(Jump());
                         }
                     }
                 }
@@ -178,26 +386,26 @@ public class TardidogMovement : MonoBehaviour
         //Movement
         if (CanMove())
         {
-            float speedFactor = 1;
             if (isGrounded)
             {
                 if (!state.isAttacking)
                 {
+                    speedFactor = 1;
                     if (dist >= slowDownThreshold)
                         moveSpeed = maxMoveSpeed;
                     else if (dist < 0.1f)
                         rb.velocity = Vector2.zero;
                     else if (dist < slowDownThreshold)
                         moveSpeed = Mathf.Lerp(maxMoveSpeed, minMoveSpeed, (slowDownThreshold - dist / slowDownThreshold));
-
-                    speedFactor = 1;
                 }
                 else
+                {
                     moveSpeed = maxMoveSpeed;
-                speedFactor = 1.5f;
+                    speedFactor = 1.5f;
+                }
             }
-            else if (!isGrounded)
-                speedFactor = 0.5f;
+            else
+                speedFactor = 0f;
 
             if (dist > 0.5f)
             {
@@ -235,8 +443,7 @@ public class TardidogMovement : MonoBehaviour
         if (jumpCheck)
         {
             RaycastHit2D jumpCheckUp = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.up, jumpRayUpLength, LayerMask.GetMask("Ground"));
-            RaycastHit2D jumpCheckDown = Physics2D.Raycast(new Vector2(transform.position.x + groundCheckOffsets.x * facingDirection, transform.position.y), Vector2.down, jumpRayDownLength, LayerMask.GetMask("Ground"));
-            if (!jumpCheckUp)
+            if (!jumpCheckUp && targetIsInFront)
             {
                 //Debug.Log(Vector2.Distance(target.position, rb.position));
                 if (state.isPathfinding && pathfinding.path != null)
@@ -248,7 +455,7 @@ public class TardidogMovement : MonoBehaviour
                             jumpTarget.position = Vision(target.position, false);
                             if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
                             {
-                                StartCoroutine(Jump(1));
+                                StartCoroutine(Jump());
                             }
                         }
                     }
@@ -260,7 +467,7 @@ public class TardidogMovement : MonoBehaviour
                         jumpTarget.position = Vision(target.position, false);
                         if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
                         {
-                            StartCoroutine(Jump(1));
+                            StartCoroutine(Jump());
                         }
                     }
                 }
@@ -316,13 +523,13 @@ public class TardidogMovement : MonoBehaviour
         }
     }
 
-    IEnumerator Jump(int direction)
+    IEnumerator Jump()
     {
-        Debug.Log("isJumping");
+        //Debug.Log("isJumping");
         rb.drag = 0;
         isJumping = true;
         Vector2 jumpDirection = new Vector2(jumpTarget.position.x, jumpTarget.position.y) - rb.position;
-        jumpDirection.x -= (jumpDirection.x / 2) * facingDirection * direction;
+        jumpDirection.x -= ((jumpDirection.x + 1) / 2);
         jumpDirection.y += jumpYOffset;
         Vector2 jumpPoint = rb.position + jumpDirection;
 
@@ -334,20 +541,10 @@ public class TardidogMovement : MonoBehaviour
 
         float speedX = (jumpPoint.x - rb.position.x) * rb.mass;
         float speedY = Mathf.Sqrt(2 * Physics.gravity.magnitude * Mathf.Max(jumpPoint.y - rb.position.y, 3f)) * rb.mass;
-        /*
-        float massFactor = Mathf.Sqrt(rb.mass);
-        float dragFactor = Mathf.Sqrt(rb.drag);
-
-        jumpForce.y /= massFactor * dragFactor;
-        jumpForce.x /= massFactor * dragFactor;
-        */
 
         jumpForce = new Vector2(speedX, speedY);
 
-        //Debug.Log(jumpForce);
         rb.velocity = Vector2.zero;
-        //jumpForce.x -= rb.velocity.x;
-        //jumpForce.y -= rb.velocity.y;
 
         while (timer < duration)
         {
@@ -464,6 +661,12 @@ public class TardidogMovement : MonoBehaviour
             Gizmos.DrawRay(new Vector2(head.transform.position.x, head.transform.position.y + ((float)i / 3)), Vector2.right * facingDirection); // Visualize the ray
         }
         */
+        
+        for (int i = 0; i < 11; i++)
+        {
+            Gizmos.DrawRay(new Vector2((transform.position.x - ((11 / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), Vector2.up * sensorRayLength);
+        }
+        
     }
 }
 

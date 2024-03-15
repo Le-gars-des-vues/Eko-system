@@ -42,6 +42,11 @@ public class FlumpfMovement : MonoBehaviour
     [SerializeField] CreatureState state;
     [SerializeField] CreaturePathfinding pathfinding;
 
+    [SerializeField] float movementThreshold = 1f; // Minimum movement distance to consider the creature stuck
+    [SerializeField] float checkInterval = 15f; // Time interval to check for stuck condition
+    private Vector3 lastPosition; // Last recorded position of the creature
+    private float timeSinceLastCheck = 0f;
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -95,7 +100,26 @@ public class FlumpfMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
         }
         */
+        if (state.isPathfinding)
+        {
+            // Calculate movement since the last frame
+            float distanceMoved = Vector3.Distance(transform.position, lastPosition);
 
+            // Update time since last check
+            timeSinceLastCheck += Time.deltaTime;
+            if (timeSinceLastCheck > checkInterval)
+            {
+                timeSinceLastCheck = 0;
+                if (distanceMoved < movementThreshold)
+                {
+                    // The creature is stuck, stop its movement
+                    target.position = transform.position;
+                    pathfinding.reachEndOfPath = true;
+                    pathfinding.StopPathFinding();
+                }
+                lastPosition = transform.position;
+            }
+        }
     }
 
     private void FixedUpdate()

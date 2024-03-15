@@ -24,7 +24,7 @@ public class BuildButton : MonoBehaviour
 
     private void OnEnable()
     {
-        cycle = GameObject.Find("Cycle");
+        cycle = GameObject.Find("GameManager");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
         roomAmountDataHolder = GameObject.Find("RoomCrafting").transform.Find("DropdownListOfCrafts").gameObject;
         theBase = GameObject.FindGameObjectWithTag("Base");
@@ -81,7 +81,7 @@ public class BuildButton : MonoBehaviour
                                 room.transform.position = new Vector2(transform.position.x + sideOffset, transform.position.y + 6.8f);
                             }
                             if (index == 0 || index == 1)
-                                cycle.GetComponent<Cycle>().theRooms.Add(room);
+                                cycle.GetComponent<GameManager>().theRooms.Add(room);
                             room.gameObject.transform.SetParent(theBase.transform);
                             room.gameObject.transform.SetAsLastSibling();
                         }

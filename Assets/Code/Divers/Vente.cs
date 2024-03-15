@@ -22,7 +22,7 @@ public class Vente : MonoBehaviour
 
     private void Start()
     {
-        quotaManager = GameObject.Find("Cycle");
+        quotaManager = GameObject.Find("GameManager");
         profitTV = GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>();
     }
 
