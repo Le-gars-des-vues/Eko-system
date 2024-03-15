@@ -22,6 +22,7 @@ public class PickableObject : MonoBehaviour
 
     public bool hasFlashed; //Pour les consommable
     public bool isFlashing; //Pour les ressources
+    public bool canFlash;
     public bool isSelected;
     public bool isPickedUp = false;
     [SerializeField] private float rotateSpeed;
@@ -53,19 +54,19 @@ public class PickableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.tag != "Ressource")
+        if (!isPickedUp)
         {
-            //Debug.Log(Mathf.Abs(Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position)));
-            if (CanBePickedUp() && !hasFlashed)
+            if (gameObject.tag != "Ressource" && canFlash)
             {
-                hasFlashed = true;
-                StartCoroutine(FlashWhite(sprite, 0.05f, 5));
+                //Debug.Log(Mathf.Abs(Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position)));
+                if (CanBePickedUp() && !hasFlashed)
+                {
+                    hasFlashed = true;
+                    StartCoroutine(FlashWhite(sprite, 0.05f, 5));
+                }
+                else if (!CanBePickedUp() && hasFlashed)
+                    hasFlashed = false;
             }
-            else if (!CanBePickedUp() && hasFlashed)
-                hasFlashed = false;
-        }
-        else
-        {
             if (isSelected && !isFlashing)
             {
                 isFlashing = true;
@@ -83,36 +84,35 @@ public class PickableObject : MonoBehaviour
             if (isFlashing)
                 arrow.transform.localRotation = Quaternion.Inverse(transform.rotation);
 
-            if (Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 3f)
+            if (Vector2.Distance(player.transform.position, transform.position) <= 3f)
             {
-                if (!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Contains(gameObject))
+                if (!player.objectsNear.Contains(gameObject))
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Add(gameObject);
+                    player.objectsNear.Add(gameObject);
                 }
             }
             else
             {
-                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessource == gameObject)
+                if (player.nearestObject == gameObject)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessource = null;
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessourceDistance = 10f;
+                    player.nearestObject = null;
+                    player.nearestObjectDistance = 10f;
                 }
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Remove(gameObject);
+                player.objectsNear.Remove(gameObject);
                 //sprite.material = ogMaterial;
                 isSelected = false;
             }
-        }
 
-        //Pick up
-        if (Input.GetKeyDown(KeyCode.E) && (hasFlashed || isSelected))
-        {
-            if (!isPickedUp)
+            //Pick up
+            if (Input.GetKeyDown(KeyCode.E) && (hasFlashed || isSelected))
             {
-                PickUp(false, false);
+                if (!isPickedUp)
+                {
+                    PickUp(false, false);
+                }
             }
         }
-
-        if (isPickedUp)
+        else
         {
             item.onGridPositionX = itemInInventory.GetComponent<InventoryItem>().onGridPositionX;
             item.onGridPositionY = itemInInventory.GetComponent<InventoryItem>().onGridPositionY;
@@ -141,13 +141,16 @@ public class PickableObject : MonoBehaviour
     {
         if (!isAlreadyInInventory)
         {
+            player.objectsNear.Clear();
+            player.nearestObjectDistance = 10;
+            arrow.SetActive(false);
             bool hasBeenPlaced = false;
             InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
             ItemData itemData = Instantiate(item.itemData);
 
             if (gameObject.tag != "Ressource")
             {
-                for (int i = hotbar.Count - 1; i > 0; i--)
+                for (int i = hotbar.Count - 1; i >= 0; i--)
                 {
                     if (hotbar[i].GetComponent<ItemGrid>().GetItem(0, 0) == null)
                     {
@@ -218,12 +221,7 @@ public class PickableObject : MonoBehaviour
             */
         }
         else
-        {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().ressourcesNear.Clear();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().nearestRessourceDistance = 10;
-
             Destroy(gameObject);
-        }
     }
 
     //Flash en blanc en changeant le materiel du joueur
@@ -255,10 +253,10 @@ public class PickableObject : MonoBehaviour
     {
         if (gameObject.tag == "Spear")
         {
-            return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.Find("LeftHandPos").transform.position) <= 2f;
+            return Vector2.Distance(player.transform.position, transform.Find("LeftHandPos").transform.position) <= 2f;
         }
         else
-            return Vector2.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= 2f;
+            return Vector2.Distance(player.transform.position, transform.position) <= 2f;
     }
 
     private void InsertItem(InventoryItem itemToInsert)

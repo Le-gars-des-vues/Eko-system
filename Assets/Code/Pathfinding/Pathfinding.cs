@@ -10,7 +10,7 @@ public class Pathfinding : MonoBehaviour
 
     //Les cout de mouvements de case
     private const int MOVE_HORIZONTAL = 10;
-    private const int MOVE_DIAGONAL = 14;
+    private const int MOVE_DIAGONAL = 15;
 
     private void Awake()
     {

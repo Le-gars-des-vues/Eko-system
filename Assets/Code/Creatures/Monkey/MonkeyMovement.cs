@@ -41,6 +41,7 @@ public class MonkeyMovement : MonoBehaviour
     [SerializeField] Vector2 ledgePos;
     [SerializeField] float ledgeOffset;
     [SerializeField] [Range(0, 1)] float ledgeRaysStep;
+    [SerializeField] float sensorRayLength;
     bool sensorUp = false;
 
     [Header("Sight Variables")]
@@ -122,14 +123,14 @@ public class MonkeyMovement : MonoBehaviour
             {
                 if (sensorUp)
                 {
-                    pathfinding.NewTarget(GameObject.FindGameObjectWithTag("Player"));
+                    //pathfinding.NewTarget(GameObject.FindGameObjectWithTag("Player"));
                     target.position = ledgePos;
                     StartCoroutine(Jump(1));
                     ledgeFound = false;
                 }
                 else
                 {
-                    pathfinding.NewTarget(GameObject.FindGameObjectWithTag("Player"));
+                    //pathfinding.NewTarget(GameObject.FindGameObjectWithTag("Player"));
                     ledgeFound = false;
                 }
             }

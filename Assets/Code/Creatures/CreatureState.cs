@@ -38,14 +38,17 @@ public class CreatureState : MonoBehaviour
     public GameObject lastSourceOfDamage;
     public bool hasFled;
 
+    [Header("Territory Variables")]
     public BoxCollider2D territory;
     bool hasATerritory = false;
 
+    [Header("Tamed Variables")]
     public int levelOfAffection = 0;
     [SerializeField] int tamedAffectionThreshold;
     public bool isTamed;
 
     [SerializeField] Transform target;
+    public bool debug = false;
 
     private void OnEnable()
     {
@@ -119,9 +122,9 @@ public class CreatureState : MonoBehaviour
     IEnumerator Eating()
     {
         isEating = true;
-        Debug.Log("Is eating");
+        //Debug.Log("Is eating");
         yield return new WaitForSeconds(eatingTime);
-        Debug.Log("finished eating");
+        //Debug.Log("finished eating");
         isEating = false;
     }
     private void OnTriggerStay2D(Collider2D collision)

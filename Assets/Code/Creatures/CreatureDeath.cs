@@ -16,7 +16,7 @@ public class CreatureDeath : MonoBehaviour
     [SerializeField] private List<LimbSolver2D> limbs;
 
     [SerializeField] private List<Rigidbody2D> creatureRbs;
-    [SerializeField] private List<Collider2D> creatureColliders;
+    public List<Collider2D> creatureColliders;
 
     [SerializeField] bool isLineRenderer;
     [SerializeField] private LineRenderer line;
@@ -29,7 +29,10 @@ public class CreatureDeath : MonoBehaviour
     [SerializeField] float rangeToHarvest;
     public bool isInRangeToHarvest;
     public bool isDead;
-    public float timer;
+    float timer;
+    [SerializeField] GameObject arrow;
+
+    public List<GameObject> species;
     
 
     // Start is called before the first frame update
@@ -43,10 +46,12 @@ public class CreatureDeath : MonoBehaviour
     {
         if (CanHarvest())
         {
-            Debug.Log("can harvest");
+            if (arrow != null && !arrow.activeSelf)
+                arrow.SetActive(true);
+            //Debug.Log("can harvest");
             if (Input.GetKey(KeyCode.E))
             {
-                Debug.Log("Is harvesting");
+                //Debug.Log("Is harvesting");
                 timer += Time.deltaTime;
                 if (timer > timeToHarvest)
                 {
@@ -67,6 +72,9 @@ public class CreatureDeath : MonoBehaviour
             else
                 isInRangeToHarvest = false;
         }
+        else
+            if (arrow != null && arrow.activeSelf)
+                arrow.SetActive(false);
     }
 
     public void Death()
@@ -78,6 +86,8 @@ public class CreatureDeath : MonoBehaviour
                 continue;
             script.enabled = false;
         }
+        if (species.Contains(gameObject))
+            species.Remove(gameObject);
         ToggleRagdoll(true, isLineRenderer);
     }
 

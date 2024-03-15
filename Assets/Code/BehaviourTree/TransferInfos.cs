@@ -17,6 +17,8 @@ public class TransferInfos : BehaviorNode
 
     public override NodeState Evaluate()
     {
+        parent.SetData("debug", creature.GetComponent<CreatureState>().debug);
+
         //Check if the creature is flying or not
         parent.SetData("isFlying", creature.GetComponent<CreatureState>().isFlying);
 

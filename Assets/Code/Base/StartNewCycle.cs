@@ -13,7 +13,7 @@ public class StartNewCycle : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                StartCoroutine(GameObject.Find("Cycle").GetComponent<Cycle>().NewCycle());
+                StartCoroutine(GameObject.Find("GameManager").GetComponent<GameManager>().NewCycle());
             }
         }
     }

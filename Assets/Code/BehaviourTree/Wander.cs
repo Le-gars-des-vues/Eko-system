@@ -47,12 +47,12 @@ public class Wander : BehaviorNode
                     Vector2 tempPos = new Vector2(creature.position.x + Random.Range(-maxMovingDistance, maxMovingDistance), creature.position.y);
                     if (territory.bounds.Contains(tempPos))
                     {
-                        targetPos.position = tempPos;
-                        bool unWalkable = Physics2D.OverlapCircle(targetPos.position, 0.1f, LayerMask.GetMask("Ground"));
-                        bool isWalkable = Physics2D.Raycast(targetPos.position, Vector2.down, 3f, LayerMask.GetMask("Ground"));
+                        bool unWalkable = Physics2D.OverlapCircle(tempPos, 0.1f, LayerMask.GetMask("Ground"));
+                        bool isWalkable = Physics2D.Raycast(tempPos, Vector2.down, 3f, LayerMask.GetMask("Ground"));
                         if (!unWalkable && isWalkable)
                         {
                             //Debug.Log("Found target for path!");
+                            targetPos.position = tempPos;
                             parent.SetData("target", targetPos);
                             parent.SetData("pathTarget", "wandering");
                             parent.SetData("pathState", 1);
@@ -74,7 +74,7 @@ public class Wander : BehaviorNode
                 }
                 else
                 {
-                    if (Vector2.Distance(creature.position, targetPos.position) < 3f)
+                    if (GetData("pathState") != null && (int)GetData("pathState") == 0)
                     {
                         isWaiting = true;
                         isMoving = false;
@@ -89,12 +89,14 @@ public class Wander : BehaviorNode
                     Vector2 tempPos = new Vector2(creature.position.x + Random.Range(-maxMovingDistance, maxMovingDistance), creature.position.y + Random.Range(-maxMovingDistance, maxMovingDistance));
                     if (territory.bounds.Contains(tempPos))
                     {
-                        //Debug.Log("Target is in bounds!");
-                        targetPos.position = tempPos;
-                        bool isWalkable = !Physics2D.OverlapCircle(targetPos.position, 0.4f, LayerMask.GetMask("Ground"));
+                        if ((bool)GetData("debug"))
+                            Debug.Log("Target is in bounds!");
+                        bool isWalkable = !Physics2D.OverlapCircle(tempPos, 0.1f, LayerMask.GetMask("Ground"));
                         if (isWalkable)
                         {
-                            //Debug.Log("Found target for path!");
+                            if ((bool)GetData("debug"))
+                                Debug.Log("Found target for path!");
+                            targetPos.position = tempPos;
                             parent.SetData("target", targetPos);
                             parent.SetData("pathTarget", "wandering");
                             parent.SetData("pathState", 1);
@@ -109,7 +111,8 @@ public class Wander : BehaviorNode
                     }
                     else
                     {
-                        //Debug.Log("Target is outside of bounds!");
+                        if ((bool)GetData("debug"))
+                            Debug.Log("Target is outside of bounds!");
                         waitTime = 1;
                         waitTimer = 0;
                         isWaiting = true;
@@ -119,7 +122,8 @@ public class Wander : BehaviorNode
                 {
                     if (GetData("pathState") != null && (int)GetData("pathState") == 0)
                     {
-                        //Debug.Log("Finished Wandering");
+                        if ((bool)GetData("debug"))
+                            Debug.Log("Finished Wandering");
                         isWaiting = true;
                         isMoving = false;
                         waitTimer = 0;
