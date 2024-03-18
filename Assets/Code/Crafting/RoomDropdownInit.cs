@@ -20,9 +20,6 @@ public class RoomDropdownInit : MonoBehaviour
     public TextMeshProUGUI mat3Nom;
     public TextMeshProUGUI nombreMat3;
 
-    public TextMeshProUGUI lesFarms;
-    public TextMeshProUGUI lesEnclos;
-
     public GameObject theCraftingSystem;
 
     private void Start()
@@ -69,9 +66,6 @@ public class RoomDropdownInit : MonoBehaviour
     }
     public void changementInfo()
     {
-        lesEnclos.text = "Enclos: "+theCraftingSystem.GetComponent<RoomCrafting>().GetEnclos().ToString();
-        lesFarms.text = "Fermes: "+theCraftingSystem.GetComponent<RoomCrafting>().GetFarms().ToString();
-
         currentRecipe = this.gameObject.GetComponent<TMP_Dropdown>().value;
 
         theCraftingSystem.GetComponent<RoomCrafting>().RoomCraftCheck();

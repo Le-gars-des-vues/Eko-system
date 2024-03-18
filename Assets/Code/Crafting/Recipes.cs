@@ -76,7 +76,9 @@ public class Recipes
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {
-        {0 , new Recipes("Enclos", "Trunk", 1) },
-        {1 , new Recipes("Planter", "Crystal", 4, "Bone", 2)}
+        {0 , new Recipes("Storage Room", "Trunk", 1, "Roots", 2)},
+        {1 , new Recipes("Enclosure Room", "Trunk", 1)},
+        {2 , new Recipes("Planter Room", "Trunk", 1)},
+        {3 , new Recipes("Radar Room", "Trunk", 1)},
     };
 }

@@ -4,49 +4,36 @@ using UnityEngine;
 
 public class RoomInfo : MonoBehaviour
 {
-    public int roomType; // 0=Empty, 1=Farm, 2=Enclos
+    [Header("Room Variables")]
+    public int floorIndex;
+    public int sideIndex;
 
-    public GameObject itemFarm;
-    public GameObject itemEnclos;
+    public GameObject roomToTheRight;
+    public GameObject roomToTheLeft;
+    public GameObject roomAbove;
+    public GameObject roomUnder;
 
-    public GameObject rightWall;
-    public GameObject nextRoom;
+    public GameObject elevatorFloor;
+    public GameObject sideWall;
 
-    public void UndoWall()
+    [Header("Materials Variables")]
+    public ItemData firstMat;
+    public int firstMatQuantity;
+
+    public ItemData secondMat;
+    public int? secondMatQuantity;
+
+    public ItemData thirdMat;
+    public int? thirdMatQuantity;
+
+    public void Set(RoomInfo roomInfo)
     {
-        if (nextRoom != null)
-        {
-            nextRoom.GetComponent<RoomInfo>().rightWall.SetActive(false);
-        }
-    }
-    public void ChangementSalle(int laSalle)
-    {
-        if (laSalle == 0)
-        {
-            roomType = laSalle;
-            
-                itemFarm.SetActive(false);
-                itemEnclos.SetActive(false);
-        }
-        else if (laSalle == 1)
-        {
-            roomType = laSalle;
+        floorIndex = roomInfo.floorIndex;
+        sideIndex = roomInfo.sideIndex;
 
-                itemFarm.SetActive(true);
-
-                itemEnclos.SetActive(false);
-
-            UndoWall();
-        }
-        else if(laSalle == 2)
-        {
-            roomType = laSalle;
-
-                itemFarm.SetActive(false);
-
-                itemEnclos.SetActive(true);
-
-            UndoWall();
-        }
+        roomToTheRight = roomInfo.roomToTheRight;
+        roomToTheLeft = roomInfo.roomToTheLeft;
+        roomAbove = roomInfo.roomAbove;
+        roomUnder = roomInfo.roomUnder;
     }
 }

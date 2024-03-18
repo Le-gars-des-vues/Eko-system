@@ -10,7 +10,6 @@ public static class SceneLoader
         Forest_Test, 
         CharacterController,
         CameraAndHUD,
-        Base,
     }
 
     public static void LoadAdditive(Scene scene)

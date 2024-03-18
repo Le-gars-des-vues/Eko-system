@@ -28,6 +28,9 @@ public class InventoryController : MonoBehaviour
 
     [SerializeField] List<ItemData> items;
     [SerializeField] List<ItemData> craftables = new List<ItemData>();
+    public List<GameObject> buildablesSide = new List<GameObject>();
+    public List<GameObject> buildablesDown = new List<GameObject>();
+    public List<GameObject> emptyRooms = new List<GameObject>();
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
 
@@ -101,14 +104,6 @@ public class InventoryController : MonoBehaviour
         if (selectedItem == null) { return; }
 
         selectedItem.Rotate();
-    }
-
-    private void InsertRandomItem()
-    {
-        CreateRandomItem();
-        InventoryItem itemToInsert = selectedItem;
-        selectedItem = null;
-        InsertItem(itemToInsert);
     }
 
     public void InsertItem(InventoryItem itemToInsert)
@@ -220,11 +215,27 @@ public class InventoryController : MonoBehaviour
 
         if (selectedItem == null)
         {
-            PickUpItem(tileGridPosition);
+            if (selectedItemGrid.gameObject.tag == "Upgrade")
+            {
+                PickUpItem(tileGridPosition);
+                selectedItem.isUpgrading = false;
+            }
+            else
+                PickUpItem(tileGridPosition);
         }
         else
         {
-            if (selectedItemGrid == upgradeItemGrid || selectedItemGrid.gameObject.tag == "Upgrade")
+            if (selectedItemGrid.gameObject.tag == "Upgrade")
+            {
+                if (selectedItem.itemData.isUpgrade)
+                {
+                    selectedItem.isUpgrading = true;
+                    PlaceItem(tileGridPosition);
+                }
+                else
+                    Debug.Log("Can only place upgrades in this inventory!");
+            }
+            else if (selectedItemGrid == upgradeItemGrid)
             {
                 if (selectedItem.itemData.isUpgrade)
                 {

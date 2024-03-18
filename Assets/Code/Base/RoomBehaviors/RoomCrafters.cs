@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class RoomCrafters : MonoBehaviour
 {
-
     public ItemGrid duplicatingSlot;
-    public ItemGrid[] craftingSlots;
+    public List<ItemGrid> craftingSlots = new List<ItemGrid>();
 
     public InventoryItem itemToDuplicateSave;
     public InventoryItem[] fabricatedItems;
+
+    void OnEnable()
+    {
+        foreach (GameObject grid in GameObject.FindGameObjectsWithTag("RoomCrafting"))
+        {
+            craftingSlots.Add(grid.GetComponent<ItemGrid>());
+        }
+    }
+
     public void SetItemToDuplicate()
     {
-        if (duplicatingSlot.GetItem(1, 1) != null)
+        if (duplicatingSlot.GetItem(0, 0) != null)
         {
-            itemToDuplicateSave = duplicatingSlot.GetItem(1, 1);
+            itemToDuplicateSave = duplicatingSlot.GetItem(0, 0);
 
-            duplicatingSlot.GetItem(1, 1).Delete();
-            for (int i = 0; i <= craftingSlots.Length - 1; i++)
+            duplicatingSlot.GetItem(0, 0).Delete();
+            for (int i = 0; i <= craftingSlots.Count - 1; i++)
             {
-                fabricatedItems[i] = craftingSlots[i].GetItem(1, 1);
-                craftingSlots[i].GetItem(1, 1).Delete();
+                fabricatedItems[i] = craftingSlots[i].GetItem(0, 0);
+                craftingSlots[i].GetItem(0, 0).Delete();
             }
         }
     }
@@ -29,13 +37,13 @@ public class RoomCrafters : MonoBehaviour
     {
         if (itemToDuplicateSave != null)
         {
-            duplicatingSlot.PlaceItem(Instantiate(itemToDuplicateSave), 1, 1);
+            duplicatingSlot.PlaceItem(Instantiate(itemToDuplicateSave), 0, 0);
 
-            for (int i = 0; i <= craftingSlots.Length - 1; i++)
+            for (int i = 0; i <= craftingSlots.Count - 1; i++)
             {
                 if (fabricatedItems[i] != null)
                 {
-                    craftingSlots[i].PlaceItem(Instantiate(fabricatedItems[i]), 1, 1);
+                    craftingSlots[i].PlaceItem(Instantiate(fabricatedItems[i]), 0, 0);
                 }
             }
         }
@@ -45,12 +53,12 @@ public class RoomCrafters : MonoBehaviour
     {
         if (itemToDuplicateSave!=null)
         {
-            for (int i = 0;i <= craftingSlots.Length - 1; i++)
+            for (int i = 0;i <= craftingSlots.Count - 1; i++)
             {
                 if (fabricatedItems[i]==null)
                 {
                     fabricatedItems[i] = itemToDuplicateSave;
-                    i = craftingSlots.Length;
+                    i = craftingSlots.Count;
                 }
             }
         }

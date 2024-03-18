@@ -13,11 +13,10 @@ public class HarvestableRessourceNode : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite_full;
 
     [Header("Harvest Variables")]
-    private float timeToHarvest;
+    public float timer;
     [SerializeField] GameObject ressourceToSpawn;
     [SerializeField] GameObject consummableToSpawn;
     [SerializeField] float ressourceAmount;
-    [SerializeField] float minDistanceToHarvest;
 
     public bool isPointing;
     public bool isOutlined;
@@ -35,7 +34,7 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     private void Update()
     {
-        if (timeToHarvest >= 1.5f)
+        if (timer >= player.timeToHarvest)
         {
             int i = 0;
             while (i < ressourceAmount)
@@ -58,7 +57,7 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Vector2.Distance(player.gameObject.transform.position, transform.position) < minDistanceToHarvest && player.isUsingMultiTool)
+        if (Vector2.Distance(player.gameObject.transform.position, transform.position) < player.minDistanceToHarvest && player.isUsingMultiTool)
         {
             sprite_empty.material = outlineMaterial;
             sprite_full.material = outlineMaterial;
@@ -69,7 +68,7 @@ public class HarvestableRessourceNode : MonoBehaviour
     {
         sprite_empty.material = ogMaterial1;
         sprite_full.material = ogMaterial2;
-        timeToHarvest = 0f;
+        timer = 0f;
         sprite_empty.color = Color.white;
         sprite_full.color = Color.white;
     }
@@ -78,7 +77,7 @@ public class HarvestableRessourceNode : MonoBehaviour
     {
         if (player.isUsingMultiTool)
         {
-            if (Vector2.Distance(player.gameObject.transform.position, transform.position) < minDistanceToHarvest)
+            if (Vector2.Distance(player.gameObject.transform.position, transform.position) < player.minDistanceToHarvest)
             {
                 sprite_empty.material = outlineMaterial;
                 sprite_full.material = outlineMaterial;
@@ -91,14 +90,14 @@ public class HarvestableRessourceNode : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
-                timeToHarvest += Time.deltaTime;
-                sprite_empty.color = Color.Lerp(sprite_empty.color, Color.red, timeToHarvest * Time.deltaTime);
-                sprite_full.color = Color.Lerp(sprite_full.color, Color.red, timeToHarvest * Time.deltaTime);
+                timer += Time.deltaTime;
+                sprite_empty.color = Color.Lerp(sprite_empty.color, Color.red, timer * Time.deltaTime);
+                sprite_full.color = Color.Lerp(sprite_full.color, Color.red, timer * Time.deltaTime);
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                timeToHarvest = 0f;
+                timer = 0f;
                 sprite_empty.color = Color.white;
                 sprite_full.color = Color.white;
             }

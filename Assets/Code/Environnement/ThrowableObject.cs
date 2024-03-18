@@ -40,8 +40,11 @@ public class ThrowableObject : MonoBehaviour
                     {
                         if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear" || gameObject.tag == "Bait"))
                         {
-                            GetComponent<LineRenderer>().enabled = true;
-                            GetComponent<TrajectoryLine>().CalculateTrajectory();
+                            if (player.hasOptics)
+                            {
+                                GetComponent<LineRenderer>().enabled = true;
+                                GetComponent<TrajectoryLine>().CalculateTrajectory();
+                            }
                             timer += Time.deltaTime;
                             force = Mathf.Lerp(minThrowForce, maxThrowForce, timer / timeToMaxThrow);
                         }
@@ -62,7 +65,8 @@ public class ThrowableObject : MonoBehaviour
                     {
                         if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Throwable" || gameObject.tag == "Spear" || gameObject.tag == "Bait"))
                         {
-                            GetComponent<LineRenderer>().enabled = false;
+                            if (player.hasOptics)
+                                GetComponent<LineRenderer>().enabled = false;
                             StartCoroutine(Throw(player.objectInRightHand));
                         }
                     }

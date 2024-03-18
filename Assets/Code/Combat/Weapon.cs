@@ -94,7 +94,8 @@ public class Weapon : MonoBehaviour
                             color = 1;
                         else if (hitDamage > (maxDamage / 3) * 2)
                             color = 2;
-                        ShowDamage(hitDamage, dmg.GetContact(0).point, color);
+                        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasOptics)
+                            ShowDamage(hitDamage, dmg.GetContact(0).point, color);
                     }
                 }
             }

@@ -31,7 +31,7 @@ public class ItemGrid : MonoBehaviour
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        if (gameObject.tag == "Hotbar" || gameObject.tag == "Upgrade")
+        if (gameObject.tag == "Hotbar" || gameObject.tag == "Upgrade" || gameObject.tag == "RoomCrafting")
         {
             tileSizeWidth = 96;
             tileSizeHeight = 96;
@@ -138,6 +138,16 @@ public class ItemGrid : MonoBehaviour
         Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
 
         rectTransform.localPosition = position;
+    }
+
+    public bool InsertItemAtRandom(InventoryItem itemToInsert)
+    {
+        Vector2Int? posOnGrid = this.FindSpaceForObject(itemToInsert);
+
+        if (posOnGrid == null) { return false; }
+
+        this.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
+        return true;
     }
 
     public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY)

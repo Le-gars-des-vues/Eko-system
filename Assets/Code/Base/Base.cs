@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Base : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class Base : MonoBehaviour
     [SerializeField] Animator leftDoorAnim;
     [SerializeField] Animator rightDoorAnim;
     [SerializeField] GameObject buildButton;
+
+    [SerializeField] GameObject background;
+    [SerializeField] GameObject baseBackground;
+    [SerializeField] Light2D pixelLight;
 
     public bool isSceneLoaded = true;
 
@@ -50,15 +55,21 @@ public class Base : MonoBehaviour
             {
                 if (Vector2.Distance(player.transform.position, door) < baseEntryThreshold)
                 {
+                    pixelLight.intensity = 0.03f;
+                    background.SetActive(false);
                     isInside = true;
                     player.transform.position = baseEntryPoint.position;
                     player.GetComponent<PlayerPermanent>().ResetFeetPosition();
+                    baseBackground.SetActive(true);
                 }
                 else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < baseEntryThreshold)
                 {
+                    pixelLight.intensity = 1f;
+                    baseBackground.SetActive(false);
                     isInside = false;
                     player.transform.position = door;
                     player.GetComponent<PlayerPermanent>().ResetFeetPosition();
+                    background.SetActive(true);
                 }
             }
         }
