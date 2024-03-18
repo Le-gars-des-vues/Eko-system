@@ -1,137 +1,112 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
-    public GameObject myRoom;
-    public GameObject roomAmountDataHolder;
+    [SerializeField] ItemGrid storageInventory;
+    [SerializeField] ItemGrid playerInventory;
+    PlayerPermanent player;
+    [SerializeField] GameObject itemPrefab;
+    public GameObject currentRoom;
 
-    public GameObject roomMenu;
+    public ItemGrid duplicatingSlot;
+    public List<ItemGrid> craftingSlots = new List<ItemGrid>();
 
-    public Button boutonNeutral;
-    public Button boutonEnclos;
-    public Button boutonFarm;
+    public List<GameObject> rooms = new List<GameObject>();
 
-    private void Start()
+    // Start is called before the first frame update
+    void OnEnable()
     {
-        //roomAmountDataHolder = GameObject.Find("RoomCrafting").transform.Find("DropdownListOfCrafts").gameObject;
-        //roomAmountDataHolder.gameObject.transform.parent.gameObject.SetActive(false);
-
-        //boutonNeutral = GameObject.Find("ButtonNeutral").GetComponent<Button>();
-        //boutonEnclos = GameObject.Find("ButtonEnclo").GetComponent<Button>();
-        //boutonFarm = GameObject.Find("ButtonFerme").GetComponent<Button>();
-        roomMenu = GameObject.Find("RoomMenu");
-        roomMenu.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
-    public void ButtonPressNeutral()
+    public void RefundRoom()
     {
-        if(myRoom.GetComponent<RoomInfo>().roomType == 1)
+        RoomInfo roomInfo = currentRoom.GetComponent<RoomInfo>();
+        if (roomInfo.firstMat != null)
         {
-            roomAmountDataHolder.GetComponent<RoomCrafting>().SetFarm(roomAmountDataHolder.GetComponent<RoomCrafting>().GetFarms()+1);
-            myRoom.GetComponent<RoomInfo>().ChangementSalle(0);
-        }
-        else if (myRoom.GetComponent<RoomInfo>().roomType == 2)
-        {
-            roomAmountDataHolder.GetComponent<RoomCrafting>().SetEnclos(roomAmountDataHolder.GetComponent<RoomCrafting>().GetEnclos() + 1);
-            myRoom.GetComponent<RoomInfo>().ChangementSalle(0);
-        }
-        
-
-        boutonNeutral.interactable = false;
-        boutonEnclos.interactable = true;
-        boutonFarm.interactable = true;
-    }
-
-    public void ButtonPressFarm()
-    {
-        if(roomAmountDataHolder.GetComponent<RoomCrafting>().GetFarms() >= 1)
-        {
-            roomAmountDataHolder.GetComponent<RoomCrafting>().SetFarm(roomAmountDataHolder.GetComponent<RoomCrafting>().GetFarms() - 1);
-            myRoom.GetComponent<RoomInfo>().ChangementSalle(1);
-        }
-        if (myRoom.GetComponent<RoomInfo>().roomType == 2)
-        {
-            roomAmountDataHolder.GetComponent<RoomCrafting>().SetEnclos(roomAmountDataHolder.GetComponent<RoomCrafting>().GetEnclos() + 1);
-            myRoom.GetComponent<RoomInfo>().ChangementSalle(1);
-        }
-
-        
-
-        boutonNeutral.interactable = true;
-        boutonEnclos.interactable = true;
-        boutonFarm.interactable = false;
-    }
-
-    public void ButtonPressEnclos()
-    {
-        if (roomAmountDataHolder.GetComponent<RoomCrafting>().GetEnclos() >= 1)
-        {
-            roomAmountDataHolder.GetComponent<RoomCrafting>().SetEnclos(roomAmountDataHolder.GetComponent<RoomCrafting>().GetEnclos() - 1);
-            myRoom.GetComponent<RoomInfo>().ChangementSalle(2);
-        }
-        if (myRoom.GetComponent<RoomInfo>().roomType == 1)
-        {
-            roomAmountDataHolder.GetComponent<RoomCrafting>().SetFarm(roomAmountDataHolder.GetComponent<RoomCrafting>().GetFarms() + 1);
-            myRoom.GetComponent<RoomInfo>().ChangementSalle(2);
-        }
-
-        
-
-        boutonNeutral.interactable = true;
-        boutonEnclos.interactable = false;
-        boutonFarm.interactable = true;
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        myRoom.GetComponent<RoomCrafters>().SetItemToShowInSlot();
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("hi");
-            roomMenu.SetActive(true);
-            /*
-            if (myRoom.GetComponent<RoomInfo>().roomType == 0)
+            for (int i = 0; i <roomInfo.firstMatQuantity; i++)
             {
-                boutonNeutral.interactable = false;
-                boutonEnclos.interactable = true;
-                boutonFarm.interactable = true;
-
-            }else if(myRoom.GetComponent<RoomInfo>().roomType == 1)
-            {
-                boutonNeutral.interactable = true;
-                boutonEnclos.interactable = true;
-                boutonFarm.interactable = false;
-
+                InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+                inventoryItem.Set(roomInfo.firstMat, playerInventory);
+                bool placeAvailable = playerInventory.InsertItemAtRandom(inventoryItem);
+                if (!placeAvailable)
+                {
+                    if (player.CanOpenStorage())
+                    {
+                        bool storageAvailable = storageInventory.InsertItemAtRandom(inventoryItem);
+                        if (!storageAvailable)
+                        {
+                            Debug.Log("Not enough room in inventory");
+                        }
+                    }
+                }
             }
-            else if(myRoom.GetComponent<RoomInfo>().roomType == 2)
-            {
-                boutonNeutral.interactable = true;
-                boutonEnclos.interactable = false;
-                boutonFarm.interactable = true;
-
-            }
-            */
         }
-        //boutonEnclos.onClick.AddListener(this.gameObject.GetComponent<RoomManager>().ButtonPressEnclos);
-        //boutonNeutral.onClick.AddListener(this.gameObject.GetComponent<RoomManager>().ButtonPressNeutral);
-        //boutonFarm.onClick.AddListener(this.gameObject.GetComponent<RoomManager>().ButtonPressFarm);
+        if (roomInfo.secondMat != null)
+        {
+            for (int i = 0; i < roomInfo.secondMatQuantity; i++)
+            {
+                InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+                inventoryItem.Set(roomInfo.secondMat, playerInventory);
+                bool placeAvailable = playerInventory.InsertItemAtRandom(inventoryItem);
+                if (!placeAvailable)
+                {
+                    if (player.CanOpenStorage())
+                    {
+                        bool storageAvailable = storageInventory.InsertItemAtRandom(inventoryItem);
+                        if (!storageAvailable)
+                        {
+                            Debug.Log("Not enough room in inventory");
+                        }
+                    }
+                }
+            }
+        }
+        if (roomInfo.thirdMat != null)
+        {
+            for (int i = 0; i < roomInfo.thirdMatQuantity; i++)
+            {
+                InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+                inventoryItem.Set(roomInfo.thirdMat, playerInventory);
+                bool placeAvailable = playerInventory.InsertItemAtRandom(inventoryItem);
+                if (!placeAvailable)
+                {
+                    if (player.CanOpenStorage())
+                    {
+                        bool storageAvailable = storageInventory.InsertItemAtRandom(inventoryItem);
+                        if (!storageAvailable)
+                        {
+                            Debug.Log("Not enough room in inventory");
+                        }
+                    }
+                }
+            }
+        }
+        ReplaceRoom(currentRoom);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void ReplaceRoom(GameObject roomToDestroy)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            roomMenu.SetActive(false);
-        }
-        //boutonNeutral.onClick.RemoveAllListeners();
-        //boutonEnclos.onClick.RemoveAllListeners();
-        //boutonFarm.onClick.RemoveAllListeners();
+        int index = roomToDestroy.GetComponent<RoomInfo>().sideIndex > 0 ? 1 : 0;
 
-        myRoom.GetComponent<RoomCrafters>().SetItemToDuplicate();
+        var room = Instantiate(Camera.main.GetComponent<InventoryController>().emptyRooms[index], currentRoom.transform.position, currentRoom.transform.rotation);
+        room.GetComponent<RoomInfo>().Set(currentRoom.GetComponent<RoomInfo>());
+
+        if (room.GetComponent<RoomInfo>().roomToTheLeft != null)
+        {
+            Destroy(room.GetComponent<RoomInfo>().sideWall);
+        }
+
+        if (room.GetComponent<RoomInfo>().roomUnder != null)
+        {
+            Destroy(room.GetComponent<RoomInfo>().elevatorFloor);
+        }
+
+        room.gameObject.transform.SetParent(GameObject.Find("Base").transform.Find("Interior").transform);
+        room.gameObject.transform.SetAsLastSibling();
+
+        Destroy(currentRoom);
     }
 }

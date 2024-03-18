@@ -154,21 +154,12 @@ public class RoomCrafting : MonoBehaviour
         }
     }
 
-
-    public int RoomCraft()
+    public Ingredients RoomCraft()
     {
         if (mat1Complete && mat2Complete && mat3Complete)
         {
-            /*
-            if (laRecette == 0)
-            {
-                enclos++;
-            }
-            else if (laRecette == 1)
-            {
-                farms++;
-            }
-            */
+            Ingredients ingredientList = new Ingredients(laRecette);
+
             int i1 = 0;
             int i2 = 0;
             int i3 = 0;
@@ -183,6 +174,11 @@ public class RoomCrafting : MonoBehaviour
                     {
                         if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].firstMaterial && i1 < Recipes.listOfBasePods[laRecette].firstMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
                         {
+                            if (ingredientList.firstMat == null)
+                            {
+                                ingredientList.firstMat = Instantiate(anItem.itemData);
+                                ingredientList.firstMatQuantity = Recipes.listOfBasePods[laRecette].firstMatQuantity;
+                            }
                             anItem.Delete();
                             compteurItem1--;
                             i1++;
@@ -190,6 +186,11 @@ public class RoomCrafting : MonoBehaviour
                         }
                         else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].secondMaterial && i2 < Recipes.listOfBasePods[laRecette].secondMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
                         {
+                            if (ingredientList.secondMat == null)
+                            {
+                                ingredientList.secondMat = Instantiate(anItem.itemData);
+                                ingredientList.secondMatQuantity = Recipes.listOfBasePods[laRecette].secondMatQuantity;
+                            }
                             anItem.Delete();
                             compteurItem2--;
                             i2++;
@@ -197,6 +198,11 @@ public class RoomCrafting : MonoBehaviour
                         }
                         else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].thirdMaterial && i3 < Recipes.listOfBasePods[laRecette].thirdMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
                         {
+                            if (ingredientList.thirdMat == null)
+                            {
+                                ingredientList.thirdMat = Instantiate(anItem.itemData);
+                                ingredientList.thirdMatQuantity = Recipes.listOfBasePods[laRecette].thirdMatQuantity;
+                            }
                             anItem.Delete();
                             compteurItem3--;
                             i3++;
@@ -218,6 +224,11 @@ public class RoomCrafting : MonoBehaviour
                         {
                             if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].firstMaterial && i1 < Recipes.listOfBasePods[laRecette].firstMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
                             {
+                                if (ingredientList.firstMat == null)
+                                {
+                                    ingredientList.firstMat = Instantiate(anItem.itemData);
+                                    ingredientList.firstMatQuantity = Recipes.listOfBasePods[laRecette].firstMatQuantity;
+                                }
                                 anItem.Delete();
                                 compteurItem1--;
                                 i1++;
@@ -225,6 +236,11 @@ public class RoomCrafting : MonoBehaviour
                             }
                             else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].secondMaterial && i2 < Recipes.listOfBasePods[laRecette].secondMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
                             {
+                                if (ingredientList.secondMat == null)
+                                {
+                                    ingredientList.secondMat = Instantiate(anItem.itemData);
+                                    ingredientList.secondMatQuantity = Recipes.listOfBasePods[laRecette].secondMatQuantity;
+                                }
                                 anItem.Delete();
                                 compteurItem2--;
                                 i2++;
@@ -232,6 +248,11 @@ public class RoomCrafting : MonoBehaviour
                             }
                             else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].thirdMaterial && i3 < Recipes.listOfBasePods[laRecette].thirdMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
                             {
+                                if (ingredientList.thirdMat == null)
+                                {
+                                    ingredientList.thirdMat = Instantiate(anItem.itemData);
+                                    ingredientList.thirdMatQuantity = Recipes.listOfBasePods[laRecette].thirdMatQuantity;
+                                }
                                 anItem.Delete();
                                 compteurItem3--;
                                 i3++;
@@ -241,13 +262,37 @@ public class RoomCrafting : MonoBehaviour
                     }
                 }
             }
-            return laRecette;
+            return ingredientList;
         }
         else
         {
             Debug.Log("Not enough materials!");
-            return -1;
+            return new Ingredients(-1);
         }
         //RoomCraftCheck();
+    }
+}
+
+public struct Ingredients
+{
+    public int index;
+    public ItemData firstMat;
+    public ItemData secondMat;
+    public ItemData thirdMat;
+
+    public int firstMatQuantity;
+    public int? secondMatQuantity;
+    public int? thirdMatQuantity;
+
+    public Ingredients(int _index, ItemData _firstMat = null, ItemData _secondMat = null, ItemData _thirdMat = null, int _firstMatQuantity = 0, int? _secondMatQuantity = 0, int? _thirdMatQuantity = 0)
+    {
+        index = _index;
+        firstMat = _firstMat;
+        secondMat = _secondMat;
+        thirdMat = _thirdMat;
+
+        firstMatQuantity = _firstMatQuantity;
+        secondMatQuantity = _secondMatQuantity;
+        thirdMatQuantity = _thirdMatQuantity;
     }
 }

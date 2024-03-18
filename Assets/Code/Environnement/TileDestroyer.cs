@@ -37,7 +37,7 @@ public class TileDestroyer : MonoBehaviour
         }
     }
 
-    void GetLocalTiles(Vector3Int tielPos)
+    void GetLocalTiles(Vector3Int tilePos)
     {
         nTilePos = new Vector3Int(tilePos.x, tilePos.y + 1, tilePos.z);
         sTilePos = new Vector3Int(tilePos.x, tilePos.y - 1, tilePos.z);

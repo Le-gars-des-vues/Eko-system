@@ -7,6 +7,7 @@ public class CraftingBench : MonoBehaviour
 {
     PlayerPermanent player;
     bool isInRange;
+    [SerializeField] GameObject arrow;
 
     // Start is called before the first frame update
     void Start()
@@ -44,11 +45,13 @@ public class CraftingBench : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         isInRange = true;
+        arrow.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         isInRange = false;
+        arrow.SetActive(false);
         if (player.craftingIsOpen)
         {
             player.ShowOrHideCrafting();

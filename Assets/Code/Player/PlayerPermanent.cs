@@ -22,7 +22,7 @@ public class PlayerPermanent : MonoBehaviour
     private Color invisible;
     private List<Material> ogMaterials = new List<Material>();
     [SerializeField] private Material flashMaterial;
-    [SerializeField] private List<SpriteRenderer> playerGFX = new List<SpriteRenderer>();
+    public List<SpriteRenderer> playerGFX = new List<SpriteRenderer>();
     [SerializeField] private float flashWhiteDuration;
     [SerializeField] private float invincibilityDuration;
     [SerializeField] private float invisibilityDuration;
@@ -34,8 +34,17 @@ public class PlayerPermanent : MonoBehaviour
     public float currentStamina;
     public float staminaRegainRate;
     public Slider staminaSlider;
-    private float staminaCountdown;
+    public float staminaCountdown;
+    private float staminaTime;
     public bool staminaDepleted = false;
+
+    [Header("Shield Variables")]
+    public float maxShield;
+    public float currentShield;
+    public float shieldRegainRate;
+    public Slider shieldSlider;
+    public float shieldCountdown;
+    private float shieldTime;
 
     /*
     [Header("Hunger Variables")]
@@ -62,6 +71,10 @@ public class PlayerPermanent : MonoBehaviour
     public bool isThrowing = false;
     [SerializeField] MultiTool multiTool;
     public bool isUsingMultiTool;
+    [SerializeField] bool spawnAtBase = true;
+
+    public float minDistanceToHarvest;
+    public float timeToHarvest;
 
     [Header("Inventory Variables")]
     public bool inventoryOpen = false;
@@ -78,7 +91,7 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private List<HingeJoint2D> joints;
     [SerializeField] private List<LimbSolver2D> limbs;
     [SerializeField] private Rigidbody2D playerRb;
-    [SerializeField] private CapsuleCollider2D playerCollider;
+    public CapsuleCollider2D playerCollider;
     [SerializeField] private List<GameObject> bones;
     [SerializeField] private List<Vector3> bonesPosition;
     [SerializeField] private List<Quaternion> bonesRotation;
@@ -89,6 +102,14 @@ public class PlayerPermanent : MonoBehaviour
 
     [Header("Upgrade Variables")]
     public bool hasDoubleJump;
+    public bool hasPunch;
+    public bool hasOxygenMask;
+    public bool hasShield;
+    public bool hasOptics;
+    public float hpMultiplier;
+    public float staminaMultiplier;
+    public float harvestDistanceMultiplier;
+    public float harvestTimeDivider;
 
     [Header("UI Variables")]
     [SerializeField] CinemachineVirtualCamera vcam;
@@ -97,16 +118,19 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private GameObject crafting;
     [SerializeField] private GameObject building;
     [SerializeField] private GameObject upgrade;
+    [SerializeField] private GameObject room;
     public bool mapIsOpen = true;
     public bool marketIsOpen = false;
     public bool craftingIsOpen = false;
     public bool buildingIsOpen = false;
     public bool upgradeIsOpen = false;
+    public bool roomManageIsOpen = false;
     public bool uiOpened;
     public bool cameraTrigger = false;
     bool wasOnGround = false;
     bool wasInWater = false;
     bool wasOnVine = false;
+    [SerializeField] Texture2D[] cursorImages;
 
     private void Awake()
     {
@@ -120,6 +144,8 @@ public class PlayerPermanent : MonoBehaviour
         oxygenSlider = GameObject.Find("oxygenBar").GetComponent<Slider>();
         hpSlider = GameObject.Find("healthBar").GetComponent<Slider>();
         staminaSlider = GameObject.Find("staminaBar").GetComponent<Slider>();
+        shieldSlider = GameObject.Find("shieldBar").GetComponent<Slider>();
+        GameObject.Find("shieldBar").SetActive(false);
 
         playerInventory = GameObject.Find("Inventaire");
         storageInventory = GameObject.Find("Storage");
@@ -128,6 +154,7 @@ public class PlayerPermanent : MonoBehaviour
         building = GameObject.Find("RoomCrafting");
         map = GameObject.Find("Map");
         upgrade = GameObject.Find("Upgrades");
+        room = GameObject.Find("RoomMenu");
         gameOverScreen = GameObject.Find("GameOverScreen");
         //Au depart du jeu, on set tout les bars au max et on desactive le ragdoll
         for (int i = 0; i < bones.Count; i++)
@@ -206,12 +233,21 @@ public class PlayerPermanent : MonoBehaviour
         }
 
         //Timer de 2 seconds avec que le joueur commence a regagner de la stamina, reset a chaque fois qu'il utilise de la stamina
-        if (Time.time - staminaCountdown > 2 && currentStamina <= maxStamina)
+        if (Time.time - staminaTime > staminaCountdown && currentStamina <= maxStamina)
         {
             currentStamina += staminaRegainRate * Time.deltaTime;
             SetBar(staminaSlider, currentStamina);
             if (currentStamina >= maxStamina)
                 staminaDepleted = false;
+        }
+
+        if (hasShield)
+        {
+            if (Time.time - shieldTime > shieldCountdown && currentShield <= maxShield)
+            {
+                currentShield += shieldRegainRate * Time.deltaTime;
+                SetBar(shieldSlider, currentShield);
+            }
         }
 
         CheckForClosestObject();
@@ -260,19 +296,25 @@ public class PlayerPermanent : MonoBehaviour
     //Pour remettre tout les values au maximum
     public void Reset()
     {
-        transform.position = theBase.GetComponent<Base>().baseSpawnPoint.position;
-        theBase.GetComponent<Base>().isInside = true;
+        if (spawnAtBase)
+        {
+            transform.position = theBase.GetComponent<Base>().baseSpawnPoint.position;
+            theBase.GetComponent<Base>().isInside = true;
+        }
+
+        //currentHunger = maxHunger;
+        //currentThirst = maxThirst;
+        //SetMaxBar(hungerSlider, maxHunger);
+        //SetMaxBar(thirstSlider, maxThirst);
 
         currentOxygen = maxOxygen;
         currentHp = maxHp;
-        //currentHunger = maxHunger;
-        //currentThirst = maxThirst;
         currentStamina = maxStamina;
+        currentShield = maxShield;
         SetMaxBar(oxygenSlider, maxOxygen);
         SetMaxBar(hpSlider, maxHp);
-        //SetMaxBar(hungerSlider, maxHunger);
-        //SetMaxBar(thirstSlider, maxThirst);
         SetMaxBar(staminaSlider, maxStamina);
+        SetMaxBar(shieldSlider, maxShield);
 
         CloseUI();
 
@@ -379,7 +421,7 @@ public class PlayerPermanent : MonoBehaviour
     {
         currentStamina += value;
         SetBar(staminaSlider, currentStamina);
-        staminaCountdown = Time.time;
+        staminaTime = Time.time;
         if (currentStamina <= 0)
             staminaDepleted = true;
     }
@@ -405,12 +447,33 @@ public class PlayerPermanent : MonoBehaviour
                 Vector2 direction = (transform.position - otherObject.transform.position).normalized;
                 playerRb.AddForce(new Vector2(direction.x, 0.2f) * knockBackForce, ForceMode2D.Impulse);
 
-                if (currentHp + value > maxHp)
-                    currentHp = maxHp;
-                else
-                    currentHp += value;
+                if (hasShield)
+                {
+                    shieldTime = Time.time;
+                    if (Mathf.Abs(value) <= currentShield)
+                    {
+                        currentShield += value;
+                        SetBar(shieldSlider, currentShield);
+                    }
+                    else if (Mathf.Abs(value) > currentShield)
+                    {
+                        float restOfDamage = Mathf.Abs(value) - currentShield;
+                        currentShield -= currentShield;
+                        SetBar(shieldSlider, currentShield);
 
-                SetBar(hpSlider, currentHp);
+                        currentHp -= restOfDamage;
+                        SetBar(hpSlider, currentHp);
+                    }
+                }
+                else
+                {
+                    if (currentHp + value > maxHp)
+                        currentHp = maxHp;
+                    else
+                        currentHp += value;
+
+                    SetBar(hpSlider, currentHp);
+                }
             }
         }
         else
@@ -491,11 +554,13 @@ public class PlayerPermanent : MonoBehaviour
         if (equipped)
         {
             objectInRightHand = multiTool.gameObject;
+            Cursor.SetCursor(cursorImages[0], new Vector2(40, 35), CursorMode.Auto);
             multiTool.UseMultiTool(true);
         }
         else
         {
             objectInRightHand = null;
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             multiTool.UseMultiTool(false);
         }
     }
@@ -524,30 +589,23 @@ public class PlayerPermanent : MonoBehaviour
             inventoryOpen = true;
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
             if (CanOpenStorage() && storageInventory != null)
-            {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
-            }
 
             if (mapIsOpen)
-            {
-                map.SetActive(false);
-                mapIsOpen = false;
-            }
-
+                ShowOrHideMap();
             if (upgradeIsOpen)
-            {
-                upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
-                upgradeIsOpen = false;
-            }
+                ShowOrHideUpgrades();
+            if (buildingIsOpen)
+                ShowOrHideBuilding();
+            if (roomManageIsOpen)
+                ShowOrHideRoomManagement();
         }
         else
         {
             inventoryOpen = false;
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             if (CanOpenStorage() && storageInventory != null)
-            {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-            }
         }
     }
 
@@ -560,27 +618,24 @@ public class PlayerPermanent : MonoBehaviour
             playerInventory.transform.Find("PreviousUI").gameObject.SetActive(false);
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
             if (CanOpenStorage() && storageInventory != null)
-            {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
-            }
 
             if (mapIsOpen)
                 ShowOrHideMap();
-
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
-
             if (buildingIsOpen)
                 ShowOrHideBuilding();
+            if (roomManageIsOpen)
+                ShowOrHideRoomManagement();
         }
         else
         {
             inventoryOpen = false;
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             if (CanOpenStorage() && storageInventory != null)
-            {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-            }
+
             playerInventory.transform.Find("NextUI").gameObject.SetActive(true);
             playerInventory.transform.Find("PreviousUI").gameObject.SetActive(true);
         }
@@ -593,12 +648,15 @@ public class PlayerPermanent : MonoBehaviour
             if (crafting != null)
                 crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y + gridOffset);
             craftingIsOpen = true;
+
             if (mapIsOpen)
                 ShowOrHideMap();
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
             if (buildingIsOpen)
                 ShowOrHideBuilding();
+            if (roomManageIsOpen)
+                ShowOrHideRoomManagement();
         }
         else
         {
@@ -617,16 +675,23 @@ public class PlayerPermanent : MonoBehaviour
                 cameraTrigger = true;
                 StartCoroutine(MoveCamera("ZoomOut"));
             }
+            else
+            {
+                vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = 0.5f;
+                StartCoroutine(MoveCamera("ZoomOut"));
+            }
             if (building != null)
                 building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y + gridOffset);
             buildingIsOpen = true;
 
+            if (inventoryOpen)
+                ShowOrHideInventory();
             if (mapIsOpen)
                 ShowOrHideMap();
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
-            if (inventoryOpen)
-                ShowOrHideInventory();
+            if (roomManageIsOpen)
+                ShowOrHideRoomManagement();
         }
         else
         {
@@ -634,10 +699,37 @@ public class PlayerPermanent : MonoBehaviour
             {
                 cameraTrigger = false;
                 StartCoroutine(MoveCamera("ZoomIn"));
+                CheckIfUiIsOpen(uiOpened);
             }
             if (building != null)
                 building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y - gridOffset);
             buildingIsOpen = false;
+
+            if (isUsingMultiTool)
+                EquipMultiTool(false);
+        }
+    }
+
+    public void ShowOrHideRoomManagement()
+    {
+        if (!roomManageIsOpen)
+        {
+            if (room != null)
+                room.GetComponent<RectTransform>().localPosition = new Vector2(room.GetComponent<RectTransform>().localPosition.x, room.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            roomManageIsOpen = true;
+
+            if (mapIsOpen)
+                ShowOrHideMap();
+            if (upgradeIsOpen)
+                ShowOrHideUpgrades();
+            if (buildingIsOpen)
+                ShowOrHideBuilding();
+        }
+        else
+        {
+            if (room != null)
+                room.GetComponent<RectTransform>().localPosition = new Vector2(room.GetComponent<RectTransform>().localPosition.x, room.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            roomManageIsOpen = false;
         }
     }
 
@@ -655,6 +747,8 @@ public class PlayerPermanent : MonoBehaviour
                 ShowOrHideUpgrades();
             if (buildingIsOpen)
                 ShowOrHideBuilding();
+            if (roomManageIsOpen)
+                ShowOrHideRoomManagement();
         }
         else
         {
@@ -670,14 +764,14 @@ public class PlayerPermanent : MonoBehaviour
         {
             if (inventoryOpen)
                 ShowOrHideInventory();
-            /*
             if (marketIsOpen)
                 ShowOrHideMarket();
             if (craftingIsOpen)
                 ShowOrHideCrafting();
-            */
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
+            if (roomManageIsOpen)
+                ShowOrHideRoomManagement();
 
 
             map.SetActive(true);
@@ -844,7 +938,7 @@ public class PlayerPermanent : MonoBehaviour
 
     bool IsInUI()
     {
-        return inventoryOpen || marketIsOpen || craftingIsOpen || mapIsOpen || upgradeIsOpen;
+        return inventoryOpen || mapIsOpen || upgradeIsOpen || marketIsOpen || roomManageIsOpen || craftingIsOpen;
     }
 
     private Vector2 GetInput()
