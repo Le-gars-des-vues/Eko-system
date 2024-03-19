@@ -20,6 +20,11 @@ public class CraftingDropdownInit : MonoBehaviour
     public TextMeshProUGUI nombreMat3;
 
     public GameObject theCraftingSystem;
+    TMP_Dropdown dropdown;
+
+    [SerializeField] TextMeshProUGUI craftingName;
+    [SerializeField] TextMeshProUGUI craftingDesc;
+    [SerializeField] Image craftingImage;
 
     private void Start()
     {
@@ -29,9 +34,10 @@ public class CraftingDropdownInit : MonoBehaviour
     }
     void Awake()
     {
+        dropdown = this.gameObject.GetComponent<TMP_Dropdown>();
         for (int i = 0; i < Recipes.listOfRecipes.Count; i++)
         {
-            this.gameObject.GetComponent<TMP_Dropdown>().options.Add(new TMP_Dropdown.OptionData {text = Recipes.listOfRecipes[i].recipeResult });
+            dropdown.options.Add(new TMP_Dropdown.OptionData {text = Recipes.listOfRecipes[i].recipeResult });
             currentRecipe = 0;
         }
     }
@@ -65,7 +71,17 @@ public class CraftingDropdownInit : MonoBehaviour
     }
     public void changementInfo()
     {
-        currentRecipe = this.gameObject.GetComponent<TMP_Dropdown>().value;
+        currentRecipe = dropdown.value;
+        if (currentRecipe == 0)
+        {
+            craftingName.text = dropdown.options[dropdown.value].text;
+        }
+        else
+        {
+            craftingName.text = dropdown.options[dropdown.value].text;
+            craftingImage.sprite = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value].itemIcon;
+            craftingDesc.text = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value].description;
+        }
 
         theCraftingSystem.GetComponent<CraftingSystem>().CraftCheck();
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickableObject : MonoBehaviour
 {
@@ -106,7 +107,7 @@ public class PickableObject : MonoBehaviour
             //Pick up
             if (Input.GetKeyDown(KeyCode.E) && (hasFlashed || isSelected))
             {
-                if (!isPickedUp)
+                if (!isPickedUp && !player.uiOpened)
                 {
                     PickUp(false, false);
                 }
@@ -119,16 +120,8 @@ public class PickableObject : MonoBehaviour
 
             transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
 
-            if (gameObject.tag == "Spear")
+            if (gameObject.tag == "Spear" && !player.uiOpened)
             {   
-                /*
-                Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-                if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
-                {
-                    Turn();
-                }
-                */
-
                 Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
@@ -160,6 +153,10 @@ public class PickableObject : MonoBehaviour
 
                         inventoryItem.Set(itemData, inventory);
                         inventoryItem.stackAmount = item.stackAmount;
+                        if (inventoryItem.sprites.Length > 0)
+                        {
+                            inventoryItem.GetComponent<Image>().sprite = inventory.GetComponent<InventoryItem>().sprites[(inventoryItem.GetComponent<InventoryItem>().sprites.Length + 1) - inventoryItem.GetComponent<InventoryItem>().stackAmount];
+                        }
 
                         inventory.PlaceItem(inventoryItem, 0, 0);
                         hasBeenPlaced = true;
@@ -175,6 +172,10 @@ public class PickableObject : MonoBehaviour
             {
                 inventoryItem.Set(itemData, inventory);
                 inventoryItem.stackAmount = item.stackAmount;
+                if (inventoryItem.sprites.Length > 0)
+                {
+                    inventoryItem.GetComponent<Image>().sprite = inventory.GetComponent<InventoryItem>().sprites[(inventoryItem.GetComponent<InventoryItem>().sprites.Length + 1) - inventoryItem.GetComponent<InventoryItem>().stackAmount];
+                }
                 InsertItem(inventoryItem);
             }
 
@@ -206,19 +207,6 @@ public class PickableObject : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            /* Utilisation de la main gauche
-            else if (player.objectInLeftHand == null)
-            {
-                isPickedUp = true;
-                GetComponent<BoxCollider2D>().enabled = false;
-                GetComponent<Rigidbody2D>().simulated = false;
-                transform.position = leftHand.transform.Find("LeftArmEffector").transform.position;
-                transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - leftHand.transform.rotation.z);
-                gameObject.transform.SetParent(leftHand.transform);
-                GetComponent<SpriteRenderer>().sortingOrder = 2;
-                player.EquipObject(gameObject, false);
-            }
-            */
         }
         else
             Destroy(gameObject);
@@ -265,9 +253,9 @@ public class PickableObject : MonoBehaviour
 
         if (posOnGrid == null) 
         {
-            return; 
+            itemToInsert.DropItem(); 
         }
-
-        inventory.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
+        else
+            inventory.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
     }
 }

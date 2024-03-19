@@ -17,6 +17,13 @@ public class VinePlayerController : MonoBehaviour
     private bool slidingDown;
     private float facingDirection;
 
+    PlayerPermanent player;
+
+    private void OnEnable()
+    {
+        player = gameObject.GetComponent<PlayerPermanent>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -24,14 +31,17 @@ public class VinePlayerController : MonoBehaviour
 
         if (isAttached)
         {
-            pushingLeft = Input.GetKey(KeyCode.A) ? true : false;
-            pushingRight = Input.GetKey(KeyCode.D) ? true : false;
+            if (!player.uiOpened)
+            {
+                pushingLeft = Input.GetKey(KeyCode.A) ? true : false;
+                pushingRight = Input.GetKey(KeyCode.D) ? true : false;
 
-            slidingUp = Input.GetKey(KeyCode.W) ? true : false;
-            slidingDown = Input.GetKey(KeyCode.S) ? true : false;
+                slidingUp = Input.GetKey(KeyCode.W) ? true : false;
+                slidingDown = Input.GetKey(KeyCode.S) ? true : false;
 
-            if (Input.GetKeyDown(KeyCode.Space))
-                Detach();
+                if (Input.GetKeyDown(KeyCode.Space))
+                    Detach();
+            }
 
             //Si la position entre la vigne au dessous ou au dessous devient trop petite, c'est la vigne suivante qui devient la vigne a laquelle on s'attache
             if (attachedVine.GetComponent<RopeSegment>().connectedAbove != null)
@@ -66,14 +76,17 @@ public class VinePlayerController : MonoBehaviour
     {
         if (isAttached)
         {
-            if (pushingLeft)
-                attachedVine.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(-1, 0, 0) * pushForce);
-            if (pushingRight)
-                attachedVine.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(1, 0, 0) * pushForce);
-            if (slidingUp)
-                Slide(1);
-            if (slidingDown)
-                Slide(-1);
+            if (!player.uiOpened)
+            {
+                if (pushingLeft)
+                    attachedVine.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(-1, 0, 0) * pushForce);
+                if (pushingRight)
+                    attachedVine.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(1, 0, 0) * pushForce);
+                if (slidingUp)
+                    Slide(1);
+                if (slidingDown)
+                    Slide(-1);
+            }
 
             if (!slidingUp && !slidingDown)
                 transform.position = new Vector2(attachedVine.transform.position.x + (vineOffset * facingDirection), attachedVine.transform.position.y);

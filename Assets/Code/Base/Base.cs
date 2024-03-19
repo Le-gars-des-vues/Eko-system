@@ -24,14 +24,21 @@ public class Base : MonoBehaviour
     public bool isInside;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (isSceneLoaded)
+        {
             transform.position = new Vector2(135.3f, 4.6f);
+        }
         door = new Vector2(transform.position.x, transform.position.y - 4.5f);
         leftDoorAnim = transform.Find("Outside").Find("LeftDoor").GetComponent<Animator>();
         rightDoorAnim = transform.Find("Outside").Find("RightDoor").GetComponent<Animator>();
         buildButton.SetActive(true);
+    }
+
+    private void Start()
+    {
+        background = GameObject.Find("ParallaxBackground");
     }
 
     // Update is called once per frame

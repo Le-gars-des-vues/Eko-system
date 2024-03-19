@@ -14,6 +14,8 @@ public class ThrowableObject : MonoBehaviour
     [SerializeField] float minThrowForce;
     [SerializeField] float maxThrowForce;
     public bool isThrown;
+    float throwTime;
+    float pickableCooldown = 1f;
 
     [SerializeField] ConsummableEffects effect;
     [SerializeField] string effectName;
@@ -27,9 +29,9 @@ public class ThrowableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!player.inventoryOpen)
+        if (GetComponent<PickableObject>().isPickedUp)
         {
-            if (GetComponent<PickableObject>().isPickedUp)
+            if (!player.uiOpened)
             {
                 if (Input.GetMouseButtonDown(0))
                     timer = 0;
@@ -49,15 +51,6 @@ public class ThrowableObject : MonoBehaviour
                             force = Mathf.Lerp(minThrowForce, maxThrowForce, timer / timeToMaxThrow);
                         }
                     }
-                    /* Utilisation de la main gauche
-                    else if (player.objectInLeftHand != null)
-                    {
-                        if (player.objectInLeftHand == gameObject && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
-                        {
-                            force = Mathf.Lerp(10, 100, timer / timeToMaxThrow);
-                        }
-                    }
-                    */
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
@@ -71,47 +64,58 @@ public class ThrowableObject : MonoBehaviour
                         }
                     }
                     timer = 0;
-                    /* Utilisation de la main gauche
-                    else if (player.objectInLeftHand != null)
-                    {
-                        if (player.objectInLeftHand == gameObject && (gameObject.tag == "Throwable" || gameObject.tag == "Javelin"))
-                            StartCoroutine(Throw(player.objectInLeftHand));
-                    }
-                    */
                 }
+            }
+        }
+        else
+        {
+            if (Time.time - throwTime > pickableCooldown && isThrown)
+            {
+                isThrown = false;
+                GetComponent<PickableObject>().hasFlashed = false;
             }
         }
     }
 
     IEnumerator Throw(GameObject objectToThrow)
     {
+        //Si le stack est egal ou plus petit que 1
         if (objectToThrow.tag == "Spear" || objectToThrow.GetComponent<InventoryItem>().stackAmount <= 1)
         {
+            //On prend la direction de la souris et on tourne l'objet dans cette direction
             Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectToThrow.transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             objectToThrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
+            //On ajoute la force pour lancer l'objet et on reactive la gravite pour l'objet
             objectToThrow.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
             objectToThrow.GetComponent<Rigidbody2D>().gravityScale = 1;
 
+            //L'objet n'est plus picked up et n'est plus selectionner pour etre picked up
             objectToThrow.GetComponent<PickableObject>().isPickedUp = false;
-            objectToThrow.GetComponent<PickableObject>().hasFlashed = false;
 
+            //On desequipe l'objet en main du joueur
             if (objectToThrow == player.objectInRightHand)
                 player.UnequipObject();
 
+            //Si l'objet n'est pas une arme, on enleve un stack
             if (objectToThrow.tag != "Spear")
                 objectToThrow.GetComponent<InventoryItem>().stackAmount--;
 
+            //L'objet est lance
             objectToThrow.GetComponent<ThrowableObject>().isThrown = true;
+            objectToThrow.GetComponent<ThrowableObject>().throwTime = Time.time;
 
+            //On detruit la version "inventaire" de l'objet
             var toDestroy = objectToThrow.GetComponent<PickableObject>().inventory.GetItem(objectToThrow.GetComponent<InventoryItem>().onGridPositionX,
                 objectToThrow.GetComponent<InventoryItem>().onGridPositionY);
             toDestroy.Delete();
 
+            //On attend 0.5 secondes pour reactiver le collider de l'objet
             yield return new WaitForSecondsRealtime(0.5f);
             Physics2D.IgnoreCollision(objectToThrow.GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
 
+            //Si l'objet a un effet, il le fait
             switch (effectName)
             {
                 case "Flash":
@@ -123,11 +127,6 @@ public class ThrowableObject : MonoBehaviour
                     Destroy(objectToThrow);
                     break;
             }
-
-            /* Utilisation de la main gauche
-            else if (gameObject == player.objectInLeftHand)
-                player.UnequipObject(false);
-            */
         }
         else
         {
@@ -153,6 +152,7 @@ public class ThrowableObject : MonoBehaviour
             objectToThrow.GetComponent<PickableObject>().itemInInventory.GetComponent<InventoryItem>().stackAmount--;
 
             objectCloned.GetComponent<ThrowableObject>().isThrown = true;
+            objectCloned.GetComponent<ThrowableObject>().throwTime = Time.time;
 
             yield return new WaitForSecondsRealtime(0.5f);
             Physics2D.IgnoreCollision(objectCloned.GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
@@ -168,14 +168,6 @@ public class ThrowableObject : MonoBehaviour
                     Destroy(objectCloned);
                     break;
             }
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.GetMask("Ground"))
-        {
-            isThrown = false;
         }
     }
 }

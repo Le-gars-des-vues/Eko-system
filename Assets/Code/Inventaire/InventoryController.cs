@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
-    [HideInInspector]
-    private ItemGrid selectedItemGrid;
+    //[HideInInspector]
+    [SerializeField] private ItemGrid selectedItemGrid;
     private ItemGrid defaultItemGrid;
     private ItemGrid upgradeItemGrid;
 
@@ -27,7 +27,7 @@ public class InventoryController : MonoBehaviour
 
 
     [SerializeField] List<ItemData> items;
-    [SerializeField] List<ItemData> craftables = new List<ItemData>();
+    public List<ItemData> craftables = new List<ItemData>();
     public List<GameObject> buildablesSide = new List<GameObject>();
     public List<GameObject> buildablesDown = new List<GameObject>();
     public List<GameObject> emptyRooms = new List<GameObject>();
@@ -41,9 +41,15 @@ public class InventoryController : MonoBehaviour
     HotbarManager hotbar;
 
     Vector2Int oldPosition;
+    Vector2Int oldPosition2;
     string gridName;
+    string gridName2;
 
     [SerializeField] GameObject invalid;
+
+    [SerializeField] GameObject itemInfo;
+    [SerializeField] GameObject currentInfo;
+    bool infoShown = false;
 
 
     private void Awake()
@@ -63,6 +69,8 @@ public class InventoryController : MonoBehaviour
     private void Update()
     {
         ItemIconDrag();
+
+        ShowItemInfo();
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -85,17 +93,68 @@ public class InventoryController : MonoBehaviour
             RotateItem();
         }
 
-        if (selectedItemGrid == null) {
-            inventoryHighlight.Show(false);
-            return;
+        if (selectedItemGrid != null) 
+        {
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().inventoryOpen || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().upgradeIsOpen)
+                HandleHighlight();
         }
-
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().inventoryOpen || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().upgradeIsOpen)
-            HandleHighlight();
+        else
+            inventoryHighlight.Show(false);
 
         if (Input.GetMouseButtonDown(0))
         {
             LeftMouseButtonPress();
+        }
+    }
+
+    void ShowItemInfo()
+    {
+        if (selectedItemGrid != null && selectedItemGrid.gameObject.tag != "Hotbar" && selectedItem == null)
+        {
+            Vector2Int tileGridPosition = GetTileGridPosition();
+            if (oldPosition2 == tileGridPosition && gridName2 == selectedItemGrid.gameObject.name)
+            {
+                if (currentInfo != null)
+                {
+                    rectTransform.position = Input.mousePosition;
+                    rectTransform.SetParent(canvasTransform);
+                    rectTransform.SetAsLastSibling();
+                }
+            }
+            else
+            {
+                if (gridName2 == selectedItemGrid.gameObject.name)
+                {
+                    if (currentInfo != null && currentInfo.GetComponent<ItemInfo>().referenceditem != selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y))
+                    {
+                        Destroy(currentInfo);
+                    }
+                    else
+                    {
+                        if (selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y) != null && currentInfo == null)
+                        {
+                            Debug.Log("Created info");
+                            currentInfo = Instantiate(itemInfo);
+                            currentInfo.GetComponent<ItemInfo>().Set(selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y).itemData);
+                            currentInfo.GetComponent<ItemInfo>().referenceditem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
+                            rectTransform = currentInfo.GetComponent<RectTransform>();
+                        }
+                    }
+                }
+                else
+                {
+                    Destroy(currentInfo);
+                }
+            }
+            oldPosition2 = tileGridPosition;
+            gridName2 = selectedItemGrid.gameObject.name;
+        }
+        else
+        {
+            if (currentInfo != null)
+            {
+                Destroy(currentInfo);
+            }
         }
     }
 
@@ -110,9 +169,12 @@ public class InventoryController : MonoBehaviour
     {
         Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
 
-        if (posOnGrid == null) {  return; }
-
-        selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
+        if (posOnGrid == null) 
+        {  
+            itemToInsert.DropItem(); 
+        }
+        else
+            selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
     }
 
     private void HandleHighlight()
@@ -120,7 +182,11 @@ public class InventoryController : MonoBehaviour
         Vector2Int positionOnGrid = GetTileGridPosition();
 
         //CHANGEMENT ICI---------
-        if (oldPosition == positionOnGrid && gridName == selectedItemGrid.gameObject.name && inventoryHighlight.gameObject.activeSelf) { return;  }
+        if (oldPosition == positionOnGrid && gridName == selectedItemGrid.gameObject.name && inventoryHighlight.highlighter.gameObject.activeSelf) 
+        {
+            Debug.Log("Returned");
+            return;  
+        }
         oldPosition = positionOnGrid;
         gridName = selectedItemGrid.gameObject.name;
 
@@ -161,6 +227,7 @@ public class InventoryController : MonoBehaviour
 
         int selectedItemID = UnityEngine.Random.Range(0, items.Count);
         inventoryItem.Set(items[selectedItemID], defaultItemGrid);
+        inventoryItem.gameObject.tag = "Ressource";
     }
 
     public void CreateRecipeItem(int recipeChoice, GameObject dropDown)
@@ -210,43 +277,56 @@ public class InventoryController : MonoBehaviour
 
     private void LeftMouseButtonPress()
     {
-        Vector2Int tileGridPosition = GetTileGridPosition();
-        //Debug.Log(tileGridPosition);
-
-        if (selectedItem == null)
+        if (selectedItemGrid != null)
         {
-            if (selectedItemGrid.gameObject.tag == "Upgrade")
+            Vector2Int tileGridPosition = GetTileGridPosition();
+            //Debug.Log(tileGridPosition);
+            if (selectedItem == null)
             {
-                PickUpItem(tileGridPosition);
-                selectedItem.isUpgrading = false;
+                if (selectedItemGrid.gameObject.tag == "Upgrade")
+                {
+                    PickUpItem(tileGridPosition);
+                    selectedItem.isUpgrading = false;
+                }
+                else
+                    PickUpItem(tileGridPosition);
             }
             else
-                PickUpItem(tileGridPosition);
+            {
+                if (selectedItemGrid.gameObject.tag == "Upgrade")
+                {
+                    if (selectedItem.itemData.isUpgrade)
+                    {
+                        selectedItem.isUpgrading = true;
+                        PlaceItem(tileGridPosition);
+                    }
+                    else
+                        Debug.Log("Can only place upgrades in this inventory!");
+                }
+                else if (selectedItemGrid == upgradeItemGrid)
+                {
+                    if (selectedItem.itemData.isUpgrade)
+                    {
+                        selectedItem.isUpgrading = false;
+                        PlaceItem(tileGridPosition);
+                    }
+                    else
+                        Debug.Log("Can only place upgrades in this inventory!");
+                }
+                else
+                {
+                    PlaceItem(tileGridPosition);
+                }
+            }
         }
         else
         {
-            if (selectedItemGrid.gameObject.tag == "Upgrade")
+            if (selectedItem != null)
             {
-                if (selectedItem.itemData.isUpgrade)
-                {
-                    selectedItem.isUpgrading = true;
-                    PlaceItem(tileGridPosition);
-                }
-                else
-                    Debug.Log("Can only place upgrades in this inventory!");
-            }
-            else if (selectedItemGrid == upgradeItemGrid)
-            {
-                if (selectedItem.itemData.isUpgrade)
-                {
-                    selectedItem.isUpgrading = true;
-                    PlaceItem(tileGridPosition);
-                }
-                else
-                    Debug.Log("Can only place upgrades in this inventory!");
+                selectedItem.DropItem();
             }
             else
-                PlaceItem(tileGridPosition);
+                return;
         }
     }
 
@@ -260,6 +340,7 @@ public class InventoryController : MonoBehaviour
             position.y += (selectedItem.HEIGHT- (1 * selectedItem.HEIGHT)) * selectedItemGrid.tileSizeHeight / 2;
         }
 
+        //Debug.Log(selectedItemGrid.GetTileGridPosition(position));
         return selectedItemGrid.GetTileGridPosition(position);
     }
 

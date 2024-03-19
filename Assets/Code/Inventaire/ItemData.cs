@@ -27,6 +27,8 @@ public class ItemData : ScriptableObject
     public bool isUpgrade;
     public string scriptToAttach;
 
+    public string description;
+
     //public bool markedForDestroy;
 
     private void OnEnable()

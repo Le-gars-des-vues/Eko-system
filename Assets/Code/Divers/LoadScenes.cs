@@ -11,5 +11,6 @@ public class LoadScenes : MonoBehaviour
         SceneLoader.LoadAdditive(SceneLoader.Scene.Forest_Test);
         SceneLoader.LoadAdditive(SceneLoader.Scene.CameraAndHUD);
         SceneLoader.LoadAdditive(SceneLoader.Scene.CharacterController);
+        SceneLoader.LoadAdditive(SceneLoader.Scene.Base);
     }
 }

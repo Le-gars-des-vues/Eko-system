@@ -16,7 +16,7 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> rooms = new List<GameObject>();
 
     // Start is called before the first frame update
-    void OnEnable()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
@@ -30,17 +30,19 @@ public class RoomManager : MonoBehaviour
             {
                 InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
                 inventoryItem.Set(roomInfo.firstMat, playerInventory);
-                bool placeAvailable = playerInventory.InsertItemAtRandom(inventoryItem);
+                bool placeAvailable = playerInventory.InsertItem(inventoryItem);
                 if (!placeAvailable)
                 {
                     if (player.CanOpenStorage())
                     {
-                        bool storageAvailable = storageInventory.InsertItemAtRandom(inventoryItem);
+                        bool storageAvailable = storageInventory.InsertItem(inventoryItem);
                         if (!storageAvailable)
                         {
-                            Debug.Log("Not enough room in inventory");
+                            inventoryItem.DropItem();
                         }
                     }
+                    else
+                        inventoryItem.DropItem();
                 }
             }
         }
@@ -50,17 +52,19 @@ public class RoomManager : MonoBehaviour
             {
                 InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
                 inventoryItem.Set(roomInfo.secondMat, playerInventory);
-                bool placeAvailable = playerInventory.InsertItemAtRandom(inventoryItem);
+                bool placeAvailable = playerInventory.InsertItem(inventoryItem);
                 if (!placeAvailable)
                 {
                     if (player.CanOpenStorage())
                     {
-                        bool storageAvailable = storageInventory.InsertItemAtRandom(inventoryItem);
+                        bool storageAvailable = storageInventory.InsertItem(inventoryItem);
                         if (!storageAvailable)
                         {
-                            Debug.Log("Not enough room in inventory");
+                            inventoryItem.DropItem();
                         }
                     }
+                    else
+                        inventoryItem.DropItem();
                 }
             }
         }
@@ -70,17 +74,19 @@ public class RoomManager : MonoBehaviour
             {
                 InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
                 inventoryItem.Set(roomInfo.thirdMat, playerInventory);
-                bool placeAvailable = playerInventory.InsertItemAtRandom(inventoryItem);
+                bool placeAvailable = playerInventory.InsertItem(inventoryItem);
                 if (!placeAvailable)
                 {
                     if (player.CanOpenStorage())
                     {
-                        bool storageAvailable = storageInventory.InsertItemAtRandom(inventoryItem);
+                        bool storageAvailable = storageInventory.InsertItem(inventoryItem);
                         if (!storageAvailable)
                         {
-                            Debug.Log("Not enough room in inventory");
+                            inventoryItem.DropItem();
                         }
                     }
+                    else
+                        inventoryItem.DropItem();
                 }
             }
         }
@@ -96,11 +102,13 @@ public class RoomManager : MonoBehaviour
 
         if (room.GetComponent<RoomInfo>().roomToTheLeft != null)
         {
+            Destroy(transform.Find("BuildButtonSide").gameObject);
             Destroy(room.GetComponent<RoomInfo>().sideWall);
         }
 
         if (room.GetComponent<RoomInfo>().roomUnder != null)
         {
+            Destroy(transform.Find("BuildButtonDown").gameObject);
             Destroy(room.GetComponent<RoomInfo>().elevatorFloor);
         }
 

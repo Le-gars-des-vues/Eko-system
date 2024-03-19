@@ -10,7 +10,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void BackToBase()
     {
-        player.transform.position = GameObject.Find("Base").transform.Find("Interior").transform.Find("EntryPoint").transform.position;
+        player.transform.position = GameObject.Find("Base").transform.Find("Interior").transform.Find("EntryPoint").transform.Find("FirstFloor").transform.position;
         player.GetComponent<PlayerPermanent>().Reset();
         player.GetComponent<GroundPlayerController>().enabled = true;
         player.GetComponent<PlayerPermanent>().enabled = true;

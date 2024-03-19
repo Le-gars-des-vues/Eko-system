@@ -53,11 +53,18 @@ public class BuildButtonDown : MonoBehaviour
 
         if (player.buildingIsOpen)
         {
+            Vector2 raycastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(raycastPos, Vector2.zero);
+
+            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            {
+                gameObject.GetComponent<Animator>().SetBool("isSelected", true);
+            }
+            else
+                gameObject.GetComponent<Animator>().SetBool("isSelected", false);
+
             if (Input.GetMouseButtonDown(0))
             {
-                Vector2 raycastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(raycastPos, Vector2.zero);
-
                 if (hit.collider != null)
                 {
                     if (hit.collider.gameObject == gameObject)
@@ -84,8 +91,8 @@ public class BuildButtonDown : MonoBehaviour
                             room.gameObject.transform.SetParent(theBase.transform.Find("Interior").transform);
                             room.gameObject.transform.SetAsLastSibling();
                             roomManager.rooms.Add(room);
+                            Destroy(gameObject);
                         }
-                        Destroy(gameObject);
                     }
                 }
             }

@@ -48,11 +48,12 @@ public class RoomManagement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        myRoom.GetComponent<RoomCrafters>().duplicatingSlot = roomMenu.GetComponent<RoomManager>().duplicatingSlot;
-        myRoom.GetComponent<RoomCrafters>().craftingSlots = roomMenu.GetComponent<RoomManager>().craftingSlots;
-        myRoom.GetComponent<RoomCrafters>().SetItemToShowInSlot();
         if (collision.gameObject.tag == "Player")
         {
+            myRoom.GetComponent<RoomCrafters>().duplicatingSlot = roomMenu.GetComponent<RoomManager>().duplicatingSlot;
+            myRoom.GetComponent<RoomCrafters>().craftingSlots = roomMenu.GetComponent<RoomManager>().craftingSlots;
+            myRoom.GetComponent<RoomCrafters>().SetItemToShowInSlot();
+
             isInRange = true;
             roomMenu.GetComponent<RoomManager>().currentRoom = myRoom;
             arrow.SetActive(true);
@@ -66,10 +67,10 @@ public class RoomManagement : MonoBehaviour
             isInRange = false;
             arrow.SetActive(false);
             roomMenu.GetComponent<RoomManager>().currentRoom = null;
-        }
-        myRoom.GetComponent<RoomCrafters>().SetItemToDuplicate();
 
-        myRoom.GetComponent<RoomCrafters>().duplicatingSlot = null;
-        myRoom.GetComponent<RoomCrafters>().craftingSlots.Clear();
+            myRoom.GetComponent<RoomCrafters>().SetItemToDuplicate();
+            myRoom.GetComponent<RoomCrafters>().duplicatingSlot = null;
+            myRoom.GetComponent<RoomCrafters>().craftingSlots.Clear();
+        }
     }
 }

@@ -53,11 +53,18 @@ public class BuildButtonReplace : MonoBehaviour
 
         if (player.buildingIsOpen)
         {
+            Vector2 raycastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(raycastPos, Vector2.zero);
+
+            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            {
+                gameObject.GetComponent<Animator>().SetBool("isSelected", true);
+            }
+            else
+                gameObject.GetComponent<Animator>().SetBool("isSelected", false);
+
             if (Input.GetMouseButtonDown(0))
             {
-                Vector2 raycastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(raycastPos, Vector2.zero);
-
                 if (hit.collider != null)
                 {
                     if (hit.collider.gameObject == gameObject)
@@ -77,17 +84,23 @@ public class BuildButtonReplace : MonoBehaviour
                             room.GetComponent<RoomInfo>().Set(transform.parent.gameObject.GetComponent<RoomInfo>());
 
                             if (room.GetComponent<RoomInfo>().roomToTheLeft != null)
+                            {
+                                Destroy(transform.Find("BuildButtonSide").gameObject);
                                 Destroy(room.GetComponent<RoomInfo>().sideWall);
+                            }
 
                             if (room.GetComponent<RoomInfo>().roomUnder != null)
+                            {
+                                Destroy(transform.Find("BuildButtonDown").gameObject);
                                 Destroy(room.GetComponent<RoomInfo>().elevatorFloor);
+                            }
 
                             room.gameObject.transform.SetParent(theBase.transform.Find("Interior").transform);
                             room.gameObject.transform.SetAsLastSibling();
                             roomManager.rooms.Add(room);
+                            Destroy(transform.parent.gameObject);
+                            Destroy(gameObject);
                         }
-                        Destroy(transform.parent.gameObject);
-                        Destroy(gameObject);
                     }
                 }
             }

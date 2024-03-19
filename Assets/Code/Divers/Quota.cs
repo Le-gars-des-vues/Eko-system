@@ -12,7 +12,7 @@ public class Quota : MonoBehaviour
     private void Start()
     {
         textQuota = GameObject.Find("QuotaText").GetComponent<TextMeshProUGUI>();
-        textQuota.text = 0 + " / " + quota + "$";
+        textQuota.text = 0 + "/" + quota + "$";
         gestionnaireVente = GameObject.Find("Vente");
     }
 

@@ -183,34 +183,36 @@ public class GroundPlayerController : MonoBehaviour
             CheckDirectionToFace(GetInput().x > 0);
         }
 
-        
-        //Courir
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (!player.uiOpened)
         {
-            if (isGrounded)
+            //Courir
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                if (!player.staminaDepleted)
+                if (isGrounded)
                 {
-                    maxSpeed = runSpeed;
-                    player.ChangeStamina(-runStaminaCost);
+                    if (!player.staminaDepleted)
+                    {
+                        maxSpeed = runSpeed;
+                        player.ChangeStamina(-runStaminaCost);
+                    }
+                    else
+                        maxSpeed = walkSpeed;
                 }
-                else
-                    maxSpeed = walkSpeed;
-            }     
-        }
-        else
-        {
-            maxSpeed = walkSpeed;
-        }
-        
+            }
+            else
+            {
+                maxSpeed = walkSpeed;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OnJumpInput();
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            OnJumpUpInput();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                OnJumpInput();
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                OnJumpUpInput();
+            }
         }
 
         //State
@@ -344,14 +346,18 @@ public class GroundPlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         CheckCollision();
-        if (isWallJumping)
-            MoveCharacter(wallJumpRunLerp);
 
-        else if (isVineJumping)
-            MoveCharacter(vineLerp);
+        if (!player.uiOpened)
+        {
+            if (isWallJumping)
+                MoveCharacter(wallJumpRunLerp);
 
-        else
-            MoveCharacter(1);
+            else if (isVineJumping)
+                MoveCharacter(vineLerp);
+
+            else
+                MoveCharacter(1);
+        }
 
         if (canCornerCorrect)
             CornerCorrect();

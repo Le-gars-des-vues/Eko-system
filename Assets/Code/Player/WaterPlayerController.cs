@@ -30,13 +30,16 @@ public class WaterPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        if (Mathf.Abs(movement.x) > 0.1f || Mathf.Abs(movement.y) > 0.1f)
-            player.ChangeStamina(-swimStaminaCost * Time.deltaTime);
-        if (Input.GetButtonDown("Jump"))
+        if (player.uiOpened)
         {
-            if (CanDash())
-                StartCoroutine(UnderwaterDash());
+            movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if (Mathf.Abs(movement.x) > 0.1f || Mathf.Abs(movement.y) > 0.1f)
+                player.ChangeStamina(-swimStaminaCost * Time.deltaTime);
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (CanDash())
+                    StartCoroutine(UnderwaterDash());
+            }
         }
     }
 
