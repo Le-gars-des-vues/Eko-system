@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}" SchemaVersion="110">
+	<AudioObjects>
+		<WorkUnit Name="UI" ID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="UI_Menus" ID="{B50FBAAE-F103-4220-958B-81FB6DD9D7A8}" ShortID="386017487">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{31B85080-9A1D-4310-84E4-2D78D6A87E21}"/>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="Inventaire" ID="{71A4D396-D321-427C-8278-F20BD0C6E302}" ShortID="876091022">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{FAB2A388-B339-4E5F-A9CF-5D13E40CCA3E}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="Inventaire_Fermer" ID="{EF7AC9F8-8F9C-44FF-BEED-E5C83E2E2D38}" ShortID="42493891">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{34AC0ED6-DA80-4A4A-BDF5-7742D43A0FF6}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="Inventaire_Ouvrir" ID="{CB4CEFA5-152E-4721-944C-792CA3B4B2D3}" ShortID="659552465">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{196E3558-CF93-4A49-A386-13560EFC4A76}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="Inventaire_Intervertir" ID="{7FAC5AA1-932E-4D74-A4AE-4A9F4E982EB6}" ShortID="138890439">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{A3CCF5FF-FC13-4441-B00A-9DC0A81A64F9}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="Inventaire_Prendre" ID="{FF8D955C-EF51-4772-BDEC-DBA7A9E38DA2}" ShortID="1018500155">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{2DD30557-727E-4BE8-BAD7-C3F662E0605C}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="Inventaire_Placer" ID="{8AE8A64D-9520-4081-9A0E-2CDB9505CAA7}" ShortID="273909172">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{02592E8D-82AA-4334-B9FC-1D1740454DCD}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="Atelier" ID="{A5DA6D5F-2016-4704-ADB9-BD3C291C3123}" ShortID="993686981">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{5F236995-BF0D-4D2A-8576-21BDDD4D5828}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="Atelier_Ouvrir" ID="{6D255AC0-59E8-41DA-A9BD-3303EE88B929}" ShortID="93027607">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{A23D52D9-1161-4090-8763-B8B77F318CE7}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="Atelier_Fermer" ID="{DBBD94D8-FD2A-42F9-B04C-08F654185CC8}" ShortID="798369978">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{4CD42121-F1ED-4ABA-8C29-13C3625860C6}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<ActorMixer Name="Atelier_Construire" ID="{90E3F7C1-395C-498E-9FDD-7727BD0F19B2}" ShortID="47948053">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{7DCD841E-EC03-4F78-BA03-0D09E7CC3C0D}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<BlendContainer Name="Microprocesseur" ID="{C56DED9B-EB6D-4A1F-BDD1-FEE7CB45CC01}" ShortID="949939055">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B8D5690C-9230-4D63-A3B5-F121009BEF6C}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+												</Reference>
+											</ReferenceList>
+										</BlendContainer>
+										<BlendContainer Name="Cuir" ID="{BDDC86A5-4EC9-4244-A1AC-E9DD399AB9C3}" ShortID="1071102827">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{6F909C74-EA43-40E4-B19A-EA95CB05E9A1}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+												</Reference>
+											</ReferenceList>
+										</BlendContainer>
+										<BlendContainer Name="Batterie" ID="{BD72AFF7-64B6-4F96-B7A4-B58D03913217}" ShortID="718987552">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D0847935-05A9-41DC-8E79-503FCD90E7C6}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+												</Reference>
+											</ReferenceList>
+										</BlendContainer>
+										<BlendContainer Name="Cables" ID="{C588F289-DD5B-4BB7-B0B1-C2A7F51DEF48}" ShortID="555259632">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{412B5B01-AC91-4BA8-998C-F258CF2B980D}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+												</Reference>
+											</ReferenceList>
+										</BlendContainer>
+										<BlendContainer Name="FeuilleMetallique" ID="{CE8366AE-2137-476F-A22F-13C5E12C5214}" ShortID="258890130">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{6097C259-B723-4FAE-9DC2-7B6DC52796B0}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+												</Reference>
+											</ReferenceList>
+										</BlendContainer>
+										<ActorMixer Name="Ameliorations" ID="{5C49AE61-E0CD-444D-8EDF-2FF6DE1217B5}" ShortID="370969900">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<BlendContainer Name="Amelioration_Utilitaire" ID="{44829D9F-2495-49B7-9199-BFAD52E47169}" ShortID="520163907">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{F7B33875-D81F-4C12-AF6B-CAF33203EB6F}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="200"/>
+																			<Property Name="Min" Type="Real64" Value="-200"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+														</Reference>
+													</ReferenceList>
+												</BlendContainer>
+												<BlendContainer Name="Amelioration_Combat" ID="{076E6702-97F0-4061-AD32-B5A376785D1C}" ShortID="310978830">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{9B7F5376-0D45-48DC-838F-5800F5DFA305}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="200"/>
+																			<Property Name="Min" Type="Real64" Value="-200"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+														</Reference>
+													</ReferenceList>
+												</BlendContainer>
+												<BlendContainer Name="Amelioration_Recolte" ID="{C3C9F8B5-DB3D-48BB-B213-EAB865754907}" ShortID="209504034">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{824A2BC7-1975-43C4-8266-84F72DDE85D7}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="200"/>
+																			<Property Name="Min" Type="Real64" Value="-200"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+														</Reference>
+													</ReferenceList>
+												</BlendContainer>
+												<BlendContainer Name="Amelioration_Bouclier" ID="{CB452B9E-C0B7-43CD-B3F2-4B394378562E}" ShortID="797791537">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{A3FE546D-4870-40E8-8536-D3081B4A5B4B}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="200"/>
+																			<Property Name="Min" Type="Real64" Value="-200"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+														</Reference>
+													</ReferenceList>
+												</BlendContainer>
+												<BlendContainer Name="Amelioration_Sante" ID="{C5EB0877-F735-4C0B-8E9C-289215F2811A}" ShortID="516918816">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{7C8D1A6C-942B-4C25-A094-9D802DB36024}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="200"/>
+																			<Property Name="Min" Type="Real64" Value="-200"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+														</Reference>
+													</ReferenceList>
+												</BlendContainer>
+												<BlendContainer Name="Amelioration_Endurance" ID="{67DAC389-1031-4833-BC26-5B4D330F164D}" ShortID="617977181">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{105DB408-AC1C-487F-A921-1514CA3D1CE4}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="200"/>
+																			<Property Name="Min" Type="Real64" Value="-200"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+														</Reference>
+													</ReferenceList>
+												</BlendContainer>
+											</ChildrenList>
+										</ActorMixer>
+									</ChildrenList>
+								</ActorMixer>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="Marché" ID="{561327C3-AA4E-490F-8A82-4E4667B9309A}" ShortID="165909122">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{3B4301F9-E30D-4416-8319-0CE4DF32F840}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="Marché_Ouvrir" ID="{A15A50DD-802D-49F9-BFD0-A1CCC9947D8E}" ShortID="527293565">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{C5E2E5D1-E54D-4658-A02F-FA8F96E5C176}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="Marché_Fermer" ID="{8B653AB4-95AE-4738-AB87-99FC683127B3}" ShortID="746244986">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{FE2F4220-8B98-4AC6-B737-C5140A1485D9}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="Marché_Vendre" ID="{01C393CD-0D6C-4F6C-ABB9-B146367FD484}" ShortID="479897984">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{1FD8AE34-99F5-4461-B6F9-C754687AC63A}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="Pause" ID="{66FDE7CC-4FF7-4BAB-B49F-E5729E6C5090}" ShortID="374321473">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{6A68AB58-80BD-4824-AD11-7CA85F0FB567}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="Pause_Fermer" ID="{E9F57243-F70C-4397-A82D-30678C4C78DB}" ShortID="398911901">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{B54AC1F0-FF3D-45CB-BDF9-399845B9B1ED}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="Pause_Ouvrir" ID="{4F6CC7A3-D8B0-49F5-93D5-7B7A907CE471}" ShortID="554002970">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{FC6D0400-FB21-46B3-91F6-1FF1B86A9175}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="Mort" ID="{0955F0F2-E9D7-4D5D-84E9-46751797F6E6}" ShortID="965746640">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{4366178A-D4AD-47AB-A7AA-CAC5D1B6746A}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+								</Reference>
+							</ReferenceList>
+						</ActorMixer>
+						<ActorMixer Name="Multitool" ID="{B9CCDB18-EBBA-4DD5-9DDE-0B813C3FBA41}" ShortID="212601809">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{57DBC2A2-2AF6-49BB-8CB5-FE593188F688}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="Multitool_Ouvrir" ID="{07434F90-0D1C-4B24-AEBA-617C5B47E2DB}" ShortID="162822945">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{9A847BFE-C43B-47FE-A15D-354EBBF54955}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="Multitool_Fermer" ID="{CD770DBC-91E9-4DE8-8456-662E84A82D62}" ShortID="889086526">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{70D4052A-F3E0-4717-A923-B5E15945C67B}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
