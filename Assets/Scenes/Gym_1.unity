@@ -486,6 +486,42 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 779477352421722595, guid: 2b3436f07be8ad947b21c9c4bb08e21b, type: 3}
   m_PrefabInstance: {fileID: 6890973340496899603}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &308215045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308215044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a7e0da8067b2a4caf6aa1860099ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
+--- !u!114 &308215046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308215044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aeb2a0e9a2b834ebf5e139e7e2a769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!4 &393137969 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7131595218458081143, guid: 027223472816dba488ac05ae75982d89, type: 3}
@@ -1785,6 +1821,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8162383718071358416, guid: 027223472816dba488ac05ae75982d89, type: 3}
   m_PrefabInstance: {fileID: 2109034949}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &990127724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 990127726}
+  - component: {fileID: 990127725}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &990127725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990127724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51dff43fd91b5b40802c957547345dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationSettings: {fileID: 11400000, guid: 5fe8226a486472e49b1fc646482e584b, type: 2}
+  basePath: 
+  language: 
+  defaultPoolSize: 0
+  lowerPoolSize: 0
+  streamingPoolSize: 0
+  memoryCutoffThreshold: 0
+  monitorPoolSize: 0
+  monitorQueuePoolSize: 0
+  callbackManagerBufferSize: 0
+  spatialAudioPoolSize: 0
+  maxSoundPropagationDepth: 0
+  engineLogging: 0
+--- !u!4 &990127726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990127724}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1004317444
 GameObject:
   m_ObjectHideFlags: 0
@@ -13563,10 +13656,17 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1826305634}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1119565216955823645, guid: 2b3436f07be8ad947b21c9c4bb08e21b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 779477352421722595, guid: 2b3436f07be8ad947b21c9c4bb08e21b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 308215046}
+    - targetCorrespondingSourceObject: {fileID: 779477352421722595, guid: 2b3436f07be8ad947b21c9c4bb08e21b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 308215045}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3436f07be8ad947b21c9c4bb08e21b, type: 3}
 --- !u!1001 &6948372328385775121
 PrefabInstance:
@@ -14007,3 +14107,4 @@ SceneRoots:
   - {fileID: 3452326419522451718}
   - {fileID: 4502092960926858294}
   - {fileID: 1256089528604423150}
+  - {fileID: 990127726}
