@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI newCycleText;
     private string textToWrite;
     int cycleCount;
+    [SerializeField] TextMeshProUGUI cycleMenuText;
 
     [Header("Spawner Variables")]
     [SerializeField] List<GameObject> dogSpawner = new List<GameObject>();
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
         TimerOn = true;
         theCharacter = GameObject.FindGameObjectWithTag("Player");
         cycleCount = 1;
+        cycleMenuText.text = "DAY " + cycleCount.ToString("000");
 
         GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
         foreach(GameObject spawner in spawners)

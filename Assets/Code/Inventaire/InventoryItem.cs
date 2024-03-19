@@ -11,7 +11,7 @@ public class InventoryItem : MonoBehaviour
     public Sprite[] sprites;
 
     public bool markedForDestroy;
-    public bool isUpgrading;
+    public bool isUpgrading = false;
 
     public int HEIGHT
     {
@@ -65,11 +65,20 @@ public class InventoryItem : MonoBehaviour
 
         GetComponent<Image>().sprite = itemData.itemIcon;
 
-        //CHANGEMENT ICI ---------------------------
         Vector2 size = new Vector2();
         size.x = WIDTH * itemGrid.tileSizeWidth;
         size.y = HEIGHT * itemGrid.tileSizeHeight;
         GetComponent<RectTransform>().sizeDelta = size;
+    }
+
+    public void DropItem()
+    {
+        PlayerPermanent player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+        float facingDirection = player.isFacingRight ? 1 : -1;
+        var itemToDrop = Instantiate(this.itemData.objectToSpawn, (Vector2)player.gameObject.transform.position + (Vector2.right * facingDirection), Quaternion.identity);
+        itemToDrop.GetComponent<InventoryItem>().itemData = this.itemData;
+        itemToDrop.GetComponent<InventoryItem>().stackAmount = stackAmount;
+        Destroy(gameObject);
     }
 
     public void Delete()

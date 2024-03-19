@@ -1314,7 +1314,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6149514772716315838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1355,9 +1355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4516659468889266037}
-  raycastLength: 0.9
-  raycastYOffset: 0
-  raycastXOffset: 0
   tilemap: {fileID: 0}
   gridLayout: {fileID: 0}
 --- !u!212 &2699717688539304880
@@ -1962,7 +1959,13 @@ MonoBehaviour:
   currentStamina: 0
   staminaRegainRate: 3
   staminaSlider: {fileID: 0}
+  staminaCountdown: 2
   staminaDepleted: 0
+  maxShield: 10
+  currentShield: 0
+  shieldRegainRate: 2
+  shieldSlider: {fileID: 0}
+  shieldCountdown: 3
   survivalMode: 1
   objectInRightHand: {fileID: 0}
   isFacingRight: 0
@@ -1973,6 +1976,8 @@ MonoBehaviour:
   multiTool: {fileID: 2176743614223148577}
   isUsingMultiTool: 0
   spawnAtBase: 0
+  minDistanceToHarvest: 15
+  timeToHarvest: 5
   inventoryOpen: 0
   playerInventory: {fileID: 0}
   storageInventory: {fileID: 0}
@@ -2037,19 +2042,31 @@ MonoBehaviour:
   bonesRotation: []
   gameOverScreen: {fileID: 0}
   hasDoubleJump: 0
+  hasPunch: 0
+  hasOxygenMask: 0
+  hasShield: 0
+  hasOptics: 0
+  hpMultiplier: 1.5
+  staminaMultiplier: 1.5
+  harvestDistanceMultiplier: 1.25
+  harvestTimeDivider: 2
   vcam: {fileID: 0}
   map: {fileID: 0}
   market: {fileID: 0}
   crafting: {fileID: 0}
   building: {fileID: 0}
   upgrade: {fileID: 0}
+  room: {fileID: 0}
   mapIsOpen: 1
   marketIsOpen: 0
   craftingIsOpen: 0
   buildingIsOpen: 0
   upgradeIsOpen: 0
+  roomManageIsOpen: 0
   uiOpened: 0
   cameraTrigger: 0
+  cursorImages:
+  - {fileID: 2800000, guid: dfba9eb6309731346ad42e5b120cc20b, type: 3}
 --- !u!114 &2230085884062652205
 MonoBehaviour:
   m_ObjectHideFlags: 0

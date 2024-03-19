@@ -17,6 +17,7 @@ public class HarvestableRessourceNode : MonoBehaviour
     [SerializeField] GameObject ressourceToSpawn;
     [SerializeField] GameObject consummableToSpawn;
     [SerializeField] float ressourceAmount;
+    [SerializeField] float spawnForce;
 
     public bool isPointing;
     public bool isOutlined;
@@ -40,7 +41,9 @@ public class HarvestableRessourceNode : MonoBehaviour
             while (i < ressourceAmount)
             {
                 i++;
-                Instantiate(ressourceToSpawn, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), transform.rotation);
+                var ressource = Instantiate(ressourceToSpawn, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), transform.rotation);
+                Vector2 direction = new Vector2((float)Random.Range(-4, 4), (float)Random.Range(-4, 4));
+                ressource.GetComponent<Rigidbody2D>().AddForce(direction * spawnForce, ForceMode2D.Impulse);
             }
             if (gameObject.tag == "Plant" && !GetComponent<PlantConsummable>().hasPickedUpConsummable)
                 Instantiate(consummableToSpawn, transform.position, transform.rotation);

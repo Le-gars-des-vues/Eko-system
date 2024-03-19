@@ -182,12 +182,12 @@ public class PlayerPermanent : MonoBehaviour
         if (uiOpened && !cameraTrigger)
         {
             StartCoroutine(MoveCamera("GoUp"));
-            CheckIfUiIsOpen(uiOpened);
+            cameraTrigger = true;
         }
         else if (!uiOpened && cameraTrigger && !buildingIsOpen)
         {
             StartCoroutine(MoveCamera("GoDown"));
-            CheckIfUiIsOpen(uiOpened);
+            cameraTrigger = false;
         }
 
         /*
@@ -250,25 +250,27 @@ public class PlayerPermanent : MonoBehaviour
             }
         }
 
-        CheckForClosestObject();
+        if (!uiOpened)
+        {
+            CheckForClosestObject();
+            //Vine controller
+            if (vineController.enabled)
+            {
+                if (GetInput().x != 0)
+                {
+                    CheckDirectionToFace(GetInput().x > 0);
+                }
+            }
+            else
+            {
+                Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
+                {
+                    Turn();
+                }
+            }
+        }
 
-        //Vine controller
-        if (vineController.enabled)
-        {
-            if (GetInput().x != 0)
-            {
-                CheckDirectionToFace(GetInput().x > 0);
-            }
-        }
-        else
-        {
-            Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
-            {
-                Turn();
-            }
-        }
-        
         //Open UI
         if (Input.GetKeyDown(KeyCode.I) && !marketIsOpen && !craftingIsOpen)
             ShowOrHideInventory();
@@ -596,7 +598,11 @@ public class PlayerPermanent : MonoBehaviour
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
             if (buildingIsOpen)
+            {
+                if (isUsingMultiTool)
+                    EquipMultiTool(false);
                 ShowOrHideBuilding();
+            }
             if (roomManageIsOpen)
                 ShowOrHideRoomManagement();
         }
@@ -625,7 +631,11 @@ public class PlayerPermanent : MonoBehaviour
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
             if (buildingIsOpen)
+            {
+                if (isUsingMultiTool)
+                    EquipMultiTool(false);
                 ShowOrHideBuilding();
+            }
             if (roomManageIsOpen)
                 ShowOrHideRoomManagement();
         }
@@ -654,7 +664,11 @@ public class PlayerPermanent : MonoBehaviour
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
             if (buildingIsOpen)
+            {
+                if (isUsingMultiTool)
+                    EquipMultiTool(false);
                 ShowOrHideBuilding();
+            }
             if (roomManageIsOpen)
                 ShowOrHideRoomManagement();
         }
@@ -699,14 +713,10 @@ public class PlayerPermanent : MonoBehaviour
             {
                 cameraTrigger = false;
                 StartCoroutine(MoveCamera("ZoomIn"));
-                CheckIfUiIsOpen(uiOpened);
             }
             if (building != null)
                 building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y - gridOffset);
             buildingIsOpen = false;
-
-            if (isUsingMultiTool)
-                EquipMultiTool(false);
         }
     }
 
@@ -723,7 +733,11 @@ public class PlayerPermanent : MonoBehaviour
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
             if (buildingIsOpen)
+            {
+                if (isUsingMultiTool)
+                    EquipMultiTool(false);
                 ShowOrHideBuilding();
+            }
         }
         else
         {
@@ -746,7 +760,11 @@ public class PlayerPermanent : MonoBehaviour
             if (upgradeIsOpen)
                 ShowOrHideUpgrades();
             if (buildingIsOpen)
+            {
+                if (isUsingMultiTool)
+                    EquipMultiTool(false);
                 ShowOrHideBuilding();
+            }
             if (roomManageIsOpen)
                 ShowOrHideRoomManagement();
         }
@@ -772,6 +790,12 @@ public class PlayerPermanent : MonoBehaviour
                 ShowOrHideUpgrades();
             if (roomManageIsOpen)
                 ShowOrHideRoomManagement();
+            if (buildingIsOpen)
+            {
+                if (isUsingMultiTool)
+                    EquipMultiTool(false);
+                ShowOrHideBuilding();
+            }
 
 
             map.SetActive(true);
@@ -792,6 +816,18 @@ public class PlayerPermanent : MonoBehaviour
                 ShowOrHideInventory();
             if (mapIsOpen)
                 ShowOrHideMap();
+            if (marketIsOpen)
+                ShowOrHideMarket();
+            if (craftingIsOpen)
+                ShowOrHideCrafting();
+            if (roomManageIsOpen)
+                ShowOrHideRoomManagement();
+            if (buildingIsOpen)
+            {
+                if (isUsingMultiTool)
+                    EquipMultiTool(false);
+                ShowOrHideBuilding();
+            }
 
             upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y + gridOffset);
             upgradeIsOpen = true;
@@ -856,48 +892,6 @@ public class PlayerPermanent : MonoBehaviour
 
         //Le joueur peut a nouveau subir du degat
         isInvincible = false;
-    }
-
-    void CheckIfUiIsOpen(bool isOpened)
-    {
-        if (isOpened)
-        {
-            cameraTrigger = true;
-            if (GetComponent<GroundPlayerController>().enabled)
-            {
-                wasOnGround = true;
-                GetComponent<GroundPlayerController>().enabled = false;
-            }
-            else if (GetComponent<VinePlayerController>().enabled)
-            {
-                wasOnVine = true;
-                GetComponent<VinePlayerController>().enabled = false;
-            }
-            else if (GetComponent<WaterPlayerController>().enabled)
-            {
-                wasInWater = true;
-                GetComponent<WaterPlayerController>().enabled = false;
-            }
-        }
-        else
-        {
-            cameraTrigger = false;
-            if (wasOnGround)
-            {
-                wasOnGround = false;
-                GetComponent<GroundPlayerController>().enabled = true;
-            }
-            else if (wasInWater)
-            {
-                wasInWater = false;
-                GetComponent<WaterPlayerController>().enabled = true;
-            }
-            else if (wasOnVine)
-            {
-                wasOnVine = false;
-                GetComponent<VinePlayerController>().enabled = true;
-            }
-        }
     }
 
     IEnumerator MoveCamera(string effect)

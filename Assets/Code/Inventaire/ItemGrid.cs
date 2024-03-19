@@ -140,7 +140,7 @@ public class ItemGrid : MonoBehaviour
         rectTransform.localPosition = position;
     }
 
-    public bool InsertItemAtRandom(InventoryItem itemToInsert)
+    public bool InsertItem(InventoryItem itemToInsert)
     {
         Vector2Int? posOnGrid = this.FindSpaceForObject(itemToInsert);
 
@@ -268,7 +268,18 @@ public class ItemGrid : MonoBehaviour
 
     internal InventoryItem GetItem(int x, int y)
     {
-        return inventoryItemSlot[x, y];
+        Vector2 index = new Vector2(x, y);
+        bool isInsideArray = index.x >= 0 && // check left
+                               index.y >= 0 && // check bottom
+                               index.x < inventoryItemSlot.GetLength(0) && // check right
+                               index.y < inventoryItemSlot.GetLength(1);
+        if (isInsideArray)
+            return inventoryItemSlot[x, y];
+        else
+        {
+            Debug.Log("index Was outside the bound of the array");
+            return inventoryItemSlot[0, 0];
+        }
     }
 
     public Vector2Int? FindSpaceForObject(InventoryItem itemToInsert)

@@ -7,7 +7,6 @@ public class CarnivorousPlant : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private Transform[] tentacleTargets;
-    [SerializeField] private Transform vineTarget;
 
     private GameObject player;
     [SerializeField] private float distanceFromPlayer;
@@ -68,7 +67,6 @@ public class CarnivorousPlant : MonoBehaviour
     void Update()
     {
         //Debug.Log(Vector2.Distance(vine.transform.position, transform.position));
-        vineTarget.position = transform.position;
 
         if (player != null)
             playerToTheRight = target.position.x - transform.position.x > 0 ? true : false;
