@@ -9,37 +9,1369 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F56A610C-C7C4-F874-B68B-7ADDF94EBB7A}">
+		<SoundBank Id="16112675" Type="Event" Language="SFX" Hash="{B2D095C4-3270-C7F5-C62E-B6DE08D489DD}">
+			<ShortName>UI_Construire_Ameliorations_Recolte</ShortName>
+			<Path>Event/UI_Construire_Ameliorations_Recolte.bnk</Path>
+			<Events>
+				<Event Id="16112675" Name="UI_Construire_Ameliorations_Recolte" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="32378197" Type="Event" Language="SFX" Hash="{8E9299BF-FF8F-16AC-B90F-FC8566D4D3BA}">
+			<ShortName>UI_Menus_Deplacement</ShortName>
+			<Path>Event/UI_Menus_Deplacement.bnk</Path>
+			<Events>
+				<Event Id="32378197" Name="UI_Menus_Deplacement" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="64562537" Type="Event" Language="SFX" Hash="{4906DF18-0504-A65E-7C56-33E282054143}">
+			<ShortName>LIF_PlanteCarnivore_Passif</ShortName>
+			<Path>Event/LIF_PlanteCarnivore_Passif.bnk</Path>
+			<Events>
+				<Event Id="64562537" Name="LIF_PlanteCarnivore_Passif" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="70496768" Type="Event" Language="SFX" Hash="{8205E95E-EDCC-BCD4-46FF-3428D00494EE}">
+			<ShortName>VO_Joueur_Appeure</ShortName>
+			<Path>Event/VO_Joueur_Appeure.bnk</Path>
+			<Events>
+				<Event Id="70496768" Name="VO_Joueur_Appeure" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="134355214" Type="Event" Language="SFX" Hash="{8EFF79F0-76BF-1AEA-2BCC-C044CDFE66F2}">
+			<ShortName>SWT_Marche</ShortName>
+			<Path>Event/SWT_Marche.bnk</Path>
+			<Events>
+				<Event Id="134355214" Name="SWT_Marche" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry GroupId="1145780075" Id="1500988072" Name="Pas_Marche"/>
+					</ActionSetSwitch>
+				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="1145780075" Name="Pas_Vitesse">
+					<Switches>
+						<Switch Id="1500988072" Name="Pas_Marche"/>
+						<Switch Id="3580700625" Name="Pas_Course"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="137933303" Type="Event" Language="SFX" Hash="{F1C2D054-2078-F77F-FA23-CA6463703C98}">
+			<ShortName>AMB_Canopee</ShortName>
+			<Path>Event/AMB_Canopee.bnk</Path>
+			<Events>
+				<Event Id="137933303" Name="AMB_Canopee" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="197418210" Type="Event" Language="SFX" Hash="{79945828-588D-B795-430D-54E67AB28A45}">
+			<ShortName>VO_Joueur_Mort</ShortName>
+			<Path>Event/VO_Joueur_Mort.bnk</Path>
+			<Events>
+				<Event Id="197418210" Name="VO_Joueur_Mort" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="245720647" Type="Event" Language="SFX" Hash="{2D6309A3-2C3A-E1C0-B93F-0B3633B64FEE}">
+			<ShortName>UI_Inventaire_Placer</ShortName>
+			<Path>Event/UI_Inventaire_Placer.bnk</Path>
+			<Events>
+				<Event Id="245720647" Name="UI_Inventaire_Placer" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="259530661" Type="Event" Language="SFX" Hash="{71354B78-CCF1-8E0B-BA90-ABA9CC179645}">
+			<ShortName>LIF_PlanteCarnivore_Mort</ShortName>
+			<Path>Event/LIF_PlanteCarnivore_Mort.bnk</Path>
+			<Events>
+				<Event Id="259530661" Name="LIF_PlanteCarnivore_Mort" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="271362505" Type="Event" Language="SFX" Hash="{5418325A-CE31-49F3-1CC9-06F326CB3291}">
+			<ShortName>UI_Construire_Ameliorations_Utilitaire</ShortName>
+			<Path>Event/UI_Construire_Ameliorations_Utilitaire.bnk</Path>
+			<Events>
+				<Event Id="271362505" Name="UI_Construire_Ameliorations_Utilitaire" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="276950649" Type="Event" Language="SFX" Hash="{E29FAA94-0CD6-946B-7C3C-21DA1CACE0A4}">
+			<ShortName>PLY_Multitool_Stop</ShortName>
+			<Path>Event/PLY_Multitool_Stop.bnk</Path>
+			<Events>
+				<Event Id="276950649" Name="PLY_Multitool_Stop" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="284641433" Type="Event" Language="SFX" Hash="{C61AD422-1C9D-C83E-A58B-FDB831CFA05B}">
+			<ShortName>UI_Carte_Fermer</ShortName>
+			<Path>Event/UI_Carte_Fermer.bnk</Path>
+			<Events>
+				<Event Id="284641433" Name="UI_Carte_Fermer" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="292996144" Type="Event" Language="SFX" Hash="{DEC7BAF6-14A7-2608-75BD-DCC7917BF689}">
+			<ShortName>LIF_Moustique_Mort</ShortName>
+			<Path>Event/LIF_Moustique_Mort.bnk</Path>
+			<Events>
+				<Event Id="292996144" Name="LIF_Moustique_Mort" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="348963605" Type="Bus" Language="SFX" Hash="{CCC0FE75-8570-6603-2412-368E46482E94}">
+			<ShortName>Reverb</ShortName>
+			<Path>Bus/Reverb.bnk</Path>
+			<AuxBusses>
+				<AuxBus Id="348963605" Name="Reverb"/>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="419486480" Type="Event" Language="SFX" Hash="{CA95C6CB-6BCD-C4B7-7C89-595FB568B1C6}">
+			<ShortName>LIF_Serpent_Degat</ShortName>
+			<Path>Event/LIF_Serpent_Degat.bnk</Path>
+			<Events>
+				<Event Id="419486480" Name="LIF_Serpent_Degat" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="467761838" Type="Event" Language="SFX" Hash="{64CD0A01-1765-F200-520E-4C1E1C39D9DF}">
+			<ShortName>PLY_Multitool_Trompe</ShortName>
+			<Path>Event/PLY_Multitool_Trompe.bnk</Path>
+			<Events>
+				<Event Id="467761838" Name="PLY_Multitool_Trompe" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="545824151" Type="Event" Language="SFX" Hash="{254A7FCB-A009-1467-FB50-EAAB07A0C23C}">
+			<ShortName>VO_Narrateur_Neutre</ShortName>
+			<Path>Event/VO_Narrateur_Neutre.bnk</Path>
+			<Events>
+				<Event Id="545824151" Name="VO_Narrateur_Neutre" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="590554840" Type="Event" Language="SFX" Hash="{2F9FFC2D-F223-8053-9CE0-EDB2AFAB00DC}">
+			<ShortName>PLY_Attaque_Init_Grenade</ShortName>
+			<Path>Event/PLY_Attaque_Init_Grenade.bnk</Path>
+			<Events>
+				<Event Id="590554840" Name="PLY_Attaque_Init_Grenade" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="618531677" Type="Event" Language="SFX" Hash="{70A18A27-B34E-312F-C4E4-CF3DE0EB868D}">
+			<ShortName>VO_Joueur_Attaque</ShortName>
+			<Path>Event/VO_Joueur_Attaque.bnk</Path>
+			<Events>
+				<Event Id="618531677" Name="VO_Joueur_Attaque" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="762427217" Type="Event" Language="SFX" Hash="{6E785476-C93E-C7A3-C3A1-C4AE91E6B17C}">
+			<ShortName>UI_Vente_Vendre</ShortName>
+			<Path>Event/UI_Vente_Vendre.bnk</Path>
+			<Events>
+				<Event Id="762427217" Name="UI_Vente_Vendre" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="763223215" Type="Event" Language="SFX" Hash="{43431EF5-3A70-6F62-150F-6E25162FC4F7}">
+			<ShortName>SWT_Course</ShortName>
+			<Path>Event/SWT_Course.bnk</Path>
+			<Events>
+				<Event Id="763223215" Name="SWT_Course" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry GroupId="1145780075" Id="3580700625" Name="Pas_Course"/>
+					</ActionSetSwitch>
+				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="1145780075" Name="Pas_Vitesse">
+					<Switches>
+						<Switch Id="1500988072" Name="Pas_Marche"/>
+						<Switch Id="3580700625" Name="Pas_Course"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="769260168" Type="Event" Language="SFX" Hash="{5572FD07-5AA6-072C-35FA-636FB4CAA5E3}">
+			<ShortName>LIF_PlanteCarnivore_Alerte</ShortName>
+			<Path>Event/LIF_PlanteCarnivore_Alerte.bnk</Path>
+			<Events>
+				<Event Id="769260168" Name="LIF_PlanteCarnivore_Alerte" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="873836703" Type="Bus" Language="SFX" Hash="{DBF80FE1-F989-4C70-7B69-11070F297080}">
+			<ShortName>Reverb_Default</ShortName>
+			<Path>Bus/Reverb_Default.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="873836703" Name="Reverb_Default">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="895662967" Type="Event" Language="SFX" Hash="{84D48A7D-857D-2110-B1D6-B28DCAC8705C}">
+			<ShortName>PLY_Multitool_Bark</ShortName>
+			<Path>Event/PLY_Multitool_Bark.bnk</Path>
+			<Events>
+				<Event Id="895662967" Name="PLY_Multitool_Bark" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="909898291" Type="Event" Language="SFX" Hash="{98256AF2-BF8E-2EDB-EBBD-4670088DB89D}">
+			<ShortName>LIF_Rhinortue_Saut</ShortName>
+			<Path>Event/LIF_Rhinortue_Saut.bnk</Path>
+			<Events>
+				<Event Id="909898291" Name="LIF_Rhinortue_Saut" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="971073617" Type="Event" Language="SFX" Hash="{9088B3D7-8B84-873B-BF36-BAD2B234DB1F}">
+			<ShortName>AMB_Grotte</ShortName>
+			<Path>Event/AMB_Grotte.bnk</Path>
+			<Events>
+				<Event Id="971073617" Name="AMB_Grotte" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="987111760" Type="Event" Language="SFX" Hash="{C5D4B939-6421-AD28-898B-1CFDE3CA1775}">
+			<ShortName>PLY_Multitool_Rubiol</ShortName>
+			<Path>Event/PLY_Multitool_Rubiol.bnk</Path>
+			<Events>
+				<Event Id="987111760" Name="PLY_Multitool_Rubiol" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1000665540" Type="Event" Language="SFX" Hash="{F8A1DB7C-E0C8-BC87-6C84-0DF0C7A0C2DF}">
+			<ShortName>UI_Inventaire_Prendre</ShortName>
+			<Path>Event/UI_Inventaire_Prendre.bnk</Path>
+			<Events>
+				<Event Id="1000665540" Name="UI_Inventaire_Prendre" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1065587537" Type="Event" Language="SFX" Hash="{60F8C214-B74E-DCD3-54AA-E4038CCFDDCD}">
+			<ShortName>PLY_Grimpe</ShortName>
+			<Path>Event/PLY_Grimpe.bnk</Path>
+			<Events>
+				<Event Id="1065587537" Name="PLY_Grimpe" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1118706794" Type="Event" Language="SFX" Hash="{B7A5CC27-B469-FF82-AAB1-CFD40256F302}">
+			<ShortName>LIF_Rhinortue_Mort</ShortName>
+			<Path>Event/LIF_Rhinortue_Mort.bnk</Path>
+			<Events>
+				<Event Id="1118706794" Name="LIF_Rhinortue_Mort" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1161539083" Type="Event" Language="SFX" Hash="{8B415109-2EDC-F93A-E268-FD198EDD822E}">
+			<ShortName>VO_Joueur_Interroge</ShortName>
+			<Path>Event/VO_Joueur_Interroge.bnk</Path>
+			<Events>
+				<Event Id="1161539083" Name="VO_Joueur_Interroge" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1174519973" Type="Event" Language="SFX" Hash="{C17B69D3-7823-3DE4-5E48-D680C6EAD901}">
+			<ShortName>PLY_Multitool_Magnetite</ShortName>
+			<Path>Event/PLY_Multitool_Magnetite.bnk</Path>
+			<Events>
+				<Event Id="1174519973" Name="PLY_Multitool_Magnetite" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1194441137" Type="Event" Language="SFX" Hash="{B144E038-0B78-0FD0-C7C2-BAF7FF0363C5}">
+			<ShortName>UI_Construire_Batterie</ShortName>
+			<Path>Event/UI_Construire_Batterie.bnk</Path>
+			<Events>
+				<Event Id="1194441137" Name="UI_Construire_Batterie" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1287766270" Type="Event" Language="SFX" Hash="{BE6A6B01-AE20-1C16-2862-B560B06F06EA}">
+			<ShortName>UI_MenuMort_RetourBase</ShortName>
+			<Path>Event/UI_MenuMort_RetourBase.bnk</Path>
+			<Events>
+				<Event Id="1287766270" Name="UI_MenuMort_RetourBase" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1306005165" Type="Event" Language="SFX" Hash="{D2F82C1D-75C4-DD3F-E1EF-0CF6440A93C8}">
+			<ShortName>UI_Carte_Ouvrir</ShortName>
+			<Path>Event/UI_Carte_Ouvrir.bnk</Path>
+			<Events>
+				<Event Id="1306005165" Name="UI_Carte_Ouvrir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{93C9EE58-0308-FCAC-5A88-E692354CAFED}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
+				<Custom>
+					<Plugin Id="1009805735" Name="Room_Large (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+				<ShareSets>
+					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="2995775460" Name="Room_Small" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
 					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
 				</AudioDevices>
 			</Plugins>
 			<Busses>
+				<Bus Id="197418210" Name="VO_Joueur_Mort"/>
+				<Bus Id="444705606" Name="LIF"/>
+				<Bus Id="529726550" Name="ENV"/>
+				<Bus Id="618531677" Name="VO_Joueur_Attaque"/>
+				<Bus Id="805203703" Name="Master Secondary Bus"/>
+				<Bus Id="1064786042" Name="PLY"/>
+				<Bus Id="1085865485" Name="VO_Joueur"/>
+				<Bus Id="1117531639" Name="AMB"/>
+				<Bus Id="1534528548" Name="VO"/>
+				<Bus Id="1551306167" Name="UI"/>
+				<Bus Id="2412407096" Name="SUB-MASTER"/>
+				<Bus Id="2579258019" Name="VO_Joueur_Degat"/>
+				<Bus Id="2942549762" Name="VO_Joueur_Effort"/>
+				<Bus Id="3132326304" Name="VO_Joueur_Parle"/>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
+				<Bus Id="3884498805" Name="VO_Narrateur"/>
 			</Busses>
+			<AuxBusses>
+				<AuxBus Id="348963605" Name="Reverb"/>
+				<AuxBus Id="873836703" Name="Reverb_Default">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2401020452" Name="Reverb_Room_08">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2401020453" Name="Reverb_Room_09">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="1009805735"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2401020456" Name="Reverb_Room_04">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2401020457" Name="Reverb_Room_05">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2401020458" Name="Reverb_Room_06">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2401020459" Name="Reverb_Room_07">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2401020461" Name="Reverb_Room_01">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2401020462" Name="Reverb_Room_02">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2401020463" Name="Reverb_Room_03">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2417798042" Name="Reverb_Room_15">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2417798043" Name="Reverb_Room_14">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2995775460"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2417798044" Name="Reverb_Room_13">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2417798045" Name="Reverb_Room_12">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2417798046" Name="Reverb_Room_11">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="2417798047" Name="Reverb_Room_10">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+			<SwitchGroups>
+				<SwitchGroup Id="439968226" Name="AMB_Switch">
+					<Switches>
+						<Switch Id="137933303" Name="AMB_Canopee"/>
+						<Switch Id="971073617" Name="AMB_Grotte"/>
+						<Switch Id="2291972081" Name="AMB_Base"/>
+						<Switch Id="2983803460" Name="AMB_Foret"/>
+						<Switch Id="4285823446" Name="AMB_SousMarine"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="1145780075" Name="Pas_Vitesse">
+					<Switches>
+						<Switch Id="1500988072" Name="Pas_Marche"/>
+						<Switch Id="3580700625" Name="Pas_Course"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="2913619480" Name="Pas_Materiau">
+					<Switches>
+						<Switch Id="1662744943" Name="Pas_BoisMoussu"/>
+						<Switch Id="1973442484" Name="Pas_Terre"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3157003241" Type="Event" Language="SFX" Hash="{12ADA583-1C51-AF62-81E7-A611C9DE85E3}">
-			<ShortName>TEST</ShortName>
-			<Path>Event/TEST.bnk</Path>
-			<Media>
-				<File Id="503590771" Language="SFX" Streaming="false" Location="Loose">
-					<ShortName>166553-Bullet-Hit-Body-Flesh_05.wav</ShortName>
-					<Path>Media/503590771.wem</Path>
-					<CachePath>SFX/166553-Bullet-Hit-Body-Flesh_05_10C4C929.wem</CachePath>
-				</File>
-			</Media>
+		<SoundBank Id="1371791378" Type="Event" Language="SFX" Hash="{A14C9A6B-B43A-6753-9C18-5274C24D3309}">
+			<ShortName>UI_MenuMultitool_Fermer</ShortName>
+			<Path>Event/UI_MenuMultitool_Fermer.bnk</Path>
 			<Events>
-				<Event Id="3157003241" Name="TEST" DurationType="OneShot" DurationMin="0.5653333" DurationMax="0.5653333">
-					<MediaRefs>
-						<MediaRef Id="503590771"/>
-					</MediaRefs>
+				<Event Id="1371791378" Name="UI_MenuMultitool_Fermer" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1478891302" Type="Event" Language="SFX" Hash="{289A219B-309A-D92D-59FB-87749D16A3C9}">
+			<ShortName>UI_Construire_Ameliorations_Bouclier</ShortName>
+			<Path>Event/UI_Construire_Ameliorations_Bouclier.bnk</Path>
+			<Events>
+				<Event Id="1478891302" Name="UI_Construire_Ameliorations_Bouclier" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1485537732" Type="Event" Language="SFX" Hash="{4C47763D-D8B5-5C2B-34B9-08A227BF55D2}">
+			<ShortName>VO_Joueur_Surpris</ShortName>
+			<Path>Event/VO_Joueur_Surpris.bnk</Path>
+			<Events>
+				<Event Id="1485537732" Name="VO_Joueur_Surpris" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1526334054" Type="Event" Language="SFX" Hash="{B285D95B-1728-95F6-B7EF-0C82411C5454}">
+			<ShortName>SWT_Terre</ShortName>
+			<Path>Event/SWT_Terre.bnk</Path>
+			<Events>
+				<Event Id="1526334054" Name="SWT_Terre" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry GroupId="2913619480" Id="1973442484" Name="Pas_Terre"/>
+					</ActionSetSwitch>
 				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="2913619480" Name="Pas_Materiau">
+					<Switches>
+						<Switch Id="1662744943" Name="Pas_BoisMoussu"/>
+						<Switch Id="1973442484" Name="Pas_Terre"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="1533940222" Type="Event" Language="SFX" Hash="{96E77B7C-218A-2A0C-B358-C03E66C135CB}">
+			<ShortName>UI_MenuMultitool_Ouvrir</ShortName>
+			<Path>Event/UI_MenuMultitool_Ouvrir.bnk</Path>
+			<Events>
+				<Event Id="1533940222" Name="UI_MenuMultitool_Ouvrir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1570520871" Type="Event" Language="SFX" Hash="{D27F4716-92E6-55BE-7AE5-6EA090F6E6B8}">
+			<ShortName>UI_Inventaire_Ouvrir</ShortName>
+			<Path>Event/UI_Inventaire_Ouvrir.bnk</Path>
+			<Events>
+				<Event Id="1570520871" Name="UI_Inventaire_Ouvrir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1629615691" Type="Event" Language="SFX" Hash="{481F096E-8469-CE9A-546D-D7DC388D5A90}">
+			<ShortName>PLY_Pas</ShortName>
+			<Path>Event/PLY_Pas.bnk</Path>
+			<Events>
+				<Event Id="1629615691" Name="PLY_Pas" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1145780075" Id="3580700625"/>
+							<Children/>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1145780075" Id="1500988072" Default="true"/>
+							<Children/>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="1145780075" Name="Pas_Vitesse">
+					<Switches>
+						<Switch Id="1500988072" Name="Pas_Marche"/>
+						<Switch Id="3580700625" Name="Pas_Course"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="2913619480" Name="Pas_Materiau">
+					<Switches>
+						<Switch Id="1662744943" Name="Pas_BoisMoussu"/>
+						<Switch Id="1973442484" Name="Pas_Terre"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="1777682481" Type="Event" Language="SFX" Hash="{F2D36E22-2B6E-679C-EE6C-3D5C5A49E22A}">
+			<ShortName>PLY_Multitool_Charge</ShortName>
+			<Path>Event/PLY_Multitool_Charge.bnk</Path>
+			<Events>
+				<Event Id="1777682481" Name="PLY_Multitool_Charge" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1784156715" Type="Event" Language="SFX" Hash="{5DC808CA-2CC1-B65F-0872-C95A1335AAF0}">
+			<ShortName>LIF_Rhinortue_Alerte</ShortName>
+			<Path>Event/LIF_Rhinortue_Alerte.bnk</Path>
+			<Events>
+				<Event Id="1784156715" Name="LIF_Rhinortue_Alerte" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1899188614" Type="Event" Language="SFX" Hash="{4E7D3642-5465-3CE5-DE9B-F949FC395DBC}">
+			<ShortName>LIF_Rhinortue_Passif</ShortName>
+			<Path>Event/LIF_Rhinortue_Passif.bnk</Path>
+			<Events>
+				<Event Id="1899188614" Name="LIF_Rhinortue_Passif" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1930754588" Type="Event" Language="SFX" Hash="{61B5EE2B-4163-5331-11FA-368D4B96C9C5}">
+			<ShortName>ENV_PorteFermeture</ShortName>
+			<Path>Event/ENV_PorteFermeture.bnk</Path>
+			<Events>
+				<Event Id="1930754588" Name="ENV_PorteFermeture" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1952691670" Type="Event" Language="SFX" Hash="{6F7E329D-B2C9-3AD4-2665-5812F306911E}">
+			<ShortName>ENV_PorteOuverture</ShortName>
+			<Path>Event/ENV_PorteOuverture.bnk</Path>
+			<Events>
+				<Event Id="1952691670" Name="ENV_PorteOuverture" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1998450481" Type="Event" Language="SFX" Hash="{9355151D-E974-D0C7-8FED-A7F03D3C7006}">
+			<ShortName>UI_Endurance</ShortName>
+			<Path>Event/UI_Endurance.bnk</Path>
+			<Events>
+				<Event Id="1998450481" Name="UI_Endurance" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1998745357" Type="Event" Language="SFX" Hash="{83582C3E-A738-2670-EBDD-9311F3339425}">
+			<ShortName>PLY_Attaque_Init_Spear</ShortName>
+			<Path>Event/PLY_Attaque_Init_Spear.bnk</Path>
+			<Events>
+				<Event Id="1998745357" Name="PLY_Attaque_Init_Spear" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2115875219" Type="Event" Language="SFX" Hash="{B84A841F-7FE5-47B4-8F11-BCA0F7211583}">
+			<ShortName>UI_JoueurVise</ShortName>
+			<Path>Event/UI_JoueurVise.bnk</Path>
+			<Events>
+				<Event Id="2115875219" Name="UI_JoueurVise" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2165972810" Type="Event" Language="SFX" Hash="{06B485E7-9BF3-C3F1-7A16-14E001A56391}">
+			<ShortName>UI_Construire_Ameliorations_Sante</ShortName>
+			<Path>Event/UI_Construire_Ameliorations_Sante.bnk</Path>
+			<Events>
+				<Event Id="2165972810" Name="UI_Construire_Ameliorations_Sante" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2291972081" Type="Event" Language="SFX" Hash="{B0471A6D-C8A7-B534-B167-029C4827727E}">
+			<ShortName>AMB_Base</ShortName>
+			<Path>Event/AMB_Base.bnk</Path>
+			<Events>
+				<Event Id="2291972081" Name="AMB_Base" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2295926980" Type="Event" Language="SFX" Hash="{DD874B6C-0849-6498-607E-5F7D74390859}">
+			<ShortName>UI_HotbarDeplacement</ShortName>
+			<Path>Event/UI_HotbarDeplacement.bnk</Path>
+			<Events>
+				<Event Id="2295926980" Name="UI_HotbarDeplacement" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2389496250" Type="Event" Language="SFX" Hash="{B8431718-0808-E0C0-5AF6-575108789DAB}">
+			<ShortName>LIF_Serpent_Alerte</ShortName>
+			<Path>Event/LIF_Serpent_Alerte.bnk</Path>
+			<Events>
+				<Event Id="2389496250" Name="LIF_Serpent_Alerte" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2401020452" Type="Bus" Language="SFX" Hash="{3D4EDE98-2777-5FAF-9B9A-CD789B8FCE6A}">
+			<ShortName>Reverb_Room_08</ShortName>
+			<Path>Bus/Reverb_Room_08.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020452" Name="Reverb_Room_08">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020453" Type="Bus" Language="SFX" Hash="{C1B8AFFD-6B55-F020-66EB-C04EB07F39CB}">
+			<ShortName>Reverb_Room_09</ShortName>
+			<Path>Bus/Reverb_Room_09.bnk</Path>
+			<Plugins>
+				<Custom>
+					<Plugin Id="1009805735" Name="Room_Large (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020453" Name="Reverb_Room_09">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="1009805735"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020456" Type="Bus" Language="SFX" Hash="{E19FD826-9B77-1B6D-EEBF-91EE7C5FE92D}">
+			<ShortName>Reverb_Room_04</ShortName>
+			<Path>Bus/Reverb_Room_04.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020456" Name="Reverb_Room_04">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020457" Type="Bus" Language="SFX" Hash="{0C06A231-CC76-05E4-8222-3BFDC92B2798}">
+			<ShortName>Reverb_Room_05</ShortName>
+			<Path>Bus/Reverb_Room_05.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020457" Name="Reverb_Room_05">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020458" Type="Bus" Language="SFX" Hash="{2CD54E42-CD85-F3F8-1A04-FB56BBB9876A}">
+			<ShortName>Reverb_Room_06</ShortName>
+			<Path>Bus/Reverb_Room_06.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020458" Name="Reverb_Room_06">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020459" Type="Bus" Language="SFX" Hash="{7966A91C-CD77-3BBA-22A7-172693A0FC66}">
+			<ShortName>Reverb_Room_07</ShortName>
+			<Path>Bus/Reverb_Room_07.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020459" Name="Reverb_Room_07">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020461" Type="Bus" Language="SFX" Hash="{271D0629-BF6C-FB58-033E-F0D84F5816EF}">
+			<ShortName>Reverb_Room_01</ShortName>
+			<Path>Bus/Reverb_Room_01.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020461" Name="Reverb_Room_01">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020462" Type="Bus" Language="SFX" Hash="{0B0784C7-120B-A334-C1A5-B3E051297029}">
+			<ShortName>Reverb_Room_02</ShortName>
+			<Path>Bus/Reverb_Room_02.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020462" Name="Reverb_Room_02">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020463" Type="Bus" Language="SFX" Hash="{BC0D0A08-52DC-2109-6A7E-5DA23BA24798}">
+			<ShortName>Reverb_Room_03</ShortName>
+			<Path>Bus/Reverb_Room_03.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020463" Name="Reverb_Room_03">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798042" Type="Bus" Language="SFX" Hash="{B328359B-39F7-DCE7-50C3-E0D7D3B89799}">
+			<ShortName>Reverb_Room_15</ShortName>
+			<Path>Bus/Reverb_Room_15.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798042" Name="Reverb_Room_15">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798043" Type="Bus" Language="SFX" Hash="{969B9421-3341-CC95-AA68-BB846F0C46A4}">
+			<ShortName>Reverb_Room_14</ShortName>
+			<Path>Bus/Reverb_Room_14.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="2995775460" Name="Room_Small" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798043" Name="Reverb_Room_14">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2995775460"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798044" Type="Bus" Language="SFX" Hash="{E0C7A5A7-0F1E-A703-C174-2D880791938C}">
+			<ShortName>Reverb_Room_13</ShortName>
+			<Path>Bus/Reverb_Room_13.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798044" Name="Reverb_Room_13">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798045" Type="Bus" Language="SFX" Hash="{95337FA4-2314-9CDF-02D9-607285B70601}">
+			<ShortName>Reverb_Room_12</ShortName>
+			<Path>Bus/Reverb_Room_12.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798045" Name="Reverb_Room_12">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798046" Type="Bus" Language="SFX" Hash="{6401C8A8-132D-5EDB-49D7-52DBAB3084DB}">
+			<ShortName>Reverb_Room_11</ShortName>
+			<Path>Bus/Reverb_Room_11.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798046" Name="Reverb_Room_11">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798047" Type="Bus" Language="SFX" Hash="{E82C220D-79FE-5C6F-E684-C316A0413166}">
+			<ShortName>Reverb_Room_10</ShortName>
+			<Path>Bus/Reverb_Room_10.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798047" Name="Reverb_Room_10">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2446265780" Type="Event" Language="SFX" Hash="{829FA34F-FB2F-239B-E710-9048D9F8CE1A}">
+			<ShortName>UI_Atelier_Ouvrir</ShortName>
+			<Path>Event/UI_Atelier_Ouvrir.bnk</Path>
+			<Events>
+				<Event Id="2446265780" Name="UI_Atelier_Ouvrir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2451493374" Type="Event" Language="SFX" Hash="{E1C8D3BA-EBBE-68D7-F60F-9D6241C944E3}">
+			<ShortName>ENV_PiegePiques</ShortName>
+			<Path>Event/ENV_PiegePiques.bnk</Path>
+			<Events>
+				<Event Id="2451493374" Name="ENV_PiegePiques" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2466167957" Type="Event" Language="SFX" Hash="{CF08CC7A-3996-1798-002A-D08C391DB7AB}">
+			<ShortName>LIF_Rhinortue_Attaque</ShortName>
+			<Path>Event/LIF_Rhinortue_Attaque.bnk</Path>
+			<Events>
+				<Event Id="2466167957" Name="LIF_Rhinortue_Attaque" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2467918837" Type="Event" Language="SFX" Hash="{5E90E583-D2B2-0D3A-D241-D02B49328B8D}">
+			<ShortName>SWT_BoisMoussu</ShortName>
+			<Path>Event/SWT_BoisMoussu.bnk</Path>
+			<Events>
+				<Event Id="2467918837" Name="SWT_BoisMoussu" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry GroupId="2913619480" Id="1662744943" Name="Pas_BoisMoussu"/>
+					</ActionSetSwitch>
+				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="2913619480" Name="Pas_Materiau">
+					<Switches>
+						<Switch Id="1662744943" Name="Pas_BoisMoussu"/>
+						<Switch Id="1973442484" Name="Pas_Terre"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="2523949194" Type="Event" Language="SFX" Hash="{D6879337-BC4D-E523-F894-1151558208DD}">
+			<ShortName>UI_Pause_Fermer</ShortName>
+			<Path>Event/UI_Pause_Fermer.bnk</Path>
+			<Events>
+				<Event Id="2523949194" Name="UI_Pause_Fermer" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2572263400" Type="Event" Language="SFX" Hash="{3F265EA0-0EAF-0A21-556F-878D57AB9FF2}">
+			<ShortName>PLY_Attaque_Relache_Grenade</ShortName>
+			<Path>Event/PLY_Attaque_Relache_Grenade.bnk</Path>
+			<Events>
+				<Event Id="2572263400" Name="PLY_Attaque_Relache_Grenade" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2579258019" Type="Event" Language="SFX" Hash="{98F42791-4DEA-0851-6F13-95EFA787B713}">
+			<ShortName>VO_Joueur_Degat</ShortName>
+			<Path>Event/VO_Joueur_Degat.bnk</Path>
+			<Events>
+				<Event Id="2579258019" Name="VO_Joueur_Degat" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2605645130" Type="Event" Language="SFX" Hash="{AC25C22C-6B8B-7A3C-A094-43467A16A9D9}">
+			<ShortName>UI_Vente_Fermer</ShortName>
+			<Path>Event/UI_Vente_Fermer.bnk</Path>
+			<Events>
+				<Event Id="2605645130" Name="UI_Vente_Fermer" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2624188390" Type="Event" Language="SFX" Hash="{D916D18A-288D-30A4-E749-723DFDFE2C01}">
+			<ShortName>LIF_Serpent_Attaque</ShortName>
+			<Path>Event/LIF_Serpent_Attaque.bnk</Path>
+			<Events>
+				<Event Id="2624188390" Name="LIF_Serpent_Attaque" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2629164127" Type="Event" Language="SFX" Hash="{5C0019C4-FC59-12A5-518D-41B4B7120D6F}">
+			<ShortName>VO_Joueur_Neutre</ShortName>
+			<Path>Event/VO_Joueur_Neutre.bnk</Path>
+			<Events>
+				<Event Id="2629164127" Name="VO_Joueur_Neutre" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2648129411" Type="Event" Language="SFX" Hash="{A94E391E-BC10-F5AF-C7E2-E5458BF7777F}">
+			<ShortName>PLY_Multitool_Tronc</ShortName>
+			<Path>Event/PLY_Multitool_Tronc.bnk</Path>
+			<Events>
+				<Event Id="2648129411" Name="PLY_Multitool_Tronc" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2736888903" Type="Event" Language="SFX" Hash="{E4BB8FDB-51A3-376F-2DC8-A67DA6722BB2}">
+			<ShortName>PLY_Saute</ShortName>
+			<Path>Event/PLY_Saute.bnk</Path>
+			<Events>
+				<Event Id="2736888903" Name="PLY_Saute" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2884316364" Type="Event" Language="SFX" Hash="{C86600D5-0036-F7A9-5359-F8D186AFC0B0}">
+			<ShortName>UI_Construire_Cuir</ShortName>
+			<Path>Event/UI_Construire_Cuir.bnk</Path>
+			<Events>
+				<Event Id="2884316364" Name="UI_Construire_Cuir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2942549762" Type="Event" Language="SFX" Hash="{0A0D301C-B384-AEE0-0696-6A148A88DA0D}">
+			<ShortName>VO_Joueur_Effort</ShortName>
+			<Path>Event/VO_Joueur_Effort.bnk</Path>
+			<Events>
+				<Event Id="2942549762" Name="VO_Joueur_Effort" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2953886367" Type="Event" Language="SFX" Hash="{DCE10BBF-8AC0-AD7E-1901-AA62878CDA96}">
+			<ShortName>UI_BarreDeVie_Faible</ShortName>
+			<Path>Event/UI_BarreDeVie_Faible.bnk</Path>
+			<Events>
+				<Event Id="2953886367" Name="UI_BarreDeVie_Faible" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2964860923" Type="Event" Language="SFX" Hash="{B5B5F6EB-FFA4-3419-8243-35659D0AE53B}">
+			<ShortName>LIF_Rhinortue_Degat</ShortName>
+			<Path>Event/LIF_Rhinortue_Degat.bnk</Path>
+			<Events>
+				<Event Id="2964860923" Name="LIF_Rhinortue_Degat" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2983803460" Type="Event" Language="SFX" Hash="{C708E0AB-0EEE-1786-4CD8-4DB913E1E8B0}">
+			<ShortName>AMB_Foret</ShortName>
+			<Path>Event/AMB_Foret.bnk</Path>
+			<Events>
+				<Event Id="2983803460" Name="AMB_Foret" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="2985199436" Type="Event" Language="SFX" Hash="{4AC9AC40-8726-3B38-FBC9-01A58875F294}">
+			<ShortName>UI_Inventaire_Intervertir</ShortName>
+			<Path>Event/UI_Inventaire_Intervertir.bnk</Path>
+			<Events>
+				<Event Id="2985199436" Name="UI_Inventaire_Intervertir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3021703992" Type="Event" Language="SFX" Hash="{7782E502-6FD4-2006-3035-1E9ED4C51FC6}">
+			<ShortName>PLY_Degat</ShortName>
+			<Path>Event/PLY_Degat.bnk</Path>
+			<Events>
+				<Event Id="3021703992" Name="PLY_Degat" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3034212817" Type="Event" Language="SFX" Hash="{0E12E91B-4832-B366-652F-AE54CCA43B32}">
+			<ShortName>PLY_Multitool_Racine</ShortName>
+			<Path>Event/PLY_Multitool_Racine.bnk</Path>
+			<Events>
+				<Event Id="3034212817" Name="PLY_Multitool_Racine" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3136319167" Type="Event" Language="SFX" Hash="{B823B6D3-A178-D164-A022-84F59C48C5C6}">
+			<ShortName>UI_GameOver_Vie</ShortName>
+			<Path>Event/UI_GameOver_Vie.bnk</Path>
+			<Events>
+				<Event Id="3136319167" Name="UI_GameOver_Vie" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3178688842" Type="Event" Language="SFX" Hash="{63FB815D-C46A-B583-4102-4F6041B3A5F8}">
+			<ShortName>UI_Construire_Microprocesseur</ShortName>
+			<Path>Event/UI_Construire_Microprocesseur.bnk</Path>
+			<Events>
+				<Event Id="3178688842" Name="UI_Construire_Microprocesseur" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3192806191" Type="Event" Language="SFX" Hash="{801F4323-55FA-B02C-D814-3E21D0ED1C61}">
+			<ShortName>UI_Temps</ShortName>
+			<Path>Event/UI_Temps.bnk</Path>
+			<Events>
+				<Event Id="3192806191" Name="UI_Temps" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3251876752" Type="Event" Language="SFX" Hash="{FA50F032-5341-DBA7-9761-038AA6126783}">
+			<ShortName>LIF_Moustique_Passif</ShortName>
+			<Path>Event/LIF_Moustique_Passif.bnk</Path>
+			<Events>
+				<Event Id="3251876752" Name="LIF_Moustique_Passif" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3316347964" Type="Event" Language="SFX" Hash="{5B23F6F0-3F1D-6261-B643-6B0842743905}">
+			<ShortName>UI_Atelier_Fermer</ShortName>
+			<Path>Event/UI_Atelier_Fermer.bnk</Path>
+			<Events>
+				<Event Id="3316347964" Name="UI_Atelier_Fermer" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3341177082" Type="Event" Language="SFX" Hash="{5BFFD50C-3B17-729A-327C-5B6DF9123CD2}">
+			<ShortName>VO_Joueur_Heureux</ShortName>
+			<Path>Event/VO_Joueur_Heureux.bnk</Path>
+			<Events>
+				<Event Id="3341177082" Name="VO_Joueur_Heureux" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3391233375" Type="Event" Language="SFX" Hash="{2FB83671-5C7C-BE64-AA4F-74012F186440}">
+			<ShortName>VO_Joueur_Enerve</ShortName>
+			<Path>Event/VO_Joueur_Enerve.bnk</Path>
+			<Events>
+				<Event Id="3391233375" Name="VO_Joueur_Enerve" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3426910044" Type="Event" Language="SFX" Hash="{FEA67547-2D60-8DF3-0094-CE6012502256}">
+			<ShortName>LIF_PlanteCarnivore_Attaque</ShortName>
+			<Path>Event/LIF_PlanteCarnivore_Attaque.bnk</Path>
+			<Events>
+				<Event Id="3426910044" Name="LIF_PlanteCarnivore_Attaque" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3445807767" Type="Event" Language="SFX" Hash="{E8A693F2-68E6-4865-7078-1C4BF98DD200}">
+			<ShortName>UI_Construire_Ameliorations_Combat</ShortName>
+			<Path>Event/UI_Construire_Ameliorations_Combat.bnk</Path>
+			<Events>
+				<Event Id="3445807767" Name="UI_Construire_Ameliorations_Combat" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3454429038" Type="Event" Language="SFX" Hash="{1EC93A59-3E72-587B-AA07-A8F38EE3B0A8}">
+			<ShortName>UI_GameOver_Temps</ShortName>
+			<Path>Event/UI_GameOver_Temps.bnk</Path>
+			<Events>
+				<Event Id="3454429038" Name="UI_GameOver_Temps" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3461596575" Type="Event" Language="SFX" Hash="{FBE83582-8B68-A62E-F45A-C29B9A0C8BC3}">
+			<ShortName>UI_Inventaire_Fermer</ShortName>
+			<Path>Event/UI_Inventaire_Fermer.bnk</Path>
+			<Events>
+				<Event Id="3461596575" Name="UI_Inventaire_Fermer" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3471878825" Type="Event" Language="SFX" Hash="{F6974250-E1FE-CDAA-C996-A21202A8A61D}">
+			<ShortName>LIF_Moustique_Degat</ShortName>
+			<Path>Event/LIF_Moustique_Degat.bnk</Path>
+			<Events>
+				<Event Id="3471878825" Name="LIF_Moustique_Degat" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3532067702" Type="Event" Language="SFX" Hash="{B2D3C79D-A470-DFBD-7328-96FBF936F580}">
+			<ShortName>UI_BarreDeVie_Gagner</ShortName>
+			<Path>Event/UI_BarreDeVie_Gagner.bnk</Path>
+			<Events>
+				<Event Id="3532067702" Name="UI_BarreDeVie_Gagner" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3563350091" Type="Event" Language="SFX" Hash="{D6B8500D-BEBE-5392-D95B-2A0C22073DDF}">
+			<ShortName>LIF_Serpent_Mort</ShortName>
+			<Path>Event/LIF_Serpent_Mort.bnk</Path>
+			<Events>
+				<Event Id="3563350091" Name="LIF_Serpent_Mort" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3641631337" Type="Event" Language="SFX" Hash="{D9C4D538-85AA-E5B3-321C-6E2FC36DE790}">
+			<ShortName>VO_Joueur_Exclame</ShortName>
+			<Path>Event/VO_Joueur_Exclame.bnk</Path>
+			<Events>
+				<Event Id="3641631337" Name="VO_Joueur_Exclame" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3659862611" Type="Event" Language="SFX" Hash="{E83128BA-25C5-668A-EFE4-23BB56DB8F7E}">
+			<ShortName>VO_Joueur_Triste</ShortName>
+			<Path>Event/VO_Joueur_Triste.bnk</Path>
+			<Events>
+				<Event Id="3659862611" Name="VO_Joueur_Triste" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3671474502" Type="Event" Language="SFX" Hash="{9BF9A866-3576-695F-B3AF-77889C0242E3}">
+			<ShortName>UI_Pause_Ouvrir</ShortName>
+			<Path>Event/UI_Pause_Ouvrir.bnk</Path>
+			<Events>
+				<Event Id="3671474502" Name="UI_Pause_Ouvrir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3710083091" Type="Event" Language="SFX" Hash="{DA667BE9-3464-0983-E243-D9BB4F678B0E}">
+			<ShortName>LIF_Serpent_Passif</ShortName>
+			<Path>Event/LIF_Serpent_Passif.bnk</Path>
+			<Events>
+				<Event Id="3710083091" Name="LIF_Serpent_Passif" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3801559710" Type="Event" Language="SFX" Hash="{2C9770A2-093B-8DB8-2D86-C0FC13348C31}">
+			<ShortName>UI_Construire_FeuilleMetallique</ShortName>
+			<Path>Event/UI_Construire_FeuilleMetallique.bnk</Path>
+			<Events>
+				<Event Id="3801559710" Name="UI_Construire_FeuilleMetallique" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3882776175" Type="Event" Language="SFX" Hash="{4625A90C-EA41-1B94-6DA9-025B81AC2925}">
+			<ShortName>UI_Construire_Cables</ShortName>
+			<Path>Event/UI_Construire_Cables.bnk</Path>
+			<Events>
+				<Event Id="3882776175" Name="UI_Construire_Cables" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3906859172" Type="Event" Language="SFX" Hash="{48D3FE14-9F38-3634-86F3-D0DA5B73BFFA}">
+			<ShortName>PLY_Multitool_Tungstone</ShortName>
+			<Path>Event/PLY_Multitool_Tungstone.bnk</Path>
+			<Events>
+				<Event Id="3906859172" Name="PLY_Multitool_Tungstone" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3907224896" Type="Event" Language="SFX" Hash="{FCA2766B-0B29-40D5-BD5D-00B113841F6F}">
+			<ShortName>LIF_Rhinortue_Pas</ShortName>
+			<Path>Event/LIF_Rhinortue_Pas.bnk</Path>
+			<Events>
+				<Event Id="3907224896" Name="LIF_Rhinortue_Pas" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1145780075" Id="3580700625"/>
+							<Children/>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1145780075" Id="1500988072" Default="true"/>
+							<Children/>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+			</Events>
+			<SwitchGroups>
+				<SwitchGroup Id="1145780075" Name="Pas_Vitesse">
+					<Switches>
+						<Switch Id="1500988072" Name="Pas_Marche"/>
+						<Switch Id="3580700625" Name="Pas_Course"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="2913619480" Name="Pas_Materiau">
+					<Switches>
+						<Switch Id="1662744943" Name="Pas_BoisMoussu"/>
+						<Switch Id="1973442484" Name="Pas_Terre"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="4045475007" Type="Event" Language="SFX" Hash="{170FFEFE-BD85-6392-0990-B3DB926A5C50}">
+			<ShortName>PLY_Attaque_Relache_Lance</ShortName>
+			<Path>Event/PLY_Attaque_Relache_Lance.bnk</Path>
+			<Events>
+				<Event Id="4045475007" Name="PLY_Attaque_Relache_Lance" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="4109000626" Type="Event" Language="SFX" Hash="{65969E11-F621-6F0F-24ED-00A02F0BB617}">
+			<ShortName>LIF_PlanteCarnivore_Degat</ShortName>
+			<Path>Event/LIF_PlanteCarnivore_Degat.bnk</Path>
+			<Events>
+				<Event Id="4109000626" Name="LIF_PlanteCarnivore_Degat" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="4115809185" Type="Event" Language="SFX" Hash="{1306EBFA-C0C4-7684-7C0E-E45589A4E145}">
+			<ShortName>UI_MenuMort_RetourPrincipal</ShortName>
+			<Path>Event/UI_MenuMort_RetourPrincipal.bnk</Path>
+			<Events>
+				<Event Id="4115809185" Name="UI_MenuMort_RetourPrincipal" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="4177524486" Type="Event" Language="SFX" Hash="{1490E980-B9AB-C694-FE56-5AF13A6144CD}">
+			<ShortName>UI_Vente_Ouvrir</ShortName>
+			<Path>Event/UI_Vente_Ouvrir.bnk</Path>
+			<Events>
+				<Event Id="4177524486" Name="UI_Vente_Ouvrir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="4242173486" Type="Event" Language="SFX" Hash="{DFBEEAA4-9C33-23FB-15D0-CBE41756BF1F}">
+			<ShortName>UI_Construire_Ameliorations_Endurance</ShortName>
+			<Path>Event/UI_Construire_Ameliorations_Endurance.bnk</Path>
+			<Events>
+				<Event Id="4242173486" Name="UI_Construire_Ameliorations_Endurance" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="4285823446" Type="Event" Language="SFX" Hash="{8696A2AA-E3E7-4AA3-DDC2-E49C77CE25CD}">
+			<ShortName>AMB_SousMarine</ShortName>
+			<Path>Event/AMB_SousMarine.bnk</Path>
+			<Events>
+				<Event Id="4285823446" Name="AMB_SousMarine" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D363E435-2E8C-A4BC-C514-FA56CFA9D395}</FileHash>
+	<FileHash>{2A09E1DD-D2AB-A111-8FA9-2B22EEAC2619}</FileHash>
 </SoundBanksInfo>
