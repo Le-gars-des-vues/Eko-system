@@ -152,11 +152,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5665062724132885578}
   - component: {fileID: 7384486540169132639}
-  - component: {fileID: 1119565216955823645}
   - component: {fileID: 2483967094418286907}
   - component: {fileID: 3186216364513396067}
   - component: {fileID: 2040393530601593819}
   - component: {fileID: 1734550559572537975}
+  - component: {fileID: 8378311753568251717}
+  - component: {fileID: 758529782082971560}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -235,14 +236,6 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1119565216955823645
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779477352421722595}
-  m_Enabled: 1
 --- !u!114 &2483967094418286907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +322,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 839064163631031773, guid: dedee1f75c5bdc649afdb5672ecbc9dc, type: 3}
   canvasTransform: {fileID: 0}
   invalid: {fileID: 0}
+  invalid2: {fileID: 0}
   itemInfo: {fileID: 7750625872123945648, guid: cbe8729260fd7be47b3c52a90f18cb40, type: 3}
   currentInfo: {fileID: 0}
 --- !u!114 &2040393530601593819
@@ -378,6 +372,42 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8378311753568251717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779477352421722595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aeb2a0e9a2b834ebf5e139e7e2a769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &758529782082971560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779477352421722595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a7e0da8067b2a4caf6aa1860099ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
 --- !u!1 &966471530120833130
 GameObject:
   m_ObjectHideFlags: 0
