@@ -1,6 +1,781 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}" SchemaVersion="110">
 	<AudioObjects>
-		<WorkUnit Name="PLY" ID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}" PersistMode="Standalone"/>
+		<WorkUnit Name="PLY" ID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="PLY_Attaque" ID="{B8CE97F1-5D12-4D6D-9BBD-BFC80636FE93}" ShortID="80679024">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{5B4D2CF7-6B7E-4A0C-88A2-923B311837C7}"/>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="PLY_Attaque_Relache" ID="{9ED763AC-4B2E-48A3-8321-9D40994DAF04}" ShortID="866345243">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{7B78CB96-7DB4-46E5-8AE9-7BE98D6DB50B}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="PLY_Attaque_Relache_Grenade" ID="{6247F7A0-5237-446E-A5E9-5F9C4A9FC9E2}" ShortID="543605034">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{FB221B24-8394-4CA9-87A1-C6523AD446D6}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="PLY_Attaque_Relache_Lance" ID="{78EEC4A4-C97D-4120-A615-B8D4BD6E5F03}" ShortID="435292447">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{67406274-383D-4C76-9EB7-0A31C8F27D55}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+						<ActorMixer Name="PLY_Attaque_Init" ID="{FE9240A0-27AE-447A-822B-52EBD98CB746}" ShortID="97597559">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{4B036593-464A-4236-88C0-D4B80F003623}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="PLY_Attaque_Init_Lance" ID="{F9CF41E8-B74D-48C2-B7F1-8E14EAD3C42E}" ShortID="661987813">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{16EE8AE0-100B-4BEB-80E4-3EC4A139708B}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="PLY_Attaque_Init_Grenade" ID="{02A6330B-3B76-415A-B6BA-2CCE973B6EEE}" ShortID="597776780">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{810E6EAF-133D-4B38-ACE5-7A4BC48AAC63}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="PLY_Multitool" ID="{84400B41-60A4-47E3-8D5E-D2C779E5A663}" ShortID="317849559">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{75702A61-9CE5-4047-BC67-675D02642FCE}"/>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<BlendContainer Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" ShortID="820337963">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{B66FB44B-DC4C-420F-BA4E-1C3011880165}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+						</BlendContainer>
+						<BlendContainer Name="PLY_Multitool_Stop" ID="{0A181902-0D44-447D-9022-6E25EAAB4DCE}" ShortID="16178144">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{1D796DAF-C0EB-483A-959C-98D2946A8B52}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+						</BlendContainer>
+						<ActorMixer Name="PLY_Multitool_Ressources" ID="{D6C817B8-BD89-4BE8-930D-560BF0FC51DE}" ShortID="626967888">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{DC52135F-EFDC-4169-A42C-53C06A6F01C3}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="PLY_Multitool_Racine" ID="{0E93541C-9F03-47E1-B222-12EB95BDBF65}" ShortID="234296935">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{7DBBCD82-2452-4B2B-828A-EA93CA57F222}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="PLY_Multitool_Magnetite" ID="{92647AEE-7524-4A94-8088-69146EFB6521}" ShortID="858688914">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{1BDE641A-08B0-466D-B518-CE558D3347CE}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="PLY_Multitool_Rubiol" ID="{D7D4DA61-0381-49FF-8DAD-CF0599FB1603}" ShortID="977265409">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{7AD33085-FC12-41ED-99CD-B7168A1910BB}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="PLY_Multitool_Tungstone" ID="{F74E7DAA-B6BC-4F26-904B-1DB8542C9EF1}" ShortID="741457507">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{C7CB753B-9D9A-4E19-8F31-635F40A88AF9}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="PLY_Multitool_Tronc" ID="{53356989-43BB-4702-A525-BD62CDF68DE3}" ShortID="803336406">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{0CC40B51-9D7B-44E2-ACEF-207F1753004A}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="PLY_Multitool_Bark" ID="{DB5D17EB-6146-47D0-BD2A-4197CE5237AB}" ShortID="948921136">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{BAA593D1-F093-4853-A429-0A7340C17DAB}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+								<BlendContainer Name="PLY_Multitool_Trompe" ID="{2D3E811D-4F9E-4EB1-849D-77BBEFB0F06C}" ShortID="1024449803">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{865EA707-FF20-4A3E-B347-0E609B71AA68}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</BlendContainer>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+				<BlendContainer Name="PLY_Saute" ID="{1873323D-E3CC-4D07-99E1-E466DD6C3FAD}" ShortID="363145822">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{5FA8769E-4AED-4306-8338-9C6AF13AAE0C}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="200"/>
+											<Property Name="Min" Type="Real64" Value="-200"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+						</Reference>
+					</ReferenceList>
+				</BlendContainer>
+				<BlendContainer Name="PLY_Grimpe" ID="{085D2397-D8D3-42E6-88B7-2D6ADC70969F}" ShortID="282228826">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{784DFB28-8EF7-44D2-A793-B010CB3B4B97}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="200"/>
+											<Property Name="Min" Type="Real64" Value="-200"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+						</Reference>
+					</ReferenceList>
+				</BlendContainer>
+				<SwitchContainer Name="PLY_Pas" ID="{5E42D87E-B83B-4C69-A446-B65846747FEA}" ShortID="964026399">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{E2DDC8A4-B400-4C70-B7CF-C81226C6E3F6}"/>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+						</Reference>
+						<Reference Name="DefaultSwitchOrState">
+							<ObjectRef Name="Pas_Marche" ID="{A4FB8DF8-F660-4701-BDDB-92FA457071D1}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+						</Reference>
+						<Reference Name="SwitchGroupOrStateGroup">
+							<ObjectRef Name="Pas_Vitesse" ID="{AE8EB8E1-12EA-4B48-AED1-776FFAAB1D6B}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<SwitchContainer Name="PLY_Pas_Course" ID="{592741D8-FA36-4BD6-B818-345B4E946BCB}" ShortID="69956481">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{02952827-2458-411F-8113-AE8BB7EB31F2}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Pas_Terre" ID="{17C9316B-2C91-45DF-A713-CCD19FA27BEC}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Pas_Materiau" ID="{BFDB47BA-A4EB-4BC3-9E1B-C95CD51E52AA}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="PLY_Pas_Course_Terre" ID="{489DCB13-83FC-4C15-B2EB-63EA6ABBA1F1}" ShortID="569986796">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{B24B204A-00B0-4653-AAA1-E853A9871F0B}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="PLY_Pas_Course_BoisMoussu" ID="{40815378-F403-4C20-B2BB-EA9CFAD1CF4F}" ShortID="592058771">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{643A2656-539A-413C-AF95-60B5D8F9EFF5}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="PLY_Pas_Course_Terre" ID="{489DCB13-83FC-4C15-B2EB-63EA6ABBA1F1}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="PLY_Pas_Course_BoisMoussu" ID="{40815378-F403-4C20-B2BB-EA9CFAD1CF4F}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Pas_Terre" ID="{17C9316B-2C91-45DF-A713-CCD19FA27BEC}"/>
+										<ItemList>
+											<ItemRef Name="PLY_Pas_Course_Terre" ID="{489DCB13-83FC-4C15-B2EB-63EA6ABBA1F1}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Pas_BoisMoussu" ID="{9CD7FBD5-5331-45A1-B76F-8BF1C9BC2ADD}"/>
+										<ItemList>
+											<ItemRef Name="PLY_Pas_Course_BoisMoussu" ID="{40815378-F403-4C20-B2BB-EA9CFAD1CF4F}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+						<SwitchContainer Name="PLY_Pas_Marche" ID="{3053EF8F-CA2E-4D85-9B3A-8293A1E5949D}" ShortID="878305726">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{E529326D-BD4A-4A1C-ABB2-D085F9ADF660}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Pas_Terre" ID="{17C9316B-2C91-45DF-A713-CCD19FA27BEC}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Pas_Materiau" ID="{BFDB47BA-A4EB-4BC3-9E1B-C95CD51E52AA}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="PLY_Pas_Marche_Terre" ID="{AD728CEA-DBAF-43F7-A8AE-7CDBE384DB6B}" ShortID="390256388">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{99267F22-49A6-4CA4-AF6F-D68881B4435D}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="PLY_Pas_Marche_BoisMoussu" ID="{7B0FE5DB-CF71-48A0-B304-85859765842B}" ShortID="407773873">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{89BB60A3-6638-4E7F-B4DF-C40E0FA4F16B}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="PLY_Pas_Marche_BoisMoussu" ID="{7B0FE5DB-CF71-48A0-B304-85859765842B}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="PLY_Pas_Marche_Terre" ID="{AD728CEA-DBAF-43F7-A8AE-7CDBE384DB6B}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Pas_Terre" ID="{17C9316B-2C91-45DF-A713-CCD19FA27BEC}"/>
+										<ItemList>
+											<ItemRef Name="PLY_Pas_Marche_Terre" ID="{AD728CEA-DBAF-43F7-A8AE-7CDBE384DB6B}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Pas_BoisMoussu" ID="{9CD7FBD5-5331-45A1-B76F-8BF1C9BC2ADD}"/>
+										<ItemList>
+											<ItemRef Name="PLY_Pas_Marche_BoisMoussu" ID="{7B0FE5DB-CF71-48A0-B304-85859765842B}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+					</ChildrenList>
+					<GroupingInfo>
+						<GroupingBehaviorList>
+							<GroupingBehavior>
+								<ItemRef Name="PLY_Pas_Marche" ID="{3053EF8F-CA2E-4D85-9B3A-8293A1E5949D}"/>
+							</GroupingBehavior>
+							<GroupingBehavior>
+								<ItemRef Name="PLY_Pas_Course" ID="{592741D8-FA36-4BD6-B818-345B4E946BCB}"/>
+							</GroupingBehavior>
+						</GroupingBehaviorList>
+						<GroupingList>
+							<Grouping>
+								<SwitchRef Name="Pas_Course" ID="{F361341D-A5AE-4FEE-AFB2-A3381EE477E0}"/>
+								<ItemList>
+									<ItemRef Name="PLY_Pas_Course" ID="{592741D8-FA36-4BD6-B818-345B4E946BCB}"/>
+								</ItemList>
+							</Grouping>
+							<Grouping>
+								<SwitchRef Name="Pas_Marche" ID="{A4FB8DF8-F660-4701-BDDB-92FA457071D1}"/>
+								<ItemList>
+									<ItemRef Name="PLY_Pas_Marche" ID="{3053EF8F-CA2E-4D85-9B3A-8293A1E5949D}"/>
+								</ItemList>
+							</Grouping>
+						</GroupingList>
+					</GroupingInfo>
+				</SwitchContainer>
+				<BlendContainer Name="PLY_Degat" ID="{0861433B-9025-4CBB-937A-81043D549DFE}" ShortID="795220045">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{D070508E-CD2C-410A-BFF0-18BFF4CA0B11}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="200"/>
+											<Property Name="Min" Type="Real64" Value="-200"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+						</Reference>
+					</ReferenceList>
+				</BlendContainer>
+				<ActorMixer Name="PLY_Ramasse" ID="{2B3750B7-A89F-4B9F-B765-8C112599102B}" ShortID="907583653">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+						</Reference>
+					</ReferenceList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

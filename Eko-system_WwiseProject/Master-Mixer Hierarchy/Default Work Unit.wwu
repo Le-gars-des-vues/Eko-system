@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}" SchemaVersion="110">
+<WwiseDocument Type="WorkUnit" ID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}" SchemaVersion="110">
 	<Busses>
-		<WorkUnit Name="Default Work Unit" ID="{36EB9FF8-7D62-4168-AD55-AF90CC6AFF38}" PersistMode="Standalone">
+		<WorkUnit Name="Default Work Unit" ID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}" PersistMode="Standalone">
 			<ChildrenList>
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<ReferenceList>
@@ -9,6 +9,312 @@
 							<ObjectRef Name="System" ID="{2E2C8145-392B-4945-9C41-3B506E499D60}" WorkUnitID="{F9F9CA0C-9BC8-4C40-B94A-CBD5D38572DC}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="SUB-MASTER" ID="{4AF485FD-D88D-472F-BD7C-587BCF280603}">
+							<ChildrenList>
+								<Bus Name="VO" ID="{287AC683-F2BA-4831-A202-F8F2B2904174}">
+									<ChildrenList>
+										<Bus Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}">
+											<ChildrenList>
+												<Bus Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}">
+													<PropertyList>
+														<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+													</PropertyList>
+													<DuckingList>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+															<DuckingParam>
+																<Volume>-96</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
+															<DuckingParam>
+																<Volume>-96</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0</FadeOutTime>
+																<FadeCurve>FadeLinear</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+													</DuckingList>
+												</Bus>
+												<Bus Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}">
+													<PropertyList>
+														<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+													</PropertyList>
+													<DuckingList>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
+															<DuckingParam>
+																<Volume>-96</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0</FadeOutTime>
+																<FadeCurve>FadeLinear</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
+															<DuckingParam>
+																<Volume>-96</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+															<DuckingParam>
+																<Volume>-96</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+													</DuckingList>
+												</Bus>
+												<Bus Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+												<Bus Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}">
+													<PropertyList>
+														<Property Name="RecoveryTime" Type="Real64" Value="0"/>
+													</PropertyList>
+													<DuckingList>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+															<DuckingParam>
+																<Volume>-93</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0.100000001490116</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
+															<DuckingParam>
+																<Volume>-96</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0.100000001490116</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
+															<DuckingParam>
+																<Volume>-96</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0.100000001490116</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}"/>
+															<DuckingParam>
+																<Volume>-96</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0.100000001490116</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+													</DuckingList>
+												</Bus>
+												<Bus Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}">
+													<PropertyList>
+														<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+													</PropertyList>
+													<DuckingList>
+														<DuckItem>
+															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+															<DuckingParam>
+																<Volume>-96</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+													</DuckingList>
+												</Bus>
+											</ChildrenList>
+										</Bus>
+										<Bus Name="VO_Narrateur" ID="{BD1D11EF-9E0B-462E-8FE4-20436BBFCCCB}">
+											<PropertyList>
+												<Property Name="RecoveryTime" Type="Real64" Value="2"/>
+											</PropertyList>
+											<ReferenceList/>
+											<DuckingList>
+												<DuckItem>
+													<BusRef Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}"/>
+													<DuckingParam>
+														<Volume>-94</Volume>
+														<FadeInTime>0.200000002980232</FadeInTime>
+														<FadeOutTime>0</FadeOutTime>
+														<FadeCurve>FadeLog2</FadeCurve>
+													</DuckingParam>
+												</DuckItem>
+											</DuckingList>
+										</Bus>
+									</ChildrenList>
+								</Bus>
+								<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}"/>
+								<Bus Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}"/>
+								<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}"/>
+								<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}"/>
+								<Bus Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}"/>
+							</ChildrenList>
+						</Bus>
+					</ChildrenList>
+				</Bus>
+				<Bus Name="Master Secondary Bus" ID="{74424817-9FC4-43E7-B3CA-BB21EDD6766D}">
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{2E2C8145-392B-4945-9C41-3B506E499D60}" WorkUnitID="{F9F9CA0C-9BC8-4C40-B94A-CBD5D38572DC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AuxBus Name="Reverb" ID="{439F347B-449C-4F57-9D74-E7A292D69B8B}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-13.5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<AuxBus Name="Reverb_Room_01" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_02" ID="{A45F496E-7327-4403-A057-C556440F54C9}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_03" ID="{B2F24955-C988-4E17-8E99-03C333521336}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_04" ID="{CC6224A5-6F26-4C2B-A24F-3A781B147DBF}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_05" ID="{62F58F6D-5ECA-4B63-9A25-1BF4D5704CBF}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_06" ID="{1A1BAF66-67B7-42B8-9C91-2995465386B3}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_07" ID="{2D981F78-04A1-43B7-9C3C-3260B107AFC8}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_08" ID="{042CD04F-6ACD-4811-B5D4-F29159D331FF}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_09" ID="{3740B3AF-2E29-4E00-A300-24FCEA9D171B}">
+									<ReferenceList>
+										<Reference Name="Effect0">
+											<Custom CreatedFrom="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}">
+												<Effect Name="Room_Large (Custom)" ID="{BFF55560-BF7C-4AB7-B911-343F1A7BB429}" ShortID="1009805735" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+													<PropertyList>
+														<Property Name="DecayTime" Type="Real32" Value="2.5"/>
+														<Property Name="Density" Type="Real32" Value="60"/>
+														<Property Name="Diffusion" Type="Real32" Value="46"/>
+														<Property Name="ERLevel" Type="Real32" Value="-23"/>
+														<Property Name="Filter1Freq" Type="Real32" Value="590"/>
+														<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+														<Property Name="Filter3Gain" Type="Real32" Value="-4.5"/>
+														<Property Name="HFDamping" Type="Real32" Value="2.7"/>
+														<Property Name="PreDelay" Type="Real32" Value="45"/>
+														<Property Name="Quality" Type="int32" Value="12"/>
+														<Property Name="ReverbLevel" Type="Real32" Value="-21"/>
+														<Property Name="RoomShape" Type="Real32" Value="55"/>
+														<Property Name="RoomSize" Type="Real32" Value="15"/>
+														<Property Name="StereoWidth" Type="Real32" Value="160"/>
+													</PropertyList>
+												</Effect>
+											</Custom>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_10" ID="{A9A46457-29A5-4B5B-A78C-6CEF5DE59831}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_11" ID="{1D00FA64-AFFD-45FB-9FCC-5AB878AF03F0}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_12" ID="{53CE0992-6C8D-4491-9E37-88ED072ED1A3}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_13" ID="{6AF5DCEB-5756-4B86-A81A-81A3838F2424}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_14" ID="{796A0A59-44B9-40E8-B097-2108F5983CD1}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Small" ID="{577F1466-A63B-47F7-98BD-C56E433F8B5D}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Room_15" ID="{9008C379-BBB4-4457-AED6-9BF3094839F5}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+								<AuxBus Name="Reverb_Default" ID="{800E4973-E1F3-41E4-B874-01CD37C49B71}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
+								</AuxBus>
+							</ChildrenList>
+						</AuxBus>
+					</ChildrenList>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>
