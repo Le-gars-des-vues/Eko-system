@@ -16,6 +16,8 @@ public class RoomInfo : MonoBehaviour
     public GameObject elevatorFloor;
     public GameObject sideWall;
 
+    public string roomType;
+
     [Header("Materials Variables")]
     public ItemData firstMat;
     public int firstMatQuantity;

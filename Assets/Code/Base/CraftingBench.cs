@@ -18,16 +18,11 @@ public class CraftingBench : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!player.craftingIsOpen)
         {
-            if (isInRange)
+            if (Input.GetKey(KeyCode.E))
             {
-                if (player.inventoryOpen && player.craftingIsOpen)
-                {
-                    player.ShowOrHideInventoryNoButtons();
-                    player.ShowOrHideCrafting();
-                }
-                else
+                if (isInRange && arrow.GetComponent<ArrowFill>().readyToActivate)
                 {
                     if (!player.inventoryOpen)
                     {
@@ -37,6 +32,17 @@ public class CraftingBench : MonoBehaviour
                     {
                         player.ShowOrHideCrafting();
                     }
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (player.inventoryOpen && player.craftingIsOpen)
+                {
+                    player.ShowOrHideInventoryNoButtons();
+                    player.ShowOrHideCrafting();
                 }
             }
         }

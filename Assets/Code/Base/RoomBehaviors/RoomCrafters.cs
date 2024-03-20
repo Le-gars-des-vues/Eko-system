@@ -16,19 +16,23 @@ public class RoomCrafters : MonoBehaviour
         {
             craftingSlots.Add(grid.GetComponent<ItemGrid>());
         }
+        fabricatedItems = new InventoryItem[craftingSlots.Count];
     }
 
     public void SetItemToDuplicate()
     {
         if (duplicatingSlot.GetItem(0, 0) != null)
         {
-            itemToDuplicateSave = duplicatingSlot.GetItem(0, 0);
+            itemToDuplicateSave = Instantiate(duplicatingSlot.GetItem(0, 0));
 
             duplicatingSlot.GetItem(0, 0).Delete();
             for (int i = 0; i <= craftingSlots.Count - 1; i++)
             {
-                fabricatedItems[i] = craftingSlots[i].GetItem(0, 0);
-                craftingSlots[i].GetItem(0, 0).Delete();
+                if (craftingSlots[i].GetItem(0, 0) != null)
+                {
+                    fabricatedItems[i] = Instantiate(craftingSlots[i].GetItem(0, 0));
+                    craftingSlots[i].GetItem(0, 0).Delete();
+                }
             }
         }
     }
@@ -44,6 +48,11 @@ public class RoomCrafters : MonoBehaviour
                 if (fabricatedItems[i] != null)
                 {
                     craftingSlots[i].PlaceItem(Instantiate(fabricatedItems[i]), 0, 0);
+                    craftingSlots[i].gameObject.transform.Find("GreyedOut").gameObject.SetActive(false);
+                }
+                else
+                {
+                    craftingSlots[i].gameObject.transform.Find("GreyedOut").gameObject.SetActive(true);
                 }
             }
         }
@@ -55,7 +64,7 @@ public class RoomCrafters : MonoBehaviour
         {
             for (int i = 0;i <= craftingSlots.Count - 1; i++)
             {
-                if (fabricatedItems[i]==null)
+                if (fabricatedItems[i] == null)
                 {
                     fabricatedItems[i] = itemToDuplicateSave;
                     i = craftingSlots.Count;

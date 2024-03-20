@@ -127,9 +127,6 @@ public class PlayerPermanent : MonoBehaviour
     public bool roomManageIsOpen = false;
     public bool uiOpened;
     public bool cameraTrigger = false;
-    bool wasOnGround = false;
-    bool wasInWater = false;
-    bool wasOnVine = false;
     [SerializeField] Texture2D[] cursorImages;
 
     private void Awake()

@@ -16,7 +16,7 @@ public class CreaturePathfinding : MonoBehaviour
     public float speedPercent;
     [SerializeField] float pathFollowThreshold = 3.5f;
     [SerializeField] float pathFollowMaxDistance = 15f;
-    [SerializeField] float reachedEndOfPathThreshold = 0.7f;
+    //[SerializeField] float reachedEndOfPathThreshold = 0.7f;
     float closestWaypointDistance = 1000f;
 
     [Header("Path Variables")]

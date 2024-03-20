@@ -79,7 +79,7 @@ public class BuildButtonDown : MonoBehaviour
                             if (transform.parent.gameObject.GetComponent<RoomInfo>().floorIndex > 0)
                                 Destroy(transform.parent.gameObject.GetComponent<RoomInfo>().elevatorFloor);
 
-                            room.GetComponent<RoomInfo>().floorIndex = transform.parent.gameObject.GetComponent<RoomInfo>().floorIndex;
+                            room.GetComponent<RoomInfo>().floorIndex = transform.parent.gameObject.GetComponent<RoomInfo>().floorIndex + 1;
                             room.GetComponent<RoomInfo>().sideIndex = 0;
                             room.transform.position = new Vector2(transform.position.x, transform.position.y + upOffset);
 

@@ -46,10 +46,10 @@ public class InventoryController : MonoBehaviour
     string gridName2;
 
     [SerializeField] GameObject invalid;
+    [SerializeField] GameObject invalid2;
 
     [SerializeField] GameObject itemInfo;
     [SerializeField] GameObject currentInfo;
-    bool infoShown = false;
 
 
     private void Awake()
@@ -62,7 +62,7 @@ public class InventoryController : MonoBehaviour
 
     private void Start()
     {
-        invalid = GameObject.Find("X");
+        invalid = GameObject.Find("Invalid");
         invalid.SetActive(false);
     }
 
@@ -234,7 +234,7 @@ public class InventoryController : MonoBehaviour
     {
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
         inventoryItem.Set(craftables[recipeChoice], defaultItemGrid);
-        if (craftables[recipeChoice].isUpgrade)
+        if (craftables[recipeChoice].hasScript)
         {
             Vector2Int? posOnGrid = upgradeItemGrid.FindSpaceForObject(inventoryItem);
             if (posOnGrid == null)
@@ -283,10 +283,10 @@ public class InventoryController : MonoBehaviour
             //Debug.Log(tileGridPosition);
             if (selectedItem == null)
             {
-                if (selectedItemGrid.gameObject.tag == "Upgrade")
+                if (selectedItemGrid.gameObject.tag == "Upgrade" || selectedItemGrid.gameObject.tag == "RoomCrafting")
                 {
                     PickUpItem(tileGridPosition);
-                    selectedItem.isUpgrading = false;
+                    selectedItem.isPlaced = false;
                 }
                 else
                     PickUpItem(tileGridPosition);
@@ -295,9 +295,9 @@ public class InventoryController : MonoBehaviour
             {
                 if (selectedItemGrid.gameObject.tag == "Upgrade")
                 {
-                    if (selectedItem.itemData.isUpgrade)
+                    if (selectedItem.itemData.hasScript)
                     {
-                        selectedItem.isUpgrading = true;
+                        selectedItem.isPlaced = true;
                         PlaceItem(tileGridPosition);
                     }
                     else
@@ -305,13 +305,32 @@ public class InventoryController : MonoBehaviour
                 }
                 else if (selectedItemGrid == upgradeItemGrid)
                 {
-                    if (selectedItem.itemData.isUpgrade)
+                    if (selectedItem.itemData.hasScript)
                     {
-                        selectedItem.isUpgrading = false;
                         PlaceItem(tileGridPosition);
                     }
                     else
                         Debug.Log("Can only place upgrades in this inventory!");
+                }
+                else if (selectedItemGrid.gameObject.tag == "RoomCrafting")
+                {
+                    RoomInfo room = GameObject.Find("RoomMenu").GetComponent<RoomManager>().currentRoom.GetComponent<RoomInfo>();
+                    if (room.roomType == "Farm")
+                    {
+                        if (selectedItem.itemData.itemType == "Plant")
+                        {
+                            selectedItem.isPlaced = true;
+                            PlaceItem(tileGridPosition);
+                        }
+                    }
+                    else if (room.roomType == "Enclosure")
+                    {
+                        if (selectedItem.itemData.itemType == "Creature")
+                        {
+                            selectedItem.isPlaced = true;
+                            PlaceItem(tileGridPosition);
+                        }
+                    }
                 }
                 else
                 {
@@ -340,7 +359,7 @@ public class InventoryController : MonoBehaviour
             position.y += (selectedItem.HEIGHT- (1 * selectedItem.HEIGHT)) * selectedItemGrid.tileSizeHeight / 2;
         }
 
-        //Debug.Log(selectedItemGrid.GetTileGridPosition(position));
+        Debug.Log(selectedItemGrid.GetTileGridPosition(position));
         return selectedItemGrid.GetTileGridPosition(position);
     }
 
@@ -394,6 +413,25 @@ public class InventoryController : MonoBehaviour
             rectTransform.position = Input.mousePosition;
             rectTransform.SetParent(canvasTransform);
             rectTransform.SetAsLastSibling();
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().roomManageIsOpen)
+            {
+                RoomInfo room = GameObject.Find("RoomMenu").GetComponent<RoomManager>().currentRoom.GetComponent<RoomInfo>();
+                if (room.roomType == "Farm")
+                {
+                    if (selectedItem.itemData.itemType == "Plant")
+                        invalid2.SetActive(false);
+                    else
+                        invalid2.SetActive(true);
+                }
+                else if (room.roomType == "Enclosure")
+                {
+                    if (selectedItem.itemData.itemType == "Creature")
+                        invalid2.SetActive(false);
+                    else
+                        invalid2.SetActive(true);
+                }
+            }
+
             if (selectedItem.tag == "Ressource")
                 invalid.SetActive(true);
             else

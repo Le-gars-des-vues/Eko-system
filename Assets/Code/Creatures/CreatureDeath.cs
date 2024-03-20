@@ -53,7 +53,7 @@ public class CreatureDeath : MonoBehaviour
             {
                 //Debug.Log("Is harvesting");
                 timer += Time.deltaTime;
-                if (timer > timeToHarvest)
+                if (timer > timeToHarvest && arrow.GetComponent<ArrowFill>().readyToActivate)
                 {
                     var ressourceSpawned = Instantiate(ressourceToHarvest, transform.position, transform.rotation);
                     ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
