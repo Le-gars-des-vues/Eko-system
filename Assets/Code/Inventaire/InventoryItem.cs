@@ -11,7 +11,8 @@ public class InventoryItem : MonoBehaviour
     public Sprite[] sprites;
 
     public bool markedForDestroy;
-    public bool isUpgrading = false;
+
+    public bool isPlaced = false;
 
     public int HEIGHT
     {
@@ -58,7 +59,7 @@ public class InventoryItem : MonoBehaviour
     internal void Set(ItemData itemData, ItemGrid itemGrid)
     {
         this.itemData = itemData;
-        if (itemData.isUpgrade)
+        if (itemData.hasScript)
         {
             this.gameObject.AddComponent(System.Type.GetType(itemData.scriptToAttach));
         }

@@ -150,9 +150,11 @@ public class GameManager : MonoBehaviour
     {
         newCycleScreen.SetActive(true);
         this.gameObject.GetComponent<Quota>().nouveauQuota();
+        cycleCount++;
+        cycleMenuText.text = "DAY " + cycleCount.ToString("000");
         textToWrite = "////////////\n\nSYSTEM.REBOOT\nTERRAFORMA CORP.\n\nNEW TRANSMISSION\n.\n.\n.\n.\n\nGOOD MORNING EMPLOYEE 1212781827!\n.\n.\n.\n.\n\nCYCLE : " + cycleCount.ToString("000") + "\n.\n.\n\nQUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $\n\nEND TRANSMISSION\n\n/////////////";
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.1f);
         newCycleText.text = "";
         foreach(char letter in textToWrite.ToCharArray())
         {
@@ -170,7 +172,6 @@ public class GameManager : MonoBehaviour
         {
             theRooms[i].GetComponent<RoomCrafters>().SpawnExtraItem();
         }
-        cycleCount++;
         SpawnNewObjects(false);
     }
 

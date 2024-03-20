@@ -24,10 +24,11 @@ public class ItemData : ScriptableObject
 
     public int value=1;
 
-    public bool isUpgrade;
+    public bool hasScript;
     public string scriptToAttach;
 
     public string description;
+    public string itemType;
 
     //public bool markedForDestroy;
 

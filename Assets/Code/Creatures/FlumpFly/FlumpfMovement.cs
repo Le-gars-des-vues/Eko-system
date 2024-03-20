@@ -8,7 +8,7 @@ public class FlumpfMovement : MonoBehaviour
     [SerializeField] Transform target;
 
     [Header("Rotate Variables")]
-    [SerializeField] float rotateSpeed = 5;
+    //[SerializeField] float rotateSpeed = 5;
     [SerializeField] float upAngle;
     [SerializeField] float downAngle;
 

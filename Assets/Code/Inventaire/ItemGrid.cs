@@ -180,11 +180,7 @@ public class ItemGrid : MonoBehaviour
 
             }
         }
-
-
-
         return true;
-
     }
 
     private bool CheckAvailableSpace(int posX, int posY, int width, int height)

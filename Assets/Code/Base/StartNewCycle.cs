@@ -5,6 +5,8 @@ using UnityEngine;
 public class StartNewCycle : MonoBehaviour
 {
     bool isInRange;
+    bool startedANewCycle;
+    float newCycleTime;
     [SerializeField] GameObject arrow;
 
     // Update is called once per frame
@@ -12,10 +14,15 @@ public class StartNewCycle : MonoBehaviour
     {
         if (isInRange)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKey(KeyCode.E) && arrow.GetComponent<ArrowFill>().readyToActivate && !startedANewCycle)
             {
+                startedANewCycle = true;
+                newCycleTime = Time.time;
                 StartCoroutine(GameObject.Find("GameManager").GetComponent<GameManager>().NewCycle());
             }
+
+            if (Time.time - newCycleTime > 5.1f)
+                startedANewCycle = false;
         }
     }
 

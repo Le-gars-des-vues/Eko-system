@@ -18,16 +18,11 @@ public class SellingScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!player.marketIsOpen)
         {
-            if (isInRange)
+            if (Input.GetKey(KeyCode.E) && arrow.GetComponent<ArrowFill>().readyToActivate)
             {
-                if (player.inventoryOpen && player.marketIsOpen)
-                {
-                    player.ShowOrHideInventoryNoButtons();
-                    player.ShowOrHideMarket();
-                }
-                else
+                if (isInRange)
                 {
                     if (!player.inventoryOpen)
                     {
@@ -35,6 +30,20 @@ public class SellingScreen : MonoBehaviour
                     }
                     if (!player.marketIsOpen)
                     {
+                        player.ShowOrHideMarket();
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (isInRange)
+                {
+                    if (player.inventoryOpen && player.marketIsOpen)
+                    {
+                        player.ShowOrHideInventoryNoButtons();
                         player.ShowOrHideMarket();
                     }
                 }
