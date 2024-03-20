@@ -43,9 +43,13 @@ public class WaterShapeController : MonoBehaviour
     private void SetWaves()
     {
         Spline waterSpline = spriteShapeController.spline;
-        int waterPointCount = waterSpline.GetPointCount();
+        int waterPointsCount = waterSpline.GetPointCount();
 
-        for (int i = cornersCount; i < waterPointCount - cornersCount; i++)
+        // Remove middle points for the waves
+        // Keep only the corners
+        // Removing 1 point at a time we can remove only the 1st point
+        // This means every time we remove 1st point the 2nd point becomes first
+        for (int i = cornersCount; i < waterPointsCount - cornersCount; i++)
         {
             waterSpline.RemovePointAt(cornersCount);
         }
@@ -55,7 +59,7 @@ public class WaterShapeController : MonoBehaviour
         float waterWidth = waterTopRightCorner.x - waterTopLeftCorner.x;
 
         float spacingPerWave = waterWidth / (waveCount + 1);
-
+        // Set new points for the waves
         for (int i = waveCount; i > 0; i--)
         {
             int index = cornersCount;
@@ -65,21 +69,31 @@ public class WaterShapeController : MonoBehaviour
             waterSpline.InsertPointAt(index, wavePoint);
             waterSpline.SetHeight(index, 0.1f);
             waterSpline.SetCorner(index, false);
-        }
-    }
+            waterSpline.SetTangentMode(index, ShapeTangentMode.Continuous);
 
-    private void CreateSprings(Spline waterSpline)
-    {
+        }
+
+
+        // loop through all the wave points
+        // plus the both top left and right corners
+
         springs = new();
         for (int i = 0; i <= waveCount + 1; i++)
         {
             int index = i + 1;
+
+            Smoothen(waterSpline, index);
+
             GameObject wavePoint = Instantiate(wavePointPrefab, wavePoints.transform, false);
             wavePoint.transform.localPosition = waterSpline.GetPosition(index);
+
             WaterSpring waterSpring = wavePoint.GetComponent<WaterSpring>();
             waterSpring.Init(spriteShapeController);
             springs.Add(waterSpring);
+            // WaveSpring waveSpring = wavePoint.GetComponent<WaveSpring>();
+            // waveSpring.Init(spriteShapeController);
         }
+        Splash(5, 1f);
     }
 
     private void Smoothen(Spline waterSpline, int index)
@@ -114,6 +128,7 @@ public class WaterShapeController : MonoBehaviour
         foreach (WaterSpring spring in springs)
         {
             spring.WaveSpringUpdate(springStiffness, springDampening);
+            spring.WavePointUpdate();
         }
         UpdateSprings();
     }
