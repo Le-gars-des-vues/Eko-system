@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 
-[ExecuteAlways]
+
 public class WaterSpring : MonoBehaviour
 {
     public float velocity = 0f;
@@ -11,8 +11,7 @@ public class WaterSpring : MonoBehaviour
     public float height = 0f;
     private float target_height = 0f;
 
-    [SerializeField]
-    private SpriteShapeController spriteShapeController = null;
+    [SerializeField] private SpriteShapeController spriteShapeController = null;
     private int waveIndex = 0;
     private List<WaterSpring> springs = new();
     private float resistance = 40f;
