@@ -42,7 +42,7 @@ namespace AK
         static const AkUniqueID LIF_SERPENT_MORT = 3563350091U;
         static const AkUniqueID LIF_SERPENT_PASSIF = 3710083091U;
         static const AkUniqueID PLY_ATTAQUE_INIT_GRENADE = 590554840U;
-        static const AkUniqueID PLY_ATTAQUE_INIT_SPEAR = 1998745357U;
+        static const AkUniqueID PLY_ATTAQUE_INIT_LANCE = 2235315151U;
         static const AkUniqueID PLY_ATTAQUE_RELACHE_GRENADE = 2572263400U;
         static const AkUniqueID PLY_ATTAQUE_RELACHE_LANCE = 4045475007U;
         static const AkUniqueID PLY_DEGAT = 3021703992U;
