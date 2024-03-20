@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 
+[ExecuteAlways]
 public class WaterShapeController : MonoBehaviour
 {
     [SerializeField] private float springStiffness = 0.1f;
-    [SerializeField] private float springDampening = 0.3f;
+    [SerializeField] private float springDampening = 0.03f;
     [SerializeField] private float spread = 0.006f;
 
     [SerializeField] private List<WaterSpring> springs = new();
