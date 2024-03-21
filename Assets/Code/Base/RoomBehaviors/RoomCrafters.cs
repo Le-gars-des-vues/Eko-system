@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class RoomCrafters : MonoBehaviour
 {
-    public ItemGrid duplicatingSlot;
+    const int DUPLICATING_SLOTS = 2;
+
+    public List<ItemGrid> duplicatingSlots = new List<ItemGrid>(DUPLICATING_SLOTS);
     public List<ItemGrid> craftingSlots = new List<ItemGrid>();
 
-    public InventoryItem itemToDuplicateSave;
+    public List<InventoryItem> itemsToDuplicateSave = new List<InventoryItem>(DUPLICATING_SLOTS);
     public InventoryItem[] fabricatedItems;
+    int slotsCount;
 
+    [SerializeField] int growthTime = 1;
+    List<int> cycleIndexes = new List<int>(DUPLICATING_SLOTS);
+
+    /*
     void OnEnable()
     {
         foreach (GameObject grid in GameObject.FindGameObjectsWithTag("RoomCrafting"))
@@ -17,21 +24,29 @@ public class RoomCrafters : MonoBehaviour
             craftingSlots.Add(grid.GetComponent<ItemGrid>());
         }
         fabricatedItems = new InventoryItem[craftingSlots.Count];
+        slotsCount = GameObject.Find("RoomMenu").GetComponent<RoomManager>().duplicatingSlots.Count;
+        for (int i = 0; i < DUPLICATING_SLOTS; i++)
+        {
+            cycleIndexes[i] = growthTime;
+        }
     }
 
     public void SetItemToDuplicate()
     {
-        if (duplicatingSlot.GetItem(0, 0) != null)
+        for (int i = 0; i < slotsCount; i++)
         {
-            itemToDuplicateSave = Instantiate(duplicatingSlot.GetItem(0, 0));
-
-            duplicatingSlot.GetItem(0, 0).Delete();
-            for (int i = 0; i <= craftingSlots.Count - 1; i++)
+            if (duplicatingSlots[i].GetItem(0, 0) != null)
             {
-                if (craftingSlots[i].GetItem(0, 0) != null)
+                itemsToDuplicateSave[i] = Instantiate(duplicatingSlots[i].GetItem(0, 0));
+
+                duplicatingSlots[i].GetItem(0, 0).Delete();
+                for (int k = 0; k <= craftingSlots.Count - 1; k++)
                 {
-                    fabricatedItems[i] = Instantiate(craftingSlots[i].GetItem(0, 0));
-                    craftingSlots[i].GetItem(0, 0).Delete();
+                    if (craftingSlots[k].GetItem(0, 0) != null)
+                    {
+                        fabricatedItems[k] = Instantiate(craftingSlots[k].GetItem(0, 0));
+                        craftingSlots[k].GetItem(0, 0).Delete();
+                    }
                 }
             }
         }
@@ -39,20 +54,23 @@ public class RoomCrafters : MonoBehaviour
 
     public void SetItemToShowInSlot()
     {
-        if (itemToDuplicateSave != null)
+        for (int i = 0; i < slotsCount; i++)
         {
-            duplicatingSlot.PlaceItem(Instantiate(itemToDuplicateSave), 0, 0);
-
-            for (int i = 0; i <= craftingSlots.Count - 1; i++)
+            if (itemsToDuplicateSave[i] != null)
             {
-                if (fabricatedItems[i] != null)
+                duplicatingSlots[i].PlaceItem(Instantiate(itemsToDuplicateSave[i]), 0, 0);
+
+                for (int k = 0; k <= craftingSlots.Count - 1; k++)
                 {
-                    craftingSlots[i].PlaceItem(Instantiate(fabricatedItems[i]), 0, 0);
-                    craftingSlots[i].gameObject.transform.Find("GreyedOut").gameObject.SetActive(false);
-                }
-                else
-                {
-                    craftingSlots[i].gameObject.transform.Find("GreyedOut").gameObject.SetActive(true);
+                    if (fabricatedItems[k] != null)
+                    {
+                        craftingSlots[k].PlaceItem(Instantiate(fabricatedItems[k]), 0, 0);
+                        craftingSlots[k].gameObject.transform.Find("GreyedOut").gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        craftingSlots[k].gameObject.transform.Find("GreyedOut").gameObject.SetActive(true);
+                    }
                 }
             }
         }
@@ -60,16 +78,20 @@ public class RoomCrafters : MonoBehaviour
 
     public void SpawnExtraItem()
     {
-        if (itemToDuplicateSave!=null)
+        for (int i = 0; i < slotsCount; i++)
         {
-            for (int i = 0;i <= craftingSlots.Count - 1; i++)
+            if (itemsToDuplicateSave[i] != null)
             {
-                if (fabricatedItems[i] == null)
+                for (int k = 0; k <= craftingSlots.Count - 1; k++)
                 {
-                    fabricatedItems[i] = itemToDuplicateSave;
-                    i = craftingSlots.Count;
+                    if (fabricatedItems[k] == null)
+                    {
+                        fabricatedItems[k] = itemsToDuplicateSave[i];
+                        k = craftingSlots.Count;
+                    }
                 }
             }
         }
     }
+    */
 }

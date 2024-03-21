@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI TimerTxt;
 
     public List<GameObject> theRooms = new List<GameObject>();
+    public List<Planters> planters = new List<Planters>();
+    public List<GameObject> enclosure = new List<GameObject>();
 
     [Header("New Cycle Variables")]
     [SerializeField] GameObject newCycleScreen;
@@ -168,9 +170,9 @@ public class GameManager : MonoBehaviour
         TimeLeft = initialTime;
         TimerOn = true;
         Debug.Log("New Cycle");
-        for (int i = 0; i <= theRooms.Count - 1; i++)
+        for (int i = 0; i <= planters.Count - 1; i++)
         {
-            theRooms[i].GetComponent<RoomCrafters>().SpawnExtraItem();
+            planters[i].Grow();
         }
         SpawnNewObjects(false);
     }

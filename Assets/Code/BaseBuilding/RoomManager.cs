@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RoomManager : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class RoomManager : MonoBehaviour
     [SerializeField] GameObject itemPrefab;
     public GameObject currentRoom;
 
-    public ItemGrid duplicatingSlot;
-    public List<ItemGrid> craftingSlots = new List<ItemGrid>();
+    //public List<ItemGrid> duplicatingSlots = new List<ItemGrid>();
+    //public List<ItemGrid> craftingSlots = new List<ItemGrid>();
 
     public List<GameObject> rooms = new List<GameObject>();
+    public TextMeshProUGUI roomName;
+    public TextMeshProUGUI roomDesc;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,7 @@ public class RoomManager : MonoBehaviour
     public void RefundRoom()
     {
         RoomInfo roomInfo = currentRoom.GetComponent<RoomInfo>();
+        roomInfo.isRefunded = true;
         if (roomInfo.firstMat != null)
         {
             for (int i = 0; i <roomInfo.firstMatQuantity; i++)
@@ -116,5 +121,15 @@ public class RoomManager : MonoBehaviour
         room.gameObject.transform.SetAsLastSibling();
 
         Destroy(currentRoom);
+    }
+
+    public bool CheckForRoom(string roomType)
+    {
+        foreach(GameObject room in rooms)
+        {
+            if (room.GetComponent<RoomInfo>().roomType == roomType)
+                return true;
+        }
+        return false;
     }
 }

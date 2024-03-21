@@ -82,7 +82,6 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private GameObject storageInventory;
     [SerializeField] private float gridOffset;
     public bool isInBase;
-    private bool hasBuiltStorage = false;
 
     [Header("Ragdoll Variables")]
     [SerializeField] private Animator anim;
@@ -114,6 +113,7 @@ public class PlayerPermanent : MonoBehaviour
     [Header("UI Variables")]
     [SerializeField] CinemachineVirtualCamera vcam;
     [SerializeField] private GameObject map;
+    [SerializeField] private GameObject noMap;
     [SerializeField] private GameObject market;
     [SerializeField] private GameObject crafting;
     [SerializeField] private GameObject building;
@@ -125,9 +125,14 @@ public class PlayerPermanent : MonoBehaviour
     public bool buildingIsOpen = false;
     public bool upgradeIsOpen = false;
     public bool roomManageIsOpen = false;
+    public bool menuIsOpen = false;
     public bool uiOpened;
     public bool cameraTrigger = false;
     [SerializeField] Texture2D[] cursorImages;
+
+    [Header("Base Variables")]
+    public bool hasBuiltMap = false;
+    public bool hasBuiltStorage = false;
 
     private void Awake()
     {
@@ -150,6 +155,8 @@ public class PlayerPermanent : MonoBehaviour
         crafting = GameObject.Find("Crafting");
         building = GameObject.Find("RoomCrafting");
         map = GameObject.Find("Map");
+        map.SetActive(false);
+        noMap = GameObject.Find("NoMap");
         upgrade = GameObject.Find("Upgrades");
         room = GameObject.Find("RoomMenu");
         gameOverScreen = GameObject.Find("GameOverScreen");
@@ -370,16 +377,19 @@ public class PlayerPermanent : MonoBehaviour
         {
             foreach (var obj in objectsNear)
             {
-                float distance = Vector2.Distance(transform.position, obj.transform.position);
-                
-                if (distance < nearestObjectDistance || nearestObject == obj)
+                if (obj != null)
                 {
-                    nearestObjectDistance = distance;
-                    nearestObject = obj;
-                    obj.GetComponent<PickableObject>().isSelected = true;
+                    float distance = Vector2.Distance(transform.position, obj.transform.position);
+
+                    if (distance < nearestObjectDistance || nearestObject == obj)
+                    {
+                        nearestObjectDistance = distance;
+                        nearestObject = obj;
+                        obj.GetComponent<PickableObject>().isSelected = true;
+                    }
+                    else
+                        obj.GetComponent<PickableObject>().isSelected = false;
                 }
-                else
-                    obj.GetComponent<PickableObject>().isSelected = false;
             }
         }
         else
@@ -794,13 +804,18 @@ public class PlayerPermanent : MonoBehaviour
                 ShowOrHideBuilding();
             }
 
-
-            map.SetActive(true);
+            if (hasBuiltMap)
+                map.SetActive(true);
+            else
+                noMap.SetActive(true);
             mapIsOpen = true;
         }
         else
         {
-            map.SetActive(false);
+            if (hasBuiltMap)
+                map.SetActive(false);
+            else
+                noMap.SetActive(false);
             mapIsOpen = false;
         }
     }

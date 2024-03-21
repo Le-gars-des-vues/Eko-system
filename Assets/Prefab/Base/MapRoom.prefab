@@ -312,19 +312,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.020200014
+      value: 0.025600016
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.0579
+      value: -21.0477
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.5411
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.2537
+      value: 21.2521
       objectReference: {fileID: 0}
     - target: {fileID: 3155542606631425395, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_SortingOrder
@@ -372,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6006496813849692638, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_Name
-      value: TeleporterRoom
+      value: MapRoom
       objectReference: {fileID: 0}
     - target: {fileID: 6548371686626350070, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -380,19 +380,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.028100014
+      value: 0.027200043
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.05345
+      value: -21.05425
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.3492
+      value: 1.3431001
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.06515
+      value: 21.06545
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -416,6 +416,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6006496813849692638, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1051041668093398479}
+    - targetCorrespondingSourceObject: {fileID: 6006496813849692638, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5135411772531804697}
   m_SourcePrefab: {fileID: 100100000, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
 --- !u!4 &1954332298861175381 stripped
 Transform:
@@ -447,10 +450,26 @@ MonoBehaviour:
   roomUnder: {fileID: 0}
   elevatorFloor: {fileID: 0}
   sideWall: {fileID: 5374365449461914236}
+  roomType: Map Room
+  roomDesc: This room provides a map of the area, an invaluable tool to find your
+    way through the dangerous terrain!
+  isRefunded: 0
   firstMat: {fileID: 0}
   firstMatQuantity: 0
   secondMat: {fileID: 0}
   thirdMat: {fileID: 0}
+--- !u!114 &5135411772531804697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8349805934325636892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1a7d17b87f2db409826f3791c27829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4830609131738383920
 PrefabInstance:
   m_ObjectHideFlags: 0

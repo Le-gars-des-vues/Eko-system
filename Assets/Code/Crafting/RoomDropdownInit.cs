@@ -22,6 +22,9 @@ public class RoomDropdownInit : MonoBehaviour
 
     public GameObject theCraftingSystem;
 
+    public TextMeshProUGUI roomName;
+    public TextMeshProUGUI roomDesc;
+
     private void Start()
     {
         mat1Quant = 0;
@@ -70,6 +73,9 @@ public class RoomDropdownInit : MonoBehaviour
 
         theCraftingSystem.GetComponent<RoomCrafting>().RoomCraftCheck();
 
+        roomName.text = Camera.main.GetComponent<InventoryController>().buildablesSide[currentRecipe].GetComponent<RoomInfo>().roomType;
+        roomDesc.text = Camera.main.GetComponent<InventoryController>().buildablesSide[currentRecipe].GetComponent<RoomInfo>().roomDesc;
+
         mat1Nom.text = Recipes.listOfBasePods[currentRecipe].firstMaterial;
         nombreMat1.text = mat1Quant.ToString()+" / "+Recipes.listOfBasePods[currentRecipe].firstMatQuantity.ToString();
 
@@ -93,9 +99,6 @@ public class RoomDropdownInit : MonoBehaviour
         {
             nombreMat3.text = mat3Quant.ToString()+" / "+Recipes.listOfBasePods[currentRecipe].thirdMatQuantity.ToString();
         }
-        
-
-
     }
     
 }

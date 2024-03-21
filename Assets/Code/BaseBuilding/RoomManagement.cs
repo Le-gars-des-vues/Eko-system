@@ -8,14 +8,14 @@ public class RoomManagement : MonoBehaviour
     public GameObject myRoom;
     PlayerPermanent player;
 
-    public GameObject roomMenu;
+    public RoomManager roomMenu;
 
     bool isInRange;
     [SerializeField] GameObject arrow;
  
     private void OnEnable()
     {
-        roomMenu = GameObject.Find("RoomMenu");
+        roomMenu = GameObject.Find("RoomMenu").GetComponent<RoomManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
@@ -56,15 +56,18 @@ public class RoomManagement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            /*
             if (myRoom.GetComponent<RoomCrafters>() != null)
             {
-                myRoom.GetComponent<RoomCrafters>().duplicatingSlot = roomMenu.GetComponent<RoomManager>().duplicatingSlot;
+                myRoom.GetComponent<RoomCrafters>().duplicatingSlots = roomMenu.GetComponent<RoomManager>().duplicatingSlots;
                 myRoom.GetComponent<RoomCrafters>().craftingSlots = roomMenu.GetComponent<RoomManager>().craftingSlots;
                 myRoom.GetComponent<RoomCrafters>().SetItemToShowInSlot();
             }
-
+            */
             isInRange = true;
-            roomMenu.GetComponent<RoomManager>().currentRoom = myRoom;
+            roomMenu.currentRoom = myRoom;
+            roomMenu.roomName.text = myRoom.GetComponent<RoomInfo>().roomType;
+            roomMenu.roomDesc.text = myRoom.GetComponent<RoomInfo>().roomDesc;
             arrow.SetActive(true);
         }
     }
@@ -75,14 +78,17 @@ public class RoomManagement : MonoBehaviour
         {
             isInRange = false;
             arrow.SetActive(false);
-            roomMenu.GetComponent<RoomManager>().currentRoom = null;
-
+            roomMenu.currentRoom = null;
+            roomMenu.roomName.text = " ";
+            roomMenu.roomDesc.text = " ";
+            /*
             if (myRoom.GetComponent<RoomCrafters>() != null)
             {
                 myRoom.GetComponent<RoomCrafters>().SetItemToDuplicate();
                 //myRoom.GetComponent<RoomCrafters>().duplicatingSlot = null;
                 //myRoom.GetComponent<RoomCrafters>().craftingSlots.Clear();
             }
+            */
         }
     }
 }

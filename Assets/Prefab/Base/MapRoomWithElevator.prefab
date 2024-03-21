@@ -743,8 +743,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.021099985, y: -21.06075, z: 0}
-    m_Extent: {x: 1.355, y: 21.06245, z: 0}
+    m_Center: {x: 0.015450001, y: -21.04995, z: 0}
+    m_Extent: {x: 1.35055, y: 21.059551, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -825,8 +825,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.023799956, y: -21.0557, z: 0}
-    m_Extent: {x: 1.5469999, y: 21.2596, z: 0}
+    m_Center: {x: 0.023599982, y: -21.05525, z: 0}
+    m_Extent: {x: 1.546, y: 21.25685, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -941,19 +941,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.02545005
+      value: 0.027100027
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.05865
+      value: -21.05505
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.5380499
+      value: 1.5367999
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.25625
+      value: 21.25885
       objectReference: {fileID: 0}
     - target: {fileID: 3155542606631425395, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_SortingOrder
@@ -1001,23 +1001,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6006496813849692638, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_Name
-      value: TeleporterRoomWithElevator
+      value: MapRoomWithElevator
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.020749986
+      value: 0.017100036
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.0532
+      value: -21.062351
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.35325
+      value: 1.3501999
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.071701
+      value: 21.06385
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1047,6 +1047,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6006496813849692638, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 815255233055642409}
+    - targetCorrespondingSourceObject: {fileID: 6006496813849692638, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5416372981905871303}
   m_SourcePrefab: {fileID: 100100000, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
 --- !u!4 &1954332298861175381 stripped
 Transform:
@@ -1078,10 +1081,26 @@ MonoBehaviour:
   roomUnder: {fileID: 0}
   elevatorFloor: {fileID: 889225299100461966}
   sideWall: {fileID: 5374365449461914236}
+  roomType: Map Room
+  roomDesc: This room provides a map of the area, an invaluable tool to find your
+    way through the dangerous terrain!
+  isRefunded: 0
   firstMat: {fileID: 0}
   firstMatQuantity: 0
   secondMat: {fileID: 0}
   thirdMat: {fileID: 0}
+--- !u!114 &5416372981905871303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8349805934325636892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1a7d17b87f2db409826f3791c27829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2372765613828866339
 PrefabInstance:
   m_ObjectHideFlags: 0

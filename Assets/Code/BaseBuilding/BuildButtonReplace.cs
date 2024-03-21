@@ -95,6 +95,9 @@ public class BuildButtonReplace : MonoBehaviour
                                 Destroy(room.GetComponent<RoomInfo>().elevatorFloor);
                             }
 
+                            if (ingredientList.index == 2 || ingredientList.index == 3)
+                                gameManager.GetComponent<GameManager>().theRooms.Add(room);
+
                             room.gameObject.transform.SetParent(theBase.transform.Find("Interior").transform);
                             room.gameObject.transform.SetAsLastSibling();
                             roomManager.rooms.Add(room);

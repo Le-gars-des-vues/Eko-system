@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1019012503
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 1bb4f92cfc7a81842b44037da588e68d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1019012503
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d7829da90f6e5f64c81a2f11f7e71695, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -228,19 +228,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.028900027
+      value: 0.018549979
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.04915
+      value: -21.05055
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.5372
+      value: 1.5371499
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.25065
+      value: 21.25685
       objectReference: {fileID: 0}
     - target: {fileID: 3155542606631425395, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_SortingOrder
@@ -296,19 +296,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.031350017
+      value: 0.022400022
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.05405
+      value: -21.051
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.34885
+      value: 1.3519
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.07095
+      value: 21.066
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -358,10 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa28c843363ec7443824a932d9293b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duplicatingSlot: {fileID: 0}
+  duplicatingSlots: []
   craftingSlots: []
-  itemToDuplicateSave: {fileID: 0}
+  itemsToDuplicateSave: []
   fabricatedItems: []
+  growthTime: 1
 --- !u!114 &1051041668093398479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +383,9 @@ MonoBehaviour:
   roomUnder: {fileID: 0}
   elevatorFloor: {fileID: 0}
   sideWall: {fileID: 5374365449461914236}
+  roomType: Empty Room
+  roomDesc: It really is just an empty room
+  isRefunded: 0
   firstMat: {fileID: 0}
   firstMatQuantity: 0
   secondMat: {fileID: 0}

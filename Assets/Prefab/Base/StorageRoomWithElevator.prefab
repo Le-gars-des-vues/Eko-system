@@ -743,8 +743,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.026199996, y: -21.0544, z: 0}
-    m_Extent: {x: 1.3419001, y: 21.073, z: 0}
+    m_Center: {x: 0.023549974, y: -21.0548, z: 0}
+    m_Extent: {x: 1.3564501, y: 21.057001, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -993,8 +993,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.019900024, y: -21.047949, z: 0}
-    m_Extent: {x: 1.5346999, y: 21.25625, z: 0}
+    m_Center: {x: 0.01820004, y: -21.05075, z: 0}
+    m_Extent: {x: 1.5395, y: 21.25005, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1109,19 +1109,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.032399952
+      value: 0.017750025
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.052
+      value: -21.056551
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.5390999
+      value: 1.53985
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.253302
+      value: 21.24735
       objectReference: {fileID: 0}
     - target: {fileID: 3155542606631425395, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_SortingOrder
@@ -1173,19 +1173,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.026000023
+      value: 0.025600016
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.05955
+      value: -21.059149
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.3556
+      value: 1.3489001
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.060251
+      value: 21.05985
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1221,6 +1221,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6006496813849692638, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 815255233055642409}
+    - targetCorrespondingSourceObject: {fileID: 6006496813849692638, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1131566447029817965}
   m_SourcePrefab: {fileID: 100100000, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
 --- !u!4 &1954332298861175381 stripped
 Transform:
@@ -1252,10 +1255,27 @@ MonoBehaviour:
   roomUnder: {fileID: 0}
   elevatorFloor: {fileID: 889225299100461966}
   sideWall: {fileID: 5374365449461914236}
+  roomType: Storage
+  roomDesc: The ressources you put into the storage are safe even in the event of
+    your untimely demise. It also acts as additionnal space to hold all your cool
+    stuff!
+  isRefunded: 0
   firstMat: {fileID: 0}
   firstMatQuantity: 0
   secondMat: {fileID: 0}
   thirdMat: {fileID: 0}
+--- !u!114 &-1131566447029817965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8349805934325636892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add92a08a1c06e94bbdb9cfbe7e6ecf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2372765613828866339
 PrefabInstance:
   m_ObjectHideFlags: 0
