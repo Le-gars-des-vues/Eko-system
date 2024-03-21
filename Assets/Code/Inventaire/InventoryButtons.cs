@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryButtons : MonoBehaviour
 {
     PlayerPermanent player;
+    int index = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -12,18 +13,53 @@ public class InventoryButtons : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
-    public void ShowOrHideInventory()
+    public void RightButton()
     {
-        player.ShowOrHideInventory();
+        CheckUI();
+
+            if (index == 0)
+        {
+            index = 1;
+            player.ShowOrHideMap();
+        }
+        else if (index == 1)
+        {
+            index = 2;
+            player.ShowOrHideUpgrades();
+        }
+        else if (index == 2)
+        {
+            index = 0;
+            player.ShowOrHideInventory();
+        }
     }
 
-    public void ShowOrHideMap()
+    public void LeftButton()
     {
-        player.ShowOrHideMap();
+        if (index == 0)
+        {
+            index = 2;
+            player.ShowOrHideUpgrades();
+        }
+        else if (index == 2)
+        {
+            index = 1;
+            player.ShowOrHideMap();
+        }
+        else if (index == 1)
+        {
+            index = 0;
+            player.ShowOrHideInventory();
+        }
     }
 
-    public void ShowOrHideUpgrade()
+    void CheckUI()
     {
-        player.ShowOrHideUpgrades();
+        if (player.inventoryOpen)
+            index = 0;
+        else if (player.mapIsOpen)
+            index = 1;
+        else if (player.upgradeIsOpen)
+            index = 2;
     }
 }

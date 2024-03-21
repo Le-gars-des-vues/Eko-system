@@ -110,7 +110,7 @@ public class RoomCrafting : MonoBehaviour
                 for (int y = 0; y < tempHeightStorage; y++)
                 {
 
-                    anItem = inventoryItemGrid.CheckIfItemPresent(x, y);
+                    anItem = storageItemGrid.CheckIfItemPresent(x, y);
                     if (anItem != null)
                     {
 
@@ -219,7 +219,7 @@ public class RoomCrafting : MonoBehaviour
                     for (int y = 0; y < tempHeightStorage; y++)
                     {
 
-                        anItem = inventoryItemGrid.CheckIfItemPresent(x, y);
+                        anItem = storageItemGrid.CheckIfItemPresent(x, y);
                         if (anItem != null)
                         {
                             if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].firstMaterial && i1 < Recipes.listOfBasePods[laRecette].firstMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)

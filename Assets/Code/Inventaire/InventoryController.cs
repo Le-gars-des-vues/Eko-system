@@ -46,7 +46,7 @@ public class InventoryController : MonoBehaviour
     string gridName2;
 
     [SerializeField] GameObject invalid;
-    [SerializeField] GameObject invalid2;
+    //[SerializeField] GameObject invalid2;
 
     [SerializeField] GameObject itemInfo;
     [SerializeField] GameObject currentInfo;
@@ -234,7 +234,7 @@ public class InventoryController : MonoBehaviour
     {
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
         inventoryItem.Set(craftables[recipeChoice], defaultItemGrid);
-        if (craftables[recipeChoice].hasScript)
+        if (craftables[recipeChoice].itemType == "Upgrade")
         {
             Vector2Int? posOnGrid = upgradeItemGrid.FindSpaceForObject(inventoryItem);
             if (posOnGrid == null)
@@ -282,20 +282,12 @@ public class InventoryController : MonoBehaviour
             Vector2Int tileGridPosition = GetTileGridPosition();
             //Debug.Log(tileGridPosition);
             if (selectedItem == null)
-            {
-                if (selectedItemGrid.gameObject.tag == "Upgrade" || selectedItemGrid.gameObject.tag == "RoomCrafting")
-                {
-                    PickUpItem(tileGridPosition);
-                    selectedItem.isPlaced = false;
-                }
-                else
-                    PickUpItem(tileGridPosition);
-            }
+                PickUpItem(tileGridPosition);
             else
             {
                 if (selectedItemGrid.gameObject.tag == "Upgrade")
                 {
-                    if (selectedItem.itemData.hasScript)
+                    if (selectedItem.itemData.itemType == "Upgrade")
                     {
                         selectedItem.isPlaced = true;
                         PlaceItem(tileGridPosition);
@@ -305,13 +297,14 @@ public class InventoryController : MonoBehaviour
                 }
                 else if (selectedItemGrid == upgradeItemGrid)
                 {
-                    if (selectedItem.itemData.hasScript)
+                    if (selectedItem.itemData.itemType == "Upgrade")
                     {
                         PlaceItem(tileGridPosition);
                     }
                     else
                         Debug.Log("Can only place upgrades in this inventory!");
                 }
+                /*
                 else if (selectedItemGrid.gameObject.tag == "RoomCrafting")
                 {
                     RoomInfo room = GameObject.Find("RoomMenu").GetComponent<RoomManager>().currentRoom.GetComponent<RoomInfo>();
@@ -332,6 +325,7 @@ public class InventoryController : MonoBehaviour
                         }
                     }
                 }
+                */
                 else
                 {
                     PlaceItem(tileGridPosition);
@@ -368,6 +362,7 @@ public class InventoryController : MonoBehaviour
         bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem);
         if (complete)
         {
+            selectedItem.itemGrid = selectedItemGrid;
             rectTransform.sizeDelta = new Vector2(selectedItem.WIDTH * selectedItemGrid.tileSizeWidth, selectedItem.HEIGHT * selectedItemGrid.tileSizeHeight);
             if (selectedItemGrid.gameObject.tag == "Hotbar")
             {
@@ -394,6 +389,8 @@ public class InventoryController : MonoBehaviour
         selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
         if (selectedItem != null)
         {
+            selectedItem.itemGrid = null;
+            selectedItem.isPlaced = false;
             rectTransform = selectedItem.GetComponent<RectTransform>();
             if (selectedItemGrid.gameObject.tag == "Hotbar")
             {
@@ -413,6 +410,7 @@ public class InventoryController : MonoBehaviour
             rectTransform.position = Input.mousePosition;
             rectTransform.SetParent(canvasTransform);
             rectTransform.SetAsLastSibling();
+            /*
             if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().roomManageIsOpen)
             {
                 RoomInfo room = GameObject.Find("RoomMenu").GetComponent<RoomManager>().currentRoom.GetComponent<RoomInfo>();
@@ -431,7 +429,7 @@ public class InventoryController : MonoBehaviour
                         invalid2.SetActive(true);
                 }
             }
-
+            */
             if (selectedItem.tag == "Ressource")
                 invalid.SetActive(true);
             else

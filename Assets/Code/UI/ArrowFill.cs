@@ -11,6 +11,13 @@ public class ArrowFill : MonoBehaviour
     public bool readyToActivate;
     bool holdingKey;
     bool changedSpeed = false;
+    Vector3 arrowPos;
+
+    private void Start()
+    {
+        arrowPos = transform.Find("Visual").transform.localPosition;
+        transform.Find("Visual").transform.localPosition = arrowPos;
+    }
 
     // Start is called before the first frame update
     void OnEnable()

@@ -16,7 +16,7 @@ public class HarvestableRessourceNode : MonoBehaviour
     public float timer;
     [SerializeField] GameObject ressourceToSpawn;
     [SerializeField] GameObject consummableToSpawn;
-    [SerializeField] float ressourceAmount;
+    public float ressourceAmount;
     [SerializeField] float spawnForce;
 
     public bool isPointing;
@@ -51,7 +51,7 @@ public class HarvestableRessourceNode : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastLength, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastLength, LayerMask.GetMask("Ground", "Planters"));
         if (hit.collider == null)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, transform.position.y - 0.1f), 0.1f);

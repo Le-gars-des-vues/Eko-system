@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -27.67, y: 0.83, z: 0}
-  m_LocalScale: {x: 0.3707, y: 0.3707, z: 0.3707}
+  m_LocalScale: {x: 0.3707, y: 0.3707, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8100266305329881275}
@@ -152,8 +152,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.98, y: 0.99999994}
-  m_Direction: 0
+  m_Size: {x: 1.23, y: 0.99999994}
+  m_Direction: 1
 --- !u!114 &4557873609218871245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 43277d9664609ef40971e210b2bd0d6b, type: 2}
+  itemGrid: {fileID: 0}
   stackAmount: 0
   sprites: []
   markedForDestroy: 0
@@ -356,7 +357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 490306149884159714, guid: d539275ed056eea489df55833fdc451d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8214892596907868634, guid: d539275ed056eea489df55833fdc451d, type: 3}
       propertyPath: m_LocalScale.x

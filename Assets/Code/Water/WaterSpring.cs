@@ -11,6 +11,7 @@ public class WaterSpring : MonoBehaviour
     public float height = 0f;
     private float target_height = 0f;
 
+    public Transform springTransform;
     [SerializeField] private SpriteShapeController spriteShapeController = null;
     private int waveIndex = 0;
     private List<WaterSpring> springs = new();
@@ -50,17 +51,13 @@ public class WaterSpring : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        /*
-        if (other.gameObject.tag.Equals("FallingObject"))
+        if (collider.gameObject.tag == "Player")
         {
-            FallingObject fallingObject = other.gameObject.GetComponent<FallingObject>();
-            Rigidbody2D rb = fallingObject.rigidbody2D;
-            var speed = rb.velocity;
+            var speed = collider.gameObject.GetComponent<Rigidbody2D>().velocity;
 
             velocity += speed.y / resistance;
         }
-        */
     }
 }

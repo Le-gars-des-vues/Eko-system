@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour
 {
     public ItemData itemData;
+    public ItemGrid itemGrid;
     public int stackAmount;
     public Sprite[] sprites;
 

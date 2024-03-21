@@ -73,7 +73,6 @@ public class PickableObject : MonoBehaviour
                 isFlashing = true;
                 //sprite.material = flashMaterial;
                 arrow.SetActive(true);
-
             }
             else if (!isSelected && isFlashing)
             {

@@ -86,8 +86,9 @@ public class BuildButtonDown : MonoBehaviour
                             transform.parent.gameObject.GetComponent<RoomInfo>().roomUnder = room;
                             room.GetComponent<RoomInfo>().roomAbove = transform.parent.gameObject;
 
-                            if (ingredientList.index == 0 || ingredientList.index == 1)
+                            if (ingredientList.index == 2 || ingredientList.index == 3)
                                 gameManager.GetComponent<GameManager>().theRooms.Add(room);
+
                             room.gameObject.transform.SetParent(theBase.transform.Find("Interior").transform);
                             room.gameObject.transform.SetAsLastSibling();
                             roomManager.rooms.Add(room);

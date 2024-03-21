@@ -83,7 +83,7 @@ public class BuildButtonSide : MonoBehaviour
                             transform.parent.gameObject.GetComponent<RoomInfo>().roomToTheLeft = room;
                             room.GetComponent<RoomInfo>().roomToTheRight = transform.parent.gameObject;
 
-                            if (ingredientList.index == 0 || ingredientList.index == 1)
+                            if (ingredientList.index == 2 || ingredientList.index == 3)
                                 gameManager.GetComponent<GameManager>().theRooms.Add(room);
 
                             room.gameObject.transform.SetParent(theBase.transform.Find("Interior").transform);

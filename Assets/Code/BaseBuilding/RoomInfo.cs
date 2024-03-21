@@ -17,6 +17,9 @@ public class RoomInfo : MonoBehaviour
     public GameObject sideWall;
 
     public string roomType;
+    public string roomDesc;
+
+    public bool isRefunded = false;
 
     [Header("Materials Variables")]
     public ItemData firstMat;
