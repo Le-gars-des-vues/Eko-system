@@ -29,7 +29,7 @@ public class ArrowFill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) || Input.GetKeyDown(KeyCode.E))
         {
             holdingKey = true;
             if (timer < timeToFill)

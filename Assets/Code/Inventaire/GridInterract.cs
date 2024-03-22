@@ -11,20 +11,29 @@ public class GridInterract : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     ItemGrid itemGrid;
     [SerializeField] Transform canvasTransform;
     RectTransform rectTransform;
+    PlayerPermanent player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        inventoryController.SelectedItemGrid = itemGrid;
-        if(inventoryController.selectedItem != null && (inventoryController.SelectedItemGrid.gameObject.tag == "Hotbar" || inventoryController.SelectedItemGrid.gameObject.tag == "Upgrade" || inventoryController.SelectedItemGrid.gameObject.tag == "RoomCrafting"))
+        if (player.uiOpened)
         {
-            inventoryController.selectedItem.itemData.height = inventoryController.selectedItem.itemData.hotbarHeight;
-            inventoryController.selectedItem.itemData.width = inventoryController.selectedItem.itemData.hotbarWidth;
-        }
-        if (inventoryController.selectedItem != null)
-        {
-            rectTransform = inventoryController.selectedItem.GetComponent<RectTransform>();
-            rectTransform.SetParent(canvasTransform);
-            rectTransform.SetAsLastSibling();
+            inventoryController.SelectedItemGrid = itemGrid;
+            if (inventoryController.selectedItem != null && (inventoryController.SelectedItemGrid.gameObject.tag == "Hotbar" || inventoryController.SelectedItemGrid.gameObject.tag == "Upgrade" || inventoryController.SelectedItemGrid.gameObject.tag == "RoomCrafting"))
+            {
+                inventoryController.selectedItem.itemData.height = inventoryController.selectedItem.itemData.hotbarHeight;
+                inventoryController.selectedItem.itemData.width = inventoryController.selectedItem.itemData.hotbarWidth;
+            }
+            if (inventoryController.selectedItem != null)
+            {
+                rectTransform = inventoryController.selectedItem.GetComponent<RectTransform>();
+                rectTransform.SetParent(canvasTransform);
+                rectTransform.SetAsLastSibling();
+            }
         }
     }
 

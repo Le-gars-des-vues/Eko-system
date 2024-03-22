@@ -40,10 +40,10 @@ public class TardidogMovement : MonoBehaviour
     bool isGrounded;
     public bool isFacingRight = true;
     public int facingDirection = 1;
-    bool targetIsRight;
-    bool targetIsInFront;
+    public bool targetIsRight;
+    public bool targetIsInFront;
     float dist = 0;
-    bool nextPointIsRight;
+    public bool nextPointIsRight;
 
     [Header("Sight Variables")]
     public Transform head;

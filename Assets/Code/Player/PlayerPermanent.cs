@@ -39,8 +39,8 @@ public class PlayerPermanent : MonoBehaviour
     public bool staminaDepleted = false;
 
     [Header("Shield Variables")]
-    public float maxShield;
-    public float currentShield;
+    public float maxShield = 0;
+    public float currentShield = 0;
     public float shieldRegainRate;
     public Slider shieldSlider;
     public float shieldCountdown;
@@ -63,7 +63,6 @@ public class PlayerPermanent : MonoBehaviour
     [Header("Exploration Variables")]
     public bool survivalMode;
     public GameObject objectInRightHand = null;
-    //public GameObject objectInLeftHand = null; Utilisation de la main gauche
     public bool isFacingRight;
     public List<GameObject> objectsNear = new List<GameObject>();
     public float nearestObjectDistance = 10;
@@ -75,6 +74,8 @@ public class PlayerPermanent : MonoBehaviour
 
     public float minDistanceToHarvest;
     public float timeToHarvest;
+
+    public bool isPoisoned;
 
     [Header("Inventory Variables")]
     public bool inventoryOpen = false;
@@ -100,6 +101,7 @@ public class PlayerPermanent : MonoBehaviour
     public GameObject gameOverScreen;
 
     [Header("Upgrade Variables")]
+    public bool hasMultitool;
     public bool hasDoubleJump;
     public bool hasPunch;
     public bool hasOxygenMask;
@@ -285,7 +287,7 @@ public class PlayerPermanent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U) && !marketIsOpen && !craftingIsOpen)
             ShowOrHideUpgrades();
 
-        if (Input.GetKeyDown(KeyCode.LeftAlt) && !marketIsOpen && !craftingIsOpen)
+        if (Input.GetKeyDown(KeyCode.LeftAlt) && !marketIsOpen && !craftingIsOpen && hasMultitool)
         {
             if (isInBase)
             {
@@ -364,6 +366,11 @@ public class PlayerPermanent : MonoBehaviour
             int index = Random.Range(0, itemsInInventory.Count - 1);
             itemsInInventory[index].GetComponent<InventoryItem>().Delete();
             itemsInInventory.RemoveAt(index);
+        }
+        if (objectInRightHand != null && !isUsingMultiTool)
+        {
+            objectInRightHand.GetComponent<PickableObject>().isPickedUp = false;
+            UnequipObject();
         }
 
         gameOverScreen.SetActive(true);
@@ -934,6 +941,26 @@ public class PlayerPermanent : MonoBehaviour
                     vcam.m_Lens.OrthographicSize = Mathf.Lerp(8.2f, 20f, timer / duration);
             }
             yield return null;
+        }
+    }
+
+    public IEnumerator Poison(float duration, float tickDamage, float tickInterval)
+    {
+        if (hasShield && currentShield > 0)
+        {
+            yield return null;
+        }
+        else
+        {
+            hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", true);
+            float timer = 0;
+            while (timer < duration)
+            {
+                timer += tickInterval;
+                ChangeHp(-tickDamage, false);
+                yield return new WaitForSeconds(tickInterval);
+            }
+            hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", false);
         }
     }
 

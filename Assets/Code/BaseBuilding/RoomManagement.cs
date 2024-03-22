@@ -27,10 +27,6 @@ public class RoomManagement : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.E) && arrow.GetComponent<ArrowFill>().readyToActivate)
                 {
-                    if (!player.inventoryOpen)
-                    {
-                        player.ShowOrHideInventoryNoButtons();
-                    }
                     if (!player.roomManageIsOpen)
                     {
                         player.ShowOrHideRoomManagement();
@@ -42,9 +38,8 @@ public class RoomManagement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (player.inventoryOpen && player.roomManageIsOpen)
+                if (player.roomManageIsOpen)
                 {
-                    player.ShowOrHideInventoryNoButtons();
                     player.ShowOrHideRoomManagement();
                 }
             }

@@ -46,8 +46,13 @@ public class CreatureDeath : MonoBehaviour
     {
         if (CanHarvest())
         {
-            if (arrow != null && !arrow.activeSelf)
-                arrow.SetActive(true);
+            if (arrow != null)
+            {
+                if (!arrow.activeSelf)
+                    arrow.SetActive(true);
+                else
+                    arrow.transform.localRotation = Quaternion.Inverse(transform.rotation);
+            }
             //Debug.Log("can harvest");
             if (Input.GetKey(KeyCode.E))
             {

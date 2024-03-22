@@ -26,6 +26,7 @@ public class Base : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        background = GameObject.Find("ParallaxBackground");
         if (isSceneLoaded)
         {
             transform.position = new Vector2(135.3f, 4.6f);
@@ -33,12 +34,21 @@ public class Base : MonoBehaviour
         door = new Vector2(transform.position.x, transform.position.y - 4.5f);
         leftDoorAnim = transform.Find("Outside").Find("LeftDoor").GetComponent<Animator>();
         rightDoorAnim = transform.Find("Outside").Find("RightDoor").GetComponent<Animator>();
-        buildButton.SetActive(true);
+        //buildButton.SetActive(true);
     }
 
     private void Start()
     {
-        background = GameObject.Find("ParallaxBackground");
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (isSceneLoaded)
+        {
+            baseBackground.SetActive(true);
+            isInside = true;
+            pixelLight.intensity = 0.03f;
+            player.transform.position = baseEntryPoint.position;
+            player.GetComponent<PlayerPermanent>().ResetFeetPosition();
+        }
+        buildButton.SetActive(true);
     }
 
     // Update is called once per frame

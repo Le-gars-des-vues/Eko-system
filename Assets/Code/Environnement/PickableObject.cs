@@ -28,26 +28,57 @@ public class PickableObject : MonoBehaviour
     public bool isPickedUp = false;
     [SerializeField] private float rotateSpeed;
 
+    public bool isSceneLoaded = false;
+
+    private void Start()
+    {
+        if (isSceneLoaded)
+        {
+            sprite = GetComponent<SpriteRenderer>();
+            ogColor = sprite.color;
+            ogMaterial = sprite.material;
+
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+
+            rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
+            //leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
+
+            playerInventory = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
+            item = GetComponent<InventoryItem>();
+
+            foreach (GameObject hb in GameObject.FindGameObjectsWithTag("Hotbar"))
+            {
+                if (hb.GetComponent<ItemGrid>() != null)
+                {
+                    hotbar.Add(hb);
+                }
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void OnEnable()
     {
-        sprite = GetComponent<SpriteRenderer>();
-        ogColor = sprite.color;
-        ogMaterial = sprite.material;
-
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-
-        rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
-        //leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
-
-        playerInventory = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
-        item = GetComponent<InventoryItem>();
-
-        foreach (GameObject hb in GameObject.FindGameObjectsWithTag("Hotbar"))
+        if (!isSceneLoaded)
         {
-            if (hb.GetComponent<ItemGrid>() != null)
+            sprite = GetComponent<SpriteRenderer>();
+            ogColor = sprite.color;
+            ogMaterial = sprite.material;
+
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+
+            rightHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_4").Find("bone_5").gameObject;
+            //leftHand = GameObject.FindGameObjectWithTag("Player").transform.Find("player_model").transform.Find("bone_1").Find("bone_2").Find("bone_6").Find("bone_7").gameObject;
+
+            playerInventory = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
+            item = GetComponent<InventoryItem>();
+
+            foreach (GameObject hb in GameObject.FindGameObjectsWithTag("Hotbar"))
             {
-                hotbar.Add(hb);
+                if (hb.GetComponent<ItemGrid>() != null)
+                {
+                    hotbar.Add(hb);
+                }
             }
         }
     }
@@ -84,6 +115,8 @@ public class PickableObject : MonoBehaviour
             if (isFlashing)
                 arrow.transform.localRotation = Quaternion.Inverse(transform.rotation);
 
+            if (player == null)
+                player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
             if (Vector2.Distance(player.transform.position, transform.position) <= 3f)
             {
                 if (!player.objectsNear.Contains(gameObject))

@@ -17,6 +17,7 @@ public class RoomInfo : MonoBehaviour
     public GameObject sideWall;
 
     public string roomType;
+    [TextArea(3, 5)]
     public string roomDesc;
 
     public bool isRefunded = false;

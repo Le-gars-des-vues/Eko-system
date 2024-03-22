@@ -24,7 +24,6 @@ public class CreaturePathfinding : MonoBehaviour
     public int pathIndex;
 
     [Header("Checks")]
-    public bool isFlying;
     public bool reachEndOfPath = false;
     CreatureState state;
 
@@ -46,7 +45,6 @@ public class CreaturePathfinding : MonoBehaviour
         if (state.debug)
             Debug.Log(gameObject.transform.parent.gameObject.name + " Stopped Pathfinding");
         state.isPathfinding = false;
-        path = null;
         pathTarget = null;
         StopAllCoroutines();
     }
@@ -72,7 +70,7 @@ public class CreaturePathfinding : MonoBehaviour
         
         if (pathTarget != null)
         {
-            PathRequestManager.RequestPath(new PathRequest(transform.position, pathTarget.position, OnPathFound), isFlying);
+            PathRequestManager.RequestPath(new PathRequest(transform.position, pathTarget.position, OnPathFound), GetComponent<CreatureState>().isFlying);
 
             float sqrMoveThreshold = PATH_UPDATE_MOVE_THRESHOLD * PATH_UPDATE_MOVE_THRESHOLD;
             Vector2 targetPosOld = pathTarget.position;
@@ -85,7 +83,7 @@ public class CreaturePathfinding : MonoBehaviour
                 {
                     if (state.debug)
                         Debug.Log("Changed path");
-                    PathRequestManager.RequestPath(new PathRequest(transform.position, pathTarget.position, OnPathFound), isFlying);
+                    PathRequestManager.RequestPath(new PathRequest(transform.position, pathTarget.position, OnPathFound), GetComponent<CreatureState>().isFlying);
                     targetPosOld = new Vector2(transform.position.x, transform.position.y);
                 }
             }
@@ -99,12 +97,15 @@ public class CreaturePathfinding : MonoBehaviour
 
         speedPercent = 1;
 
-        while (state.isPathfinding && path != null)
+        if (path == null)
+        {
+            Debug.Log("Path is null");
+        }
+
+        while (state.isPathfinding)
         {
             Vector2 pos = new Vector2(transform.position.x, transform.position.y);
-            if (state.debug)
-                Debug.Log(Vector2.Distance(transform.position, path.lookPoints[pathIndex]));
-            while (path != null && path.turnBoundaries[pathIndex].HasCrossedLine(pos) && Vector2.Distance(transform.position, path.lookPoints[pathIndex]) < pathFollowThreshold)
+            while (path.turnBoundaries[pathIndex].HasCrossedLine(pos) && Vector2.Distance(transform.position, path.lookPoints[pathIndex]) < pathFollowThreshold)
             {
                 if (state.debug)
                 {
@@ -124,7 +125,7 @@ public class CreaturePathfinding : MonoBehaviour
                     pathIndex++;
             }
 
-            if (path != null && state.isPathfinding)
+            if (state.isPathfinding)
             {
                 if ((pathIndex >= path.slowDownIndex && stoppingDistance > 0) || (pathIndex == 0))
                 {
@@ -139,7 +140,7 @@ public class CreaturePathfinding : MonoBehaviour
                 }
             }
             
-            if (path != null && Vector2.Distance(transform.position, path.lookPoints[pathIndex]) > pathFollowMaxDistance && pathIndex != 0)
+            if (Vector2.Distance(transform.position, path.lookPoints[pathIndex]) > pathFollowMaxDistance && pathIndex != 0)
             {
                 for (int i = pathIndex; i < path.lookPoints.Length; i++)
                 {

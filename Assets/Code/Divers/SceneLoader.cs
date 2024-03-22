@@ -7,7 +7,7 @@ public static class SceneLoader
 {
     public enum Scene
     {
-        Forest_Test, 
+        World, 
         CharacterController,
         CameraAndHUD,
         Base,

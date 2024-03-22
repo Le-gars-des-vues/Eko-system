@@ -98,7 +98,7 @@ public class HotbarManager : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKeyDown(KeyCode.LeftAlt))
+        else if (Input.GetKeyDown(KeyCode.LeftAlt) && player.hasMultitool)
         {
             if (multiToolHighlight != null)
             {

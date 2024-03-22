@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryButtons : MonoBehaviour
 {
     PlayerPermanent player;
-    int index = 0;
+    public int index = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class InventoryButtons : MonoBehaviour
     {
         CheckUI();
 
-            if (index == 0)
+        if (index == 0)
         {
             index = 1;
             player.ShowOrHideMap();
