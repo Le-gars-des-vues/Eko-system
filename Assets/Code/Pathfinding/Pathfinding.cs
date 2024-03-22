@@ -34,7 +34,6 @@ public class Pathfinding : MonoBehaviour
         //On definit les points de depart et d'arriver
         PathNode startNode = grid.NodeFromWorldPoint(startPos);
         PathNode targetNode = grid.NodeFromWorldPoint(endPos);
-        Debug.Log(startPos + " / " + endPos);
 
         if (startNode.isWalkable && targetNode.isWalkable)
         {
@@ -48,7 +47,6 @@ public class Pathfinding : MonoBehaviour
             //Tant qu'il y a des cases a verifier
             while (openSet.Count > 0)
             {
-                Debug.Log("Checked node");
                 //On classe les nodes en ordre de cout de mouvement
                 PathNode currentNode = openSet.RemoveFirst();
                 //On met la node actuelle dans le hashset des cases deja verifier
