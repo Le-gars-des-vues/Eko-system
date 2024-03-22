@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Pathfinding : MonoBehaviour
+public class PathfindingDOTS : MonoBehaviour
 {
     //Le grid utiliser pour le pathfinding
     NodeGrid grid;
