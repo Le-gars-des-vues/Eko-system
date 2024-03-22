@@ -5,12 +5,6 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GridMap
-{
-
-}
-
-/*
 //Class d'une grille qui peut stocker n'importe quel objet dans ses cases
 public class GridMap<TGridObject>
 {
@@ -32,7 +26,7 @@ public class GridMap<TGridObject>
     //Array d'objet stocker dans la grille
     private TGridObject[,] gridArray;
     //Est-ce qu'on veut voir le debug de la grille?
-    public bool showDebug = true;
+    public bool showDebug = false;
 
 
     //Constructeur de la grille qui prend la largeur et hauteur, les dimensions d'une cellule, la position original, une fonction pour creer
@@ -167,4 +161,3 @@ public class GridMap<TGridObject>
         return textMesh;
     }
 }
-*/

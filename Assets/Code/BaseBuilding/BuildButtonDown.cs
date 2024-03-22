@@ -16,6 +16,7 @@ public class BuildButtonDown : MonoBehaviour
 
     bool isActive;
     public bool firstFloor = false;
+    [SerializeField] bool alreadyActive;
 
     [SerializeField] List<GameObject> availableRooms;
 

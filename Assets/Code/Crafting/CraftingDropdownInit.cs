@@ -75,12 +75,14 @@ public class CraftingDropdownInit : MonoBehaviour
         if (currentRecipe == 0)
         {
             craftingName.text = dropdown.options[dropdown.value].text;
+            craftingImage.sprite = Camera.main.GetComponent<InventoryController>().multitool;
+            craftingDesc.text = "Repair your multitool!";
         }
         else
         {
             craftingName.text = dropdown.options[dropdown.value].text;
-            craftingImage.sprite = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value].itemIcon;
-            craftingDesc.text = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value].description;
+            craftingImage.sprite = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value - 1].itemIcon;
+            craftingDesc.text = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value - 1].description;
         }
 
         theCraftingSystem.GetComponent<CraftingSystem>().CraftCheck();

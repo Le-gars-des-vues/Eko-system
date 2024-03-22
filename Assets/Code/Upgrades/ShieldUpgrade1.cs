@@ -7,6 +7,7 @@ public class ShieldUpgrade1 : MonoBehaviour
     bool isActive = false;
     InventoryItem item;
     PlayerPermanent player;
+    [SerializeField] float maxShield = 10;
 
     private void OnEnable()
     {
@@ -34,6 +35,7 @@ public class ShieldUpgrade1 : MonoBehaviour
         if (activated)
         {
             player.hasShield = true;
+            player.maxShield = maxShield;
             GameObject.Find("shieldBar").SetActive(true);
             player.currentShield = player.maxShield;
             player.SetMaxBar(player.shieldSlider, player.maxShield);
@@ -41,7 +43,10 @@ public class ShieldUpgrade1 : MonoBehaviour
         else
         {
             player.hasShield = false;
-            GameObject.Find("shieldBar").SetActive(true);
+            player.maxShield = 0;
+            player.currentShield = player.maxShield;
+            player.SetMaxBar(player.shieldSlider, player.maxShield);
+            GameObject.Find("shieldBar").SetActive(false);
         }
     }
 }

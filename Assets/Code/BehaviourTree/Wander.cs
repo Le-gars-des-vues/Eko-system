@@ -28,7 +28,6 @@ public class Wander : BehaviorNode
 
     public override NodeState Evaluate()
     {
-        //Debug.Log("wandering");
         if (isWaiting)
         {
             waitTimer += Time.deltaTime;
@@ -47,10 +46,14 @@ public class Wander : BehaviorNode
                     Vector2 tempPos = new Vector2(creature.position.x + Random.Range(-maxMovingDistance, maxMovingDistance), creature.position.y);
                     if (territory.bounds.Contains(tempPos))
                     {
+                        if ((bool)GetData("debug"))
+                            Debug.Log("Target is in bounds!");
                         bool unWalkable = Physics2D.OverlapCircle(tempPos, 0.1f, LayerMask.GetMask("Ground"));
                         bool isWalkable = Physics2D.Raycast(tempPos, Vector2.down, 3f, LayerMask.GetMask("Ground"));
                         if (!unWalkable && isWalkable)
                         {
+                            if ((bool)GetData("debug"))
+                                Debug.Log("Found target for path!");
                             //Debug.Log("Found target for path!");
                             targetPos.position = tempPos;
                             parent.SetData("target", targetPos);
@@ -67,6 +70,8 @@ public class Wander : BehaviorNode
                     }
                     else
                     {
+                        if ((bool)GetData("debug"))
+                            Debug.Log("Target is outside of bounds!");
                         waitTime = 1;
                         waitTimer = 0;
                         isWaiting = true;
@@ -76,6 +81,8 @@ public class Wander : BehaviorNode
                 {
                     if (GetData("pathState") != null && (int)GetData("pathState") == 0)
                     {
+                        if ((bool)GetData("debug"))
+                            Debug.Log("Finished Wandering");
                         isWaiting = true;
                         isMoving = false;
                         waitTimer = 0;

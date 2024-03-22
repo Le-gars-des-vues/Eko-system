@@ -282,9 +282,9 @@ public class ItemGrid : MonoBehaviour
     {
         int height = gridSizeHeight-itemToInsert.HEIGHT;
         int width = gridSizeWidth-itemToInsert.WIDTH;
-        for (int y = 0; y < height; y++)
+        for (int y = 0; y < height + 1; y++)
         {
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < width + 1; x++)
             {
                 if(CheckAvailableSpace(x, y, itemToInsert.WIDTH, itemToInsert.HEIGHT) == true)
                 {

@@ -46,10 +46,13 @@ public class InventoryController : MonoBehaviour
     string gridName2;
 
     [SerializeField] GameObject invalid;
-    //[SerializeField] GameObject invalid2;
+    [SerializeField] GameObject notWorking;
+    public Sprite multitool;
 
     [SerializeField] GameObject itemInfo;
     [SerializeField] GameObject currentInfo;
+
+    [SerializeField] bool canSpawnItem = true;
 
 
     private void Awake()
@@ -72,21 +75,13 @@ public class InventoryController : MonoBehaviour
 
         ShowItemInfo();
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && canSpawnItem)
         {
             if (selectedItem == null)
             {
-                CreateRandomItem();
+                InsertItemAtRandom();
             }
         }
-
-        //Temporairement disabled, mais pourrait etre utile pour ajouter des items a l'inventaire quand on les pick up
-        /*
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            InsertRandomItem();
-        }
-        */
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -165,12 +160,31 @@ public class InventoryController : MonoBehaviour
         selectedItem.Rotate();
     }
 
+    public void InsertItemAtRandom()
+    {
+        InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+
+        int selectedItemID = UnityEngine.Random.Range(0, items.Count);
+        inventoryItem.Set(items[selectedItemID], defaultItemGrid);
+        inventoryItem.gameObject.tag = "Ressource";
+
+        Vector2Int? posOnGrid = defaultItemGrid.FindSpaceForObject(inventoryItem);
+
+        if (posOnGrid == null)
+        {
+            inventoryItem.DropItem();
+        }
+        else
+            defaultItemGrid.PlaceItem(inventoryItem, posOnGrid.Value.x, posOnGrid.Value.y);
+    }
+
     public void InsertItem(InventoryItem itemToInsert)
     {
+
         Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
 
         if (posOnGrid == null) 
-        {  
+        {
             itemToInsert.DropItem(); 
         }
         else
@@ -261,6 +275,25 @@ public class InventoryController : MonoBehaviour
             dropDown.GetComponent<TMP_Dropdown>().value--;
             dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(recipeChoice);
             dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
+        }
+        else if (recipeChoice == 0)
+        {
+            Recipes.listOfRecipes.Remove(recipeChoice);
+            if (recipeChoice != Recipes.listOfRecipes.Count)
+            {
+                Recipes.listOfRecipes.Add(recipeChoice, Recipes.listOfRecipes[recipeChoice + 1]);
+                for (int i = recipeChoice + 1; i < Recipes.listOfRecipes.Count; i++)
+                {
+                    Recipes.listOfRecipes.Remove(i);
+                    if (i != Recipes.listOfRecipes.Count)
+                        Recipes.listOfRecipes.Add(i, Recipes.listOfRecipes[i + 1]);
+                }
+            }
+            dropDown.GetComponent<TMP_Dropdown>().value--;
+            dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(recipeChoice);
+            dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasMultitool = true;
+            notWorking.SetActive(false);
         }
         else
         {

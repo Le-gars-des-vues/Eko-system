@@ -67,7 +67,7 @@ public class NodeGrid : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (isSceneLoading)
-            SceneLoader.MakeActiveScene(SceneLoader.Scene.Forest_Test);
+            SceneLoader.MakeActiveScene(SceneLoader.Scene.World);
     }
 
     public int MaxSize
