@@ -189,7 +189,7 @@ public class Pathfinding : MonoBehaviour
         int xDistance = math.abs(aPosition.x - bPosition.x);
         int yDistance = math.abs(aPosition.y - bPosition.y);
         int remaining = math.abs(xDistance - yDistance);
-        return MOVE_HORIZONTAL * math.min(xDistance, yDistance) + MOVE_HORIZONTAL * remaining;
+        return MOVE_DIAGONAL_COST * math.min(xDistance, yDistance) + MOVE_HORIZONTAL_COST * remaining;
     }
 
     private int GetLowestFNodeIndex(NativeArray<int> openList, NativeArray<PathNode> pathNodeArray)
