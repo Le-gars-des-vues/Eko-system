@@ -6,6 +6,10 @@ using System.Threading;
 
 public class PathRequestManager : MonoBehaviour
 {
+    Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();
+    PathRequest currentPathRequest;
+    bool isProcessingPath;
+
     Queue<PathResult> results = new Queue<PathResult>();
 
     //Assure qu'il n'y a qu'un seul manager et que ce soit toujours le meme qui soit appele
@@ -18,6 +22,33 @@ public class PathRequestManager : MonoBehaviour
         pathfinding = GetComponent<Pathfinding>();
     }
 
+    //Single thread
+    public static void RequestPath(Vector2 pathStart, Vector2 pathEnd, Action<Vector2[], bool> callback, bool isFlying)
+    {
+        PathRequest newRequest = new PathRequest(pathStart, pathEnd, callback, isFlying);
+        Instance.pathRequestQueue.Enqueue(newRequest);
+        Instance.TryProcessNext();
+    }
+
+    void TryProcessNext()
+    {
+        if (!isProcessingPath && pathRequestQueue.Count > 0)
+        {
+            currentPathRequest = pathRequestQueue.Dequeue();
+            isProcessingPath = true;
+            pathfinding.StartFindPath(currentPathRequest.pathStart, currentPathRequest.pathEnd, currentPathRequest.isFlying);
+        }
+    }
+
+    public void FinishedProcessingPath(Vector2[] path, bool success)
+    {
+        currentPathRequest.callback(path, success);
+        isProcessingPath = false;
+        TryProcessNext();
+    }
+
+    /*
+    //Multi-threading
     private void Update()
     {
         if (results.Count > 0)
@@ -35,11 +66,11 @@ public class PathRequestManager : MonoBehaviour
     }
 
     //Methode pour construire une path request demandant un point de depart, un point d'arriver et une action qui store la liste des vector utiliser pour le path et une bool de success ou echec
-    public static void RequestPath(PathRequest request, bool isFlying)
+    public static void RequestPath(PathRequest request)
     {
         ThreadStart threadStart = delegate
         {
-            Instance.pathfinding.FindPath(request, Instance.FinishedProcessingPath, isFlying);
+            Instance.pathfinding.FindPath(request, Instance.FinishedProcessingPath);
         };
         threadStart.Invoke();
     }
@@ -51,6 +82,7 @@ public class PathRequestManager : MonoBehaviour
             results.Enqueue(result);
         }
     }
+    */
 }
 
 public struct PathResult
@@ -67,18 +99,21 @@ public struct PathResult
     }
 }
 
+
 //Structure avec tout les element d'une path request
 public struct PathRequest
 {
     public Vector2 pathStart;
     public Vector2 pathEnd;
     public Action<Vector2[], bool> callback;
+    public bool isFlying;
 
     //Constructeur de path request
-    public PathRequest(Vector2 _start, Vector2 _end, Action<Vector2[], bool> _callback)
+    public PathRequest(Vector2 _start, Vector2 _end, Action<Vector2[], bool> _callback, bool _isFlying)
     {
         pathStart = _start;
         pathEnd = _end;
         callback = _callback;
+        isFlying = _isFlying;
     }
 }

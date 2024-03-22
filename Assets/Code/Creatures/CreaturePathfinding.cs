@@ -58,7 +58,10 @@ public class CreaturePathfinding : MonoBehaviour
             StartCoroutine("FollowPath");
         }
         else
+        {
             Debug.Log(gameObject.transform.parent.gameObject.name + " has a problem with his pathfinding!");
+            StopPathFinding();
+        }
     }
 
     IEnumerator UpdatePath()
@@ -70,7 +73,7 @@ public class CreaturePathfinding : MonoBehaviour
         
         if (pathTarget != null)
         {
-            PathRequestManager.RequestPath(new PathRequest(transform.position, pathTarget.position, OnPathFound), GetComponent<CreatureState>().isFlying);
+            PathRequestManager.RequestPath(transform.position, pathTarget.position, OnPathFound, GetComponent<CreatureState>().isFlying);
 
             float sqrMoveThreshold = PATH_UPDATE_MOVE_THRESHOLD * PATH_UPDATE_MOVE_THRESHOLD;
             Vector2 targetPosOld = pathTarget.position;
@@ -79,12 +82,12 @@ public class CreaturePathfinding : MonoBehaviour
             {
                 yield return new WaitForSeconds(MIN_PATH_UPDATE_TIME);
                 //Debug.Log((new Vector2(target.position.x, transform.position.y) - targetPosOld).sqrMagnitude);
-                if ((new Vector2(pathTarget.position.x, pathTarget.position.y) - targetPosOld).sqrMagnitude > sqrMoveThreshold)
+                if (((Vector2)pathTarget.position - targetPosOld).sqrMagnitude > sqrMoveThreshold)
                 {
                     if (state.debug)
                         Debug.Log("Changed path");
-                    PathRequestManager.RequestPath(new PathRequest(transform.position, pathTarget.position, OnPathFound), GetComponent<CreatureState>().isFlying);
-                    targetPosOld = new Vector2(transform.position.x, transform.position.y);
+                    PathRequestManager.RequestPath(transform.position, pathTarget.position, OnPathFound, GetComponent<CreatureState>().isFlying);
+                    targetPosOld = pathTarget.position;
                 }
             }
         }
