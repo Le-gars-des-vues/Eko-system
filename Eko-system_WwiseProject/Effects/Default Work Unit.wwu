@@ -9,7 +9,11 @@
 						<Property Name="RearWet" Type="Real32" Value="2.9"/>
 					</PropertyList>
 				</Effect>
-				<Effect Name="New_RoomVerb" ID="{B14AA44A-D27D-4836-88E8-974B5B6379F2}" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3"/>
+				<Effect Name="New_RoomVerb" ID="{B14AA44A-D27D-4836-88E8-974B5B6379F2}" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+					<PropertyList>
+						<Property Name="DryLevel" Type="Real32" Value="-9.3"/>
+					</PropertyList>
+				</Effect>
 				<Effect Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 					<PropertyList>
 						<Property Name="DecayTime" Type="Real32" Value="3"/>
@@ -20,6 +24,80 @@
 						<Property Name="Quality" Type="int32" Value="16"/>
 						<Property Name="RoomSize" Type="Real32" Value="47"/>
 					</PropertyList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{48F3822F-0A17-46D0-AA57-2959A7D7FE6F}" ShortID="661558864">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="DryLevel"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="New Modulator LFO" ID="{FF186DA7-1948-4C17-AC1A-AE00034CC16A}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{F8D18404-C37B-4761-88EE-97F1EF1BA9C2}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-19.18088</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>2.15564</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{104026FE-4DE2-4D9A-84DA-0D8AFA5B04E7}" ShortID="183468604">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="DryLevel"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="New Modulator LFO_02" ID="{563ECDED-FD7C-4975-97A5-517E2CB14045}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{268B17CD-7D95-4966-AE37-D38CDF9398DD}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-1.6149</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>-7.04609</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</Effect>
 				<Effect Name="New_Parametric_EQ" ID="{BA5D69EA-A339-4345-A9C6-83D534AB4DCE}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 					<PropertyList>
