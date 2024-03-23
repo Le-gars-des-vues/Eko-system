@@ -278,6 +278,11 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -305,6 +310,80 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{8664C5C4-830A-4425-8E18-90AA4B2E4FFA}" ShortID="197205878">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO_02" ID="{563ECDED-FD7C-4975-97A5-517E2CB14045}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{FEA9E092-90F3-4004-9C0F-762405481B03}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-8</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>-20</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{1CAEAD69-37D6-4010-A54C-6A841F068654}" ShortID="1053941317">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO" ID="{FF186DA7-1948-4C17-AC1A-AE00034CC16A}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{838CD76D-7041-45AB-85D2-ECA9DAAFE8DF}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>5.65787</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 							<ActiveSourceList>
 								<ActiveSource Name="AMB_Foret_FarBirds_L" ID="{27ADE644-2E85-4641-A66E-D3FEFEAD7136}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -351,6 +430,11 @@
 						<Sound Name="AMB_Foret_FarBirds_R" ID="{A332CE60-7A35-4F42-8B03-2685D427BB1E}" ShortID="856265416">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -378,6 +462,80 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{C70D076A-8493-47D9-83B1-E679DA7F290F}" ShortID="775992964">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO" ID="{FF186DA7-1948-4C17-AC1A-AE00034CC16A}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{EB91215D-F682-4E8D-8F82-888387F48398}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>6.02061</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{65B6EDE9-3F56-440A-B63D-49DE0694AC9D}" ShortID="853462336">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO_02" ID="{563ECDED-FD7C-4975-97A5-517E2CB14045}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{B63A95B9-5E28-4B5C-8B60-D5209B4BD179}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-8</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>-20</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 							<ActiveSourceList>
 								<ActiveSource Name="AMB_Foret_FarBirds_R" ID="{61A8B8E3-3C44-48EE-ACD0-751557919B66}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -430,13 +588,11 @@
 						</Sound>
 						<Sound Name="AMB_Foret_Swamp_2" ID="{3372DDF3-E89B-44F0-8C71-EB734ED4758F}" ShortID="415151180">
 							<PropertyList>
-								<Property Name="BypassEffect0" Type="bool">
-									<ValueList>
-										<Value>True</Value>
-									</ValueList>
-								</Property>
+								<Property Name="3DPosition" Type="int16" Value="1"/>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
 										<ModifierInfo>
@@ -444,13 +600,20 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="SpeakerPanning" Type="int16" Value="2"/>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="61"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>15</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 								</Reference>
 								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-									<ObjectRef Name="New_RoomVerb" ID="{B14AA44A-D27D-4836-88E8-974B5B6379F2}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+									<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
 								</Reference>
 								<Reference Name="Effect1" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 									<ObjectRef Name="New_Parametric_EQ" ID="{BA5D69EA-A339-4345-A9C6-83D534AB4DCE}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
@@ -474,11 +637,139 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{68C02DC3-1343-41EF-A224-9E561D799038}"/>
+								<Position Name="" ID="{DBC52FD9-DED6-4080-B7F0-0A76D84B3260}">
+									<PropertyList>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="PlayMechanismTransitionTime" Type="Real64" Value="5"/>
+									</PropertyList>
+									<ChildrenList>
+										<Path2D Name="AMB_Foret_Swamp_2_Path" ID="{E89C19DF-5EF1-4E60-892C-4A0831633682}">
+											<PropertyList>
+												<Property Name="RandomX" Type="Real64" Value="22"/>
+											</PropertyList>
+											<PointList>
+												<Point>
+													<XPos>-17.73836</XPos>
+													<YPos>22.72728</YPos>
+													<Flags>12</Flags>
+													<Time>0</Time>
+												</Point>
+												<Point>
+													<XPos>20.17738</XPos>
+													<YPos>22.51082</YPos>
+													<Flags>0</Flags>
+													<Time>1000</Time>
+												</Point>
+												<Point>
+													<XPos>73.3924611973393</XPos>
+													<YPos>-76.1904761904762</YPos>
+													<Flags>0</Flags>
+													<Time>2000</Time>
+												</Point>
+												<Point>
+													<XPos>-74.7228381374723</XPos>
+													<YPos>-65.3679653679654</YPos>
+													<Flags>0</Flags>
+													<Time>3000</Time>
+												</Point>
+												<Point>
+													<XPos>-1.10864745011087</XPos>
+													<YPos>-3.03030303030303</YPos>
+													<Flags>0</Flags>
+													<Time>4000</Time>
+												</Point>
+												<Point>
+													<XPos>-0.66519</XPos>
+													<YPos>25.10823</YPos>
+													<Flags>0</Flags>
+													<Time>5000</Time>
+												</Point>
+											</PointList>
+										</Path2D>
+									</ChildrenList>
+								</Position>
+							</PositioningInfo>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{80092635-1C72-4B17-8555-EE510CBDB03B}" ShortID="549453661">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO" ID="{FF186DA7-1948-4C17-AC1A-AE00034CC16A}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{78B447E0-B431-4C24-A228-41730C2C9142}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>2.5</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{ABF79001-7BCB-4BDA-8E00-E6FAB8C5F125}" ShortID="816475271">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO_02" ID="{563ECDED-FD7C-4975-97A5-517E2CB14045}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{49328A8A-4F19-4CB9-ACE1-574613484F54}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-8</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>-20</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 							<ActiveSourceList>
 								<ActiveSource Name="AMB_Foret_Swamp_2" ID="{7B685E6D-08DA-45EA-970A-A81A99847DA9}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<RandomSequenceContainer Name="AMb_Foret_CloseBird" ID="{614156D7-EEF1-468A-902F-C59F3D1ECFD4}" ShortID="581140168">
+						<RandomSequenceContainer Name="AMB_Foret_CloseBird" ID="{614156D7-EEF1-468A-902F-C59F3D1ECFD4}" ShortID="581140168">
 							<PropertyList>
 								<Property Name="3DPosition" Type="int16" Value="1"/>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
@@ -1856,6 +2147,442 @@
 									</ChildrenList>
 								</Position>
 							</PositioningInfo>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="AMB_Foret_CloseBird_2" ID="{0DEAE054-4DF5-4FC3-914E-4C46EE008B9A}" ShortID="656056620">
+							<PropertyList>
+								<Property Name="InitialDelay" Type="Real64">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{87048C86-711E-4C8D-AE7F-992219D2EAAF}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="6"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{883F4103-FCAD-40C8-8317-EAFD8837305C}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="150"/>
+													<Property Name="Min" Type="Real64" Value="-150"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{4CF53B6E-1B28-4966-9E89-909C7013C554}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="4"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="6"/>
+								<Property Name="Volume" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{CBF2BA6B-DB48-4FC3-A7B9-478E6534136A}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Min" Type="Real64" Value="-15"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+									<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="AMB_Foret_CloseBird_2" ID="{8DA83DF4-1678-45A4-87B7-890284430500}" ShortID="80420588">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{7DA95878-F44E-470C-895F-199297F9367B}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.408586139896373"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.204293069948187"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="4.83197582037997"/>
+												<Property Name="TrimEnd" Type="Real64" Value="8.04441022596433"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="915811521"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{7DA95878-F44E-470C-895F-199297F9367B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Foret_CloseBird_01" ID="{EC51B68D-069D-4245-B7B2-F49AF020CE18}" ShortID="807498785">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{B2123224-095C-49E4-BA67-85C1020F1BEF}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.408586139896373"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.204293069948187"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="2.3153217472654"/>
+												<Property Name="TrimEnd" Type="Real64" Value="5.02442533822685"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="11259207"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{B2123224-095C-49E4-BA67-85C1020F1BEF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Foret_CloseBird_02" ID="{3555394D-3781-4EA8-A690-50835F5433BD}" ShortID="749131353">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{945DED21-90BC-4E64-8022-CB39FF717081}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.408586139896373"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.204293069948187"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="7.85196070811744"/>
+												<Property Name="TrimEnd" Type="Real64" Value="10.7623966249281"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="534322574"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{945DED21-90BC-4E64-8022-CB39FF717081}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Foret_CloseBird_03" ID="{9D28A8E2-8042-4DF2-8723-FBB1E534AFAD}" ShortID="324788508">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{852D0ABB-0A0C-4D83-842F-0A1964D30F0B}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.408586139896373"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="1.3116208621186"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="10.6706132700058"/>
+												<Property Name="TrimEnd" Type="Real64" Value="14.2945951352907"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="315877644"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{852D0ABB-0A0C-4D83-842F-0A1964D30F0B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Foret_CloseBird_04" ID="{080A8825-BFAD-4CEF-8FF2-E33BAAF190BC}" ShortID="723612347">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{5812F910-F1FC-43E4-B436-211301E713D3}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.408586139896373"/>
+												<Property Name="FadeInShape" Type="int16" Value="8"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="2.21761632843984"/>
+												<Property Name="FadeOutShape" Type="int16" Value="1"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="20.2338987478411"/>
+												<Property Name="TrimEnd" Type="Real64" Value="23.9585467760507"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="764905482"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{5812F910-F1FC-43E4-B436-211301E713D3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Foret_CloseBird_05" ID="{79C094EF-F1DC-4AD7-97BD-D95837C22CCD}" ShortID="872644302">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{E4FC1ADC-E216-46CF-AC82-DD10482B42B4}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.408586139896373"/>
+												<Property Name="FadeInShape" Type="int16" Value="8"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="2.21761632843984"/>
+												<Property Name="FadeOutShape" Type="int16" Value="1"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="25.1665407311456"/>
+												<Property Name="TrimEnd" Type="Real64" Value="28.9918549222798"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="385876782"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{E4FC1ADC-E216-46CF-AC82-DD10482B42B4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Foret_CloseBird_06" ID="{4FE99FFD-CD97-4D80-91FD-5E18F2C8FDB1}" ShortID="606935654">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{9EBDF410-224B-483B-9778-0B5AF84718EB}">
+											<PropertyList>
+												<Property Name="FadeInShape" Type="int16" Value="8"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="1.11028853626943"/>
+												<Property Name="FadeOutShape" Type="int16" Value="1"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="29.4951857369027"/>
+												<Property Name="TrimEnd" Type="Real64" Value="31.8105074841681"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="245725194"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{9EBDF410-224B-483B-9778-0B5AF84718EB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Foret_CloseBird_07" ID="{904F0587-333B-431A-AD05-099F5588664F}" ShortID="540958840">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{0E89736E-E7FB-42B5-810F-08AE0352384B}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.301998488773748"/>
+												<Property Name="FadeInShape" Type="int16" Value="8"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="2.01628400259067"/>
+												<Property Name="FadeOutShape" Type="int16" Value="1"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="33.8238307426598"/>
+												<Property Name="TrimEnd" Type="Real64" Value="37.7498110967185"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="221866344"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{0E89736E-E7FB-42B5-810F-08AE0352384B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Foret_CloseBird_08" ID="{374333C4-D861-4C14-94E8-769FB2BD7803}" ShortID="236785070">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{D90A4591-451C-4A88-A75F-68130EF294D2}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.301998488773748"/>
+												<Property Name="FadeInShape" Type="int16" Value="8"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="2.01628400259067"/>
+												<Property Name="FadeOutShape" Type="int16" Value="1"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="37.4478126079447"/>
+												<Property Name="TrimEnd" Type="Real64" Value="41.6757914507772"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="875759382"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{D90A4591-451C-4A88-A75F-68130EF294D2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Foret_CloseBird_09" ID="{3C969610-AEB2-45F2-B09A-3CB0E108443A}" ShortID="313330827">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="ForestAuterlitz_DenseClose" ID="{1E3979AB-2FBC-4380-8E6A-3E8A71CEC166}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Foret_CloseBird_2" ID="{BB056732-327F-417F-B8B7-C50A0D12C593}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.301998488773748"/>
+												<Property Name="FadeInShape" Type="int16" Value="8"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="2.01628400259067"/>
+												<Property Name="FadeOutShape" Type="int16" Value="1"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="42.4811207541739"/>
+												<Property Name="TrimEnd" Type="Real64" Value="46.306434945308"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>AMB_Foret_CloseBird_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="482964783"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Foret_CloseBird_2" ID="{BB056732-327F-417F-B8B7-C50A0D12C593}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</BlendContainer>
