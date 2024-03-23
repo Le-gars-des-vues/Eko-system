@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}" SchemaVersion="110">
 	<Effects>
-		<WorkUnit Name="Default Work Unit" ID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}" PersistMode="Standalone">
+			<ChildrenList>
+				<Effect Name="New_iZotope_Hybrid_Reverb" ID="{8D8357CD-AF9B-4AB2-A40E-A7D69DBD0597}" PluginName="iZotope Hybrid Reverb" CompanyID="259" PluginID="2" PluginType="3">
+					<PropertyList>
+						<Property Name="DecayTime" Type="Real32" Value="2.4"/>
+						<Property Name="RearWet" Type="Real32" Value="2.9"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_RoomVerb" ID="{B14AA44A-D27D-4836-88E8-974B5B6379F2}" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3"/>
+				<Effect Name="New_RoomVerb_01" ID="{1CDBE375-598A-4249-B7E7-0439CC6C001E}" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+					<PropertyList>
+						<Property Name="DecayTime" Type="Real32" Value="3"/>
+						<Property Name="DryLevel" Type="Real32" Value="-13"/>
+						<Property Name="ERLevel" Type="Real32" Value="-35"/>
+						<Property Name="HFDamping" Type="Real32" Value="4.55"/>
+						<Property Name="PreDelay" Type="Real32" Value="8"/>
+						<Property Name="Quality" Type="int32" Value="16"/>
+						<Property Name="RoomSize" Type="Real32" Value="47"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Parametric_EQ" ID="{BA5D69EA-A339-4345-A9C6-83D534AB4DCE}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+					<PropertyList>
+						<Property Name="FilterTypeBand1" Type="int32" Value="1"/>
+						<Property Name="FrequencyBand1" Type="Real32" Value="460"/>
+						<Property Name="OnOffBand2" Type="bool" Value="False"/>
+						<Property Name="OnOffBand3" Type="bool" Value="False"/>
+					</PropertyList>
+				</Effect>
+			</ChildrenList>
+		</WorkUnit>
 	</Effects>
 </WwiseDocument>
