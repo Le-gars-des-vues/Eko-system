@@ -50,6 +50,7 @@ namespace AK
         static const AkUniqueID PLY_MULTITOOL_BARK = 895662967U;
         static const AkUniqueID PLY_MULTITOOL_CHARGE = 1777682481U;
         static const AkUniqueID PLY_MULTITOOL_MAGNETITE = 1174519973U;
+        static const AkUniqueID PLY_MULTITOOL_MOUSSE = 2827505401U;
         static const AkUniqueID PLY_MULTITOOL_RACINE = 3034212817U;
         static const AkUniqueID PLY_MULTITOOL_RUBIOL = 987111760U;
         static const AkUniqueID PLY_MULTITOOL_STOP = 276950649U;
