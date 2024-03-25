@@ -62,23 +62,23 @@ public class Recipes
     public static Dictionary<int,Recipes> listOfRecipes = new()
     {
         {0, new Recipes("Reparer le MultiTool", "Roots", 1)},
-        {1, new Recipes("Microprocessor", "Magnetyne", 2, "Roots", 2) },
-        {2, new Recipes("Cured Leather", "Bark", 3)},
-        {3, new Recipes("Battery", "Rubiol", 3)},
+        {1, new Recipes("Microprocessor", "Tugnstone", 1, "Roots", 1, "Rubiol", 2) },
+        {2, new Recipes("Cured Leather", "Bark", 1, "Moss", 2, "Spit", 1)},
+        {3, new Recipes("Battery", "Tugnstone", 2, "Wires",1,"Rubiol",3)},
         {4, new Recipes("Metal Sheet", "Tugnstone", 3)},
         {5, new Recipes("Wires", "Trunk", 1, "Roots", 2)},
-        {6, new Recipes("Utility Upgrade 1", "Microprocessor", 2, "Wires", 2)},
-        {7, new Recipes("Gathering Upgrade 1", "Microprocessor", 2, "Wires", 2)},
-        {8, new Recipes("Combat Upgrade 1", "Microprocessor", 2, "Wires", 2)},
-        {9, new Recipes("Shield Upgrade 1", "Microprocessor", 2, "Wires", 2)},
-        {10, new Recipes("Health Upgrade 1", "Microprocessor", 2, "Wires", 2)},
-        {11, new Recipes("Stamina Upgrade 1", "Microprocessor", 2, "Wires", 2)},
+        {6, new Recipes("Utility Upgrade 1", "Microprocessor", 1, "Cured Leather", 2)},
+        {7, new Recipes("Gathering Upgrade 1", "Microprocessor", 1, "Scale", 5)},
+        {8, new Recipes("Combat Upgrade 1", "Microprocessor", 1, "Crystal", 2, "Lushalite" , 2)},
+        {9, new Recipes("Shield Upgrade 1", "Microprocessor", 1, "Battery", 1)},
+        {10, new Recipes("Health Upgrade 1", "Microprocessor", 1, "Cured Leather", 1 , "Crystal",1)},
+        {11, new Recipes("Stamina Upgrade 1", "Microprocessor", 1, "Lushalite", 3, "Scale", 3)},
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {
-        {0 , new Recipes("Storage Room", "Trunk", 1, "Roots", 2)},
-        {1 , new Recipes("Map Room", "Trunk", 1) },
-        {2 , new Recipes("Enclosure Room", "Trunk", 1)},
-        {3 , new Recipes("Planter Room", "Trunk", 1)},
+        {0 , new Recipes("Storage Room", "Metal Sheet", 3, "Battery", 1,"Lushalite",5)},
+        {1 , new Recipes("Map Room", "Metal Sheet", 3, "Scale",4,"Crystal",4) },
+        {2 , new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
+        {3 , new Recipes("Planter Room", "Metal Sheet", 3,"Battery",1,"Crystal",5)},
     };
 }
