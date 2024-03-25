@@ -25,9 +25,10 @@ public class CreatureDeath : MonoBehaviour
     [SerializeField] MonoBehaviour[] scripts;
     [SerializeField] BTree behaviorScript;
     [SerializeField] GameObject ressourceToHarvest;
-    [SerializeField] float timeToHarvest;
-    [SerializeField] float rangeToHarvest;
+    [SerializeField] float timeToHarvest = 1;
+    [SerializeField] float rangeToHarvest = 1;
     public bool isInRangeToHarvest;
+    bool isHarvested;
     public bool isDead;
     float timer;
     [SerializeField] GameObject arrow;
@@ -58,10 +59,11 @@ public class CreatureDeath : MonoBehaviour
             {
                 //Debug.Log("Is harvesting");
                 timer += Time.deltaTime;
-                if (timer > timeToHarvest && arrow.GetComponent<ArrowFill>().readyToActivate)
+                if (timer > timeToHarvest && arrow.GetComponent<Arrow>().readyToActivate)
                 {
                     var ressourceSpawned = Instantiate(ressourceToHarvest, transform.position, transform.rotation);
                     ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
+                    isHarvested = true;
                     gameObject.SetActive(false);
                 }
             }
@@ -140,6 +142,6 @@ public class CreatureDeath : MonoBehaviour
 
     bool CanHarvest()
     {
-        return isDead && isInRangeToHarvest;
+        return isDead && isInRangeToHarvest && !isHarvested;
     }
 }

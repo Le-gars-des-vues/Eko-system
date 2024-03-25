@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class ArrowFill : MonoBehaviour
+public class Arrow : MonoBehaviour
 {
     [SerializeField] Animator anim;
     [SerializeField] float timeToFill = 0.02f;
@@ -13,17 +14,29 @@ public class ArrowFill : MonoBehaviour
     bool changedSpeed = false;
     Vector3 arrowPos;
 
+    [SerializeField] TextMeshPro text;
+    [SerializeField] TextMeshPro textB;
+    [SerializeField] string textToWrite = "PICK UP";
+
+
     private void Start()
     {
-        arrowPos = transform.Find("Visual").transform.localPosition;
-        transform.Find("Visual").transform.localPosition = arrowPos;
+        text.text = textToWrite;
+        textB.text = textToWrite;
     }
 
     // Start is called before the first frame update
     void OnEnable()
     {
-        //anim = GetComponent<Animator>();
         speed /= timeToFill;
+        arrowPos = transform.Find("Visual").transform.localPosition;
+        text.GetComponent<RectTransform>().localPosition = new Vector3(arrowPos.x, arrowPos.y + 0.22f, arrowPos.z);
+        textB.GetComponent<RectTransform>().localPosition = new Vector3(arrowPos.x, arrowPos.y + 0.22f, arrowPos.z);
+    }
+
+    private void OnDisable()
+    {
+        transform.Find("Visual").transform.localPosition = arrowPos;
     }
 
     // Update is called once per frame

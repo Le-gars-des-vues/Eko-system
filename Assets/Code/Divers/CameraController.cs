@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class CameraLookAt : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private Transform player;
+    [SerializeField] private Transform target;
     [SerializeField] private CinemachineVirtualCamera vCam;
     [SerializeField] private float xThreshold;
     [SerializeField] private float yThreshold;
+
+    [SerializeField] private SpriteRenderer isoldatedView;
+    public bool isIsoldated;
+    private float desiredAlpha = 0;
+    private float currentAlpha = 0;
+    [SerializeField] float fadeSpeed;
 
     private void Start()
     {
@@ -19,8 +26,11 @@ public class CameraLookAt : MonoBehaviour
 
     private void Update()
     {
+        currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, fadeSpeed * Time.deltaTime);
+        isoldatedView.color = new Color(isoldatedView.color.r, isoldatedView.color.g, isoldatedView.color.b, currentAlpha);
+
         if (Input.GetKeyDown(KeyCode.Tab))
-            vCam.Follow = gameObject.transform;
+            vCam.Follow = target.transform;
 
         if (Input.GetKey(KeyCode.Tab))
             AimLogic();
@@ -38,6 +48,20 @@ public class CameraLookAt : MonoBehaviour
         targetPos.y = Mathf.Clamp(targetPos.y, -yThreshold + player.position.y, yThreshold + player.position.y);
         targetPos.z = 0;
 
-        this.transform.position = targetPos;
+        target.transform.position = targetPos;
+    }
+
+    public void IsolateCameraView(bool isTrue)
+    {
+        if (isTrue)
+        {
+            isIsoldated = true;
+            desiredAlpha = 0.95f;
+        }
+        else
+        {
+            isIsoldated = false;
+            desiredAlpha = 0f;
+        }
     }
 }

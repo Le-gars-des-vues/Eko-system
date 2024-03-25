@@ -6,7 +6,7 @@ public class FlumpfBT : BTree
 {
     [Header("Movement Variables")]
     [SerializeField] Transform target;
-    [SerializeField] bool isGrounded;
+    [SerializeField] bool isAgressive;
     [SerializeField] int maxMovingDistance;
     [SerializeField] int originalDirection;
 
@@ -25,10 +25,10 @@ public class FlumpfBT : BTree
             }),
             new Sequence(new List<BehaviorNode>
             {
-                new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, fly.head, fly.startAngle, fly.angleStep, fly.sightAngle, fly.rayCount, fly.rayDistance, state.minFollowDistance, originalDirection, false),
+                new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, fly.head, fly.startAngle, fly.angleStep, fly.sightAngle, fly.rayCount, fly.rayDistance, state.minFollowDistance, originalDirection, isAgressive),
                 new AssignTarget(target, gameObject),
             }),
-            new Wander(gameObject.transform, target, isGrounded, state.territory, maxMovingDistance)
+            new Wander(gameObject.transform, target, state.territory, maxMovingDistance)
         });
         return root;
     }

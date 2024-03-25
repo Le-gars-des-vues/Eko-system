@@ -8,7 +8,6 @@ public class Wander : BehaviorNode
 {
     private Transform creature;
     private BoxCollider2D territory;
-    private bool isGrounded;
     private bool isWaiting = true;
     private int waitTime = 2;
     private float waitTimer;
@@ -17,13 +16,17 @@ public class Wander : BehaviorNode
     private int maxMovingDistance;
     private Transform targetPos;
 
-    public Wander(Transform _creature, Transform _targetPos, bool _isGrounded, BoxCollider2D _territory, int _maxMovingDistance)
+    int minWaitTime;
+    int maxWaitTime;
+
+    public Wander(Transform _creature, Transform _targetPos, BoxCollider2D _territory, int _maxMovingDistance, int _minWaitTime = 2, int _maxWaitTime = 10)
     {
         creature = _creature;
         targetPos = _targetPos;
-        isGrounded = _isGrounded;
         territory = _territory;
         maxMovingDistance = _maxMovingDistance;
+        minWaitTime = _minWaitTime;
+        maxWaitTime = _maxWaitTime;
     }
 
     public override NodeState Evaluate()
@@ -34,7 +37,7 @@ public class Wander : BehaviorNode
             if (waitTimer >= waitTime)
             {
                 isWaiting = false;
-                waitTime = Random.Range(2, 10);
+                waitTime = Random.Range(minWaitTime, maxWaitTime);
             }
         }
         else

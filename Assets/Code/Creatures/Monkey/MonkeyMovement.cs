@@ -8,6 +8,8 @@ public class MonkeyMovement : MonoBehaviour
     [SerializeField] CreaturePathfinding pathfinding;
     private Rigidbody2D rb;
 
+    [SerializeField] float moveSpeed;
+
     [Header("Hover Variables")]
     [SerializeField] private float monkeyHeight;
     [SerializeField] float springStrenght;
@@ -163,7 +165,7 @@ public class MonkeyMovement : MonoBehaviour
                 if (isGrounded || rb.velocity.y >= 0)
                 {
                     Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position).normalized;
-                    Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * pathfinding.speedPercent * Time.deltaTime;
+                    Vector2 force = new Vector2(direction.x, direction.y) * moveSpeed * pathfinding.speedPercent * Time.deltaTime;
                     rb.AddForce(force);
                 }
             }
@@ -268,7 +270,7 @@ public class MonkeyMovement : MonoBehaviour
             if (Mathf.Abs(target.position.x - rb.position.x) > 0.1f)
             {
                 Vector2 direction = (new Vector2(target.position.x, target.position.y) - rb.position).normalized;
-                Vector2 force = new Vector2(direction.x, direction.y) * pathfinding.followPathSpeed * Time.deltaTime;
+                Vector2 force = new Vector2(direction.x, direction.y) * moveSpeed * Time.deltaTime;
                 rb.AddForce(force);
             }
         }

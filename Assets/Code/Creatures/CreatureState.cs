@@ -30,7 +30,7 @@ public class CreatureState : MonoBehaviour
     public string foodName;
 
     [Header("Stun Variables")]
-    [SerializeField] float stunDuration;
+    [SerializeField] float stunDuration = 10;
     float stunnedTime;
     bool stunTrigger;
 
@@ -44,7 +44,7 @@ public class CreatureState : MonoBehaviour
 
     [Header("Tamed Variables")]
     public int levelOfAffection = 0;
-    [SerializeField] int tamedAffectionThreshold;
+    [SerializeField] int tamedAffectionThreshold = 1;
     public bool isTamed;
 
     [SerializeField] Transform target;
@@ -57,7 +57,7 @@ public class CreatureState : MonoBehaviour
         maxSenseOfSmellRadius = senseOfSmell * 2;
         isFull = true;
 
-        territory = (BoxCollider2D)Physics2D.OverlapCircle(transform.position, 1f, LayerMask.GetMask("SceneView"));
+        territory = (BoxCollider2D)Physics2D.OverlapCircle(transform.position, 1f, LayerMask.GetMask("SceneView", "Water"));
     }
 
     // Update is called once per frame

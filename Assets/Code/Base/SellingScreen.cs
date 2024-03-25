@@ -20,7 +20,7 @@ public class SellingScreen : MonoBehaviour
     {
         if (!player.marketIsOpen)
         {
-            if (Input.GetKey(KeyCode.E) && arrow.GetComponent<ArrowFill>().readyToActivate)
+            if (Input.GetKey(KeyCode.E) && arrow.GetComponent<Arrow>().readyToActivate)
             {
                 if (isInRange)
                 {
@@ -51,7 +51,7 @@ public class SellingScreen : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         isInRange = true;
         arrow.SetActive(true);

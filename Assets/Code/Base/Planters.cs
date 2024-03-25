@@ -36,7 +36,7 @@ public class Planters : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                if (isInRange && arrow.GetComponent<ArrowFill>().readyToActivate)
+                if (isInRange && arrow.GetComponent<Arrow>().readyToActivate)
                 {
                     Plant();
                     arrow.SetActive(false);
