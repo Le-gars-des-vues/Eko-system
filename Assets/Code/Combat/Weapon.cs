@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 {
     Rigidbody2D rb;
     [SerializeField] float dmgRayLenght;
-    [SerializeField] int baseDamage;
+    [SerializeField] int minDamage;
     [SerializeField] int maxDamage;
     [SerializeField] float piercingAngleThreshold;
     Vector3 previousPosition;
@@ -22,8 +22,8 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        hitDamage = Mathf.RoundToInt((baseDamage * velocity.magnitude) / 2);
-        hitDamage = Mathf.Clamp(hitDamage, baseDamage, maxDamage);
+        hitDamage = Mathf.RoundToInt((1 * velocity.magnitude) / 2);
+        hitDamage = Mathf.Clamp(hitDamage, minDamage, maxDamage);
 
         /*
         RaycastHit2D dmg = Physics2D.Raycast(transform.position, transform.right, dmgRayLenght, LayerMask.GetMask("Default"));

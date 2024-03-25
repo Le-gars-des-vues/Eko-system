@@ -248,7 +248,7 @@ public class InventoryController : MonoBehaviour
     {
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
         inventoryItem.Set(craftables[recipeChoice], defaultItemGrid);
-        if (craftables[recipeChoice].itemType == "Upgrade")
+        if (craftables[recipeChoice].itemType == "Upgrade" || craftables[recipeChoice].itemType == "Equipment")
         {
             Vector2Int? posOnGrid = upgradeItemGrid.FindSpaceForObject(inventoryItem);
             if (posOnGrid == null)
@@ -328,9 +328,19 @@ public class InventoryController : MonoBehaviour
                     else
                         Debug.Log("Can only place upgrades in this inventory!");
                 }
+                else if (selectedItemGrid.gameObject.tag == "Equipment")
+                {
+                    if (selectedItem.itemData.itemType == "Equipment")
+                    {
+                        selectedItem.isPlaced = true;
+                        PlaceItem(tileGridPosition);
+                    }
+                    else
+                        Debug.Log("Can only place equipment in this inventory!");
+                }
                 else if (selectedItemGrid == upgradeItemGrid)
                 {
-                    if (selectedItem.itemData.itemType == "Upgrade")
+                    if (selectedItem.itemData.itemType == "Upgrade" || selectedItem.itemData.itemType == "Equipment")
                     {
                         PlaceItem(tileGridPosition);
                     }
