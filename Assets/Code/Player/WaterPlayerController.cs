@@ -9,6 +9,7 @@ public class WaterPlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private GroundPlayerController groundController;
     private PlayerPermanent player;
+    [SerializeField] GameObject bone;
 
     [Header("Movement Variables")]
     Vector2 movement;
@@ -23,7 +24,6 @@ public class WaterPlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        groundController = GetComponent<GroundPlayerController>();
         player = GetComponent<PlayerPermanent>();
     }
 
@@ -34,7 +34,22 @@ public class WaterPlayerController : MonoBehaviour
         {
             movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             if (Mathf.Abs(movement.x) > 0.1f || Mathf.Abs(movement.y) > 0.1f)
+            {
                 player.ChangeStamina(-swimStaminaCost * Time.deltaTime);
+                if (!player.colliderShapeIsChanged)
+                {
+                    player.ChangeColliderShape(true);
+                    rb.mass = 0.7f;
+                }
+            }
+            else
+            {
+                if (player.colliderShapeIsChanged)
+                {
+                    player.ChangeColliderShape(false);
+                    rb.mass = 1f;
+                }
+            }
             if (Input.GetButtonDown("Jump"))
             {
                 if (CanDash())
@@ -67,10 +82,10 @@ public class WaterPlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Water")
         {
-            GetComponent<GroundPlayerController>().enabled = true;
-            groundController.SetGravityScale(groundController.gravityScale);
-            rb.drag = 0f;
-            GetComponent<WaterPlayerController>().enabled = false;
+            Debug.Log("Exited Water");
+            rb.mass = 1f;
+            player.groundPlayerController.enabled = true;
+            player.waterPlayerController.enabled = false;
         }
     }
 }

@@ -53,8 +53,14 @@ public class PlayerArmAnimation : MonoBehaviour
     [HideInInspector] [SerializeField] private Vector2 jumpUpOffsets;
     [HideInInspector] [SerializeField] private Vector2 jumpDownOffsets;
 
+    [Header("Punch Variables")]
     [SerializeField] Collider2D punchCollider;
     bool isPunching;
+
+    [Header("Underwater Variables")]
+    bool isSwimming;
+    [SerializeField] GameObject leg;
+    [SerializeField] GameObject arm;
 
     // Start is called before the first frame update
     void Start()
@@ -223,7 +229,7 @@ public class PlayerArmAnimation : MonoBehaviour
             //Animation du bras gauche
             else if (gameObject.name == "LeftArmSolver_Target")
             {
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetMouseButtonDown(1) && playerScript.hasPunch)
                 {
                     StartCoroutine(Punch());
                 }
@@ -335,6 +341,23 @@ public class PlayerArmAnimation : MonoBehaviour
                                 goingForward = false;
                         }
                     }
+                }
+                else if (player.GetComponent<WaterPlayerController>().enabled)
+                {
+                    if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)))
+                        isSwimming = true;
+                    else
+                    {
+                        isSwimming = false;
+                    }
+
+                    if (isSwimming)
+                    {
+                        Vector2 direction = new Vector2(arm.transform.position.x + Input.GetAxis("Horizontal"), arm.transform.position.y + Input.GetAxis("Vertical"));
+                        transform.position = Vector2.Lerp(transform.position, direction, speed * Time.deltaTime);
+                    }
+                    else
+                        transform.position = Vector2.Lerp(transform.position, leg.transform.position, speed * Time.deltaTime);
                 }
             }
         }

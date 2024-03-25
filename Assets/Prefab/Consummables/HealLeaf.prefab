@@ -178,6 +178,7 @@ MonoBehaviour:
   isSelected: 0
   isPickedUp: 0
   rotateSpeed: 0
+  isSceneLoaded: 0
 --- !u!114 &9211541607449099893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,12 +192,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 8f5148c2f8f2d6040bc4faf65bb9841b, type: 2}
+  itemGrid: {fileID: 0}
   stackAmount: 3
   sprites:
   - {fileID: 21300000, guid: a3ee56162d22eeb48ab24bd846455ef7, type: 3}
   - {fileID: 21300000, guid: 2b311ca7fc9c74748b5a84e4a2bda6f6, type: 3}
   markedForDestroy: 0
-  isUpgrading: 0
+  isPlaced: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
@@ -232,6 +234,10 @@ PrefabInstance:
     - target: {fileID: 490306149884159714, guid: d539275ed056eea489df55833fdc451d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743943733639608022, guid: d539275ed056eea489df55833fdc451d, type: 3}
+      propertyPath: textToWrite
+      value: PICK UP
       objectReference: {fileID: 0}
     - target: {fileID: 8214892596907868634, guid: d539275ed056eea489df55833fdc451d, type: 3}
       propertyPath: m_LocalPosition.x

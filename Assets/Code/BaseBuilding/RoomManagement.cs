@@ -25,7 +25,7 @@ public class RoomManagement : MonoBehaviour
         {
             if (isInRange)
             {
-                if (Input.GetKey(KeyCode.E) && arrow.GetComponent<ArrowFill>().readyToActivate)
+                if (Input.GetKey(KeyCode.E) && arrow.GetComponent<Arrow>().readyToActivate)
                 {
                     if (!player.roomManageIsOpen)
                     {

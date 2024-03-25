@@ -13,6 +13,7 @@ public class PlayerPermanent : MonoBehaviour
     public float oxygenDepleteRate;
     public float oxygenRegainRate;
     public Slider oxygenSlider;
+    public bool isInAirPocket;
 
     [Header("Health Variables")]
     public float maxHp;
@@ -61,13 +62,19 @@ public class PlayerPermanent : MonoBehaviour
     */
 
     [Header("Exploration Variables")]
-    public bool survivalMode;
+    //public bool survivalMode;
+    public GroundPlayerController groundPlayerController;
+    public WaterPlayerController waterPlayerController;
+    public VinePlayerController vinePlayerController;
+
     public GameObject objectInRightHand = null;
     public bool isFacingRight;
+
     public List<GameObject> objectsNear = new List<GameObject>();
     public float nearestObjectDistance = 10;
     public GameObject nearestObject;
     public bool isThrowing = false;
+
     [SerializeField] MultiTool multiTool;
     public bool isUsingMultiTool;
     [SerializeField] bool spawnAtBase = true;
@@ -76,6 +83,7 @@ public class PlayerPermanent : MonoBehaviour
     public float timeToHarvest;
 
     public bool isPoisoned;
+    public bool colliderShapeIsChanged;
 
     [Header("Inventory Variables")]
     public bool inventoryOpen = false;
@@ -92,6 +100,7 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private List<LimbSolver2D> limbs;
     [SerializeField] private Rigidbody2D playerRb;
     public CapsuleCollider2D playerCollider;
+    public CapsuleCollider2D underWaterCollider;
     [SerializeField] private List<GameObject> bones;
     [SerializeField] private List<Vector3> bonesPosition;
     [SerializeField] private List<Quaternion> bonesRotation;
@@ -169,7 +178,6 @@ public class PlayerPermanent : MonoBehaviour
             bonesRotation.Add(bones[i].transform.rotation);
         }
 
-
         //On va chercher le script de vigne
         vineController = GetComponent<VinePlayerController>();
         invisible = new Color(255, 255, 255, 0);
@@ -227,12 +235,12 @@ public class PlayerPermanent : MonoBehaviour
         }
 
         //Dans l'eau, l'oxygen descend
-        if (GetComponent<WaterPlayerController>().enabled == true)
+        if (GetComponent<WaterPlayerController>().enabled == true && !isInAirPocket)
         {
             currentOxygen -= oxygenDepleteRate * Time.deltaTime;
             SetBar(oxygenSlider, currentOxygen);
         }
-        else if (GetComponent<WaterPlayerController>().enabled == false && currentOxygen < maxOxygen)
+        else if ((GetComponent<WaterPlayerController>().enabled == false || isInAirPocket) && currentOxygen < maxOxygen)
         {
             currentOxygen += oxygenRegainRate * Time.deltaTime;
             SetBar(oxygenSlider, currentOxygen);
@@ -961,6 +969,22 @@ public class PlayerPermanent : MonoBehaviour
                 yield return new WaitForSeconds(tickInterval);
             }
             hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", false);
+        }
+    }
+
+    public void ChangeColliderShape(bool circle)
+    {
+        if (circle)
+        {
+            colliderShapeIsChanged = true;
+            playerCollider.direction = CapsuleDirection2D.Horizontal;
+            playerCollider.size = new Vector2(playerCollider.size.x, 1);
+        }
+        else
+        {
+            colliderShapeIsChanged = false;
+            playerCollider.direction = CapsuleDirection2D.Vertical;
+            playerCollider.size = new Vector2(playerCollider.size.x, 2);
         }
     }
 

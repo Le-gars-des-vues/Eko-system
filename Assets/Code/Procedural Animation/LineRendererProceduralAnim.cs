@@ -14,11 +14,12 @@ public class LineRendererProceduralAnim : MonoBehaviour
 
     LineRendererSegments[] segments;
     LineRenderer lineRenderer;
-    [SerializeField] Transform plantTransform;
+    public Transform followTransform;
 
     public Renderer MyRenderer;
     public string MySortingLayer;
     public int MySortingOrderInLayer;
+    public bool changeSortingLayer;
 
     void Awake()
     {
@@ -34,7 +35,7 @@ public class LineRendererProceduralAnim : MonoBehaviour
 
     void InitializeSegments()
     {
-        anchoredStart = transform;
+        //anchoredStart = transform;
         lineRenderer = this.GetComponent<LineRenderer>();
         segments = new LineRendererSegments[segmentAmount];
         for (int i = 0; i < segmentAmount; i++)
@@ -58,15 +59,18 @@ public class LineRendererProceduralAnim : MonoBehaviour
             targetPosition = GetWorldPositionFromMouse();
         }
         else
-            targetPosition = plantTransform.position;
+            targetPosition = followTransform.position;
 
         Follow();
         DrawSegments(segments);
-
-        if (MyRenderer == null)
-            MyRenderer = this.GetComponent<Renderer>();
-        MyRenderer.sortingLayerName = MySortingLayer;
-        MyRenderer.sortingOrder = MySortingOrderInLayer;
+        
+        if (changeSortingLayer)
+        {
+            if (MyRenderer == null)
+                MyRenderer = this.GetComponent<Renderer>();
+            MyRenderer.sortingLayerName = MySortingLayer;
+            MyRenderer.sortingOrder = MySortingOrderInLayer;
+        }
     }
 
     void Follow()

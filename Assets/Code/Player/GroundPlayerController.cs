@@ -145,7 +145,9 @@ public class GroundPlayerController : MonoBehaviour
     private float vineJumpStartTime;
 
     private PlayerPermanent player;
+    [SerializeField] GameObject UnderWaterCollider;
     [SerializeField] private float runStaminaCost;
+
     private void OnEnable()
     {
         vineTimer = 0.35f;
@@ -601,12 +603,14 @@ public class GroundPlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Water")
+        if (collision.gameObject.tag == "Water" && !player.waterPlayerController.enabled)
         {
-            GetComponent<WaterPlayerController>().enabled = true;
-            SetGravityScale(0.1f);
-            rb.drag = 1f;
-            GetComponent<GroundPlayerController>().enabled = false;
+            Debug.Log("Entered water");
+            player.waterPlayerController.enabled = true;
+            player.groundPlayerController.enabled = false;
+
+            //SetGravityScale(0.1f);
+            //rb.drag = 1f;
         }
     }
 

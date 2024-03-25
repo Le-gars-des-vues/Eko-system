@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class ShowOrHide : MonoBehaviour
 {
-    bool isShown = false;
+    Animator anim;
+    bool isShowm;
 
-    public void ShowOrHideInfo()
+    private void Start()
     {
-        if (!isShown)
-            GetComponent<Animator>().SetBool("isShown", true);
-        else
-            GetComponent<Animator>().SetBool("isShown", false);
+        anim = GetComponent<Animator>();
+    }
 
-        isShown = !isShown;
+    private void OnMouseDown()
+    {
+        if (!isShowm)
+        {
+            isShowm = true;
+            anim.SetBool("isShown", true);
+        }
+        else
+        {
+            isShowm = false;
+            anim.SetBool("isShown", false);
+        }
     }
 }

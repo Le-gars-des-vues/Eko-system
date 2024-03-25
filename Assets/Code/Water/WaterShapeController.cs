@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 
-[ExecuteAlways]
+//[ExecuteAlways]
 public class WaterShapeController : MonoBehaviour
 {
     private int CorsnersCount = 2;
@@ -27,12 +27,12 @@ public class WaterShapeController : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(CreateWaves());
+        StartCoroutine(CreateWaves());
     }
     void OnValidate()
     {
         // Clean waterpoints 
-        StartCoroutine(CreateWaves());
+        //StartCoroutine(CreateWaves());
     }
     IEnumerator CreateWaves()
     {

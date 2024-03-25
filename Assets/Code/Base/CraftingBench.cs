@@ -22,7 +22,7 @@ public class CraftingBench : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                if (isInRange && arrow.GetComponent<ArrowFill>().readyToActivate)
+                if (isInRange && arrow.GetComponent<Arrow>().readyToActivate)
                 {
                     if (!player.inventoryOpen)
                     {
@@ -48,7 +48,7 @@ public class CraftingBench : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         isInRange = true;
         arrow.SetActive(true);

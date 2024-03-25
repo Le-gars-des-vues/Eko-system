@@ -14,7 +14,7 @@ public class StartNewCycle : MonoBehaviour
     {
         if (isInRange)
         {
-            if (Input.GetKey(KeyCode.E) && arrow.GetComponent<ArrowFill>().readyToActivate && !startedANewCycle)
+            if (Input.GetKey(KeyCode.E) && arrow.GetComponent<Arrow>().readyToActivate && !startedANewCycle)
             {
                 startedANewCycle = true;
                 newCycleTime = Time.time;

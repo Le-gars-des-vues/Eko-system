@@ -12,12 +12,14 @@ public class PlantConsummable : MonoBehaviour
 
     private Material ogMaterial;
     [SerializeField] private Material flashMaterial;
+    [SerializeField] GameObject arrow;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             canPickUpConsummable = true;
+            arrow.SetActive(true);
             StartCoroutine(FlashWhite(ConsummableGFX.GetComponent<SpriteRenderer>(), 0.05f, 5));
         }
     }
@@ -35,6 +37,7 @@ public class PlantConsummable : MonoBehaviour
                     var cons = Instantiate(consummable, transform.position, transform.rotation);
                     cons.GetComponent<PickableObject>().PickUp(false, false);
                     ConsummableGFX.SetActive(false);
+                    arrow.SetActive(false);
                 }
             }
         }
@@ -45,6 +48,7 @@ public class PlantConsummable : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canPickUpConsummable = false;
+            arrow.SetActive(false);
         }
     }
 
