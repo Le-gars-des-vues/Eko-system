@@ -112,8 +112,11 @@ public class PlayerPermanent : MonoBehaviour
     [Header("Upgrade Variables")]
     public bool hasMultitool;
     public bool hasDoubleJump;
+    public GameObject flyBackpack;
     public bool hasPunch;
+    public GameObject dogFist;
     public bool hasOxygenMask;
+    public GameObject frogMask;
     public bool hasShield;
     public bool hasOptics;
     public float hpMultiplier;

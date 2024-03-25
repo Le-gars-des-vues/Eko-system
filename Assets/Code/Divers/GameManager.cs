@@ -37,17 +37,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> magnetyneSpawner = new List<GameObject>();
     [SerializeField] List<GameObject> rubiolSpawner = new List<GameObject>();
 
-    [SerializeField] int dogSpawnerFraction;
-    [SerializeField] int flySpawnerFraction;
-    [SerializeField] int frogSpawnerFraction;
+    [SerializeField] int maxDogCount;
+    [SerializeField] int maxFlyCount;
+    [SerializeField] int maxFrogCount;
 
-    [SerializeField] int infpisumSpawnerFraction;
-    [SerializeField] int macrebosiaSpawnerFraction;
-    [SerializeField] int caeruletamSpawnerFraction;
+    [SerializeField] int maxInfpisumCount;
+    [SerializeField] int maxMacrebosiaCount;
+    [SerializeField] int maxCaeruletamCount;
 
-    [SerializeField] int rubiolSpawnerFraction;
-    [SerializeField] int magnetyneSpawnerFraction;
-    [SerializeField] int tugnstoneSpawnerFraction;
+    [SerializeField] int maxRubiolCount;
+    [SerializeField] int maxLushaliteCount;
+    [SerializeField] int maxTugnstoneCount;
 
     [Header("Creature Variables")]
     public List<GameObject> dogs = new List<GameObject>();
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
     void SpawnNewObjects(bool start)
     {
         //Dog
-        int targetNumber = dogSpawner.Count / dogSpawnerFraction;
+        int targetNumber = maxDogCount;
         int alreadyInGame = 0;
         List<Spawner> availableSpawners = new List<Spawner>();
 
@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Fly
-        targetNumber = flySpawner.Count / flySpawnerFraction;
+        targetNumber = maxFlyCount;
         alreadyInGame = 0;
         availableSpawners.Clear();
         foreach (GameObject spawner in flySpawner)
@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Frog
-        targetNumber = frogSpawner.Count / frogSpawnerFraction;
+        targetNumber = maxFrogCount;
         alreadyInGame = 0;
         availableSpawners.Clear();
         foreach (GameObject spawner in frogSpawner)
@@ -288,7 +288,7 @@ public class GameManager : MonoBehaviour
             }
         }
         //Infpisum
-        targetNumber = infpisumSpawner.Count / infpisumSpawnerFraction;
+        targetNumber = maxInfpisumCount;
         alreadyInGame = 0;
         availableSpawners.Clear();
         foreach (GameObject spawner in infpisumSpawner)
@@ -324,7 +324,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Macrebosia
-        targetNumber = macrebosiaSpawner.Count / macrebosiaSpawnerFraction;
+        targetNumber = maxMacrebosiaCount;
         alreadyInGame = 0;
         availableSpawners.Clear();
         foreach (GameObject spawner in macrebosiaSpawner)
@@ -360,7 +360,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Caeruletam
-        targetNumber = caeruletamSpawner.Count / caeruletamSpawnerFraction;
+        targetNumber = maxCaeruletamCount;
         alreadyInGame = 0;
         availableSpawners.Clear();
         foreach (GameObject spawner in caeruletamSpawner)
@@ -396,7 +396,7 @@ public class GameManager : MonoBehaviour
         }
 
         //rubiol
-        targetNumber = rubiolSpawner.Count / rubiolSpawnerFraction;
+        targetNumber = maxRubiolCount;
         alreadyInGame = 0;
         availableSpawners.Clear();
         foreach (GameObject spawner in rubiolSpawner)
@@ -432,7 +432,7 @@ public class GameManager : MonoBehaviour
         }
 
         //magnetyne
-        targetNumber = magnetyneSpawner.Count / magnetyneSpawnerFraction;
+        targetNumber = maxLushaliteCount;
         alreadyInGame = 0;
         availableSpawners.Clear();
         foreach (GameObject spawner in magnetyneSpawner)
@@ -468,7 +468,7 @@ public class GameManager : MonoBehaviour
         }
 
         //tugnstone
-        targetNumber = tugnstoneSpawner.Count / tugnstoneSpawnerFraction;
+        targetNumber = maxTugnstoneCount;
         alreadyInGame = 0;
         availableSpawners.Clear();
         foreach (GameObject spawner in tugnstoneSpawner)
