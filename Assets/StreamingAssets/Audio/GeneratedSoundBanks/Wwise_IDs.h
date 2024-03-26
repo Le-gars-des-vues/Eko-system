@@ -58,6 +58,7 @@ namespace AK
         static const AkUniqueID PLY_MULTITOOL_TRONC = 2648129411U;
         static const AkUniqueID PLY_MULTITOOL_TUNGSTONE = 3906859172U;
         static const AkUniqueID PLY_PAS = 1629615691U;
+        static const AkUniqueID PLY_RAMASSE = 988414139U;
         static const AkUniqueID PLY_SAUTE = 2736888903U;
         static const AkUniqueID SWT_BOISMOUSSU = 2467918837U;
         static const AkUniqueID SWT_COURSE = 763223215U;
