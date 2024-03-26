@@ -64,6 +64,10 @@ public class GroundPlayerController : MonoBehaviour
     public bool jumpedOnce;
     public bool jumpedTwiced;
 
+    [Header("Fly Variables")]
+    bool isFlying;
+    [SerializeField] float flyForce;
+
     [Header("Gravity Variables")]
     //Force de la gravite
     public float gravityScale;
@@ -234,12 +238,15 @@ public class GroundPlayerController : MonoBehaviour
         {
             isJumpCut = false;
             isJumpFalling = false;
+            jumpedOnce = false;
             jumpedTwiced = false;
             hasWallJumped = false;
+            /*
             if (GetComponent<PlayerPermanent>().hasDoubleJump)
                 jumpedOnce = false;
             else
                 jumpedOnce = true;
+            */
         }
 
         //Checks
@@ -273,33 +280,36 @@ public class GroundPlayerController : MonoBehaviour
             isSliding = false;
         }
 
-        //Gravity
-        if (isSliding)
+        if (!isFlying)
         {
-            SetGravityScale(0f);
-        }
-        else if (rb.velocity.y < 0 && GetInput().y < 0)
-        {
-            SetGravityScale(gravityScale * fastFallGravMult);
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFastFallSpeed));
-        }
-        else if (isJumpCut)
-        {
-            SetGravityScale(gravityScale * jumpCutGravMult);
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFallSpeed));
-        }
-        else if ((isJumping || isWallJumping || isJumpFalling || isVineJumping) && Mathf.Abs(rb.velocity.y) < jumpHangTimeThreshold)
-        {
-            SetGravityScale(gravityScale * jumpHangGravMult);
-        }
-        else if (rb.velocity.y < 0)
-        {
-            SetGravityScale(gravityScale * fallGravityMult);
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFallSpeed));
-        }
-        else
-        {
-            SetGravityScale(gravityScale);
+            //Gravity
+            if (isSliding)
+            {
+                SetGravityScale(0f);
+            }
+            else if (rb.velocity.y < 0 && GetInput().y < 0)
+            {
+                SetGravityScale(gravityScale * fastFallGravMult);
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFastFallSpeed));
+            }
+            else if (isJumpCut)
+            {
+                SetGravityScale(gravityScale * jumpCutGravMult);
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFallSpeed));
+            }
+            else if ((isJumping || isWallJumping || isJumpFalling || isVineJumping) && Mathf.Abs(rb.velocity.y) < jumpHangTimeThreshold)
+            {
+                SetGravityScale(gravityScale * jumpHangGravMult);
+            }
+            else if (rb.velocity.y < 0)
+            {
+                SetGravityScale(gravityScale * fallGravityMult);
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFallSpeed));
+            }
+            else
+            {
+                SetGravityScale(gravityScale);
+            }
         }
 
         //Empeche de se reaccrocher a une vigne quand on se detache
@@ -341,6 +351,32 @@ public class GroundPlayerController : MonoBehaviour
 
                 //Desactive le controller au sol
                 GetComponent<GroundPlayerController>().enabled = false;
+            }
+        }
+
+        if (isFlying)
+        {
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(flyForce * Vector2.up);
+            }
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(flyForce * Vector2.left);
+            }
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(flyForce * Vector2.down);
+            }
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(flyForce * Vector2.right);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                isFlying = false;
+                SetGravityScale(gravityScale);
             }
         }
     }
@@ -412,10 +448,14 @@ public class GroundPlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (jumpedOnce == true)
+        Debug.Log("JUmped");
+        if (jumpedOnce)
         {
             jumpedTwiced = true;
+            Fly();
         }
+        else
+            jumpedOnce = true;
         pressedJumpTime = 0;
         float force = jumpForce;
         if (rb.velocity.y < 0)
@@ -423,6 +463,12 @@ public class GroundPlayerController : MonoBehaviour
             force -= rb.velocity.y;
         }
         rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+    }
+
+    void Fly()
+    {
+        SetGravityScale(0);
+        isFlying = true;
     }
 
     private void WallJump(int dir)
@@ -536,7 +582,7 @@ public class GroundPlayerController : MonoBehaviour
 
     private bool CanJump()
     {
-        return !jumpedTwiced && !isJumping;
+        return !jumpedTwiced;
     }
 
     private bool CanWallJump()
