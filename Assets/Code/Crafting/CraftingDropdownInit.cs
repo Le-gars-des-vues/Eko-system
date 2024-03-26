@@ -81,8 +81,8 @@ public class CraftingDropdownInit : MonoBehaviour
         else
         {
             craftingName.text = dropdown.options[dropdown.value].text;
-            craftingImage.sprite = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value - 1].itemIcon;
-            craftingDesc.text = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value - 1].description;
+            craftingImage.sprite = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value].itemIcon;
+            craftingDesc.text = Camera.main.GetComponent<InventoryController>().craftables[dropdown.value].description;
         }
 
         theCraftingSystem.GetComponent<CraftingSystem>().CraftCheck();

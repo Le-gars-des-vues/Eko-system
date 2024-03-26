@@ -473,7 +473,7 @@ public class InventoryController : MonoBehaviour
                 }
             }
             */
-            if (selectedItem.tag == "Ressource")
+            if (selectedItem.tag == "Ressource" || selectedItem.tag == "Gear")
                 invalid.SetActive(true);
             else
             {

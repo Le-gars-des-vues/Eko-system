@@ -96,7 +96,7 @@ public class Planters : MonoBehaviour
             }
             if (growthIndex == timeToGrow)
             {
-                thePlant = Instantiate(plantToGrow, transform.position, transform.rotation);
+                thePlant = Instantiate(plantToGrow, spawnPoint.position, spawnPoint.rotation);
                 thePlant.GetComponent<HarvestableRessourceNode>().ressourceAmount = 1;
                 growLight.SetActive(true);
             }

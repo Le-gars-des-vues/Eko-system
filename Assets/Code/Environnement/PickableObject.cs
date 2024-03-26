@@ -173,7 +173,7 @@ public class PickableObject : MonoBehaviour
             InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
             ItemData itemData = Instantiate(item.itemData);
 
-            if (gameObject.tag != "Ressource")
+            if (gameObject.tag != "Ressource" && gameObject.tag != "Gear")
             {
                 for (int i = hotbar.Count - 1; i >= 0; i--)
                 {
@@ -214,9 +214,11 @@ public class PickableObject : MonoBehaviour
             itemInInventory = inventoryItem.gameObject;
             if (gameObject.tag == "Ressource")
                 itemInInventory.tag = "Ressource";
+            if (gameObject.tag == "Gear")
+                itemInInventory.tag = "Gear";
         }
 
-        if (gameObject.tag != "Ressource")
+        if (gameObject.tag != "Ressource" && gameObject.tag != "Gear")
         {
             if (player.objectInRightHand == null || (bypassObjectInHand && player.objectInRightHand != null))
             {

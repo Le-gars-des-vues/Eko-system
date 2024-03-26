@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 685370153456409284}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2593, y: -9.9707, z: 0}
+  m_LocalPosition: {x: -0.2593, y: -9.79, z: 0}
   m_LocalScale: {x: 3.6248896, y: 1.1760216, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -214,6 +214,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1624968036643004409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3109875107779728996}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3109875107779728996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624968036643004409}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.53, y: -7.05, z: -0.008820477}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4529245843563397837}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3573746855580039736
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +615,7 @@ Transform:
   - {fileID: 4734522228181375097}
   - {fileID: 7924505128942499434}
   - {fileID: 6249199017020555167}
+  - {fileID: 3109875107779728996}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &5567730965993254098
@@ -618,7 +650,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.48, y: -6.43}
+  m_Offset: {x: -0.29, y: -6.43}
   m_Size: {x: 4.28, y: 8.43}
   m_Direction: 0
 --- !u!114 &7231750537164446303
@@ -635,7 +667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 2482995188299733159}
   growLight: {fileID: 6221990022302504625}
-  spawnPoint: {fileID: 1529488492478684324}
+  spawnPoint: {fileID: 3109875107779728996}
   plants:
   - {fileID: 7466962883721627640, guid: 65e3030a9a5e36d42a7d020d13284b72, type: 3}
   - {fileID: 4904305745247426867, guid: 4e69b0aa91a0fd949aeff6ecf78647db, type: 3}

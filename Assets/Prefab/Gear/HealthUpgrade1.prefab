@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -6286538404300590474}
   m_Layer: 7
   m_Name: HealthUpgrade1
-  m_TagString: Ressource
+  m_TagString: Gear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8819707360973039860}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 612103d50da483249b9802395ac9a1df, type: 3}
   m_Name: 
@@ -201,6 +201,7 @@ MonoBehaviour:
   isSelected: 0
   isPickedUp: 0
   rotateSpeed: 0
+  isSceneLoaded: 0
 --- !u!114 &-6286538404300590474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,10 +215,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 8ec4d276c8e40b641b55d9ca4080defc, type: 2}
+  itemGrid: {fileID: 0}
   stackAmount: 0
   sprites: []
   markedForDestroy: 0
-  isUpgrading: 0
+  isPlaced: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
@@ -276,6 +278,10 @@ PrefabInstance:
     - target: {fileID: 8214892596907868634, guid: d539275ed056eea489df55833fdc451d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495322516846221387, guid: d539275ed056eea489df55833fdc451d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.338
       objectReference: {fileID: 0}
     - target: {fileID: 9098649375858304052, guid: d539275ed056eea489df55833fdc451d, type: 3}
       propertyPath: m_Sources.Array.size

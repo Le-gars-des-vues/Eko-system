@@ -7,9 +7,7 @@ public class WaterPlayerController : MonoBehaviour
 {
     [Header("GameObjects")]
     private Rigidbody2D rb;
-    private GroundPlayerController groundController;
     private PlayerPermanent player;
-    [SerializeField] GameObject bone;
 
     [Header("Movement Variables")]
     Vector2 movement;
@@ -19,6 +17,7 @@ public class WaterPlayerController : MonoBehaviour
     public float swimStaminaCost;
     public float dashStaminaCost;
     private bool dashing = false;
+    public bool isSwimming;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +34,7 @@ public class WaterPlayerController : MonoBehaviour
             movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             if (Mathf.Abs(movement.x) > 0.1f || Mathf.Abs(movement.y) > 0.1f)
             {
+                isSwimming = true;
                 player.ChangeStamina(-swimStaminaCost * Time.deltaTime);
                 if (!player.colliderShapeIsChanged)
                 {
@@ -44,6 +44,7 @@ public class WaterPlayerController : MonoBehaviour
             }
             else
             {
+                isSwimming = false;
                 if (player.colliderShapeIsChanged)
                 {
                     player.ChangeColliderShape(false);
@@ -83,6 +84,10 @@ public class WaterPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Water")
         {
             Debug.Log("Exited Water");
+            if (player.colliderShapeIsChanged)
+            {
+                player.ChangeColliderShape(false);
+            }
             rb.mass = 1f;
             player.groundPlayerController.enabled = true;
             player.waterPlayerController.enabled = false;
