@@ -278,7 +278,7 @@ public class PlayerPermanent : MonoBehaviour
                     CheckDirectionToFace(GetInput().x > 0);
                 }
             }
-            else
+            else if (!waterPlayerController.isSwimming)
             {
                 Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
                 if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))

@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2495368303963813845
 Transform:
   m_ObjectHideFlags: 0
@@ -2109,8 +2109,9 @@ MonoBehaviour:
   jumpBuffer: 0.05
   jumpHeight: 3.2
   jumpTimeToApex: 0.5
-  jumpedOnce: 1
+  jumpedOnce: 0
   jumpedTwiced: 0
+  flyForce: 5
   gravityScale: 0
   fallGravityMult: 1
   maxFallSpeed: 10
@@ -2127,17 +2128,15 @@ MonoBehaviour:
   edgeRaycastOffset: {x: 0.29, y: 0, z: 0}
   innerRaycastOffset: {x: 0.1, y: 0, z: 0}
   canCornerCorrect: 0
-  frontWallCheckPoint: {fileID: 2495368303963813845}
-  backWallCheckPoint: {fileID: 7628644747205784048}
   wallCheckSize: {x: 0.15, y: 0.8}
   lastOnWallTime: 0
   lastOnWallRightTime: 0
   lastOnWallLeftTime: 0
   noFriction: {fileID: 6200000, guid: 20ed24329f33d42469d2e222ace99859, type: 2}
   friction: {fileID: 6200000, guid: 9f51cfaf139e7a146bb59734378db636, type: 2}
-  wallJumpForce: {x: 15, y: 15}
-  wallJumpRunLerp: 0.3
-  wallJumpTime: 0.2
+  wallJumpForce: {x: 15, y: 10}
+  wallJumpRunLerp: 0.1
+  wallJumpTime: 0.7
   slideSpeed: -5
   slideAccel: 1
   isVineJumping: 0
@@ -2158,12 +2157,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4071d00f0deba549be426fde9834e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bone: {fileID: 8071516326354534888}
   uwSpeed: 10
-  uwDashSpeed: 20
+  uwDashSpeed: 15
   swimDelay: 0.7
   swimStaminaCost: 0.2
   dashStaminaCost: 5
+  isSwimming: 0
 --- !u!114 &7419340658388093739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2310,7 +2309,7 @@ MonoBehaviour:
   hasMultitool: 0
   hasDoubleJump: 0
   flyBackpack: {fileID: 2701088974826841711}
-  hasPunch: 0
+  hasPunch: 1
   dogFist: {fileID: 6149514772716315838}
   hasOxygenMask: 0
   frogMask: {fileID: 8005305895318024856}
@@ -2724,7 +2723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7628644747205784048
 Transform:
   m_ObjectHideFlags: 0

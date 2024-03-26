@@ -103,9 +103,6 @@ public class GroundPlayerController : MonoBehaviour
     [SerializeField] private bool canCornerCorrect;
 
     [Header("Wall Collision Variables")]
-    //Boites de collision avec les murs pour les walljump
-    public Transform frontWallCheckPoint;
-    public Transform backWallCheckPoint;
     //Taille des boite invisibles qui check les collisions avec les murs pour les walljump
     public Vector2 wallCheckSize = new Vector2(0.5f, 1f);
     //Timers
@@ -259,7 +256,6 @@ public class GroundPlayerController : MonoBehaviour
 
             wallJumpStartTime = Time.time;
             lastWallJumpDir = (lastOnWallRightTime > 0) ? -1 : 1;
-
             WallJump(lastWallJumpDir);
         }
         else if (CanJump() && pressedJumpTime > 0)
@@ -455,14 +451,16 @@ public class GroundPlayerController : MonoBehaviour
             Fly();
         }
         else
-            jumpedOnce = true;
-        pressedJumpTime = 0;
-        float force = jumpForce;
-        if (rb.velocity.y < 0)
         {
-            force -= rb.velocity.y;
+            jumpedOnce = true;
+            pressedJumpTime = 0;
+            float force = jumpForce;
+            if (rb.velocity.y < 0)
+            {
+                force -= rb.velocity.y;
+            }
+            rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
         }
-        rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
     }
 
     void Fly()
@@ -491,7 +489,7 @@ public class GroundPlayerController : MonoBehaviour
         //The default mode will apply are force instantly ignoring masss
         rb.AddForce(force, ForceMode2D.Impulse);
         Turn();
-        jumpedTwiced = true;
+        jumpedOnce = true;
         hasWallJumped = true;
     }
 
@@ -539,13 +537,15 @@ public class GroundPlayerController : MonoBehaviour
     private void CheckCollision()
     {
         isGrounded = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Vector2.down, groundRaycastLength, groundLayer);
+        Vector2 frontWallCheckPoint = new Vector2(player.gameObject.transform.position.x + 0.306f, player.gameObject.transform.position.y - 0.4f);
+        Vector2 backWallCheckPoint = new Vector2(player.gameObject.transform.position.x - 0.42f, player.gameObject.transform.position.y - 0.36f);
 
         //Right Wall Check
-        if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight)) && !isWallJumping)
+        if (Physics2D.OverlapBox(frontWallCheckPoint, wallCheckSize, 0, groundLayer))// && isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint, wallCheckSize, 0, groundLayer) && !isFacingRight)) && !isWallJumping)
             lastOnWallRightTime = coyoteTime;
 
         //Left Wall Check
-        if (((Physics2D.OverlapBox(frontWallCheckPoint.position, wallCheckSize, 0, groundLayer) && !isFacingRight) || (Physics2D.OverlapBox(backWallCheckPoint.position, wallCheckSize, 0, groundLayer) && isFacingRight)) && !isWallJumping)
+        if (Physics2D.OverlapBox(backWallCheckPoint, wallCheckSize, 0, groundLayer))// || (Physics2D.OverlapBox(backWallCheckPoint, wallCheckSize, 0, groundLayer) && isFacingRight)) && !isWallJumping)
             lastOnWallLeftTime = coyoteTime;
 
         if (lastOnWallTime > 0)
@@ -582,7 +582,7 @@ public class GroundPlayerController : MonoBehaviour
 
     private bool CanJump()
     {
-        return !jumpedTwiced;
+        return !jumpedTwiced && !jumpedTwiced;
     }
 
     private bool CanWallJump()

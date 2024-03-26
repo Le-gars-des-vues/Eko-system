@@ -86,11 +86,10 @@ public class PlayerLegAnimation : MonoBehaviour
             if (player.GetComponent<GroundPlayerController>().isGrounded)
             {
                 if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-                {
                     isRunning = true;
-                }
-                else
+                else if ((!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) && isRunning)
                 {
+                    Debug.Log("Stopped Running");
                     isRunning = false;
                     currentTarget.position = transform.position;
                 }
@@ -102,40 +101,44 @@ public class PlayerLegAnimation : MonoBehaviour
                 else
                     thereIsAWall = false;
 
-                //Calcule la distance entre la cible du pied et sa position actuelle
-                targetDistance = Vector2.Distance(currentTarget.position, desiredTarget.position);
-
-                //Si la distance depasse le seuile et qu'il n'y a pas de mur devant, la position du pied devient celle de la cible
-                if (targetDistance > threshold && otherFoot.targetDistance > 1.2f && !thereIsAWall)
+                if (isRunning)
                 {
-                    currentTarget.position = desiredTarget.position;
-                }
+                    //Calcule la distance entre la cible du pied et sa position actuelle
+                    targetDistance = Vector2.Distance(currentTarget.position, desiredTarget.position);
 
-                //Distance entre la cible actuelle et la position du pied
-                footMovement = Vector2.Distance(transform.position, currentTarget.position);
+                    //Si la distance depasse le seuile et qu'il n'y a pas de mur devant, la position du pied devient celle de la cible
+                    if (targetDistance > threshold && otherFoot.targetDistance > 1.2f && !thereIsAWall)
+                    {
+                        currentTarget.position = desiredTarget.position;
+                    }
 
-                //Si le pied est en train de bouger
-                if (footMovement > 0.1f)
-                {
-                    //On augmente le timer pour la courbe d'animation
-                    stepTimer += Time.deltaTime;
+                    //Distance entre la cible actuelle et la position du pied
+                    footMovement = Vector2.Distance(transform.position, currentTarget.position);
 
-                    //On bouge le pied en ajoutant de la hauteur selon la courbe d'animation
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
+                    //Si le pied est en train de bouger
+                    if (footMovement > 0.1f)
+                    {
+                        //On augmente le timer pour la courbe d'animation
+                        stepTimer += Time.deltaTime;
 
+                        //On bouge le pied en ajoutant de la hauteur selon la courbe d'animation
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        //Reset le timer
+                        stepTimer = 0;
+                        transform.position = currentTarget.position;
+                    }
                 }
                 else
                 {
-                    //Reset le timer
-                    stepTimer = 0;
-                    transform.position = currentTarget.position;
-                }
-
-                if (!isRunning)
-                {
                     RaycastHit2D hit = Physics2D.Raycast(new Vector2(player.transform.position.x + legOffset * facingDirection, player.transform.position.y), -Vector2.up, 2f, LayerMask.GetMask("Ground"));
                     if (hit.collider != null)
+                    {
                         currentTarget.position = Vector2.Lerp(currentTarget.position, new Vector2(hit.point.x, hit.point.y), speed * Time.deltaTime);
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y), speed * Time.deltaTime);
+                    }
                 }
 
                 if (Input.GetKey(KeyCode.LeftShift) && !player.GetComponent<PlayerPermanent>().staminaDepleted)

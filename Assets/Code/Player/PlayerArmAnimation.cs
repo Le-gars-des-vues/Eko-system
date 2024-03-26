@@ -229,7 +229,7 @@ public class PlayerArmAnimation : MonoBehaviour
             //Animation du bras gauche
             else if (gameObject.name == "LeftArmSolver_Target")
             {
-                if (Input.GetMouseButtonDown(1))// && playerScript.hasPunch)
+                if (Input.GetMouseButtonDown(1) && playerScript.hasPunch)
                 {
                     StartCoroutine(Punch());
                 }
