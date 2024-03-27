@@ -14,7 +14,6 @@ public class CraftingSystem : MonoBehaviour
     ItemGrid theItemGrid;
     InventoryItem anItem;
 
-
     private int laRecette;
     private float compteurItem1;
     private float compteurItem2;
@@ -24,12 +23,14 @@ public class CraftingSystem : MonoBehaviour
     private bool mat2Complete;
     private bool mat3Complete;
 
-    public GameObject theCraftingDropdownInit;
     public GameObject theController;
 
-    // Start is called before the first frame update
 
-    
+    private void Start()
+    {
+        theController = Camera.main.gameObject;
+    }
+
     public void CraftCheck()
     {
         
@@ -56,7 +57,7 @@ public class CraftingSystem : MonoBehaviour
                 if (anItem != null)
                 {
                    
-                    laRecette = theCraftingDropdownInit.GetComponent<TMP_Dropdown>().value;
+                    laRecette = GetComponent<CraftingManager>().knownRecipes[GetComponent<TMP_Dropdown>().value].Key;
                     if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].firstMaterial)
                     {
                         compteurItem1 += 1f / (anItem.itemData.width * anItem.itemData.height);
@@ -79,9 +80,9 @@ public class CraftingSystem : MonoBehaviour
                 
             }
         }
-        theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().SetMat1(Mathf.RoundToInt(compteurItem1));
-        theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().SetMat2(Mathf.RoundToInt(compteurItem2));
-        theCraftingDropdownInit.GetComponent<CraftingDropdownInit>().SetMat3(Mathf.RoundToInt(compteurItem3));
+        GetComponent<CraftingManager>().SetMat1(Mathf.RoundToInt(compteurItem1));
+        GetComponent<CraftingManager>().SetMat2(Mathf.RoundToInt(compteurItem2));
+        GetComponent<CraftingManager>().SetMat3(Mathf.RoundToInt(compteurItem3));
         if (Mathf.CeilToInt(compteurItem1) >= Recipes.listOfRecipes[laRecette].firstMatQuantity)
         {
             mat1Complete = true;
@@ -140,7 +141,7 @@ public class CraftingSystem : MonoBehaviour
 
                 }
             }
-            theController.GetComponent<InventoryController>().CreateRecipeItem(laRecette, theCraftingDropdownInit);
+            theController.GetComponent<InventoryController>().CreateRecipeItem(laRecette, gameObject);
         }
         CraftCheck();
     }
