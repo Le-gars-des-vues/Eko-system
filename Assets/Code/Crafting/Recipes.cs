@@ -69,13 +69,13 @@ public class Recipes
         {5, new Recipes("Wires", "Trunk", 1, "Roots", 2)},
         {6, new Recipes("Utility Upgrade 1", "Microprocessor", 1, "Cured Leather", 2)},
         {7, new Recipes("Gathering Upgrade 1", "Microprocessor", 1, "Scale", 5)},
-        {8, new Recipes("Combat Upgrade 1", "Microprocessor", 1, "Crystal", 2, "Lushalite" , 2)},
+        {8, new Recipes("Combat Upgrade 1", "Microprocessor", 1, "Rubiol", 2, "Lushalite" , 2)},
         {9, new Recipes("Shield Upgrade 1", "Microprocessor", 1, "Battery", 1)},
-        {10, new Recipes("Health Upgrade 1", "Microprocessor", 1, "Cured Leather", 1 , "Crystal",1)},
+        {10, new Recipes("Health Upgrade 1", "Microprocessor", 1, "Cured Leather", 1 , "Rubiol",1)},
         {11, new Recipes("Stamina Upgrade 1", "Microprocessor", 1, "Lushalite", 3, "Scale", 3)},
         {12, new Recipes("Fly Backpack", "Trunk", 1)},
-        {13, new Recipes("Oxygen Mask", "Trunk", 1) },
-        {14, new Recipes("Heavy Punch", "Trunk", 1) },
+        {13, new Recipes("Oxygen Mask", "Trunk", 1)},
+        {14, new Recipes("Heavy Punch", "Trunk", 1)},
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {
@@ -84,5 +84,23 @@ public class Recipes
         {2 , new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
         {3, new Recipes("Planter Room", "Trunk", 1)},
         //{3 , new Recipes("Planter Room", "Metal Sheet", 3,"Battery",1,"Crystal",5)},
+    };
+
+    public static Dictionary<string, bool> discoveredRessources = new()
+    {
+        {"Bark", false},
+        {"Battery", false},
+        {"Cured Leather", false},
+        {"Lushalite", false},
+        {"Metal Sheet", false},
+        {"Microprocessor", false},
+        {"Moss", false},
+        {"Roots", false},
+        {"Rubiol", false},
+        {"Scale", false},
+        {"Spit", false},
+        {"Trunk", false},
+        {"Tugnstone", false},
+        {"Wires", false}
     };
 }

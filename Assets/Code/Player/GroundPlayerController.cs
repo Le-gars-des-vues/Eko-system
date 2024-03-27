@@ -444,11 +444,11 @@ public class GroundPlayerController : MonoBehaviour
 
     public void Jump()
     {
-        Debug.Log("JUmped");
         if (jumpedOnce)
         {
             jumpedTwiced = true;
-            Fly();
+            if (player.hasFlyBackpack)
+                Fly();
         }
         else
         {

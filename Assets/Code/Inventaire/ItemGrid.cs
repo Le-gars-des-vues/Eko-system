@@ -132,6 +132,15 @@ public class ItemGrid : MonoBehaviour
             }
         }
 
+        foreach (KeyValuePair<string, bool> ressource in Recipes.discoveredRessources)
+        {
+            if (inventoryItem.itemData.itemName == ressource.Key && ressource.Value == false)
+            {
+                Recipes.discoveredRessources[ressource.Key] = true;
+                Debug.Log(ressource.Key + " has been discovered");
+            }
+        }
+
         inventoryItem.onGridPositionX = posX;
         inventoryItem.onGridPositionY = posY;
 

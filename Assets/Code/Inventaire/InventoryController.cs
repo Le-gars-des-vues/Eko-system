@@ -261,7 +261,8 @@ public class InventoryController : MonoBehaviour
                 return; 
             }
             upgradeItemGrid.PlaceItem(inventoryItem, posOnGrid.Value.x, posOnGrid.Value.y);
-            Recipes.listOfRecipes.Remove(recipeChoice);
+            dropDown.GetComponent<CraftingManager>().knownRecipes.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
+            /*
             if (recipeChoice != Recipes.listOfRecipes.Count)
             {
                 Recipes.listOfRecipes.Add(recipeChoice, Recipes.listOfRecipes[recipeChoice + 1]);
@@ -272,13 +273,16 @@ public class InventoryController : MonoBehaviour
                         Recipes.listOfRecipes.Add(i, Recipes.listOfRecipes[i + 1]);
                 }
             }
+            */
             dropDown.GetComponent<TMP_Dropdown>().value--;
-            dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(recipeChoice);
+            dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
             dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
         }
         else if (recipeChoice == 0)
         {
-            Recipes.listOfRecipes.Remove(recipeChoice);
+            Debug.Log("Should work");
+            dropDown.GetComponent<CraftingManager>().knownRecipes.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
+            /*
             if (recipeChoice != Recipes.listOfRecipes.Count)
             {
                 Recipes.listOfRecipes.Add(recipeChoice, Recipes.listOfRecipes[recipeChoice + 1]);
@@ -289,8 +293,9 @@ public class InventoryController : MonoBehaviour
                         Recipes.listOfRecipes.Add(i, Recipes.listOfRecipes[i + 1]);
                 }
             }
+            */
             dropDown.GetComponent<TMP_Dropdown>().value--;
-            dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(recipeChoice);
+            dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
             dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasMultitool = true;
             notWorking.SetActive(false);

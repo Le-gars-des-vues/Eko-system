@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class CraftingManager : MonoBehaviour
 {
@@ -30,6 +32,8 @@ public class CraftingManager : MonoBehaviour
     [SerializeField] ItemGrid gridStorage;
 
     public List<KeyValuePair<int, Recipes>> knownRecipes = new List<KeyValuePair<int, Recipes>>();
+    float craftCheckTime;
+    [SerializeField] float craftCheckInterval;
 
     private void Start()
     {
@@ -74,15 +78,18 @@ public class CraftingManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        changementInfo();
-        CheckIngredients();
+        if (Time.time - craftCheckTime > craftCheckInterval)
+        {
+            CheckIngredients();
+            ChangementInfo();
+        }
     }
-    public void changementInfo()
+    public void ChangementInfo()
     {
         if (dropdown.options.Count > 0)
         {
             currentRecipe = dropdown.value;
-            if (currentRecipe == 0)
+            if (knownRecipes[dropdown.value].Key == 0)
             {
                 craftingName.text = dropdown.options[currentRecipe].text;
                 craftingImage.sprite = Camera.main.GetComponent<InventoryController>().multitool;
@@ -121,6 +128,7 @@ public class CraftingManager : MonoBehaviour
                 nombreMat3.text = mat3Quant.ToString() + " / " + Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMatQuantity.ToString();
             }
         }
+        craftCheckTime = Time.time;
     }
 
     public void CheckIngredients()
@@ -133,75 +141,29 @@ public class CraftingManager : MonoBehaviour
                 bool secondMatPresent = false;
                 bool thirdMatPresent = false;
 
-                ItemGrid itemGrid = gridInventaire;
-                float tempHeight = gridInventaire.GetGridSizeHeight();
-                float tempWidth = gridInventaire.GetGridSizeWidth();
-
-                for (int x = 0; x < tempWidth; x++)
+                if (recipe.Value.firstMaterial != null && !firstMatPresent)
                 {
-
-                    for (int y = 0; y < tempHeight; y++)
-                    {
-
-                        InventoryItem item = itemGrid.CheckIfItemPresent(x, y);
-                        if (item != null)
-                        {
-                            if (item.itemData.itemName == recipe.Value.firstMaterial && !firstMatPresent)
-                                firstMatPresent = true;
-
-                            if (recipe.Value.secondMaterial != null && !secondMatPresent)
-                            {
-                                if (item.itemData.itemName == recipe.Value.secondMaterial)
-                                    secondMatPresent = true;
-                            }
-                            else
-                                secondMatPresent = true;
-
-                            if (recipe.Value.thirdMaterial != null && !thirdMatPresent)
-                            {
-                                if (item.itemData.itemName == recipe.Value.thirdMaterial)
-                                    thirdMatPresent = true;
-                            }
-                            else
-                                thirdMatPresent = true;
-                        }
-                    }
+                    if (Recipes.discoveredRessources[recipe.Value.firstMaterial])
+                        firstMatPresent = true;
                 }
+                else
+                    firstMatPresent = true;
 
-                itemGrid = gridStorage;
-                tempHeight = gridStorage.GetGridSizeHeight();
-                tempWidth = gridStorage.GetGridSizeWidth();
-
-                for (int x = 0; x < tempWidth; x++)
+                if (recipe.Value.secondMaterial != null && !secondMatPresent)
                 {
-
-                    for (int y = 0; y < tempHeight; y++)
-                    {
-
-                        InventoryItem item = itemGrid.CheckIfItemPresent(x, y);
-                        if (item != null)
-                        {
-                            if (item.itemData.itemName == recipe.Value.firstMaterial && !firstMatPresent)
-                                firstMatPresent = true;
-
-                            if (recipe.Value.secondMaterial != null && !secondMatPresent)
-                            {
-                                if (item.itemData.itemName == recipe.Value.secondMaterial)
-                                    secondMatPresent = true;
-                            }
-                            else
-                                secondMatPresent = true;
-
-                            if (recipe.Value.thirdMaterial != null && !thirdMatPresent)
-                            {
-                                if (item.itemData.itemName == recipe.Value.thirdMaterial)
-                                    thirdMatPresent = true;
-                            }
-                            else
-                                thirdMatPresent = true;
-                        }
-                    }
+                    if (Recipes.discoveredRessources[recipe.Value.secondMaterial])
+                        secondMatPresent = true;
                 }
+                else
+                    secondMatPresent = true;
+
+                if (recipe.Value.thirdMaterial != null && !thirdMatPresent)
+                {
+                    if (Recipes.discoveredRessources[recipe.Value.thirdMaterial])
+                        thirdMatPresent = true;
+                }
+                else
+                    thirdMatPresent = true;
 
                 if (firstMatPresent && secondMatPresent && thirdMatPresent)
                 {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HealthUpgrade1 : MonoBehaviour
 {
-    float hpMultiplier;
     bool isActive = false;
     InventoryItem item;
     PlayerPermanent player;
@@ -13,7 +12,6 @@ public class HealthUpgrade1 : MonoBehaviour
     {
         item = GetComponent<InventoryItem>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-        hpMultiplier = player.hpMultiplier;
     }
 
     // Update is called once per frame
@@ -35,15 +33,13 @@ public class HealthUpgrade1 : MonoBehaviour
     {
         if (activated)
         {
-            player.maxHp *= hpMultiplier;
+            player.maxHp *= player.hpMultiplier;
             player.SetMaxBar(player.hpSlider, player.maxHp);
-            player.ChangeHp(player.currentHp / 2, false);
         }
         else
         {
-            player.maxHp /= hpMultiplier;
+            player.maxHp /= player.hpMultiplier;
             player.SetMaxBar(player.hpSlider, player.maxHp);
-            player.ChangeHp(-(player.currentHp / 2), false);
         }
     }
 }

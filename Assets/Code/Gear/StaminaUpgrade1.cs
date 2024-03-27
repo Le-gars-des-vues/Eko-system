@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StaminaUpgrade1 : MonoBehaviour
 {
-    float staminaMultiplier;
     bool isActive = false;
     InventoryItem item;
     PlayerPermanent player;
@@ -13,7 +12,6 @@ public class StaminaUpgrade1 : MonoBehaviour
     {
         item = GetComponent<InventoryItem>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-        staminaMultiplier = player.staminaMultiplier;
     }
 
     // Update is called once per frame
@@ -35,15 +33,13 @@ public class StaminaUpgrade1 : MonoBehaviour
     {
         if (activated)
         {
-            player.maxStamina *= staminaMultiplier;
+            player.maxStamina *= player.staminaMultiplier;
             player.SetMaxBar(player.staminaSlider, player.maxStamina);
-            player.ChangeHp(player.currentStamina / 2, false);
         }
         else
         {
-            player.maxStamina /= staminaMultiplier;
+            player.maxStamina /= player.staminaMultiplier;
             player.SetMaxBar(player.staminaSlider, player.maxStamina);
-            player.ChangeHp(-(player.currentStamina / 2), false);
         }
     }
 }

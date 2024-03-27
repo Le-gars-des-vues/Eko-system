@@ -75,12 +75,17 @@ public class InventoryItem : MonoBehaviour
 
     public void DropItem()
     {
-        PlayerPermanent player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-        float facingDirection = player.isFacingRight ? 1 : -1;
-        var itemToDrop = Instantiate(this.itemData.objectToSpawn, (Vector2)player.gameObject.transform.position + (Vector2.right * facingDirection), Quaternion.identity);
-        itemToDrop.GetComponent<InventoryItem>().itemData = this.itemData;
-        itemToDrop.GetComponent<InventoryItem>().stackAmount = stackAmount;
-        Destroy(gameObject);
+        if (gameObject.tag != "Gear")
+        {
+            PlayerPermanent player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+            float facingDirection = player.isFacingRight ? 1 : -1;
+            var itemToDrop = Instantiate(this.itemData.objectToSpawn, (Vector2)player.gameObject.transform.position + (Vector2.right * facingDirection), Quaternion.identity);
+            itemToDrop.GetComponent<InventoryItem>().itemData = this.itemData;
+            itemToDrop.GetComponent<InventoryItem>().stackAmount = stackAmount;
+            Destroy(gameObject);
+        }
+        else
+            Debug.Log("Cannot drop this object!");
     }
 
     public void Delete()
