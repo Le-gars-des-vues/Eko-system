@@ -31,7 +31,7 @@ public class EquipementFly : MonoBehaviour
 
     void ActivateUpgrade(bool activated)
     {
-        player.hasDoubleJump = activated;
+        player.hasFlyBackpack = activated;
         player.flyBackpack.SetActive(activated);
     }
 }

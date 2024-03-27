@@ -40,7 +40,7 @@ public class PlayerPermanent : MonoBehaviour
     public bool staminaDepleted = false;
 
     [Header("Shield Variables")]
-    public float maxShield = 0;
+    public float maxShield = 10;
     public float currentShield = 0;
     public float shieldRegainRate;
     public Slider shieldSlider;
@@ -111,7 +111,7 @@ public class PlayerPermanent : MonoBehaviour
 
     [Header("Upgrade Variables")]
     public bool hasMultitool;
-    public bool hasDoubleJump;
+    public bool hasFlyBackpack;
     public GameObject flyBackpack;
     public bool hasPunch;
     public GameObject dogFist;
@@ -119,7 +119,10 @@ public class PlayerPermanent : MonoBehaviour
     public GameObject frogMask;
     public bool hasShield;
     public bool hasOptics;
+
     public float hpMultiplier;
+    public float oxygenMultiplier;
+    public float oxygenDepleteRateMultiplier;
     public float staminaMultiplier;
     public float harvestDistanceMultiplier;
     public float harvestTimeDivider;
@@ -328,12 +331,16 @@ public class PlayerPermanent : MonoBehaviour
 
         currentOxygen = maxOxygen;
         currentHp = maxHp;
-        currentStamina = maxStamina;
         currentShield = maxShield;
         SetMaxBar(oxygenSlider, maxOxygen);
         SetMaxBar(hpSlider, maxHp);
         SetMaxBar(staminaSlider, maxStamina);
-        SetMaxBar(shieldSlider, maxShield);
+
+        if (hasShield)
+        {
+            currentStamina = maxStamina;
+            SetMaxBar(shieldSlider, maxShield);
+        }
 
         CloseUI();
 

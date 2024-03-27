@@ -21,11 +21,17 @@ public class EquipementFrog : MonoBehaviour
         {
             isActive = true;
             ActivateUpgrade(true);
+            player.maxOxygen *= player.oxygenMultiplier;
+            player.oxygenDepleteRate /= player.oxygenDepleteRateMultiplier;
+            player.SetMaxBar(player.oxygenSlider, player.maxOxygen);
         }
         else if (!item.isPlaced && isActive)
         {
             isActive = false;
             ActivateUpgrade(false);
+            player.maxOxygen /= player.oxygenMultiplier;
+            player.oxygenDepleteRate *= player.oxygenDepleteRateMultiplier;
+            player.SetMaxBar(player.oxygenSlider, player.maxOxygen);
         }
     }
 

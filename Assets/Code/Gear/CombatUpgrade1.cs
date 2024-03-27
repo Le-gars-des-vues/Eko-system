@@ -31,13 +31,6 @@ public class CombatUpgrade1 : MonoBehaviour
 
     void ActivateUpgrade(bool activated)
     {
-        if (activated)
-        {
-            player.hasOptics = true;
-        }
-        else
-        {
-            player.hasOptics = false;
-        }
+        player.hasOptics = activated;
     }
 }
