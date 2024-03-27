@@ -157,6 +157,12 @@ namespace AK
 
     } // namespace SWITCHES
 
+    namespace BANKS
+    {
+        static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID MAIN = 3161908922U;
+    } // namespace BANKS
+
     namespace BUSSES
     {
         static const AkUniqueID AMB = 1117531639U;
