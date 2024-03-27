@@ -25,7 +25,7 @@ public class InventoryController : MonoBehaviour
     InventoryItem overlapItem;
     RectTransform rectTransform;
 
-
+    [SerializeField] CraftingManager crafting;
     [SerializeField] List<ItemData> items;
     public List<ItemData> craftables = new List<ItemData>();
     public List<GameObject> buildablesSide = new List<GameObject>();
