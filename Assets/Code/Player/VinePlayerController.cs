@@ -31,7 +31,7 @@ public class VinePlayerController : MonoBehaviour
 
         if (isAttached)
         {
-            if (!player.uiOpened)
+            if (player.CanMove())
             {
                 pushingLeft = Input.GetKey(KeyCode.A) ? true : false;
                 pushingRight = Input.GetKey(KeyCode.D) ? true : false;
@@ -76,7 +76,7 @@ public class VinePlayerController : MonoBehaviour
     {
         if (isAttached)
         {
-            if (!player.uiOpened)
+            if (player.CanMove())
             {
                 if (pushingLeft)
                     attachedVine.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(-1, 0, 0) * pushForce);

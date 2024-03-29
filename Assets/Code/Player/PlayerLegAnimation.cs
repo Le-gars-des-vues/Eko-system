@@ -43,6 +43,8 @@ public class PlayerLegAnimation : MonoBehaviour
     //Pour regarder la position de l'autre pied
     [SerializeField] private PlayerLegAnimation otherFoot;
 
+    [SerializeField] LayerMask layerMask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,7 +97,7 @@ public class PlayerLegAnimation : MonoBehaviour
                 }
 
                 //Empeche l'animation des jambes s'il y a un mur devant
-                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y), Vector2.right * facingDirection, 0.5f, LayerMask.GetMask("Ground"));
+                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y), Vector2.right * facingDirection, 0.5f, layerMask);
                 if (wallCheck.collider != null)
                     thereIsAWall = true;
                 else
@@ -133,7 +135,7 @@ public class PlayerLegAnimation : MonoBehaviour
                 }
                 else
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(new Vector2(player.transform.position.x + legOffset * facingDirection, player.transform.position.y), -Vector2.up, 2f, LayerMask.GetMask("Ground"));
+                    RaycastHit2D hit = Physics2D.Raycast(new Vector2(player.transform.position.x + legOffset * facingDirection, player.transform.position.y), -Vector2.up, 2f, layerMask);
                     if (hit.collider != null)
                     {
                         currentTarget.position = Vector2.Lerp(currentTarget.position, new Vector2(hit.point.x, hit.point.y), speed * Time.deltaTime);
@@ -240,7 +242,7 @@ public class PlayerLegAnimation : MonoBehaviour
 
     void Turn()
     {
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(player.transform.position.x + legOffset * facingDirection, player.transform.position.y), -Vector2.up, 12f, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(player.transform.position.x + legOffset * facingDirection, player.transform.position.y), -Vector2.up, 12f, layerMask);
         if (hit.collider != null)
         {
             currentTarget.position = hit.point;
@@ -259,7 +261,7 @@ public class PlayerLegAnimation : MonoBehaviour
 
     public void ResetPosition()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 2f, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 2f, layerMask);
         if (hit.collider != null)
         {
             currentTarget.position = hit.point;

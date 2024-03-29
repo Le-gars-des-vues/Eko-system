@@ -132,12 +132,13 @@ public class ItemGrid : MonoBehaviour
             }
         }
 
-        foreach (KeyValuePair<string, bool> ressource in Recipes.discoveredRessources)
+        List<string> keys = new List<string>(Recipes.discoveredRessources.Keys);
+        foreach (string ressource in keys)
         {
-            if (inventoryItem.itemData.itemName == ressource.Key && ressource.Value == false)
+            if (inventoryItem.itemData.itemName == ressource && Recipes.discoveredRessources[ressource] == false)
             {
-                Recipes.discoveredRessources[ressource.Key] = true;
-                Debug.Log(ressource.Key + " has been discovered");
+                Recipes.discoveredRessources[ressource] = true;
+                Debug.Log(ressource + " has been discovered");
             }
         }
 

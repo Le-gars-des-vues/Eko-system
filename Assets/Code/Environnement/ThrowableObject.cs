@@ -31,7 +31,7 @@ public class ThrowableObject : MonoBehaviour
     {
         if (GetComponent<PickableObject>().isPickedUp)
         {
-            if (!player.uiOpened)
+            if (player.CanMove())
             {
                 if (Input.GetMouseButtonDown(0))
                     timer = 0;

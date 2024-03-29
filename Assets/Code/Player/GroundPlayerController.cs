@@ -186,7 +186,7 @@ public class GroundPlayerController : MonoBehaviour
             CheckDirectionToFace(GetInput().x > 0);
         }
 
-        if (!player.uiOpened)
+        if (player.CanMove())
         {
             //Courir
             if (Input.GetKey(KeyCode.LeftShift))
@@ -381,7 +381,7 @@ public class GroundPlayerController : MonoBehaviour
     {
         CheckCollision();
 
-        if (!player.uiOpened)
+        if (player.CanMove())
         {
             if (isWallJumping)
                 MoveCharacter(wallJumpRunLerp);

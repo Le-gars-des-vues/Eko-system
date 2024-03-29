@@ -13,6 +13,7 @@ public class Base : MonoBehaviour
     [SerializeField] float baseEntryThreshold;
     [SerializeField] Animator leftDoorAnim;
     [SerializeField] Animator rightDoorAnim;
+    [SerializeField] Animator insideDoorsAnim;
     [SerializeField] GameObject buildButton;
 
     [SerializeField] GameObject background;
@@ -40,12 +41,12 @@ public class Base : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        if (isSceneLoaded)
+        if (player.GetComponent<PlayerPermanent>().spawnAtBase)
         {
             baseBackground.SetActive(true);
             isInside = true;
             pixelLight.intensity = 0.03f;
-            player.transform.position = baseEntryPoint.position;
+            player.transform.position = baseSpawnPoint.position;
             player.GetComponent<PlayerPermanent>().ResetFeetPosition();
         }
         buildButton.SetActive(true);
@@ -56,16 +57,31 @@ public class Base : MonoBehaviour
     {
         if (player != null)
         {
-            //Debug.Log(Vector2.Distance(player.transform.position, door));
-            if (Vector2.Distance(player.transform.position, door) < distanceOpenThreshold)
+            if (!isInside)
             {
-                leftDoorAnim.SetBool("isOpen", true);
-                rightDoorAnim.SetBool("isOpen", true);
+                //Debug.Log(Vector2.Distance(player.transform.position, door));
+                if (Vector2.Distance(player.transform.position, door) < distanceOpenThreshold)
+                {
+                    leftDoorAnim.SetBool("isOpen", true);
+                    rightDoorAnim.SetBool("isOpen", true);
+                }
+                else
+                {
+                    leftDoorAnim.SetBool("isOpen", false);
+                    rightDoorAnim.SetBool("isOpen", false);
+                }
             }
             else
             {
-                leftDoorAnim.SetBool("isOpen", false);
-                rightDoorAnim.SetBool("isOpen", false);
+                //Debug.Log(Vector2.Distance(player.transform.position, door));
+                if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < distanceOpenThreshold)
+                {
+                    insideDoorsAnim.SetBool("isOpen", true);
+                }
+                else
+                {
+                    insideDoorsAnim.SetBool("isOpen", false);
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.W))

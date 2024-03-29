@@ -1,29 +1,118 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    static DialogueManager instance;
+    public static DialogueManager instance;
+    int dialigueIndex;
+    bool isInDialogue;
+    bool isReadyToTalk = false;
+    [SerializeField] float startDialogueDistance;
 
-    [SerializeField] Dialogue[] tutorialRobotText;
-    [SerializeField] Robot robot;
+    [SerializeField] List<Dialogue> currentDialogue;
+    [SerializeField] DialogueSpeaker currentSpeaker;
+    Coroutine dialogue;
+
+    public delegate void OnDialogueEnd();
+    public static OnDialogueEnd onDialogueEnd;
+
+    [SerializeField] GameObject tutorialScreen;
+    PlayerPermanent player;
+
+    bool pressedKey = false;
+    bool dialogueScreenIsOpen = false;
 
     private void Awake()
     {
-        instance = this;
+        if (instance != null && instance != this)
+            Destroy(this);
+        else
+            instance = this;
+
+        dialigueIndex = 0;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        robot = GameObject.FindGameObjectWithTag("Robot").GetComponent<Robot>();
-        RobotTalk(tutorialRobotText[0].text);
+        tutorialScreen = GameObject.Find("TutorialScreen");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
-    public void RobotTalk(string textToWrite)
+    private void Update()
     {
-        StartCoroutine(robot.Speech(textToWrite));
+        if (player.isInDialogue)
+        {
+            if (!dialogueScreenIsOpen)
+            {
+                dialogueScreenIsOpen = true;
+                tutorialScreen.GetComponent<Animator>().SetBool("isInDialogue", true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && !pressedKey)
+            {
+                pressedKey = true;
+                NextSentence();
+            }
+        }
+        else
+        {
+            if (isReadyToTalk)
+            {
+                if (Vector2.Distance(currentSpeaker.gameObject.transform.position, player.gameObject.transform.position) < startDialogueDistance)
+                    StartTalking();
+                else
+                    return;
+            }
+        }
+    }
+
+    public void StartDialogue(List<Dialogue> dialogueSequence, DialogueSpeaker speaker, bool _isInDialogue)
+    {
+        dialigueIndex = 0;
+        currentSpeaker = speaker;
+        currentDialogue = dialogueSequence;
+        isInDialogue = _isInDialogue;
+        isReadyToTalk = true;
+    }
+
+    void StartTalking()
+    {
+        dialogue = StartCoroutine(currentSpeaker.Speech(currentDialogue[dialigueIndex].text));
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().isInDialogue = isInDialogue;
+        isReadyToTalk = false;
+    }
+
+    public void NextSentence()
+    {
+        dialigueIndex++;
+        if (dialigueIndex < currentDialogue.Count)
+        {
+            StopCoroutine(dialogue);
+            dialogue = StartCoroutine(currentSpeaker.Speech(currentDialogue[dialigueIndex].text));
+            pressedKey = false;
+        }
+        else
+        {
+            EndDialogue();
+            pressedKey = false;
+        }
+    }
+
+    public void EndDialogue()
+    {
+        isInDialogue = false;
+        player.isInDialogue = false;
+        if (dialogueScreenIsOpen)
+        {
+            dialogueScreenIsOpen = false;
+            tutorialScreen.GetComponent<Animator>().SetBool("isInDialogue", false);
+        }
+        StopCoroutine(dialogue);
+        currentSpeaker.StopDialogue();
+        onDialogueEnd?.Invoke();
+        onDialogueEnd = null;
     }
 }
 

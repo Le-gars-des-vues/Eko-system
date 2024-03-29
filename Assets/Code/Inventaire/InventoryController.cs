@@ -25,7 +25,8 @@ public class InventoryController : MonoBehaviour
     InventoryItem overlapItem;
     RectTransform rectTransform;
 
-    [SerializeField] CraftingManager crafting;
+    CraftingManager crafting;
+
     [SerializeField] List<ItemData> items;
     public List<ItemData> craftables = new List<ItemData>();
     public List<GameObject> buildablesSide = new List<GameObject>();
@@ -67,6 +68,7 @@ public class InventoryController : MonoBehaviour
     {
         invalid = GameObject.Find("Invalid");
         invalid.SetActive(false);
+        crafting = GameObject.Find("Crafting").transform.Find("DropdownListOfCrafts").GetComponent<CraftingManager>();
     }
 
     private void Update()
@@ -175,7 +177,10 @@ public class InventoryController : MonoBehaviour
             inventoryItem.DropItem();
         }
         else
+        {
             defaultItemGrid.PlaceItem(inventoryItem, posOnGrid.Value.x, posOnGrid.Value.y);
+            OnItemPlaced();
+        }
     }
 
     public void InsertItem(InventoryItem itemToInsert)
@@ -188,7 +193,11 @@ public class InventoryController : MonoBehaviour
             itemToInsert.DropItem(); 
         }
         else
+        {
+
             selectedItemGrid.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
+            OnItemPlaced();
+        }
     }
 
     private void HandleHighlight()
@@ -261,8 +270,8 @@ public class InventoryController : MonoBehaviour
                 return; 
             }
             upgradeItemGrid.PlaceItem(inventoryItem, posOnGrid.Value.x, posOnGrid.Value.y);
-            dropDown.GetComponent<CraftingManager>().knownRecipes.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
             /*
+            Recipes.listOfRecipes.Remove(recipeChoice);
             if (recipeChoice != Recipes.listOfRecipes.Count)
             {
                 Recipes.listOfRecipes.Add(recipeChoice, Recipes.listOfRecipes[recipeChoice + 1]);
@@ -274,15 +283,15 @@ public class InventoryController : MonoBehaviour
                 }
             }
             */
-            dropDown.GetComponent<TMP_Dropdown>().value--;
-            dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
-            dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
+            dropDown.GetComponent<CraftingManager>().knownRecipes.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
+            //dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
+            //dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
         }
         else if (recipeChoice == 0)
         {
             Debug.Log("Should work");
-            dropDown.GetComponent<CraftingManager>().knownRecipes.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
             /*
+            Recipes.listOfRecipes.Remove(recipeChoice);
             if (recipeChoice != Recipes.listOfRecipes.Count)
             {
                 Recipes.listOfRecipes.Add(recipeChoice, Recipes.listOfRecipes[recipeChoice + 1]);
@@ -294,9 +303,9 @@ public class InventoryController : MonoBehaviour
                 }
             }
             */
-            dropDown.GetComponent<TMP_Dropdown>().value--;
-            dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
-            dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
+            dropDown.GetComponent<CraftingManager>().knownRecipes.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
+            //dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
+            //dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasMultitool = true;
             notWorking.SetActive(false);
         }
@@ -311,6 +320,11 @@ public class InventoryController : MonoBehaviour
 
         //int selectedItemID = recipeChoice;
         //inventoryItem.Set(craftables[selectedItemID], defaultItemGrid);
+    }
+
+    void OnItemPlaced()
+    {
+        crafting.OnValueChanged();
     }
 
     private void LeftMouseButtonPress()
@@ -420,6 +434,7 @@ public class InventoryController : MonoBehaviour
                     hotbar.player.EquipObject(objectSpawned);
                 }
             }
+            OnItemPlaced();
 
             selectedItem = null;
             if (overlapItem != null)

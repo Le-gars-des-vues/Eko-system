@@ -139,7 +139,7 @@ public class PickableObject : MonoBehaviour
             //Pick up
             if (Input.GetKeyDown(KeyCode.E) && (hasFlashed || isSelected))
             {
-                if (!isPickedUp && !player.uiOpened)
+                if (!isPickedUp && player.CanMove())
                 {
                     PickUp(false, false);
                 }
@@ -152,7 +152,7 @@ public class PickableObject : MonoBehaviour
 
             transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
 
-            if (gameObject.tag == "Spear" && !player.uiOpened)
+            if (gameObject.tag == "Spear" && player.CanMove())
             {   
                 Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

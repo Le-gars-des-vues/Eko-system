@@ -81,7 +81,7 @@ public class PlayerArmAnimation : MonoBehaviour
         //Debug.Log(Input.GetAxis("Mouse X") + " / " + Input.GetAxis("Mouse Y"));
         facingDirection = player.GetComponent<PlayerPermanent>().isFacingRight ? 1 : -1;
 
-        if (!playerScript.uiOpened)
+        if (playerScript.CanMove())
         {
             //Animation du bras droit
             if (gameObject.name == "RightArmSolver_Target")

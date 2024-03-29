@@ -53,17 +53,23 @@ public class SellingScreen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isInRange = true;
-        arrow.SetActive(true);
+        if (collision.gameObject.tag == "Player")
+        {
+            isInRange = true;
+            arrow.SetActive(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isInRange = false;
-        arrow.SetActive(false);
-        if (player.marketIsOpen)
+        if (collision.gameObject.tag == "Player")
         {
-            player.ShowOrHideMarket();
+            isInRange = false;
+            arrow.SetActive(false);
+            if (player.marketIsOpen)
+            {
+                player.ShowOrHideMarket();
+            }
         }
     }
 }

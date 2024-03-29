@@ -7,11 +7,15 @@ using UnityEngine;
 
 public class CraftingSystem : MonoBehaviour
 {
-    [SerializeField] private RectTransform inventaireCrafting;
+    [SerializeField] private ItemGrid gridInventaire;
+    [SerializeField] private ItemGrid gridStorage;
 
     private int tempHeight;
     private int tempWidth;
-    ItemGrid theItemGrid;
+
+    private int tempHeightStorage;
+    private int tempWidthStorage;
+
     InventoryItem anItem;
 
     private int laRecette;
@@ -43,9 +47,8 @@ public class CraftingSystem : MonoBehaviour
         mat3Complete = false;
         
 
-        theItemGrid = inventaireCrafting.GetComponent<ItemGrid>();
-        tempHeight = inventaireCrafting.GetComponent<ItemGrid>().GetGridSizeHeight();
-        tempWidth = inventaireCrafting.GetComponent<ItemGrid>().GetGridSizeWidth();
+        tempHeight = gridInventaire.GetGridSizeHeight();
+        tempWidth = gridInventaire.GetGridSizeWidth();
 
         for (int x = 0; x < tempWidth; x++)
         {
@@ -53,31 +56,42 @@ public class CraftingSystem : MonoBehaviour
             for (int y = 0; y < tempHeight; y++)
             {
                
-                anItem = theItemGrid.CheckIfItemPresent(x, y);
+                anItem = gridInventaire.CheckIfItemPresent(x, y);
                 if (anItem != null)
                 {
-                   
                     laRecette = GetComponent<CraftingManager>().knownRecipes[GetComponent<TMP_Dropdown>().value].Key;
                     if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].firstMaterial)
-                    {
                         compteurItem1 += 1f / (anItem.itemData.width * anItem.itemData.height);
-                        Debug.Log(compteurItem1);
-                       
-                    }
                     else if(anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].secondMaterial)
-                    {
                         compteurItem2+= 1f / (anItem.itemData.width * anItem.itemData.height);
-                        Debug.Log(compteurItem2);
-                    }
                     else if(anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].thirdMaterial)
-                    {
                         compteurItem3 += 1f / (anItem.itemData.width * anItem.itemData.height);
-                        Debug.Log(compteurItem2);
-                    }
-                    
-                    
                 }
                 
+            }
+        }
+        if (GameObject.Find("Player").GetComponent<PlayerPermanent>().CanOpenStorage())
+        {
+            tempHeightStorage = gridStorage.GetGridSizeHeight();
+            tempWidthStorage = gridStorage.GetGridSizeWidth();
+
+            for (int x = 0; x < tempWidthStorage; x++)
+            {
+                for (int y = 0; y < tempHeightStorage; y++)
+                {
+                    anItem = gridStorage.CheckIfItemPresent(x, y);
+                    if (anItem != null)
+                    {
+
+                        laRecette = GetComponent<CraftingManager>().knownRecipes[GetComponent<TMP_Dropdown>().value].Key;
+                        if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].firstMaterial)
+                            compteurItem1 += 1f / (anItem.itemData.width * anItem.itemData.height);
+                        else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].secondMaterial)
+                            compteurItem2 += 1f / (anItem.itemData.width * anItem.itemData.height);
+                        else if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].thirdMaterial)
+                            compteurItem3 += 1f / (anItem.itemData.width * anItem.itemData.height);
+                    }
+                }
             }
         }
         GetComponent<CraftingManager>().SetMat1(Mathf.RoundToInt(compteurItem1));
@@ -108,11 +122,9 @@ public class CraftingSystem : MonoBehaviour
             int i3 = 0;
             for (int x = 0; x < tempWidth; x++)
             {
-
                 for (int y = 0; y < tempHeight; y++)
                 {
-                    
-                    anItem = theItemGrid.CheckIfItemPresent(x, y);
+                    anItem = gridInventaire.CheckIfItemPresent(x, y);
                     if (anItem != null)
                     {
                         if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].firstMaterial && i1 < Recipes.listOfRecipes[laRecette].firstMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
@@ -136,13 +148,50 @@ public class CraftingSystem : MonoBehaviour
                             i3++;
                             anItem.GetComponent<InventoryItem>().markedForDestroy = true;
                         }
-
                     }
+                }
+            }
+            if (GameObject.Find("Player").GetComponent<PlayerPermanent>().CanOpenStorage())
+            {
+                tempHeightStorage = gridStorage.GetGridSizeHeight();
+                tempWidthStorage = gridStorage.GetGridSizeWidth();
 
+                for (int x = 0; x < tempWidthStorage; x++)
+                {
+                    for (int y = 0; y < tempHeightStorage; y++)
+                    {
+                        anItem = gridStorage.CheckIfItemPresent(x, y);
+                        if (anItem != null)
+                        {
+                            if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].firstMaterial && i1 < Recipes.listOfRecipes[laRecette].firstMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
+                            {
+                                anItem.Delete();
+                                compteurItem1--;
+                                i1++;
+                                anItem.GetComponent<InventoryItem>().markedForDestroy = true;
+                            }
+                            else if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].secondMaterial && i2 < Recipes.listOfRecipes[laRecette].secondMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
+                            {
+                                anItem.Delete();
+                                compteurItem2--;
+                                i2++;
+                                anItem.GetComponent<InventoryItem>().markedForDestroy = true;
+                            }
+                            else if (anItem.itemData.itemName == Recipes.listOfRecipes[laRecette].thirdMaterial && i3 < Recipes.listOfRecipes[laRecette].thirdMatQuantity && anItem.GetComponent<InventoryItem>().markedForDestroy == false)
+                            {
+                                anItem.Delete();
+                                compteurItem3--;
+                                i3++;
+                                anItem.GetComponent<InventoryItem>().markedForDestroy = true;
+                            }
+                        }
+                    }
                 }
             }
             theController.GetComponent<InventoryController>().CreateRecipeItem(laRecette, gameObject);
+            GetComponent<CraftingManager>().OnValueChanged();
         }
-        CraftCheck();
+        if (GetComponent<CraftingManager>().knownRecipes.Count > 0)
+            CraftCheck();
     }
 }

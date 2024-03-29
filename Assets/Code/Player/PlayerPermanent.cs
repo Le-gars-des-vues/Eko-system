@@ -77,7 +77,7 @@ public class PlayerPermanent : MonoBehaviour
 
     [SerializeField] MultiTool multiTool;
     public bool isUsingMultiTool;
-    [SerializeField] bool spawnAtBase = true;
+    public bool spawnAtBase = true;
 
     public float minDistanceToHarvest;
     public float timeToHarvest;
@@ -144,6 +144,7 @@ public class PlayerPermanent : MonoBehaviour
     public bool roomManageIsOpen = false;
     public bool menuIsOpen = false;
     public bool uiOpened;
+    public bool isInDialogue;
     public bool cameraTrigger = false;
     [SerializeField] Texture2D[] cursorImages;
 
@@ -318,12 +319,6 @@ public class PlayerPermanent : MonoBehaviour
     //Pour remettre tout les values au maximum
     public void Reset()
     {
-        if (spawnAtBase)
-        {
-            transform.position = theBase.GetComponent<Base>().baseSpawnPoint.position;
-            theBase.GetComponent<Base>().isInside = true;
-        }
-
         //currentHunger = maxHunger;
         //currentThirst = maxThirst;
         //SetMaxBar(hungerSlider, maxHunger);
@@ -331,14 +326,14 @@ public class PlayerPermanent : MonoBehaviour
 
         currentOxygen = maxOxygen;
         currentHp = maxHp;
-        currentShield = maxShield;
+        currentStamina = maxStamina;
         SetMaxBar(oxygenSlider, maxOxygen);
         SetMaxBar(hpSlider, maxHp);
         SetMaxBar(staminaSlider, maxStamina);
 
         if (hasShield)
         {
-            currentStamina = maxStamina;
+            currentShield = maxShield;
             SetMaxBar(shieldSlider, maxShield);
         }
 
@@ -1006,6 +1001,11 @@ public class PlayerPermanent : MonoBehaviour
     bool IsInUI()
     {
         return inventoryOpen || mapIsOpen || upgradeIsOpen || marketIsOpen || roomManageIsOpen || craftingIsOpen;
+    }
+
+    public bool CanMove()
+    {
+        return !uiOpened && !isInDialogue;
     }
 
     private Vector2 GetInput()

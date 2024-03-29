@@ -12,7 +12,7 @@ public class ShowOrHide : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void OnMouseDown()
+    public void OnButtonClick()
     {
         if (!isShowm)
         {

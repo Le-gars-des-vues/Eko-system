@@ -8,11 +8,13 @@ public class CraftingBench : MonoBehaviour
     PlayerPermanent player;
     bool isInRange;
     [SerializeField] GameObject arrow;
+    CraftingManager crafting;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+        crafting = GameObject.Find("Crafting").transform.Find("DropdownListOfCrafts").GetComponent<CraftingManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class CraftingBench : MonoBehaviour
             {
                 if (isInRange && arrow.GetComponent<Arrow>().readyToActivate)
                 {
+                    crafting.OnValueChanged();
                     if (!player.inventoryOpen)
                     {
                         player.ShowOrHideInventoryNoButtons();
@@ -50,17 +53,23 @@ public class CraftingBench : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isInRange = true;
-        arrow.SetActive(true);
+        if (collision.gameObject.tag == "Player")
+        {
+            isInRange = true;
+            arrow.SetActive(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isInRange = false;
-        arrow.SetActive(false);
-        if (player.craftingIsOpen)
+        if (collision.gameObject.tag == "Player")
         {
-            player.ShowOrHideCrafting();
+            isInRange = false;
+            arrow.SetActive(false);
+            if (player.craftingIsOpen)
+            {
+                player.ShowOrHideCrafting();
+            }
         }
     }
 }

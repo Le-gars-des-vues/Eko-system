@@ -27,12 +27,16 @@ public class CraftingManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI craftingName;
     [SerializeField] TextMeshProUGUI craftingDesc;
     [SerializeField] Image craftingImage;
+    [SerializeField] GameObject noRecipe;
 
     [SerializeField] ItemGrid gridInventaire;
     [SerializeField] ItemGrid gridStorage;
 
+    [SerializeField] GameObject placeholder;
+
     public List<KeyValuePair<int, Recipes>> knownRecipes = new List<KeyValuePair<int, Recipes>>();
-    float craftCheckTime;
+    public List<KeyValuePair<int, Recipes>> learnedRecipes = new List<KeyValuePair<int, Recipes>>();
+    //float craftCheckTime;
     [SerializeField] float craftCheckInterval;
 
     private void Start()
@@ -44,13 +48,6 @@ public class CraftingManager : MonoBehaviour
     void Awake()
     {
         dropdown = this.gameObject.GetComponent<TMP_Dropdown>();
-        /*
-        for (int i = 0; i < Recipes.listOfRecipes.Count; i++)
-        {
-            dropdown.options.Add(new TMP_Dropdown.OptionData {text = Recipes.listOfRecipes[i].recipeResult });
-            currentRecipe = 0;
-        }
-        */
     }
     public void SetMat1(int leMat)
     {
@@ -76,66 +73,97 @@ public class CraftingManager : MonoBehaviour
     {
         return mat3Quant;
     }
+    /*
     private void FixedUpdate()
     {
         if (Time.time - craftCheckTime > craftCheckInterval)
         {
             CheckIngredients();
-            ChangementInfo();
         }
     }
+    */
+
+    public void OnValueChanged()
+    {
+        CheckIngredients();
+        ChangementInfo();
+    }
+
     public void ChangementInfo()
     {
-        if (dropdown.options.Count > 0)
+        if (knownRecipes.Count > 0)
         {
+            if (noRecipe.activeSelf)
+            {
+                noRecipe.SetActive(false);
+                craftingImage.gameObject.SetActive(true);
+            }
             currentRecipe = dropdown.value;
-            if (knownRecipes[dropdown.value].Key == 0)
+            if (currentRecipe >= 0)
             {
-                craftingName.text = dropdown.options[currentRecipe].text;
-                craftingImage.sprite = Camera.main.GetComponent<InventoryController>().multitool;
-                craftingDesc.text = "Repair your multitool!";
-            }
-            else
-            {
-                craftingName.text = dropdown.options[currentRecipe].text;
-                craftingImage.sprite = Camera.main.GetComponent<InventoryController>().craftables[knownRecipes[currentRecipe].Key].itemIcon;
-                craftingDesc.text = Camera.main.GetComponent<InventoryController>().craftables[knownRecipes[currentRecipe].Key].description;
-            }
+                if (knownRecipes[currentRecipe].Key == 0)
+                {
+                    craftingName.text = dropdown.options[currentRecipe].text;
+                    craftingImage.sprite = Camera.main.GetComponent<InventoryController>().multitool;
+                    craftingDesc.text = "Repair your multitool!";
+                }
+                else
+                {
+                    craftingName.text = dropdown.options[currentRecipe].text;
+                    craftingImage.sprite = Camera.main.GetComponent<InventoryController>().craftables[knownRecipes[currentRecipe].Key].itemIcon;
+                    craftingDesc.text = Camera.main.GetComponent<InventoryController>().craftables[knownRecipes[currentRecipe].Key].description;
+                }
 
-            theCraftingSystem.GetComponent<CraftingSystem>().CraftCheck();
+                theCraftingSystem.GetComponent<CraftingSystem>().CraftCheck();
 
-            mat1Nom.text = Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].firstMaterial;
-            nombreMat1.text = mat1Quant.ToString() + " / " + Recipes.listOfRecipes[currentRecipe].firstMatQuantity.ToString();
+                mat1Nom.text = Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].firstMaterial;
+                nombreMat1.text = mat1Quant.ToString() + " / " + Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].firstMatQuantity.ToString();
 
-            mat2Nom.text = Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMaterial;
+                mat2Nom.text = Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMaterial;
+                if (Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMatQuantity == null)
+                {
+                    nombreMat2.text = null;
+                }
+                else
+                {
+                    nombreMat2.text = mat2Quant.ToString() + " / " + Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMatQuantity.ToString();
+                }
 
-            if (Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMatQuantity == null)
-            {
-                nombreMat2.text = null;
+                mat3Nom.text = Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMaterial;
+                if (Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMatQuantity == null)
+                {
+                    nombreMat3.text = null;
+                }
+                else
+                {
+                    nombreMat3.text = mat3Quant.ToString() + " / " + Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMatQuantity.ToString();
+                }
             }
-            else
+            //craftCheckTime = Time.time;
+            dropdown.options.Clear();
+            for (int i = 0; i < knownRecipes.Count; i++)
             {
-                nombreMat2.text = mat2Quant.ToString() + " / " + Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMatQuantity.ToString();
+                dropdown.options.Add(new TMP_Dropdown.OptionData { text = knownRecipes[i].Value.recipeResult });
+                currentRecipe = 0;
             }
-
-            mat3Nom.text = Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMaterial;
-            if (Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMatQuantity == null)
-            {
-                nombreMat3.text = null;
-            }
-            else
-            {
-                nombreMat3.text = mat3Quant.ToString() + " / " + Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMatQuantity.ToString();
-            }
+            dropdown.RefreshShownValue();
+            dropdown.value = 0;
         }
-        craftCheckTime = Time.time;
+        else
+        {
+            noRecipe.SetActive(true);
+            craftingImage.gameObject.SetActive(false);
+            craftingName.text = "";
+            craftingDesc.text = "";
+            dropdown.value = -1;
+        }
     }
 
     public void CheckIngredients()
     {
         foreach (KeyValuePair<int, Recipes> recipe in Recipes.listOfRecipes)
         {
-            if (!knownRecipes.Contains(recipe))
+            if (!learnedRecipes.Contains(recipe))
             {
                 bool firstMatPresent = false;
                 bool secondMatPresent = false;
@@ -167,18 +195,16 @@ public class CraftingManager : MonoBehaviour
 
                 if (firstMatPresent && secondMatPresent && thirdMatPresent)
                 {
+                    learnedRecipes.Add(recipe);
                     knownRecipes.Add(recipe);
                     knownRecipes.Sort(new KeyValuePairComparer());
-                    GetComponent<TMP_Dropdown>().options.Clear();
-                    for (int i = 0; i < knownRecipes.Count; i++)
-                    {
-                        GetComponent<TMP_Dropdown>().options.Add(new TMP_Dropdown.OptionData { text = knownRecipes[i].Value.recipeResult });
-                    }
+                    dropdown.options.Add(new TMP_Dropdown.OptionData { text = recipe.Value.recipeResult });
                 }
             }
         }
     }
 }
+
 public class KeyValuePairComparer : IComparer<KeyValuePair<int, Recipes>>
 {
     public int Compare(KeyValuePair<int, Recipes> x, KeyValuePair<int, Recipes> y)
