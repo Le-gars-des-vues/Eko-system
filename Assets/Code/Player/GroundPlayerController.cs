@@ -126,12 +126,12 @@ public class GroundPlayerController : MonoBehaviour
     private int lastWallJumpDir;
 
     [Header("Slide Variables")]
+    [SerializeField] private float slideSpeed;
+    //Acceleration quand le joueur slide
+    [SerializeField] private float slideAccel;
     //Check si le joueur est en train de slide
     private bool isSliding;
     //Vitesse de slide
-    [SerializeField] private float slideSpeed;
-    //Acceleration quand le joueur slide
-    [SerializeField]private float slideAccel;
 
     [Header("Vine Variables")]
     private List<Collider2D> vineParts = new List<Collider2D>();
@@ -146,8 +146,9 @@ public class GroundPlayerController : MonoBehaviour
     private float vineJumpStartTime;
 
     private PlayerPermanent player;
-    [SerializeField] GameObject UnderWaterCollider;
     [SerializeField] private float runStaminaCost;
+    [SerializeField] private float jumpStaminaCost;
+    [SerializeField] private float climbStaminaCost;
 
     private void OnEnable()
     {
@@ -452,14 +453,18 @@ public class GroundPlayerController : MonoBehaviour
         }
         else
         {
-            jumpedOnce = true;
-            pressedJumpTime = 0;
-            float force = jumpForce;
-            if (rb.velocity.y < 0)
+            if (!player.staminaDepleted)
             {
-                force -= rb.velocity.y;
+                player.ChangeStamina(-jumpStaminaCost);
+                jumpedOnce = true;
+                pressedJumpTime = 0;
+                float force = jumpForce;
+                if (rb.velocity.y < 0)
+                {
+                    force -= rb.velocity.y;
+                }
+                rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
             }
-            rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
         }
     }
 
@@ -471,42 +476,61 @@ public class GroundPlayerController : MonoBehaviour
 
     private void WallJump(int dir)
     {
-        //Ensures we can't call Wall Jump multiple times from one press
-        pressedJumpTime = 0;
-        lastOnWallRightTime = 0;
-        lastOnWallLeftTime = 0;
+        if (!player.staminaDepleted)
+        {
+            player.ChangeStamina(-jumpStaminaCost);
+            //Ensures we can't call Wall Jump multiple times from one press
+            pressedJumpTime = 0;
+            lastOnWallRightTime = 0;
+            lastOnWallLeftTime = 0;
 
-        Vector2 force = new Vector2(wallJumpForce.x, wallJumpForce.y);
-        force.x *= dir; //apply force in opposite direction of wall
+            Vector2 force = new Vector2(wallJumpForce.x, wallJumpForce.y);
+            force.x *= dir; //apply force in opposite direction of wall
 
-        if (Mathf.Sign(rb.velocity.x) != Mathf.Sign(force.x))
-            force.x -= rb.velocity.x;
+            if (Mathf.Sign(rb.velocity.x) != Mathf.Sign(force.x))
+                force.x -= rb.velocity.x;
 
-        if (rb.velocity.y < 0) //checks whether player is falling, if so we subtract the velocity.y (counteracting force of gravity). This ensures the player always reaches our desired jump force or greater
-            force.y -= rb.velocity.y;
+            if (rb.velocity.y < 0) //checks whether player is falling, if so we subtract the velocity.y (counteracting force of gravity). This ensures the player always reaches our desired jump force or greater
+                force.y -= rb.velocity.y;
 
-        //Unlike in the run we want to use the Impulse mode.
-        //The default mode will apply are force instantly ignoring masss
-        rb.AddForce(force, ForceMode2D.Impulse);
-        Turn();
-        jumpedOnce = true;
-        hasWallJumped = true;
+            //Unlike in the run we want to use the Impulse mode.
+            //The default mode will apply are force instantly ignoring masss
+            rb.AddForce(force, ForceMode2D.Impulse);
+            Turn();
+            jumpedOnce = true;
+            hasWallJumped = true;
+        }
     }
 
     private void Slide()
     {
         //We remove the remaining upwards Impulse to prevent upwards sliding
+        /*
         if (rb.velocity.y > 0)
         {
             rb.AddForce(-rb.velocity.y * Vector2.up, ForceMode2D.Impulse);
         }
+        */
         float speedDif = slideSpeed - rb.velocity.y;
         float movement = speedDif * slideAccel;
         //So, we clamp the movement here to prevent any over corrections (these aren't noticeable in the Run)
         //The force applied can't be greater than the (negative) speedDifference * by how many times a second FixedUpdate() is called. For more info research how force are applied to rigidbodies.
         movement = Mathf.Clamp(movement, -Mathf.Abs(speedDif) * (1 / Time.fixedDeltaTime), Mathf.Abs(speedDif) * (1 / Time.fixedDeltaTime));
 
-        rb.AddForce(movement * Vector2.up);
+        if (!player.staminaDepleted)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(Mathf.Abs(slideSpeed) * Vector2.up);
+                if (rb.velocity.magnitude > slideSpeed)
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, Mathf.Abs(slideSpeed));
+                player.ChangeStamina(-climbStaminaCost);
+            }
+            else
+                rb.AddForce(movement * Vector2.up);
+        }
+        else
+            rb.AddForce(movement * Vector2.up);
     }
 
     public void VineJump()

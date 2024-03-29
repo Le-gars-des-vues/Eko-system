@@ -259,7 +259,10 @@ public class PlayerPermanent : MonoBehaviour
             currentStamina += staminaRegainRate * Time.deltaTime;
             SetBar(staminaSlider, currentStamina);
             if (currentStamina >= maxStamina)
+            {
                 staminaDepleted = false;
+                staminaSlider.gameObject.GetComponent<Animator>().SetBool("staminaDepleted", false);
+            }
         }
 
         if (hasShield)
@@ -452,7 +455,10 @@ public class PlayerPermanent : MonoBehaviour
         SetBar(staminaSlider, currentStamina);
         staminaTime = Time.time;
         if (currentStamina <= 0)
+        {
             staminaDepleted = true;
+            staminaSlider.gameObject.GetComponent<Animator>().SetBool("staminaDepleted", true);
+        }
     }
 
     public void ChangeHp(float value, bool isLosingHp, GameObject otherObject = null)
