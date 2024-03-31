@@ -21,6 +21,7 @@ public class Robot : MonoBehaviour
     [SerializeField] GameObject respawnPoint;
     [SerializeField] GameObject sellingScreen;
     [SerializeField] GameObject craftingBench;
+    [SerializeField] float offset;
 
     bool hasShowedRespawn;
     bool hasShowedMarket;
@@ -33,22 +34,21 @@ public class Robot : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         if (player.GetComponent<PlayerPermanent>().spawnAtBase)
         {
             DialogueManager.instance.StartDialogue(speaker.dialogueSequence, speaker, true);
             DialogueManager.onDialogueEnd = GoToRespawn;
         }
-        Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.GetComponent<CapsuleCollider2D>());
+        //Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.GetComponent<CapsuleCollider2D>());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (isMoving)
         {
-            if (Vector2.Distance(target.position, transform.position) > movementDistanceThreshold)
+            if (Mathf.Abs(target.position.x - transform.position.x) > movementDistanceThreshold)
             {
                 anim.SetBool("isWalking", true);
                 Vector2 direction = target.position - transform.position;
@@ -62,7 +62,7 @@ public class Robot : MonoBehaviour
             {
                 isMoving = false;
                 anim.SetBool("isWalking", false);
-                if (!isFacingRight)
+                if ((!isFacingRight && player.transform.position.x - transform.position.x > 0) || (isFacingRight && player.transform.position.x - transform.position.x < 0))
                     Turn();
                 RobotTutorial();
             }
@@ -101,14 +101,14 @@ public class Robot : MonoBehaviour
     {
         if (!isFacingRight)
             Turn();
-        rb.AddForce(walkSpeed * Vector2.right);
+        transform.Translate(walkSpeed * Vector2.right * Time.deltaTime);
     }
 
     void GoLeft()
     {
         if (isFacingRight)
             Turn();
-        rb.AddForce(walkSpeed * Vector2.left);
+        transform.Translate(walkSpeed * Vector2.left * Time.deltaTime);
     }
 
     void Turn()
@@ -116,25 +116,41 @@ public class Robot : MonoBehaviour
         Vector2 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+
+        scale = speaker.GetComponent<DialogueSpeaker>().speechBubbleText.gameObject.transform.localScale;
+        scale.x *= -1;
+        speaker.GetComponent<DialogueSpeaker>().speechBubbleText.gameObject.transform.localScale = scale;
+
+        scale = speaker.GetComponent<DialogueSpeaker>().speechBubbleTextB.gameObject.transform.localScale;
+        scale.x *= -1;
+        speaker.GetComponent<DialogueSpeaker>().speechBubbleTextB.gameObject.transform.localScale = scale;
+
         isFacingRight = !isFacingRight;
     }
 
     void GoToRespawn()
     {
         isMoving = true;
-        target.position = respawnPoint.transform.position + new Vector3(3, 0, 0);
+        target.position = new Vector2(respawnPoint.transform.position.x + offset, transform.position.y);
+        PromptManager.instance.CreateNewPrompt(new Prompt("Play the movement tutorial?", false, "Yes", "No"));
+        PromptManager.onButtonClick = TeleportToTrainingRoom;
+    }
+
+    void TeleportToTrainingRoom()
+    {
+        StartCoroutine(player.GetComponent<PlayerPermanent>().Dissolve(2f, true, GameObject.Find("Base").GetComponent<Base>().trainingRoom.position));
     }
 
     void GoToSellingScreen()
     {
         isMoving = true;
-        target.position = sellingScreen.transform.position + new Vector3(3, 0, 0);
+        target.position = new Vector2(sellingScreen.transform.position.x + offset, transform.position.y);
     }
 
     void GoToCrafting()
     {
         isMoving = true;
-        target.position = craftingBench.transform.position + new Vector3(3, 0, 0);
+        target.position = new Vector2(craftingBench.transform.position.x + offset, transform.position.y);
     }
 
     void GiveItem()

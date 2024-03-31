@@ -35,7 +35,7 @@ public class WaterPlayerController : MonoBehaviour
             if (Mathf.Abs(movement.x) > 0.1f || Mathf.Abs(movement.y) > 0.1f)
             {
                 isSwimming = true;
-                player.ChangeStamina(-swimStaminaCost * Time.deltaTime);
+                //player.ChangeStamina(-swimStaminaCost * Time.deltaTime);
                 if (!player.colliderShapeIsChanged)
                 {
                     player.ChangeColliderShape(true);

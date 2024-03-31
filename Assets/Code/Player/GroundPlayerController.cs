@@ -497,8 +497,8 @@ public class GroundPlayerController : MonoBehaviour
             //The default mode will apply are force instantly ignoring masss
             rb.AddForce(force, ForceMode2D.Impulse);
             Turn();
-            jumpedOnce = true;
-            hasWallJumped = true;
+            jumpedOnce = false;
+            //hasWallJumped = true;
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class Vente : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Vente : MonoBehaviour
     [SerializeField] private TextMeshProUGUI quotaText;
     [SerializeField] private TextMeshProUGUI profitText;
     [SerializeField] private TextMeshPro profitTV;
+    [SerializeField] private Light2D tvLight;
 
     private void Start()
     {
@@ -45,7 +47,8 @@ public class Vente : MonoBehaviour
                     profit += (float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height);
                     quotaText.text = profit.ToString() + "/" + quotaManager.GetComponent<Quota>().quota.ToString() + "$";
                     profitText.text = profit.ToString() + "$";
-                    profitTV.text = profit.ToString() + "$";
+                    if (profitTV.gameObject.activeSelf)
+                        profitTV.text = profit.ToString() + "$";
                     anItem.Delete();
                 }
              }

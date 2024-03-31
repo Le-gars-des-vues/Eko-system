@@ -23,6 +23,7 @@ public class HarvestableRessourceNode : MonoBehaviour
     public bool isOutlined;
     PlayerPermanent player;
 
+    [SerializeField] Vector2 direction = new Vector2(0, -1);
     [SerializeField] float groundRaycastLength;
 
     // Start is called before the first frame update
@@ -51,10 +52,10 @@ public class HarvestableRessourceNode : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastLength, LayerMask.GetMask("Ground", "Planters"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, groundRaycastLength, LayerMask.GetMask("Ground", "Planters"));
         if (hit.collider == null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, transform.position.y - 0.1f), 0.1f);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + direction.x / 10, transform.position.y + direction.y / 10), 0.1f);
         }
     }
 
@@ -74,6 +75,8 @@ public class HarvestableRessourceNode : MonoBehaviour
         timer = 0f;
         sprite_empty.color = Color.white;
         sprite_full.color = Color.white;
+        if (player.isHarvesting)
+            player.Harvest(false);
     }
 
     private void OnMouseOver()
@@ -96,6 +99,8 @@ public class HarvestableRessourceNode : MonoBehaviour
                 timer += Time.deltaTime;
                 sprite_empty.color = Color.Lerp(sprite_empty.color, Color.red, timer * Time.deltaTime);
                 sprite_full.color = Color.Lerp(sprite_full.color, Color.red, timer * Time.deltaTime);
+                if (!player.isHarvesting)
+                    player.Harvest(true);
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -103,6 +108,8 @@ public class HarvestableRessourceNode : MonoBehaviour
                 timer = 0f;
                 sprite_empty.color = Color.white;
                 sprite_full.color = Color.white;
+                if (player.isHarvesting)
+                    player.Harvest(false);
             }
         }
     }
@@ -110,6 +117,6 @@ public class HarvestableRessourceNode : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(transform.position, Vector2.down * groundRaycastLength);
+        Gizmos.DrawRay(transform.position, direction * groundRaycastLength);
     }
 }

@@ -8,11 +8,15 @@ public class SellingScreen : MonoBehaviour
     PlayerPermanent player;
     bool isInRange;
     [SerializeField] GameObject arrow;
+    [SerializeField] GameObject tvText;
+    [SerializeField] GameObject tvLight;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+        tvText.SetActive(false);
+        tvLight.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,6 +36,10 @@ public class SellingScreen : MonoBehaviour
                     {
                         player.ShowOrHideMarket();
                     }
+                    if (!tvText.activeSelf)
+                        tvText.SetActive(true);
+                    if (!tvLight.activeSelf)
+                        tvLight.SetActive(true);
                 }
             }
         }

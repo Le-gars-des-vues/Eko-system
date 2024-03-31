@@ -9,6 +9,8 @@ public class Base : MonoBehaviour
     GameObject player;
     [SerializeField] Transform baseEntryPoint;
     public Transform baseSpawnPoint;
+    public Transform trainingRoom;
+
     [SerializeField] float distanceOpenThreshold;
     [SerializeField] float baseEntryThreshold;
     [SerializeField] Animator leftDoorAnim;
@@ -43,11 +45,7 @@ public class Base : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         if (player.GetComponent<PlayerPermanent>().spawnAtBase)
         {
-            baseBackground.SetActive(true);
-            isInside = true;
-            pixelLight.intensity = 0.03f;
-            player.transform.position = baseSpawnPoint.position;
-            player.GetComponent<PlayerPermanent>().ResetFeetPosition();
+            Teleport(false, true, baseSpawnPoint.position);
         }
         buildButton.SetActive(true);
     }
@@ -88,26 +86,43 @@ public class Base : MonoBehaviour
             {
                 if (Vector2.Distance(player.transform.position, door) < baseEntryThreshold)
                 {
-                    pixelLight.intensity = 0.03f;
-                    background.SetActive(false);
-                    isInside = true;
-                    player.transform.position = baseEntryPoint.position;
-                    player.GetComponent<PlayerPermanent>().ResetFeetPosition();
-                    baseBackground.SetActive(true);
+                    Teleport(false, true, baseEntryPoint.position);
                 }
                 else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < baseEntryThreshold)
                 {
-                    pixelLight.intensity = 1f;
-                    baseBackground.SetActive(false);
-                    isInside = false;
-                    player.transform.position = door;
-                    player.GetComponent<PlayerPermanent>().ResetFeetPosition();
-                    background.SetActive(true);
+                    Teleport(true, false, door);
                 }
             }
         }
         if (isInside && player == null)
             player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public void Teleport(bool outside, bool inBase, Vector2 target)
+    {
+        if (outside)
+        {
+            pixelLight.intensity = 1f;
+            baseBackground.SetActive(false);
+            isInside = false;
+            background.SetActive(true);
+        }
+        else if (inBase)
+        {
+            background.SetActive(false);
+            baseBackground.SetActive(true);
+            isInside = true;
+            pixelLight.intensity = 0.03f;
+        }
+        else if (!outside && !inBase)
+        {
+            background.SetActive(false);
+            baseBackground.SetActive(false);
+            isInside = false;
+            pixelLight.intensity = 0.03f;
+        }
+        player.transform.position = target;
+        player.GetComponent<PlayerPermanent>().ResetFeetPosition();
     }
 
     void OnDrawGizmos()

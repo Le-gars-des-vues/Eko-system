@@ -21,8 +21,9 @@ public class PlayerPermanent : MonoBehaviour
     public Slider hpSlider;
     private bool isInvincible;
     private Color invisible;
-    private List<Material> ogMaterials = new List<Material>();
+    [SerializeField] private Material ogMaterials;
     [SerializeField] private Material flashMaterial;
+    [SerializeField] private Material dissolveMaterial;
     public List<SpriteRenderer> playerGFX = new List<SpriteRenderer>();
     [SerializeField] private float flashWhiteDuration;
     [SerializeField] private float invincibilityDuration;
@@ -81,6 +82,7 @@ public class PlayerPermanent : MonoBehaviour
 
     public float minDistanceToHarvest;
     public float timeToHarvest;
+    public bool isHarvesting = false;
 
     public bool isPoisoned;
     public bool colliderShapeIsChanged;
@@ -475,7 +477,7 @@ public class PlayerPermanent : MonoBehaviour
                 //Si le joueur n'est pas mort, il flash blanc et profite d'un moment d'invincibilite
                 if (currentHp > 0)
                 {
-                    StartCoroutine(FlashWhite(playerGFX, flashWhiteDuration));
+                    StartCoroutine(FlashWhite(flashWhiteDuration));
                     StartCoroutine(InvicibilityFrames(invisibilityDuration));
                 }
                 playerRb.velocity = Vector2.zero;
@@ -598,6 +600,19 @@ public class PlayerPermanent : MonoBehaviour
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             multiTool.UseMultiTool(false);
         }
+    }
+
+    public void Harvest(bool isTrue)
+    {
+        if (isTrue)
+        {
+            multiTool.EnableLaser();
+        }
+        else
+        {
+            multiTool.DisableLaser();
+        }
+        isHarvesting = isTrue;
     }
 
     private void Turn()
@@ -887,19 +902,90 @@ public class PlayerPermanent : MonoBehaviour
     }
 
     //Flash en blanc en changeant le materiel du joueur
-    private IEnumerator FlashWhite(List<SpriteRenderer> spriteList, float duration)
+    private IEnumerator FlashWhite(float duration)
     {
-        foreach (var sprite in spriteList)
-        {
-            ogMaterials.Add(sprite.material);
+        foreach (var sprite in playerGFX)
             sprite.material = flashMaterial;
-        }
         yield return new WaitForSecondsRealtime(duration);
         int i = 0;
-        foreach (var sprite in spriteList)
+        foreach (var sprite in playerGFX)
         {
-            sprite.material = ogMaterials[i];
+            sprite.material = ogMaterials;
             i++;
+        }
+    }
+
+    public IEnumerator Dissolve(float dissolveTime, bool teleport, Vector2 target, bool isTrue = true, bool outside = false, bool inside = false)
+    {
+        float elapsedTime = 0;
+        if (teleport)
+        {
+            for (int i = 0; i < playerGFX.Count; i++)
+                playerGFX[i].material = dissolveMaterial;
+
+            while (elapsedTime < dissolveTime)
+            {
+                elapsedTime += Time.deltaTime;
+                float dissolveAmount = Mathf.Lerp(0.01f, 1f, elapsedTime / dissolveTime);
+                foreach (var sprite in playerGFX)
+                {
+                    sprite.material.SetFloat("_Transparency", dissolveAmount);
+                }
+                yield return null;
+            }
+
+            theBase.GetComponent<Base>().Teleport(outside, inside, target);
+            yield return new WaitForSeconds(dissolveTime);
+
+            elapsedTime = 0;
+            while (elapsedTime < dissolveTime)
+            {
+                elapsedTime += Time.deltaTime;
+                float dissolveAmount = Mathf.Lerp(1, 0.01f, elapsedTime / dissolveTime);
+                foreach (var sprite in playerGFX)
+                {
+                    sprite.material.SetFloat("_Transparency", dissolveAmount);
+                }
+                yield return null;
+            }
+
+            for (int i = 0; i < playerGFX.Count; i++)
+                playerGFX[i].material = ogMaterials;
+        }
+        else
+        {
+            if (isTrue)
+            {
+                for (int i = 0; i < playerGFX.Count; i++)
+                    playerGFX[i].material = dissolveMaterial;
+
+                while (elapsedTime < dissolveTime)
+                {
+                    elapsedTime += Time.deltaTime;
+                    float dissolveAmount = Mathf.Lerp(0.01f, 1f, elapsedTime / dissolveTime);
+                    foreach (var sprite in playerGFX)
+                    {
+                        sprite.material.SetFloat("_Transparency", dissolveAmount);
+                    }
+                    yield return null;
+                }
+            }
+            else
+            {
+                while (elapsedTime < dissolveTime)
+                {
+                    elapsedTime += Time.deltaTime;
+                    float dissolveAmount = Mathf.Lerp(1f, 0.01f, elapsedTime / dissolveTime);
+                    foreach (var sprite in playerGFX)
+                    {
+                        sprite.material.SetFloat("_Transparency", dissolveAmount);
+                    }
+                    yield return null;
+                }
+
+                for (int i = 0; i < playerGFX.Count; i++)
+                    playerGFX[i].material = ogMaterials;
+            }
         }
     }
 
