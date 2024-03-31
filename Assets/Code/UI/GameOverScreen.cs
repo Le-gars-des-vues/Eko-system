@@ -11,7 +11,7 @@ public class GameOverScreen : MonoBehaviour
     public void BackToBase()
     {
         player.GetComponent<PlayerPermanent>().ToggleRagdoll(false);
-        player.transform.position = GameObject.Find("Base").transform.Find("Interior").transform.Find("FirstFloor").transform.Find("EntryPoint").transform.position;
+        player.transform.position = GameObject.Find("Base").transform.Find("Interior").transform.Find("FirstFloor").transform.Find("NewCycle").transform.position;
         GameObject.Find("Base").GetComponent<Base>().isInside = true;
         player.GetComponent<GroundPlayerController>().enabled = true;
         player.GetComponent<PlayerPermanent>().enabled = true;

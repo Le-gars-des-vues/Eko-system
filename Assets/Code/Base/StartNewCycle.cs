@@ -18,7 +18,7 @@ public class StartNewCycle : MonoBehaviour
             {
                 startedANewCycle = true;
                 newCycleTime = Time.time;
-                StartCoroutine(GameObject.Find("GameManager").GetComponent<GameManager>().NewCycle());
+                StartCoroutine(GameManager.instance.NewCycle());
             }
 
             if (Time.time - newCycleTime > 5.1f)

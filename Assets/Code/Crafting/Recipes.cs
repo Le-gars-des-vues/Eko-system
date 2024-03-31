@@ -79,10 +79,11 @@ public class Recipes
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {
-        {0 , new Recipes("Storage Room", "Metal Sheet", 3, "Battery", 1,"Lushalite",5)},
-        {1 , new Recipes("Map Room", "Metal Sheet", 3, "Scale",4,"Crystal",4) },
-        {2 , new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
+        {0, new Recipes("Storage Room", "Metal Sheet", 3, "Battery", 1,"Lushalite",5)},
+        {1, new Recipes("Map Room", "Metal Sheet", 3, "Scale",4,"Crystal",4) },
+        {2, new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
         {3, new Recipes("Planter Room", "Trunk", 1)},
+        {4, new Recipes("Teleporter Room", "Trunk", 1)},
         //{3 , new Recipes("Planter Room", "Metal Sheet", 3,"Battery",1,"Crystal",5)},
     };
 

@@ -10,7 +10,6 @@ public class Planters : MonoBehaviour
     [SerializeField] GameObject growLight;
     [SerializeField] Transform spawnPoint;
 
-    GameManager gm;
     PlayerPermanent player;
 
     [SerializeField] List<GameObject> plants = new List<GameObject>();
@@ -21,12 +20,14 @@ public class Planters : MonoBehaviour
 
     [SerializeField] int maxRessource = 3;
 
+    [SerializeField] GameObject room;
+
 
     private void OnEnable()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gm.planters.Add(this);
+        GameManager.instance.planters.Add(this);
+        room = gameObject.transform.parent.gameObject;
     }
 
     // Update is called once per frame
@@ -48,6 +49,11 @@ public class Planters : MonoBehaviour
         {
             hasAPlant = false;
             growLight.SetActive(false);
+        }
+
+        if (room.GetComponent<RoomInfo>().isRefunded)
+        {
+            GameManager.instance.planters.Remove(this);
         }
     }
 

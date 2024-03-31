@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public float TimeLeft;
     public float initialTime;
     public bool TimerOn = false;
 
     public GameObject theCharacter;
 
-    public TextMeshProUGUI TimerTxt;
-
-    public List<GameObject> theRooms = new List<GameObject>();
+    //public List<GameObject> theRooms = new List<GameObject>();
     public List<Planters> planters = new List<Planters>();
+    public List<Teleporter> teleporter = new List<Teleporter>();
     public List<GameObject> enclosure = new List<GameObject>();
 
     [Header("New Cycle Variables")]
@@ -54,11 +55,18 @@ public class GameManager : MonoBehaviour
     public List<GameObject> flys = new List<GameObject>();
     public List<GameObject> frogs = new List<GameObject>();
 
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(this);
+        else
+            instance = this;
+    }
+
     void Start()
     {
         TimeLeft = initialTime;
-        TimerTxt = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
-        TimerOn = true;
+        TimerOn = false;
         theCharacter = GameObject.FindGameObjectWithTag("Player");
         cycleCount = 1;
         cycleMenuText.text = "DAY " + cycleCount.ToString("000");
@@ -145,7 +153,7 @@ public class GameManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
-        TimerTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        CycleInfo.instance.timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public IEnumerator NewCycle()
@@ -156,6 +164,7 @@ public class GameManager : MonoBehaviour
         cycleMenuText.text = "DAY " + cycleCount.ToString("000");
         textToWrite = "////////////\n\nSYSTEM.REBOOT\nTERRAFORMA CORP.\n\nNEW TRANSMISSION\n.\n.\n.\n.\n\nGOOD MORNING EMPLOYEE 1212781827!\n.\n.\n.\n.\n\nCYCLE : " + cycleCount.ToString("000") + "\n.\n.\n\nQUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $\n\nEND TRANSMISSION\n\n/////////////";
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
+
         yield return new WaitForSeconds(1.1f);
         newCycleText.text = "";
         foreach(char letter in textToWrite.ToCharArray())
@@ -163,17 +172,25 @@ public class GameManager : MonoBehaviour
             newCycleText.text += letter;
             yield return new WaitForSeconds(0.03f);
         }
+
         yield return new WaitForSeconds(2f);
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", false);
         yield return new WaitForSeconds(2f);
+
         newCycleScreen.SetActive(false);
         TimeLeft = initialTime;
-        TimerOn = true;
         Debug.Log("New Cycle");
         for (int i = 0; i <= planters.Count - 1; i++)
         {
             planters[i].Grow();
         }
+
+        for (int i = 0; i <= teleporter.Count - 1; i++)
+        {
+            if (!teleporter[i].isPoweredUp)
+                teleporter[i].isPoweredUp = true;
+        }
+        CycleInfo.instance.CheckForOpenTeleporter();
         SpawnNewObjects(false);
     }
 

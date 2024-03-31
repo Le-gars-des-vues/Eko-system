@@ -16,16 +16,13 @@ public class Vente : MonoBehaviour
     ItemGrid theItemGrid;
     InventoryItem anItem;
 
-    public GameObject quotaManager;
-    [SerializeField] private TextMeshProUGUI quotaText;
     [SerializeField] private TextMeshProUGUI profitText;
     [SerializeField] private TextMeshPro profitTV;
     [SerializeField] private Light2D tvLight;
 
     private void Start()
     {
-        quotaManager = GameObject.Find("GameManager");
-        profitTV = GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>();
+        //profitTV = GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>();
     }
 
     public void VenteItem()
@@ -45,10 +42,9 @@ public class Vente : MonoBehaviour
                 if (anItem != null)
                 {
                     profit += (float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height);
-                    quotaText.text = profit.ToString() + "/" + quotaManager.GetComponent<Quota>().quota.ToString() + "$";
+                    CycleInfo.instance.quotaText.text = profit.ToString() + "/" + GameManager.instance.gameObject.GetComponent<Quota>().quota.ToString() + "$";
                     profitText.text = profit.ToString() + "$";
-                    if (profitTV.gameObject.activeSelf)
-                        profitTV.text = profit.ToString() + "$";
+                    GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>().text = profit.ToString() + "$";
                     anItem.Delete();
                 }
              }

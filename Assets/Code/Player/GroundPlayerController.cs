@@ -679,8 +679,8 @@ public class GroundPlayerController : MonoBehaviour
             player.waterPlayerController.enabled = true;
             player.groundPlayerController.enabled = false;
 
-            //SetGravityScale(0.1f);
-            //rb.drag = 1f;
+            if (!player.isUnderwater)
+                player.GoUnderwater(true);
         }
     }
 

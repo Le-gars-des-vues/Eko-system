@@ -1104,12 +1104,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2701088974826841711}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.294, y: 0.134, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.5629715, y: 0.3727749, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2812024246142573123}
+  m_Father: {fileID: 5640851190737495707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6201340411333682895
 SpriteRenderer:
@@ -21661,17 +21661,25 @@ MonoBehaviour:
   isThrowing: 0
   multiTool: {fileID: 2176743614223148577}
   isUsingMultiTool: 0
-  spawnAtBase: 1
+  spawnAtBase: 0
   minDistanceToHarvest: 15
   timeToHarvest: 5
   isHarvesting: 0
   isPoisoned: 0
+  underWaterGravityScale: 0.1
+  underWaterDrag: 2
+  underWaterAngularDrag: 4
+  initialDrag: 0
+  initialAngularDrag: 0
+  canBreathRaycast: 0.51
+  head: {fileID: 5543549780067302139}
+  isUnderwater: 0
   colliderShapeIsChanged: 0
   inventoryOpen: 0
   playerInventory: {fileID: 0}
   storageInventory: {fileID: 0}
   gridOffset: 2000
-  isInBase: 1
+  isInBase: 0
   anim: {fileID: 4122690695620058585}
   colliders:
   - {fileID: 976802793898415102}
@@ -22736,8 +22744,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5934530503277124301, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
-      insertIndex: -1
+    - targetCorrespondingSourceObject: {fileID: 4257508509235537429, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
+      insertIndex: 0
       addedObject: {fileID: 6483305933805435557}
     - targetCorrespondingSourceObject: {fileID: 311580695235782034, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       insertIndex: -1
@@ -23160,11 +23168,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
---- !u!4 &2812024246142573123 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5934530503277124301, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
-  m_PrefabInstance: {fileID: 8457163254090727566}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &3185266018911345936 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: -2780489283087770210, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
@@ -23638,6 +23641,11 @@ HingeJoint2D:
 --- !u!212 &5548248899127159597 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4153083917793864611, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
+  m_PrefabInstance: {fileID: 8457163254090727566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5640851190737495707 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4257508509235537429, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
   m_PrefabInstance: {fileID: 8457163254090727566}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &5867124832038656514 stripped

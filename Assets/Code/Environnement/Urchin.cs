@@ -19,7 +19,9 @@ public class Urchin : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
-            StartCoroutine(collision.gameObject.GetComponent<PlayerPermanent>().Poison(poison.effectDuration, poison.effectMagnitude, poison.effectFrequency));
+            if (collision.gameObject.GetComponent<PlayerPermanent>().poison != null)
+                StopCoroutine(collision.gameObject.GetComponent<PlayerPermanent>().poison);
+            collision.gameObject.GetComponent<PlayerPermanent>().poison = StartCoroutine(collision.gameObject.GetComponent<PlayerPermanent>().Poison(poison.effectDuration, poison.effectMagnitude, poison.effectFrequency));
         }
     }
 }

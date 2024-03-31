@@ -14,6 +14,11 @@ public class ConsummableEffects
         player.ChangeHp(healAmount, false);
     }
 
+    public void Cleanse(PlayerPermanent player)
+    {
+        player.Cleanse();
+    }
+
     public void Flash(Transform transform, float flashRadius)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, flashRadius, LayerMask.GetMask("Creature"));

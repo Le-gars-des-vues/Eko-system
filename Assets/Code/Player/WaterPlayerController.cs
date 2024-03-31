@@ -39,7 +39,7 @@ public class WaterPlayerController : MonoBehaviour
                 if (!player.colliderShapeIsChanged)
                 {
                     player.ChangeColliderShape(true);
-                    rb.mass = 0.7f;
+                    //rb.mass = 0.7f;
                 }
             }
             else
@@ -48,7 +48,7 @@ public class WaterPlayerController : MonoBehaviour
                 if (player.colliderShapeIsChanged)
                 {
                     player.ChangeColliderShape(false);
-                    rb.mass = 1f;
+                    //rb.mass = 1f;
                 }
             }
             if (Input.GetButtonDown("Jump"))
@@ -91,6 +91,9 @@ public class WaterPlayerController : MonoBehaviour
             rb.mass = 1f;
             player.groundPlayerController.enabled = true;
             player.waterPlayerController.enabled = false;
+
+            if (player.isUnderwater)
+                player.GoUnderwater(false);
         }
     }
 }

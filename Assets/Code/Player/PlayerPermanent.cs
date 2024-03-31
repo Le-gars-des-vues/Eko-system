@@ -84,7 +84,20 @@ public class PlayerPermanent : MonoBehaviour
     public float timeToHarvest;
     public bool isHarvesting = false;
 
+    public Coroutine poison;
     public bool isPoisoned;
+
+    [Header("UnderWater Variables")]
+    [SerializeField] float underWaterGravityScale = 0.1f;
+    [SerializeField] float underWaterDrag = 2f;
+    [SerializeField] float underWaterAngularDrag = 4f;
+    [SerializeField] float initialDrag;
+    [SerializeField] float initialAngularDrag;
+
+    [SerializeField] float canBreathRaycast;
+    [SerializeField] GameObject head;
+
+    public bool isUnderwater;
     public bool colliderShapeIsChanged;
 
     [Header("Inventory Variables")]
@@ -108,7 +121,6 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private List<Quaternion> bonesRotation;
 
     private VinePlayerController vineController;
-    private GameObject theBase;
     public GameObject gameOverScreen;
 
     [Header("Upgrade Variables")]
@@ -191,7 +203,9 @@ public class PlayerPermanent : MonoBehaviour
         vineController = GetComponent<VinePlayerController>();
         invisible = new Color(255, 255, 255, 0);
 
-        theBase = GameObject.FindGameObjectWithTag("Base");
+        initialDrag = playerRb.drag;
+        initialAngularDrag = playerRb.angularDrag;
+
         vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         Reset();
         ToggleRagdoll(false);
@@ -225,7 +239,7 @@ public class PlayerPermanent : MonoBehaviour
         */
 
         //Check if player is in base
-        if (theBase.GetComponent<Base>().isInside)
+        if (Base.instance.isInside)
         {
             if (!isInBase)
             {
@@ -244,15 +258,23 @@ public class PlayerPermanent : MonoBehaviour
         }
 
         //Dans l'eau, l'oxygen descend
-        if (GetComponent<WaterPlayerController>().enabled == true && !isInAirPocket)
+        RaycastHit2D headUnderWater = Physics2D.Raycast(head.transform.position, Vector2.up, canBreathRaycast, LayerMask.GetMask("Water"));
+        if (headUnderWater && !isInAirPocket)
         {
+            groundPlayerController.SetGravityScale(underWaterGravityScale);
             currentOxygen -= oxygenDepleteRate * Time.deltaTime;
             SetBar(oxygenSlider, currentOxygen);
         }
-        else if ((GetComponent<WaterPlayerController>().enabled == false || isInAirPocket) && currentOxygen < maxOxygen)
+        else if ((!headUnderWater || isInAirPocket) && currentOxygen < maxOxygen)
         {
+            groundPlayerController.SetGravityScale(0f);
             currentOxygen += oxygenRegainRate * Time.deltaTime;
             SetBar(oxygenSlider, currentOxygen);
+        }
+
+        if (currentOxygen <= 0)
+        {
+            ChangeHp(-0.05f, false);
         }
 
         //Timer de 2 seconds avec que le joueur commence a regagner de la stamina, reset a chaque fois qu'il utilise de la stamina
@@ -934,7 +956,7 @@ public class PlayerPermanent : MonoBehaviour
                 yield return null;
             }
 
-            theBase.GetComponent<Base>().Teleport(outside, inside, target);
+            Base.instance.Teleport(outside, inside, target);
             yield return new WaitForSeconds(dissolveTime);
 
             elapsedTime = 0;
@@ -1066,7 +1088,14 @@ public class PlayerPermanent : MonoBehaviour
                 yield return new WaitForSeconds(tickInterval);
             }
             hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", false);
+            poison = null;
         }
+    }
+
+    public void Cleanse()
+    {
+        StopCoroutine(poison);
+        hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", false);
     }
 
     public void ChangeColliderShape(bool circle)
@@ -1082,6 +1111,23 @@ public class PlayerPermanent : MonoBehaviour
             colliderShapeIsChanged = false;
             playerCollider.direction = CapsuleDirection2D.Vertical;
             playerCollider.size = new Vector2(playerCollider.size.x, 2);
+        }
+    }
+
+    public void GoUnderwater(bool isTrue)
+    {
+        isUnderwater = isTrue;
+        if (isTrue)
+        {
+            groundPlayerController.SetGravityScale(underWaterGravityScale);
+            playerRb.drag = underWaterDrag;
+            playerRb.angularDrag = underWaterAngularDrag;
+        }
+        else
+        {
+            groundPlayerController.SetGravityScale(groundPlayerController.gravityScale);
+            playerRb.drag = initialDrag;
+            playerRb.angularDrag = initialAngularDrag;
         }
     }
 
@@ -1109,6 +1155,12 @@ public class PlayerPermanent : MonoBehaviour
     {
         gameObject.transform.Find("RightLegSolver").transform.Find("RightLegSolver_Target").GetComponent<PlayerLegAnimation>().ResetPosition();
         gameObject.transform.Find("LeftLegSolver").transform.Find("LeftLegSolver_Target").GetComponent<PlayerLegAnimation>().ResetPosition();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(head.transform.position, Vector2.up * canBreathRaycast);
     }
 
     //Je met ça la pour mettre une manière de voir si on est dans la base ou non, tu peux changer ça si tu veux! -Pascal

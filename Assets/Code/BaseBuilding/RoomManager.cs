@@ -120,6 +120,7 @@ public class RoomManager : MonoBehaviour
         room.gameObject.transform.SetParent(GameObject.Find("Base").transform.Find("Interior").transform);
         room.gameObject.transform.SetAsLastSibling();
 
+        rooms.Remove(currentRoom);
         Destroy(currentRoom);
     }
 

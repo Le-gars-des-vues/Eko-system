@@ -10,7 +10,6 @@ public class BuildButtonReplace : MonoBehaviour
 
     GameObject children;
     PlayerPermanent player;
-    [SerializeField] GameObject gameManager;
 
     bool isActive;
 
@@ -18,7 +17,6 @@ public class BuildButtonReplace : MonoBehaviour
 
     private void OnEnable()
     {
-        gameManager = GameObject.Find("GameManager");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
         roomCrafting = GameObject.Find("RoomCrafting").transform.Find("DropdownListOfCrafts").gameObject;
         roomManager = GameObject.Find("RoomMenu").GetComponent<RoomManager>();
@@ -94,9 +92,10 @@ public class BuildButtonReplace : MonoBehaviour
                                 Destroy(transform.Find("BuildButtonDown").gameObject);
                                 Destroy(room.GetComponent<RoomInfo>().elevatorFloor);
                             }
-
+                            /*
                             if (ingredientList.index == 2 || ingredientList.index == 3)
                                 gameManager.GetComponent<GameManager>().theRooms.Add(room);
+                            */
 
                             room.gameObject.transform.SetParent(theBase.transform.Find("Interior").transform);
                             room.gameObject.transform.SetAsLastSibling();

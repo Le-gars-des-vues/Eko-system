@@ -5,6 +5,8 @@ using UnityEngine.Rendering.Universal;
 
 public class Base : MonoBehaviour
 {
+    public static Base instance;
+
     Vector2 door;
     GameObject player;
     [SerializeField] Transform baseEntryPoint;
@@ -29,6 +31,11 @@ public class Base : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if (instance != null && instance != this)
+            Destroy(this);
+        else
+            instance = this;
+
         background = GameObject.Find("ParallaxBackground");
         if (isSceneLoaded)
         {
@@ -91,6 +98,8 @@ public class Base : MonoBehaviour
                 else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < baseEntryThreshold)
                 {
                     Teleport(true, false, door);
+                    if (!GameManager.instance.TimerOn)
+                        GameManager.instance.TimerOn = true;
                 }
             }
         }

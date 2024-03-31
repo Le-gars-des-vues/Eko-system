@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 460698447
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: fb0fa4a648430d3449f5fef7dc1bdb42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 754a933af4a44d74780dd844585a23f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,8 +122,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: -0.09}
-  m_Size: {x: 0.72, y: 0.55}
+  m_Offset: {x: -0.13, y: 0}
+  m_Size: {x: 0.39, y: 0.0001}
   m_Direction: 0
 --- !u!50 &2551410454996898421
 Rigidbody2D:
@@ -191,12 +191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc39c51400369df45826f26e5a8aeedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 8f5148c2f8f2d6040bc4faf65bb9841b, type: 2}
+  itemData: {fileID: 11400000, guid: b2781c6f7d394794295fa47e35f2763a, type: 2}
   itemGrid: {fileID: 0}
   stackAmount: 3
   sprites:
-  - {fileID: 21300000, guid: a3ee56162d22eeb48ab24bd846455ef7, type: 3}
-  - {fileID: 21300000, guid: 2b311ca7fc9c74748b5a84e4a2bda6f6, type: 3}
+  - {fileID: 21300000, guid: fb0fa4a648430d3449f5fef7dc1bdb42, type: 3}
+  - {fileID: 21300000, guid: 6093dc4948cde234fb21dbca06df16db, type: 3}
+  - {fileID: 21300000, guid: 754a933af4a44d74780dd844585a23f6, type: 3}
   markedForDestroy: 0
   isPlaced: 0
   onGridPositionX: 0
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbe7ea3f4d3bdd418d239957fdf7fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectName: Heal
+  effectName: Cleanse
   effect:
     effectRange: 0
     effectMagnitude: 3

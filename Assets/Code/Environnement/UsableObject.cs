@@ -52,7 +52,7 @@ public class UsableObject : MonoBehaviour
         {
             objectToUse.GetComponent<PickableObject>().inventory.GetItem(objectToUse.GetComponent<InventoryItem>().onGridPositionX,
                 objectToUse.GetComponent<InventoryItem>().onGridPositionY).GetComponent<Image>().sprite =
-                objectToUse.GetComponent<InventoryItem>().sprites[(objectToUse.GetComponent<InventoryItem>().sprites.Length + 1) - objectToUse.GetComponent<InventoryItem>().stackAmount];
+                objectToUse.GetComponent<InventoryItem>().sprites[(objectToUse.GetComponent<InventoryItem>().sprites.Length) - objectToUse.GetComponent<InventoryItem>().stackAmount];
         }
 
         objectToUse.GetComponent<PickableObject>().itemInInventory.GetComponent<InventoryItem>().stackAmount--;

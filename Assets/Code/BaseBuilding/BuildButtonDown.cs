@@ -12,7 +12,6 @@ public class BuildButtonDown : MonoBehaviour
 
     GameObject children;
     PlayerPermanent player;
-    [SerializeField] GameObject gameManager;
 
     bool isActive;
     public bool firstFloor = false;
@@ -23,7 +22,6 @@ public class BuildButtonDown : MonoBehaviour
     private void OnEnable()
     {
         availableRooms = Camera.main.GetComponent<InventoryController>().buildablesDown;
-        gameManager = GameObject.Find("GameManager");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
         roomCrafting = GameObject.Find("RoomCrafting").transform.Find("DropdownListOfCrafts").gameObject;
         roomManager = GameObject.Find("RoomMenu").GetComponent<RoomManager>();
@@ -86,9 +84,10 @@ public class BuildButtonDown : MonoBehaviour
 
                             transform.parent.gameObject.GetComponent<RoomInfo>().roomUnder = room;
                             room.GetComponent<RoomInfo>().roomAbove = transform.parent.gameObject;
-
+                            /*
                             if (ingredientList.index == 2 || ingredientList.index == 3)
                                 gameManager.GetComponent<GameManager>().theRooms.Add(room);
+                            */
 
                             room.gameObject.transform.SetParent(theBase.transform.Find("Interior").transform);
                             room.gameObject.transform.SetAsLastSibling();
