@@ -771,7 +771,7 @@
 						</Sound>
 						<RandomSequenceContainer Name="AMB_Foret_CloseBird" ID="{614156D7-EEF1-468A-902F-C59F3D1ECFD4}" ShortID="581140168">
 							<PropertyList>
-								<Property Name="3DPosition" Type="int16" Value="1"/>
+								<Property Name="3DPosition" Type="int16" Value="2"/>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="InitialDelay" Type="Real64">
 									<ValueList>
@@ -821,7 +821,6 @@
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
 								<Property Name="SpeakerPanning" Type="int16" Value="2"/>
-								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="60"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-5</Value>
@@ -839,6 +838,9 @@
 								</Property>
 							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="New Attenuation" ID="{5EED9D74-3557-445C-9D26-54554779388F}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 								</Reference>
@@ -1072,10 +1074,10 @@
 										<Property Name="NewPathForEachSound" Type="bool" Value="True"/>
 									</PropertyList>
 									<ChildrenList>
-										<Path2D Name="AMB_Foret_Various_Path" ID="{439AF06F-D14D-4EB4-8FBA-D282A14DD1CE}">
+										<Path2D Name="AMB_Foret_CloseBird_Path" ID="{D91F1D96-AAD5-48C9-BDE0-A75EEDE7A87A}">
 											<PropertyList>
-												<Property Name="RandomX" Type="Real64" Value="52"/>
-												<Property Name="RandomY" Type="Real64" Value="51"/>
+												<Property Name="RandomX" Type="Real64" Value="55"/>
+												<Property Name="RandomY" Type="Real64" Value="55"/>
 												<Property Name="RandomZ" Type="Real64" Value="55"/>
 											</PropertyList>
 											<PointList>
@@ -2605,6 +2607,9 @@
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+						</Reference>
+						<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+							<ObjectRef Name="New_RoomVerb_02" ID="{56157CD9-3DEA-4A89-B490-1CBAC76BBE15}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
