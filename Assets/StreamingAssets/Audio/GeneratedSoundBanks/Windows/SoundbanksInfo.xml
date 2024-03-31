@@ -9,6 +9,34 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
+		<SoundBank Id="348963605" Type="Bus" Language="SFX" Hash="{CCC0FE75-8570-6603-2412-368E46482E94}">
+			<ShortName>Reverb</ShortName>
+			<Path>Bus/Reverb.bnk</Path>
+			<AuxBusses>
+				<AuxBus Id="348963605" Name="Reverb"/>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="873836703" Type="Bus" Language="SFX" Hash="{DBF80FE1-F989-4C70-7B69-11070F297080}">
+			<ShortName>Reverb_Default</ShortName>
+			<Path>Bus/Reverb_Default.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="873836703" Name="Reverb_Default">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
 		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{0A8D3096-87BB-4676-BF1C-9925CD1AD35F}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -230,6 +258,321 @@
 					</Switches>
 				</SwitchGroup>
 			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="2401020452" Type="Bus" Language="SFX" Hash="{3D4EDE98-2777-5FAF-9B9A-CD789B8FCE6A}">
+			<ShortName>Reverb_Room_08</ShortName>
+			<Path>Bus/Reverb_Room_08.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020452" Name="Reverb_Room_08">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020453" Type="Bus" Language="SFX" Hash="{C1B8AFFD-6B55-F020-66EB-C04EB07F39CB}">
+			<ShortName>Reverb_Room_09</ShortName>
+			<Path>Bus/Reverb_Room_09.bnk</Path>
+			<Plugins>
+				<Custom>
+					<Plugin Id="1009805735" Name="Room_Large (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</Custom>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020453" Name="Reverb_Room_09">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="1009805735"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020456" Type="Bus" Language="SFX" Hash="{E19FD826-9B77-1B6D-EEBF-91EE7C5FE92D}">
+			<ShortName>Reverb_Room_04</ShortName>
+			<Path>Bus/Reverb_Room_04.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020456" Name="Reverb_Room_04">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020457" Type="Bus" Language="SFX" Hash="{0C06A231-CC76-05E4-8222-3BFDC92B2798}">
+			<ShortName>Reverb_Room_05</ShortName>
+			<Path>Bus/Reverb_Room_05.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020457" Name="Reverb_Room_05">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020458" Type="Bus" Language="SFX" Hash="{2CD54E42-CD85-F3F8-1A04-FB56BBB9876A}">
+			<ShortName>Reverb_Room_06</ShortName>
+			<Path>Bus/Reverb_Room_06.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020458" Name="Reverb_Room_06">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020459" Type="Bus" Language="SFX" Hash="{7966A91C-CD77-3BBA-22A7-172693A0FC66}">
+			<ShortName>Reverb_Room_07</ShortName>
+			<Path>Bus/Reverb_Room_07.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020459" Name="Reverb_Room_07">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020461" Type="Bus" Language="SFX" Hash="{271D0629-BF6C-FB58-033E-F0D84F5816EF}">
+			<ShortName>Reverb_Room_01</ShortName>
+			<Path>Bus/Reverb_Room_01.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020461" Name="Reverb_Room_01">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020462" Type="Bus" Language="SFX" Hash="{0B0784C7-120B-A334-C1A5-B3E051297029}">
+			<ShortName>Reverb_Room_02</ShortName>
+			<Path>Bus/Reverb_Room_02.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020462" Name="Reverb_Room_02">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2401020463" Type="Bus" Language="SFX" Hash="{BC0D0A08-52DC-2109-6A7E-5DA23BA24798}">
+			<ShortName>Reverb_Room_03</ShortName>
+			<Path>Bus/Reverb_Room_03.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2401020463" Name="Reverb_Room_03">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798042" Type="Bus" Language="SFX" Hash="{B328359B-39F7-DCE7-50C3-E0D7D3B89799}">
+			<ShortName>Reverb_Room_15</ShortName>
+			<Path>Bus/Reverb_Room_15.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798042" Name="Reverb_Room_15">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798043" Type="Bus" Language="SFX" Hash="{969B9421-3341-CC95-AA68-BB846F0C46A4}">
+			<ShortName>Reverb_Room_14</ShortName>
+			<Path>Bus/Reverb_Room_14.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="2995775460" Name="Room_Small" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798043" Name="Reverb_Room_14">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2995775460"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798044" Type="Bus" Language="SFX" Hash="{E0C7A5A7-0F1E-A703-C174-2D880791938C}">
+			<ShortName>Reverb_Room_13</ShortName>
+			<Path>Bus/Reverb_Room_13.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798044" Name="Reverb_Room_13">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798045" Type="Bus" Language="SFX" Hash="{95337FA4-2314-9CDF-02D9-607285B70601}">
+			<ShortName>Reverb_Room_12</ShortName>
+			<Path>Bus/Reverb_Room_12.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798045" Name="Reverb_Room_12">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798046" Type="Bus" Language="SFX" Hash="{6401C8A8-132D-5EDB-49D7-52DBAB3084DB}">
+			<ShortName>Reverb_Room_11</ShortName>
+			<Path>Bus/Reverb_Room_11.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798046" Name="Reverb_Room_11">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1990128658"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="2417798047" Type="Bus" Language="SFX" Hash="{E82C220D-79FE-5C6F-E684-C316A0413166}">
+			<ShortName>Reverb_Room_10</ShortName>
+			<Path>Bus/Reverb_Room_10.bnk</Path>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<AuxBusses>
+				<AuxBus Id="2417798047" Name="Reverb_Room_10">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="602546716"/>
+						</ShareSets>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="348963605" Name="Reverb"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
 		</SoundBank>
 		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{191C69B0-9C2C-E7DF-15B6-06434B6620C2}">
 			<ShortName>Main</ShortName>
@@ -924,5 +1267,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{CD95D3DD-3DD3-8C4C-7755-034EEB6921E2}</FileHash>
+	<FileHash>{9FCEBBA3-F11E-5DAB-2E7E-6A299D9C4587}</FileHash>
 </SoundBanksInfo>

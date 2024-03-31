@@ -141,7 +141,6 @@
 											<PropertyList>
 												<Property Name="RecoveryTime" Type="Real64" Value="2"/>
 											</PropertyList>
-											<ReferenceList/>
 											<DuckingList>
 												<DuckItem>
 													<BusRef Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}"/>
@@ -161,6 +160,40 @@
 								<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}"/>
 								<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}"/>
 								<Bus Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}"/>
+								<AuxBus Name="Reverb_test" ID="{F1FD25B1-1A3F-425B-9E49-94D125984B39}">
+									<ReferenceList>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb" ID="{B14AA44A-D27D-4836-88E8-974B5B6379F2}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+										<Reference Name="Effect2" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="New_RoomVerb" ID="{B14AA44A-D27D-4836-88E8-974B5B6379F2}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+										</Reference>
+									</ReferenceList>
+									<StateInfo>
+										<StatePropertyList>
+											<Property Name="BusVolume"/>
+											<Property Name="BypassEffect0"/>
+											<Property Name="BypassEffect1"/>
+											<Property Name="BypassEffect2"/>
+											<Property Name="BypassEffect3"/>
+										</StatePropertyList>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="Reverb_test" ID="{CFB6D25A-7E14-4370-A495-5FD66A939532}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="On" ID="{28E259B2-92B9-420B-BDB1-D61B27422690}"/>
+												<CustomState Name="" ID="{FED415A1-5180-412D-8B04-07D6E0DE60BA}" ShortID="874848803"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="Off" ID="{94C719E0-9EFA-43BF-8DA5-D004F4409659}"/>
+												<CustomState Name="" ID="{7722A348-BE3F-42C3-A821-C11A27B8833B}" ShortID="979439603"/>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
+								</AuxBus>
 							</ChildrenList>
 						</Bus>
 					</ChildrenList>
