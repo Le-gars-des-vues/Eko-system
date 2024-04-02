@@ -41,6 +41,30 @@
 									<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="VOJoueurAttaque_PH" ID="{EAE4318B-B8AC-4CBB-BAD8-F2E6EFE85BE3}" ShortID="885622573">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="VOJoueurAttaque_PH" ID="{3265212B-BC1F-4975-A945-A74C3266B50B}">
+											<Language>SFX</Language>
+											<AudioFile>VOJoueurAttaque_PH.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1042753719"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="VOJoueurAttaque_PH" ID="{3265212B-BC1F-4975-A945-A74C3266B50B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
 						</BlendContainer>
 						<BlendContainer Name="VO_Joueur_Degat" ID="{DFB8F09F-C89F-4C9F-9B96-3D847A14ED32}" ShortID="662215590">
 							<PropertyList>
@@ -61,6 +85,30 @@
 									<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="VOJoueurDegat_PH" ID="{95E55038-7464-4298-AC27-89FCE221944B}" ShortID="301887566">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="VOJoueurDegat_PH" ID="{781F3269-26C3-47B3-BCA7-79D301D0E9C5}">
+											<Language>SFX</Language>
+											<AudioFile>VOJoueurDegat_PH.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="343064125"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="VOJoueurDegat_PH" ID="{781F3269-26C3-47B3-BCA7-79D301D0E9C5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
 						</BlendContainer>
 						<BlendContainer Name="VO_Joueur_Mort" ID="{6AE71C45-65F7-49DD-B1C5-8B060CB19315}" ShortID="594331247">
 							<PropertyList>
@@ -81,6 +129,30 @@
 									<ObjectRef Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="VOJoueurMort_PH" ID="{9F9D0EEC-A75C-4E08-BEA3-9BAA77031F41}" ShortID="131303794">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="VOJoueurMort_PH" ID="{8E65FA3C-5A96-496E-8650-B29A64135536}">
+											<Language>SFX</Language>
+											<AudioFile>VOJoueurMort_PH.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="504780681"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="VOJoueurMort_PH" ID="{8E65FA3C-5A96-496E-8650-B29A64135536}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
 						</BlendContainer>
 						<BlendContainer Name="VO_Joueur_Effort" ID="{60BFF773-B8A2-448B-803A-6DD8C996949F}" ShortID="206472147">
 							<PropertyList>
@@ -101,6 +173,30 @@
 									<ObjectRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="VOJoueurEffort_PH" ID="{1C16288C-2C7A-41B2-89D4-40454FA1DB7A}" ShortID="1070303887">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="VOJoueurEffort_PH" ID="{B0E31065-F1FD-4569-8A54-1A9A7428A454}">
+											<Language>SFX</Language>
+											<AudioFile>VOJoueurEffort_PH.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="103020854"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="VOJoueurEffort_PH" ID="{B0E31065-F1FD-4569-8A54-1A9A7428A454}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
 						</BlendContainer>
 						<ActorMixer Name="VO_Joueur_Parle" ID="{1BA5CD4C-424A-4453-9936-9F798EF80362}" ShortID="582583618">
 							<PropertyList>
@@ -140,6 +236,30 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VOJoueurNeutre_PH" ID="{E9F10EA1-5981-4CF6-9FAF-A8562EA4EA1E}" ShortID="981657490">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VOJoueurNeutre_PH" ID="{16E0CAFC-10E6-44E9-A747-8E9840A885D9}">
+													<Language>SFX</Language>
+													<AudioFile>VOJoueurNeutre_PH.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="568758034"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VOJoueurNeutre_PH" ID="{16E0CAFC-10E6-44E9-A747-8E9840A885D9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Interroge" ID="{3605BF5C-C11F-4B8B-865C-2694A5CD1D0A}" ShortID="304444997">
 									<PropertyList>
@@ -159,6 +279,30 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VOJoueurInterroge_PH" ID="{5E2C4121-0740-4A62-9797-9C0C500AFAC2}" ShortID="997924976">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VOJoueurInterroge_PH" ID="{F573B13C-D027-4D99-8FFA-B22935D29745}">
+													<Language>SFX</Language>
+													<AudioFile>VOJoueurInterroge_PH.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="578044342"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VOJoueurInterroge_PH" ID="{F573B13C-D027-4D99-8FFA-B22935D29745}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Surpris" ID="{A245212C-DEA5-40D7-9F79-1477128D654A}" ShortID="343694720">
 									<PropertyList>
@@ -178,6 +322,30 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VOJoueurSurpris_PH" ID="{4B5DC7E2-AC8F-41A7-B74B-9825F7A29C1D}" ShortID="990211042">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VOJoueurSurpris_PH" ID="{EF49137E-D626-4712-AD3A-030175D83823}">
+													<Language>SFX</Language>
+													<AudioFile>VOJoueurSurpris_PH.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="197620101"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VOJoueurSurpris_PH" ID="{EF49137E-D626-4712-AD3A-030175D83823}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Enerve" ID="{206B6FC4-9C53-4B24-B55A-3C696136B18A}" ShortID="885752776">
 									<PropertyList>
@@ -197,6 +365,30 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VOJoueurEnerve_PH" ID="{8C1D07C2-913D-4A37-9F52-20C76D374886}" ShortID="63274596">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VOJoueurEnerve_PH" ID="{04008998-43A9-4DC0-B7CE-13C490578C20}">
+													<Language>SFX</Language>
+													<AudioFile>VOJoueurEnerve_PH.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="252565045"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VOJoueurEnerve_PH" ID="{04008998-43A9-4DC0-B7CE-13C490578C20}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Heureux" ID="{700B0883-6F3A-4114-B943-1E9C73D1FF15}" ShortID="306290456">
 									<PropertyList>
@@ -216,6 +408,30 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VOJoueurHeureux_PH" ID="{32E0DEF2-A105-4916-B7A9-8DA08D58C71F}" ShortID="1001222708">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VOJoueurHeureux_PH" ID="{74320CB1-7F2D-4C13-8D7C-76D607324753}">
+													<Language>SFX</Language>
+													<AudioFile>VOJoueurHeureux_PH.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="438244175"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VOJoueurHeureux_PH" ID="{74320CB1-7F2D-4C13-8D7C-76D607324753}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Triste" ID="{79AAC3ED-B319-4EEF-8C18-774043EF215A}" ShortID="761794215">
 									<PropertyList>
@@ -235,6 +451,30 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VOJoueurTriste_PH" ID="{37DEA49D-9DCC-4BB3-926B-B77B78F14382}" ShortID="753603750">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VOJoueurTriste_PH" ID="{FA4534CD-E831-4CD2-B852-B4D321DE4B74}">
+													<Language>SFX</Language>
+													<AudioFile>VOJoueurTriste_PH.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="999984505"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VOJoueurTriste_PH" ID="{FA4534CD-E831-4CD2-B852-B4D321DE4B74}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Appeure" ID="{4F2BBA8B-5DEC-44B4-9FEC-94B7F63504DA}" ShortID="506537360">
 									<PropertyList>
@@ -254,6 +494,30 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VOJoueurApeure_PH" ID="{D76823C7-80A4-4042-A6C3-8F4EF2886399}" ShortID="39099497">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VOJoueurApeure_PH" ID="{A6CBAC07-943D-4E6E-A8EE-2D3872BCA799}">
+													<Language>SFX</Language>
+													<AudioFile>VOJoueurApeure_PH.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="609461526"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VOJoueurApeure_PH" ID="{A6CBAC07-943D-4E6E-A8EE-2D3872BCA799}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Exclame" ID="{041D5E2D-7C70-417B-AF35-F4A097377BE6}" ShortID="279490784">
 									<PropertyList>
@@ -273,6 +537,30 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VOJoueurExclame_PH" ID="{237532F0-0ADE-462C-9712-A5259D772528}" ShortID="1021150075">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VOJoueurExclame_PH" ID="{7495DE27-CC84-4AC0-9ADC-F605DCD5C7D9}">
+													<Language>SFX</Language>
+													<AudioFile>VOJoueurExclame_PH.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="975917079"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VOJoueurExclame_PH" ID="{7495DE27-CC84-4AC0-9ADC-F605DCD5C7D9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</BlendContainer>
 							</ChildrenList>
 						</ActorMixer>
@@ -306,6 +594,30 @@
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="VONarrateurNeutre_PH" ID="{C2DD7579-3B9D-47DC-9268-FC29127B7E47}" ShortID="564674952">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="VONarrateurNeutre_PH" ID="{700D52D4-FFFD-4205-97F4-32E99F795807}">
+											<Language>SFX</Language>
+											<AudioFile>VONarrateurNeutre_PH.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="481430361"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="VONarrateurNeutre_PH" ID="{700D52D4-FFFD-4205-97F4-32E99F795807}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
 						</BlendContainer>
 					</ChildrenList>
 				</ActorMixer>
