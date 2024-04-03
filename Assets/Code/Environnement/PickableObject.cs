@@ -27,6 +27,7 @@ public class PickableObject : MonoBehaviour
     public bool isSelected;
     public bool isPickedUp = false;
     [SerializeField] private float rotateSpeed;
+    bool isFacingRight = true;
 
     public bool isSceneLoaded = false;
 
@@ -152,44 +153,69 @@ public class PickableObject : MonoBehaviour
 
             transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
 
-            if (gameObject.tag == "Spear" && player.CanMove())
+            if ((gameObject.tag == "Spear" || gameObject.tag == "TwoHandedWeapon") && player.CanMove())
             {   
                 Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
+
+                Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.gameObject.transform.position;
+                if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
+                {
+                    Turn();
+                }
                 //transform.rotation = Quaternion.Euler(0, 0, angle);
             }
         }
     }
 
+    void Turn()
+    {
+        Vector3 scale = transform.localScale;
+        scale.y *= -1;
+        transform.localScale = scale;
+
+        isFacingRight = !isFacingRight;
+    }
+
     public void PickUp(bool isAlreadyInInventory, bool bypassObjectInHand)
     {
+        //Si l'objet n'est pas deja dans l'inventaire
         if (!isAlreadyInInventory)
         {
+            //On clear les objets proches pour recommencer la recherche
             player.objectsNear.Clear();
             player.nearestObjectDistance = 10;
+
+            //Desactive le fleche
             arrow.SetActive(false);
+
+            //On cree l'item dans l'invenaire
             bool hasBeenPlaced = false;
             InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
             ItemData itemData = Instantiate(item.itemData);
 
+            //Si c'est n'est pas une ressource ou du gear
             if (gameObject.tag != "Ressource" && gameObject.tag != "Gear")
             {
                 for (int i = hotbar.Count - 1; i >= 0; i--)
                 {
+                    //Si une des cases de hotbar est libre
                     if (hotbar[i].GetComponent<ItemGrid>().GetItem(0, 0) == null)
                     {
+                        //On change l'item dans l'inventaire
                         inventory = hotbar[i].GetComponent<ItemGrid>();
                         itemData.width = itemData.hotbarWidth;
                         itemData.height = itemData.hotbarHeight;
 
-                        inventoryItem.Set(itemData, inventory);
+                        //On ajuste l'image et le stack
                         inventoryItem.stackAmount = item.stackAmount;
+                        inventoryItem.Set(itemData, inventory);
+                        inventoryItem.sprites = item.sprites;
                         if (inventoryItem.sprites.Length > 0)
-                        {
-                            inventoryItem.GetComponent<Image>().sprite = inventory.GetComponent<InventoryItem>().sprites[(inventoryItem.GetComponent<InventoryItem>().sprites.Length + 1) - inventoryItem.GetComponent<InventoryItem>().stackAmount];
-                        }
+                            inventoryItem.GetComponent<Image>().sprite = item.sprites[(item.sprites.Length) - item.stackAmount];
 
+                        //On place l'item
                         inventory.PlaceItem(inventoryItem, 0, 0);
                         hasBeenPlaced = true;
                         break;
@@ -197,20 +223,24 @@ public class PickableObject : MonoBehaviour
                 }
             }
             
+            //Si l'item n'a pas ete placer dans la hotbar, on regarde l'inventaire du joueur
             if (inventory == null)
                 inventory = playerInventory;
 
+            //Si l'item n'a pas ete placer, on le place dans l'inventaire
             if (!hasBeenPlaced)
             {
-                inventoryItem.Set(itemData, inventory);
                 inventoryItem.stackAmount = item.stackAmount;
+                inventoryItem.Set(itemData, inventory);
+                inventoryItem.sprites = item.sprites;
                 if (inventoryItem.sprites.Length > 0)
                 {
-                    inventoryItem.GetComponent<Image>().sprite = inventory.GetComponent<InventoryItem>().sprites[(inventoryItem.GetComponent<InventoryItem>().sprites.Length + 1) - inventoryItem.GetComponent<InventoryItem>().stackAmount];
+                    inventoryItem.GetComponent<Image>().sprite = item.sprites[(item.sprites.Length) - item.stackAmount];
                 }
                 InsertItem(inventoryItem);
             }
 
+            //On ajuste le tag de l'item
             itemInInventory = inventoryItem.gameObject;
             if (gameObject.tag == "Ressource")
                 itemInInventory.tag = "Ressource";
@@ -218,25 +248,38 @@ public class PickableObject : MonoBehaviour
                 itemInInventory.tag = "Gear";
         }
 
+        //Si l'objet n'est pas une ressource ou du gear
         if (gameObject.tag != "Ressource" && gameObject.tag != "Gear")
         {
+            //Si le joueur n'a rien dans la main ou que c'est un item qui bypass l'objet en main
             if (player.objectInRightHand == null || (bypassObjectInHand && player.objectInRightHand != null))
             {
-                Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.gameObject.GetComponent<Collider2D>(), true);
+                //On ignore les collisions avec le joueur et on desactive le mouvement sur l'objet
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.gameObject.GetComponent<Collider2D>(), true);
+                GetComponent<Rigidbody2D>().simulated = true;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                GetComponent<Rigidbody2D>().angularVelocity = 0;
                 GetComponent<Rigidbody2D>().gravityScale = 0;
 
+                //On tourne l'objet dans la bonne direction
                 float facingAngle = player.isFacingRight ? 0 : 180;
                 transform.eulerAngles = new Vector3(0, 0, facingAngle);
 
+                //On angle l'objet avec la main
                 transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
                 transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
 
-                //gameObject.transform.SetParent(rightHand.transform);
+                //On reset le parent de l'objet
+                gameObject.transform.SetParent(null);
+
+                //On ajuste le sorting layer
                 sprite.sortingOrder = 8;
+
+                //On equipe l'objet
                 player.EquipObject(gameObject);
                 isPickedUp = true;
             }
+            //Sinon, on le delete
             else
             {
                 Destroy(gameObject);
@@ -291,5 +334,11 @@ public class PickableObject : MonoBehaviour
         }
         else
             inventory.PlaceItem(itemToInsert, posOnGrid.Value.x, posOnGrid.Value.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.GetMask("Ground") && !GetComponent<PickableObject>().isPickedUp)
+            hasFlashed = false;
     }
 }

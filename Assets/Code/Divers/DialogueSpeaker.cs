@@ -14,9 +14,11 @@ public class DialogueSpeaker : MonoBehaviour
     public List<Dialogue> dialogueSequence4;
     public List<Dialogue> dialogueSequence5;
 
+    public bool isSpeaking;
 
     public IEnumerator Speech(string textToWrite = null)
     {
+        isSpeaking = true;
         if (textToWrite != null)
         {
             speechBubbleText.text = "";
@@ -28,6 +30,7 @@ public class DialogueSpeaker : MonoBehaviour
                 yield return new WaitForSeconds(0.03f);
             }
         }
+        isSpeaking = false;
         yield return null;
     }
 

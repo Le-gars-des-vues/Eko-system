@@ -52,6 +52,7 @@ public class Base : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         if (player.GetComponent<PlayerPermanent>().spawnAtBase)
         {
+            background.SetActive(false);
             Teleport(false, true, baseSpawnPoint.position);
         }
         buildButton.SetActive(true);
@@ -109,6 +110,8 @@ public class Base : MonoBehaviour
 
     public void Teleport(bool outside, bool inBase, Vector2 target)
     {
+        player.transform.position = target;
+        player.GetComponent<PlayerPermanent>().ResetFeetPosition();
         if (outside)
         {
             pixelLight.intensity = 1f;
@@ -130,8 +133,6 @@ public class Base : MonoBehaviour
             isInside = false;
             pixelLight.intensity = 0.03f;
         }
-        player.transform.position = target;
-        player.GetComponent<PlayerPermanent>().ResetFeetPosition();
     }
 
     void OnDrawGizmos()

@@ -19,7 +19,8 @@ public class PlantConsummable : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canPickUpConsummable = true;
-            arrow.SetActive(true);
+            if (!hasPickedUpConsummable)
+                arrow.SetActive(true);
             StartCoroutine(FlashWhite(ConsummableGFX.GetComponent<SpriteRenderer>(), 0.05f, 5));
         }
     }
@@ -41,6 +42,11 @@ public class PlantConsummable : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        arrow.SetActive(false);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

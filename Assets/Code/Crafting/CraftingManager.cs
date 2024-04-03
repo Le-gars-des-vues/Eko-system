@@ -98,6 +98,8 @@ public class CraftingManager : MonoBehaviour
                 noRecipe.SetActive(false);
                 craftingImage.gameObject.SetActive(true);
             }
+            if (dropdown.value >= knownRecipes.Count)
+                dropdown.value--;
             currentRecipe = dropdown.value;
             if (currentRecipe >= 0)
             {
@@ -144,15 +146,19 @@ public class CraftingManager : MonoBehaviour
             for (int i = 0; i < knownRecipes.Count; i++)
             {
                 dropdown.options.Add(new TMP_Dropdown.OptionData { text = knownRecipes[i].Value.recipeResult });
-                currentRecipe = 0;
             }
             dropdown.RefreshShownValue();
-            dropdown.value = 0;
         }
         else
         {
             noRecipe.SetActive(true);
             craftingImage.gameObject.SetActive(false);
+            mat1Nom.text = "";
+            mat2Nom.text = "";
+            mat3Nom.text = "";
+            nombreMat1.text = "";
+            nombreMat2.text = "";
+            nombreMat3.text = "";
             craftingName.text = "";
             craftingDesc.text = "";
             dropdown.value = -1;

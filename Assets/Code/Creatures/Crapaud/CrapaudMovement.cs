@@ -132,13 +132,13 @@ public class CrapaudMovement : MonoBehaviour
             else if (!isGrounded)
                 speedFactor = 0.5f;
 
-            if (dist > 0.5f)
+            if (dist > 0.5f && isGrounded)
             {
                 isStopped = false;
                 if (targetIsRight)
-                    GoRight(speedFactor);
+                    JumpRight();
                 else
-                    GoLeft(speedFactor);
+                    JumpLeft();
             }
             else
                 isStopped = true;
@@ -196,62 +196,38 @@ public class CrapaudMovement : MonoBehaviour
         }
     }
 
-    void GoRight(float speedFactor)
+    void JumpRight()
     {
-        Vector2 force = new Vector2(moveSpeed * speedFactor, 0);
-
-        if (!state.isAttacking)
-        {
-            if (rb.velocity.x < 0)
-                force.x -= rb.velocity.x;
-            else if (rb.velocity.x < minMoveSpeed)
-                force.x += minMoveSpeed;
-        }
-
-        rb.AddForce(force);
-
         if (!isFacingRight && rb.velocity.x > 0)
-        {
             Turn();
-            foreach (TardidogLegAnimation leg in legs)
-            {
-                leg.Turn();
-            }
+
+        if (!isJumping)
+        {
+            jumpTarget.position = new Vector2(transform.position.x + 1, transform.position.y);
+            StartCoroutine(Jump(1));
         }
     }
 
-    void GoLeft(float speedFactor)
+    void JumpLeft()
     {
-        Vector2 force = new Vector2(-moveSpeed * speedFactor, 0);
-
-        if (!state.isAttacking)
-        {
-            if (rb.velocity.x > 0)
-                force.x -= rb.velocity.x;
-            else if (rb.velocity.x > -minMoveSpeed)
-                force.x -= minMoveSpeed;
-        }
-
-        rb.AddForce(force);
-
         if (isFacingRight && rb.velocity.x < 0)
-        {
             Turn();
-            foreach (TardidogLegAnimation leg in legs)
-            {
-                leg.Turn();
-            }
-        }
+
+        if (!isJumping)
+        {
+            jumpTarget.position = new Vector2(transform.position.x - 1, transform.position.y);
+            StartCoroutine(Jump(1));
+        };
     }
 
     IEnumerator Jump(int direction)
     {
-        Debug.Log("isJumping");
         rb.drag = 0;
         isJumping = true;
         Vector2 jumpDirection = new Vector2(jumpTarget.position.x, jumpTarget.position.y) - rb.position;
         jumpDirection.x -= (jumpDirection.x / 2) * facingDirection * direction;
         jumpDirection.y += jumpYOffset;
+        Debug.Log(jumpDirection);
         Vector2 jumpPoint = rb.position + jumpDirection;
 
         jumpTarget.position = jumpPoint;
@@ -261,7 +237,7 @@ public class CrapaudMovement : MonoBehaviour
         float duration = 0.2f;
 
         float speedX = (jumpPoint.x - rb.position.x) * rb.mass;
-        float speedY = Mathf.Sqrt(2 * Physics.gravity.magnitude * Mathf.Max(jumpPoint.y - rb.position.y, 3f)) * rb.mass;
+        float speedY = Mathf.Sqrt(2 * Physics.gravity.magnitude * Mathf.Max(jumpPoint.y - rb.position.y, /*CHANGER ICI*/ 3f)) * rb.mass;
         /*
         float massFactor = Mathf.Sqrt(rb.mass);
         float dragFactor = Mathf.Sqrt(rb.drag);
@@ -296,6 +272,11 @@ public class CrapaudMovement : MonoBehaviour
         Vector3 scale = gameObject.transform.localScale;
         scale.x *= -1;
         gameObject.transform.localScale = scale;
+
+        foreach (TardidogLegAnimation leg in legs)
+        {
+            leg.Turn();
+        }
 
         isFacingRight = !isFacingRight;
     }

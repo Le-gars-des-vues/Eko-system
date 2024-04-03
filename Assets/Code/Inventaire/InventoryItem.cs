@@ -67,7 +67,9 @@ public class InventoryItem : MonoBehaviour
         if (sprites.Length <= 0)
             GetComponent<Image>().sprite = itemData.itemIcon;
         else
-            GetComponent<Image>().sprite = sprites[stackAmount - 1];
+        {
+            GetComponent<Image>().sprite = sprites[sprites.Length - stackAmount];
+        }
 
         Vector2 size = new Vector2();
         size.x = WIDTH * itemGrid.tileSizeWidth;

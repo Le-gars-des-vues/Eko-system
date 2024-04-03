@@ -156,6 +156,11 @@ public class GameManager : MonoBehaviour
         CycleInfo.instance.timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    public void StartNewCycle()
+    {
+        StartCoroutine(NewCycle());
+    }
+
     public IEnumerator NewCycle()
     {
         newCycleScreen.SetActive(true);
@@ -317,7 +322,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && spawner.GetComponent<Spawner>().objectSpawned.GetComponent<HarvestableRessourceNode>().isHarvested)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -353,7 +358,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && spawner.GetComponent<Spawner>().objectSpawned.GetComponent<HarvestableRessourceNode>().isHarvested)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -389,7 +394,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && spawner.GetComponent<Spawner>().objectSpawned.GetComponent<HarvestableRessourceNode>().isHarvested)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -425,7 +430,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && spawner.GetComponent<Spawner>().objectSpawned.GetComponent<HarvestableRessourceNode>().isHarvested)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -461,7 +466,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && spawner.GetComponent<Spawner>().objectSpawned.GetComponent<HarvestableRessourceNode>().isHarvested)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());
@@ -497,7 +502,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (spawner.GetComponent<Spawner>().objectSpawned != null && !spawner.GetComponent<Spawner>().objectSpawned.activeSelf)
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && spawner.GetComponent<Spawner>().objectSpawned.GetComponent<HarvestableRessourceNode>().isHarvested)
                 {
                     spawner.GetComponent<Spawner>().canSpawn = true;
                     availableSpawners.Add(spawner.GetComponent<Spawner>());

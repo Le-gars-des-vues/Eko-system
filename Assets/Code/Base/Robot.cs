@@ -12,6 +12,7 @@ public class Robot : MonoBehaviour
     [SerializeField] float walkSpeed;
     [SerializeField] float movementDistanceThreshold;
     [SerializeField] Transform target;
+    [SerializeField] Transform robotPos;
     bool isWalking;
     Rigidbody2D rb;
     public bool isMoving;
@@ -46,12 +47,13 @@ public class Robot : MonoBehaviour
 
     private void Update()
     {
+
         if (isMoving)
         {
-            if (Mathf.Abs(target.position.x - transform.position.x) > movementDistanceThreshold)
+            if (Mathf.Abs(target.position.x - robotPos.position.x) > movementDistanceThreshold)
             {
                 anim.SetBool("isWalking", true);
-                Vector2 direction = target.position - transform.position;
+                Vector2 direction = target.position - robotPos.position;
                 direction.y = 0;
                 if (direction.x > 0)
                     GoRight();
@@ -62,10 +64,13 @@ public class Robot : MonoBehaviour
             {
                 isMoving = false;
                 anim.SetBool("isWalking", false);
-                if ((!isFacingRight && player.transform.position.x - transform.position.x > 0) || (isFacingRight && player.transform.position.x - transform.position.x < 0))
-                    Turn();
                 RobotTutorial();
             }
+        }
+        else
+        {
+            if ((!isFacingRight && player.transform.position.x - robotPos.position.x > 0) || (isFacingRight && player.transform.position.x - robotPos.position.x < 0))
+                Turn();
         }
     }
 
@@ -131,7 +136,7 @@ public class Robot : MonoBehaviour
     void GoToRespawn()
     {
         isMoving = true;
-        target.position = new Vector2(respawnPoint.transform.position.x + offset, transform.position.y);
+        target.position = new Vector2(respawnPoint.transform.position.x + offset, robotPos.position.y);
         PromptManager.instance.CreateNewPrompt(new Prompt("Play the movement tutorial?", false, "Yes", "No"));
         PromptManager.onButtonClick = TeleportToTrainingRoom;
     }
@@ -144,13 +149,13 @@ public class Robot : MonoBehaviour
     void GoToSellingScreen()
     {
         isMoving = true;
-        target.position = new Vector2(sellingScreen.transform.position.x + offset, transform.position.y);
+        target.position = new Vector2(sellingScreen.transform.position.x + offset + 2.3f, robotPos.position.y);
     }
 
     void GoToCrafting()
     {
         isMoving = true;
-        target.position = new Vector2(craftingBench.transform.position.x + offset, transform.position.y);
+        target.position = new Vector2(craftingBench.transform.position.x + offset + 2f, robotPos.position.y);
     }
 
     void GiveItem()

@@ -34,7 +34,8 @@ public class WaterPlayerController : MonoBehaviour
             movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             if (Mathf.Abs(movement.x) > 0.1f || Mathf.Abs(movement.y) > 0.1f)
             {
-                isSwimming = true;
+                if (player.objectInRightHand == null || (player.objectInRightHand.tag != "TwoHandedWeapon" && player.objectInRightHand.tag != "Spear"))
+                    isSwimming = true;
                 //player.ChangeStamina(-swimStaminaCost * Time.deltaTime);
                 if (!player.colliderShapeIsChanged)
                 {
@@ -92,6 +93,7 @@ public class WaterPlayerController : MonoBehaviour
             player.groundPlayerController.enabled = true;
             player.waterPlayerController.enabled = false;
 
+            isSwimming = false;
             if (player.isUnderwater)
                 player.GoUnderwater(false);
         }

@@ -10,7 +10,7 @@ public class TrajectoryLine : MonoBehaviour
 
     Vector2[] segments;
     private LineRenderer line;
-    ThrowableObject objectToThrow;
+    float force;
 
     const float TIME_CURVE_ADDITION = 0.5f;
 
@@ -18,7 +18,10 @@ public class TrajectoryLine : MonoBehaviour
     {
         //Initialise segments
         segments = new Vector2[segmentCount];
-        objectToThrow = GetComponent<ThrowableObject>();
+        if (GetComponent<ThrowableObject>() != null)
+            force = GetComponent<ThrowableObject>().force;
+        else if (GetComponent<AmmoWeapon>() != null)
+            force = GetComponent<AmmoWeapon>().force;
 
         //Grab line renderer and set its number of point
         line = GetComponent<LineRenderer>();
@@ -33,7 +36,7 @@ public class TrajectoryLine : MonoBehaviour
         line.SetPosition(0, startPos);
 
         //Set the starting velocity;
-        Vector2 startVelocity = ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized * objectToThrow.force);
+        Vector2 startVelocity = ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized * force);
 
         for (int i = 1; i < segmentCount; i++)
         {

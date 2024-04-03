@@ -18,7 +18,9 @@ public class StartNewCycle : MonoBehaviour
             {
                 startedANewCycle = true;
                 newCycleTime = Time.time;
-                StartCoroutine(GameManager.instance.NewCycle());
+                string promptText = GameObject.Find("Vente").GetComponent<Vente>().profit >= GameManager.instance.gameObject.GetComponent<Quota>().quota ? "Start a new day?" : "Start a new day? \n\nWARNING : INSUFFICIENT PROFITS!";
+                PromptManager.instance.CreateNewPrompt(new Prompt(promptText, false, "Yes", "No"));
+                PromptManager.onButtonClick = GameManager.instance.StartNewCycle;
             }
 
             if (Time.time - newCycleTime > 5.1f)

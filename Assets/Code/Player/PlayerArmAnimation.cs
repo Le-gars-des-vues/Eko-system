@@ -154,7 +154,7 @@ public class PlayerArmAnimation : MonoBehaviour
                                             Vector2 offset = pickupInitialPos - mousePos;
                                             Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
                                             armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime * 2);
                                         }
                                         //Sinon la main avance
                                         else
@@ -215,6 +215,12 @@ public class PlayerArmAnimation : MonoBehaviour
                                 }
                             }
                         }
+                        else if (playerScript.objectInRightHand.tag == "TwoHandedWeapon")
+                        {
+                            pickupInitialPos = new Vector2(player.transform.position.x, player.transform.position.y - 0.5f);
+                            armTarget.position = pickupInitialPos;
+                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                        }
                         else if (playerScript.objectInRightHand.tag == "MultiTool")
                         {
                             pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
@@ -246,6 +252,12 @@ public class PlayerArmAnimation : MonoBehaviour
                                 armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
                                 transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
                             }
+                        }
+                        else if (playerScript.objectInRightHand.tag == "TwoHandedWeapon")
+                        {
+                            handCanMove = false;
+                            armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
+                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
                         }
                         //Sinon la main peut bouger
                         else

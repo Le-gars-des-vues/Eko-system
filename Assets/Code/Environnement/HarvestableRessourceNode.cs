@@ -18,6 +18,7 @@ public class HarvestableRessourceNode : MonoBehaviour
     [SerializeField] GameObject consummableToSpawn;
     public float ressourceAmount;
     [SerializeField] float spawnForce;
+    public bool isHarvested = false;
 
     public bool isPointing;
     public bool isOutlined;
@@ -36,20 +37,10 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     private void Update()
     {
-        if (timer >= player.timeToHarvest)
+        if (timer >= player.timeToHarvest && !isHarvested)
         {
-            int i = 0;
-            while (i < ressourceAmount)
-            {
-                i++;
-                var ressource = Instantiate(ressourceToSpawn, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), transform.rotation);
-                Vector2 direction = new Vector2((float)Random.Range(-4, 4), (float)Random.Range(-4, 4));
-                ressource.GetComponent<Rigidbody2D>().AddForce(direction * spawnForce, ForceMode2D.Impulse);
-            }
-            if (gameObject.tag == "Plant" && !GetComponent<PlantConsummable>().hasPickedUpConsummable)
-                Instantiate(consummableToSpawn, transform.position, transform.rotation);
-
-            gameObject.SetActive(false);
+            EmptyRessources();
+            player.Harvest(false);
         }
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, groundRaycastLength, LayerMask.GetMask("Ground", "Planters"));
@@ -57,6 +48,31 @@ public class HarvestableRessourceNode : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + direction.x / 10, transform.position.y + direction.y / 10), 0.1f);
         }
+    }
+
+    void EmptyRessources()
+    {
+        isHarvested = true;
+        GetComponent<Collider2D>().enabled = false;
+        int i = 0;
+        while (i < ressourceAmount)
+        {
+            i++;
+            var ressource = Instantiate(ressourceToSpawn, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), transform.rotation);
+            Vector2 direction = new Vector2((float)Random.Range(-4, 4), (float)Random.Range(-4, 4));
+            ressource.GetComponent<Rigidbody2D>().AddForce(direction * spawnForce, ForceMode2D.Impulse);
+        }
+        if (gameObject.tag == "Plant")
+        {
+            sprite_full.enabled = false;
+            sprite_empty.enabled = false;
+            GetComponent<PlantConsummable>().enabled = false;
+
+            if (!GetComponent<PlantConsummable>().hasPickedUpConsummable)
+                Instantiate(consummableToSpawn, transform.position, transform.rotation);
+        }
+        else if (gameObject.tag == "Mineral")
+            sprite_full.enabled = false;
     }
 
     private void OnMouseEnter()

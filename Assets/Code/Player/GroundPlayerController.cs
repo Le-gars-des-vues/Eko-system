@@ -63,6 +63,7 @@ public class GroundPlayerController : MonoBehaviour
     //Check pour le double jump
     public bool jumpedOnce;
     public bool jumpedTwiced;
+    bool colliderShapeIsChanged;
 
     [Header("Fly Variables")]
     bool isFlying;
@@ -239,6 +240,11 @@ public class GroundPlayerController : MonoBehaviour
             jumpedOnce = false;
             jumpedTwiced = false;
             hasWallJumped = false;
+            if (colliderShapeIsChanged)
+            {
+                colliderShapeIsChanged = false;
+                player.ChangeColliderShape(false);
+            }
             /*
             if (GetComponent<PlayerPermanent>().hasDoubleJump)
                 jumpedOnce = false;
@@ -257,6 +263,11 @@ public class GroundPlayerController : MonoBehaviour
 
             wallJumpStartTime = Time.time;
             lastWallJumpDir = (lastOnWallRightTime > 0) ? -1 : 1;
+            if (!colliderShapeIsChanged)
+            {
+                colliderShapeIsChanged = true;
+                player.ChangeColliderShape(true);
+            }
             WallJump(lastWallJumpDir);
         }
         else if (CanJump() && pressedJumpTime > 0)
@@ -265,6 +276,11 @@ public class GroundPlayerController : MonoBehaviour
             isWallJumping = false;
             isJumpCut = false;
             isJumpFalling = false;
+            if (!colliderShapeIsChanged)
+            {
+                colliderShapeIsChanged = true;
+                player.ChangeColliderShape(true);
+            }
             Jump();
         }
 
@@ -445,6 +461,7 @@ public class GroundPlayerController : MonoBehaviour
 
     public void Jump()
     {
+        //if (!colliderShapeIsChanged)
         if (jumpedOnce)
         {
             jumpedTwiced = true;
@@ -561,7 +578,7 @@ public class GroundPlayerController : MonoBehaviour
     private void CheckCollision()
     {
         isGrounded = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Vector2.down, groundRaycastLength, groundLayer);
-        Vector2 frontWallCheckPoint = new Vector2(player.gameObject.transform.position.x + 0.306f, player.gameObject.transform.position.y - 0.4f);
+        Vector2 frontWallCheckPoint = new Vector2(player.gameObject.transform.position.x + 0.36f, player.gameObject.transform.position.y - 0.4f);
         Vector2 backWallCheckPoint = new Vector2(player.gameObject.transform.position.x - 0.42f, player.gameObject.transform.position.y - 0.36f);
 
         //Right Wall Check

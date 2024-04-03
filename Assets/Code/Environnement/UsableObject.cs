@@ -43,16 +43,12 @@ public class UsableObject : MonoBehaviour
             case "Heal":
                 effect.Heal(player, effect.effectMagnitude);
                 break;
+            case "Cleanse":
+                effect.Cleanse(player);
+                break;
 
             default:
                 break;
-        }
-
-        if (objectToUse.GetComponent<InventoryItem>().sprites.Length >= 1)
-        {
-            objectToUse.GetComponent<PickableObject>().inventory.GetItem(objectToUse.GetComponent<InventoryItem>().onGridPositionX,
-                objectToUse.GetComponent<InventoryItem>().onGridPositionY).GetComponent<Image>().sprite =
-                objectToUse.GetComponent<InventoryItem>().sprites[(objectToUse.GetComponent<InventoryItem>().sprites.Length) - objectToUse.GetComponent<InventoryItem>().stackAmount];
         }
 
         objectToUse.GetComponent<PickableObject>().itemInInventory.GetComponent<InventoryItem>().stackAmount--;
@@ -63,9 +59,19 @@ public class UsableObject : MonoBehaviour
             Destroy(objectToUse);
             player.UnequipObject();
 
-            var toDestroy = objectToUse.GetComponent<PickableObject>().inventory.GetItem(objectToUse.GetComponent<InventoryItem>().onGridPositionX, 
+            var toDestroy = objectToUse.GetComponent<PickableObject>().inventory.GetItem(objectToUse.GetComponent<InventoryItem>().onGridPositionX,
                 objectToUse.GetComponent<InventoryItem>().onGridPositionY);
             toDestroy.Delete();
+        }
+        else
+        {
+            if (objectToUse.GetComponent<InventoryItem>().sprites.Length >= 1)
+            {
+
+                objectToUse.GetComponent<PickableObject>().inventory.GetItem(objectToUse.GetComponent<InventoryItem>().onGridPositionX,
+                    objectToUse.GetComponent<InventoryItem>().onGridPositionY).GetComponent<Image>().sprite =
+                    objectToUse.GetComponent<InventoryItem>().sprites[(objectToUse.GetComponent<InventoryItem>().sprites.Length) - objectToUse.GetComponent<InventoryItem>().stackAmount];
+            }
         }
 
         yield return new WaitForSecondsRealtime(0.5f);

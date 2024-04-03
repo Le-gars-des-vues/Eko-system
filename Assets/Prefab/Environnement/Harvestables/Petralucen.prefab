@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4137617579208737760}
   m_Layer: 0
   m_Name: Petralucen
-  m_TagString: Untagged
+  m_TagString: Mineral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,7 +148,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.54, y: -1.2}
@@ -174,8 +174,10 @@ MonoBehaviour:
   consummableToSpawn: {fileID: 0}
   ressourceAmount: 3
   spawnForce: 1
+  isHarvested: 0
   isPointing: 0
   isOutlined: 0
+  direction: {x: 0, y: -1}
   groundRaycastLength: 3.25
 --- !u!1 &9036329674968356571
 GameObject:

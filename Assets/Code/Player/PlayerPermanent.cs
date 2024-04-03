@@ -13,7 +13,13 @@ public class PlayerPermanent : MonoBehaviour
     public float oxygenDepleteRate;
     public float oxygenRegainRate;
     public Slider oxygenSlider;
+    [SerializeField] Image oxygenSliderFill;
+    [SerializeField] Image oxygenSliderBackground;
     public bool isInAirPocket;
+
+    private float desiredAlpha = 0;
+    private float currentAlpha = 0;
+    [SerializeField] float fadeSpeed;
 
     [Header("Health Variables")]
     public float maxHp;
@@ -254,7 +260,11 @@ public class PlayerPermanent : MonoBehaviour
         else
         {
             if (isInBase)
+            {
                 isInBase = false;
+                if (buildingIsOpen)
+                    ShowOrHideBuilding();
+            }
         }
 
         //Dans l'eau, l'oxygen descend
@@ -272,9 +282,17 @@ public class PlayerPermanent : MonoBehaviour
             SetBar(oxygenSlider, currentOxygen);
         }
 
+        currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, fadeSpeed * Time.deltaTime);
+        oxygenSliderFill.color = new Color(oxygenSliderFill.color.r, oxygenSliderFill.color.g, oxygenSliderFill.color.b, currentAlpha);
+        oxygenSliderBackground.color = new Color(oxygenSliderBackground.color.r, oxygenSliderBackground.color.g, oxygenSliderBackground.color.b, currentAlpha);
+        if (!headUnderWater && currentOxygen >= maxOxygen)
+            desiredAlpha = 0;
+        else
+            desiredAlpha = 1;
+
         if (currentOxygen <= 0)
         {
-            ChangeHp(-0.05f, false);
+            ChangeHp(-0.01f, false);
         }
 
         //Timer de 2 seconds avec que le joueur commence a regagner de la stamina, reset a chaque fois qu'il utilise de la stamina
@@ -426,6 +444,9 @@ public class PlayerPermanent : MonoBehaviour
             {
                 if (obj != null)
                 {
+                    if (obj.GetComponent<WeaponDamage>() != null && obj.GetComponent<WeaponDamage>().isThrown)
+                        continue;
+
                     float distance = Vector2.Distance(transform.position, obj.transform.position);
 
                     if (distance < nearestObjectDistance || nearestObject == obj)
@@ -1104,7 +1125,7 @@ public class PlayerPermanent : MonoBehaviour
         {
             colliderShapeIsChanged = true;
             playerCollider.direction = CapsuleDirection2D.Horizontal;
-            playerCollider.size = new Vector2(playerCollider.size.x, 1);
+            playerCollider.size = new Vector2(playerCollider.size.x, 0.85f);
         }
         else
         {

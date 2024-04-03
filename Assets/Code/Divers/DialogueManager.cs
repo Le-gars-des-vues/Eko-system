@@ -86,17 +86,28 @@ public class DialogueManager : MonoBehaviour
 
     public void NextSentence()
     {
-        dialigueIndex++;
-        if (dialigueIndex < currentDialogue.Count)
+        if (currentSpeaker.isSpeaking)
         {
             StopCoroutine(dialogue);
-            dialogue = StartCoroutine(currentSpeaker.Speech(currentDialogue[dialigueIndex].text));
+            currentSpeaker.speechBubbleText.text = currentDialogue[dialigueIndex].text;
+            currentSpeaker.speechBubbleTextB.text = currentDialogue[dialigueIndex].text;
+            currentSpeaker.isSpeaking = false;
             pressedKey = false;
         }
         else
         {
-            EndDialogue();
-            pressedKey = false;
+            dialigueIndex++;
+            if (dialigueIndex < currentDialogue.Count)
+            {
+                StopCoroutine(dialogue);
+                dialogue = StartCoroutine(currentSpeaker.Speech(currentDialogue[dialigueIndex].text));
+                pressedKey = false;
+            }
+            else
+            {
+                EndDialogue();
+                pressedKey = false;
+            }
         }
     }
 

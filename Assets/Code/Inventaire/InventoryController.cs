@@ -109,6 +109,7 @@ public class InventoryController : MonoBehaviour
         if (selectedItemGrid != null && selectedItemGrid.gameObject.tag != "Hotbar" && selectedItem == null)
         {
             Vector2Int tileGridPosition = GetTileGridPosition();
+            Debug.Log(tileGridPosition);
             if (oldPosition2 == tileGridPosition && gridName2 == selectedItemGrid.gameObject.name)
             {
                 if (currentInfo != null)
@@ -116,35 +117,35 @@ public class InventoryController : MonoBehaviour
                     rectTransform.position = Input.mousePosition;
                     rectTransform.SetParent(canvasTransform);
                     rectTransform.SetAsLastSibling();
-                }
-            }
-            else
-            {
-                if (gridName2 == selectedItemGrid.gameObject.name)
-                {
-                    if (currentInfo != null && currentInfo.GetComponent<ItemInfo>().referenceditem != selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y))
-                    {
-                        Destroy(currentInfo);
-                    }
-                    else
-                    {
-                        if (selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y) != null && currentInfo == null)
-                        {
-                            Debug.Log("Created info");
-                            currentInfo = Instantiate(itemInfo);
-                            currentInfo.GetComponent<ItemInfo>().Set(selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y).itemData);
-                            currentInfo.GetComponent<ItemInfo>().referenceditem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
-                            rectTransform = currentInfo.GetComponent<RectTransform>();
-                        }
-                    }
-                }
-                else
-                {
-                    Destroy(currentInfo);
+                    Debug.Log("Returned");
+                    return;
                 }
             }
             oldPosition2 = tileGridPosition;
             gridName2 = selectedItemGrid.gameObject.name;
+
+            if (gridName2 == selectedItemGrid.gameObject.name)
+            {
+                if (currentInfo != null && currentInfo.GetComponent<ItemInfo>().referenceditem != selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y))
+                {
+                    Destroy(currentInfo);
+                }
+                else
+                {
+                    if (selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y) != null && currentInfo == null)
+                    {
+                        Debug.Log("Created info");
+                        currentInfo = Instantiate(itemInfo);
+                        currentInfo.GetComponent<ItemInfo>().Set(selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y).itemData);
+                        currentInfo.GetComponent<ItemInfo>().referenceditem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
+                        rectTransform = currentInfo.GetComponent<RectTransform>();
+                    }
+                }
+            }
+            else
+            {
+                Destroy(currentInfo);
+            }
         }
         else
         {
@@ -207,7 +208,6 @@ public class InventoryController : MonoBehaviour
         //CHANGEMENT ICI---------
         if (oldPosition == positionOnGrid && gridName == selectedItemGrid.gameObject.name && inventoryHighlight.highlighter.gameObject.activeSelf) 
         {
-            Debug.Log("Returned");
             return;  
         }
         oldPosition = positionOnGrid;
