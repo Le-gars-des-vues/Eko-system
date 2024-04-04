@@ -35,6 +35,24 @@ public class Pathfinding : MonoBehaviour
         PathNode startNode = grid.NodeFromWorldPoint(startPos);
         PathNode targetNode = grid.NodeFromWorldPoint(endPos);
 
+        if (!startNode.isWalkable)
+        {
+            foreach (PathNode pathNode in NodeGrid.instance.GetNeighbours(startNode))
+            {
+                if (pathNode.isWalkable)
+                    startNode = pathNode;
+            }
+        }
+
+        if (!targetNode.isWalkable)
+        {
+            foreach (PathNode pathNode in NodeGrid.instance.GetNeighbours(targetNode))
+            {
+                if (pathNode.isWalkable)
+                    targetNode = pathNode;
+            }
+        }
+
         if (startNode.isWalkable && targetNode.isWalkable)
         {
             //On stock les cases a verifier dans un heap

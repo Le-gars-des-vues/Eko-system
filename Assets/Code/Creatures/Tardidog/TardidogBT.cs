@@ -9,6 +9,7 @@ public class TardidogBT : BTree
     [SerializeField] bool isAgressive;
     [SerializeField] int maxMovingDistance;
     [SerializeField] int originalDirection;
+    [SerializeField] float creatureSize;
 
     [SerializeField] TardidogMovement dog;
     [SerializeField] CreatureState state;
@@ -28,7 +29,7 @@ public class TardidogBT : BTree
                 new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, dog.head, dog.startAngle, dog.angleStep, dog.sightAngle, dog.rayCount, dog.rayDistance, state.minFollowDistance, originalDirection, isAgressive),
                 new AssignTarget(target, gameObject),
             }),
-            new Wander(gameObject.transform, target, state.territory, maxMovingDistance)
+            new Wander(gameObject.transform, target, state.territory, maxMovingDistance, creatureSize)
         });
         return root;
     }

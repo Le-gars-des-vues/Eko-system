@@ -270,7 +270,7 @@ public class PickableObject : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - rightHand.transform.rotation.z);
 
                 //On reset le parent de l'objet
-                gameObject.transform.SetParent(null);
+                gameObject.transform.parent = null;
 
                 //On ajuste le sorting layer
                 sprite.sortingOrder = 8;

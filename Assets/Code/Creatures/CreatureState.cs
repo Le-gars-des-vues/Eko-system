@@ -39,7 +39,7 @@ public class CreatureState : MonoBehaviour
     public bool hasFled;
 
     [Header("Territory Variables")]
-    public BoxCollider2D territory;
+    public Collider2D territory;
     bool hasATerritory = false;
 
     [Header("Tamed Variables")]
@@ -57,7 +57,7 @@ public class CreatureState : MonoBehaviour
         maxSenseOfSmellRadius = senseOfSmell * 2;
         isFull = true;
 
-        territory = (BoxCollider2D)Physics2D.OverlapCircle(transform.position, 1f, LayerMask.GetMask("SceneView", "Water"));
+        territory = Physics2D.OverlapCircle(transform.position, 1f, LayerMask.GetMask("SceneView", "Water"));
     }
 
     // Update is called once per frame

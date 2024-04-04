@@ -17,6 +17,7 @@ public class WeaponDamage : MonoBehaviour
     public Vector3 velocity;
     [SerializeField] [Range(0, 1)] float angleThreshold;
     public bool isThrown;
+    [SerializeField] LayerMask groundLayer;
 
 
     private void OnEnable()
@@ -77,20 +78,19 @@ public class WeaponDamage : MonoBehaviour
                         if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasOptics)
                             ShowDamage(hitDamage, collision.GetContact(0).point, color);
 
-                        if (GetComponent<ThrowableObject>() != null)
+                        if (isThrown)
                         {
-                            if (GetComponent<ThrowableObject>().isThrown)
-                            {
-                                Vector2 hitDirection = contact.point - (Vector2)transform.position;
-                                Vector2 stickPos = (Vector2)transform.position + hitDirection.normalized;
-                                StartCoroutine(Stick(collision.collider, stickPos));
-                            }
+                            isThrown = false;
+                            Vector2 hitDirection = contact.point - (Vector2)transform.position;
+                            Vector2 stickPos = (Vector2)transform.position + hitDirection.normalized;
+                            StartCoroutine(Stick(collision.collider, stickPos));
                         }
                     }
                 }
             }
         }
-        else if (collision.gameObject.layer == LayerMask.GetMask("Ground") && !GetComponent<PickableObject>().isPickedUp)
+
+        if (((1 << collision.gameObject.layer) & groundLayer) != 0 && !GetComponent<PickableObject>().isPickedUp)
         {
             isThrown = false;
         }
@@ -131,8 +131,11 @@ public class WeaponDamage : MonoBehaviour
         if (collision.collider.gameObject.tag == "Creature")
             isDamaging = false;
 
-        else if (collision.gameObject.layer == LayerMask.GetMask("Ground") && !GetComponent<PickableObject>().isPickedUp)
+
+        if (((1 << collision.gameObject.layer) & groundLayer) != 0 && !GetComponent<PickableObject>().isPickedUp)
+        {
             isThrown = true;
+        }
     }
 
     void ShowDamage(int damage, Vector2 pos, int color)

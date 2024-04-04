@@ -19,8 +19,8 @@ public class CheckHealth : BehaviorNode
         {
             parent.parent.ClearData("target");
             parent.parent.ClearData("pathTarget");
-            parent.parent.SetData("pathState", 0);
-            creature.GetComponent<CreaturePathfinding>().StopPathFinding();
+            parent.parent.SetData("pathState", 2);
+            creature.GetComponent<CreaturePathfinding>().ReachedEndOfPath();
             if (GetData("isAttacking") != null && (bool)GetData("isAttacking") == true)
                 parent.parent.SetData("isAttacking", false);
 

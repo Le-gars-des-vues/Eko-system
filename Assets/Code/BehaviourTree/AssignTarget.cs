@@ -17,9 +17,11 @@ public class AssignTarget : BehaviorNode
 
     public override NodeState Evaluate()
     {
+        //On deplace la cible sur la position de la cible du pathfinding
         var tempTarget = (Transform)GetData("target");
         target.position = tempTarget.position;
 
+        //Si le pathfinding est pret a debuter, on le commnence
         var pathfindingState = (int)GetData("pathState");
         if (pathfindingState == 1)
         {

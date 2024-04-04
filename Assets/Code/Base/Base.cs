@@ -104,8 +104,6 @@ public class Base : MonoBehaviour
                 }
             }
         }
-        if (isInside && player == null)
-            player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void Teleport(bool outside, bool inBase, Vector2 target)
@@ -139,17 +137,5 @@ public class Base : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - 4.5f, 0), 0.5f);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-            player = collision.gameObject;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player" && !isInside)
-            player = null;
     }
 }

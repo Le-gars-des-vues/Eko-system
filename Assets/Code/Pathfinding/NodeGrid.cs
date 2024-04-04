@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class NodeGrid : MonoBehaviour
 {
+    public static NodeGrid instance;
+
     public bool isSceneLoading = false;
     //Pour voir la grille
     public bool DisplayGridGizmos;
@@ -36,6 +38,11 @@ public class NodeGrid : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+            Destroy(this);
+        else
+            instance = this;
+
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);

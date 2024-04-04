@@ -43,20 +43,26 @@ public class CheckForTargetInRange : BehaviorNode
 
     public override NodeState Evaluate()
     {
+        //On regarde la cible
         object t = GetData("target");
+        //Si la creature n'a pas de cible
         if  (t == null)
         {
+            //On regarde les collider autour d'elle
             if ((bool)GetData("debug"))
                 Debug.Log("Looking for target");
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, senseOfSmell, layerMask);
 
+            //Si il y a un collider valide autour
             if (colliders.Length > 0)
             {
                 foreach (Collider2D collider in colliders)
                 {
+                    //Si le collider est celui du joueur et que la creature est aggressive
                     if (collider.gameObject.tag == "Player" && isAgressive)
                     {
                         //Debug.Log(collider.gameObject.transform.position);
+                        //Si le joueur est proche, on lance le pathfinding et l'attaque
                         if (Vector2.Distance(collider.gameObject.transform.position, transform.position) < fovRange)
                         {
                             parent.parent.SetData("target", collider.transform);
@@ -66,6 +72,7 @@ public class CheckForTargetInRange : BehaviorNode
                             state = NodeState.SUCCESS;
                             return state;
                         }
+                        //Sinon, on regarde si le joueur est dans le champ de vision, et si oui, on commence le pathfinding et l'attaque
                         else
                         {
                             facingDirection = transform.localScale.x == 1 ? 1 : -1;
@@ -128,12 +135,16 @@ public class CheckForTargetInRange : BehaviorNode
                 state = NodeState.SUCCESS;
                 return state;
             }
+            //Si la cible est deja le joueur
             else if (GetData("pathTarget") != null && (string)GetData("pathTarget") == "player")
             {
+                //On regarde la distance avec la cible
                 var pos = (Transform)GetData("target");
+                //Si la distance est trop petite
                 if (Vector2.Distance(pos.position, transform.position) > minFollowDistance)
                 {
                     //Debug.Log("player is too far");
+                    //On arrete le pathfinding et l'attaque, mais on ne reset pas la position de la cible, 
                     parent.parent.ClearData("target");
                     parent.parent.ClearData("pathTarget");
                     parent.parent.SetData("pathState", 0);
@@ -168,6 +179,7 @@ public class CheckForTargetInRange : BehaviorNode
                     return state;
                 }
             }
+            //La cible du joueur bypass les autres cibles
             else
             {
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, senseOfSmell, layerMask);

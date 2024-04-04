@@ -9,6 +9,7 @@ public class FlumpfBT : BTree
     [SerializeField] bool isAgressive;
     [SerializeField] int maxMovingDistance;
     [SerializeField] int originalDirection;
+    [SerializeField] float creatureSize;
 
     [SerializeField] FlumpfMovement fly;
     [SerializeField] CreatureState state;
@@ -28,7 +29,7 @@ public class FlumpfBT : BTree
                 new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, fly.head, fly.startAngle, fly.angleStep, fly.sightAngle, fly.rayCount, fly.rayDistance, state.minFollowDistance, originalDirection, isAgressive),
                 new AssignTarget(target, gameObject),
             }),
-            new Wander(gameObject.transform, target, state.territory, maxMovingDistance)
+            new Wander(gameObject.transform, target, state.territory, maxMovingDistance, creatureSize)
         });
         return root;
     }

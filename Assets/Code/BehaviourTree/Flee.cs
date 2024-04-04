@@ -28,6 +28,7 @@ public class Flee : BehaviorNode
         {
             creature.GetComponent<CreatureState>().hasFled = true;
             creature.GetComponent<CreatureState>().isFleeing = false;
+            parent.parent.SetData("pathState", 0);
         }
 
 

@@ -17,6 +17,8 @@ public class CreaturePathfinding : MonoBehaviour
     [SerializeField] float pathFollowMaxDistance = 15f;
     //[SerializeField] float reachedEndOfPathThreshold = 0.7f;
     float closestWaypointDistance = 1000f;
+    Coroutine pathFollow;
+    Coroutine pathUpdate;
 
     [Header("Path Variables")]
     public Path path;
@@ -35,18 +37,20 @@ public class CreaturePathfinding : MonoBehaviour
     {
         //StopPathFinding();
         state.isPathfinding = true;
-        pathTarget = _target.transform;
-        StartCoroutine(UpdatePath());
+        //pathTarget = _target.transform;
+        pathUpdate = StartCoroutine(UpdatePath());
     }
 
     public void StopPathFinding()
     {
         if (state.debug)
             Debug.Log(gameObject.transform.parent.gameObject.name + " Stopped Pathfinding");
-        path = null;
+        //path = null;
         state.isPathfinding = false;
-        pathTarget = null;
-        StopAllCoroutines();
+        if (pathUpdate != null)
+            StopCoroutine(pathUpdate);
+        if (pathFollow != null)
+            StopCoroutine(pathFollow);
     }
 
     public void OnPathFound(Vector2[] waypoints, bool pathSuccessful)
@@ -54,13 +58,14 @@ public class CreaturePathfinding : MonoBehaviour
         if (pathSuccessful)
         {
             path = new Path(waypoints, transform.position, turnDist, stoppingDistance);
-            StopCoroutine("FollowPath");
-            StartCoroutine("FollowPath");
+            if (pathFollow != null)
+                StopCoroutine(pathFollow);
+            pathFollow = StartCoroutine(FollowPath());
         }
         else
         {
             Debug.Log(gameObject.transform.parent.gameObject.name + " has a problem with his pathfinding!");
-            //StopPathFinding();
+            ReachedEndOfPath();
         }
     }
 
@@ -93,6 +98,16 @@ public class CreaturePathfinding : MonoBehaviour
         }
     }
 
+    public void ReachedEndOfPath()
+    {
+        reachEndOfPath = true;
+        if (pathUpdate != null)
+            StopCoroutine(pathUpdate);
+        if (pathFollow != null)
+            StopCoroutine(pathFollow);
+        state.isPathfinding = false;
+    }
+
     IEnumerator FollowPath()
     {
         state.isPathfinding = true;
@@ -100,15 +115,11 @@ public class CreaturePathfinding : MonoBehaviour
 
         speedPercent = 1;
 
-        if (path == null)
-        {
-            StopPathFinding();
-        }
-
-        while (path != null && state.isPathfinding)
+        while (state.isPathfinding)
         {
             Vector2 pos = new Vector2(transform.position.x, transform.position.y);
-            while (path.turnBoundaries[pathIndex].HasCrossedLine(pos) && Vector2.Distance(transform.position, path.lookPoints[pathIndex]) < pathFollowThreshold)
+            bool groundCheck = Physics2D.Raycast(transform.position, (path.lookPoints[pathIndex] - (Vector2)transform.position), pathFollowThreshold, LayerMask.GetMask("Ground"));
+            while (path.turnBoundaries[pathIndex].HasCrossedLine(pos) && Vector2.Distance(transform.position, path.lookPoints[pathIndex]) < pathFollowThreshold && !groundCheck)
             {
                 if (state.debug)
                 {
@@ -116,19 +127,18 @@ public class CreaturePathfinding : MonoBehaviour
                     Debug.Log(pathIndex);
                     Debug.Log(path.finishLineIndex);
                 }
-                if (path != null && pathIndex == path.finishLineIndex)
+                if (pathIndex == path.finishLineIndex)
                 {
                     if (state.debug)
                         Debug.Log(gameObject.name + "Reached end of path1!");
-                    reachEndOfPath = true;
-                    StopPathFinding();
+                    ReachedEndOfPath();
                     break;
                 }
                 else
                     pathIndex++;
             }
 
-            if (path != null && state.isPathfinding)
+            if (state.isPathfinding)
             {
                 if ((pathIndex >= path.slowDownIndex && stoppingDistance > 0) || (pathIndex == 0))
                 {
@@ -137,13 +147,12 @@ public class CreaturePathfinding : MonoBehaviour
                     {
                         if (state.debug)
                             Debug.Log(gameObject.name + "Reached end of path2!");
-                        reachEndOfPath = true;
-                        StopPathFinding();
+                        ReachedEndOfPath();
                     }
                 }
             }
             
-            if (path != null && Vector2.Distance(transform.position, path.lookPoints[pathIndex]) > pathFollowMaxDistance && pathIndex != 0)
+            if (Vector2.Distance(transform.position, path.lookPoints[pathIndex]) > pathFollowMaxDistance && pathIndex != 0)
             {
                 for (int i = pathIndex; i < path.lookPoints.Length; i++)
                 {
@@ -163,7 +172,7 @@ public class CreaturePathfinding : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        if (state != null && state.isPathfinding)
+        if (path != null && state.isPathfinding)
         {
             if (path != null)
             {

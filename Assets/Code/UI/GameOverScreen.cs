@@ -7,18 +7,22 @@ public class GameOverScreen : MonoBehaviour
 {
     public GameObject player;
     public GameObject gameOverScreen;
+    public Vector2 respawnPoint;
+
+    private void Start()
+    {
+        respawnPoint = GameObject.Find("Base").transform.Find("Interior").transform.Find("FirstFloor").transform.Find("NewCycle").transform.position;
+    }
 
     public void BackToBase()
     {
-        player.GetComponent<PlayerPermanent>().ToggleRagdoll(false);
-        player.transform.position = GameObject.Find("Base").transform.Find("Interior").transform.Find("FirstFloor").transform.Find("NewCycle").transform.position;
-        GameObject.Find("Base").GetComponent<Base>().isInside = true;
-        player.GetComponent<GroundPlayerController>().enabled = true;
         player.GetComponent<PlayerPermanent>().enabled = true;
+        player.GetComponent<PlayerPermanent>().ToggleRagdoll(false);
+        player.GetComponent<GroundPlayerController>().enabled = true;
         player.GetComponent<IKManager2D>().enabled = true;
+
+        Base.instance.Teleport(false, true, respawnPoint);
         player.GetComponent<PlayerPermanent>().Reset();
-        player.GetComponent<PlayerPermanent>().ResetFeetPosition();
-        player.GetComponent<PlayerPermanent>().isInBase = true;
         //gameOverScreen.SetActive(false);
     }
 }

@@ -67,6 +67,7 @@ public class TardidogMovement : MonoBehaviour
 
     [Header("Jump Variables")]
     [SerializeField] float jumpYOffset;
+    [SerializeField] float minJumpHeight;
     [SerializeField] Vector2 jumpForce;
     [SerializeField] float jumpRayForwardLength;
     [SerializeField] float jumpRayUpLength;
@@ -105,8 +106,8 @@ public class TardidogMovement : MonoBehaviour
         {
             targetIsRight = (pathfinding.path.lookPoints[pathfinding.pathIndex].x - transform.position.x) > 0 ? true : false;
             dist = Vector2.Distance(pathfinding.path.lookPoints[pathfinding.path.lookPoints.Length - 1], transform.position);
-            if (pathfinding.pathIndex < pathfinding.path.lookPoints.Length - 3)
-                nextPointIsRight = (pathfinding.path.lookPoints[pathfinding.pathIndex + 2].x - transform.position.x) > 0 ? true : false;
+            if (pathfinding.pathIndex < pathfinding.path.lookPoints.Length - 4)
+                nextPointIsRight = (pathfinding.path.lookPoints[pathfinding.pathIndex + 3].x - transform.position.x) > 0 ? true : false;
             else
                 nextPointIsRight = (target.position.x - transform.position.x) > 0 ? true : false;
         }
@@ -129,9 +130,7 @@ public class TardidogMovement : MonoBehaviour
                 if (distanceMoved < movementThreshold)
                 {
                     // The creature is stuck, stop its movement
-                    target.position = transform.position;
-                    pathfinding.reachEndOfPath = true;
-                    pathfinding.StopPathFinding();
+                    pathfinding.ReachedEndOfPath();
                 }
                 lastPosition = transform.position;
             }
@@ -161,54 +160,24 @@ public class TardidogMovement : MonoBehaviour
                         {
                             if (nextPointIsRight)
                             {
-                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
-                                if (!ledgeSensor[i + 1])
-                                {
-                                    PrepareLedgeJump(true, ledgeSensor[i].point, false);
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
+                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.yellow, 1);
                                 if (!ledgeSensor[i - 1])
                                 {
                                     PrepareLedgeJump(true, ledgeSensor[i].point, true);
                                     break;
                                 }
                             }
-                        }
-                    }
-                    /*
-                    for (int i = ledgeSensor.Length / 2; i < ledgeSensor.Length; i++)
-                    {
-                        Debug.Log(ledgeSensor[i]);
-                        if (ledgeSensor[i].collider != null && i != ledgeSensor.Length - 1)
-                        {
-                            Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
-                            if (ledgeSensor[i + 1].collider == null)
+                            else
                             {
-                                PrepareLedgeJump(true, true, ledgeSensor[i].point, false);
-                                break;
-                            }
-                        }
-                    }
-                    if (!ledgeFound)
-                    {
-                        for (int i = 0; i <= ledgeSensor.Length / 2; i++)
-                        {
-                            Debug.Log(ledgeSensor[i]);
-                            if (ledgeSensor[i].collider != null && i != 0)
-                            {
-                                if (ledgeSensor[i - 1].collider == null)
+                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.yellow, 1);
+                                if (!ledgeSensor[i + 1])
                                 {
-                                    PrepareLedgeJump(true, true, ledgeSensor[i].point, true);
+                                    PrepareLedgeJump(true, ledgeSensor[i].point, false);
                                     break;
                                 }
                             }
                         }
                     }
-                    */
                 }
                 else if (pathfinding.path.lookPoints[pathfinding.pathIndex].y - rb.position.y < 0 && !ledgeFound && isGrounded)
                 {
@@ -223,54 +192,24 @@ public class TardidogMovement : MonoBehaviour
                         {
                             if (nextPointIsRight)
                             {
-                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
-                                if (!ledgeSensor[i + 1])
-                                {
-                                    PrepareLedgeJump(false, ledgeSensor[i].point, false);
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
+                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.yellow, 1);
                                 if (!ledgeSensor[i - 1])
                                 {
                                     PrepareLedgeJump(false, ledgeSensor[i].point, true);
                                     break;
                                 }
                             }
-                        }
-                    }
-                    /*
-                    for (int i = ledgeSensor.Length / 2; i < ledgeSensor.Length; i++)
-                    {
-                        Debug.Log(ledgeSensor[i]);
-                        if (ledgeSensor[i].collider != null && i != ledgeSensor.Length - 1)
-                        {
-                            Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.green);
-                            if (ledgeSensor[i + 1].collider == null)
+                            else
                             {
-                                PrepareLedgeJump(true, false, ledgeSensor[i].point, false);
-                                break;
-                            }
-                        }
-                    }
-                    if (!ledgeFound)
-                    {
-                        for (int i = 0; i <= ledgeSensor.Length / 2; i++)
-                        {
-                            Debug.Log(ledgeSensor[i]);
-                            if (ledgeSensor[i].collider != null && i != 0)
-                            {
-                                if (ledgeSensor[i - 1].collider == null)
+                                Debug.DrawLine(new Vector2((transform.position.x - ((ledgeSensor.Length / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), ledgeSensor[i].point, Color.yellow, 1);
+                                if (!ledgeSensor[i + 1])
                                 {
-                                    PrepareLedgeJump(true, false, ledgeSensor[i].point, true);
+                                    PrepareLedgeJump(false, ledgeSensor[i].point, false);
                                     break;
                                 }
                             }
                         }
                     }
-                    */
                 }
             }
         }
@@ -284,22 +223,24 @@ public class TardidogMovement : MonoBehaviour
                     for (int i = 0; i < rayCount; i++)
                     {
                         float ledgeDirection = nextPointIsRight ? -1 : 1;
+                        Debug.Log(nextPointIsRight);
                         // Cast a ray in the calculated direction
-                        RaycastHit2D hit = Physics2D.Raycast(new Vector2(ledgePos.x, ledgePos.y + ((float)i / 6)), Vector2.left * ledgeDirection, rayDistance, LayerMask.GetMask("Ground"));
+                        RaycastHit2D hit = Physics2D.Raycast(new Vector2(ledgePos.x + 1, ledgePos.y + ((float)i / 3)), Vector2.left * ledgeDirection, rayDistance, LayerMask.GetMask("Ground"));
 
                         // Check if the ray hits a platform collider
                         if (hit.collider != null)
                         {
                             if (i != rayCount - 1)
                             {
-                                Debug.DrawRay(new Vector2(ledgePos.x + 1, ledgePos.y + ((float)i / 3)), Vector2.left * ledgeDirection, Color.green, 5); // Visualize the ray
+                                Debug.DrawRay(new Vector2(ledgePos.x + 1, ledgePos.y + ((float)i / 3)), Vector2.left * ledgeDirection * hit.distance, Color.yellow, 5); // Visualize the ray
                                 jumpTarget.position = hit.point;
                             }
                         }
                     }
+                    //Turn();
                     target.position = ledgeTempPos;
                     pathfinding.NewTarget(target.gameObject);
-                    StartCoroutine(Jump());
+                    StartCoroutine(Jump(2));
                     ledgeFound = false;
                 }
                 else
@@ -362,12 +303,12 @@ public class TardidogMovement : MonoBehaviour
                 {
                     if (state.isPathfinding && pathfinding.path != null)
                     {
-                        if (!isJumping && isGrounded && (Mathf.Abs(pathfinding.path.lookPoints[pathfinding.pathIndex].x - transform.position.x) > 2.5f || pathfinding.path.lookPoints[pathfinding.pathIndex].y - transform.position.y > 0))
+                        if (!isJumping && isGrounded)
                         {
                             jumpTarget.position = Vision(target.position, true);
-                            if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
+                            if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero && jumpTarget.position.y < pathfinding.path.lookPoints[pathfinding.pathIndex].y)
                             {
-                                StartCoroutine(Jump());
+                                StartCoroutine(Jump(2));
                             }
                         }
                     }
@@ -376,7 +317,7 @@ public class TardidogMovement : MonoBehaviour
                         jumpTarget.position = Vision(target.position, true);
                         if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
                         {
-                            StartCoroutine(Jump());
+                            StartCoroutine(Jump(2));
                         }
                     }
                 }
@@ -455,19 +396,22 @@ public class TardidogMovement : MonoBehaviour
                             jumpTarget.position = Vision(target.position, false);
                             if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
                             {
-                                StartCoroutine(Jump());
+                                StartCoroutine(Jump(0));
                             }
                         }
                     }
                 }
                 else
                 {
-                    if (dist > 2f && !isJumping && isGrounded)
+                    if (Mathf.Approximately(Mathf.Abs(jumpCheck.normal.x), 1f))
                     {
-                        jumpTarget.position = Vision(target.position, false);
-                        if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
+                        if (dist > 2f && !isJumping && isGrounded)
                         {
-                            StartCoroutine(Jump());
+                            jumpTarget.position = Vision(target.position, false);
+                            if (new Vector2(jumpTarget.position.x, jumpTarget.position.y) != Vector2.zero)
+                            {
+                                StartCoroutine(Jump(0));
+                            }
                         }
                     }
                 }
@@ -490,13 +434,7 @@ public class TardidogMovement : MonoBehaviour
         rb.AddForce(force);
 
         if (!isFacingRight && rb.velocity.x > 0)
-        {
             Turn();
-            foreach (TardidogLegAnimation leg in legs)
-            {
-                leg.Turn();
-            }
-        }
     }
 
     void GoLeft(float speedFactor)
@@ -514,22 +452,16 @@ public class TardidogMovement : MonoBehaviour
         rb.AddForce(force);
 
         if (isFacingRight && rb.velocity.x < 0)
-        {
             Turn();
-            foreach (TardidogLegAnimation leg in legs)
-            {
-                leg.Turn();
-            }
-        }
     }
 
-    IEnumerator Jump()
+    IEnumerator Jump(float offset)
     {
         //Debug.Log("isJumping");
         rb.drag = 0;
         isJumping = true;
         Vector2 jumpDirection = new Vector2(jumpTarget.position.x, jumpTarget.position.y) - rb.position;
-        jumpDirection.x -= ((jumpDirection.x + 1) / 2);
+        jumpDirection.x -= ((jumpDirection.x - offset * facingDirection) / 2);
         jumpDirection.y += jumpYOffset;
         Vector2 jumpPoint = rb.position + jumpDirection;
 
@@ -540,7 +472,7 @@ public class TardidogMovement : MonoBehaviour
         float duration = 0.2f;
 
         float speedX = (jumpPoint.x - rb.position.x) * rb.mass;
-        float speedY = Mathf.Sqrt(2 * Physics.gravity.magnitude * Mathf.Max(jumpPoint.y - rb.position.y, 3f)) * rb.mass;
+        float speedY = Mathf.Sqrt(2 * Physics.gravity.magnitude * Mathf.Max(jumpPoint.y - rb.position.y, minJumpHeight)) * rb.mass;
 
         jumpForce = new Vector2(speedX, speedY);
 
@@ -565,6 +497,11 @@ public class TardidogMovement : MonoBehaviour
         Vector3 scale = gameObject.transform.localScale;
         scale.x *= -1;
         gameObject.transform.localScale = scale;
+
+        foreach (TardidogLegAnimation leg in legs)
+        {
+            leg.Turn();
+        }
 
         isFacingRight = !isFacingRight;
     }
@@ -662,11 +599,12 @@ public class TardidogMovement : MonoBehaviour
         }
         */
         
+        /*
         for (int i = 0; i < 11; i++)
         {
             Gizmos.DrawRay(new Vector2((transform.position.x - ((11 / 2) * ledgeRaysStep) + i * ledgeRaysStep), transform.position.y + sensorStartOffset), Vector2.up * sensorRayLength);
         }
-        
+        */
     }
 }
 
