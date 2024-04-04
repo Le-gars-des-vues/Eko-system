@@ -49,17 +49,14 @@ public class CreatureDeath : MonoBehaviour
         {
             if (arrow != null)
             {
-                if (!arrow.activeSelf)
-                    arrow.SetActive(true);
-                else
-                    arrow.transform.localRotation = Quaternion.Inverse(transform.rotation);
+                ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, 1), 1);
             }
             //Debug.Log("can harvest");
             if (Input.GetKey(KeyCode.E))
             {
                 //Debug.Log("Is harvesting");
                 timer += Time.deltaTime;
-                if (timer > timeToHarvest && arrow.GetComponent<Arrow>().readyToActivate)
+                if (timer > timeToHarvest && ArrowManager.instance.readyToActivate)
                 {
                     var ressourceSpawned = Instantiate(ressourceToHarvest, transform.position, transform.rotation);
                     ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
@@ -70,6 +67,10 @@ public class CreatureDeath : MonoBehaviour
             else if (Input.GetKeyUp(KeyCode.E))
                 timer = 0;
         }
+        else
+            if (arrow != null && arrow.activeSelf)
+                ArrowManager.instance.RemoveArrow();
+
         if (isDead)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -79,9 +80,6 @@ public class CreatureDeath : MonoBehaviour
             else
                 isInRangeToHarvest = false;
         }
-        else
-            if (arrow != null && arrow.activeSelf)
-                arrow.SetActive(false);
     }
 
     public void Death()

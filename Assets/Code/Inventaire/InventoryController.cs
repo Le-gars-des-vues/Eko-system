@@ -256,7 +256,11 @@ public class InventoryController : MonoBehaviour
     public void CreateRecipeItem(int recipeChoice, GameObject dropDown)
     {
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+        inventoryItem.stackAmount = craftables[recipeChoice].objectToSpawn.GetComponent<InventoryItem>().stackAmount;
         inventoryItem.Set(craftables[recipeChoice], defaultItemGrid);
+        inventoryItem.sprites = craftables[recipeChoice].objectToSpawn.GetComponent<InventoryItem>().sprites;
+        if (inventoryItem.sprites.Length > 0)
+            inventoryItem.GetComponent<Image>().sprite = inventoryItem.sprites[(inventoryItem.sprites.Length) - inventoryItem.stackAmount];
         if (craftables[recipeChoice].itemType == "Upgrade" || craftables[recipeChoice].itemType == "Equipment")
         {
             Vector2Int? posOnGrid = upgradeItemGrid.FindSpaceForObject(inventoryItem);

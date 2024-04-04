@@ -88,6 +88,20 @@ public class WeaponDamage : MonoBehaviour
                     }
                 }
             }
+            else if (gameObject.tag == "OneHandedWeapon") ;
+            {
+                isDamaging = true;
+                hp.LoseHealth(hitDamage, GameObject.FindGameObjectWithTag("Player"));
+                int color = 0;
+                if (hitDamage < maxDamage / 3)
+                    color = 0;
+                else if (hitDamage > maxDamage / 3 && hitDamage < (maxDamage / 3) * 2)
+                    color = 1;
+                else if (hitDamage > (maxDamage / 3) * 2)
+                    color = 2;
+                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasOptics)
+                    ShowDamage(hitDamage, collision.GetContact(0).point, color);
+            }
         }
 
         if (((1 << collision.gameObject.layer) & groundLayer) != 0 && !GetComponent<PickableObject>().isPickedUp)

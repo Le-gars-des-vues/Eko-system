@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3135212881020150370}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2799588700203275380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755084758307996455}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &755084758307996455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799588700203275380}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.15, y: 0.24, z: 0.2527508}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3135212881020150370}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9102877141359343666
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,6 +101,7 @@ Transform:
   m_Children:
   - {fileID: 4557009868586486100}
   - {fileID: 2015938584544365410}
+  - {fileID: 755084758307996455}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8469500388488412561
@@ -252,14 +284,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4549f7b4e3750a4787f39b236eb9851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0
-  ammoPrefab: {fileID: 0}
-  ammoType: 
-  firePoint: {fileID: 0}
+  force: 100
+  ammoPrefab: {fileID: 1072813460289546999, guid: c765fd83f893df945aabb8b04fcf86ec, type: 3}
+  ammoType: Harpoon
+  firePoint: {fileID: 755084758307996455}
+  canCharge: 0
   timeToMaxThrow: 0
   timer: 0
-  minThrowForce: 0
-  maxThrowForce: 0
+  minThrowForce: 75
+  maxThrowForce: 75
   isThrown: 0
   effect:
     effectRange: 0

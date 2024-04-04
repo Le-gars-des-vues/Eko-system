@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4377523306780308149}
   m_Layer: 7
   m_Name: harpoon
-  m_TagString: Spear
+  m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,10 +193,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc39c51400369df45826f26e5a8aeedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 9f27aedca19ed5c4c8a7f926f45f827f, type: 2}
+  itemData: {fileID: 11400000, guid: 0ddb555f40aa30d4ea877a395d52a61f, type: 2}
   itemGrid: {fileID: 0}
-  stackAmount: 0
-  sprites: []
+  stackAmount: 5
+  sprites:
+  - {fileID: 21300000, guid: a4178159e8e612640851172697e676eb, type: 3}
+  - {fileID: 21300000, guid: 49a4220cd7b5f2a4ea574454a6cb679f, type: 3}
+  - {fileID: 21300000, guid: 9b88e01abd35c8f40b5426610473bf32, type: 3}
+  - {fileID: 21300000, guid: d86b45d73ce8fcb48ad1e5ace72bdd4c, type: 3}
+  - {fileID: 21300000, guid: 0a8f75eabc7fa7f448692ac81d97b1ca, type: 3}
   markedForDestroy: 0
   isPlaced: 0
   onGridPositionX: 0
@@ -214,10 +219,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5273be7ef24af144da972502ea50b1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDamage: 0
+  minDamage: 5
   maxDamage: 20
   velocity: {x: 0, y: 0, z: 0}
   angleThreshold: 0
+  isThrown: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!120 &360126973883445901
 LineRenderer:
   serializedVersion: 2

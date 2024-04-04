@@ -25,7 +25,7 @@ public class RoomManagement : MonoBehaviour
         {
             if (isInRange)
             {
-                if (Input.GetKey(KeyCode.E) && arrow.GetComponent<Arrow>().readyToActivate)
+                if (Input.GetKey(KeyCode.E) && ArrowManager.instance.readyToActivate)
                 {
                     if (!player.roomManageIsOpen)
                     {
@@ -63,7 +63,7 @@ public class RoomManagement : MonoBehaviour
             roomMenu.currentRoom = myRoom;
             roomMenu.roomName.text = myRoom.GetComponent<RoomInfo>().roomType;
             roomMenu.roomDesc.text = myRoom.GetComponent<RoomInfo>().roomDesc;
-            arrow.SetActive(true);
+            ArrowManager.instance.PlaceArrow(transform.position, "MANAGE ROOM", new Vector2(0, 1), 1);
         }
     }
 
@@ -72,7 +72,7 @@ public class RoomManagement : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
-            arrow.SetActive(false);
+            ArrowManager.instance.RemoveArrow();
             roomMenu.currentRoom = null;
             roomMenu.roomName.text = " ";
             roomMenu.roomDesc.text = " ";

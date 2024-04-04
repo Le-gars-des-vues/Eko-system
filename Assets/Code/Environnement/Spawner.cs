@@ -38,7 +38,6 @@ public class Spawner : MonoBehaviour
 
             species.Add(creature);
             creature.GetComponent<CreatureDeath>().species = species;
-
         }
     }
 }

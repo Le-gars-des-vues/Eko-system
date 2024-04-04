@@ -24,7 +24,7 @@ public class CraftingBench : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                if (isInRange && arrow.GetComponent<Arrow>().readyToActivate)
+                if (isInRange && ArrowManager.instance.readyToActivate)
                 {
                     crafting.OnValueChanged();
                     if (!player.inventoryOpen)
@@ -56,7 +56,7 @@ public class CraftingBench : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            arrow.SetActive(true);
+            ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), 1);
         }
     }
 
@@ -65,7 +65,7 @@ public class CraftingBench : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
-            arrow.SetActive(false);
+            ArrowManager.instance.RemoveArrow();
             if (player.craftingIsOpen)
             {
                 player.ShowOrHideCrafting();

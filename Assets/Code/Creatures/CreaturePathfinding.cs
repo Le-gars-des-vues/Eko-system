@@ -110,7 +110,7 @@ public class CreaturePathfinding : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        state.isPathfinding = true;
+        //state.isPathfinding = true;
         pathIndex = 0;
 
         speedPercent = 1;

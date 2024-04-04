@@ -79,23 +79,7 @@ public class AmmoWeapon : MonoBehaviour
 
     IEnumerator Launch()
     {
-        var objectCloned = Instantiate(ammoPrefab, firePoint.position, transform.rotation);
-        objectCloned.GetComponent<PickableObject>().isPickedUp = false;
-
-        //On declare l'objet comme etant lancer
-        objectCloned.GetComponent<WeaponDamage>().isThrown = true;
-
-        Physics2D.IgnoreCollision(objectCloned.GetComponent<Collider2D>(), player.gameObject.GetComponent<Collider2D>(), true);
-        Physics2D.IgnoreCollision(objectCloned.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
-        objectCloned.GetComponent<Rigidbody2D>().gravityScale = 0;
-
-        Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectCloned.transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        objectCloned.transform.rotation = Quaternion.Euler(0, 0, angle);
-
-        objectCloned.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
-
-        objectCloned.GetComponent<Rigidbody2D>().gravityScale = 1;
+        bool hasAmmo = false;
 
         float height = GetComponent<PickableObject>().playerInventory.GetGridSizeHeight();
         float width = GetComponent<PickableObject>().playerInventory.GetGridSizeWidth();
@@ -107,8 +91,9 @@ public class AmmoWeapon : MonoBehaviour
                 InventoryItem anItem = GetComponent<PickableObject>().playerInventory.CheckIfItemPresent(x, y);
                 if (anItem != null)
                 {
-                    if (anItem.itemData.itemName == ammoType);
+                    if (anItem.itemData.itemName == ammoType)
                     {
+                        hasAmmo = true;
                         anItem.stackAmount--;
                         if (anItem.stackAmount <= 0)
                             anItem.Delete();
@@ -119,9 +104,34 @@ public class AmmoWeapon : MonoBehaviour
             }
         }
 
-        yield return new WaitForSecondsRealtime(0.5f);
-        Physics2D.IgnoreCollision(objectCloned.GetComponent<Collider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
-        Physics2D.IgnoreCollision(objectCloned.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), false);
+        yield return null;
+
+        if (hasAmmo)
+        {
+            var objectCloned = Instantiate(ammoPrefab, firePoint.position, transform.rotation);
+            objectCloned.GetComponent<PickableObject>().isPickedUp = false;
+
+            //On declare l'objet comme etant lancer
+            objectCloned.GetComponent<WeaponDamage>().isThrown = true;
+
+            Physics2D.IgnoreCollision(objectCloned.GetComponent<Collider2D>(), player.gameObject.GetComponent<Collider2D>(), true);
+            Physics2D.IgnoreCollision(objectCloned.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
+            objectCloned.GetComponent<Rigidbody2D>().gravityScale = 0;
+
+            Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - objectCloned.transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            objectCloned.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            objectCloned.GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
+
+            objectCloned.GetComponent<Rigidbody2D>().gravityScale = 1;
+
+            yield return new WaitForSecondsRealtime(0.5f);
+            Physics2D.IgnoreCollision(objectCloned.GetComponent<Collider2D>(), player.gameObject.GetComponent<Collider2D>(), false);
+            Physics2D.IgnoreCollision(objectCloned.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), false);
+        }
+        else
+            Debug.Log("No Ammo");
 
         /*
         switch (effectName)

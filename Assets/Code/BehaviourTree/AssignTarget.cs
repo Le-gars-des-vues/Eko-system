@@ -26,8 +26,7 @@ public class AssignTarget : BehaviorNode
         if (pathfindingState == 1)
         {
             creature.GetComponent<CreaturePathfinding>().NewTarget(target.gameObject);
-            if ((bool)GetData("debug"))
-                Debug.Log("Set pathfinding to true");
+            Debug.Log("Set pathfinding to true");
             parent.parent.SetData("pathState", 2);
         }
 

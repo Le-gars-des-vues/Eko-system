@@ -104,17 +104,17 @@ public class PickableObject : MonoBehaviour
             {
                 isFlashing = true;
                 //sprite.material = flashMaterial;
-                arrow.SetActive(true);
+                ArrowManager.instance.PlaceArrow(transform.position, "PICK UP", new Vector2(0, 0.5f));
             }
             else if (!isSelected && isFlashing)
             {
                 isFlashing = false;
                 //sprite.material = flashMaterial;
-                arrow.SetActive(false);
+                ArrowManager.instance.RemoveArrow();
             }
 
-            if (isFlashing)
-                arrow.transform.localRotation = Quaternion.Inverse(transform.rotation);
+            //if (isFlashing)
+                //arrow.transform.localRotation = Quaternion.Inverse(transform.rotation);
 
             if (player == null)
                 player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
@@ -166,6 +166,18 @@ public class PickableObject : MonoBehaviour
                 }
                 //transform.rotation = Quaternion.Euler(0, 0, angle);
             }
+            else if (gameObject.tag == "OneHandedWeapon" && player.CanMove())
+            {
+                Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * 2 * Time.deltaTime);
+
+                Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.gameObject.transform.position;
+                if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
+                {
+                    Turn();
+                }
+            }
         }
     }
 
@@ -174,6 +186,12 @@ public class PickableObject : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.y *= -1;
         transform.localScale = scale;
+
+        /*
+        scale = arrow.transform.localScale;
+        scale.y *= -1;
+        arrow.transform.localScale = scale;
+        */
 
         isFacingRight = !isFacingRight;
     }
@@ -188,7 +206,7 @@ public class PickableObject : MonoBehaviour
             player.nearestObjectDistance = 10;
 
             //Desactive le fleche
-            arrow.SetActive(false);
+            ArrowManager.instance.RemoveArrow();
 
             //On cree l'item dans l'invenaire
             bool hasBeenPlaced = false;

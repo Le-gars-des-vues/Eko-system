@@ -22,7 +22,7 @@ public class Portal : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                if (isInRange && arrow.GetComponent<Arrow>().readyToActivate)
+                if (isInRange && ArrowManager.instance.readyToActivate)
                 {
                     foreach (Teleporter teleporter in GameManager.instance.teleporter)
                     {
@@ -46,7 +46,7 @@ public class Portal : MonoBehaviour
         {
             isInRange = true;
             if (!isBaseTeleporter)
-                arrow.SetActive(true);
+                ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), 1);
         }
     }
 
@@ -56,7 +56,7 @@ public class Portal : MonoBehaviour
         {
             isInRange = false;
             if (!isBaseTeleporter)
-                arrow.SetActive(false);
+                ArrowManager.instance.RemoveArrow();
         }
     }
 }

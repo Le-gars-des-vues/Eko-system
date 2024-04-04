@@ -221,6 +221,14 @@ public class PlayerArmAnimation : MonoBehaviour
                             armTarget.position = pickupInitialPos;
                             transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                         }
+                        else if (playerScript.objectInRightHand.tag == "OneHandedWeapon")
+                        {
+                            pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
+                            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                            Vector2 offset = mousePos - pickupInitialPos;
+                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                        }
                         else if (playerScript.objectInRightHand.tag == "MultiTool")
                         {
                             pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);

@@ -37,7 +37,7 @@ public class Planters : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                if (isInRange && arrow.GetComponent<Arrow>().readyToActivate)
+                if (isInRange && ArrowManager.instance.readyToActivate)
                 {
                     Plant();
                     arrow.SetActive(false);
@@ -61,13 +61,13 @@ public class Planters : MonoBehaviour
     {
         isInRange = true;
         if (CanPlant())
-            arrow.SetActive(true);
+            ArrowManager.instance.PlaceArrow(transform.position, "PLANT", new Vector2(0, 1), 1);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         isInRange = false;
-        arrow.SetActive(false);
+        ArrowManager.instance.RemoveArrow();
     }
 
     void Plant()

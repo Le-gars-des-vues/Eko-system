@@ -76,6 +76,11 @@ public class Recipes
         {12, new Recipes("Fly Backpack", "Trunk", 1)},
         {13, new Recipes("Oxygen Mask", "Trunk", 1)},
         {14, new Recipes("Heavy Punch", "Trunk", 1)},
+        {15, new Recipes("Machete", "Trunk", 1)},
+        {16, new Recipes("Bow", "Trunk", 1)},
+        {17, new Recipes("Harpoon Gun", "Trunk", 1) },
+        {18, new Recipes("Arrow", "Trunk", 1) },
+        {19, new Recipes("Harpoon", "Trunk", 1)},
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {

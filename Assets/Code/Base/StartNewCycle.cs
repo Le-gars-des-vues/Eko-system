@@ -14,7 +14,7 @@ public class StartNewCycle : MonoBehaviour
     {
         if (isInRange)
         {
-            if (Input.GetKey(KeyCode.E) && arrow.GetComponent<Arrow>().readyToActivate && !startedANewCycle)
+            if (Input.GetKey(KeyCode.E) && ArrowManager.instance.readyToActivate && !startedANewCycle)
             {
                 startedANewCycle = true;
                 newCycleTime = Time.time;
@@ -33,7 +33,7 @@ public class StartNewCycle : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            arrow.SetActive(true);
+            ArrowManager.instance.PlaceArrow(transform.position, "START NEW CYCLE", new Vector2(0, 1), 1);
         }
     }
 
@@ -42,7 +42,7 @@ public class StartNewCycle : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
-            arrow.SetActive(false);
+            ArrowManager.instance.RemoveArrow();
         }
     }
 }

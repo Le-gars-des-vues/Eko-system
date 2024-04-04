@@ -19,7 +19,7 @@ public class TrainingRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && arrow.GetComponent<Arrow>().readyToActivate)
+        if (Input.GetKey(KeyCode.E) && ArrowManager.instance.readyToActivate)
         {
             if (isInRange)
             {
@@ -39,7 +39,7 @@ public class TrainingRoom : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            arrow.SetActive(true);
+            ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), 1);
         }
     }
 
@@ -48,7 +48,7 @@ public class TrainingRoom : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
-            arrow.SetActive(false);
+            ArrowManager.instance.RemoveArrow();
         }
     }
 }
