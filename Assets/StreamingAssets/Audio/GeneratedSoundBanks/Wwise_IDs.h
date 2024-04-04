@@ -14,13 +14,17 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID AMB_BASE = 2291972081U;
-        static const AkUniqueID AMB_CANOPEE = 137933303U;
         static const AkUniqueID AMB_FORET = 2983803460U;
         static const AkUniqueID AMB_GROTTE = 971073617U;
         static const AkUniqueID AMB_SOUSMARINE = 4285823446U;
+        static const AkUniqueID ENV_ATELIER = 1108568571U;
+        static const AkUniqueID ENV_CUBICULE = 2546991491U;
+        static const AkUniqueID ENV_DEGATBUISSON = 505094345U;
+        static const AkUniqueID ENV_MACHINEVENTE = 1985830118U;
         static const AkUniqueID ENV_PIEGEPIQUES = 2451493374U;
         static const AkUniqueID ENV_PORTEFERMETURE = 1930754588U;
         static const AkUniqueID ENV_PORTEOUVERTURE = 1952691670U;
+        static const AkUniqueID ENV_TELEPORTEUR = 1783139436U;
         static const AkUniqueID LIF_MOUSTIQUE_DEGAT = 3471878825U;
         static const AkUniqueID LIF_MOUSTIQUE_MORT = 292996144U;
         static const AkUniqueID LIF_MOUSTIQUE_PASSIF = 3251876752U;
@@ -64,10 +68,19 @@ namespace AK
         static const AkUniqueID SWT_COURSE = 763223215U;
         static const AkUniqueID SWT_MARCHE = 134355214U;
         static const AkUniqueID SWT_TERRE = 1526334054U;
+        static const AkUniqueID UI_AMELIORATION_FERMER = 727215424U;
+        static const AkUniqueID UI_AMELIORATION_OUVRIR = 3491591680U;
         static const AkUniqueID UI_ATELIER_FERMER = 3316347964U;
         static const AkUniqueID UI_ATELIER_OUVRIR = 2446265780U;
         static const AkUniqueID UI_BARREDEVIE_FAIBLE = 2953886367U;
         static const AkUniqueID UI_BARREDEVIE_GAGNER = 3532067702U;
+        static const AkUniqueID UI_BASE_CARTE = 710951487U;
+        static const AkUniqueID UI_BASE_ELEVAGE = 1005356695U;
+        static const AkUniqueID UI_BASE_FERMER = 2135098017U;
+        static const AkUniqueID UI_BASE_OUVRIR = 4217291749U;
+        static const AkUniqueID UI_BASE_RECOLTE = 1792010378U;
+        static const AkUniqueID UI_BASE_STOCKAGE = 872403303U;
+        static const AkUniqueID UI_BASE_TELEPORTEUR = 648645475U;
         static const AkUniqueID UI_CARTE_FERMER = 284641433U;
         static const AkUniqueID UI_CARTE_OUVRIR = 1306005165U;
         static const AkUniqueID UI_CONSTRUIRE_AMELIORATIONS_BOUCLIER = 1478891302U;
@@ -93,11 +106,10 @@ namespace AK
         static const AkUniqueID UI_JOUEURVISE = 2115875219U;
         static const AkUniqueID UI_MENUMORT_RETOURBASE = 1287766270U;
         static const AkUniqueID UI_MENUMORT_RETOURPRINCIPAL = 4115809185U;
-        static const AkUniqueID UI_MENUMULTITOOL_FERMER = 1371791378U;
-        static const AkUniqueID UI_MENUMULTITOOL_OUVRIR = 1533940222U;
         static const AkUniqueID UI_MENUS_DEPLACEMENT = 32378197U;
         static const AkUniqueID UI_PAUSE_FERMER = 2523949194U;
         static const AkUniqueID UI_PAUSE_OUVRIR = 3671474502U;
+        static const AkUniqueID UI_RESPIRATION = 45966240U;
         static const AkUniqueID UI_TEMPS = 3192806191U;
         static const AkUniqueID UI_VENTE_FERMER = 2605645130U;
         static const AkUniqueID UI_VENTE_OUVRIR = 4177524486U;
@@ -109,13 +121,31 @@ namespace AK
         static const AkUniqueID VO_JOUEUR_ENERVE = 3391233375U;
         static const AkUniqueID VO_JOUEUR_EXCLAME = 3641631337U;
         static const AkUniqueID VO_JOUEUR_HEUREUX = 3341177082U;
+        static const AkUniqueID VO_JOUEUR_INSPIRE = 284601546U;
         static const AkUniqueID VO_JOUEUR_INTERROGE = 1161539083U;
         static const AkUniqueID VO_JOUEUR_MORT = 197418210U;
         static const AkUniqueID VO_JOUEUR_NEUTRE = 2629164127U;
+        static const AkUniqueID VO_JOUEUR_NOYADE = 2890522026U;
         static const AkUniqueID VO_JOUEUR_SURPRIS = 1485537732U;
         static const AkUniqueID VO_JOUEUR_TRISTE = 3659862611U;
         static const AkUniqueID VO_NARRATEUR_NEUTRE = 545824151U;
     } // namespace EVENTS
+
+    namespace STATES
+    {
+        namespace REVERB_TEST
+        {
+            static const AkUniqueID GROUP = 2941827740U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID OFF = 930712164U;
+                static const AkUniqueID ON = 1651971902U;
+            } // namespace STATE
+        } // namespace REVERB_TEST
+
+    } // namespace STATES
 
     namespace SWITCHES
     {
@@ -139,7 +169,8 @@ namespace AK
 
             namespace SWITCH
             {
-                static const AkUniqueID PAS_BOISMOUSSU = 1662744943U;
+                static const AkUniqueID PAS_METAL = 2572821535U;
+                static const AkUniqueID PAS_ROCHE = 3792916879U;
                 static const AkUniqueID PAS_TERRE = 1973442484U;
             } // namespace SWITCH
         } // namespace PAS_MATERIAU
@@ -202,6 +233,7 @@ namespace AK
         static const AkUniqueID REVERB_ROOM_13 = 2417798044U;
         static const AkUniqueID REVERB_ROOM_14 = 2417798043U;
         static const AkUniqueID REVERB_ROOM_15 = 2417798042U;
+        static const AkUniqueID REVERB_TEST = 2941827740U;
     } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES

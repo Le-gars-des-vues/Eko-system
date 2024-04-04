@@ -431,7 +431,7 @@
 														</ItemList>
 													</Grouping>
 													<Grouping>
-														<SwitchRef Name="Pas_BoisMoussu" ID="{9CD7FBD5-5331-45A1-B76F-8BF1C9BC2ADD}"/>
+														<SwitchRef Name="Pas_Roche" ID="{9CD7FBD5-5331-45A1-B76F-8BF1C9BC2ADD}"/>
 														<ItemList>
 															<ItemRef Name="LIF_Rhinortue_Course_BoisMoussu" ID="{80E0C243-7E17-4911-B034-6EBB2F9E9E09}"/>
 														</ItemList>
@@ -534,7 +534,7 @@
 														</ItemList>
 													</Grouping>
 													<Grouping>
-														<SwitchRef Name="Pas_BoisMoussu" ID="{9CD7FBD5-5331-45A1-B76F-8BF1C9BC2ADD}"/>
+														<SwitchRef Name="Pas_Roche" ID="{9CD7FBD5-5331-45A1-B76F-8BF1C9BC2ADD}"/>
 														<ItemList>
 															<ItemRef Name="LIF_Rhinortue_Marche_BoisMoussu" ID="{ACB579C0-CE0B-4806-8760-C8D8A7FC5C16}"/>
 														</ItemList>
@@ -597,8 +597,8 @@
 													<Modifier Name="" ID="{6AC40CAA-D78A-44F9-B7F0-7DC707DA2A02}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="200"/>
-															<Property Name="Min" Type="Real64" Value="-200"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -614,26 +614,95 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="MoustiquePassif_PH" ID="{45510F7A-78D0-4B83-BBCB-454BE3F30D31}" ShortID="1005173617">
+										<Sound Name="LIF_Moustique_Passif_L3" ID="{0864BAA0-0FBA-4ED8-A89F-2CAC7B9A892F}" ShortID="91123342">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 												</Reference>
 												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+													<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="MoustiquePassif_PH" ID="{E9D61C50-C63B-463E-B944-7EBAF2DC532C}">
+												<AudioFileSource Name="LIF_Moustique_Passif_L3" ID="{9F67A206-9D52-431A-BE44-656DD8377FB8}">
+													<PropertyList>
+														<Property Name="CrossfadeDuration" Type="Real64" Value="769.173"/>
+														<Property Name="LoopBegin" Type="Real64" Value="1.68626430288462"/>
+														<Property Name="LoopEnd" Type="Real64" Value="24.0164707532051"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
-													<AudioFile>MoustiquePassif_PH.wav</AudioFile>
+													<AudioFile>LIF_Moustique_Passif_L3.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="892184056"/>
+														<MediaID ID="751756549"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="MoustiquePassif_PH" ID="{E9D61C50-C63B-463E-B944-7EBAF2DC532C}" Platform="Linked"/>
+												<ActiveSource Name="LIF_Moustique_Passif_L3" ID="{9F67A206-9D52-431A-BE44-656DD8377FB8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LIF_Moustique_Passif_L2" ID="{3FB4EE06-594D-4E60-B07E-296C71B4C4CA}" ShortID="472260449">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LIF_Moustique_Passif_L2" ID="{5592703A-F889-4D33-A254-FFA3765124A8}">
+													<PropertyList>
+														<Property Name="CrossfadeDuration" Type="Real64" Value="1398.497"/>
+														<Property Name="LoopBegin" Type="Real64" Value="2.75934158653846"/>
+														<Property Name="LoopEnd" Type="Real64" Value="24.425262099359"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>LIF_Moustique_Passif_L2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="480570866"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LIF_Moustique_Passif_L2" ID="{5592703A-F889-4D33-A254-FFA3765124A8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LIF_Moustique_Passif_L1" ID="{DEAD53ED-285E-4B2D-9322-7CDCF247B65A}" ShortID="911814962">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LIF_Moustique_Passif_L1" ID="{62562B68-152B-41BB-A79A-633CBAC8AFD3}">
+													<PropertyList>
+														<Property Name="CrossfadeDuration" Type="Real64" Value="769.173"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0.970879447115385"/>
+														<Property Name="LoopEnd" Type="Real64" Value="24.7318556089744"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>LIF_Moustique_Passif_L1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="123416848"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LIF_Moustique_Passif_L1" ID="{62562B68-152B-41BB-A79A-633CBAC8AFD3}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -664,6 +733,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="MoustiqueDegat_PH" ID="{A679F4E8-CDA6-4074-B362-D1B6226C34FC}" ShortID="923065535">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -685,6 +761,679 @@
 												<ActiveSource Name="MoustiqueDegat_PH" ID="{4345E6F8-FCF4-4DA0-8851-080742EA885F}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Moustique_Degat_L1" ID="{A6EE4B52-F809-44ED-89D8-110F59A0CCC0}" ShortID="471621843">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{13C22386-3BB6-4EAF-8896-B19965516759}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Moustique_Degat_3L1" ID="{A6F8BA2A-E92B-4553-936C-FDC29B5D4EEC}" ShortID="120357044">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_3L1" ID="{6775F997-14B7-429B-AFE4-4AD50510F910}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.407966466346154"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.222527163461539"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.58241538461538"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_3L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="26624252"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_3L1" ID="{6775F997-14B7-429B-AFE4-4AD50510F910}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_2L1" ID="{DD73CA00-44AE-4742-A6F7-E3F6EE5BA0B6}" ShortID="917715015">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{5FA5F04F-E482-4145-8152-E5E7E7B6E7AE}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_2L1" ID="{1967C88E-93F1-4460-AD65-88AC73F580F4}">
+															<PropertyList>
+																<Property Name="CrossfadeShape" Type="int16" Value="8"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.207693028846154"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.672529807692308"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.91374290865385"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_2L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="40771489"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_2L1" ID="{1967C88E-93F1-4460-AD65-88AC73F580F4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_1L1" ID="{2F550FCF-145E-47F1-BE94-60D2D188982D}" ShortID="255958661">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{A2EB4419-22E2-4EB2-B014-97C3C12D9E0E}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_1L1" ID="{23A67C04-B76B-46CD-AEC7-1D29E3EF5F22}">
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_1L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="344312199"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_1L1" ID="{23A67C04-B76B-46CD-AEC7-1D29E3EF5F22}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_6L1" ID="{94ECF7D7-F051-4022-AD46-0F8567D3D173}" ShortID="635561127">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_6L1" ID="{D93EF6A8-6AF9-4C2B-A9EA-D08F8C69417D}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.259341025641026"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0.67266578525641"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.67266578525641"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.45879326923077"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_6L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="371999870"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_6L1" ID="{D93EF6A8-6AF9-4C2B-A9EA-D08F8C69417D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_4L1" ID="{EC056020-FA75-44E5-AF29-A305AC5C80E0}" ShortID="705960648">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_4L1" ID="{E5799ED0-F80B-4870-9810-53C05B6836A0}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.168132451923077"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0.820881971153846"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.820881971153846"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.42791540697674"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_4L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="575769636"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_4L1" ID="{E5799ED0-F80B-4870-9810-53C05B6836A0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_8L1" ID="{9F7175D5-C122-4AAE-8EEB-67532055FD31}" ShortID="822925062">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_8L1" ID="{D5DCBF72-D5EE-4991-BEA1-F71B77D9EF3A}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.196908533653846"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0.724790985576923"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.724790985576923"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.49566694711538"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_8L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="865714324"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_8L1" ID="{D5DCBF72-D5EE-4991-BEA1-F71B77D9EF3A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_5L1" ID="{C71B8336-E896-44D5-AA37-439CE68C0A4E}" ShortID="407111102">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_5L1" ID="{C53F1153-10C9-4827-913C-E21BB8F40613}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.13186858974359"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.576925080128205"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_5L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="45520835"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_5L1" ID="{C53F1153-10C9-4827-913C-E21BB8F40613}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_7L1" ID="{11B7F877-681B-4E9C-ACA1-4090A5C9CB44}" ShortID="418247781">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_7L1" ID="{9476F48A-68B6-44FC-B953-BB2AFF352897}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.138735576923077"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0.874034134615385"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.874034134615385"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.54343329326923"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_7L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="880679580"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_7L1" ID="{9476F48A-68B6-44FC-B953-BB2AFF352897}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_Moustique_Degat_L2" ID="{AF9721D3-B3B3-4BC2-A276-6CB7BACFB87E}" ShortID="825445096">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>28</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{20CBED65-6A09-49AE-9181-BDEDE0D8E91D}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Moustique_Degat_1L2" ID="{FF7B80AB-562B-4D96-B626-4E97E5E0AD06}" ShortID="780302695">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_1L2" ID="{16C496CF-B534-4F77-8BAF-CCF1C00AD752}">
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_1L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="668812202"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_1L2" ID="{16C496CF-B534-4F77-8BAF-CCF1C00AD752}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_2L2" ID="{10777579-FDDF-4F98-9CC0-45C86C1FE0C3}" ShortID="852611504">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_2L2" ID="{81F0FE82-0CC5-4975-917E-FEC49DD70098}">
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_2L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="966657797"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_2L2" ID="{81F0FE82-0CC5-4975-917E-FEC49DD70098}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_3L2" ID="{A85DE64D-7A06-41D8-AD3F-C3AA465083B8}" ShortID="251449499">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_3L2" ID="{DAA92D07-A179-4426-BE87-978D87ADD548}">
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_3L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="923361211"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_3L2" ID="{DAA92D07-A179-4426-BE87-978D87ADD548}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_5L2" ID="{C5613983-4233-4E9E-9B95-039C3D180F00}" ShortID="960752575">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_5L2" ID="{C0DF72B3-CA45-4BBC-8BDC-3228EBE26C45}">
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_5L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="150001985"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_5L2" ID="{C0DF72B3-CA45-4BBC-8BDC-3228EBE26C45}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_4L2" ID="{AD20012B-EB43-40F9-BC0B-E392702B5D2C}" ShortID="782745322">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_4L2" ID="{09C3621F-8D18-432A-A1DC-A184D4955AFB}">
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_4L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="67799906"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_4L2" ID="{09C3621F-8D18-432A-A1DC-A184D4955AFB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_Moustique_Degat_G" ID="{71F51ED0-15F7-41E2-9620-AD4E3DBCA444}" ShortID="9038737">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-660</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{0DD79644-ADC0-4E36-B519-C567DFEDA48E}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-16</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="166526-Bullet-Hit-Body-Flesh_09" ID="{FDA56C8C-D203-4CE1-B9FD-13F21EF0551E}" ShortID="423816620">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{6AAA80C3-1E5F-487C-9992-11DC7E1667BD}">
+															<Language>SFX</Language>
+															<AudioFile>166526-Bullet-Hit-Body-Flesh_09.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="665190911"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{6AAA80C3-1E5F-487C-9992-11DC7E1667BD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166542-Bullet-Hit-Body-Flesh_06" ID="{653290F2-1309-4A33-900B-E910F83414B7}" ShortID="973380519">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{1BB408E2-6856-450E-830E-04F3951D3AD3}">
+															<Language>SFX</Language>
+															<AudioFile>166542-Bullet-Hit-Body-Flesh_06.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="891285907"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{1BB408E2-6856-450E-830E-04F3951D3AD3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166547-Bullet-Hit-Body-Flesh_07" ID="{1CB6ED20-04A8-465B-BEF1-9ABF473D5E79}" ShortID="822554086">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{4E1A5761-2F1B-4A3C-8BD0-073ECDAAEB54}">
+															<Language>SFX</Language>
+															<AudioFile>166547-Bullet-Hit-Body-Flesh_07.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="176342500"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{4E1A5761-2F1B-4A3C-8BD0-073ECDAAEB54}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166553-Bullet-Hit-Body-Flesh_05" ID="{24ABF112-A824-43B5-A9C7-27FF59723BB3}" ShortID="138305840">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{E39E60DD-56FE-4C9C-960B-6B68A88C8602}">
+															<Language>SFX</Language>
+															<AudioFile>166553-Bullet-Hit-Body-Flesh_05.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758217916"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{E39E60DD-56FE-4C9C-960B-6B68A88C8602}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166559-Bullet-Hit-Body-Flesh_14" ID="{C235B133-83E4-455A-846A-4F74F0438FA5}" ShortID="974312470">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{4336B158-035C-4780-B180-02E5CB778DAD}">
+															<Language>SFX</Language>
+															<AudioFile>166559-Bullet-Hit-Body-Flesh_14.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="502963919"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{4336B158-035C-4780-B180-02E5CB778DAD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166573-Bullet-Hit-Body-Flesh_16" ID="{B7CBE14A-6A9B-48FC-81DC-7DF93CC8D003}" ShortID="397364164">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{2A9D0CD8-705B-4275-B145-2675AEA108FB}">
+															<Language>SFX</Language>
+															<AudioFile>166573-Bullet-Hit-Body-Flesh_16.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="559970004"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{2A9D0CD8-705B-4275-B145-2675AEA108FB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166582-Bullet-Hit-Body-Flesh_11" ID="{8B896EBC-2F57-4638-9E50-DE216BD7CCBE}" ShortID="836668756">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{B16BFE75-0D5D-4D8D-93A8-A5D92D10AFE2}">
+															<Language>SFX</Language>
+															<AudioFile>166582-Bullet-Hit-Body-Flesh_11.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="588728228"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{B16BFE75-0D5D-4D8D-93A8-A5D92D10AFE2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166588-Bullet-Hit-Body-Flesh_10" ID="{1A8097B4-CA65-45CA-8FDD-082C826221F7}" ShortID="352765850">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{D9E58770-EFE0-48A9-9291-F7FE9FD77FA2}">
+															<Language>SFX</Language>
+															<AudioFile>166588-Bullet-Hit-Body-Flesh_10.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="352848444"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{D9E58770-EFE0-48A9-9291-F7FE9FD77FA2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166597-Bullet-Hit-Body-Flesh_02" ID="{60E1CBD6-286A-4BE5-99CC-BF703FFDCCD0}" ShortID="918169459">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{2D06F550-8DB3-46F8-A2E1-43209C91F934}">
+															<Language>SFX</Language>
+															<AudioFile>166597-Bullet-Hit-Body-Flesh_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="474658866"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{2D06F550-8DB3-46F8-A2E1-43209C91F934}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166607-Bullet-Hit-Body-Flesh_01" ID="{CE6D990E-6149-44B5-9EB5-B08E43F81B27}" ShortID="387462783">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{1A4A2B8B-BDA8-45A6-A0C1-9DC3F564CA22}">
+															<Language>SFX</Language>
+															<AudioFile>166607-Bullet-Hit-Body-Flesh_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="586588224"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{1A4A2B8B-BDA8-45A6-A0C1-9DC3F564CA22}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_Moustique_Mort" ID="{54310636-5E2E-453E-8777-40BA1E1D92D2}" ShortID="871373698">
@@ -713,6 +1462,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="MoustiqueMort_PH" ID="{D6499897-084B-4EEC-802A-D865BF3655BF}" ShortID="493512501">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -734,8 +1490,855 @@
 												<ActiveSource Name="MoustiqueMort_PH" ID="{DF3C9E75-A6A5-42E3-9616-6941FFD7BF71}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Moustique_Mort_L1" ID="{AE51918B-BE4B-4F79-B1C5-99A17C9349EC}" ShortID="883097159">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{7990D2F5-FDE9-4E13-BD4D-067732F3817B}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Moustique_Degat_2L1" ID="{941D3F5E-ED4A-4F91-8DF4-81E858E9D77E}" ShortID="249231430">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{18BB325D-7C6C-4AA5-BE11-1807B4029D46}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_2L1" ID="{9F2BF6D3-8F0B-4F03-B792-970E3A7A209C}">
+															<PropertyList>
+																<Property Name="CrossfadeShape" Type="int16" Value="8"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.207693028846154"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.91374290865385"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_2L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="824476172"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_2L1" ID="{9F2BF6D3-8F0B-4F03-B792-970E3A7A209C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_3L1" ID="{2723DE32-FC4E-41BC-8E4A-BC0452EF89A6}" ShortID="917520011">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{6792620E-D52F-4990-94CF-5F6A559D6853}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_3L1" ID="{1C63360B-7867-4933-910A-B26296228358}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.407966466346154"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.00824174679487166"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.58241538461538"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_3L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="447781928"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_3L1" ID="{1C63360B-7867-4933-910A-B26296228358}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_4L1" ID="{2FE4632B-DBC6-49A7-9C2D-C16509D71B2D}" ShortID="62863701">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{0F095816-D5FE-4AC6-8050-A11EDC6DE6C1}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_4L1" ID="{082FCD70-FC8C-4569-B568-897E75C01CBC}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.168132451923077"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_4L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="598505157"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_4L1" ID="{082FCD70-FC8C-4569-B568-897E75C01CBC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_5L1" ID="{CDD8F101-91C3-4A75-B7D6-ABBA9D65CF0B}" ShortID="976852930">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{E31059D9-528A-4BE1-853D-51002E7A7C6F}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_5L1" ID="{3472B15F-C2A7-4864-9B80-5B7C8296AC5E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.13186858974359"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_5L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="282520052"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_5L1" ID="{3472B15F-C2A7-4864-9B80-5B7C8296AC5E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_6L1" ID="{06FEC0D0-88C7-47DF-A0D4-B194D0E0DF2B}" ShortID="363840522">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{42216F8E-B1FD-4AA5-95E3-5DE9B09F1776}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_6L1" ID="{6813552D-169C-4FF8-A85D-C016D40D93D1}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.259341025641026"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0.67266578525641"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.45879326923077"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_6L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="424336240"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_6L1" ID="{6813552D-169C-4FF8-A85D-C016D40D93D1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_7L1" ID="{1C03E561-BAC0-43E2-89AC-0D02348F5E5D}" ShortID="161132015">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{91E01280-662E-486E-88F4-2E5EC01B8F2E}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_7L1" ID="{BA1ADB1B-54FD-41FD-956B-13524D206468}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.138735576923077"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0.874034134615385"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.54343329326923"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_7L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="385587304"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_7L1" ID="{BA1ADB1B-54FD-41FD-956B-13524D206468}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_8L1" ID="{8D8D6167-25BB-43EA-BBFC-2FC743DDBBB2}" ShortID="744805031">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{8301183D-8836-4AE8-99FD-479FC43FBEE7}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_8L1" ID="{037E1D11-A4CD-425D-947D-810105F0573F}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.196908533653846"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0.724790985576923"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.49566694711538"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_8L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="800183191"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_8L1" ID="{037E1D11-A4CD-425D-947D-810105F0573F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{74C88D44-736A-463B-BC58-14BD169EF349}" ShortID="946258912">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Pitch"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="New Modulator Time" ID="{0A7B7A97-DBFA-4D04-A15C-4A6F2CB8D1BB}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{8B429D04-FE17-4625-944A-0A10BFC4F99D}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="65537"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>0.51479</XPos>
+																						<YPos>-179</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>1.49113</XPos>
+																						<YPos>-536</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>3</XPos>
+																						<YPos>-930</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_Moustique_Degat_G" ID="{0D635C53-0AF1-4361-93E8-8128D5BD58BE}" ShortID="393026892">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-710</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{E39B4D6F-45F5-460E-B809-4661D080D36E}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-16</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="166526-Bullet-Hit-Body-Flesh_09" ID="{26A00633-8438-49EF-A5A4-EF8D77ADAF9A}" ShortID="410276790">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{C296F62F-C74F-4A44-B28E-9630194F6C25}">
+															<Language>SFX</Language>
+															<AudioFile>166526-Bullet-Hit-Body-Flesh_09.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="665190911"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{C296F62F-C74F-4A44-B28E-9630194F6C25}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166542-Bullet-Hit-Body-Flesh_06" ID="{9A03879E-D910-4D3F-9C55-62CC3F96B8CD}" ShortID="1041613560">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{44D202C6-7D06-4444-8C6E-B293338B1E0D}">
+															<Language>SFX</Language>
+															<AudioFile>166542-Bullet-Hit-Body-Flesh_06.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="891285907"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{44D202C6-7D06-4444-8C6E-B293338B1E0D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166547-Bullet-Hit-Body-Flesh_07" ID="{C6BC4F02-0138-4D84-B9BB-30453D1165A3}" ShortID="656022620">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{CB029FF4-47ED-4C62-BBB4-4F35591A049E}">
+															<Language>SFX</Language>
+															<AudioFile>166547-Bullet-Hit-Body-Flesh_07.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="176342500"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{CB029FF4-47ED-4C62-BBB4-4F35591A049E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166553-Bullet-Hit-Body-Flesh_05" ID="{487FD03A-B7AA-4241-9628-787425DF0D67}" ShortID="440367441">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{ABDB091A-9E7D-4666-9DBC-801D97C04C7B}">
+															<Language>SFX</Language>
+															<AudioFile>166553-Bullet-Hit-Body-Flesh_05.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758217916"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{ABDB091A-9E7D-4666-9DBC-801D97C04C7B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166559-Bullet-Hit-Body-Flesh_14" ID="{D994FF18-0959-4F5B-8DB7-5F72B7237353}" ShortID="414842768">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{32CFD2C1-E331-42EA-8012-5738917990BE}">
+															<Language>SFX</Language>
+															<AudioFile>166559-Bullet-Hit-Body-Flesh_14.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="502963919"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{32CFD2C1-E331-42EA-8012-5738917990BE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166573-Bullet-Hit-Body-Flesh_16" ID="{F73531C2-70D5-4F15-B3D5-9A41DCF66305}" ShortID="649316028">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{959BDA52-794E-42E7-A732-CE2E01B15B52}">
+															<Language>SFX</Language>
+															<AudioFile>166573-Bullet-Hit-Body-Flesh_16.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="559970004"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{959BDA52-794E-42E7-A732-CE2E01B15B52}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166582-Bullet-Hit-Body-Flesh_11" ID="{5920111A-D94C-42C0-9FED-1734F8957D82}" ShortID="777756323">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{8AD55227-9ECF-4B23-9FF3-381525B14B61}">
+															<Language>SFX</Language>
+															<AudioFile>166582-Bullet-Hit-Body-Flesh_11.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="588728228"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{8AD55227-9ECF-4B23-9FF3-381525B14B61}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166588-Bullet-Hit-Body-Flesh_10" ID="{6B998DE1-C2BF-480D-991B-D6642CF55FD3}" ShortID="679480685">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{519EE05F-872E-4A67-B6A6-0329990BE641}">
+															<Language>SFX</Language>
+															<AudioFile>166588-Bullet-Hit-Body-Flesh_10.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="352848444"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{519EE05F-872E-4A67-B6A6-0329990BE641}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166597-Bullet-Hit-Body-Flesh_02" ID="{B18BF2A5-D744-4B0E-887C-1DF58B997394}" ShortID="482624485">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{F42EC139-DB7A-4F20-A4F3-2EF585C945A2}">
+															<Language>SFX</Language>
+															<AudioFile>166597-Bullet-Hit-Body-Flesh_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="474658866"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{F42EC139-DB7A-4F20-A4F3-2EF585C945A2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166607-Bullet-Hit-Body-Flesh_01" ID="{948B0D22-AE10-4B05-8F00-FD6D747DE32F}" ShortID="1033770360">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{D6C07CC8-A8B1-4E37-AA1C-BB7269C4A5D9}">
+															<Language>SFX</Language>
+															<AudioFile>166607-Bullet-Hit-Body-Flesh_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="586588224"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{D6C07CC8-A8B1-4E37-AA1C-BB7269C4A5D9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_Moustique_Degat_L2" ID="{8AC9278E-A14F-4ED4-A7D3-2D88E7D6609E}" ShortID="390353299">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>28</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{47739E80-0885-476E-8718-9CDB1AF6B8DD}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Moustique_Degat_1L2" ID="{C4E7822D-6E37-46CD-8049-EFF5748177DF}" ShortID="194177638">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_1L2" ID="{8FDBBC71-B2DC-489E-83D0-02B33B8393F9}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.947410163776494"/>
+																<Property Name="LoopEnd" Type="Real64" Value="1.3721112716763"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.51912319364162"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_1L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="529164540"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_1L2" ID="{8FDBBC71-B2DC-489E-83D0-02B33B8393F9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_2L2" ID="{D69BD2D3-E5A4-47B8-9B9A-A2324353B05A}" ShortID="665764945">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_2L2" ID="{4A40D9C1-223B-4950-BA09-CE7C3CFF4AF5}">
+															<PropertyList>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.25515775529865"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.65152336223507"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_2L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="6933992"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_2L2" ID="{4A40D9C1-223B-4950-BA09-CE7C3CFF4AF5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_3L2" ID="{F694302F-AFB0-4A6E-8104-5729CD37686B}" ShortID="347880087">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_3L2" ID="{A92F9789-7CF0-4032-B4C7-5B2B294031FF}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.710673972382787"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.46733273121387"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_3L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="277528955"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_3L2" ID="{A92F9789-7CF0-4032-B4C7-5B2B294031FF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_5L2" ID="{D2A81007-BF48-470C-932A-290480513E87}" ShortID="1067214635">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_5L2" ID="{9DA4B024-7102-4196-8B08-D925BF1FA27C}">
+															<PropertyList>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.5682606775851"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.87461857739242"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_5L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="527633345"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_5L2" ID="{9DA4B024-7102-4196-8B08-D925BF1FA27C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_4L2" ID="{BEC5BCCF-BCC9-43E5-B4C9-417B93370659}" ShortID="1049402340">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_4L2" ID="{D3163AD9-8BAE-4944-BF97-6B8D79262AA6}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.74442774566474"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="LoopEnd" Type="Real64" Value="0.708240285806038"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.42165020873475"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_4L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="78276103"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_4L2" ID="{D3163AD9-8BAE-4944-BF97-6B8D79262AA6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{30142B9E-AFCA-426B-8E42-5BDA7B61421F}" ShortID="818445158">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Pitch"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="New Modulator Time" ID="{0A7B7A97-DBFA-4D04-A15C-4A6F2CB8D1BB}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{501EEE24-7916-47D3-85E9-187DFA0AA5D4}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="65537"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>0.52367</XPos>
+																						<YPos>-286</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>1.49113</XPos>
+																						<YPos>-1359</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>3</XPos>
+																						<YPos>-1466</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
+								<Sound Name="LIF_Moustique_Battement" ID="{7035FE1E-9FBD-4506-A2DF-96D8EE21BF83}" ShortID="225671868">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="LIF_Moustique_Battement" ID="{DA1C3B85-4E58-4310-9DE1-F63B368BAF89}">
+											<Language>SFX</Language>
+											<AudioFile>LIF_Moustique_Battement.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="222525663"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="LIF_Moustique_Battement" ID="{DA1C3B85-4E58-4310-9DE1-F63B368BAF89}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="LIF_PlanteCarnivore" ID="{90668962-6641-4CF7-B553-0E5FF4432E08}" ShortID="945612653">
@@ -1271,25 +2874,6 @@
 							</ChildrenList>
 						</ActorMixer>
 					</ChildrenList>
-				</ActorMixer>
-				<ActorMixer Name="LIF_Immobile" ID="{08C80859-C0BC-4710-A191-772ED04F7D60}" ShortID="808650617">
-					<PropertyList>
-						<Property Name="Pitch" Type="int32">
-							<ModifierList>
-								<ModifierInfo>
-									<Modifier Name="" ID="{AD98105F-D43A-4F73-85A4-C6CE71D3739B}"/>
-								</ModifierInfo>
-							</ModifierList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-						</Reference>
-					</ReferenceList>
 				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
