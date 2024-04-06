@@ -155,6 +155,7 @@ public class PlayerPermanent : MonoBehaviour
     [SerializeField] private GameObject crafting;
     [SerializeField] private GameObject building;
     [SerializeField] private GameObject upgrade;
+    [SerializeField] private GameObject farming;
     [SerializeField] private GameObject room;
     public bool mapIsOpen = true;
     public bool marketIsOpen = false;
@@ -162,6 +163,7 @@ public class PlayerPermanent : MonoBehaviour
     public bool buildingIsOpen = false;
     public bool upgradeIsOpen = false;
     public bool roomManageIsOpen = false;
+    public bool farmingIsOpen = false;
     public bool menuIsOpen = false;
     public bool uiOpened;
     public bool isInDialogue;
@@ -192,6 +194,7 @@ public class PlayerPermanent : MonoBehaviour
         market = GameObject.Find("Vente");
         crafting = GameObject.Find("Crafting");
         building = GameObject.Find("RoomCrafting");
+        farming = GameObject.Find("Farming");
         map = GameObject.Find("Map");
         map.SetActive(false);
         noMap = GameObject.Find("NoMap");
@@ -933,6 +936,36 @@ public class PlayerPermanent : MonoBehaviour
             upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
             upgradeIsOpen = false;
         }
+    }
+
+    public void ShowOrHideFarming(bool isFarming)
+    {
+        if (!farmingIsOpen)
+        {
+            if (mapIsOpen)
+                ShowOrHideMap();
+            if (marketIsOpen)
+                ShowOrHideMarket();
+            if (craftingIsOpen)
+                ShowOrHideCrafting();
+            if (roomManageIsOpen)
+                ShowOrHideRoomManagement();
+            if (buildingIsOpen)
+            {
+                if (isUsingMultiTool)
+                    EquipMultiTool(false);
+                ShowOrHideBuilding();
+            }
+
+            farming.GetComponent<RectTransform>().localPosition = new Vector2(farming.GetComponent<RectTransform>().localPosition.x, farming.GetComponent<RectTransform>().localPosition.y + gridOffset);
+            farmingIsOpen = true;
+        }
+        else
+        {
+            farming.GetComponent<RectTransform>().localPosition = new Vector2(farming.GetComponent<RectTransform>().localPosition.x, farming.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            farmingIsOpen = false;
+        }
+        farming.GetComponent<Farming>().Activate(isFarming);
     }
 
 

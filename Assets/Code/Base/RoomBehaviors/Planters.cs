@@ -6,7 +6,6 @@ public class Planters : MonoBehaviour
 {
     bool isInRange = false;
     bool hasAPlant = false;
-    [SerializeField] GameObject arrow;
     [SerializeField] GameObject growLight;
     [SerializeField] Transform spawnPoint;
 
@@ -21,11 +20,13 @@ public class Planters : MonoBehaviour
     [SerializeField] int maxRessource = 3;
 
     [SerializeField] GameObject room;
+    [SerializeField] Farming farming;
 
 
     private void OnEnable()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+        farming = GameObject.Find("Farming").GetComponent<Farming>();
         GameManager.instance.planters.Add(this);
         room = gameObject.transform.parent.gameObject;
     }
@@ -33,14 +34,17 @@ public class Planters : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CanPlant())
+        if (Input.GetKey(KeyCode.E))
         {
-            if (Input.GetKey(KeyCode.E))
+            if (isInRange && ArrowManager.instance.readyToActivate)
             {
-                if (isInRange && ArrowManager.instance.readyToActivate)
+                if (!player.inventoryOpen)
                 {
-                    Plant();
-                    arrow.SetActive(false);
+                    player.ShowOrHideInventoryNoButtons();
+                }
+                if (!player.farmingIsOpen)
+                {
+                    player.ShowOrHideFarming(true);
                 }
             }
         }
@@ -60,19 +64,20 @@ public class Planters : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isInRange = true;
-        if (CanPlant())
-            ArrowManager.instance.PlaceArrow(transform.position, "PLANT", new Vector2(0, 1), 1);
+        ArrowManager.instance.PlaceArrow(transform.position, "PLANT", new Vector2(0, 1), gameObject, 1);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         isInRange = false;
-        ArrowManager.instance.RemoveArrow();
+        if (ArrowManager.instance.targetObject == gameObject)
+            ArrowManager.instance.RemoveArrow();
     }
 
-    void Plant()
+    public void Plant()
     {
-        switch (player.objectInRightHand.GetComponent<InventoryItem>().itemData.itemName)
+
+        switch (farming.farmingSlot.GetItem(0, 0).itemData.itemName)
         {
             case "Infpisum Pine":
                 plantToGrow = plants[0];
@@ -86,10 +91,12 @@ public class Planters : MonoBehaviour
             default:
                 return;
         }
+        if (ArrowManager.instance.targetObject == gameObject)
+            ArrowManager.instance.RemoveArrow();
+
         hasAPlant = true;
-        if (player.objectInRightHand != null)
-            Destroy(player.objectInRightHand);
-        player.UnequipObject();
+        if (farming.farmingSlot.GetItem(0, 0) != null)
+            farming.farmingSlot.GetItem(0, 0).Delete();
     }
 
     public void Grow()
@@ -109,13 +116,5 @@ public class Planters : MonoBehaviour
             else if (growthIndex > timeToGrow && thePlant != null && thePlant.GetComponent<HarvestableRessourceNode>().ressourceAmount < maxRessource)
                 thePlant.GetComponent<HarvestableRessourceNode>().ressourceAmount++;
         }
-    }
-
-    bool CanPlant()
-    {
-        if (player.objectInRightHand != null && !player.isUsingMultiTool)
-            return player.objectInRightHand.GetComponent<InventoryItem>().itemData.itemType == "Plant" && isInRange && !hasAPlant;
-        else
-            return false;
     }
 }

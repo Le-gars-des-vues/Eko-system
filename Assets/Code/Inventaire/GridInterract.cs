@@ -23,7 +23,7 @@ public class GridInterract : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (player.uiOpened)
         {
             inventoryController.SelectedItemGrid = itemGrid;
-            if (inventoryController.selectedItem != null && (inventoryController.SelectedItemGrid.gameObject.tag == "Hotbar" || inventoryController.SelectedItemGrid.gameObject.tag == "Upgrade" || inventoryController.SelectedItemGrid.gameObject.tag == "RoomCrafting"))
+            if (inventoryController.selectedItem != null && (inventoryController.SelectedItemGrid.gameObject.tag == "Hotbar" || inventoryController.SelectedItemGrid.gameObject.tag == "Upgrade" || inventoryController.SelectedItemGrid.gameObject.tag == "Farming"))
             {
                 inventoryController.selectedItem.itemData.height = inventoryController.selectedItem.itemData.hotbarHeight;
                 inventoryController.selectedItem.itemData.width = inventoryController.selectedItem.itemData.hotbarWidth;

@@ -7,7 +7,6 @@ public class Portal : MonoBehaviour
     PlayerPermanent player;
     bool isInRange;
     public bool isBaseTeleporter;
-    [SerializeField] GameObject arrow;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +45,7 @@ public class Portal : MonoBehaviour
         {
             isInRange = true;
             if (!isBaseTeleporter)
-                ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), gameObject, 1);
         }
     }
 
@@ -55,7 +54,7 @@ public class Portal : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
-            if (!isBaseTeleporter)
+            if (!isBaseTeleporter && ArrowManager.instance.targetObject == gameObject)
                 ArrowManager.instance.RemoveArrow();
         }
     }

@@ -5,6 +5,8 @@ using TMPro;
 
 public class RoomManager : MonoBehaviour
 {
+    public static RoomManager instance;
+
     [SerializeField] ItemGrid storageInventory;
     [SerializeField] ItemGrid playerInventory;
     PlayerPermanent player;
@@ -18,6 +20,13 @@ public class RoomManager : MonoBehaviour
     public TextMeshProUGUI roomName;
     public TextMeshProUGUI roomDesc;
 
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(this);
+        else
+            instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()

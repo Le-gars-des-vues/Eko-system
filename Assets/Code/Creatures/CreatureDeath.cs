@@ -31,7 +31,6 @@ public class CreatureDeath : MonoBehaviour
     bool isHarvested;
     public bool isDead;
     float timer;
-    [SerializeField] GameObject arrow;
 
     public List<GameObject> species;
     
@@ -47,10 +46,7 @@ public class CreatureDeath : MonoBehaviour
     {
         if (CanHarvest())
         {
-            if (arrow != null)
-            {
-                ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, 1), 1);
-            }
+            ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, 0), gameObject, 1);
             //Debug.Log("can harvest");
             if (Input.GetKey(KeyCode.E))
             {
@@ -68,7 +64,7 @@ public class CreatureDeath : MonoBehaviour
                 timer = 0;
         }
         else
-            if (arrow != null && arrow.activeSelf)
+            if (ArrowManager.instance.targetObject == gameObject)
                 ArrowManager.instance.RemoveArrow();
 
         if (isDead)

@@ -9,9 +9,9 @@ public class RoomManagement : MonoBehaviour
     PlayerPermanent player;
 
     public RoomManager roomMenu;
+    [SerializeField] float distanceThreshold;
 
     bool isInRange;
-    [SerializeField] GameObject arrow;
  
     private void OnEnable()
     {
@@ -21,6 +21,18 @@ public class RoomManagement : MonoBehaviour
 
     private void Update()
     {
+        if (Vector2.Distance(GetComponent<SpriteRenderer>().sprite.bounds.center, player.gameObject.transform.position) < distanceThreshold)
+        {
+            isInRange = true;
+            ArrowManager.instance.PlaceArrow(GetComponent<SpriteRenderer>().sprite.bounds.center, "MANAGE ROOM", new Vector2(0, 1), gameObject, 1);
+        }
+        else
+        {
+            isInRange = false;
+            if (ArrowManager.instance.targetObject == gameObject)
+                ArrowManager.instance.RemoveArrow();
+        }
+
         if (!player.roomManageIsOpen)
         {
             if (isInRange)
@@ -59,11 +71,9 @@ public class RoomManagement : MonoBehaviour
                 myRoom.GetComponent<RoomCrafters>().SetItemToShowInSlot();
             }
             */
-            isInRange = true;
             roomMenu.currentRoom = myRoom;
             roomMenu.roomName.text = myRoom.GetComponent<RoomInfo>().roomType;
             roomMenu.roomDesc.text = myRoom.GetComponent<RoomInfo>().roomDesc;
-            ArrowManager.instance.PlaceArrow(transform.position, "MANAGE ROOM", new Vector2(0, 1), 1);
         }
     }
 
@@ -71,8 +81,6 @@ public class RoomManagement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            isInRange = false;
-            ArrowManager.instance.RemoveArrow();
             roomMenu.currentRoom = null;
             roomMenu.roomName.text = " ";
             roomMenu.roomDesc.text = " ";

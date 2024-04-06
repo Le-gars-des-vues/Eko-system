@@ -7,7 +7,6 @@ public class SellingScreen : MonoBehaviour
 {
     PlayerPermanent player;
     bool isInRange;
-    [SerializeField] GameObject arrow;
     [SerializeField] GameObject tvText;
     [SerializeField] GameObject tvLight;
 
@@ -64,7 +63,7 @@ public class SellingScreen : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            ArrowManager.instance.PlaceArrow(transform.position, "SELL", new Vector2(0, 1), 1);
+            ArrowManager.instance.PlaceArrow(transform.position, "SELL", new Vector2(0, 1), gameObject, 1);
         }
     }
 
@@ -73,7 +72,8 @@ public class SellingScreen : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
-            ArrowManager.instance.RemoveArrow();
+            if (ArrowManager.instance.targetObject == gameObject)
+                ArrowManager.instance.RemoveArrow();
             if (player.marketIsOpen)
             {
                 player.ShowOrHideMarket();

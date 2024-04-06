@@ -31,7 +31,7 @@ public class ItemGrid : MonoBehaviour
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        if (gameObject.tag == "Hotbar" || gameObject.tag == "Upgrade" || gameObject.tag == "Equipment")
+        if (gameObject.tag == "Hotbar" || gameObject.tag == "Upgrade" || gameObject.tag == "Equipment" || gameObject.tag == "Farming")
         {
             tileSizeWidth = 96;
             tileSizeHeight = 96;

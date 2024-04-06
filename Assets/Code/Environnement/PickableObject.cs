@@ -104,13 +104,14 @@ public class PickableObject : MonoBehaviour
             {
                 isFlashing = true;
                 //sprite.material = flashMaterial;
-                ArrowManager.instance.PlaceArrow(transform.position, "PICK UP", new Vector2(0, 0.5f));
+                ArrowManager.instance.PlaceArrow(sprite.bounds.center, "PICK UP", new Vector2(0, -0.5f), gameObject);
             }
             else if (!isSelected && isFlashing)
             {
                 isFlashing = false;
                 //sprite.material = flashMaterial;
-                ArrowManager.instance.RemoveArrow();
+                if (ArrowManager.instance.targetObject == gameObject)
+                    ArrowManager.instance.RemoveArrow();
             }
 
             //if (isFlashing)

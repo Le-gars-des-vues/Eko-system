@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TrainingRoom : MonoBehaviour
 {
-    [SerializeField] GameObject arrow;
     [SerializeField] Base theBase;
 
     PlayerPermanent player;
@@ -39,7 +38,7 @@ public class TrainingRoom : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), 1);
+            ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject, 1);
         }
     }
 
@@ -48,7 +47,8 @@ public class TrainingRoom : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
-            ArrowManager.instance.RemoveArrow();
+            if (ArrowManager.instance.targetObject == gameObject)
+                ArrowManager.instance.RemoveArrow();
         }
     }
 }

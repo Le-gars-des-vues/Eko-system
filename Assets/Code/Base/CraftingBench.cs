@@ -7,7 +7,6 @@ public class CraftingBench : MonoBehaviour
 {
     PlayerPermanent player;
     bool isInRange;
-    [SerializeField] GameObject arrow;
     CraftingManager crafting;
 
     // Start is called before the first frame update
@@ -56,7 +55,7 @@ public class CraftingBench : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), 1);
+            ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject, 1);
         }
     }
 
@@ -65,7 +64,8 @@ public class CraftingBench : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = false;
-            ArrowManager.instance.RemoveArrow();
+            if (ArrowManager.instance.targetObject == gameObject)
+                ArrowManager.instance.RemoveArrow();
             if (player.craftingIsOpen)
             {
                 player.ShowOrHideCrafting();

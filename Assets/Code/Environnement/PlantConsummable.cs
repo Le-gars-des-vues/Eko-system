@@ -12,7 +12,6 @@ public class PlantConsummable : MonoBehaviour
 
     private Material ogMaterial;
     [SerializeField] private Material flashMaterial;
-    [SerializeField] GameObject arrow;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,7 +19,7 @@ public class PlantConsummable : MonoBehaviour
         {
             canPickUpConsummable = true;
             if (!hasPickedUpConsummable)
-                arrow.SetActive(true);
+                ArrowManager.instance.PlaceArrow(transform.position, "PICK UP", new Vector2(0, 0), gameObject, 1);
             StartCoroutine(FlashWhite(ConsummableGFX.GetComponent<SpriteRenderer>(), 0.05f, 5));
         }
     }
@@ -38,7 +37,7 @@ public class PlantConsummable : MonoBehaviour
                     var cons = Instantiate(consummable, transform.position, transform.rotation);
                     cons.GetComponent<PickableObject>().PickUp(false, false);
                     ConsummableGFX.SetActive(false);
-                    arrow.SetActive(false);
+                    ArrowManager.instance.RemoveArrow();
                 }
             }
         }
@@ -46,7 +45,8 @@ public class PlantConsummable : MonoBehaviour
 
     private void OnDisable()
     {
-        arrow.SetActive(false);
+        if (ArrowManager.instance.targetObject == gameObject)
+            ArrowManager.instance.RemoveArrow();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -54,7 +54,8 @@ public class PlantConsummable : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canPickUpConsummable = false;
-            arrow.SetActive(false);
+            if (ArrowManager.instance.targetObject == gameObject)
+                ArrowManager.instance.RemoveArrow();
         }
     }
 

@@ -22,6 +22,8 @@ public class RoomInfo : MonoBehaviour
 
     public bool isRefunded = false;
 
+    public GameObject interactiveObject;
+
     [Header("Materials Variables")]
     public ItemData firstMat;
     public int firstMatQuantity;
