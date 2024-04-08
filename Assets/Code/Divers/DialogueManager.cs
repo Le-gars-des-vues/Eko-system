@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     public delegate void OnDialogueEnd();
     public static OnDialogueEnd onDialogueEnd;
 
-    [SerializeField] GameObject tutorialScreen;
+    [SerializeField] GameObject dialogueScreen;
     PlayerPermanent player;
 
     bool pressedKey = false;
@@ -36,7 +36,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        tutorialScreen = GameObject.Find("TutorialScreen");
+        dialogueScreen = GameObject.Find("DialogueScreen");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
@@ -47,7 +47,7 @@ public class DialogueManager : MonoBehaviour
             if (!dialogueScreenIsOpen)
             {
                 dialogueScreenIsOpen = true;
-                tutorialScreen.GetComponent<Animator>().SetBool("isInDialogue", true);
+                dialogueScreen.GetComponent<Animator>().SetBool("isInDialogue", true);
             }
 
             if (Input.GetKeyDown(KeyCode.E) && !pressedKey)
@@ -118,7 +118,7 @@ public class DialogueManager : MonoBehaviour
         if (dialogueScreenIsOpen)
         {
             dialogueScreenIsOpen = false;
-            tutorialScreen.GetComponent<Animator>().SetBool("isInDialogue", false);
+            dialogueScreen.GetComponent<Animator>().SetBool("isInDialogue", false);
         }
         StopCoroutine(dialogue);
         currentSpeaker.StopDialogue();

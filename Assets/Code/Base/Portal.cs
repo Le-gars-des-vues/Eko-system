@@ -29,7 +29,7 @@ public class Portal : MonoBehaviour
                         {
                             Base.instance.Teleport(false, true, teleporter.gameObject.transform.position);
                             teleporter.isPoweredUp = false;
-                            CycleInfo.instance.CheckForOpenTeleporter();
+                            QuickMenu.instance.CheckForOpenTeleporter();
                             Destroy(gameObject);
                             return;
                         }

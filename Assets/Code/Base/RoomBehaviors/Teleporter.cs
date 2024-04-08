@@ -19,7 +19,7 @@ public class Teleporter : MonoBehaviour
     {
         GameManager.instance.teleporter.Add(this);
         if (GameManager.instance.teleporter.Count > 0)
-            CycleInfo.instance.UnlockTeleporter(true);
+            QuickMenu.instance.UnlockTeleporter(true);
 
         room = gameObject.transform.parent.gameObject;
     }
@@ -46,7 +46,7 @@ public class Teleporter : MonoBehaviour
         {
             GameManager.instance.teleporter.Remove(this);
             if (GameManager.instance.teleporter.Count <= 0)
-                CycleInfo.instance.UnlockTeleporter(false);
+                QuickMenu.instance.UnlockTeleporter(false);
         }
     }
 }

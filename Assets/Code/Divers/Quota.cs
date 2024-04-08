@@ -10,7 +10,7 @@ public class Quota : MonoBehaviour
 
     private void Start()
     {
-        CycleInfo.instance.quotaText.text = 0 + "/" + quota + "$";
+        QuickMenu.instance.quotaText.text = 0 + "/" + quota + "$";
         gestionnaireVente = GameObject.Find("Vente");
     }
 
@@ -24,6 +24,6 @@ public class Quota : MonoBehaviour
         gestionnaireVente.GetComponent<Vente>().profit = 0;
         quota = (quota * 1.1f) + (gestionnaireVente.GetComponent<Vente>().calculStorage()*0.1f);
         quota = Mathf.RoundToInt(quota);
-        CycleInfo.instance.quotaText.text = 0 + "/" + quota + "$";
+        QuickMenu.instance.quotaText.text = 0 + "/" + quota + "$";
     }
 }

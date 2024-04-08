@@ -93,6 +93,8 @@ public class PlayerPermanent : MonoBehaviour
     public Coroutine poison;
     public bool isPoisoned;
 
+    Tutorial tutorial;
+
     [Header("UnderWater Variables")]
     [SerializeField] float underWaterGravityScale = 0.1f;
     [SerializeField] float underWaterDrag = 2f;
@@ -201,6 +203,7 @@ public class PlayerPermanent : MonoBehaviour
         upgrade = GameObject.Find("Upgrades");
         room = GameObject.Find("RoomMenu");
         gameOverScreen = GameObject.Find("GameOverScreen");
+        tutorial = GetComponent<Tutorial>();
         //Au depart du jeu, on set tout les bars au max et on desactive le ragdoll
         for (int i = 0; i < bones.Count; i++)
         {
@@ -267,6 +270,17 @@ public class PlayerPermanent : MonoBehaviour
                 isInBase = false;
                 if (buildingIsOpen)
                     ShowOrHideBuilding();
+                if (!tutorial.firstTimeOutside)
+                {
+                    tutorial.RobotTextMessage(tutorial.tutorialTexts[0].text);
+                }
+                /*
+                if (!AudioManager.instance.forestIsPlaying)
+                {
+                    AudioManager.instance.forestIsPlaying = true;
+                    AudioManager.instance.PlaySoundtrack("AMB_Foret", AudioManager.instance.gameObject);
+                }
+                */
             }
         }
 

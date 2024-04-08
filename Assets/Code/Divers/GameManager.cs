@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     public float TimeLeft;
     public float initialTime;
     public bool TimerOn = false;
+    [SerializeField] List<Sprite> timeLeft = new List<Sprite>();
+    bool eightMinLeft;
+    bool sixMinLeft;
+    bool fourMinLeft;
+    bool twoMinLeft;
 
     public GameObject theCharacter;
 
@@ -22,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject newCycleScreen;
     [SerializeField] TextMeshProUGUI newCycleText;
     private string textToWrite;
-    int cycleCount;
+    public int cycleCount;
     [SerializeField] TextMeshProUGUI cycleMenuText;
 
     [Header("Spawner Variables")]
@@ -69,7 +74,7 @@ public class GameManager : MonoBehaviour
         TimerOn = false;
         theCharacter = GameObject.FindGameObjectWithTag("Player");
         cycleCount = 1;
-        cycleMenuText.text = "DAY " + cycleCount.ToString("000");
+        cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
 
         GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
         foreach(GameObject spawner in spawners)
@@ -127,6 +132,15 @@ public class GameManager : MonoBehaviour
             {
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
+
+                if (TimeLeft < 480 && !eightMinLeft)
+                    QuickMenu.instance.frame.sprite = timeLeft[1];
+                else if (TimeLeft < 360 && !sixMinLeft)
+                    QuickMenu.instance.frame.sprite = timeLeft[2];
+                else if (TimeLeft < 240 && !fourMinLeft)
+                    QuickMenu.instance.frame.sprite = timeLeft[3];
+                else if (TimeLeft < 120 && !twoMinLeft)
+                    QuickMenu.instance.frame.sprite = timeLeft[4];
             }
             else
             {
@@ -153,7 +167,7 @@ public class GameManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
-        CycleInfo.instance.timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        QuickMenu.instance.timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void StartNewCycle()
@@ -166,7 +180,7 @@ public class GameManager : MonoBehaviour
         newCycleScreen.SetActive(true);
         this.gameObject.GetComponent<Quota>().nouveauQuota();
         cycleCount++;
-        cycleMenuText.text = "DAY " + cycleCount.ToString("000");
+        cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
         textToWrite = "////////////\n\nSYSTEM.REBOOT\nTERRAFORMA CORP.\n\nNEW TRANSMISSION\n.\n.\n.\n.\n\nGOOD MORNING EMPLOYEE 1212781827!\n.\n.\n.\n.\n\nCYCLE : " + cycleCount.ToString("000") + "\n.\n.\n\nQUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $\n\nEND TRANSMISSION\n\n/////////////";
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
 
@@ -184,6 +198,7 @@ public class GameManager : MonoBehaviour
 
         newCycleScreen.SetActive(false);
         TimeLeft = initialTime;
+        QuickMenu.instance.frame.sprite = timeLeft[0];
         Debug.Log("New Cycle");
         for (int i = 0; i <= planters.Count - 1; i++)
         {
@@ -195,7 +210,7 @@ public class GameManager : MonoBehaviour
             if (!teleporter[i].isPoweredUp)
                 teleporter[i].isPoweredUp = true;
         }
-        CycleInfo.instance.CheckForOpenTeleporter();
+        QuickMenu.instance.CheckForOpenTeleporter();
         SpawnNewObjects(false);
     }
 
