@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     //public List<GameObject> theRooms = new List<GameObject>();
     public List<Planters> planters = new List<Planters>();
     public List<Teleporter> teleporter = new List<Teleporter>();
-    public List<GameObject> enclosure = new List<GameObject>();
+    public List<Enclos> enclosure = new List<Enclos>();
 
     [Header("New Cycle Variables")]
     [SerializeField] GameObject newCycleScreen;

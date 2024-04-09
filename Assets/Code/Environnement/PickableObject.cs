@@ -7,7 +7,6 @@ public class PickableObject : MonoBehaviour
 {
     private Material ogMaterial;
     [SerializeField] private Material flashMaterial;
-    [SerializeField] private GameObject arrow;
     private Color ogColor;
     private SpriteRenderer sprite;
 
@@ -104,7 +103,8 @@ public class PickableObject : MonoBehaviour
             {
                 isFlashing = true;
                 //sprite.material = flashMaterial;
-                ArrowManager.instance.PlaceArrow(sprite.bounds.center, "PICK UP", new Vector2(0, -0.5f), gameObject);
+                if (ArrowManager.instance.targetObject != gameObject)
+                    ArrowManager.instance.PlaceArrow(sprite.bounds.center, "PICK UP", new Vector2(0, -0.5f), gameObject);
             }
             else if (!isSelected && isFlashing)
             {
