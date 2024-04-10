@@ -21,18 +21,26 @@ public class Flee : BehaviorNode
     public override NodeState Evaluate()
     {
         Debug.Log("isFleeing");
-        Vector2 direction = creature.transform.position - creature.GetComponent<CreatureState>().lastSourceOfDamage.transform.position;
-        target.position = (Vector2)creature.transform.position + direction.normalized * fleeDistance;
-
-        if (Vector2.Distance(creature.transform.position, creature.GetComponent<CreatureState>().lastSourceOfDamage.transform.position) > fleeDistance)
+        if (creature.GetComponent<CreatureState>().lastSourceOfDamage != null)
         {
-            creature.GetComponent<CreatureState>().hasFled = true;
-            creature.GetComponent<CreatureState>().isFleeing = false;
-            parent.parent.SetData("pathState", 0);
+            Vector2 direction = creature.transform.position - creature.GetComponent<CreatureState>().lastSourceOfDamage.transform.position;
+            target.position = (Vector2)creature.transform.position + direction.normalized * fleeDistance;
+
+            if (Vector2.Distance(creature.transform.position, creature.GetComponent<CreatureState>().lastSourceOfDamage.transform.position) > fleeDistance)
+            {
+                creature.GetComponent<CreatureState>().hasFled = true;
+                creature.GetComponent<CreatureState>().isFleeing = false;
+                parent.parent.SetData("pathState", 0);
+            }
+
+
+            state = NodeState.RUNNING;
+            return state;
         }
-
-
-        state = NodeState.RUNNING;
-        return state;
+        else
+        {
+            state = NodeState.FAILURE;
+            return state;
+        }
     }
 }

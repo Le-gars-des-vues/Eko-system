@@ -127,6 +127,23 @@ public class HotbarManager : MonoBehaviour
                 }
             }
         }
+        else if (Input.GetKeyDown(KeyCode.B) && player.hasMultitool)
+        {
+            if (multiToolHighlight != null && player.isInBase)
+            {
+                if (!player.isUsingMultiTool)
+                {
+                    hotbarHighlights[currentlySelected].SetActive(false);
+                    multiToolHighlight.SetActive(true);
+
+                    if (player.objectInRightHand != null)
+                        Destroy(player.objectInRightHand);
+                    player.UnequipObject();
+
+                    player.EquipMultiTool(true);
+                }
+            }
+        }
     }
 
     void SwitchItem()

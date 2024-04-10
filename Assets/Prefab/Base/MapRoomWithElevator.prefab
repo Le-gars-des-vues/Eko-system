@@ -743,8 +743,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.015450001, y: -21.04995, z: 0}
-    m_Extent: {x: 1.35055, y: 21.059551, z: 0}
+    m_Center: {x: 0.025299966, y: -21.04905, z: 0}
+    m_Extent: {x: 1.3536999, y: 21.06535, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -825,8 +825,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.023599982, y: -21.05525, z: 0}
-    m_Extent: {x: 1.546, y: 21.25685, z: 0}
+    m_Center: {x: 0.0291, y: -21.056301, z: 0}
+    m_Extent: {x: 1.5425, y: 21.2603, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -913,9 +913,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1019012503
+  m_SortingLayer: -2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.7877358, g: 0.890627, b: 1, a: 1}
   m_FlipX: 0
@@ -941,19 +941,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.027100027
+      value: 0.023600042
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.05505
+      value: -21.0498
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.5367999
+      value: 1.5428
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.25885
+      value: 21.2527
       objectReference: {fileID: 0}
     - target: {fileID: 3155542606631425395, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_SortingOrder
@@ -1003,21 +1003,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapRoomWithElevator
       objectReference: {fileID: 0}
+    - target: {fileID: 6886685483467234086, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886685483467234086, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886685483467234086, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1019012503
+      objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.017100036
+      value: 0.019200027
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.062351
+      value: -21.0621
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.3501999
+      value: 1.348
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.06385
+      value: 21.0626
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1085,6 +1097,7 @@ MonoBehaviour:
   roomDesc: This room provides a map of the area, an invaluable tool to find your
     way through the dangerous terrain!
   isRefunded: 0
+  interactiveObject: {fileID: 0}
   firstMat: {fileID: 0}
   firstMatQuantity: 0
   secondMat: {fileID: 0}
@@ -1150,10 +1163,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8415818547974315463, guid: f0734291e1fecb442839affd336fe244, type: 3}
-      propertyPath: arrow
-      value: 
-      objectReference: {fileID: 618822240411320297}
-    - target: {fileID: 8415818547974315463, guid: f0734291e1fecb442839affd336fe244, type: 3}
       propertyPath: myRoom
       value: 
       objectReference: {fileID: 8349805934325636892}
@@ -1166,11 +1175,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0734291e1fecb442839affd336fe244, type: 3}
---- !u!1 &618822240411320297 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2917134424013012682, guid: f0734291e1fecb442839affd336fe244, type: 3}
-  m_PrefabInstance: {fileID: 2372765613828866339}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8744803206670569368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6464365233610935995, guid: f0734291e1fecb442839affd336fe244, type: 3}

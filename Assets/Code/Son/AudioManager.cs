@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
             instance = this;
     }
 
-    void StopSoundtrack()
+    public void StopSoundtrack()
     {
         AkSoundEngine.StopPlayingID(playingID);
     }

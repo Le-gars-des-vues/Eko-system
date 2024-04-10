@@ -463,8 +463,11 @@ public class InventoryController : MonoBehaviour
             {
                 if (selectedItemGrid = hotbar.grids[hotbar.currentlySelected])
                 {
-                    Destroy(hotbar.player.objectInRightHand);
-                    hotbar.player.UnequipObject();
+                    if (!hotbar.player.isUsingMultiTool)
+                    {
+                        Destroy(hotbar.player.objectInRightHand);
+                        hotbar.player.UnequipObject();
+                    }
                 }
             }
         }

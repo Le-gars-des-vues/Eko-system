@@ -76,19 +76,21 @@ public class Recipes
         {12, new Recipes("Fly Backpack", "Trunk", 1)},
         {13, new Recipes("Oxygen Mask", "Trunk", 1)},
         {14, new Recipes("Heavy Punch", "Trunk", 1)},
-        {15, new Recipes("Machete", "Trunk", 1)},
-        {16, new Recipes("Bow", "Trunk", 1)},
-        {17, new Recipes("Harpoon Gun", "Trunk", 1) },
-        {18, new Recipes("Arrow", "Trunk", 1) },
-        {19, new Recipes("Harpoon", "Trunk", 1)},
+        {15, new Recipes("DNA Extractor", "Trunk", 1)},
+        {16, new Recipes("Machete", "Trunk", 1)},
+        {17, new Recipes("Bow", "Trunk", 1)},
+        {18, new Recipes("Harpoon Gun", "Trunk", 1) },
+        {19, new Recipes("Arrow", "Trunk", 1) },
+        {20, new Recipes("Harpoon", "Trunk", 1)},
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {
         {0, new Recipes("Storage Room", "Metal Sheet", 3, "Battery", 1,"Lushalite",5)},
         {1, new Recipes("Map Room", "Metal Sheet", 3, "Scale",4,"Crystal",4) },
-        {2, new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
+        {2, new Recipes("Enclosure Room", "Trunk", 1)},
         {3, new Recipes("Planter Room", "Trunk", 1)},
         {4, new Recipes("Teleporter Room", "Trunk", 1)},
+        //{2, new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
         //{3 , new Recipes("Planter Room", "Metal Sheet", 3,"Battery",1,"Crystal",5)},
     };
 

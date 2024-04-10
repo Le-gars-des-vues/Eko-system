@@ -11,11 +11,13 @@ public class FrogLegAnimation : MonoBehaviour
     float targetDistance;
     float footMovement;
     [SerializeField] AnimationCurve yCurve;
+    [SerializeField] AnimationCurve jumpYCurve;
     float stepTimer;
     int facingDirection;
     bool lockedIn;
     [SerializeField] private Transform nextTarget;
     [SerializeField] private Transform currentTarget;
+    [SerializeField] Transform legPos;
     [SerializeField] float legOffset;
 
     [SerializeField] FrogMovement frog;
@@ -39,7 +41,7 @@ public class FrogLegAnimation : MonoBehaviour
     {
         facingDirection = frog.GetComponent<FrogMovement>().isFacingRight ? 1 : -1;
 
-        if (!frog.isJumping)
+        if (frog.isGrounded)
         {
             //Calcule la distance entre la cible du pied et sa position actuelle
             targetDistance = Vector2.Distance(currentTarget.position, nextTarget.position);
@@ -79,21 +81,24 @@ public class FrogLegAnimation : MonoBehaviour
                     //Debug.Log(gameObject.name);
                     //Debug.DrawRay(new Vector2(dog.gameObject.transform.position.x + nextTarget.gameObject.GetComponent<LegTarget>().Offset * dog.facingDirection, dog.gameObject.transform.position.y), -Vector2.up * 3f, Color.green);
                     currentTarget.position = Vector2.Lerp(currentTarget.position, new Vector2(hit.point.x, hit.point.y), speed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y), speed * Time.deltaTime);
                 }
             }
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y), speed * Time.deltaTime);
+            stepTimer += Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y + jumpYCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
 
             if (frog.GetComponent<Rigidbody2D>().velocity.y > 0f)
             {
                 if (!lockedIn)
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 2f, LayerMask.GetMask("Ground"));
+                    RaycastHit2D hit = Physics2D.Raycast(legPos.position, -Vector2.up, 2f, LayerMask.GetMask("Ground"));
                     if (hit.collider != null)
                     {
                         currentTarget.position = hit.point;
+                        stepTimer = 0;
                         lockedIn = true;
                     }
                 }
@@ -102,6 +107,7 @@ public class FrogLegAnimation : MonoBehaviour
             {
                 currentTarget.position = new Vector2(frog.transform.position.x + (jumpPosOffsets.x * facingDirection), frog.transform.position.y + jumpPosOffsets.y);
                 transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, 5 * Time.deltaTime);
+                lockedIn = false;
             }
         }
     }

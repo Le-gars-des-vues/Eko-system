@@ -57,7 +57,7 @@ public class CreatureState : MonoBehaviour
         maxSenseOfSmellRadius = senseOfSmell * 2;
         isFull = true;
 
-        territory = Physics2D.OverlapCircle(transform.position, 1f, LayerMask.GetMask("SceneView", "Water"));
+        territory = Physics2D.OverlapCircle(transform.position, 1f, LayerMask.GetMask("SceneView", "Water", "Enclosure"));
     }
 
     // Update is called once per frame

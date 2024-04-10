@@ -261,6 +261,8 @@ public class PlayerPermanent : MonoBehaviour
                     EquipMultiTool(false);
                 }
                 isInBase = true;
+                AudioManager.instance.StopSoundtrack();
+                AudioManager.instance.forestIsPlaying = false;
             }
         }
         else
@@ -274,13 +276,12 @@ public class PlayerPermanent : MonoBehaviour
                 {
                     tutorial.RobotTextMessage(tutorial.tutorialTexts[0].text);
                 }
-                /*
+                
                 if (!AudioManager.instance.forestIsPlaying)
                 {
                     AudioManager.instance.forestIsPlaying = true;
-                    AudioManager.instance.PlaySoundtrack("AMB_Foret", AudioManager.instance.gameObject);
+                    AudioManager.instance.PlaySoundtrack("AMB_Foret");
                 }
-                */
             }
         }
 
@@ -364,7 +365,7 @@ public class PlayerPermanent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U) && !marketIsOpen && !craftingIsOpen)
             ShowOrHideUpgrades();
 
-        if (Input.GetKeyDown(KeyCode.LeftAlt) && !marketIsOpen && !craftingIsOpen && hasMultitool)
+        if (Input.GetKeyDown(KeyCode.B) && !marketIsOpen && !craftingIsOpen && hasMultitool)
         {
             if (isInBase)
             {

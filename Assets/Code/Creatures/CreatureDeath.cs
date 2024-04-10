@@ -11,9 +11,10 @@ public class CreatureDeath : MonoBehaviour
     [SerializeField] private List<Animator> creatureAnimators;
 
     [SerializeField] private List<Collider2D> colliders;
-    [SerializeField] private List<Rigidbody2D> rbs;
+    public List<Rigidbody2D> rbs;
     [SerializeField] private List<HingeJoint2D> joints;
     [SerializeField] private List<LimbSolver2D> limbs;
+    [SerializeField] private List<FabrikSolver2D> longLimbs;
 
     [SerializeField] private List<Rigidbody2D> creatureRbs;
     public List<Collider2D> creatureColliders;
@@ -24,16 +25,18 @@ public class CreatureDeath : MonoBehaviour
     [Header("Death Variables")]
     [SerializeField] MonoBehaviour[] scripts;
     [SerializeField] BTree behaviorScript;
-    [SerializeField] GameObject ressourceToHarvest;
+    public float ressourceSpawnedCount = 1;
+    public GameObject ressourceToHarvest;
     [SerializeField] float timeToHarvest = 1;
     [SerializeField] float rangeToHarvest = 1;
     public bool isInRangeToHarvest;
-    bool isHarvested = false;
+    public bool isHarvested = false;
     public bool isDead = false;
     float timer;
 
     bool isExtracted = false;
-    [SerializeField] GameObject dnaVial;
+    public GameObject dnaVial;
+    public bool isInPod;
  
     public List<GameObject> species;
     
@@ -47,68 +50,74 @@ public class CreatureDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CanExtract())
+        if (!isInPod)
         {
-            if (ArrowManager.instance.targetObject != gameObject)
-                ArrowManager.instance.PlaceArrow(transform.position, "EXTRACT DNA", new Vector2(0, 0), gameObject, 1);
-            //Debug.Log("can harvest");
-            if (Input.GetKey(KeyCode.E))
+            if (CanExtract())
             {
-                //Debug.Log("Is harvesting");
-                timer += Time.deltaTime;
-                if (timer > timeToHarvest && ArrowManager.instance.readyToActivate)
+                if (ArrowManager.instance.targetObject != gameObject)
+                    ArrowManager.instance.PlaceArrow(transform.position, "EXTRACT DNA", new Vector2(0, 0), gameObject, 1);
+                //Debug.Log("can harvest");
+                if (Input.GetKey(KeyCode.E))
                 {
-                    var ressourceSpawned = Instantiate(dnaVial, transform.position, transform.rotation);
-                    ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
-                    isExtracted = true;
-                    //timer = 0;
-                    if (ArrowManager.instance.targetObject == gameObject)
-                        ArrowManager.instance.RemoveArrow();
-                    //gameObject.SetActive(false);
+                    //Debug.Log("Is harvesting");
+                    timer += Time.deltaTime;
+                    if (timer > timeToHarvest && ArrowManager.instance.readyToActivate)
+                    {
+                        for (int i = 0; i < ressourceSpawnedCount; i++)
+                        {
+                            var ressourceSpawned = Instantiate(dnaVial, transform.position, transform.rotation);
+                            //ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
+                            isExtracted = true;
+                        }
+                        timer = 0;
+                        if (ArrowManager.instance.targetObject == gameObject)
+                            ArrowManager.instance.RemoveArrow();
+                        //gameObject.SetActive(false);
+                    }
                 }
+                else if (Input.GetKeyUp(KeyCode.E))
+                    timer = 0;
             }
-            else if (Input.GetKeyUp(KeyCode.E))
-                timer = 0;
-        }
-        else if (CanHarvest())
-        {
-            if (ArrowManager.instance.targetObject != gameObject)
-                ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, 0), gameObject, 1);
-            //Debug.Log("can harvest");
-            if (Input.GetKey(KeyCode.E))
+            else if (CanHarvest())
             {
-                //Debug.Log("Is harvesting");
-                timer += Time.deltaTime;
-                if (timer > timeToHarvest && ArrowManager.instance.readyToActivate)
+                if (ArrowManager.instance.targetObject != gameObject)
+                    ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, 0), gameObject, 1);
+                //Debug.Log("can harvest");
+                if (Input.GetKey(KeyCode.E))
                 {
-                    var ressourceSpawned = Instantiate(ressourceToHarvest, transform.position, transform.rotation);
-                    ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
-                    isHarvested = true;
-                    //timer = 0;
-                    if (ArrowManager.instance.targetObject == gameObject)
-                        ArrowManager.instance.RemoveArrow();
-                    //gameObject.SetActive(false);
+                    //Debug.Log("Is harvesting");
+                    timer += Time.deltaTime;
+                    if (timer > timeToHarvest && ArrowManager.instance.readyToActivate)
+                    {
+                        var ressourceSpawned = Instantiate(ressourceToHarvest, transform.position, transform.rotation);
+                        //ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
+                        isHarvested = true;
+                        //timer = 0;
+                        if (ArrowManager.instance.targetObject == gameObject)
+                            ArrowManager.instance.RemoveArrow();
+                        //gameObject.SetActive(false);
+                    }
                 }
+                else if (Input.GetKeyUp(KeyCode.E))
+                    timer = 0;
             }
-            else if (Input.GetKeyUp(KeyCode.E))
-                timer = 0;
-        }
-        else
-            if (ArrowManager.instance.targetObject == gameObject)
+            else
+                if (ArrowManager.instance.targetObject == gameObject)
                 ArrowManager.instance.RemoveArrow();
 
-        if (isDead)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            float dist = Vector2.Distance(player.transform.position, transform.position);
-            if (dist < rangeToHarvest)
-                isInRangeToHarvest = true;
-            else
-                isInRangeToHarvest = false;
+            if (isDead)
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                float dist = Vector2.Distance(player.transform.position, transform.position);
+                if (dist < rangeToHarvest)
+                    isInRangeToHarvest = true;
+                else
+                    isInRangeToHarvest = false;
+            }
         }
     }
 
-    public void Death()
+    public void Death(float gravityScale)
     {
         behaviorScript.enabled = false;
         foreach (MonoBehaviour script in scripts)
@@ -119,10 +128,10 @@ public class CreatureDeath : MonoBehaviour
         }
         if (species.Contains(gameObject))
             species.Remove(gameObject);
-        ToggleRagdoll(true, isLineRenderer);
+        ToggleRagdoll(true, isLineRenderer, gravityScale);
     }
 
-    public void ToggleRagdoll(bool ragdollOn, bool lineRenderer)
+    public void ToggleRagdoll(bool ragdollOn, bool lineRenderer, float gravityScale = 1)
     {
         foreach (var anim in creatureAnimators)
         {
@@ -153,8 +162,14 @@ public class CreatureDeath : MonoBehaviour
         foreach (var rb in rbs)
         {
             rb.simulated = ragdollOn;
+            if (ragdollOn)
+                rb.gravityScale = gravityScale;
         }
         foreach (var limb in limbs)
+        {
+            limb.weight = ragdollOn ? 0 : 1;
+        }
+        foreach (var limb in longLimbs)
         {
             limb.weight = ragdollOn ? 0 : 1;
         }
@@ -171,7 +186,7 @@ public class CreatureDeath : MonoBehaviour
 
     bool CanExtract()
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().objectInRightHand != null)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().objectInRightHand != null && !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().isUsingMultiTool)
             return GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().objectInRightHand.GetComponent<InventoryItem>().itemData.itemName == "ADN Gun" && !isExtracted && isDead && isInRangeToHarvest;
         else
             return false;

@@ -34,24 +34,43 @@ public class Planters : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (!player.farmingIsOpen)
         {
-            if (isInRange && ArrowManager.instance.readyToActivate)
+            if (Input.GetKey(KeyCode.E))
             {
-                if (!player.inventoryOpen)
+                if (ArrowManager.instance.targetObject == gameObject)
+                {
+                    if (isInRange && ArrowManager.instance.readyToActivate)
+                    {
+                        if (!player.inventoryOpen)
+                        {
+                            player.ShowOrHideInventoryNoButtons();
+                        }
+                        if (!player.farmingIsOpen)
+                        {
+                            player.ShowOrHideFarming(true);
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (player.inventoryOpen && player.farmingIsOpen)
                 {
                     player.ShowOrHideInventoryNoButtons();
-                }
-                if (!player.farmingIsOpen)
-                {
                     player.ShowOrHideFarming(true);
                 }
             }
         }
 
-        if (hasAPlant && thePlant == null && growthIndex >= timeToGrow)
+        if (hasAPlant && growthIndex >= timeToGrow && thePlant.GetComponent<HarvestableRessourceNode>().isHarvested)
         {
             hasAPlant = false;
+            Destroy(thePlant);
+            plantToGrow = null;
             growLight.SetActive(false);
         }
 
@@ -64,7 +83,8 @@ public class Planters : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isInRange = true;
-        ArrowManager.instance.PlaceArrow(transform.position, "PLANT", new Vector2(0, 1), gameObject, 1);
+        if (!hasAPlant)
+            ArrowManager.instance.PlaceArrow(transform.position, "PLANT", new Vector2(-0.35f, -8), gameObject, 1);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -76,7 +96,7 @@ public class Planters : MonoBehaviour
 
     public void Plant()
     {
-
+        growthIndex = 0;
         switch (farming.farmingSlot.GetItem(0, 0).itemData.itemName)
         {
             case "Infpisum Pine":
@@ -103,7 +123,7 @@ public class Planters : MonoBehaviour
     {
         if (hasAPlant)
         {
-            if (growthIndex < maxRessource)
+            if (growthIndex < maxRessource + (timeToGrow - 1))
             {
                 growthIndex++;
             }

@@ -12,11 +12,12 @@ public class CreatureUnderwater : MonoBehaviour
     [SerializeField] float initialAngularDrag;
 
     Rigidbody2D rb;
-    bool isUnderwater;
+    public bool isUnderwater;
 
     public bool isAWaterCreature;
     [SerializeField] float maxOxygen = 40;
     [SerializeField] float currentOxygen;
+    [SerializeField] float oxygenDepleteRate = 1;
 
 
     private void Start()
@@ -30,12 +31,22 @@ public class CreatureUnderwater : MonoBehaviour
 
     private void Update()
     {
+        if (!isAWaterCreature)
+        {
+            currentOxygen -= Time.deltaTime * oxygenDepleteRate;
+        }
 
+        if (currentOxygen <= 0)
+        {
+            GetComponent<CreatureHealth>().currentHp -= 0.01f;
+        }
     }
 
     void GoUnderwater(bool isTrue)
     {
         isUnderwater = isTrue;
+        if (isAWaterCreature)
+            GetComponent<CreatureState>().isFlying = isTrue;
         if (isTrue)
         {
             rb.gravityScale = underWaterGravityScale;

@@ -204,6 +204,10 @@ public class GameManager : MonoBehaviour
         {
             planters[i].Grow();
         }
+        for (int i = 0; i <= enclosure.Count - 1; i++)
+        {
+            enclosure[i].Grow();
+        }
 
         for (int i = 0; i <= teleporter.Count - 1; i++)
         {

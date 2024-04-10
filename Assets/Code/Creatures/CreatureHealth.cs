@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreatureHealth : MonoBehaviour
 {
     [SerializeField] float maxHp;
-    [SerializeField] float currentHp;
+    public float currentHp;
     [SerializeField] float lowHpThreshold;
     [SerializeField] float healthRegenRate = 0.5f;
 
@@ -27,7 +27,7 @@ public class CreatureHealth : MonoBehaviour
     {
         if (currentHp <= 0)
         {
-            GetComponent<CreatureDeath>().Death();
+            GetComponent<CreatureDeath>().Death(GetComponent<Rigidbody2D>().gravityScale);
             GetComponent<CreatureDeath>().isDead = true;
         }
 

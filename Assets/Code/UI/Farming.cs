@@ -19,4 +19,9 @@ public class Farming : MonoBehaviour
     {
         RoomManager.instance.currentRoom.GetComponent<RoomInfo>().interactiveObject.GetComponent<Planters>().Plant();
     }
+
+    public void Clone()
+    {
+        RoomManager.instance.currentRoom.GetComponent<RoomInfo>().interactiveObject.GetComponent<Enclos>().Clone();
+    }
 }
