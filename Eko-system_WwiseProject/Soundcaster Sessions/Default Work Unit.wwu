@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{DA8CDA71-7581-417E-9CC0-9C6E2388609E}" SchemaVersion="110">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{DA8CDA71-7581-417E-9CC0-9C6E2388609E}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{DA8CDA71-7581-417E-9CC0-9C6E2388609E}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="New Soundcaster Session" ID="{74E969A7-5167-4C6F-8481-02A77151A6AA}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="LIF_Moustique_Passif" ID="{AC90C3F8-FDF0-4F92-80DC-ACB6920D5F65}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="LIF_Moustique_Degat" ID="{06EDFFDD-97DF-4E3D-AC18-FAB9E2D3879A}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="LIF_PlanteCarnivore_Passif_L1" ID="{C9CFF5BA-533C-4BB2-8444-6EF9DCF710DE}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="LIF_PlanteCarnivore_Passif_L2" ID="{6106F6BF-5C8C-4F97-91EB-6A34F7A1E7A2}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="SC_PlanteCarnivore" ID="{448474FD-54F9-42FF-BF8C-3CF9182EE4C4}"/>
+							<Value>-48</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="PLY_Sante" ID="{6852CAED-DFBD-4967-BE2D-E11663A50975}"/>
+							<Value>0</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>

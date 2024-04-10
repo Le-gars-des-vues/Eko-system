@@ -31,6 +31,11 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -92,6 +97,13 @@
 								</BlendContainer>
 								<BlendContainer Name="LIF_Rhinortue_Attaque" ID="{DAFEDF0B-C9EA-4729-BD9B-C2B545B04EBE}" ShortID="982987941">
 									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{2F73E85A-5A34-4611-AFB8-6A14FFA7C818}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -105,6 +117,11 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>2</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -114,10 +131,260 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="LIF_Rhinortue_Attaque" ID="{A22675E3-AED1-4B58-A274-6876B909B4D8}" ShortID="25001947">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{ED21D038-7D33-4801-9CC9-7DE49B223987}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>200</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{03A7129B-EC3A-4A01-9FFC-16FE7B417D8B}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque" ID="{3F5DD66C-A577-4641-833C-D4E1DC1DD960}" ShortID="835662171">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{D86D74A1-B9E6-4AB6-BAE6-2860357082B5}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{DB7F7747-83D9-4BCE-8E55-BF144A4B46CB}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.119601308139533"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.119601308139533"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.119601308139536"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.3920261627907"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="288099723"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{DB7F7747-83D9-4BCE-8E55-BF144A4B46CB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_01" ID="{A02AFDD1-8DB7-492C-A348-7AC3ACCBE634}" ShortID="288987958">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{D32251F7-B34C-4187-80E0-FA0612EE20DB}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{E2130DA9-28EE-4341-86E1-9E8B9B76E445}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.425590523648034"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="2.99810855244325"/>
+																<Property Name="TrimEnd" Type="Real64" Value="5.39013471523394"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="748046191"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{E2130DA9-28EE-4341-86E1-9E8B9B76E445}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_07" ID="{8908B786-EF91-4348-AA28-D7B57DB24DE4}" ShortID="209495160">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{09F38B16-4826-417A-91AD-4F9C97B9A9C1}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{9914508D-CFC8-4047-8AB6-D2D148EEC416}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.425590523648034"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="23.0911283198851"/>
+																<Property Name="TrimEnd" Type="Real64" Value="25.8419584070944"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="495962914"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{9914508D-CFC8-4047-8AB6-D2D148EEC416}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_11" ID="{F8B4269A-EC57-478D-B1D8-EEA72737E7A4}" ShortID="898322323">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{7FA3AA3A-8A7F-4BD9-B435-E4041F11BB34}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.425590523648034"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="41.150925848955"/>
+																<Property Name="TrimEnd" Type="Real64" Value="43.6625533198852"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1007858372"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{7FA3AA3A-8A7F-4BD9-B435-E4041F11BB34}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_12" ID="{07274E4B-248A-43A3-AD6C-DC0787AA6CCA}" ShortID="212737658">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{44D7BFA5-9E97-48C3-AB6E-84D4E600B4B0}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.425590523648034"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="45.4565729419782"/>
+																<Property Name="TrimEnd" Type="Real64" Value="48.3270043373271"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="418054284"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{44D7BFA5-9E97-48C3-AB6E-84D4E600B4B0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_13" ID="{600E8E76-3B85-4221-89D5-5DA42F753DD6}" ShortID="526250482">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{36DB456E-43F7-4421-80E8-3EB412153BFD}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.425590523648034"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="49.0365363372093"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1029227583"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{36DB456E-43F7-4421-80E8-3EB412153BFD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_Rhinortue_Degat" ID="{8AF57E5B-B7A4-4BAA-9254-029D4999B299}" ShortID="726177426">
 									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{0CB43992-3F62-4DAB-9C77-9C535CEC9D30}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>300</Value>
+											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{2B532057-21D2-4EF7-B569-71EFBF301C4A}">
@@ -130,6 +397,11 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -141,6 +413,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="RhinortueAttaque_PH" ID="{67436A03-F531-4BD7-8686-C8CADB991F90}" ShortID="465173962">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -162,10 +441,674 @@
 												<ActiveSource Name="RhinortueAttaque_PH" ID="{64A4E69D-D9B2-400E-A3D2-ECBFA366633A}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Moustique_Degat_G" ID="{5364262D-9B99-40B8-89A2-062A96421697}" ShortID="195377376">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{AB2B201E-4288-49F3-886E-05921F2A17DB}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-660</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{9CE3CDB5-A8E4-4106-8693-77CB951C0191}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-20</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="166526-Bullet-Hit-Body-Flesh_09" ID="{CD013A6F-7F8E-4A77-90F8-DCB4D45C51C5}" ShortID="705532602">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{EC08BFE2-378C-4A81-9DED-CE1EF0B787A6}">
+															<Language>SFX</Language>
+															<AudioFile>166526-Bullet-Hit-Body-Flesh_09.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="665190911"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{EC08BFE2-378C-4A81-9DED-CE1EF0B787A6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166542-Bullet-Hit-Body-Flesh_06" ID="{B25B8C65-7198-4C67-8CAC-090644744EB2}" ShortID="247606502">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{EB8DA9BC-0562-45CD-9FC4-9D2B04F81A3D}">
+															<Language>SFX</Language>
+															<AudioFile>166542-Bullet-Hit-Body-Flesh_06.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="891285907"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{EB8DA9BC-0562-45CD-9FC4-9D2B04F81A3D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166547-Bullet-Hit-Body-Flesh_07" ID="{3403E17E-C94A-4DF9-B19F-F51145BA6F57}" ShortID="183965689">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{7E759324-4493-4BB9-99AC-BD960803C047}">
+															<Language>SFX</Language>
+															<AudioFile>166547-Bullet-Hit-Body-Flesh_07.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="176342500"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{7E759324-4493-4BB9-99AC-BD960803C047}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166553-Bullet-Hit-Body-Flesh_05" ID="{2E28C108-5FE2-49F2-AB56-2239BA6873BC}" ShortID="328125114">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{72874E6E-2C81-4299-BE29-AEC14C6F117C}">
+															<Language>SFX</Language>
+															<AudioFile>166553-Bullet-Hit-Body-Flesh_05.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758217916"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{72874E6E-2C81-4299-BE29-AEC14C6F117C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166559-Bullet-Hit-Body-Flesh_14" ID="{987A22D8-165C-41AB-BBBF-7420ED534E3D}" ShortID="816857269">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{69D3F61B-21AA-4887-B3BA-2A3115DAA4DB}">
+															<Language>SFX</Language>
+															<AudioFile>166559-Bullet-Hit-Body-Flesh_14.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="502963919"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{69D3F61B-21AA-4887-B3BA-2A3115DAA4DB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166573-Bullet-Hit-Body-Flesh_16" ID="{F07B322F-7BB2-4754-B419-6BB8BF488CA5}" ShortID="274243348">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{2DDEAB93-8BF9-45D8-BB12-D6907546C5B2}">
+															<Language>SFX</Language>
+															<AudioFile>166573-Bullet-Hit-Body-Flesh_16.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="559970004"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{2DDEAB93-8BF9-45D8-BB12-D6907546C5B2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166582-Bullet-Hit-Body-Flesh_11" ID="{84066EF7-ADF9-474E-8C66-3AA9D17AD3B2}" ShortID="548173515">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{D202806D-0F0F-4DBA-AD07-3FB4EC267BE8}">
+															<Language>SFX</Language>
+															<AudioFile>166582-Bullet-Hit-Body-Flesh_11.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="588728228"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{D202806D-0F0F-4DBA-AD07-3FB4EC267BE8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166588-Bullet-Hit-Body-Flesh_10" ID="{B76D385F-761D-4DF5-AC6A-52F8E6255A27}" ShortID="835742699">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{12E7FE29-AA5E-4628-AFA7-6228A40BA3C9}">
+															<Language>SFX</Language>
+															<AudioFile>166588-Bullet-Hit-Body-Flesh_10.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="352848444"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{12E7FE29-AA5E-4628-AFA7-6228A40BA3C9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166597-Bullet-Hit-Body-Flesh_02" ID="{7F6C5C26-F4AB-4460-B2B2-0653C77A2D1F}" ShortID="704666223">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{8B130623-C1F3-4B8F-9F21-C0B7CCA6FE56}">
+															<Language>SFX</Language>
+															<AudioFile>166597-Bullet-Hit-Body-Flesh_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="474658866"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{8B130623-C1F3-4B8F-9F21-C0B7CCA6FE56}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166607-Bullet-Hit-Body-Flesh_01" ID="{6C4F5008-1B5A-435F-AAB9-B3D66D051C88}" ShortID="185399717">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{F84C0CFE-6512-49B8-90E4-BE95C0CA6DB0}">
+															<Language>SFX</Language>
+															<AudioFile>166607-Bullet-Hit-Body-Flesh_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="586588224"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{F84C0CFE-6512-49B8-90E4-BE95C0CA6DB0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_Rhinortue_Passif_" ID="{9B471C11-EA36-4929-B7E0-31F113B307DA}" ShortID="977310652">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{EDB59E9F-1884-4EAA-A556-6333F0D19217}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="6"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{922B96BA-21B6-4619-93B5-4EE3DB5543FD}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="4">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{268DF745-549C-4DE8-9D8A-9E9DE55FB0DA}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="4"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{E6640E44-196B-4AF3-9F12-2BE06222282B}">
+																<PropertyList>
+																	<Property Name="Min" Type="Real64" Value="-12"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Rhinortue_Passif" ID="{EBEFB4C9-1C57-468C-BD5F-B3F668782EA8}" ShortID="355975780">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{DA905AE6-5DCA-4C2E-9CC9-2D223AD53285}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>660</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{37E10740-20FE-48D0-8777-88C72A3754ED}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-9</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{E851B4B9-5D6A-4AD1-A306-9D072C964A20}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0678452331891657"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="111.158005938241"/>
+																<Property Name="TrimEnd" Type="Real64" Value="112.782319819948"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="368411354"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{E851B4B9-5D6A-4AD1-A306-9D072C964A20}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_01" ID="{E22C2ABF-80DB-403E-89A7-4434A27075EF}" ShortID="27915363">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{6DF247B2-3978-472A-8E76-32C2142F0C54}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{133BBDDF-A586-4A65-A5EB-89C28A447BBE}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{701B1774-C2D7-46E9-BDFC-266E13E68013}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0642708772588207"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="129.712058930298"/>
+																<Property Name="TrimEnd" Type="Real64" Value="131.291389157675"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="525034644"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{701B1774-C2D7-46E9-BDFC-266E13E68013}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_02" ID="{8D26F49F-C70A-47B6-AE66-9539138D168A}" ShortID="856693222">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{82B15A45-0A96-4F5D-833E-85E658153BE6}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{DCBF0EE8-0174-4614-A95E-8BADF1EC22C8}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{739283B4-2802-4AF9-89B5-C136075F6C8D}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.198606633537599"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="144.395218425473"/>
+																<Property Name="TrimEnd" Type="Real64" Value="145.749763159185"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="983263398"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{739283B4-2802-4AF9-89B5-C136075F6C8D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_03" ID="{B53851E3-2A7B-4B33-8345-F771192DEE5A}" ShortID="382194464">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{D7B4B008-B2FA-47B4-965D-EA1C68640A7A}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{19B254BC-AB38-4553-B00B-64F3BE97B13B}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{9202B031-E578-4D71-904D-C8ABE977E6B2}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0543009175587557"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="21.6229267568192"/>
+																<Property Name="TrimEnd" Type="Real64" Value="23.2585103286789"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="862151889"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{9202B031-E578-4D71-904D-C8ABE977E6B2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_04" ID="{22CF9AFC-119F-4AE6-B011-EC9272227504}" ShortID="503296464">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{1971ACE2-A8BA-4F73-95DD-5483A52B121E}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{1F92FA16-B62E-443B-AE68-27D405B01FB9}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{A80594B1-0FD3-4A80-9B68-E93E48A20976}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0557299133453029"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="34.2739574821987"/>
+																<Property Name="TrimEnd" Type="Real64" Value="35.5293181242604"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="122946283"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{A80594B1-0FD3-4A80-9B68-E93E48A20976}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_05" ID="{49BBC577-7D34-4C9E-9570-5C86543CD02E}" ShortID="900408788">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{C8EDC048-094E-4392-8465-FFADB70040F9}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{62811579-6823-4B05-BC50-68B0280C8386}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{89885252-F271-4CCB-B0D6-809FEF332ABD}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.119427951959642"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="85.6966976658225"/>
+																<Property Name="TrimEnd" Type="Real64" Value="86.8314211786009"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="989129932"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{89885252-F271-4CCB-B0D6-809FEF332ABD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_07" ID="{1C5BFC72-F904-456E-A308-57262B6C30CE}" ShortID="615250977">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{F146BBD2-3593-4353-A74E-399E0CCF015E}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{C4B36849-D411-419A-B7F7-297D59D60B30}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{3B2D4AF7-E84F-4D34-8BD3-07EB209DE0D1}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0183914195050698"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.1471278390584"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="127.828782383926"/>
+																<Property Name="TrimEnd" Type="Real64" Value="128.474949041762"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="677004657"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{3B2D4AF7-E84F-4D34-8BD3-07EB209DE0D1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_Rhinortue_Mort" ID="{992DAD80-6046-455F-A6F7-DEEF9DDF68FA}" ShortID="771837696">
 									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{AD9C2867-8706-4FFD-868D-4A5AB5749E89}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -190,6 +1133,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="RhinortueMort_PH" ID="{EC4CB53B-D477-4651-AB6C-A4A1C70EE42C}" ShortID="191304757">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -211,18 +1161,747 @@
 												<ActiveSource Name="RhinortueMort_PH" ID="{4B22A18A-55E7-48CE-ACCB-BD71414902CE}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Rhinortue_Mort" ID="{3884FD8C-A080-4A73-956A-ADD6E52D501B}" ShortID="94955017">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>0.1</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1FEA1D76-77AB-4EC1-8DA0-B04241DA08E8}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Rhinortue_Mort" ID="{69ECA806-EA27-4118-B4BB-B128F30BAD68}" ShortID="488159402">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{31AAD893-128A-4147-A94D-3F5D5A4B2C61}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Mort" ID="{F467AA50-5FD1-49D0-800B-9436B429F934}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.294019864341085"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.08787349806202"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.499833769379845"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.94053110465116"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Mort.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="893658050"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Mort" ID="{F467AA50-5FD1-49D0-800B-9436B429F934}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Mort_01" ID="{FC500F17-8A21-48AC-AF27-1D6AC61576C6}" ShortID="461142824">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{36668C9C-4A77-4361-B91F-FDC08DD84112}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Mort" ID="{98F04FD6-FC64-4840-90C6-9FF4D4ED99E0}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.235215891472868"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.08787349806202"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="3.36111129130967"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.49850392441861"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Mort.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="401200787"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Mort" ID="{98F04FD6-FC64-4840-90C6-9FF4D4ED99E0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Mort_03" ID="{8E9E8DAA-4413-4198-B334-ACF152C87252}" ShortID="883738193">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{4F092B59-4A86-45E8-8431-9C4502A9AAE9}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-7</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Mort" ID="{020CB5C9-1E2A-4B76-892E-88D51A0DCF04}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0588039728682164"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.08787349806202"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="7.00695760913913"/>
+																<Property Name="TrimEnd" Type="Real64" Value="8.14435024224806"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Mort.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="858826766"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Mort" ID="{020CB5C9-1E2A-4B76-892E-88D51A0DCF04}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Mort_04" ID="{9EE59F90-0129-4769-B470-F7ABB501187D}" ShortID="13016286">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{A8A5C8D5-C4C3-4FB7-BFAA-ADA45857AC31}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Mort" ID="{318CBDBE-7329-4DB5-BD1C-D81927934E73}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.147009932170543"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.08787349806202"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="8.93195446589692"/>
+																<Property Name="TrimEnd" Type="Real64" Value="10.5259111434108"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Mort.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="592501513"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Mort" ID="{318CBDBE-7329-4DB5-BD1C-D81927934E73}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_Rhinortue_Attaque" ID="{20AB1B68-C4F4-4111-AB25-531CC9843DF7}" ShortID="563900540">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D18839D8-E71B-4C3D-AC42-E4A09B87F80D}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_02" ID="{5C7E78B2-8F23-4065-A8A5-D864C2511DBC}" ShortID="836400161">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{B97BCBD0-15C2-40EF-A1F4-69E1BEA90D3F}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{011D575A-342B-46D8-BCB7-01BFDDDBB5B5}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.151445829917597"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="6.41927062512847"/>
+																<Property Name="TrimEnd" Type="Real64" Value="8.14096480244324"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="904958668"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{011D575A-342B-46D8-BCB7-01BFDDDBB5B5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_03" ID="{3C9F4EA2-2083-46E6-BC71-5C3798064B11}" ShortID="559246481">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{BAB005DE-64B8-4266-8F1E-C0785144170A}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{4558557F-889B-457E-A900-14C4D122B78A}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.187279323330984"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="9.57618050011765"/>
+																<Property Name="TrimEnd" Type="Real64" Value="11.9682066629083"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="532936045"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{4558557F-889B-457E-A900-14C4D122B78A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_06" ID="{1F96AB66-9E3F-463B-BA9D-6FA20181CED8}" ShortID="26797211">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{C821794C-AB8B-4AA9-BFD6-A2977D768BF5}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{46B0241F-F714-4C57-954B-69211DD567F4}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.118115186919348"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="19.9301657205673"/>
+																<Property Name="TrimEnd" Type="Real64" Value="22.612723087327"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="652709155"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{46B0241F-F714-4C57-954B-69211DD567F4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_08" ID="{D171C877-E9B0-4B0D-9058-2AEDBD5D2E23}" ShortID="921120347">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{DC111FF1-4E0B-4948-9CA6-20AC311E14B6}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{D1294A48-7873-4A4D-9AB6-E48F9D9D4731}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.123832703511419"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="26.4137100663007"/>
+																<Property Name="TrimEnd" Type="Real64" Value="27.755579337327"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="307413991"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{D1294A48-7873-4A4D-9AB6-E48F9D9D4731}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_09" ID="{8D5C19EB-F4A3-4F29-943C-ED924709E8E6}" ShortID="965254474">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{837D57D3-F7F8-446A-AC5E-E15823FAE19F}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{BFBF6BCE-7DF2-4C49-951B-4FB115A155E2}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0598557857847417"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="29.3305565516963"/>
+																<Property Name="TrimEnd" Type="Real64" Value="31.7024225059317"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="46823762"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{BFBF6BCE-7DF2-4C49-951B-4FB115A155E2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Degat_Attaque_10" ID="{F1FA3199-AA9D-4A86-BAB2-110F76FA55E8}" ShortID="567325380">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{281A058A-519C-45DB-8B2D-653DC326EDEA}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Degat_Attaque" ID="{2CBDEC54-7C52-4D25-9EB0-A8F58FD32B45}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0979126232120897"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.10653536148489"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="32.9775486457571"/>
+																<Property Name="TrimEnd" Type="Real64" Value="34.9316578256991"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Degat_Attaque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="3158499"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Degat_Attaque" ID="{2CBDEC54-7C52-4D25-9EB0-A8F58FD32B45}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_Moustique_Degat_G" ID="{E2B3980E-772C-4F65-ADE5-5E36878FCF6D}" ShortID="764291458">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{F9F1A1A4-91D5-43DB-A674-32939E5BADFF}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-660</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{5BF0D4DF-872F-4D6C-9C0D-8C5D32571912}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-20</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="166526-Bullet-Hit-Body-Flesh_09" ID="{57706515-AF7D-487F-8D55-EC7660F6BFE5}" ShortID="678376182">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{93DCDFA4-67A3-4E90-9883-BAAD6DFE27F2}">
+															<Language>SFX</Language>
+															<AudioFile>166526-Bullet-Hit-Body-Flesh_09.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="665190911"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{93DCDFA4-67A3-4E90-9883-BAAD6DFE27F2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166542-Bullet-Hit-Body-Flesh_06" ID="{61027586-7C30-40B8-A0F0-7201DD23BD71}" ShortID="776519959">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{FFE4B6A7-D2E0-4EA6-BD06-6E3CD35B34CD}">
+															<Language>SFX</Language>
+															<AudioFile>166542-Bullet-Hit-Body-Flesh_06.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="891285907"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{FFE4B6A7-D2E0-4EA6-BD06-6E3CD35B34CD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166547-Bullet-Hit-Body-Flesh_07" ID="{F1979985-0D0A-48E5-8B90-988476610790}" ShortID="591479027">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{55DDB084-4D25-4604-BB73-992AC0792A72}">
+															<Language>SFX</Language>
+															<AudioFile>166547-Bullet-Hit-Body-Flesh_07.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="176342500"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{55DDB084-4D25-4604-BB73-992AC0792A72}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166553-Bullet-Hit-Body-Flesh_05" ID="{DEA41BC2-B43E-4C4F-8B29-5D414D0A8960}" ShortID="157197856">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{498332D4-2CA0-42E3-86AF-5065A1EB412F}">
+															<Language>SFX</Language>
+															<AudioFile>166553-Bullet-Hit-Body-Flesh_05.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758217916"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{498332D4-2CA0-42E3-86AF-5065A1EB412F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166559-Bullet-Hit-Body-Flesh_14" ID="{CCBBC036-73A8-43C1-A29E-84DA2086F1D8}" ShortID="165934046">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{5BA6D0AA-D798-48C5-A734-406CCFAEB7CF}">
+															<Language>SFX</Language>
+															<AudioFile>166559-Bullet-Hit-Body-Flesh_14.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="502963919"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{5BA6D0AA-D798-48C5-A734-406CCFAEB7CF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166573-Bullet-Hit-Body-Flesh_16" ID="{C2557626-9160-4E84-A263-D7AC6A286D56}" ShortID="646008311">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{42DCD775-89E8-4316-824E-EDED1F5A9FC3}">
+															<Language>SFX</Language>
+															<AudioFile>166573-Bullet-Hit-Body-Flesh_16.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="559970004"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{42DCD775-89E8-4316-824E-EDED1F5A9FC3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166582-Bullet-Hit-Body-Flesh_11" ID="{EC1C09AF-FA6B-4019-A810-3F8678F36F81}" ShortID="646774842">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{75D83629-72DD-4662-8948-18582ECD4CE7}">
+															<Language>SFX</Language>
+															<AudioFile>166582-Bullet-Hit-Body-Flesh_11.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="588728228"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{75D83629-72DD-4662-8948-18582ECD4CE7}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166588-Bullet-Hit-Body-Flesh_10" ID="{B170228F-49C8-40A6-AB1E-ED9309156E05}" ShortID="1069688735">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{CC685B3E-1374-4444-B93F-CA3EDC9DED1B}">
+															<Language>SFX</Language>
+															<AudioFile>166588-Bullet-Hit-Body-Flesh_10.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="352848444"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{CC685B3E-1374-4444-B93F-CA3EDC9DED1B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166597-Bullet-Hit-Body-Flesh_02" ID="{36F7E77A-7A90-4A73-9C2B-24F9A55F1649}" ShortID="375541107">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{0CC9C8A4-9BB4-4C3C-A00D-449590EBF522}">
+															<Language>SFX</Language>
+															<AudioFile>166597-Bullet-Hit-Body-Flesh_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="474658866"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{0CC9C8A4-9BB4-4C3C-A00D-449590EBF522}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166607-Bullet-Hit-Body-Flesh_01" ID="{61724495-27F0-464A-860D-E06588CFCAF9}" ShortID="210266734">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{462FCDC7-EE2E-422A-A02D-AA39F30B2058}">
+															<Language>SFX</Language>
+															<AudioFile>166607-Bullet-Hit-Body-Flesh_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="586588224"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{462FCDC7-EE2E-422A-A02D-AA39F30B2058}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_Rhinortue_Passif" ID="{5C15D8CB-A124-4AAC-9D4F-4543626E6723}" ShortID="834253821">
 									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{31A0EAB5-0E8D-4FEF-A2E8-DBE530C8E034}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{3DC1462F-2F07-4D20-BACC-D60F32F1BA53}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="200"/>
-															<Property Name="Min" Type="Real64" Value="-200"/>
+															<Property Name="Max" Type="Real64" Value="100"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -239,6 +1918,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="RhinortuePassif_PH" ID="{1E77712A-6D2D-4EC5-92DA-65C291FBCA09}" ShortID="388859554">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -260,10 +1946,472 @@
 												<ActiveSource Name="RhinortuePassif_PH" ID="{EEC0E395-4F3E-4137-BBEB-8262357D2ACD}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Rhinortue_Passif_" ID="{78B8FC4E-3938-4A17-B0A4-C328377A1B34}" ShortID="601470012">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>0.5</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{6FF83C45-2DDC-43F8-A2CA-89595B261D20}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="6"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{83814161-2342-489F-9349-3A055E0205CB}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2.5">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{A8837D74-BF35-45B4-B2B0-50AA154CCB4D}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="7"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-4</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{6A0F14D8-EAA3-4195-BAE7-50FEA4A02B17}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Min" Type="Real64" Value="-12"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Rhinortue_Passif" ID="{8332ECE1-2E9C-4B20-B563-4627CEB8EAD4}" ShortID="237875614">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{95275CCB-1C15-46D4-92AF-B013FCBE9915}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{53A03E4F-6353-4A1E-B020-3D78F94E6C0E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.916479612515897"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.21432046843993"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1031561387"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{53A03E4F-6353-4A1E-B020-3D78F94E6C0E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_01" ID="{6F4C6997-AD42-471B-A086-673771D1C9B8}" ShortID="91498886">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{D10470FA-072F-4DFF-847B-FA773E49BE01}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{F5D2247F-22D7-4620-95A8-C341922D6F83}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.916479612515897"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.21432046843993"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1031561387"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{F5D2247F-22D7-4620-95A8-C341922D6F83}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_02" ID="{9A271921-CADC-42C9-8A51-1DE6FB518B01}" ShortID="99813523">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{2743ACA8-5B5F-4223-91A4-1F2E4778D68B}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{F9085472-09D5-4DD0-BB54-188A086E8462}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="9.93168498921322"/>
+																<Property Name="TrimEnd" Type="Real64" Value="15.6151840310442"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="364837828"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{F9085472-09D5-4DD0-BB54-188A086E8462}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_03" ID="{7CA37BF3-7D42-4782-80BA-AD4F78B8C526}" ShortID="411688170">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{3811E4EB-1556-4C85-9C6A-08D4E7791520}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{C7A32E74-3807-4CF6-810C-B75B836A9436}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="18.5549249147498"/>
+																<Property Name="TrimEnd" Type="Real64" Value="23.2585103286789"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="861928541"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{C7A32E74-3807-4CF6-810C-B75B836A9436}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_04" ID="{10D73580-10D5-475D-A4D9-6299EB6A8AB9}" ShortID="484636292">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{98EEDDEA-73F4-46E6-ACB8-CFA6C9A64779}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{B72DDC9C-61BB-4C86-A28A-7922DBD701F6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="33.4496120588585"/>
+																<Property Name="TrimEnd" Type="Real64" Value="37.369266570466"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="595108532"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{B72DDC9C-61BB-4C86-A28A-7922DBD701F6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_05" ID="{55601D97-63DF-4819-94FB-E6EB9AC339F9}" ShortID="1045926992">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{8A1C354C-052D-4A0A-92B4-7F604080B13F}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{AB338F14-507C-4C5F-857C-DC71EF08ADBC}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="61.4751418168523"/>
+																<Property Name="TrimEnd" Type="Real64" Value="66.7666754075225"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="186410922"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{AB338F14-507C-4C5F-857C-DC71EF08ADBC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_06" ID="{250F1EE8-0C1C-48AA-976D-AFA8B3443541}" ShortID="45350644">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{D3BEB398-013A-4DE2-8C22-8F19F40C81DA}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{26DA0077-81F3-4BCD-976C-6D650A4473B5}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{0A2C5462-37C4-4B12-B752-069889D41376}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="84.4051207097564"/>
+																<Property Name="TrimEnd" Type="Real64" Value="89.1087061236854"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="434912660"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{0A2C5462-37C4-4B12-B752-069889D41376}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_07" ID="{11B88EF7-0085-408E-8E58-3976E936E417}" ShortID="507061511">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{0833A078-9BD3-4CA4-911F-CE3274399F72}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{2B7106F8-DC81-4803-8A7D-42CDF71613F9}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="102.04356601199"/>
+																<Property Name="TrimEnd" Type="Real64" Value="106.355185974759"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="263958079"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{2B7106F8-DC81-4803-8A7D-42CDF71613F9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_08" ID="{3A837CCC-69DE-47BD-BA97-4DE6A41649F1}" ShortID="571540109">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{90B75740-9586-46AB-B88A-AFA494C40F0E}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{A6B992BE-42A2-41EF-A6B6-6F4A3451B828}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="135.752594811815"/>
+																<Property Name="TrimEnd" Type="Real64" Value="141.240111128066"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="399086820"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{A6B992BE-42A2-41EF-A6B6-6F4A3451B828}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_09" ID="{8F71834F-E334-4A60-BC50-4385269EF94D}" ShortID="286616112">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{9B057687-8F8A-48B1-BFA6-F4FDB0AC6EBF}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{94364D05-3BE9-4F9B-B5E3-832E1E3165FA}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.422990590391952"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="143.39592110945"/>
+																<Property Name="TrimEnd" Type="Real64" Value="148.8834374257"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="356887938"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{94364D05-3BE9-4F9B-B5E3-832E1E3165FA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_Rhinortue_Saut" ID="{F11660B0-3F6A-4CA3-9C34-B6DD93090C39}" ShortID="732556913">
 									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{3326014C-F34D-4B6F-8B23-D1731C247D9F}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -288,6 +2436,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="RhinortueSaut_PH" ID="{B83D8BDE-D544-4649-9FAC-F76E80875FD6}" ShortID="106322991">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -309,6 +2464,488 @@
 												<ActiveSource Name="RhinortueSaut_PH" ID="{BFF463E3-A5F9-44FA-BAE2-AB15593A129F}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Rhinortue_Saut_" ID="{5EFDE0BE-072F-4865-9219-6D7BC386CFCD}" ShortID="672701727">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D9F774AC-4ECC-434D-9441-40884CF49529}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{C7831E73-DBA9-4178-BA4C-52F41E627903}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-14</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Rhinortue_Saut" ID="{38C0D3F6-9282-4D68-8F86-C47ECD3444E5}" ShortID="761955498">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Saut" ID="{04E1C6F9-2AB5-4134-9771-9788F78253F5}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.10422047405537"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.279441267764986"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.464309420989515"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.43643645874119"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Saut.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="912656198"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Saut" ID="{04E1C6F9-2AB5-4134-9771-9788F78253F5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Saut_01" ID="{1BA4A9C5-B934-4F63-AE11-A452DB33E826}" ShortID="117608385">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Saut" ID="{F3859E65-857E-4D35-A725-5032FBB1ACD2}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.10422047405537"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.279441267764986"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="6.96891013824751"/>
+																<Property Name="TrimEnd" Type="Real64" Value="7.93192894573766"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Saut.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="622112506"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Saut" ID="{F3859E65-857E-4D35-A725-5032FBB1ACD2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Saut_02" ID="{2CE40121-5298-40CF-99C8-578CE9A35D26}" ShortID="636424123">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Saut" ID="{5184D09F-3628-4209-9E42-9EA323805294}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.10422047405537"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.279441267764986"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="8.37120068248755"/>
+																<Property Name="TrimEnd" Type="Real64" Value="9.21595402239118"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Saut.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="771853367"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Saut" ID="{5184D09F-3628-4209-9E42-9EA323805294}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Saut_03" ID="{1FE3308F-7A45-46CA-9D6B-DC0748B868C3}" ShortID="300486902">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Saut" ID="{B29D14ED-CE38-421F-9FE6-BBA69BF2B0FA}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.10422047405537"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.279441267764986"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="9.85796656071794"/>
+																<Property Name="TrimEnd" Type="Real64" Value="10.9392508357946"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Saut.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="744714108"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Saut" ID="{B29D14ED-CE38-421F-9FE6-BBA69BF2B0FA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Saut_04" ID="{B71CCCA5-F8A4-4BBC-B664-F6FAC9C99D5B}" ShortID="885080724">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Saut" ID="{F87EDF21-CC43-4821-92AE-3CAB9379BC10}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.10422047405537"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.279441267764986"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="11.6657387081117"/>
+																<Property Name="TrimEnd" Type="Real64" Value="12.6118624488038"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Saut.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="138367406"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Saut" ID="{F87EDF21-CC43-4821-92AE-3CAB9379BC10}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_Rhinortue_Passif_" ID="{302D896B-04A5-4687-9081-D9B5993B85AB}" ShortID="678145864">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>0.2</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{546C82B2-2ACC-46B3-8F00-7F689A29758E}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="6"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>330</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B42AAA9D-292B-4783-820B-E2E171111C49}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="4">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{7201B39D-D9D4-43E0-AC6D-36BA1B2AA488}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="4"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{0A17EFF0-740F-467F-A8E4-50A206232C98}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Min" Type="Real64" Value="-3"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_Rhinortue_Passif_01" ID="{AF384F94-6C77-44E4-A42E-09AECD84D4E3}" ShortID="452579780">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{4A0D1BD6-3BFE-4684-9DBD-A19A873EB561}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{8E4A09C2-AA6C-4E77-908B-490B766A6E9D}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{F6B878D7-4E22-460E-9E93-9CEB68CAD8FF}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0642708772588207"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="129.712058930298"/>
+																<Property Name="TrimEnd" Type="Real64" Value="131.291389157675"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="525034644"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{F6B878D7-4E22-460E-9E93-9CEB68CAD8FF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_03" ID="{F6572514-DA86-4286-9797-F4753D28A1C1}" ShortID="952290511">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{8B389EEE-FDC8-4D08-8DFF-83C2B1CD50F3}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{EE4EC931-A0AC-49AD-A6A5-1B261B6205C2}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{7B05A8C0-FC83-4118-95F5-567C33A9412E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0543009175587557"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="21.6229267568192"/>
+																<Property Name="TrimEnd" Type="Real64" Value="23.2585103286789"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="862151889"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{7B05A8C0-FC83-4118-95F5-567C33A9412E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_04" ID="{BF4A3E4A-C7DB-4684-92F3-ADF1255BEAC7}" ShortID="623983543">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{57CF7C3F-9453-4D98-967A-915C79AB73D6}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{1B57BE1C-2B61-4864-B123-58B66755342F}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{83FE57B3-69B0-4438-B1A7-1BE08BDF99EC}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0557299133453029"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="34.2739574821987"/>
+																<Property Name="TrimEnd" Type="Real64" Value="35.5293181242604"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="122946283"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{83FE57B3-69B0-4438-B1A7-1BE08BDF99EC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_05" ID="{26BE9C12-55BE-4AF5-8FB9-50CB0C6ADC86}" ShortID="905023015">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{CD61BF0A-E84F-4BEE-ABB3-C5ADCBB7179C}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{FEE19D25-DAE4-4720-B997-61D86F44B8C7}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{A520D4D3-8AC0-4E01-AA4D-CF34ADA2BB21}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.119427951959642"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.669735101453925"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="85.6966976658225"/>
+																<Property Name="TrimEnd" Type="Real64" Value="86.8314211786009"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="989129932"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{A520D4D3-8AC0-4E01-AA4D-CF34ADA2BB21}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Rhinortue_Passif_07" ID="{482EBA87-F3B9-4CB6-8FCC-029D72A024DE}" ShortID="717613139">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{5BA16BFB-B164-46AB-98C2-395EAD77C478}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{482701ED-B0CC-4602-8D4F-555F032236F4}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Rhinortue_Passif" ID="{EB9C2DEA-6A3A-4CF3-87BC-041C830EE370}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0183914195050698"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.1471278390584"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="127.828782383926"/>
+																<Property Name="TrimEnd" Type="Real64" Value="128.474949041762"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Rhinortue_Passif.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="677004657"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Rhinortue_Passif" ID="{EB9C2DEA-6A3A-4CF3-87BC-041C830EE370}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<SwitchContainer Name="LIF_Rhinortue_Pas" ID="{4E3BAC92-E520-4C37-BEE9-FC8EB715FF2D}" ShortID="398655215">
@@ -579,6 +3216,11 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -591,6 +3233,7 @@
 							<ChildrenList>
 								<BlendContainer Name="LIF_Moustique_Passif" ID="{AC90C3F8-FDF0-4F92-80DC-ACB6920D5F65}" ShortID="324156928">
 									<PropertyList>
+										<Property Name="BlendBehavior" Type="int16" Value="1"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -603,6 +3246,11 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -650,6 +3298,9 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LIF_Moustique_Passif_L2" ID="{3FB4EE06-594D-4E60-B07E-296C71B4C4CA}" ShortID="472260449">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -678,6 +3329,9 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LIF_Moustique_Passif_L1" ID="{DEAD53ED-285E-4B2D-9322-7CDCF247B65A}" ShortID="911814962">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -721,6 +3375,11 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>10</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -1066,7 +3725,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="LIF_Moustique_Degat_1L2" ID="{FF7B80AB-562B-4D96-B626-4E97E5E0AD06}" ShortID="780302695">
+												<Sound Name="LIF_Moustique_Degat_1L2" ID="{B8F9D0CF-C7EA-4B05-B907-E741BAF6F7C3}" ShortID="738679996">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -1076,19 +3735,25 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LIF_Moustique_Degat_1L2" ID="{16C496CF-B534-4F77-8BAF-CCF1C00AD752}">
+														<AudioFileSource Name="LIF_Moustique_Degat_1L2" ID="{ED74D786-B385-4442-B98D-C6DC1CBA9DAF}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.947410163776494"/>
+																<Property Name="LoopEnd" Type="Real64" Value="1.3721112716763"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.51912319364162"/>
+															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>LIF_Moustique_Degat_1L2.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="668812202"/>
+																<MediaID ID="529164540"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LIF_Moustique_Degat_1L2" ID="{16C496CF-B534-4F77-8BAF-CCF1C00AD752}" Platform="Linked"/>
+														<ActiveSource Name="LIF_Moustique_Degat_1L2" ID="{ED74D786-B385-4442-B98D-C6DC1CBA9DAF}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LIF_Moustique_Degat_2L2" ID="{10777579-FDDF-4F98-9CC0-45C86C1FE0C3}" ShortID="852611504">
+												<Sound Name="LIF_Moustique_Degat_2L2" ID="{97889754-8EF8-4B85-A782-91E2FBB81E61}" ShortID="471213067">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -1098,19 +3763,26 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LIF_Moustique_Degat_2L2" ID="{81F0FE82-0CC5-4975-917E-FEC49DD70098}">
+														<AudioFileSource Name="LIF_Moustique_Degat_2L2" ID="{C597ECA0-4570-4674-A436-5C39E0B4CDE5}">
+															<PropertyList>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.25515775529865"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.65152336223507"/>
+															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>LIF_Moustique_Degat_2L2.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="966657797"/>
+																<MediaID ID="6933992"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LIF_Moustique_Degat_2L2" ID="{81F0FE82-0CC5-4975-917E-FEC49DD70098}" Platform="Linked"/>
+														<ActiveSource Name="LIF_Moustique_Degat_2L2" ID="{C597ECA0-4570-4674-A436-5C39E0B4CDE5}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LIF_Moustique_Degat_3L2" ID="{A85DE64D-7A06-41D8-AD3F-C3AA465083B8}" ShortID="251449499">
+												<Sound Name="LIF_Moustique_Degat_3L2" ID="{DD7B4EE9-ED6A-41F8-8058-59C673EE22D6}" ShortID="551020336">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -1120,19 +3792,25 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LIF_Moustique_Degat_3L2" ID="{DAA92D07-A179-4426-BE87-978D87ADD548}">
+														<AudioFileSource Name="LIF_Moustique_Degat_3L2" ID="{BB06F3E3-A26A-4A20-86CC-BCCC1C996F50}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.710673972382787"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.46733273121387"/>
+															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>LIF_Moustique_Degat_3L2.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="923361211"/>
+																<MediaID ID="277528955"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LIF_Moustique_Degat_3L2" ID="{DAA92D07-A179-4426-BE87-978D87ADD548}" Platform="Linked"/>
+														<ActiveSource Name="LIF_Moustique_Degat_3L2" ID="{BB06F3E3-A26A-4A20-86CC-BCCC1C996F50}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LIF_Moustique_Degat_5L2" ID="{C5613983-4233-4E9E-9B95-039C3D180F00}" ShortID="960752575">
+												<Sound Name="LIF_Moustique_Degat_4L2" ID="{416E86DE-F535-4920-9CDC-817A4BFEF034}" ShortID="557982882">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -1142,38 +3820,52 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LIF_Moustique_Degat_5L2" ID="{C0DF72B3-CA45-4BBC-8BDC-3228EBE26C45}">
-															<Language>SFX</Language>
-															<AudioFile>LIF_Moustique_Degat_5L2.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="150001985"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="LIF_Moustique_Degat_5L2" ID="{C0DF72B3-CA45-4BBC-8BDC-3228EBE26C45}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="LIF_Moustique_Degat_4L2" ID="{AD20012B-EB43-40F9-BC0B-E392702B5D2C}" ShortID="782745322">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="LIF_Moustique_Degat_4L2" ID="{09C3621F-8D18-432A-A1DC-A184D4955AFB}">
+														<AudioFileSource Name="LIF_Moustique_Degat_4L2" ID="{19B1BD22-9793-4BFA-9239-CE03355E2334}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.74442774566474"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="LoopEnd" Type="Real64" Value="0.708240285806038"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.42165020873475"/>
+															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>LIF_Moustique_Degat_4L2.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="67799906"/>
+																<MediaID ID="78276103"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LIF_Moustique_Degat_4L2" ID="{09C3621F-8D18-432A-A1DC-A184D4955AFB}" Platform="Linked"/>
+														<ActiveSource Name="LIF_Moustique_Degat_4L2" ID="{19B1BD22-9793-4BFA-9239-CE03355E2334}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_Moustique_Degat_5L2" ID="{582114A3-C70E-4DAC-83B7-43A0AA70CFDD}" ShortID="606400195">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_Moustique_Degat_5L2" ID="{FE6BF518-E813-48B8-86B1-DC213146F01A}">
+															<PropertyList>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.5682606775851"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.87461857739242"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_Moustique_Degat_5L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="527633345"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_Moustique_Degat_5L2" ID="{FE6BF518-E813-48B8-86B1-DC213146F01A}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
@@ -1199,7 +3891,7 @@
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-16</Value>
+														<Value>-20</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -1450,6 +4142,11 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>10</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -1848,7 +4545,7 @@
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-16</Value>
+														<Value>-20</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -2424,6 +5121,11 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-12</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -2435,6 +5137,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="PlanteCarnivorePassif_PH" ID="{32993CB1-BF11-4C80-838A-7CB2171403D0}" ShortID="674291504">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -2456,6 +5165,558 @@
 												<ActiveSource Name="PlanteCarnivorePassif_PH" ID="{F2287362-ABB5-4B1A-B7E2-C804F240D132}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_PlanteCarnivore_Passif_L1" ID="{C9CFF5BA-533C-4BB2-8444-6EF9DCF710DE}" ShortID="351123834">
+											<PropertyList>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
+												<Property Name="OverrideOutput" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="4"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="SC_PlanteCarnivore" ID="{1F18F4E7-AA6A-4C0B-86CE-3E3F9BACC53E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L1" ID="{106AA085-2A53-4DFE-A07F-B2E447D74598}" ShortID="27283988">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{073F9095-33AB-4FD4-8877-97D7B2105C39}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="5.8830283370619"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="798400265"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{073F9095-33AB-4FD4-8877-97D7B2105C39}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L1_01" ID="{A8EB09B4-74A1-45E6-8992-B0E5727842E1}" ShortID="560346302">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{49889372-C313-48A7-B743-E8D1E9B3728C}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="5.60019043624161"/>
+																<Property Name="TrimEnd" Type="Real64" Value="9.58820483780761"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="757669348"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{49889372-C313-48A7-B743-E8D1E9B3728C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L1_02" ID="{3999398D-19E3-430A-BA06-692EFF58C6EB}" ShortID="500624511">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{709FFD19-9B14-4013-9D70-533AF34CF501}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="9.24879935682327"/>
+																<Property Name="TrimEnd" Type="Real64" Value="13.0953948079791"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="39081726"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{709FFD19-9B14-4013-9D70-533AF34CF501}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L1_03" ID="{89785E6A-3566-4440-9FE0-DB06147A3927}" ShortID="364274059">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{EE1C9711-08F7-4C99-9327-97D306FA6915}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="12.982259647651"/>
+																<Property Name="TrimEnd" Type="Real64" Value="16.2348955070843"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="637697127"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{EE1C9711-08F7-4C99-9327-97D306FA6915}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L1_04" ID="{273224AA-5713-4E77-8E6F-61E50C13A2F7}" ShortID="82107926">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{5591FE30-EC7F-4A78-B6EA-4F2716A06940}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="16.2348955070843"/>
+																<Property Name="TrimEnd" Type="Real64" Value="19.2329772557793"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="205328605"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{5591FE30-EC7F-4A78-B6EA-4F2716A06940}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L1_05" ID="{D4666A26-B13B-44A2-999C-32F5BBEEDD8D}" ShortID="7070450">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{72C33C7C-E5BF-47C5-945A-760695A88499}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="18.6390176640567"/>
+																<Property Name="TrimEnd" Type="Real64" Value="21.8068021532439"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="538407726"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{72C33C7C-E5BF-47C5-945A-760695A88499}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L1_06" ID="{75D7794A-B803-470A-9F31-B4A60163EE7B}" ShortID="764676840">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{EF3D7F44-AEFB-406B-A608-474FAC77CF2D}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="21.6653832028337"/>
+																<Property Name="TrimEnd" Type="Real64" Value="24.7483163217748"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="771344330"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L1" ID="{EF3D7F44-AEFB-406B-A608-474FAC77CF2D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_PlanteCarnivore_Passif_L2" ID="{6106F6BF-5C8C-4F97-91EB-6A34F7A1E7A2}" ShortID="584473152">
+											<PropertyList>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2" ID="{1BE6191D-328F-4C68-B140-CED4CEBD43B8}" ShortID="250414197">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{3BBAF8ED-9A0F-4CDF-842A-C9D52E7EB97D}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.57181127206127"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="999350642"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{3BBAF8ED-9A0F-4CDF-842A-C9D52E7EB97D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2_01" ID="{B89E6BA5-8CE4-4190-B640-47E5D20B90CB}" ShortID="940671348">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{BF06AA09-44E9-4A89-9808-8471C37E35C0}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="2.44503184315684"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.45539135864135"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="459104198"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{BF06AA09-44E9-4A89-9808-8471C37E35C0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2_02" ID="{8C5D6E06-719F-437F-B52B-A0560889225D}" ShortID="93036948">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{F36496BE-E28C-4695-B009-976E7BBCEF9A}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="4.29238923576423"/>
+																<Property Name="TrimEnd" Type="Real64" Value="6.01296719946718"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="981352151"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{F36496BE-E28C-4695-B009-976E7BBCEF9A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2_03" ID="{DE81C9A2-5C69-43A9-90BB-AB5A038B2BF0}" ShortID="844398528">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{C3FB4DDC-FB81-4635-BF76-7775500E0A14}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="5.90429911754911"/>
+																<Property Name="TrimEnd" Type="Real64" Value="7.71543381618381"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="33020486"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{C3FB4DDC-FB81-4635-BF76-7775500E0A14}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2_04" ID="{56A2F229-C0E4-43B3-9BE7-BEF9B602737F}" ShortID="540802874">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{A3CEBAF3-9EE4-405F-B9F2-53A315C2D6F7}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="7.47998630536129"/>
+																<Property Name="TrimEnd" Type="Real64" Value="9.74390467865465"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="478037778"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{A3CEBAF3-9EE4-405F-B9F2-53A315C2D6F7}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2_05" ID="{26B6EE54-7D2D-4705-8671-6CA1F09AB1CA}" ShortID="555243926">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{D1673E65-378E-4C85-9AF5-01C4195160CD}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="9.7982387196137"/>
+																<Property Name="TrimEnd" Type="Real64" Value="11.3195918664669"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="755025142"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{D1673E65-378E-4C85-9AF5-01C4195160CD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2_06" ID="{D14BB79F-C903-465D-8AAB-39126165CE93}" ShortID="808601179">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{34F7D6C9-C31D-418E-91B1-8023F5B70253}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="11.2109237845488"/>
+																<Property Name="TrimEnd" Type="Real64" Value="12.424384032634"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="365611638"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{34F7D6C9-C31D-418E-91B1-8023F5B70253}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2_07" ID="{15B55086-8219-4E1C-9A04-5754E689A512}" ShortID="148482537">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{8ED7B34A-E925-40AC-B16A-777B1445F65D}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="11.9353776640026"/>
+																<Property Name="TrimEnd" Type="Real64" Value="13.5110648518148"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="120814222"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{8ED7B34A-E925-40AC-B16A-777B1445F65D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2_08" ID="{72955BE3-3AF4-42AD-B870-4634D655E18C}" ShortID="269028685">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{4C3DF135-6B45-45AB-A01B-DC9FD490530D}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="13.3842854229104"/>
+																<Property Name="TrimEnd" Type="Real64" Value="15.032417998668"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="985355215"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{4C3DF135-6B45-45AB-A01B-DC9FD490530D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LIF_PlanteCarnivore_Passif_L2_09" ID="{5201E53B-D5C5-4FED-8BD7-063AB1B4D2DD}" ShortID="433823761">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{72423FBF-00A5-416F-BF28-06574084CEC2}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="14.9418612637362"/>
+																<Property Name="TrimEnd" Type="Real64" Value="16.4813257575757"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LIF_PlanteCarnivore_Passif_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="359539423"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LIF_PlanteCarnivore_Passif_L2" ID="{72423FBF-00A5-416F-BF28-06574084CEC2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{F35EF018-501E-40E6-9FE5-5E294627769C}" ShortID="468715684">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="SC_PlanteCarnivore" ID="{448474FD-54F9-42FF-BF8C-3CF9182EE4C4}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{8F01893F-37E2-4AAB-9D3A-20E5AFC34AFA}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>-48</XPos>
+																						<YPos>-0.04839</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>-24.93659</XPos>
+																						<YPos>-0.04839</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>-12.99512</XPos>
+																						<YPos>-13.28416</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>-0.001</XPos>
+																						<YPos>-45.10545</YPos>
+																						<Flags>0</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>-0.04839</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_PlanteCarnivore_Mort" ID="{7ABDD024-3D13-403B-ABB5-7192D87EE6C8}" ShortID="670013586">
