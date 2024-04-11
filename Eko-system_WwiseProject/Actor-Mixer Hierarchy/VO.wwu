@@ -709,15 +709,31 @@
 									<PropertyList>
 										<Property Name="Lowpass" Type="int16">
 											<ValueList>
-												<Value>37</Value>
+												<Value>35</Value>
 											</ValueList>
 										</Property>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
-										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.2"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.2">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{C4500C43-DBF1-450D-BB85-FCE3FC13E9D5}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="0.02"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="18"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-18</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -882,72 +898,6 @@
 												<ActiveSource Name="VO_Narrateur_Neutre-007" ID="{6647BD28-C938-4D3A-A7CF-CEA86D02A869}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-008" ID="{5997096A-7434-42C2-B95A-1F68510CAAFD}" ShortID="877442721">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-008" ID="{96874236-EC89-41EE-B56E-D4ACA4C3D311}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-008.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="449136556"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-008" ID="{96874236-EC89-41EE-B56E-D4ACA4C3D311}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-009" ID="{2F13C580-E714-4F8E-9D04-E6779B2450D3}" ShortID="960435660">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-009" ID="{B25E3F1D-144E-4A7D-852E-90027E797A32}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-009.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="277728652"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-009" ID="{B25E3F1D-144E-4A7D-852E-90027E797A32}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-010" ID="{6864FDA9-55F9-4744-AE88-6A212B78654F}" ShortID="468610090">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-010" ID="{FE462C99-01B5-4F74-A26C-8A412F725534}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-010.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="516335546"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-010" ID="{FE462C99-01B5-4F74-A26C-8A412F725534}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 										<Sound Name="VO_Narrateur_Neutre-011" ID="{0BA9C357-7EB5-466C-8635-6501241255A3}" ShortID="964105313">
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1056,50 +1006,6 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="VO_Narrateur_Neutre-015" ID="{C80BC667-8E35-43F9-B98A-86C6C525B8E0}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-016" ID="{376C8A5C-1482-421C-91E2-08365B2095F2}" ShortID="1068644581">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-016" ID="{6F947EDE-D234-4E82-8345-CBA19E7A352A}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-016.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="93213275"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-016" ID="{6F947EDE-D234-4E82-8345-CBA19E7A352A}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-017" ID="{95E470E2-DBAD-4046-93BD-33ADDC44B479}" ShortID="491680297">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-017" ID="{99927D4F-48EE-4943-8D89-32E660685EF8}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-017.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="751402657"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-017" ID="{99927D4F-48EE-4943-8D89-32E660685EF8}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="VO_Narrateur_Neutre-019" ID="{7F25F94D-14C1-4859-9A64-4B77CA69A97B}" ShortID="22540539">
@@ -1234,72 +1140,6 @@
 												<ActiveSource Name="VO_Narrateur_Neutre-025" ID="{53179C52-0DA1-47C2-AC2E-8FE1FEF23E79}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-026" ID="{AD2296BC-84FD-469B-836B-317B3611BDA3}" ShortID="801567478">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-026" ID="{EEE3AA29-A976-4B3E-B7F8-C582829B35BC}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-026.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="257746120"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-026" ID="{EEE3AA29-A976-4B3E-B7F8-C582829B35BC}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-027" ID="{90AFA5EF-3FC2-45FC-80F1-E821CF98E6D8}" ShortID="460793121">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-027" ID="{BFBE8962-FC40-4D42-83CC-FA9C9E053101}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-027.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="724283513"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-027" ID="{BFBE8962-FC40-4D42-83CC-FA9C9E053101}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-028" ID="{490C6EB5-AFFB-4E6B-9C54-5D0050136DB9}" ShortID="926825107">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-028" ID="{49EAF84F-AE06-45E3-95D4-6DFD4C5B1026}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-028.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="25131021"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-028" ID="{49EAF84F-AE06-45E3-95D4-6DFD4C5B1026}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 										<Sound Name="VO_Narrateur_Neutre-029" ID="{820D3B2F-FBB9-4CFD-A969-CC942CDF0B5A}" ShortID="649890985">
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1430,50 +1270,6 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="VO_Narrateur_Neutre-034" ID="{800DA879-7565-4C7E-9610-5C64C9227867}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-035" ID="{0E23ACD7-53CD-4D0B-96C8-14B23E0941D2}" ShortID="261266448">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-035" ID="{841A8D12-2E4F-4683-A49F-80180C823ACE}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-035.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="106547864"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-035" ID="{841A8D12-2E4F-4683-A49F-80180C823ACE}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-036" ID="{DED9C0DC-7296-4710-BB47-C6BCC71BB78E}" ShortID="780043327">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-036" ID="{6AA3E316-D22A-4135-B0CD-B08B9771AE70}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-036.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="266012534"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-036" ID="{6AA3E316-D22A-4135-B0CD-B08B9771AE70}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="VO_Narrateur_Neutre-037" ID="{726AE3A9-8FA5-498A-8E95-ADDD267A8136}" ShortID="391451325">
@@ -1652,50 +1448,6 @@
 												<ActiveSource Name="VO_Narrateur_Neutre-044" ID="{91398B5B-AE93-4B99-9DA1-36B72E3B8680}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-045" ID="{99780D61-661D-434A-8B9B-58CEF4EACD40}" ShortID="817521481">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-045" ID="{094A987D-8EA2-453D-9F96-B5E62D2D513B}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-045.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="96780225"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-045" ID="{094A987D-8EA2-453D-9F96-B5E62D2D513B}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-046" ID="{5BBD04A2-3949-4A07-8592-2DF6E6077CA5}" ShortID="785676085">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-046" ID="{1020F9CB-CD27-4301-BE37-578C7088D570}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-046.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="330606907"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-046" ID="{1020F9CB-CD27-4301-BE37-578C7088D570}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 										<Sound Name="VO_Narrateur_Neutre-047" ID="{E145EE0B-2600-49CA-9C7B-060F819A5C3E}" ShortID="161194552">
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1716,28 +1468,6 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="VO_Narrateur_Neutre-047" ID="{1EFE1B66-4D99-4CA9-B7D8-1DB7D6907390}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-018" ID="{D7C0250A-C4F8-454B-87C0-288CD04B77BB}" ShortID="875043134">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-018" ID="{72C5CD08-4AEA-4E18-ACEE-05B19DFB8D61}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-018.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="198702944"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-018" ID="{72C5CD08-4AEA-4E18-ACEE-05B19DFB8D61}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="VO_Narrateur_Neutre-022" ID="{B80E33B3-BF9C-4C18-B5F6-0388B066240D}" ShortID="1040807929">
@@ -1848,72 +1578,6 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="VO_Narrateur_Neutre-051" ID="{5FF38921-B33C-45C3-9E4E-0930451016F3}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-052" ID="{09D42308-84DD-4F22-BBF1-92CFF1F5033C}" ShortID="403976344">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-052" ID="{03DC3342-5817-4BAB-8C1D-6CB7B4B5C4EC}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-052.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="394912675"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-052" ID="{03DC3342-5817-4BAB-8C1D-6CB7B4B5C4EC}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-053" ID="{2DEB344B-DFA7-47FD-9B0A-7EC346DE7731}" ShortID="923484737">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-053" ID="{123278D3-1160-43F1-AD80-DEF45ECF4C0E}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-053.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="122376046"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-053" ID="{123278D3-1160-43F1-AD80-DEF45ECF4C0E}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="VO_Narrateur_Neutre-054" ID="{332FE288-6AC1-4993-8EB6-F80A33211FFB}" ShortID="1036480787">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="VO_Narrateur_Neutre-054" ID="{CF4B8D48-4B06-47BB-9CEE-75ABD82B96D6}">
-													<Language>SFX</Language>
-													<AudioFile>VO_Narrateur_Neutre-054.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="762368193"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="VO_Narrateur_Neutre-054" ID="{CF4B8D48-4B06-47BB-9CEE-75ABD82B96D6}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>

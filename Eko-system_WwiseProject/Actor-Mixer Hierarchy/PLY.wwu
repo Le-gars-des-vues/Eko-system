@@ -869,6 +869,13 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="Grimpe_PH" ID="{8C2A4230-A064-466F-9B9A-2BD64E745C6B}" ShortID="802237517">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -890,6 +897,197 @@
 								<ActiveSource Name="Grimpe_PH" ID="{7BC477F1-00B1-4E5B-BC19-59F092E9A892}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<RandomSequenceContainer Name="PLY_Grimpe_" ID="{CE47DA50-82D5-4606-9A20-FEA0BEA8CDFF}" ShortID="668333838">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{4D77F909-6EB6-4F90-880C-9FC403BBE90A}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="50"/>
+													<Property Name="Min" Type="Real64" Value="-50"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="PLY_Grimpe" ID="{617CD1D4-F61C-47EF-B693-A538D90363C8}" ShortID="771144015">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="PLY_Grimpe" ID="{CA38530D-9CBD-4130-B622-C4BBBB0705AD}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.49107083333333"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>PLY_Grimpe.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="428751031"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="PLY_Grimpe" ID="{CA38530D-9CBD-4130-B622-C4BBBB0705AD}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="PLY_Grimpe_01" ID="{EFC79FE5-7A9C-4636-86D9-36799439C52C}" ShortID="80808572">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="PLY_Grimpe" ID="{3402741B-E433-471D-944B-B6B2154A7493}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="2.13520357142856"/>
+												<Property Name="TrimEnd" Type="Real64" Value="4.47643555764411"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>PLY_Grimpe.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="864776173"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="PLY_Grimpe" ID="{3402741B-E433-471D-944B-B6B2154A7493}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="PLY_Grimpe_02" ID="{68755D47-2FD5-40A5-B8C8-03FBA37F2AF6}" ShortID="579156719">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="PLY_Grimpe" ID="{1A1A9146-5BBC-40C2-B014-B6892B04606F}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="3.83962045739348"/>
+												<Property Name="TrimEnd" Type="Real64" Value="5.91863446115287"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>PLY_Grimpe.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="773024795"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="PLY_Grimpe" ID="{1A1A9146-5BBC-40C2-B014-B6892B04606F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="PLY_Grimpe_03" ID="{87A8F5F1-6315-4084-98FF-EFD529CB9FCC}" ShortID="802816215">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="PLY_Grimpe" ID="{D25360D0-AC9D-480C-8580-C198D9119253}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="5.60022691102757"/>
+												<Property Name="TrimEnd" Type="Real64" Value="7.90399918546366"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>PLY_Grimpe.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="799156670"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="PLY_Grimpe" ID="{D25360D0-AC9D-480C-8580-C198D9119253}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="PLY_Grimpe_04" ID="{B4913230-0BF1-4BAF-B640-4B0204C3F763}" ShortID="862592660">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="PLY_Grimpe" ID="{A1077B3A-3F51-432E-A12B-3473A4E35122}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="7.45448264411028"/>
+												<Property Name="TrimEnd" Type="Real64" Value="9.87063405388469"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>PLY_Grimpe.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="67148845"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="PLY_Grimpe" ID="{A1077B3A-3F51-432E-A12B-3473A4E35122}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="PLY_Grimpe_05" ID="{73565F01-C1F0-4F43-A1E4-1CEBE83C1423}" ShortID="890593167">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="PLY_Grimpe" ID="{E75AA9A6-065B-4757-9F16-EDE02459885D}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="9.72079520676692"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>PLY_Grimpe.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="727627421"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="PLY_Grimpe" ID="{E75AA9A6-065B-4757-9F16-EDE02459885D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</BlendContainer>
 				<SwitchContainer Name="PLY_Pas" ID="{5E42D87E-B83B-4C69-A446-B65846747FEA}" ShortID="964026399">
