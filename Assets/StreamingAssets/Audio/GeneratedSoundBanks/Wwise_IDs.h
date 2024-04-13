@@ -133,6 +133,18 @@ namespace AK
 
     namespace STATES
     {
+        namespace PLY_VIE
+        {
+            static const AkUniqueID GROUP = 1697020375U;
+
+            namespace STATE
+            {
+                static const AkUniqueID ENVIE = 1698034228U;
+                static const AkUniqueID MORT = 2944094207U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace PLY_VIE
+
         namespace REVERB_TEST
         {
             static const AkUniqueID GROUP = 2941827740U;
@@ -187,6 +199,16 @@ namespace AK
         } // namespace PAS_VITESSE
 
     } // namespace SWITCHES
+
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID MUSICVOLUME = 2346531308U;
+        static const AkUniqueID PLY_SANTE = 2769016988U;
+        static const AkUniqueID SC_PLANTECARNIVORE = 2185427101U;
+        static const AkUniqueID SFXVOLUME = 988953028U;
+        static const AkUniqueID TEMPS = 307962810U;
+        static const AkUniqueID VOICEVOLUME = 414646191U;
+    } // namespace GAME_PARAMETERS
 
     namespace BANKS
     {

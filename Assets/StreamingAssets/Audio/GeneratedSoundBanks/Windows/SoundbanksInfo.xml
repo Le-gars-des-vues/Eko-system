@@ -37,7 +37,7 @@
 				</AuxBus>
 			</AuxBusses>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{6164DB81-AB50-CA8B-DBA6-BE143DCD60C8}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F7943EAB-96F4-C809-5409-9A1CAF213DDF}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -243,7 +243,22 @@
 					</PluginRefs>
 				</AuxBus>
 			</AuxBusses>
+			<GameParameters>
+				<GameParameter Id="307962810" Name="Temps"/>
+				<GameParameter Id="414646191" Name="VoiceVolume"/>
+				<GameParameter Id="988953028" Name="SFXVolume"/>
+				<GameParameter Id="2185427101" Name="SC_PlanteCarnivore"/>
+				<GameParameter Id="2346531308" Name="MusicVolume"/>
+				<GameParameter Id="2769016988" Name="PLY_Sante"/>
+			</GameParameters>
 			<StateGroups>
+				<StateGroup Id="1697020375" Name="PLY_Vie">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="1698034228" Name="Envie"/>
+						<State Id="2944094207" Name="Mort"/>
+					</States>
+				</StateGroup>
 				<StateGroup Id="2941827740" Name="Reverb_test">
 					<States>
 						<State Id="748895195" Name="None"/>
@@ -619,7 +634,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{59128E9C-DCAC-6295-2153-3609FAFB855D}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{91DE8FF6-BA0D-3D22-A8F3-886B485DF629}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -643,21 +658,41 @@
 					<ShortName>Attaque init Grenade.wav</ShortName>
 					<CachePath>SFX/Attaque init Grenade_10C4C929.wem</CachePath>
 				</File>
+				<File Id="17970472" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-047.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-047_10C4C929.wem</CachePath>
+				</File>
 				<File Id="26624252" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_3L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_3L1_FBC464DE.wem</CachePath>
+				</File>
+				<File Id="28097534" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-001.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-001_10C4C929.wem</CachePath>
 				</File>
 				<File Id="30162679" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlanteCarnivoreDegat_PH.wav</ShortName>
 					<CachePath>SFX/PlanteCarnivoreDegat_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="33020486" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_F1B44A80.wem</CachePath>
+				</File>
 				<File Id="33076637" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlanteCarnivoreAttaque_PH.wav</ShortName>
 					<CachePath>SFX/PlanteCarnivoreAttaque_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="33857231" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_Pause_Ouvrir_v1.wav</ShortName>
-					<CachePath>SFX/UI_Pause_Ouvrir_v1_C87463B9.wem</CachePath>
+				<File Id="35711202" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-051.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-051_10C4C929.wem</CachePath>
+				</File>
+				<File Id="36814188" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Cuir_v2.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Cuir_v2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="39081726" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_08DA9926.wem</CachePath>
 				</File>
 				<File Id="40771489" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_2L1.wav</ShortName>
@@ -667,6 +702,10 @@
 					<ShortName>LIF_Moustique_Degat_5L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_5L1_74CD3C28.wem</CachePath>
 				</File>
+				<File Id="55861736" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Vente_Ouvrir_v2.wav</ShortName>
+					<CachePath>SFX/UI_Vente_Ouvrir_v2_10C4C929.wem</CachePath>
+				</File>
 				<File Id="58058071" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_7EA11B4F.wem</CachePath>
@@ -675,13 +714,17 @@
 					<ShortName>ConstruireAmeliorationEndurance_PH.wav</ShortName>
 					<CachePath>SFX/ConstruireAmeliorationEndurance_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="67799906" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>LIF_Moustique_Degat_4L2.wav</ShortName>
-					<CachePath>SFX/LIF_Moustique_Degat_4L2_10C4C929.wem</CachePath>
+				<File Id="67148845" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Grimpe.wav</ShortName>
+					<CachePath>SFX/PLY_Grimpe_DD12E88C.wem</CachePath>
 				</File>
 				<File Id="68968614" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_2_C01F7566.wem</CachePath>
+				</File>
+				<File Id="69917688" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_TabFermeture_v1.wav</ShortName>
+					<CachePath>SFX/UI_TabFermeture_v1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="77288420" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Saute_PH.wav</ShortName>
@@ -691,6 +734,14 @@
 					<ShortName>LIF_Moustique_Degat_4L2.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_4L2_1B3EEFD1.wem</CachePath>
 				</File>
+				<File Id="93894929" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Atelier_Fermer_v2.wav</ShortName>
+					<CachePath>SFX/UI_Atelier_Fermer_v2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="94866023" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_HotbarDeplacement_v1.wav</ShortName>
+					<CachePath>SFX/UI_HotbarDeplacement_v1_10C4C929.wem</CachePath>
+				</File>
 				<File Id="95533244" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_2_FD89C673.wem</CachePath>
@@ -699,17 +750,29 @@
 					<ShortName>VOJoueurEffort_PH.wav</ShortName>
 					<CachePath>SFX/VOJoueurEffort_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="106501362" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Amelioration_Ouvrir_v3.wav</ShortName>
+					<CachePath>SFX/UI_Amelioration_Ouvrir_v3_10C4C929.wem</CachePath>
+				</File>
 				<File Id="120744920" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MenuMortRetourPrincipal_PH.wav</ShortName>
 					<CachePath>SFX/MenuMortRetourPrincipal_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="120814222" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_F737605E.wem</CachePath>
+				</File>
 				<File Id="123416848" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Passif_L1.wav</ShortName>
-					<CachePath>SFX/LIF_Moustique_Passif_L1_10C4C929.wem</CachePath>
+					<CachePath>SFX/LIF_Moustique_Passif_L1_1886C37F.wem</CachePath>
 				</File>
 				<File Id="128600922" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Wartog_6FBBFFCF.wem</CachePath>
+				</File>
+				<File Id="136911937" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-038.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-038_10C4C929.wem</CachePath>
 				</File>
 				<File Id="137021063" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MultitoolMagnetite_PH.wav</ShortName>
@@ -719,17 +782,29 @@
 					<ShortName>PiegePiques_PH.wav</ShortName>
 					<CachePath>SFX/PiegePiques_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="150001985" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>LIF_Moustique_Degat_5L2.wav</ShortName>
-					<CachePath>SFX/LIF_Moustique_Degat_5L2_10C4C929.wem</CachePath>
+				<File Id="170356181" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_BarreDeVie_Gagner_v2.wav</ShortName>
+					<CachePath>SFX/UI_BarreDeVie_Gagner_v2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="173289046" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-037.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-037_10C4C929.wem</CachePath>
 				</File>
 				<File Id="176342500" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166547-Bullet-Hit-Body-Flesh_07.wav</ShortName>
 					<CachePath>SFX/166547-Bullet-Hit-Body-Flesh_07_10C4C929.wem</CachePath>
 				</File>
-				<File Id="186173325" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>PauseFermer_PH.wav</ShortName>
-					<CachePath>SFX/PauseFermer_PH_10C4C929.wem</CachePath>
+				<File Id="180165786" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_JoueurVise_v3.wav</ShortName>
+					<CachePath>SFX/UI_JoueurVise_v3_1D074A9A.wem</CachePath>
+				</File>
+				<File Id="180318060" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-004.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-004_10C4C929.wem</CachePath>
+				</File>
+				<File Id="191148018" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-049.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-049_10C4C929.wem</CachePath>
 				</File>
 				<File Id="197620101" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VOJoueurSurpris_PH.wav</ShortName>
@@ -743,13 +818,9 @@
 					<ShortName>Attaque Init Lance.wav</ShortName>
 					<CachePath>SFX/Attaque Init Lance_10C4C929.wem</CachePath>
 				</File>
-				<File Id="205954150" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AtelierFermer_PH.wav</ShortName>
-					<CachePath>SFX/AtelierFermer_PH_10C4C929.wem</CachePath>
-				</File>
-				<File Id="219852544" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_Vente_Ouvrir_v1.wav</ShortName>
-					<CachePath>SFX/UI_Vente_Ouvrir_v1_EEE253F5.wem</CachePath>
+				<File Id="205328605" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_F7C3D715.wem</CachePath>
 				</File>
 				<File Id="221866344" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
@@ -775,9 +846,17 @@
 					<ShortName>MultitoolEcorce_PH.wav</ShortName>
 					<CachePath>SFX/MultitoolEcorce_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="245721636" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-042.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-042_10C4C929.wem</CachePath>
+				</File>
 				<File Id="245725194" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_BE41178F.wem</CachePath>
+				</File>
+				<File Id="250325720" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-011.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-011_10C4C929.wem</CachePath>
 				</File>
 				<File Id="251879149" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird.wav</ShortName>
@@ -791,13 +870,29 @@
 					<ShortName>AMBGrotte_PH.wav</ShortName>
 					<CachePath>SFX/AMBGrotte_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="260686157" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-020.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-020_10C4C929.wem</CachePath>
+				</File>
 				<File Id="262049607" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Inventaire_Prendre_v3.wav</ShortName>
 					<CachePath>SFX/UI_Inventaire_Prendre_v3_71AFF3D7.wem</CachePath>
 				</File>
+				<File Id="267693892" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-003.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-003_10C4C929.wem</CachePath>
+				</File>
+				<File Id="275627558" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Vente_Vendre_v1.1.wav</ShortName>
+					<CachePath>SFX/UI_Vente_Vendre_v1.1_10C4C929.wem</CachePath>
+				</File>
 				<File Id="277528955" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_3L2.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_3L2_657D3A2C.wem</CachePath>
+				</File>
+				<File Id="279221858" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-019.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-019_10C4C929.wem</CachePath>
 				</File>
 				<File Id="282520052" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_5L1.wav</ShortName>
@@ -807,17 +902,25 @@
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Wartog_4B0B62DB.wem</CachePath>
 				</File>
+				<File Id="288099723" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
+					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_9F88FB9E.wem</CachePath>
+				</File>
+				<File Id="289254179" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Temps_v1.wav</ShortName>
+					<CachePath>SFX/UI_Temps_v1_D79FB2B7.wem</CachePath>
+				</File>
 				<File Id="298080536" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Menus_Deplacement_v1.wav</ShortName>
 					<CachePath>SFX/UI_Menus_Deplacement_v1_49EC6DB7.wem</CachePath>
 				</File>
-				<File Id="310662728" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_Vente_Vendre_v1.wav</ShortName>
-					<CachePath>SFX/UI_Vente_Vendre_v1_9B95B94E.wem</CachePath>
-				</File>
 				<File Id="315877644" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_1FA27248.wem</CachePath>
+				</File>
+				<File Id="318303942" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-007.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-007_10C4C929.wem</CachePath>
 				</File>
 				<File Id="321808165" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ConstruireAmeliorationUtilitaire_PH.wav</ShortName>
@@ -826,6 +929,10 @@
 				<File Id="336549561" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_0887FD5C.wem</CachePath>
+				</File>
+				<File Id="339440700" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_GameOver_Temps_v1.wav</ShortName>
+					<CachePath>SFX/UI_GameOver_Temps_v1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="343064125" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VOJoueurDegat_PH.wav</ShortName>
@@ -843,9 +950,13 @@
 					<ShortName>ConstruireMicroprocesseur_PH.wav</ShortName>
 					<CachePath>SFX/ConstruireMicroprocesseur_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="364130922" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_Vente_Fermer_v1.wav</ShortName>
-					<CachePath>SFX/UI_Vente_Fermer_v1_5BFD42B9.wem</CachePath>
+				<File Id="359539423" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_57FFF428.wem</CachePath>
+				</File>
+				<File Id="365611638" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_68624453.wem</CachePath>
 				</File>
 				<File Id="367864486" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PorteOuverture_PH.wav</ShortName>
@@ -855,6 +966,10 @@
 					<ShortName>LIF_Moustique_Degat_6L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_6L1_E05713C3.wem</CachePath>
 				</File>
+				<File Id="379794874" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-029.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-029_10C4C929.wem</CachePath>
+				</File>
 				<File Id="385587304" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_7L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_7L1_A26C6475.wem</CachePath>
@@ -862,14 +977,6 @@
 				<File Id="385876782" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_C5BFDCFD.wem</CachePath>
-				</File>
-				<File Id="397180031" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>CarteOuvrir_PH.wav</ShortName>
-					<CachePath>SFX/CarteOuvrir_PH_10C4C929.wem</CachePath>
-				</File>
-				<File Id="407485937" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>GameOverVie_PH.wav</ShortName>
-					<CachePath>SFX/GameOverVie_PH_10C4C929.wem</CachePath>
 				</File>
 				<File Id="410371760" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Crickets.wav</ShortName>
@@ -887,9 +994,17 @@
 					<ShortName>AMBSousMarine_PH.wav</ShortName>
 					<CachePath>SFX/AMBSousMarine_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="418054284" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
+					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_61FE756A.wem</CachePath>
+				</File>
 				<File Id="424336240" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_6L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_6L1_C12D20C1.wem</CachePath>
+				</File>
+				<File Id="428751031" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Grimpe.wav</ShortName>
+					<CachePath>SFX/PLY_Grimpe_6A379460.wem</CachePath>
 				</File>
 				<File Id="432151175" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MultitoolTronc_PH.wav</ShortName>
@@ -903,13 +1018,25 @@
 					<ShortName>VOJoueurHeureux_PH.wav</ShortName>
 					<CachePath>SFX/VOJoueurHeureux_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="440515815" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-002.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-002_10C4C929.wem</CachePath>
+				</File>
 				<File Id="442835477" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PorteFermeture_PH.wav</ShortName>
 					<CachePath>SFX/PorteFermeture_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="446720781" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-032.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-032_10C4C929.wem</CachePath>
+				</File>
 				<File Id="447781928" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_3L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_3L1_5273E001.wem</CachePath>
+				</File>
+				<File Id="459104198" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_9EEF70BC.wem</CachePath>
 				</File>
 				<File Id="465232822" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
@@ -919,9 +1046,13 @@
 					<ShortName>166597-Bullet-Hit-Body-Flesh_02.wav</ShortName>
 					<CachePath>SFX/166597-Bullet-Hit-Body-Flesh_02_10C4C929.wem</CachePath>
 				</File>
+				<File Id="478037778" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_F21B6590.wem</CachePath>
+				</File>
 				<File Id="480570866" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Passif_L2.wav</ShortName>
-					<CachePath>SFX/LIF_Moustique_Passif_L2_10C4C929.wem</CachePath>
+					<CachePath>SFX/LIF_Moustique_Passif_L2_2E21F870.wem</CachePath>
 				</File>
 				<File Id="481430361" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VONarrateurNeutre_PH.wav</ShortName>
@@ -931,13 +1062,29 @@
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_C714C4F4.wem</CachePath>
 				</File>
+				<File Id="484181716" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-048.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-048_10C4C929.wem</CachePath>
+				</File>
+				<File Id="490092445" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Pause_Fermer_v1.wav</ShortName>
+					<CachePath>SFX/UI_Pause_Fermer_v1_10C4C929.wem</CachePath>
+				</File>
 				<File Id="494577839" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_2_60AD3611.wem</CachePath>
 				</File>
+				<File Id="495962914" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
+					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_E24AB790.wem</CachePath>
+				</File>
 				<File Id="496076357" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Wartog_26838CC7.wem</CachePath>
+				</File>
+				<File Id="498659311" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-030.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-030_10C4C929.wem</CachePath>
 				</File>
 				<File Id="502963919" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166559-Bullet-Hit-Body-Flesh_14.wav</ShortName>
@@ -951,13 +1098,25 @@
 					<ShortName>VOJoueurMort_PH.wav</ShortName>
 					<CachePath>SFX/VOJoueurMort_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="510109064" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Batterie_v1.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Batterie_v1_10C4C929.wem</CachePath>
+				</File>
 				<File Id="516244779" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ConstruireAmeliorationCombat_PH.wav</ShortName>
 					<CachePath>SFX/ConstruireAmeliorationCombat_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="520184572" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-050.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-050_10C4C929.wem</CachePath>
+				</File>
+				<File Id="521038942" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-034.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-034_10C4C929.wem</CachePath>
+				</File>
 				<File Id="521306769" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_BarreDeVie_Faible_v1.wav</ShortName>
-					<CachePath>SFX/UI_BarreDeVie_Faible_v1_BCDA3612.wem</CachePath>
+					<CachePath>SFX/UI_BarreDeVie_Faible_v1_24C9C279.wem</CachePath>
 				</File>
 				<File Id="527633345" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_5L2.wav</ShortName>
@@ -967,13 +1126,17 @@
 					<ShortName>LIF_Moustique_Degat_1L2.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_1L2_45E99613.wem</CachePath>
 				</File>
-				<File Id="530364237" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_Construire_Cuir_v1.wav</ShortName>
-					<CachePath>SFX/UI_Construire_Cuir_v1_10C4C929.wem</CachePath>
-				</File>
 				<File Id="534322574" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_515109DE.wem</CachePath>
+				</File>
+				<File Id="538407726" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_06621020.wem</CachePath>
+				</File>
+				<File Id="547866083" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-033.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-033_10C4C929.wem</CachePath>
 				</File>
 				<File Id="554836253" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MenuMortRetourBase_PH.wav</ShortName>
@@ -995,9 +1158,9 @@
 					<ShortName>RhinortueAlerte_PH.wav</ShortName>
 					<CachePath>SFX/RhinortueAlerte_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="568237247" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AtelierOuvrir_PH.wav</ShortName>
-					<CachePath>SFX/AtelierOuvrir_PH_10C4C929.wem</CachePath>
+				<File Id="565665096" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-031.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-031_10C4C929.wem</CachePath>
 				</File>
 				<File Id="568758034" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VOJoueurNeutre_PH.wav</ShortName>
@@ -1007,6 +1170,10 @@
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_A82BACB5.wem</CachePath>
 				</File>
+				<File Id="570993699" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Inventaire_Ouvrir_v2.wav</ShortName>
+					<CachePath>SFX/UI_Inventaire_Ouvrir_v2_10C4C929.wem</CachePath>
+				</File>
 				<File Id="575769636" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_4L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_4L1_BAFA8663.wem</CachePath>
@@ -1014,10 +1181,6 @@
 				<File Id="578044342" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VOJoueurInterroge_PH.wav</ShortName>
 					<CachePath>SFX/VOJoueurInterroge_PH_10C4C929.wem</CachePath>
-				</File>
-				<File Id="582116315" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_Inventaire_Ouvrir_v1.wav</ShortName>
-					<CachePath>SFX/UI_Inventaire_Ouvrir_v1_B474D5CF.wem</CachePath>
 				</File>
 				<File Id="584035463" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Swamp_2.wav</ShortName>
@@ -1031,17 +1194,17 @@
 					<ShortName>166582-Bullet-Hit-Body-Flesh_11.wav</ShortName>
 					<CachePath>SFX/166582-Bullet-Hit-Body-Flesh_11_10C4C929.wem</CachePath>
 				</File>
-				<File Id="597636822" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>GameOverTemps_PH.wav</ShortName>
-					<CachePath>SFX/GameOverTemps_PH_10C4C929.wem</CachePath>
+				<File Id="591719911" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-041.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-041_10C4C929.wem</CachePath>
 				</File>
 				<File Id="598505157" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_4L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_4L1_97B6D127.wem</CachePath>
 				</File>
-				<File Id="607169887" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>CarteFermer_PH.wav</ShortName>
-					<CachePath>SFX/CarteFermer_PH_10C4C929.wem</CachePath>
+				<File Id="601280793" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Vente_Fermer_v2.wav</ShortName>
+					<CachePath>SFX/UI_Vente_Fermer_v2_10C4C929.wem</CachePath>
 				</File>
 				<File Id="609461526" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VOJoueurApeure_PH.wav</ShortName>
@@ -1063,6 +1226,10 @@
 					<ShortName>Ramasse_PH.wav</ShortName>
 					<CachePath>SFX/Ramasse_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="637697127" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_4B708024.wem</CachePath>
+				</File>
 				<File Id="642402357" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MultitoolCharge_PH.wav</ShortName>
 					<CachePath>SFX/MultitoolCharge_PH_10C4C929.wem</CachePath>
@@ -1070,10 +1237,6 @@
 				<File Id="650146780" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_CA5AE37B.wem</CachePath>
-				</File>
-				<File Id="654770872" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>UI_BarreDeVie_Gagner_v1.wav</ShortName>
-					<CachePath>SFX/UI_BarreDeVie_Gagner_v1_6AEF67EC.wem</CachePath>
 				</File>
 				<File Id="663322381" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
@@ -1083,13 +1246,25 @@
 					<ShortName>166526-Bullet-Hit-Body-Flesh_09.wav</ShortName>
 					<CachePath>SFX/166526-Bullet-Hit-Body-Flesh_09_10C4C929.wem</CachePath>
 				</File>
-				<File Id="668812202" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>LIF_Moustique_Degat_1L2.wav</ShortName>
-					<CachePath>SFX/LIF_Moustique_Degat_1L2_10C4C929.wem</CachePath>
+				<File Id="682287277" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-021.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-021_10C4C929.wem</CachePath>
+				</File>
+				<File Id="695592662" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-040.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-040_10C4C929.wem</CachePath>
+				</File>
+				<File Id="711414304" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-039.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-039_10C4C929.wem</CachePath>
 				</File>
 				<File Id="714005279" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_001620F7.wem</CachePath>
+				</File>
+				<File Id="719058831" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-043.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-043_10C4C929.wem</CachePath>
 				</File>
 				<File Id="720078075" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlanteCarnivoreMort_PH.wav</ShortName>
@@ -1099,9 +1274,9 @@
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Wartog_BCB166EE.wem</CachePath>
 				</File>
-				<File Id="727415921" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireFeuilleMetallique_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireFeuilleMetallique_PH_10C4C929.wem</CachePath>
+				<File Id="727627421" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Grimpe.wav</ShortName>
+					<CachePath>SFX/PLY_Grimpe_06258E55.wem</CachePath>
 				</File>
 				<File Id="741750893" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
@@ -1111,9 +1286,25 @@
 					<ShortName>SerpentAlerte_PH.wav</ShortName>
 					<CachePath>SFX/SerpentAlerte_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="742838283" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-024.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-024_10C4C929.wem</CachePath>
+				</File>
 				<File Id="744026751" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMBBase_PH.wav</ShortName>
 					<CachePath>SFX/AMBBase_PH_10C4C929.wem</CachePath>
+				</File>
+				<File Id="748046191" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
+					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_F6C99614.wem</CachePath>
+				</File>
+				<File Id="755025142" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_A3A11411.wem</CachePath>
+				</File>
+				<File Id="757669348" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_BF2C90F2.wem</CachePath>
 				</File>
 				<File Id="758217916" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166553-Bullet-Hit-Body-Flesh_05.wav</ShortName>
@@ -1123,21 +1314,45 @@
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_F63121E0.wem</CachePath>
 				</File>
-				<File Id="765132867" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Grimpe_PH.wav</ShortName>
-					<CachePath>SFX/Grimpe_PH_10C4C929.wem</CachePath>
+				<File Id="769147433" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-012.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-012_10C4C929.wem</CachePath>
+				</File>
+				<File Id="771344330" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_A7FD8443.wem</CachePath>
+				</File>
+				<File Id="773024795" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Grimpe.wav</ShortName>
+					<CachePath>SFX/PLY_Grimpe_4826CD35.wem</CachePath>
+				</File>
+				<File Id="785631477" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-014.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-014_10C4C929.wem</CachePath>
+				</File>
+				<File Id="798400265" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_6CAD64D5.wem</CachePath>
+				</File>
+				<File Id="799156670" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Grimpe.wav</ShortName>
+					<CachePath>SFX/PLY_Grimpe_FE665731.wem</CachePath>
 				</File>
 				<File Id="800183191" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_8L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_8L1_79C64AF7.wem</CachePath>
 				</File>
-				<File Id="801895027" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>JoueurVise_PH.wav</ShortName>
-					<CachePath>SFX/JoueurVise_PH_10C4C929.wem</CachePath>
-				</File>
 				<File Id="806891696" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_9B2CDE75.wem</CachePath>
+				</File>
+				<File Id="808565386" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Carte_Ouvrir_v1.wav</ShortName>
+					<CachePath>SFX/UI_Carte_Ouvrir_v1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="813070388" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-022.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-022_10C4C929.wem</CachePath>
 				</File>
 				<File Id="824476172" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_2L1.wav</ShortName>
@@ -1147,17 +1362,17 @@
 					<ShortName>UI_Inventaire_Placer_v3.wav</ShortName>
 					<CachePath>SFX/UI_Inventaire_Placer_v3_318E2A03.wem</CachePath>
 				</File>
-				<File Id="827885596" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>PlanteCarnivorePassif_PH.wav</ShortName>
-					<CachePath>SFX/PlanteCarnivorePassif_PH_10C4C929.wem</CachePath>
-				</File>
 				<File Id="830661371" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MultitoolRubiol_PH.wav</ShortName>
 					<CachePath>SFX/MultitoolRubiol_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="847167926" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>HotbarDeplacement_PH.wav</ShortName>
-					<CachePath>SFX/HotbarDeplacement_PH_10C4C929.wem</CachePath>
+				<File Id="851370385" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-005.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-005_10C4C929.wem</CachePath>
+				</File>
+				<File Id="864776173" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Grimpe.wav</ShortName>
+					<CachePath>SFX/PLY_Grimpe_F2B5F0A9.wem</CachePath>
 				</File>
 				<File Id="864859683" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
@@ -1167,6 +1382,10 @@
 					<ShortName>LIF_Moustique_Degat_8L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_8L1_96D02851.wem</CachePath>
 				</File>
+				<File Id="871914218" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Pause_Ouvrir_v1.1.wav</ShortName>
+					<CachePath>SFX/UI_Pause_Ouvrir_v1.1_10C4C929.wem</CachePath>
+				</File>
 				<File Id="873684731" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AudioEase\Altiverb - Outdoor and More\Outdoor\Forest\AE_ForestAuterlitz_DenseClose.wav</ShortName>
 					<CachePath>Plugins/Wwise Convolution Reverb/AudioEase/Altiverb - Outdoor and More/Outdoor/Forest/AE_ForestAuterlitz_DenseClose_C2355123.wem</CachePath>
@@ -1174,6 +1393,10 @@
 				<File Id="875759382" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_BBF66F0F.wem</CachePath>
+				</File>
+				<File Id="876092173" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Atelier_Ouvrir_v2.wav</ShortName>
+					<CachePath>SFX/UI_Atelier_Ouvrir_v2_10C4C929.wem</CachePath>
 				</File>
 				<File Id="880679580" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_7L1.wav</ShortName>
@@ -1199,10 +1422,6 @@
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_AD31BE59.wem</CachePath>
 				</File>
-				<File Id="923361211" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>LIF_Moustique_Degat_3L2.wav</ShortName>
-					<CachePath>SFX/LIF_Moustique_Degat_3L2_10C4C929.wem</CachePath>
-				</File>
 				<File Id="939912125" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Degat_PH.wav</ShortName>
 					<CachePath>SFX/Degat_PH_10C4C929.wem</CachePath>
@@ -1219,9 +1438,13 @@
 					<ShortName>ConstruireAmeliorationRecolte_PH.wav</ShortName>
 					<CachePath>SFX/ConstruireAmeliorationRecolte_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="966657797" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>LIF_Moustique_Degat_2L2.wav</ShortName>
-					<CachePath>SFX/LIF_Moustique_Degat_2L2_10C4C929.wem</CachePath>
+				<File Id="962506391" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-013.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-013_10C4C929.wem</CachePath>
+				</File>
+				<File Id="970717894" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-006.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-006_10C4C929.wem</CachePath>
 				</File>
 				<File Id="974094568" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_FarBirds_Opt.wav</ShortName>
@@ -1231,9 +1454,21 @@
 					<ShortName>VOJoueurExclame_PH.wav</ShortName>
 					<CachePath>SFX/VOJoueurExclame_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="988793507" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>InventaireFermer_PH.wav</ShortName>
-					<CachePath>SFX/InventaireFermer_PH_10C4C929.wem</CachePath>
+				<File Id="981352151" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_647C28CA.wem</CachePath>
+				</File>
+				<File Id="985355215" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_10375EB8.wem</CachePath>
+				</File>
+				<File Id="992048152" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-025.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-025_10C4C929.wem</CachePath>
+				</File>
+				<File Id="999350642" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
+					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_93F248ED.wem</CachePath>
 				</File>
 				<File Id="999984505" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VOJoueurTriste_PH.wav</ShortName>
@@ -1247,9 +1482,21 @@
 					<ShortName>SerpentPassif_PH.wav</ShortName>
 					<CachePath>SFX/SerpentPassif_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="1007858372" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
+					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_4C9543AB.wem</CachePath>
+				</File>
+				<File Id="1010562910" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-044.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-044_10C4C929.wem</CachePath>
+				</File>
 				<File Id="1014648078" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2506FB7D.wem</CachePath>
+				</File>
+				<File Id="1016441441" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_GameOver_Vie_v1.wav</ShortName>
+					<CachePath>SFX/UI_GameOver_Vie_v1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="1022125182" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Attaque relache Grenade.wav</ShortName>
@@ -1259,6 +1506,10 @@
 					<ShortName>MultitoolStop_PH.wav</ShortName>
 					<CachePath>SFX/MultitoolStop_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="1029227583" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
+					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_B3F14195.wem</CachePath>
+				</File>
 				<File Id="1036072939" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_172A8D1B.wem</CachePath>
@@ -1267,13 +1518,17 @@
 					<ShortName>VOJoueurAttaque_PH.wav</ShortName>
 					<CachePath>SFX/VOJoueurAttaque_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="1061976782" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Temps_PH.wav</ShortName>
-					<CachePath>SFX/Temps_PH_10C4C929.wem</CachePath>
+				<File Id="1046663375" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-023.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-023_10C4C929.wem</CachePath>
 				</File>
-				<File Id="1072106380" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireBatterie_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireBatterie_PH_10C4C929.wem</CachePath>
+				<File Id="1051884941" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_FeuilleMetallique_v1.wav</ShortName>
+					<CachePath>SFX/UI_Construire_FeuilleMetallique_v1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1055573738" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO_Narrateur_Neutre-015.wav</ShortName>
+					<CachePath>SFX/VO_Narrateur_Neutre-015_10C4C929.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
@@ -1285,6 +1540,7 @@
 							<MediaRef Id="873684731"/>
 						</MediaRefs>
 					</Plugin>
+					<Plugin Id="2185427101" Name="SC_PlanteCarnivore" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="3657550167" Name="New_Parametric_EQ" LibName="Wwise Parametric EQ" LibId="6881283"/>
 				</ShareSets>
 			</Plugins>
@@ -1381,34 +1637,34 @@
 					</MediaRefs>
 				</Event>
 				<Event Id="1783139436" Name="ENV_Teleporteur" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="3471878825" Name="LIF_Moustique_Degat" DurationType="OneShot" DurationMin="1.722049" DurationMax="4.769694">
+				<Event Id="3471878825" Name="LIF_Moustique_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.1283644" DurationMax="2.8031344">
 					<MediaRefs>
+						<MediaRef Id="6933992"/>
 						<MediaRef Id="26624252"/>
 						<MediaRef Id="40771489"/>
 						<MediaRef Id="45520835"/>
-						<MediaRef Id="67799906"/>
-						<MediaRef Id="150001985"/>
+						<MediaRef Id="78276103"/>
 						<MediaRef Id="176342500"/>
+						<MediaRef Id="277528955"/>
 						<MediaRef Id="344312199"/>
 						<MediaRef Id="352848444"/>
 						<MediaRef Id="371999870"/>
 						<MediaRef Id="474658866"/>
 						<MediaRef Id="502963919"/>
+						<MediaRef Id="527633345"/>
+						<MediaRef Id="529164540"/>
 						<MediaRef Id="559970004"/>
 						<MediaRef Id="575769636"/>
 						<MediaRef Id="586588224"/>
 						<MediaRef Id="588728228"/>
 						<MediaRef Id="665190911"/>
-						<MediaRef Id="668812202"/>
 						<MediaRef Id="758217916"/>
 						<MediaRef Id="865714324"/>
 						<MediaRef Id="880679580"/>
 						<MediaRef Id="891285907"/>
-						<MediaRef Id="923361211"/>
-						<MediaRef Id="966657797"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="292996144" Name="LIF_Moustique_Mort" DurationType="OneShot" DurationMin="1.2266941" DurationMax="3.0579717">
+				<Event Id="292996144" Name="LIF_Moustique_Mort" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.2266941" DurationMax="3.0579717">
 					<MediaRefs>
 						<MediaRef Id="6933992"/>
 						<MediaRef Id="78276103"/>
@@ -1434,7 +1690,7 @@
 						<MediaRef Id="891285907"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3251876752" Name="LIF_Moustique_Passif" DurationType="OneShot" DurationMin="25.080095" DurationMax="28.151459">
+				<Event Id="3251876752" Name="LIF_Moustique_Passif" MaxAttenuation="100" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="123416848"/>
 						<MediaRef Id="480570866"/>
@@ -1460,17 +1716,47 @@
 						<MediaRef Id="720078075"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="64562537" Name="LIF_PlanteCarnivore_Passif" DurationType="OneShot" DurationMin="1.1770998" DurationMax="1.483053">
+				<Event Id="64562537" Name="LIF_PlanteCarnivore_Passif" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="827885596"/>
+						<MediaRef Id="33020486"/>
+						<MediaRef Id="39081726"/>
+						<MediaRef Id="120814222"/>
+						<MediaRef Id="205328605"/>
+						<MediaRef Id="359539423"/>
+						<MediaRef Id="365611638"/>
+						<MediaRef Id="459104198"/>
+						<MediaRef Id="478037778"/>
+						<MediaRef Id="538407726"/>
+						<MediaRef Id="637697127"/>
+						<MediaRef Id="755025142"/>
+						<MediaRef Id="757669348"/>
+						<MediaRef Id="771344330"/>
+						<MediaRef Id="798400265"/>
+						<MediaRef Id="981352151"/>
+						<MediaRef Id="985355215"/>
+						<MediaRef Id="999350642"/>
 					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2185427101"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
 				<Event Id="1784156715" Name="LIF_Rhinortue_Alerte" DurationType="OneShot" DurationMin="1.0153646" DurationMax="1.2792792">
 					<MediaRefs>
 						<MediaRef Id="564656186"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2466167957" Name="LIF_Rhinortue_Attaque" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2466167957" Name="LIF_Rhinortue_Attaque" DurationType="OneShot" DurationMin="1.8036249" DurationMax="2.8704314">
+					<MediaRefs>
+						<MediaRef Id="288099723"/>
+						<MediaRef Id="418054284"/>
+						<MediaRef Id="495962914"/>
+						<MediaRef Id="748046191"/>
+						<MediaRef Id="1007858372"/>
+						<MediaRef Id="1029227583"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2964860923" Name="LIF_Rhinortue_Degat" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="2655203"/>
@@ -1741,9 +2027,14 @@
 						<MediaRef Id="939912125"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1065587537" Name="PLY_Grimpe" DurationType="OneShot" DurationMin="0.50781226" DurationMax="0.63980335">
+				<Event Id="1065587537" Name="PLY_Grimpe" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="765132867"/>
+						<MediaRef Id="67148845"/>
+						<MediaRef Id="428751031"/>
+						<MediaRef Id="727627421"/>
+						<MediaRef Id="773024795"/>
+						<MediaRef Id="799156670"/>
+						<MediaRef Id="864776173"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="895662967" Name="PLY_Multitool_Bark" DurationType="OneShot" DurationMin="1.1225324" DurationMax="1.4143021">
@@ -1838,26 +2129,34 @@
 						<ActionSetSwitchEntry GroupId="2913619480" Id="1973442484" Name="Pas_Terre"/>
 					</ActionSetSwitch>
 				</Event>
-				<Event Id="727215424" Name="UI_Amelioration_Fermer" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="3491591680" Name="UI_Amelioration_Ouvrir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="3316347964" Name="UI_Atelier_Fermer" DurationType="OneShot" DurationMin="0.96825" DurationMax="0.96825">
+				<Event Id="727215424" Name="UI_Amelioration_Fermer" DurationType="OneShot" DurationMin="0.3235625" DurationMax="0.3235625">
 					<MediaRefs>
-						<MediaRef Id="205954150"/>
+						<MediaRef Id="69917688"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2446265780" Name="UI_Atelier_Ouvrir" DurationType="OneShot" DurationMin="1.02875" DurationMax="1.02875">
+				<Event Id="3491591680" Name="UI_Amelioration_Ouvrir" DurationType="OneShot" DurationMin="0.21391666" DurationMax="0.21391666">
 					<MediaRefs>
-						<MediaRef Id="568237247"/>
+						<MediaRef Id="106501362"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2953886367" Name="UI_BarreDeVie_Faible" DurationType="OneShot" DurationMin="3.108108" DurationMax="3.108108">
+				<Event Id="3316347964" Name="UI_Atelier_Fermer" DurationType="OneShot" DurationMin="0.57989585" DurationMax="0.57989585">
+					<MediaRefs>
+						<MediaRef Id="93894929"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2446265780" Name="UI_Atelier_Ouvrir" DurationType="OneShot" DurationMin="0.57989585" DurationMax="0.57989585">
+					<MediaRefs>
+						<MediaRef Id="876092173"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2953886367" Name="UI_BarreDeVie_Faible" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="521306769"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3532067702" Name="UI_BarreDeVie_Gagner" DurationType="OneShot" DurationMin="0.8040541" DurationMax="0.8040541">
+				<Event Id="3532067702" Name="UI_BarreDeVie_Gagner" DurationType="OneShot" DurationMin="0.8401667" DurationMax="0.8401667">
 					<MediaRefs>
-						<MediaRef Id="654770872"/>
+						<MediaRef Id="170356181"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="710951487" Name="UI_Base_Carte" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
@@ -1867,14 +2166,14 @@
 				<Event Id="1792010378" Name="UI_Base_Recolte" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="872403303" Name="UI_Base_Stockage" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="648645475" Name="UI_Base_Teleporteur" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="284641433" Name="UI_Carte_Fermer" DurationType="OneShot" DurationMin="0.76652086" DurationMax="0.76652086">
+				<Event Id="284641433" Name="UI_Carte_Fermer" DurationType="OneShot" DurationMin="0.3235625" DurationMax="0.3235625">
 					<MediaRefs>
-						<MediaRef Id="607169887"/>
+						<MediaRef Id="69917688"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1306005165" Name="UI_Carte_Ouvrir" DurationType="OneShot" DurationMin="0.8169583" DurationMax="0.8169583">
+				<Event Id="1306005165" Name="UI_Carte_Ouvrir" DurationType="OneShot" DurationMin="0.32214582" DurationMax="0.32214582">
 					<MediaRefs>
-						<MediaRef Id="397180031"/>
+						<MediaRef Id="808565386"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1478891302" Name="UI_Construire_Ameliorations_Bouclier" DurationType="OneShot" DurationMin="1.7045" DurationMax="1.7045">
@@ -1907,9 +2206,9 @@
 						<MediaRef Id="321808165"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1194441137" Name="UI_Construire_Batterie" DurationType="OneShot" DurationMin="1.0085833" DurationMax="1.0085833">
+				<Event Id="1194441137" Name="UI_Construire_Batterie" DurationType="OneShot" DurationMin="0.38302085" DurationMax="0.38302085">
 					<MediaRefs>
-						<MediaRef Id="1072106380"/>
+						<MediaRef Id="510109064"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3882776175" Name="UI_Construire_Cables" DurationType="OneShot" DurationMin="1.0489167" DurationMax="1.0489167">
@@ -1917,14 +2216,14 @@
 						<MediaRef Id="945305452"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2884316364" Name="UI_Construire_Cuir" DurationType="OneShot" DurationMin="0.42077082" DurationMax="0.42077082">
+				<Event Id="2884316364" Name="UI_Construire_Cuir" DurationType="OneShot" DurationMin="0.28266665" DurationMax="0.28266665">
 					<MediaRefs>
-						<MediaRef Id="530364237"/>
+						<MediaRef Id="36814188"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3801559710" Name="UI_Construire_FeuilleMetallique" DurationType="OneShot" DurationMin="1.3414167" DurationMax="1.3414167">
+				<Event Id="3801559710" Name="UI_Construire_FeuilleMetallique" DurationType="OneShot" DurationMin="0.19808333" DurationMax="0.19808333">
 					<MediaRefs>
-						<MediaRef Id="727415921"/>
+						<MediaRef Id="1051884941"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3178688842" Name="UI_Construire_Microprocesseur" DurationType="OneShot" DurationMin="1.4221041" DurationMax="1.4221041">
@@ -1937,24 +2236,24 @@
 						<MediaRef Id="414060833"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3454429038" Name="UI_GameOver_Temps" DurationType="OneShot" DurationMin="0.9884167" DurationMax="0.9884167">
+				<Event Id="3454429038" Name="UI_GameOver_Temps" DurationType="OneShot" DurationMin="5" DurationMax="5">
 					<MediaRefs>
-						<MediaRef Id="597636822"/>
+						<MediaRef Id="339440700"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3136319167" Name="UI_GameOver_Vie" DurationType="OneShot" DurationMin="0.9178125" DurationMax="0.9178125">
+				<Event Id="3136319167" Name="UI_GameOver_Vie" DurationType="OneShot" DurationMin="5" DurationMax="5">
 					<MediaRefs>
-						<MediaRef Id="407485937"/>
+						<MediaRef Id="1016441441"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2295926980" Name="UI_HotbarDeplacement" DurationType="OneShot" DurationMin="0.92789584" DurationMax="0.92789584">
+				<Event Id="2295926980" Name="UI_HotbarDeplacement" DurationType="OneShot" DurationMin="0.09189583" DurationMax="0.09189583">
 					<MediaRefs>
-						<MediaRef Id="847167926"/>
+						<MediaRef Id="94866023"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3461596575" Name="UI_Inventaire_Fermer" DurationType="OneShot" DurationMin="0.867375" DurationMax="0.867375">
+				<Event Id="3461596575" Name="UI_Inventaire_Fermer" DurationType="OneShot" DurationMin="0.3235625" DurationMax="0.3235625">
 					<MediaRefs>
-						<MediaRef Id="988793507"/>
+						<MediaRef Id="69917688"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2985199436" Name="UI_Inventaire_Intervertir" DurationType="OneShot" DurationMin="0.21209882" DurationMax="0.21209882">
@@ -1962,9 +2261,9 @@
 						<MediaRef Id="410723692"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1570520871" Name="UI_Inventaire_Ouvrir" DurationType="OneShot" DurationMin="0.7471948" DurationMax="0.7471948">
+				<Event Id="1570520871" Name="UI_Inventaire_Ouvrir" DurationType="OneShot" DurationMin="0.08222917" DurationMax="0.08222917">
 					<MediaRefs>
-						<MediaRef Id="582116315"/>
+						<MediaRef Id="570993699"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="245720647" Name="UI_Inventaire_Placer" DurationType="OneShot" DurationMin="0.16385135" DurationMax="0.16385135">
@@ -1977,9 +2276,9 @@
 						<MediaRef Id="262049607"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2115875219" Name="UI_JoueurVise" DurationType="OneShot" DurationMin="0.9178125" DurationMax="0.9178125">
+				<Event Id="2115875219" Name="UI_JoueurVise" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="801895027"/>
+						<MediaRef Id="180165786"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1287766270" Name="UI_MenuMort_RetourBase" DurationType="OneShot" DurationMin="1.5532084" DurationMax="1.5532084">
@@ -1997,35 +2296,35 @@
 						<MediaRef Id="298080536"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2523949194" Name="UI_Pause_Fermer" DurationType="OneShot" DurationMin="0.74635416" DurationMax="0.74635416">
+				<Event Id="2523949194" Name="UI_Pause_Fermer" DurationType="OneShot" DurationMin="0.7515208" DurationMax="0.7515208">
 					<MediaRefs>
-						<MediaRef Id="186173325"/>
+						<MediaRef Id="490092445"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3671474502" Name="UI_Pause_Ouvrir" DurationType="OneShot" DurationMin="1.404557" DurationMax="1.404557">
+				<Event Id="3671474502" Name="UI_Pause_Ouvrir" DurationType="OneShot" DurationMin="0.7515208" DurationMax="0.7515208">
 					<MediaRefs>
-						<MediaRef Id="33857231"/>
+						<MediaRef Id="871914218"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="45966240" Name="UI_Respiration" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="3192806191" Name="UI_Temps" DurationType="OneShot" DurationMin="0.37316668" DurationMax="0.37316668">
+				<Event Id="3192806191" Name="UI_Temps" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="1061976782"/>
+						<MediaRef Id="289254179"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2605645130" Name="UI_Vente_Fermer" DurationType="OneShot" DurationMin="0.39466667" DurationMax="0.39466667">
+				<Event Id="2605645130" Name="UI_Vente_Fermer" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
 					<MediaRefs>
-						<MediaRef Id="364130922"/>
+						<MediaRef Id="601280793"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4177524486" Name="UI_Vente_Ouvrir" DurationType="OneShot" DurationMin="0.584625" DurationMax="0.584625">
+				<Event Id="4177524486" Name="UI_Vente_Ouvrir" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
 					<MediaRefs>
-						<MediaRef Id="219852544"/>
+						<MediaRef Id="55861736"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="762427217" Name="UI_Vente_Vendre" DurationType="OneShot" DurationMin="0.5091955" DurationMax="0.5091955">
+				<Event Id="762427217" Name="UI_Vente_Vendre" DurationType="OneShot" DurationMin="0.6014375" DurationMax="0.6014375">
 					<MediaRefs>
-						<MediaRef Id="310662728"/>
+						<MediaRef Id="275627558"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="70496768" Name="VO_Joueur_Appeure" DurationType="OneShot" DurationMin="1.09" DurationMax="1.09">
@@ -2098,12 +2397,54 @@
 						<MediaRef Id="999984505"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="545824151" Name="VO_Narrateur_Neutre" DurationType="OneShot" DurationMin="1.32125" DurationMax="1.32125">
+				<Event Id="545824151" Name="VO_Narrateur_Neutre" DurationType="Infinite">
 					<MediaRefs>
+						<MediaRef Id="17970472"/>
+						<MediaRef Id="28097534"/>
+						<MediaRef Id="35711202"/>
+						<MediaRef Id="136911937"/>
+						<MediaRef Id="173289046"/>
+						<MediaRef Id="180318060"/>
+						<MediaRef Id="191148018"/>
+						<MediaRef Id="245721636"/>
+						<MediaRef Id="250325720"/>
+						<MediaRef Id="260686157"/>
+						<MediaRef Id="267693892"/>
+						<MediaRef Id="279221858"/>
+						<MediaRef Id="318303942"/>
+						<MediaRef Id="379794874"/>
+						<MediaRef Id="440515815"/>
+						<MediaRef Id="446720781"/>
 						<MediaRef Id="481430361"/>
+						<MediaRef Id="484181716"/>
+						<MediaRef Id="498659311"/>
+						<MediaRef Id="520184572"/>
+						<MediaRef Id="521038942"/>
+						<MediaRef Id="547866083"/>
+						<MediaRef Id="565665096"/>
+						<MediaRef Id="591719911"/>
+						<MediaRef Id="682287277"/>
+						<MediaRef Id="695592662"/>
+						<MediaRef Id="711414304"/>
+						<MediaRef Id="719058831"/>
+						<MediaRef Id="742838283"/>
+						<MediaRef Id="769147433"/>
+						<MediaRef Id="785631477"/>
+						<MediaRef Id="813070388"/>
+						<MediaRef Id="851370385"/>
+						<MediaRef Id="962506391"/>
+						<MediaRef Id="970717894"/>
+						<MediaRef Id="992048152"/>
+						<MediaRef Id="1010562910"/>
+						<MediaRef Id="1046663375"/>
+						<MediaRef Id="1055573738"/>
 					</MediaRefs>
 				</Event>
 			</Events>
+			<GameParameters>
+				<GameParameter Id="2185427101" Name="SC_PlanteCarnivore"/>
+				<GameParameter Id="2769016988" Name="PLY_Sante"/>
+			</GameParameters>
 			<SwitchGroups>
 				<SwitchGroup Id="1145780075" Name="Pas_Vitesse">
 					<Switches>
@@ -2121,5 +2462,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{2CB2FB46-93CA-B53C-2B6B-B19AA30AB3A3}</FileHash>
+	<FileHash>{25C1B4F7-F56F-9A6B-89BD-D28D527B2D13}</FileHash>
 </SoundBanksInfo>
