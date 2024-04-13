@@ -19,15 +19,46 @@ public class DialogueSpeaker : MonoBehaviour
     public IEnumerator Speech(string textToWrite = null)
     {
         isSpeaking = true;
+        int index = 0;
         if (textToWrite != null)
         {
-            speechBubbleText.text = "";
-            speechBubbleTextB.text = "";
-            foreach (char letter in textToWrite.ToCharArray())
+            speechBubbleText.text = textToWrite;
+            speechBubbleTextB.text = textToWrite.Replace("<color=red>", "<color=black>")
+                                                .Replace("<color=green>", "<color=black>")
+                                                .Replace("<color=yellow>", "<color=black>")
+                                                .Replace("<color=white>", "<color=black>")
+                                                .Replace("<color=lime>", "<color=black>")
+                                                .Replace("<color=lightblue>", "<color=black>")
+                                                .Replace("<color=blue>", "<color=black>")
+                                                .Replace("<color=orange>", "<color=black>");
+            char[] charArray = textToWrite.ToCharArray();
+            bool isLetter = true;
+            for (int i = 0; i < charArray.Length; i++)
             {
-                speechBubbleText.text += letter;
-                speechBubbleTextB.text += letter;
-                yield return new WaitForSeconds(0.03f);
+                if (charArray[i] == '<')
+                {
+                    isLetter = false;
+                    //yield return null;
+                }
+                else if (charArray[i] == '>')
+                {
+                    isLetter = true;
+                    yield return null;
+                    continue;
+                }
+
+                if (isLetter)
+                {
+                    index++;
+                    speechBubbleText.maxVisibleCharacters = index;
+                    speechBubbleTextB.maxVisibleCharacters = index;
+                    yield return new WaitForSeconds(0.025f);
+                }
+                else
+                {
+                    yield return null;
+                    continue;
+                }
             }
         }
         isSpeaking = false;

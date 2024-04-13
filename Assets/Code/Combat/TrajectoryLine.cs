@@ -7,7 +7,7 @@ public class TrajectoryLine : MonoBehaviour
     [Header("Trajectory Line Smoothess/Length")]
     [SerializeField] int segmentCount = 50;
     [SerializeField] float curveLength = 3.5f;
-
+    [SerializeField] Vector2 startPosOffset;
     Vector2[] segments;
     private LineRenderer line;
     float force;
@@ -31,7 +31,7 @@ public class TrajectoryLine : MonoBehaviour
     public void CalculateTrajectory()
     {
         //Set the start position of the line renderer
-        Vector2 startPos = transform.position;
+        Vector2 startPos = (Vector2)transform.position + startPosOffset;
         segments[0] = startPos;
         line.SetPosition(0, startPos);
 
@@ -49,5 +49,11 @@ public class TrajectoryLine : MonoBehaviour
             segments[i] = segments[0] + startVelocity * timeOFfset + gravityOffset;
             line.SetPosition(i, segments[i]);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere((Vector2)transform.position + startPosOffset, 0.05f);
     }
 }

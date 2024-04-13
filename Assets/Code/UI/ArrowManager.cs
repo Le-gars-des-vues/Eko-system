@@ -11,6 +11,8 @@ public class ArrowManager : MonoBehaviour
     [SerializeField] float timeToFill = 0.02f;
     [SerializeField] float timer;
     public bool readyToActivate;
+    bool isActive;
+    bool isInvis;
 
     float moveSpeed = 10f;
     Vector2 arrowPos;
@@ -30,24 +32,46 @@ public class ArrowManager : MonoBehaviour
             instance = this;
     }
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (targetObject != null)
             transform.position = Vector2.Lerp(transform.position, arrowPos + arrowOffset, moveSpeed * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.E) || Input.GetKeyDown(KeyCode.E))
+        if (!player.isInDialogue)
         {
-            if (timer < timeToFill)
-                timer += Time.deltaTime;
+            if (isInvis)
+            {
+                isInvis = false;
+                ToggleArrow(true);
+            }
+
+            if (Input.GetKey(KeyCode.E) || Input.GetKeyDown(KeyCode.E))
+            {
+                if (timer < timeToFill)
+                    timer += Time.deltaTime;
+                else
+                    readyToActivate = true;
+            }
             else
-                readyToActivate = true;
+            {
+                readyToActivate = false;
+                if (timer > 0)
+                    timer -= Time.deltaTime;
+            }
         }
         else
         {
-            readyToActivate = false;
-            if (timer > 0)
-                timer -= Time.deltaTime;
+            if (isActive && !isInvis)
+            {
+                isInvis = true;
+                ToggleArrow(false);
+            }
         }
 
         float motion = Mathf.Lerp(0, 1, timer / timeToFill);
@@ -68,6 +92,23 @@ public class ArrowManager : MonoBehaviour
         Vector2 diff = pos - (Vector2)targetObject.transform.position;
         arrowPos = (Vector2)targetObject.transform.position + diff;
         gameObject.transform.position = pos + offset;
+        isActive = true;
+    }
+
+    public void ToggleArrow(bool isTrue)
+    {
+        if (!isTrue)
+        {
+            transform.Find("Visual").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+            text.color = new Color(1, 1, 1, 0);
+            textB.color = new Color(0, 0, 0, 0);
+        }
+        else
+        {
+            transform.Find("Visual").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            text.color = new Color(1, 1, 1, 1);
+            textB.color = new Color(0, 0, 0, 1);
+        }
     }
 
     public void RemoveArrow()
@@ -76,5 +117,6 @@ public class ArrowManager : MonoBehaviour
         targetObject = null;
         text.text = "";
         textB.text = "";
+        isActive = false;
     }
 }

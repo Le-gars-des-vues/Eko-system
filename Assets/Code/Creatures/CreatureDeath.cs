@@ -61,7 +61,7 @@ public class CreatureDeath : MonoBehaviour
                 {
                     //Debug.Log("Is harvesting");
                     timer += Time.deltaTime;
-                    if (timer > timeToHarvest && ArrowManager.instance.readyToActivate)
+                    if (timer > timeToHarvest && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
                     {
                         for (int i = 0; i < ressourceSpawnedCount; i++)
                         {
@@ -87,7 +87,7 @@ public class CreatureDeath : MonoBehaviour
                 {
                     //Debug.Log("Is harvesting");
                     timer += Time.deltaTime;
-                    if (timer > timeToHarvest && ArrowManager.instance.readyToActivate)
+                    if (timer > timeToHarvest && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
                     {
                         var ressourceSpawned = Instantiate(ressourceToHarvest, transform.position, transform.rotation);
                         //ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);

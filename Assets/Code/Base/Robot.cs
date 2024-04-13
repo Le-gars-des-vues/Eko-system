@@ -40,14 +40,13 @@ public class Robot : MonoBehaviour
         if (player.GetComponent<PlayerPermanent>().spawnAtBase)
         {
             DialogueManager.instance.StartDialogue(speaker.dialogueSequence, speaker, true);
-            DialogueManager.onDialogueEnd = GoToRespawn;
+            DialogueManager.onDialogueEnd = GoToCrafting;
+            //DialogueManager.onDialogueEnd = GoToRespawn;
         }
-        //Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.GetComponent<CapsuleCollider2D>());
     }
 
     private void Update()
     {
-
         if (isMoving)
         {
             if (Mathf.Abs(target.position.x - robotPos.position.x) > movementDistanceThreshold)
@@ -76,30 +75,40 @@ public class Robot : MonoBehaviour
 
     void RobotTutorial()
     {
-        if (!hasShowedRespawn)
+        if (!hasShowedCrafting)
         {
-            DialogueManager.instance.StartDialogue(speaker.dialogueSequence2, speaker, true);
+            DialogueManager.instance.StartDialogue(speaker.dialogueSequence4, speaker);
+            DialogueManager.onDialogueEnd = GoToSellingScreen;
+            DialogueManager.onDialogueEnd += GiveItem;
+            hasShowedCrafting = true;
+        }
+        else if (!Tutorial.instance.firstTimeOutside && !Tutorial.instance.readyToGoOut)
+        {
+            DialogueManager.instance.StartDialogue(speaker.dialogueSequence5, speaker, true, true, "craftedFirstItem");
+            DialogueManager.onDialogueEnd += ReadyToGoOut;
+        }
+        else if (!hasShowedRespawn)
+        {
+            DialogueManager.instance.StartDialogue(speaker.dialogueSequence2, speaker);
             DialogueManager.onDialogueEnd = GoToSellingScreen;
             hasShowedRespawn = true;
         }
         else if (!hasShowedMarket)
         {
-            DialogueManager.instance.StartDialogue(speaker.dialogueSequence3, speaker, true);
+            DialogueManager.instance.StartDialogue(speaker.dialogueSequence3, speaker);
             DialogueManager.onDialogueEnd = GoToCrafting;
             hasShowedMarket = true;
         }
-        else if (!hasShowedCrafting)
-        {
-            DialogueManager.instance.StartDialogue(speaker.dialogueSequence4, speaker, true);
-            DialogueManager.onDialogueEnd += GoToSellingScreen;
-            DialogueManager.onDialogueEnd += GiveItem;
-            hasShowedCrafting = true;
-        }
         else if (!hasShowedBuilding)
         {
-            DialogueManager.instance.StartDialogue(speaker.dialogueSequence5, speaker, true);
+            DialogueManager.instance.StartDialogue(speaker.dialogueSequence5, speaker);
             hasShowedBuilding = true;
         }
+    }
+
+    void ReadyToGoOut()
+    {
+        Tutorial.instance.readyToGoOut = true;
     }
 
     void GoRight()

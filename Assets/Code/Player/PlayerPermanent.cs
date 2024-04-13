@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.U2D.IK;
 using Cinemachine;
 
-public class PlayerPermanent : MonoBehaviour
+public class PlayerPermanent : MonoBehaviour, IDataPersistance
 {
     [Header("Oxygen Variable")]
     public float maxOxygen;
@@ -93,8 +93,6 @@ public class PlayerPermanent : MonoBehaviour
     public Coroutine poison;
     public bool isPoisoned;
 
-    Tutorial tutorial;
-
     [Header("UnderWater Variables")]
     [SerializeField] float underWaterGravityScale = 0.1f;
     [SerializeField] float underWaterDrag = 2f;
@@ -176,6 +174,16 @@ public class PlayerPermanent : MonoBehaviour
     public bool hasBuiltMap = false;
     public bool hasBuiltStorage = false;
 
+    public void LoadData(GameData data)
+    {
+        hasMultitool = data.hasMultitool;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.hasMultitool = hasMultitool;
+    }
+
     private void Awake()
     {
         isFacingRight = true;
@@ -203,7 +211,6 @@ public class PlayerPermanent : MonoBehaviour
         upgrade = GameObject.Find("Upgrades");
         room = GameObject.Find("RoomMenu");
         gameOverScreen = GameObject.Find("GameOverScreen");
-        tutorial = GetComponent<Tutorial>();
         //Au depart du jeu, on set tout les bars au max et on desactive le ragdoll
         for (int i = 0; i < bones.Count; i++)
         {
@@ -272,15 +279,15 @@ public class PlayerPermanent : MonoBehaviour
                 isInBase = false;
                 if (buildingIsOpen)
                     ShowOrHideBuilding();
-                if (!tutorial.firstTimeOutside)
+                if (!Tutorial.instance.firstTimeOutside)
                 {
-                    tutorial.RobotTextMessage(tutorial.tutorialTexts[0].text);
+                    Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[0].text);
                 }
                 
                 if (!AudioManager.instance.forestIsPlaying)
                 {
                     AudioManager.instance.forestIsPlaying = true;
-                    AudioManager.instance.PlaySoundtrack("AMB_Foret");
+                    AudioManager.instance.PlaySoundtrack(AudioManager.instance.forestSountrack);
                 }
             }
         }
@@ -357,7 +364,11 @@ public class PlayerPermanent : MonoBehaviour
 
         //Open UI
         if (Input.GetKeyDown(KeyCode.I) && !marketIsOpen && !craftingIsOpen)
+        {
+            if (!inventoryOpen)
+                AudioManager.instance.PlaySound(AudioManager.instance.inventaireOuvrir, Camera.main.gameObject);
             ShowOrHideInventory();
+        }
 
         if (Input.GetKeyDown(KeyCode.M) && !marketIsOpen && !craftingIsOpen)
             ShowOrHideMap();
@@ -728,6 +739,7 @@ public class PlayerPermanent : MonoBehaviour
     {
         if (!inventoryOpen)
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.inventaireOuvrir, Camera.main.gameObject);
             inventoryOpen = true;
             playerInventory.transform.Find("NextUI").gameObject.SetActive(false);
             playerInventory.transform.Find("PreviousUI").gameObject.SetActive(false);
@@ -914,10 +926,8 @@ public class PlayerPermanent : MonoBehaviour
         }
         else
         {
-            if (hasBuiltMap)
-                map.SetActive(false);
-            else
-                noMap.SetActive(false);
+            map.SetActive(false);
+            noMap.SetActive(false);
             mapIsOpen = false;
         }
     }

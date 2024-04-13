@@ -169,7 +169,8 @@ public class InventoryController : MonoBehaviour
 
         int selectedItemID = UnityEngine.Random.Range(0, items.Count);
         inventoryItem.Set(items[selectedItemID], defaultItemGrid);
-        inventoryItem.gameObject.tag = "Ressource";
+        if (inventoryItem.itemData.itemType == "Ressource")
+            inventoryItem.gameObject.tag = "Ressource";
 
         Vector2Int? posOnGrid = defaultItemGrid.FindSpaceForObject(inventoryItem);
 
@@ -259,6 +260,9 @@ public class InventoryController : MonoBehaviour
         inventoryItem.stackAmount = craftables[recipeChoice].objectToSpawn.GetComponent<InventoryItem>().stackAmount;
         inventoryItem.Set(craftables[recipeChoice], defaultItemGrid);
         inventoryItem.sprites = craftables[recipeChoice].objectToSpawn.GetComponent<InventoryItem>().sprites;
+        inventoryItem.maxDurability = craftables[recipeChoice].objectToSpawn.GetComponent<InventoryItem>().maxDurability;
+        inventoryItem.lowDurabilityThreshold = inventoryItem.maxDurability / 3;
+        inventoryItem.currentDurability = inventoryItem.maxDurability;
         if (inventoryItem.sprites.Length > 0)
             inventoryItem.GetComponent<Image>().sprite = inventoryItem.sprites[(inventoryItem.sprites.Length) - inventoryItem.stackAmount];
         if (craftables[recipeChoice].itemType == "Upgrade" || craftables[recipeChoice].itemType == "Equipment")
@@ -293,7 +297,8 @@ public class InventoryController : MonoBehaviour
         }
         else if (recipeChoice == 0)
         {
-            Debug.Log("Should work");
+            DialogueManager.conditions["craftedFirstItem"] = true;
+            Debug.Log(DialogueManager.conditions["craftedFirstItem"]);
             /*
             Recipes.listOfRecipes.Remove(recipeChoice);
             if (recipeChoice != Recipes.listOfRecipes.Count)
@@ -428,7 +433,8 @@ public class InventoryController : MonoBehaviour
         bool complete = selectedItemGrid.PlaceItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem);
         if (complete)
         {
-            selectedItem.itemGrid = selectedItemGrid;
+            AudioManager.instance.PlaySound(AudioManager.instance.inventairePlace, gameObject);
+            //selectedItem.itemGrid = selectedItemGrid;
             rectTransform.sizeDelta = new Vector2(selectedItem.WIDTH * selectedItemGrid.tileSizeWidth, selectedItem.HEIGHT * selectedItemGrid.tileSizeHeight);
             if (selectedItemGrid.gameObject.tag == "Hotbar")
             {
@@ -440,14 +446,53 @@ public class InventoryController : MonoBehaviour
             }
             OnItemPlaced();
 
-            selectedItem = null;
+            bool isAmmo = false;
             if (overlapItem != null)
             {
-                selectedItem = overlapItem;
-                overlapItem = null;
-                rectTransform = selectedItem.GetComponent<RectTransform>();
-                rectTransform.SetAsLastSibling();
+                if (selectedItem.itemData.itemType == "Ammo")
+                {
+                    if (selectedItem.itemData.itemName == overlapItem.itemData.itemName)
+                    {
+                        if (selectedItem.stackAmount < selectedItem.maxStack)
+                        {
+                            isAmmo = true;
+                            int diff = selectedItem.maxStack - selectedItem.stackAmount;
+                            for (int i = 0; i < diff; i++)
+                            {
+                                overlapItem.stackAmount--;
+                                selectedItem.stackAmount++;
+                                selectedItem.gameObject.GetComponent<Image>().sprite = selectedItem.sprites[selectedItem.sprites.Length - selectedItem.stackAmount];
+                                if (overlapItem.stackAmount != 0)
+                                {
+                                    overlapItem.gameObject.GetComponent<Image>().sprite = overlapItem.sprites[overlapItem.sprites.Length - overlapItem.stackAmount];
+                                }
+                                else
+                                {
+                                    selectedItem = null;
+                                    overlapItem.Delete();
+                                    return;
+                                }
+                            }
+                            selectedItem = null;
+                            selectedItem = overlapItem;
+                            overlapItem = null;
+                            rectTransform = selectedItem.GetComponent<RectTransform>();
+                            rectTransform.SetAsLastSibling();
+                        }
+                    }
+                }
+                
+                if (!isAmmo)
+                {
+                    selectedItem = null;
+                    selectedItem = overlapItem;
+                    overlapItem = null;
+                    rectTransform = selectedItem.GetComponent<RectTransform>();
+                    rectTransform.SetAsLastSibling();
+                }
             }
+            else
+                selectedItem = null;
         }
     }
 
@@ -456,6 +501,7 @@ public class InventoryController : MonoBehaviour
         selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
         if (selectedItem != null)
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.inventairePickUp, gameObject);
             selectedItem.itemGrid = null;
             selectedItem.isPlaced = false;
             rectTransform = selectedItem.GetComponent<RectTransform>();

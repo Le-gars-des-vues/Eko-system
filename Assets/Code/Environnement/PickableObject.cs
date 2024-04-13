@@ -28,6 +28,7 @@ public class PickableObject : MonoBehaviour
     [SerializeField] private float rotateSpeed;
     bool isFacingRight = true;
 
+    [SerializeField] bool isUnderWaterWeapon = false;
     public bool isSceneLoaded = false;
 
     private void Start()
@@ -72,6 +73,7 @@ public class PickableObject : MonoBehaviour
 
             playerInventory = GameObject.Find("GridInventaire").GetComponent<ItemGrid>();
             item = GetComponent<InventoryItem>();
+
 
             foreach (GameObject hb in GameObject.FindGameObjectsWithTag("Hotbar"))
             {
@@ -182,6 +184,13 @@ public class PickableObject : MonoBehaviour
         }
     }
 
+    public void DurabilityDamage(int damage)
+    {
+        GetComponent<InventoryItem>().currentDurability -= damage;
+        if (itemInInventory != null)
+            itemInInventory.GetComponent<InventoryItem>().currentDurability -= damage;
+    }
+
     void Turn()
     {
         Vector3 scale = transform.localScale;
@@ -259,6 +268,11 @@ public class PickableObject : MonoBehaviour
                 InsertItem(inventoryItem);
             }
 
+            inventoryItem.isInInventory = true;
+            inventoryItem.maxDurability = GetComponent<InventoryItem>().maxDurability;
+            inventoryItem.lowDurabilityThreshold = inventoryItem.maxDurability / 3;
+            inventoryItem.currentDurability = GetComponent<InventoryItem>().currentDurability;
+
             //On ajuste le tag de l'item
             itemInInventory = inventoryItem.gameObject;
             if (gameObject.tag == "Ressource")
@@ -292,7 +306,7 @@ public class PickableObject : MonoBehaviour
                 gameObject.transform.parent = null;
 
                 //On ajuste le sorting layer
-                sprite.sortingOrder = 8;
+                sprite.sortingOrder = 18;
 
                 //On equipe l'objet
                 player.EquipObject(gameObject);
@@ -359,5 +373,27 @@ public class PickableObject : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.GetMask("Ground") && !GetComponent<PickableObject>().isPickedUp)
             hasFlashed = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Water")
+        {
+            if (!isUnderWaterWeapon)
+            {
+                GetComponent<Rigidbody2D>().drag = 4;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Water")
+        {
+            if (!isUnderWaterWeapon)
+            {
+                GetComponent<Rigidbody2D>().drag = 0;
+            }
+        }
     }
 }

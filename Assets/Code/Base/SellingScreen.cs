@@ -23,7 +23,7 @@ public class SellingScreen : MonoBehaviour
     {
         if (!player.marketIsOpen)
         {
-            if (Input.GetKey(KeyCode.E) && ArrowManager.instance.readyToActivate)
+            if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
             {
                 if (isInRange)
                 {

@@ -24,6 +24,15 @@ public class DialogueManager : MonoBehaviour
     bool pressedKey = false;
     bool dialogueScreenIsOpen = false;
 
+    public static Dictionary<string, bool> conditions = new Dictionary<string, bool>
+    {
+        {"craftedFirstItem", false }
+    };
+
+    bool hasACondition;
+    public bool conditionIsMet = true;
+    string conditionName;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -42,6 +51,16 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        if (hasACondition)
+        {
+            if (conditions[conditionName])
+            {
+                conditionIsMet = true;
+                hasACondition = false;
+                Debug.Log("Condition is met!");
+            }
+        }
+
         if (player.isInDialogue)
         {
             if (!dialogueScreenIsOpen)
@@ -60,7 +79,7 @@ public class DialogueManager : MonoBehaviour
         {
             if (isReadyToTalk)
             {
-                if (Vector2.Distance(currentSpeaker.gameObject.transform.position, player.gameObject.transform.position) < startDialogueDistance)
+                if (Vector2.Distance(currentSpeaker.gameObject.transform.position, player.gameObject.transform.position) < startDialogueDistance && conditionIsMet)
                     StartTalking();
                 else
                     return;
@@ -68,13 +87,21 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(List<Dialogue> dialogueSequence, DialogueSpeaker speaker, bool _isInDialogue)
+    public void StartDialogue(List<Dialogue> dialogueSequence, DialogueSpeaker speaker, bool _isInDialogue = true, bool _hasACondition = false, string _conditionName = "")
     {
         dialigueIndex = 0;
         currentSpeaker = speaker;
         currentDialogue = dialogueSequence;
         isInDialogue = _isInDialogue;
         isReadyToTalk = true;
+        if (_hasACondition)
+        {
+            hasACondition = _hasACondition;
+            conditionName = _conditionName;
+            conditionIsMet = conditions[_conditionName];
+        }
+        else
+            conditionIsMet = true;
     }
 
     void StartTalking()
@@ -90,7 +117,16 @@ public class DialogueManager : MonoBehaviour
         {
             StopCoroutine(dialogue);
             currentSpeaker.speechBubbleText.text = currentDialogue[dialigueIndex].text;
-            currentSpeaker.speechBubbleTextB.text = currentDialogue[dialigueIndex].text;
+            currentSpeaker.speechBubbleTextB.text = currentDialogue[dialigueIndex].text.Replace("<color=red>", "<color=black>")
+                                                .Replace("<color=green>", "<color=black>")
+                                                .Replace("<color=yellow>", "<color=black>")
+                                                .Replace("<color=white>", "<color=black>")
+                                                .Replace("<color=lime>", "<color=black>")
+                                                .Replace("<color=lightblue>", "<color=black>")
+                                                .Replace("<color=blue>", "<color=black>")
+                                                .Replace("<color=orange>", "<color=black>");
+            currentSpeaker.speechBubbleText.maxVisibleCharacters = currentSpeaker.speechBubbleText.text.ToCharArray().Length;
+            currentSpeaker.speechBubbleTextB.maxVisibleCharacters = currentSpeaker.speechBubbleTextB.text.ToCharArray().Length;
             currentSpeaker.isSpeaking = false;
             pressedKey = false;
         }

@@ -258,7 +258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
-  arrow: {fileID: 5472159172288769644}
   item: {fileID: 0}
   inventory: {fileID: 0}
   playerInventory: {fileID: 0}
@@ -271,6 +270,7 @@ MonoBehaviour:
   isSelected: 0
   isPickedUp: 0
   rotateSpeed: 10
+  isUnderWaterWeapon: 0
   isSceneLoaded: 0
 --- !u!114 &7307692573727431715
 MonoBehaviour:
@@ -291,9 +291,8 @@ MonoBehaviour:
   canCharge: 0
   timeToMaxThrow: 0
   timer: 0
-  minThrowForce: 75
-  maxThrowForce: 75
-  isThrown: 0
+  minThrowForce: 100
+  maxThrowForce: 100
   effect:
     effectRange: 0
     effectMagnitude: 0
@@ -314,9 +313,16 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 70da5a15bb0edbb4ea01b549a8005a1a, type: 2}
   itemGrid: {fileID: 0}
   stackAmount: 0
+  maxStack: 5
   sprites: []
   markedForDestroy: 0
   isPlaced: 0
+  isInInventory: 0
+  currentDurability: 0
+  maxDurability: 50
+  lowDurabilityThreshold: 0
+  lowDurability: 0
+  broken: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
@@ -438,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentCount: 50
   curveLength: 3.5
+  startPosOffset: {x: 0.91, y: 0.17}
 --- !u!1001 &5565579555481192590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510,10 +517,5 @@ PrefabInstance:
 --- !u!4 &4557009868586486100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8214892596907868634, guid: d539275ed056eea489df55833fdc451d, type: 3}
-  m_PrefabInstance: {fileID: 5565579555481192590}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5472159172288769644 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 490306149884159714, guid: d539275ed056eea489df55833fdc451d, type: 3}
   m_PrefabInstance: {fileID: 5565579555481192590}
   m_PrefabAsset: {fileID: 0}

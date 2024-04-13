@@ -38,7 +38,7 @@ public class CarnivorousPlant : MonoBehaviour
     public bool isDrawingGizmos;
 
     [SerializeField] private AnimationCurve curve;
-    private float animSpeed;
+    //private float animSpeed;
     private float stepTimer;
 
     [SerializeField] private GameObject vine;
@@ -57,8 +57,8 @@ public class CarnivorousPlant : MonoBehaviour
         attackTimer = 0;
         isFacingRight = true;
 
-        float difference = pos1.x - pos2.x;
-        animSpeed = (difference / (difference * (difference / 10)) * (speed / 3));
+        //float difference = pos1.x - pos2.x;
+        //animSpeed = difference * speed;
 
         distanceFromBase = vine.GetComponent<LineRendererProceduralAnim>().segmentAmount * vine.GetComponent<LineRendererProceduralAnim>().segmentsLength;
     }
@@ -134,7 +134,7 @@ public class CarnivorousPlant : MonoBehaviour
         else
         {
             float facingDirection = goingRight ? -1 : 1;
-            stepTimer += Time.deltaTime * animSpeed;
+            stepTimer += Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y + (curve.Evaluate(stepTimer) * facingDirection)), speed * Time.deltaTime);
 
             if (goingRight)

@@ -11,6 +11,8 @@ public class WeaponDamage : MonoBehaviour
     int hitDamage;
     bool isDamaging;
 
+    int durabilityDamage = 1;
+
     //[SerializeField] float piercingAngleThreshold;
     [Header("State Variables")]
     Vector3 previousPosition;
@@ -43,7 +45,7 @@ public class WeaponDamage : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider != null && collision.collider.gameObject.tag == "Creature" && (GetComponent<PickableObject>().isPickedUp || isThrown))
+        if (collision.collider != null && collision.collider.gameObject.tag == "Creature" && (GetComponent<PickableObject>().isPickedUp || isThrown) && !GetComponent<InventoryItem>().broken)
         {
             CreatureHealth hp = GetScript(collision.collider.gameObject);
             if (gameObject.tag == "Spear" || gameObject.tag == "Ammo")
@@ -75,8 +77,8 @@ public class WeaponDamage : MonoBehaviour
                             color = 1;
                         else if (hitDamage > (maxDamage / 3) * 2)
                             color = 2;
-                        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasOptics)
-                            ShowDamage(hitDamage, collision.GetContact(0).point, color);
+                        ShowDamage(hitDamage, collision.GetContact(0).point, color);
+                        GetComponent<PickableObject>().DurabilityDamage(durabilityDamage);
 
                         if (isThrown)
                         {
@@ -88,7 +90,7 @@ public class WeaponDamage : MonoBehaviour
                     }
                 }
             }
-            else if (gameObject.tag == "OneHandedWeapon") ;
+            else if (gameObject.tag == "OneHandedWeapon")
             {
                 isDamaging = true;
                 hp.LoseHealth(hitDamage, GameObject.FindGameObjectWithTag("Player"));
@@ -99,8 +101,8 @@ public class WeaponDamage : MonoBehaviour
                     color = 1;
                 else if (hitDamage > (maxDamage / 3) * 2)
                     color = 2;
-                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasOptics)
-                    ShowDamage(hitDamage, collision.GetContact(0).point, color);
+                ShowDamage(hitDamage, collision.GetContact(0).point, color);
+                GetComponent<PickableObject>().DurabilityDamage(durabilityDamage);
             }
         }
 

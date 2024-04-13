@@ -15,6 +15,7 @@ public class InventoryButtons : MonoBehaviour
 
     public void RightButton()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.inventaireSwap, gameObject);
         CheckUI();
 
         if (index == 0)
@@ -36,6 +37,9 @@ public class InventoryButtons : MonoBehaviour
 
     public void LeftButton()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.inventaireSwap, gameObject);
+        CheckUI();
+
         if (index == 0)
         {
             index = 2;

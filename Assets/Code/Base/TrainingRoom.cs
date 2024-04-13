@@ -18,7 +18,7 @@ public class TrainingRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && ArrowManager.instance.readyToActivate)
+        if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
         {
             if (isInRange)
             {

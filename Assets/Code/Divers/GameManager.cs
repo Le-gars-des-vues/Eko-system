@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -60,6 +61,19 @@ public class GameManager : MonoBehaviour
     public List<GameObject> flys = new List<GameObject>();
     public List<GameObject> frogs = new List<GameObject>();
 
+    [Header("Storm Variables")]
+    [SerializeField] float timeToFullStorm;
+    [SerializeField] float timer;
+    GameObject storm;
+    [SerializeField] ParticleSystem rainFront;
+    [SerializeField] ParticleSystem rainGround;
+    [SerializeField] ParticleSystem rainBack;
+    [SerializeField] Volume stormVolume;
+    [SerializeField] Animator lightningFlash;
+    [SerializeField] float lightningCooldown = 20;
+    [SerializeField] float lightningTime;
+    [SerializeField] bool isStorm;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -75,6 +89,13 @@ public class GameManager : MonoBehaviour
         theCharacter = GameObject.FindGameObjectWithTag("Player");
         cycleCount = 1;
         cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
+
+        storm = GameObject.Find("Storm");
+        rainFront = storm.transform.GetChild(0).GetComponent<ParticleSystem>();
+        rainGround = storm.transform.GetChild(1).GetComponent<ParticleSystem>();
+        rainBack = storm.transform.GetChild(2).GetComponent<ParticleSystem>();
+        stormVolume = storm.transform.GetChild(3).GetComponent<Volume>();
+        lightningFlash = storm.transform.GetChild(4).GetComponent<Animator>();
 
         GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
         foreach(GameObject spawner in spawners)
@@ -133,14 +154,27 @@ public class GameManager : MonoBehaviour
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
 
-                if (TimeLeft < 480 && !eightMinLeft)
-                    QuickMenu.instance.frame.sprite = timeLeft[1];
-                else if (TimeLeft < 360 && !sixMinLeft)
-                    QuickMenu.instance.frame.sprite = timeLeft[2];
-                else if (TimeLeft < 240 && !fourMinLeft)
-                    QuickMenu.instance.frame.sprite = timeLeft[3];
-                else if (TimeLeft < 120 && !twoMinLeft)
+                if (TimeLeft < 120 && !twoMinLeft)
+                {
+                    twoMinLeft = true;
                     QuickMenu.instance.frame.sprite = timeLeft[4];
+                    Storm(true);
+                }
+                else if (TimeLeft < 240 && !fourMinLeft)
+                {
+                    QuickMenu.instance.frame.sprite = timeLeft[3];
+                    fourMinLeft = true;
+                }
+                else if (TimeLeft < 360 && !sixMinLeft)
+                {
+                    QuickMenu.instance.frame.sprite = timeLeft[2];
+                    sixMinLeft = true;
+                }
+                else if (TimeLeft < 480 && !eightMinLeft)
+                {
+                    QuickMenu.instance.frame.sprite = timeLeft[1];
+                    eightMinLeft = true;
+                }
             }
             else
             {
@@ -157,6 +191,53 @@ public class GameManager : MonoBehaviour
                     Debug.Log("You are safe, for now.");
                 }
             }
+        }
+
+        if (isStorm)
+        {
+            timer += Time.deltaTime;
+            stormVolume.weight = Mathf.Lerp(0, 1, timer / timeToFullStorm);
+            var emissionF = rainFront.emission;
+            var emissionG = rainGround.emission;
+            var emissionB = rainBack.emission;
+            emissionF.rateOverTime = Mathf.Lerp(15, 500, timer / timeToFullStorm);
+            emissionG.rateOverTime = Mathf.Lerp(20, 625, timer / timeToFullStorm);
+            emissionB.rateOverTime = Mathf.Lerp(40, 1000, timer / timeToFullStorm);
+
+            if (Time.time - lightningTime > lightningCooldown)
+            {
+                lightningTime = Time.time;
+                lightningFlash.SetTrigger("Lightning");
+                float minCooldown = Mathf.Lerp(10, 2, timer / timeToFullStorm);
+                float maxCooldown = Mathf.Lerp(15, 5, timer / timeToFullStorm);
+                lightningCooldown = Random.Range(minCooldown, maxCooldown);
+            }
+        }
+    }
+
+    void Storm(bool isTrue)
+    {
+        isStorm = isTrue;
+        if (isTrue)
+        {
+            lightningTime = Time.time;
+            rainFront.Play();
+            rainGround.Play();
+            rainBack.Play();
+        }
+        else
+        {
+            var emissionF = rainFront.emission;
+            var emissionG = rainGround.emission;
+            var emissionB = rainBack.emission;
+            emissionF.rateOverTime = 15;
+            emissionG.rateOverTime = 20;
+            emissionB.rateOverTime = 40;
+            rainFront.Stop();
+            rainGround.Stop();
+            rainBack.Stop();
+            timer = 0;
+            stormVolume.weight = 0;
         }
     }
 
@@ -199,6 +280,11 @@ public class GameManager : MonoBehaviour
         newCycleScreen.SetActive(false);
         TimeLeft = initialTime;
         QuickMenu.instance.frame.sprite = timeLeft[0];
+        Storm(false);
+        twoMinLeft = false;
+        fourMinLeft = false;
+        sixMinLeft = false;
+        eightMinLeft = false;
         Debug.Log("New Cycle");
         for (int i = 0; i <= planters.Count - 1; i++)
         {

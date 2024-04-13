@@ -21,7 +21,7 @@ public class Portal : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                if (isInRange && ArrowManager.instance.readyToActivate)
+                if (isInRange && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
                 {
                     foreach (Teleporter teleporter in GameManager.instance.teleporter)
                     {

@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f29855d7d49394984d5aacec61008f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quota: 0
+  quota: 20
   gestionnaireVente: {fileID: 0}
-  textQuota: {fileID: 0}
 --- !u!114 &4897070006503078931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,11 +62,20 @@ MonoBehaviour:
   TimeLeft: 90
   initialTime: 600
   TimerOn: 0
+  timeLeft:
+  - {fileID: 21300000, guid: eb91ad917c8245247a000b9ac1ffb666, type: 3}
+  - {fileID: 21300000, guid: 4d11aae65f82c1745b42500f6c5a9b3f, type: 3}
+  - {fileID: 21300000, guid: d5a69a36325ad9c4883fcb4c0972a92b, type: 3}
+  - {fileID: 21300000, guid: 7903cb343b078034b8fee2d14f022d82, type: 3}
+  - {fileID: 21300000, guid: cb30c13094bdd944a8811b18f85fc64f, type: 3}
   theCharacter: {fileID: 0}
-  TimerTxt: {fileID: 0}
-  theRooms: []
+  planters: []
+  teleporter: []
+  enclosure: []
   newCycleScreen: {fileID: 0}
   newCycleText: {fileID: 0}
+  cycleCount: 0
+  cycleMenuText: {fileID: 0}
   dogSpawner: []
   frogSpawner: []
   flySpawner: []
@@ -77,12 +85,25 @@ MonoBehaviour:
   tugnstoneSpawner: []
   magnetyneSpawner: []
   rubiolSpawner: []
-  dogSpawnerFraction: 1
-  flySpawnerFraction: 1
-  frogSpawnerFraction: 1
-  infpisumSpawnerFraction: 2
-  macrebosiaSpawnerFraction: 2
-  caeruletamSpawnerFraction: 2
-  rubiolSpawnerFraction: 2
-  magnetyneSpawnerFraction: 2
-  tugnstoneSpawnerFraction: 2
+  maxDogCount: 0
+  maxFlyCount: 0
+  maxFrogCount: 0
+  maxInfpisumCount: 0
+  maxMacrebosiaCount: 0
+  maxCaeruletamCount: 0
+  maxRubiolCount: 0
+  maxLushaliteCount: 0
+  maxTugnstoneCount: 0
+  dogs: []
+  flys: []
+  frogs: []
+  timeToFullStorm: 90
+  timer: 0
+  rainFront: {fileID: 0}
+  rainGround: {fileID: 0}
+  rainBack: {fileID: 0}
+  stormVolume: {fileID: 0}
+  lightningFlash: {fileID: 0}
+  lightningCooldown: 10
+  lightningTime: 0
+  isStorm: 0

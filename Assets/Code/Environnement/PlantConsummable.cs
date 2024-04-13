@@ -28,7 +28,7 @@ public class PlantConsummable : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if ((Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.E)) && canPickUpConsummable)
+            if ((Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.E)) && canPickUpConsummable && ArrowManager.instance.targetObject == gameObject)
             {
                 if (!hasPickedUpConsummable)
                 {

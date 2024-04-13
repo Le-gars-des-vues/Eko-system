@@ -52,7 +52,7 @@ public class Base : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         if (player.GetComponent<PlayerPermanent>().spawnAtBase)
         {
-            background.SetActive(false);
+            //background.SetActive(false);
             Teleport(false, true, baseSpawnPoint.position);
         }
         buildButton.SetActive(true);
@@ -63,44 +63,47 @@ public class Base : MonoBehaviour
     {
         if (player != null)
         {
-            if (!isInside)
+            if ((player.GetComponent<PlayerPermanent>().spawnAtBase && Tutorial.instance.readyToGoOut) || !player.GetComponent<PlayerPermanent>().spawnAtBase)
             {
-                //Debug.Log(Vector2.Distance(player.transform.position, door));
-                if (Vector2.Distance(player.transform.position, door) < distanceOpenThreshold)
+                if (!isInside)
                 {
-                    leftDoorAnim.SetBool("isOpen", true);
-                    rightDoorAnim.SetBool("isOpen", true);
+                    //Debug.Log(Vector2.Distance(player.transform.position, door));
+                    if (Vector2.Distance(player.transform.position, door) < distanceOpenThreshold)
+                    {
+                        leftDoorAnim.SetBool("isOpen", true);
+                        rightDoorAnim.SetBool("isOpen", true);
+                    }
+                    else
+                    {
+                        leftDoorAnim.SetBool("isOpen", false);
+                        rightDoorAnim.SetBool("isOpen", false);
+                    }
                 }
                 else
                 {
-                    leftDoorAnim.SetBool("isOpen", false);
-                    rightDoorAnim.SetBool("isOpen", false);
+                    //Debug.Log(Vector2.Distance(player.transform.position, door));
+                    if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < distanceOpenThreshold)
+                    {
+                        insideDoorsAnim.SetBool("isOpen", true);
+                    }
+                    else
+                    {
+                        insideDoorsAnim.SetBool("isOpen", false);
+                    }
                 }
-            }
-            else
-            {
-                //Debug.Log(Vector2.Distance(player.transform.position, door));
-                if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < distanceOpenThreshold)
-                {
-                    insideDoorsAnim.SetBool("isOpen", true);
-                }
-                else
-                {
-                    insideDoorsAnim.SetBool("isOpen", false);
-                }
-            }
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                if (Vector2.Distance(player.transform.position, door) < baseEntryThreshold)
+                if (Input.GetKeyDown(KeyCode.W))
                 {
-                    Teleport(false, true, baseEntryPoint.position);
-                }
-                else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < baseEntryThreshold)
-                {
-                    Teleport(true, false, door);
-                    if (!GameManager.instance.TimerOn)
-                        GameManager.instance.TimerOn = true;
+                    if (Vector2.Distance(player.transform.position, door) < baseEntryThreshold)
+                    {
+                        Teleport(false, true, baseEntryPoint.position);
+                    }
+                    else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < baseEntryThreshold)
+                    {
+                        Teleport(true, false, door);
+                        if (!GameManager.instance.TimerOn)
+                            GameManager.instance.TimerOn = true;
+                    }
                 }
             }
         }
@@ -115,18 +118,18 @@ public class Base : MonoBehaviour
             pixelLight.intensity = 1f;
             baseBackground.SetActive(false);
             isInside = false;
-            background.SetActive(true);
+            //background.SetActive(true);
         }
         else if (inBase)
         {
-            background.SetActive(false);
+            //background.SetActive(false);
             baseBackground.SetActive(true);
             isInside = true;
             pixelLight.intensity = 0.03f;
         }
         else if (!outside && !inBase)
         {
-            background.SetActive(false);
+            //background.SetActive(false);
             baseBackground.SetActive(false);
             isInside = false;
             pixelLight.intensity = 0.03f;

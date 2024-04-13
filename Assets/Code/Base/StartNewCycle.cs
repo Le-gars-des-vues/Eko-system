@@ -13,7 +13,7 @@ public class StartNewCycle : MonoBehaviour
     {
         if (isInRange)
         {
-            if (Input.GetKey(KeyCode.E) && ArrowManager.instance.readyToActivate && !startedANewCycle)
+            if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate && !startedANewCycle)
             {
                 startedANewCycle = true;
                 newCycleTime = Time.time;

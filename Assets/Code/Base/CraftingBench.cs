@@ -23,7 +23,7 @@ public class CraftingBench : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                if (isInRange && ArrowManager.instance.readyToActivate)
+                if (isInRange && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
                 {
                     crafting.OnValueChanged();
                     if (!player.inventoryOpen)

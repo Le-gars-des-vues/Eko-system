@@ -39,7 +39,7 @@ public class Enclos : MonoBehaviour
             {
                 if (ArrowManager.instance.targetObject == gameObject)
                 {
-                    if (isInRange && ArrowManager.instance.readyToActivate)
+                    if (isInRange && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
                     {
                         if (!hasACreature)
                         {

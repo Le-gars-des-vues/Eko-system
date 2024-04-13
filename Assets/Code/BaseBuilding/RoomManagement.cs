@@ -37,7 +37,7 @@ public class RoomManagement : MonoBehaviour
         {
             if (isInRange)
             {
-                if (Input.GetKey(KeyCode.E) && ArrowManager.instance.readyToActivate)
+                if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
                 {
                     if (!player.roomManageIsOpen)
                     {

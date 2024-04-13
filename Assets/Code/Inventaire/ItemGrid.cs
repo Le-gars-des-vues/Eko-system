@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemGrid : MonoBehaviour
+public class ItemGrid : MonoBehaviour, IDataPersistance
 {
     [Header("Tile Format")]
 
@@ -141,6 +141,8 @@ public class ItemGrid : MonoBehaviour
                 Debug.Log(ressource + " has been discovered");
             }
         }
+
+        inventoryItem.itemGrid = this;
 
         inventoryItem.onGridPositionX = posX;
         inventoryItem.onGridPositionY = posY;
@@ -303,5 +305,25 @@ public class ItemGrid : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void LoadData(GameData data)
+    {
+        foreach (GameObject item in data.itemsInInventory)
+        {
+            if (item.GetComponent<InventoryItem>().isInInventory && item.GetComponent<InventoryItem>().itemGrid == this)
+            {
+                var itemToPlace = Instantiate(item);
+                itemToPlace.GetComponent<InventoryItem>().itemGrid.PlaceItem(itemToPlace.GetComponent<InventoryItem>(), itemToPlace.GetComponent<InventoryItem>().onGridPositionX, itemToPlace.GetComponent<InventoryItem>().onGridPositionY);
+            }
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            data.itemsInInventory.Add(transform.GetChild(i).gameObject);
+        }
     }
 }

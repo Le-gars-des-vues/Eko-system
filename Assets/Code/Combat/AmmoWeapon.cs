@@ -16,9 +16,8 @@ public class AmmoWeapon : MonoBehaviour
     private PlayerPermanent player;
     [SerializeField] float minThrowForce;
     [SerializeField] float maxThrowForce;
-    public bool isThrown;
-    float throwTime;
-    float pickableCooldown = 1f;
+
+    int durabilityDamage = 1;
 
     [SerializeField] ConsummableEffects effect;
     [SerializeField] string effectName;
@@ -36,43 +35,35 @@ public class AmmoWeapon : MonoBehaviour
         {
             if (player.CanMove())
             {
-                if (Input.GetMouseButtonDown(0))
-                    timer = 0;
-
-                if (Input.GetMouseButton(0))
+                if (!GetComponent<InventoryItem>().broken)
                 {
-                    if (player.objectInRightHand != null)
+                    if (Input.GetMouseButtonDown(0))
+                        timer = 0;
+
+                    if (Input.GetMouseButton(0))
                     {
-                        if (player.hasOptics)
+                        if (player.objectInRightHand != null)
                         {
                             GetComponent<LineRenderer>().enabled = true;
                             GetComponent<TrajectoryLine>().CalculateTrajectory();
-                        }
-                        if (canCharge)
-                        {
-                            timer += Time.deltaTime;
-                            force = Mathf.Lerp(minThrowForce, maxThrowForce, timer / timeToMaxThrow);
+                            if (canCharge)
+                            {
+                                timer += Time.deltaTime;
+                                force = Mathf.Lerp(minThrowForce, maxThrowForce, timer / timeToMaxThrow);
+                            }
                         }
                     }
-                }
-                if (Input.GetMouseButtonUp(0))
-                {
-                    if (player.objectInRightHand != null)
+                    if (Input.GetMouseButtonUp(0))
                     {
-                        if (player.hasOptics)
+                        if (player.objectInRightHand != null)
+                        {
                             GetComponent<LineRenderer>().enabled = false;
-                        StartCoroutine(Launch());
+                            StartCoroutine(Launch());
+                            GetComponent<PickableObject>().DurabilityDamage(durabilityDamage);
+                        }
+                        timer = 0;
                     }
-                    timer = 0;
                 }
-            }
-        }
-        else
-        {
-            if (Time.time - throwTime > pickableCooldown && isThrown)
-            {
-                isThrown = false;
-                GetComponent<PickableObject>().hasFlashed = false;
             }
         }
     }
@@ -86,8 +77,14 @@ public class AmmoWeapon : MonoBehaviour
 
         for (int x = 0; x < width; x++)
         {
+            if (hasAmmo)
+                continue;
+
             for (int y = 0; y < height; y++)
             {
+                if (hasAmmo)
+                    continue;
+
                 InventoryItem anItem = GetComponent<PickableObject>().playerInventory.CheckIfItemPresent(x, y);
                 if (anItem != null)
                 {

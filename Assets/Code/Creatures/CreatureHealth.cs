@@ -51,13 +51,13 @@ public class CreatureHealth : MonoBehaviour
 
     private IEnumerator FlashWhite(List<SpriteRenderer> spriteList, float duration)
     {
+        isInvincible = true;
         ogMaterials.Clear();
         for (int i = 0; i < spriteList.Count; i++)
         {
             ogMaterials.Add(spriteList[i].material);
             spriteList[i].material = flashMaterial;
         }
-        isInvincible = true;
         yield return new WaitForSecondsRealtime(duration);
 
         for (int i = 0; i < spriteList.Count; i++)

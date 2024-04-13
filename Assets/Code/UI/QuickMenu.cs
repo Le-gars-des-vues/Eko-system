@@ -287,7 +287,12 @@ public struct TextMessage
     public TextMessage(Sprite _portrait, string _name, string _textToWrite)
     {
         portrait = _portrait;
-        name = "DAY " + GameManager.instance.cycleCount.ToString("000") + " - " + GameManager.instance.TimeLeft + "\n" + _name;
+
+        float currentTime = GameManager.instance.TimeLeft;
+        currentTime += 1;
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+        name = "DAY " + GameManager.instance.cycleCount.ToString("000") + " - " + string.Format("{0:00}:{1:00}", minutes, seconds) + "\n" + _name;
         textToWrite = _textToWrite;
     }
 }

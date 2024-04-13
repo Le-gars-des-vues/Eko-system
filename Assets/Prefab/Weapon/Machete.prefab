@@ -165,7 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
-  arrow: {fileID: 930160468726473892}
   item: {fileID: 0}
   inventory: {fileID: 0}
   playerInventory: {fileID: 0}
@@ -197,6 +196,12 @@ MonoBehaviour:
   sprites: []
   markedForDestroy: 0
   isPlaced: 0
+  isInInventory: 0
+  currentDurability: 0
+  maxDurability: 40
+  lowDurabilityThreshold: 0
+  lowDurability: 0
+  broken: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
@@ -301,11 +306,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d539275ed056eea489df55833fdc451d, type: 3}
---- !u!1 &930160468726473892 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 490306149884159714, guid: d539275ed056eea489df55833fdc451d, type: 3}
-  m_PrefabInstance: {fileID: 731116807318241862}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8657145084441756572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8214892596907868634, guid: d539275ed056eea489df55833fdc451d, type: 3}

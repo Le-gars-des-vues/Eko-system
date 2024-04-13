@@ -211,6 +211,7 @@ MonoBehaviour:
   isSelected: 0
   isPickedUp: 0
   rotateSpeed: 10
+  isUnderWaterWeapon: 0
   isSceneLoaded: 0
 --- !u!114 &8883043491066735300
 MonoBehaviour:
@@ -254,6 +255,12 @@ MonoBehaviour:
   sprites: []
   markedForDestroy: 0
   isPlaced: 0
+  isInInventory: 0
+  currentDurability: 0
+  maxDurability: 3
+  lowDurabilityThreshold: 0
+  lowDurability: 0
+  broken: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
@@ -388,7 +395,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072813460289546999}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6527a0179223ee468a852e2558fb3a5, type: 3}
   m_Name: 

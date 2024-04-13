@@ -21,7 +21,7 @@ public class CreaturePathfinding : MonoBehaviour
     Coroutine pathUpdate;
 
     [Header("Path Variables")]
-    public Path path;
+    public Pathway path;
     public int pathIndex;
 
     [Header("Checks")]
@@ -57,7 +57,7 @@ public class CreaturePathfinding : MonoBehaviour
     {
         if (pathSuccessful)
         {
-            path = new Path(waypoints, transform.position, turnDist, stoppingDistance);
+            path = new Pathway(waypoints, transform.position, turnDist, stoppingDistance);
             if (pathFollow != null)
                 StopCoroutine(pathFollow);
             pathFollow = StartCoroutine(FollowPath());
