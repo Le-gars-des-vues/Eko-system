@@ -19,6 +19,7 @@ public class FishMovement : MonoBehaviour
     [Header("Checks")]
     public bool isStopped;
     public bool isFacingRight = true;
+    public bool isFacingUp = true;
     public int facingDirection = 1;
     bool targetIsRight;
     bool targetIsUp;
@@ -68,11 +69,6 @@ public class FishMovement : MonoBehaviour
             dist = Vector2.Distance(target.position, transform.position);
         }
 
-        if (targetIsRight != isFacingRight)
-        {
-            Turn();
-        }
-
         if (dist >= slowDownThreshold)
             moveSpeed = maxMoveSpeed;
         else if (dist < 0.1f)
@@ -80,19 +76,33 @@ public class FishMovement : MonoBehaviour
         else if (dist < slowDownThreshold)
             moveSpeed = Mathf.Lerp(maxMoveSpeed, minMoveSpeed, (slowDownThreshold - dist / slowDownThreshold));
         
-        if (state.isPathfinding && pathfinding.path != null)
+        if (dist > slowDownThreshold)
         {
-            Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - (Vector2)transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
+            if (state.isPathfinding && pathfinding.path != null)
+            {
+                Vector2 direction = (pathfinding.path.lookPoints[pathfinding.pathIndex] - (Vector2)transform.position).normalized;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Vector2 direction = (target.position - transform.position).normalized;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
+            }
         }
         else
         {
-            Vector2 direction = (target.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float angle = isFacingUp ? 0 : 180;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
         }
-        
+
+        if (Mathf.Abs(transform.rotation.eulerAngles.z) >= 95 && isFacingUp)
+            Turn();
+        else if (Mathf.Abs(transform.rotation.eulerAngles.z) < 85 && !isFacingUp)
+            Turn();
+
+
         if (state.isPathfinding)
         {
             // Calculate movement since the last frame
@@ -153,9 +163,11 @@ public class FishMovement : MonoBehaviour
 
     void Turn()
     {
-        Vector3 scale = head.transform.localScale;
-        scale.x *= -1;
-        head.transform.localScale = scale;
+        Vector3 scale = transform.localScale;
+        scale.y *= -1;
+        transform.localScale = scale;
+
+        isFacingUp = !isFacingUp;
 
         isFacingRight = !isFacingRight;
     }

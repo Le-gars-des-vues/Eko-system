@@ -543,7 +543,7 @@ public class FrogMovement : MonoBehaviour
 
     IEnumerator Jump(float offset, bool trueJump)
     {
-        Debug.Log("isJumping");
+        //Debug.Log("isJumping");
         isJumping = true;
         rb.drag = 0;
         Vector2 jumpDirection = new Vector2(jumpTarget.position.x, jumpTarget.position.y) - rb.position;

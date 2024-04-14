@@ -678,6 +678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6499122865765551771}
+  - component: {fileID: 79191292316906678}
   - component: {fileID: 3464054497424672810}
   - component: {fileID: 646963907446535635}
   - component: {fileID: 364594435894759329}
@@ -718,6 +719,26 @@ Transform:
   - {fileID: 2864646571143236806}
   m_Father: {fileID: 8136946291117424729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &79191292316906678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646593512024270212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9e9340a1137924da7d26f9fa193c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundBank:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6736dae1ba0cfd048a954e39b7b34fa3, type: 2}
+  idleSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 721b52233b361c24a870742375e3bb6d, type: 2}
 --- !u!50 &3464054497424672810
 Rigidbody2D:
   serializedVersion: 4
@@ -849,7 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2ba043b150ec747819b496c8426e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathTarget: {fileID: 0}
+  pathTarget: {fileID: 983182926786358263}
   turnDist: 5
   stoppingDistance: 1
   speedPercent: 0
@@ -874,7 +895,7 @@ MonoBehaviour:
   isEating: 0
   isPathfinding: 0
   isStunned: 0
-  isFlying: 0
+  isFlying: 1
   currentFood: 0
   maxFood: 100
   digestRate: 1

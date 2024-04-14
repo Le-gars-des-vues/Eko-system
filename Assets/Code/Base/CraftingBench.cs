@@ -28,7 +28,7 @@ public class CraftingBench : MonoBehaviour
                     crafting.OnValueChanged();
                     if (!player.inventoryOpen)
                     {
-                        player.ShowOrHideInventoryNoButtons();
+                        player.ShowOrHideInventory(false);
                     }
                     if (!player.craftingIsOpen)
                     {
@@ -43,7 +43,7 @@ public class CraftingBench : MonoBehaviour
             {
                 if (player.inventoryOpen && player.craftingIsOpen)
                 {
-                    player.ShowOrHideInventoryNoButtons();
+                    player.ShowOrHideInventory(false);
                     player.ShowOrHideCrafting();
                 }
             }

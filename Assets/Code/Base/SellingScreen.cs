@@ -29,7 +29,7 @@ public class SellingScreen : MonoBehaviour
                 {
                     if (!player.inventoryOpen)
                     {
-                        player.ShowOrHideInventoryNoButtons();
+                        player.ShowOrHideInventory(false);
                     }
                     if (!player.marketIsOpen)
                     {
@@ -50,7 +50,7 @@ public class SellingScreen : MonoBehaviour
                 {
                     if (player.inventoryOpen && player.marketIsOpen)
                     {
-                        player.ShowOrHideInventoryNoButtons();
+                        player.ShowOrHideInventory(false);
                         player.ShowOrHideMarket();
                     }
                 }

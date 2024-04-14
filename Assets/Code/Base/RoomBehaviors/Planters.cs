@@ -44,7 +44,7 @@ public class Planters : MonoBehaviour
                     {
                         if (!player.inventoryOpen)
                         {
-                            player.ShowOrHideInventoryNoButtons();
+                            player.ShowOrHideInventory(false);
                         }
                         if (!player.farmingIsOpen)
                         {
@@ -60,7 +60,7 @@ public class Planters : MonoBehaviour
             {
                 if (player.inventoryOpen && player.farmingIsOpen)
                 {
-                    player.ShowOrHideInventoryNoButtons();
+                    player.ShowOrHideInventory(false);
                     player.ShowOrHideFarming(true);
                 }
             }

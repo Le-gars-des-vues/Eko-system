@@ -117,7 +117,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -199,7 +199,7 @@ MonoBehaviour:
   target: {fileID: 827577491556694802}
   isAgressive: 0
   minWaitTime: 0
-  maxWaitTime: 0
+  maxWaitTime: 1
   maxMovingDistance: 15
   originalDirection: 1
   fish: {fileID: 6767102797513747186}
@@ -217,13 +217,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 827577491556694802}
-  rotateSpeed: 5
+  rotateSpeed: 6
   moveSpeed: 0
-  maxMoveSpeed: 4
-  minMoveSpeed: 2
+  maxMoveSpeed: 6
+  minMoveSpeed: 3
   slowDownThreshold: 3
   isStopped: 0
   isFacingRight: 1
+  isFacingUp: 1
   facingDirection: 1
   head: {fileID: 1853510405610507594}
   startAngle: 0
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2ba043b150ec747819b496c8426e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathTarget: {fileID: 0}
+  pathTarget: {fileID: 827577491556694802}
   turnDist: 5
   stoppingDistance: 1
   speedPercent: 0
@@ -306,8 +307,8 @@ MonoBehaviour:
   senseOfSmell: 3.5
   fovRange: 3.5
   minFollowDistance: 10
-  foodName: 
-  stunDuration: 0
+  foodName: Corallium
+  stunDuration: 15
   lastSourceOfDamage: {fileID: 0}
   hasFled: 0
   territory: {fileID: 0}
@@ -328,11 +329,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84a865df2dad204b8e3d221c03c5c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creatureAnimators: []
+  creatureAnimators:
+  - {fileID: 7560379358543647786}
   colliders: []
   rbs: []
   joints: []
   limbs: []
+  longLimbs: []
   creatureRbs:
   - {fileID: 4338413898714437144}
   creatureColliders:
@@ -345,11 +348,15 @@ MonoBehaviour:
   - {fileID: 6083459986373315875}
   - {fileID: 6767102797513747186}
   behaviorScript: {fileID: 998593632070106411}
-  ressourceToHarvest: {fileID: 0}
+  ressourceSpawnedCount: 1
+  ressourceToHarvest: {fileID: 8819707360973039860, guid: 1f174fce63b661940b09cea22f8f25cd, type: 3}
   timeToHarvest: 1
   rangeToHarvest: 1
   isInRangeToHarvest: 0
+  isHarvested: 0
   isDead: 0
+  dnaVial: {fileID: 8819707360973039860, guid: 40da84771e34c4b46a5b61c2ebecc9ac, type: 3}
+  isInPod: 0
   species: []
 --- !u!114 &4210723627557348829
 MonoBehaviour:
@@ -363,15 +370,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac1c457769bca8468a252b1b5ea1e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  underWaterGravityScale: 0.1
+  underWaterGravityScale: 0
   underWaterDrag: 2
   underWaterAngularDrag: 4
   initialGravityScale: 0
   initialDrag: 0
   initialAngularDrag: 0
-  isAWaterCreature: 0
+  isUnderwater: 0
+  isAWaterCreature: 1
   maxOxygen: 40
   currentOxygen: 0
+  oxygenDepleteRate: 1
 --- !u!1001 &1914639618840019517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -503,7 +512,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8951793848127533619, guid: 34bb962c1ccf8b14c8386fdc3c96a3c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7560379358543647786}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 34bb962c1ccf8b14c8386fdc3c96a3c4, type: 3}
 --- !u!4 &990225247817743331 stripped
 Transform:
@@ -515,6 +527,32 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1092641441002539719, guid: 34bb962c1ccf8b14c8386fdc3c96a3c4, type: 3}
   m_PrefabInstance: {fileID: 1914639618840019517}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1825924302714540016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8951793848127533619, guid: 34bb962c1ccf8b14c8386fdc3c96a3c4, type: 3}
+  m_PrefabInstance: {fileID: 1914639618840019517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7560379358543647786
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825924302714540016}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 199886f67601338418d397fb0a6529c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1853510405610507594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8995140420820349065, guid: 34bb962c1ccf8b14c8386fdc3c96a3c4, type: 3}

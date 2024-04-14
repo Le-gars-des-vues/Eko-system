@@ -704,8 +704,14 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         }
     }
     
-    public void ShowOrHideInventory()
+    public void ShowOrHideInventory(bool withButtons = true)
     {
+        if (withButtons)
+        {
+            playerInventory.transform.Find("NextUI").gameObject.SetActive(withButtons);
+            playerInventory.transform.Find("PreviousUI").gameObject.SetActive(withButtons);
+        }
+
         if (!inventoryOpen)
         {
             inventoryOpen = true;
@@ -732,43 +738,6 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             if (CanOpenStorage() && storageInventory != null)
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-        }
-    }
-
-    public void ShowOrHideInventoryNoButtons()
-    {
-        if (!inventoryOpen)
-        {
-            AudioManager.instance.PlaySound(AudioManager.instance.inventaireOuvrir, Camera.main.gameObject);
-            inventoryOpen = true;
-            playerInventory.transform.Find("NextUI").gameObject.SetActive(false);
-            playerInventory.transform.Find("PreviousUI").gameObject.SetActive(false);
-            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
-            if (CanOpenStorage() && storageInventory != null)
-                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
-
-            if (mapIsOpen)
-                ShowOrHideMap();
-            if (upgradeIsOpen)
-                ShowOrHideUpgrades();
-            if (buildingIsOpen)
-            {
-                if (isUsingMultiTool)
-                    EquipMultiTool(false);
-                ShowOrHideBuilding();
-            }
-            if (roomManageIsOpen)
-                ShowOrHideRoomManagement();
-        }
-        else
-        {
-            inventoryOpen = false;
-            playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-            if (CanOpenStorage() && storageInventory != null)
-                storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-
-            playerInventory.transform.Find("NextUI").gameObject.SetActive(true);
-            playerInventory.transform.Find("PreviousUI").gameObject.SetActive(true);
         }
     }
 
@@ -897,8 +866,11 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         }
     }
 
-    public void ShowOrHideMap()
+    public void ShowOrHideMap(bool withButtons = true)
     {
+        map.transform.Find("NextUI").gameObject.SetActive(withButtons);
+        map.transform.Find("PreviousUI").gameObject.SetActive(withButtons);
+
         if (!mapIsOpen)
         {
             if (inventoryOpen)
@@ -919,7 +891,10 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             }
 
             if (hasBuiltMap)
+            {
                 map.SetActive(true);
+                MapManager.instance.ResetMap();
+            }
             else
                 noMap.SetActive(true);
             mapIsOpen = true;
