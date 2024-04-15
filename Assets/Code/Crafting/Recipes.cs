@@ -73,26 +73,26 @@ public class Recipes
         {9, new Recipes("Shield Upgrade 1", "Microprocessor", 1, "Battery", 1)},
         {10, new Recipes("Health Upgrade 1", "Microprocessor", 1, "Cured Leather", 1 , "Rubiol",1)},
         {11, new Recipes("Stamina Upgrade 1", "Microprocessor", 1, "Lushalite", 3, "Scale", 3)},
-        {12, new Recipes("Fly Backpack", "Trunk", 1)},
-        {13, new Recipes("Oxygen Mask", "Trunk", 1)},
-        {14, new Recipes("Heavy Punch", "Trunk", 1)},
-        {15, new Recipes("DNA Extractor", "Trunk", 1)},
-        {16, new Recipes("Machete", "Trunk", 1)},
-        {17, new Recipes("Bow", "Trunk", 1)},
-        {18, new Recipes("Trident", "Trunk", 1) },
-        {19, new Recipes("Harpoon Gun", "Trunk", 1) },
-        {20, new Recipes("Arrow", "Trunk", 1) },
-        {21, new Recipes("Harpoon", "Trunk", 1)},
+        {12, new Recipes("Fly Backpack", "Moss", 2, "Cured Leather", 2, "Fly DNA Vial", 3)},
+        {13, new Recipes("Oxygen Mask", "Spit", 2, "Metal Sheet", 1, "Frog DNA Vial", 3)},
+        {14, new Recipes("Heavy Punch", "Scale", 2, "Lushalite", 2, "Dog DNA Vial", 3)},
+        {15, new Recipes("DNA Extractor", "Battery", 1, "Metal Sheet", 1, "Wires", 1)},
+        {16, new Recipes("Machete", "Lushalite", 5, "Metal Sheet", 1, "Bark", 2)},
+        {17, new Recipes("Bow", "Magnetyne", 99)},
+        {18, new Recipes("Trident", "Corallium", 5, "Fish Eyes", 1, "Petralucen", 1) },
+        {19, new Recipes("Harpoon Gun", "Corallium", 3, "Scale", 3, "Trunk", 2) },
+        {20, new Recipes("Arrow", "Magnetyne",99) },
+        {21, new Recipes("Harpoon", "Corallium", 3, "Metal Sheet", 1)},
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {
         {0, new Recipes("Storage Room", "Metal Sheet", 3, "Battery", 1,"Lushalite",5)},
-        {1, new Recipes("Map Room", "Metal Sheet", 3, "Scale",4,"Crystal",4) },
-        {2, new Recipes("Enclosure Room", "Trunk", 1)},
-        {3, new Recipes("Planter Room", "Trunk", 1)},
-        {4, new Recipes("Teleporter Room", "Trunk", 1)},
-        //{2, new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
-        //{3 , new Recipes("Planter Room", "Metal Sheet", 3,"Battery",1,"Crystal",5)},
+        {1, new Recipes("Map Room", "Metal Sheet", 3, "Scale", 4, "Rubiol", 4) },
+        {2, new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
+        {3 ,new Recipes("Planter Room", "Metal Sheet", 3,"Battery", 1, "Rubiol",5)},
+        {4, new Recipes("Teleporter Room", "Metal Sheet", 3, "Battery", 1, "Rubiol", 5)}
+        //{2, new Recipes("Enclosure Room", "Trunk", 1)},
+        //{3, new Recipes("Planter Room", "Trunk", 1)},
     };
 
     public static Dictionary<string, bool> discoveredRessources = new()
@@ -101,6 +101,10 @@ public class Recipes
         {"Battery", false},
         {"Cured Leather", false},
         {"Lushalite", false},
+        {"Magnetyne", false},
+        {"Corallium", false},
+        {"Fish Eyes", false},
+        {"Petralucen", false},
         {"Metal Sheet", false},
         {"Microprocessor", false},
         {"Moss", false},
@@ -110,6 +114,9 @@ public class Recipes
         {"Spit", false},
         {"Trunk", false},
         {"Tugnstone", false},
-        {"Wires", false}
+        {"Wires", false},
+        {"Dog DNA Vial", false},
+        {"Fly DNA Vial", false},
+        {"Frog DNA Vial", false}
     };
 }
