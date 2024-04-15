@@ -15,6 +15,7 @@ public class DialogueSpeaker : MonoBehaviour
     public List<Dialogue> dialogueSequence5;
 
     public bool isSpeaking;
+    public AK.Wwise.Event speechSound;
 
     public IEnumerator Speech(string textToWrite = null)
     {

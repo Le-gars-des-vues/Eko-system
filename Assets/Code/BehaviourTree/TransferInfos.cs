@@ -22,6 +22,7 @@ public class TransferInfos : BehaviorNode
 
         //Check if the creature is flying or not
         parent.SetData("isFlying", creature.GetComponent<CreatureState>().isFlying);
+        parent.SetData("isUnderwater", creature.GetComponent<CreatureState>().isAWaterCreature);
 
         if (creature.GetComponent<CreatureState>().isFleeing)
         {

@@ -6,13 +6,14 @@ public class Tutorial : MonoBehaviour
 {
     public static Tutorial instance;
 
-    Dialogue dialogue;
     public List<Dialogue> tutorialTexts = new List<Dialogue>();
     [SerializeField] Sprite sprite;
     [SerializeField] string robotName;
 
     public bool readyToGoOut = false;
     public bool firstTimeOutside = false;
+    public bool hasSeenFirstRessource;
+    public bool hasHarvestedFirstRessource;
 
     private void Awake()
     {

@@ -66,9 +66,10 @@ public class Wander : BehaviorNode
                         unWalkable = Physics2D.OverlapCircle(tempPos, 0.1f, LayerMask.GetMask("Ground"));
                     }
                     RaycastHit2D isWalkable = Physics2D.Raycast(tempPos, Vector2.down, 3f, LayerMask.GetMask("Ground"));
+                    bool isUnderwater = Physics2D.OverlapCircle(tempPos, 0.1f, LayerMask.GetMask("Water"));
 
                     //Si oui, on commence le pathfinding vers la destination
-                    if (!unWalkable && isWalkable || (bool)GetData("isFlying") && !unWalkable)
+                    if ((!unWalkable && isWalkable || (bool)GetData("isFlying") && !unWalkable) && ((bool)GetData("isUnderwater") || !(bool)GetData("isUnderwater") && !isUnderwater))
                     {
                         if ((bool)GetData("debug"))
                             Debug.Log("Found target for path!");

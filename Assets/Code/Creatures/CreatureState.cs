@@ -11,6 +11,7 @@ public class CreatureState : MonoBehaviour
     public bool isPathfinding;
     public bool isStunned;
     public bool isFlying;
+    public bool isAWaterCreature;
 
     [Header("Hunger Variables")]
     public float currentFood;

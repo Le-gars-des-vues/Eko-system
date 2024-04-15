@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour
     bool pressedKey = false;
     bool dialogueScreenIsOpen = false;
 
+    uint speechSoundID;
+
     public static Dictionary<string, bool> conditions = new Dictionary<string, bool>
     {
         {"craftedFirstItem", false }
@@ -80,7 +82,7 @@ public class DialogueManager : MonoBehaviour
             if (isReadyToTalk)
             {
                 if (Vector2.Distance(currentSpeaker.gameObject.transform.position, player.gameObject.transform.position) < startDialogueDistance && conditionIsMet)
-                    StartTalking();
+                    StartTalking(currentSpeaker.speechSound);
                 else
                     return;
             }
@@ -104,9 +106,11 @@ public class DialogueManager : MonoBehaviour
             conditionIsMet = true;
     }
 
-    void StartTalking()
+    void StartTalking(AK.Wwise.Event dialogueSound = null)
     {
         dialogue = StartCoroutine(currentSpeaker.Speech(currentDialogue[dialigueIndex].text));
+        if (dialogueSound != null)
+            speechSoundID = dialogueSound.Post(currentSpeaker.transform.parent.gameObject);
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().isInDialogue = isInDialogue;
         isReadyToTalk = false;
     }
@@ -158,6 +162,7 @@ public class DialogueManager : MonoBehaviour
         }
         StopCoroutine(dialogue);
         currentSpeaker.StopDialogue();
+        AkSoundEngine.StopPlayingID(speechSoundID);
         onDialogueEnd?.Invoke();
         onDialogueEnd = null;
     }

@@ -18,6 +18,14 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event inventairePickUp;
     public AK.Wwise.Event inventairePlace;
 
+    public AK.Wwise.Event craftingOuvrir;
+    public AK.Wwise.Event craftingFermer;
+
+    public AK.Wwise.Event carteOuvrir;
+    public AK.Wwise.Event upgradeOuvrir;
+
+    public AK.Wwise.Event uiFermer;
+
     private void Awake()
     {
         if (instance != null && instance != this)

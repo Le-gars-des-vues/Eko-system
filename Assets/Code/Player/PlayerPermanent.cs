@@ -282,6 +282,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                 if (!Tutorial.instance.firstTimeOutside)
                 {
                     Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[0].text);
+                    Tutorial.instance.firstTimeOutside = true;
                 }
                 
                 if (!AudioManager.instance.forestIsPlaying)
@@ -365,8 +366,6 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         //Open UI
         if (Input.GetKeyDown(KeyCode.I) && !marketIsOpen && !craftingIsOpen)
         {
-            if (!inventoryOpen)
-                AudioManager.instance.PlaySound(AudioManager.instance.inventaireOuvrir, Camera.main.gameObject);
             ShowOrHideInventory();
         }
 
@@ -719,6 +718,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (CanOpenStorage() && storageInventory != null)
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
 
+            AudioManager.instance.PlaySound(AudioManager.instance.inventaireOuvrir, Camera.main.gameObject);
+
             if (mapIsOpen)
                 ShowOrHideMap();
             if (upgradeIsOpen)
@@ -738,6 +739,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             if (CanOpenStorage() && storageInventory != null)
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+            if (!uiOpened)
+                AudioManager.instance.PlaySound(AudioManager.instance.uiFermer, Camera.main.gameObject);
         }
     }
 
@@ -748,6 +751,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (crafting != null)
                 crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y + gridOffset);
             craftingIsOpen = true;
+
+            AudioManager.instance.PlaySound(AudioManager.instance.craftingOuvrir, Camera.main.gameObject);
 
             if (mapIsOpen)
                 ShowOrHideMap();
@@ -767,6 +772,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (crafting != null)
                 crafting.GetComponent<RectTransform>().localPosition = new Vector2(crafting.GetComponent<RectTransform>().localPosition.x, crafting.GetComponent<RectTransform>().localPosition.y - gridOffset);
             craftingIsOpen = false;
+
+            AudioManager.instance.PlaySound(AudioManager.instance.craftingFermer, Camera.main.gameObject);
         }
     }
 
@@ -873,6 +880,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
         if (!mapIsOpen)
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.carteOuvrir, Camera.main.gameObject);
+
             if (inventoryOpen)
                 ShowOrHideInventory();
             if (marketIsOpen)
@@ -904,6 +913,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             map.SetActive(false);
             noMap.SetActive(false);
             mapIsOpen = false;
+            if (!uiOpened)
+                AudioManager.instance.PlaySound(AudioManager.instance.uiFermer, Camera.main.gameObject);
         }
     }
 
@@ -911,6 +922,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     {
         if (!upgradeIsOpen)
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.upgradeOuvrir, Camera.main.gameObject);
+
             if (inventoryOpen)
                 ShowOrHideInventory();
             if (mapIsOpen)
@@ -935,6 +948,9 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
             upgradeIsOpen = false;
+
+            if (!uiOpened)
+                AudioManager.instance.PlaySound(AudioManager.instance.uiFermer, Camera.main.gameObject);
         }
     }
 

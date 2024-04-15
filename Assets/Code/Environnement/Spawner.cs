@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     public bool canSpawn;
     public int index;
 
+    [SerializeField] Vector2 spawnDirection = new Vector2(0, -1);
+
     private void Start()
     {
         gameManager = GameObject.Find("GameManager");
@@ -38,6 +40,11 @@ public class Spawner : MonoBehaviour
 
             species.Add(creature);
             creature.GetComponent<CreatureDeath>().species = species;
+        }
+        else
+        {
+            HarvestableRessourceNode ressourceNode = spawned.GetComponent<HarvestableRessourceNode>();
+            ressourceNode.direction = spawnDirection;
         }
     }
 }

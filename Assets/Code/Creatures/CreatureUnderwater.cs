@@ -14,7 +14,6 @@ public class CreatureUnderwater : MonoBehaviour
     Rigidbody2D rb;
     public bool isUnderwater;
 
-    public bool isAWaterCreature;
     [SerializeField] float maxOxygen = 40;
     [SerializeField] float currentOxygen;
     [SerializeField] float oxygenDepleteRate = 1;
@@ -31,7 +30,7 @@ public class CreatureUnderwater : MonoBehaviour
 
     private void Update()
     {
-        if (!isAWaterCreature)
+        if (!GetComponent<CreatureState>().isAWaterCreature)
         {
             currentOxygen -= Time.deltaTime * oxygenDepleteRate;
         }
@@ -45,7 +44,7 @@ public class CreatureUnderwater : MonoBehaviour
     void GoUnderwater(bool isTrue)
     {
         isUnderwater = isTrue;
-        if (isAWaterCreature)
+        if (GetComponent<CreatureState>().isAWaterCreature)
             GetComponent<CreatureState>().isFlying = isTrue;
         if (isTrue)
         {

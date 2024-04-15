@@ -14,6 +14,7 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     [Header("Harvest Variables")]
     public float timer;
+    bool isInRange;
     [SerializeField] GameObject ressourceToSpawn;
     [SerializeField] GameObject consummableToSpawn;
     public float ressourceAmount;
@@ -24,7 +25,7 @@ public class HarvestableRessourceNode : MonoBehaviour
     public bool isOutlined;
     PlayerPermanent player;
 
-    [SerializeField] Vector2 direction = new Vector2(0, -1);
+    public Vector2 direction = new Vector2(0, -1);
     [SerializeField] float groundRaycastLength;
 
     // Start is called before the first frame update
@@ -48,6 +49,18 @@ public class HarvestableRessourceNode : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + direction.x / 10, transform.position.y + direction.y / 10), 0.1f);
         }
+
+        if (Vector2.Distance(player.gameObject.transform.position, transform.position) < player.minDistanceToHarvest)
+        {
+            if (!Tutorial.instance.hasSeenFirstRessource)
+            {
+                Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[1].text);
+                Tutorial.instance.hasSeenFirstRessource = true;
+            }
+            isInRange = true;
+        }
+        else
+            isInRange = false;
     }
 
     void EmptyRessources()
@@ -77,7 +90,7 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Vector2.Distance(player.gameObject.transform.position, transform.position) < player.minDistanceToHarvest && player.isUsingMultiTool)
+        if (isInRange && player.isUsingMultiTool)
         {
             sprite_empty.material = outlineMaterial;
             sprite_full.material = outlineMaterial;
@@ -99,7 +112,7 @@ public class HarvestableRessourceNode : MonoBehaviour
     {
         if (player.isUsingMultiTool)
         {
-            if (Vector2.Distance(player.gameObject.transform.position, transform.position) < player.minDistanceToHarvest)
+            if (isInRange)
             {
                 sprite_empty.material = outlineMaterial;
                 sprite_full.material = outlineMaterial;
@@ -127,6 +140,11 @@ public class HarvestableRessourceNode : MonoBehaviour
                 if (player.isHarvesting)
                     player.Harvest(false);
             }
+        }
+        else
+        {
+            sprite_empty.material = ogMaterial1;
+            sprite_full.material = ogMaterial2;
         }
     }
 
