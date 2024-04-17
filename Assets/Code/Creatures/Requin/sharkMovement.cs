@@ -188,16 +188,16 @@ public class sharkMovement : MonoBehaviour
         if (isFacingRight)
         {
             body.eulerAngles = new Vector3(0, 0, 180);
-            Vector2 texScale = body.gameObject.GetComponent<LineRenderer>().textureScale;
+            Vector2 texScale = transform.GetChild(1).GetComponent<LineRenderer>().textureScale;
             texScale.y *= -1;
-            body.gameObject.GetComponent<LineRenderer>().textureScale = texScale;
+            transform.GetChild(1).GetComponent<LineRenderer>().textureScale = texScale;
         }
         else
         {
             body.eulerAngles = new Vector3(0, 0, 0);
-            Vector2 texScale = body.gameObject.GetComponent<LineRenderer>().textureScale;
+            Vector2 texScale = transform.GetChild(1).GetComponent<LineRenderer>().textureScale;
             texScale.y *= -1;
-            body.gameObject.GetComponent<LineRenderer>().textureScale = texScale;
+            transform.GetChild(1).GetComponent<LineRenderer>().textureScale = texScale;
         }
 
         Vector3 scale = head.transform.localScale;

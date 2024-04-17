@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538511757651694154}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.020919286, w: 0.9997812}
+  m_LocalRotation: {x: -0, y: -0, z: -0.020919407, w: 0.9997812}
   m_LocalPosition: {x: 0.241, y: 0.004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -151,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697585900228042489}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.0000036135311, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0000006631016, w: 1}
   m_LocalPosition: {x: 0.243, y: 0.004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -377,7 +377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2367554061399557396}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.0000024065369, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.00000035762784, w: 1}
   m_LocalPosition: {x: 0.2, y: 0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 6209915281714404190}
   - component: {fileID: 8387820628380428130}
   - component: {fileID: 5566044518858001039}
+  - component: {fileID: 6169062983522129610}
   - component: {fileID: 1035557664498064151}
   m_Layer: 9
   m_Name: Tardidog
@@ -622,6 +623,8 @@ MonoBehaviour:
   - {fileID: 4337143653910874290}
   - {fileID: 2608522728892360947}
   - {fileID: 5241061563424271989}
+  usesLineRenderer: 0
+  line: {fileID: 0}
 --- !u!114 &6209915281714404190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,6 +754,7 @@ MonoBehaviour:
   - {fileID: 3509843861052164604}
   - {fileID: 4473523068497175590}
   - {fileID: 4087431530198120389}
+  - {fileID: 6169062983522129610}
   behaviorScript: {fileID: 4392491570789503142}
   ressourceSpawnedCount: 1
   ressourceToHarvest: {fileID: 8819707360973039860, guid: 7f495b1b555372243843b49bb672872a, type: 3}
@@ -762,6 +766,28 @@ MonoBehaviour:
   dnaVial: {fileID: 8819707360973039860, guid: 60a0a96285e1fee4ca5b4141027617a2, type: 3}
   isInPod: 0
   species: []
+--- !u!114 &6169062983522129610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375505516168346676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac1c457769bca8468a252b1b5ea1e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  underWaterGravityScale: 0.1
+  underWaterDrag: 2
+  underWaterAngularDrag: 4
+  initialGravityScale: 0
+  initialDrag: 0
+  initialAngularDrag: 0
+  isUnderwater: 0
+  maxOxygen: 40
+  currentOxygen: 0
+  oxygenDepleteRate: 1
 --- !u!114 &1035557664498064151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1966,7 +1992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2978984936461578496, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.37685117
+      value: 0.37685275
       objectReference: {fileID: 0}
     - target: {fileID: -2978984936461578496, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1974,7 +2000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2978984936461578496, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9262739
+      value: -0.9262732
       objectReference: {fileID: 0}
     - target: {fileID: -2558533372562210899, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_AutoRebind
@@ -2002,11 +2028,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1819529356487467196, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9976168
+      value: 0.99761647
       objectReference: {fileID: 0}
     - target: {fileID: -1819529356487467196, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.068998605
+      value: -0.06900412
       objectReference: {fileID: 0}
     - target: {fileID: -1271048167790484201, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_AutoRebind
@@ -2050,7 +2076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1770433945857213737, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.37894523
+      value: 0.37894762
       objectReference: {fileID: 0}
     - target: {fileID: 1770433945857213737, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2058,7 +2084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1770433945857213737, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.92541915
+      value: -0.9254182
       objectReference: {fileID: 0}
     - target: {fileID: 1793157094091023327, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_Layer
@@ -2142,11 +2168,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4808532571273057128, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9980638
+      value: 0.99806356
       objectReference: {fileID: 0}
     - target: {fileID: 4808532571273057128, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.06219867
+      value: -0.062202413
       objectReference: {fileID: 0}
     - target: {fileID: 6003546589956356148, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_Sprite
@@ -2210,7 +2236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693355417021534197, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00829856
+      value: -0.008298441
       objectReference: {fileID: 0}
     - target: {fileID: 8279683407934541878, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
       propertyPath: m_Layer
@@ -2528,7 +2554,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.025688775, y: -0.18298341}
+  m_ConnectedAnchor: {x: -0.025688782, y: -0.18298343}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2799,7 +2825,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.24373467, y: 0.00000024959436}
+  m_ConnectedAnchor: {x: 0.24373472, y: 0.00000014156097}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3009,7 +3035,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.40586525, y: 0.0000001266599}
+  m_ConnectedAnchor: {x: 0.40586528, y: 0.00000012293461}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3218,7 +3244,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.3414201, y: 0.000000037252896}
+  m_ConnectedAnchor: {x: 0.34142014, y: 0.000000029802315}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3315,7 +3341,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.2695243, y: 0.00000019371501}
+  m_ConnectedAnchor: {x: 0.2695243, y: 0.00000029802308}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3412,7 +3438,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.20462283, y: 0.01763206}
+  m_ConnectedAnchor: {x: -0.20462282, y: 0.017632067}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

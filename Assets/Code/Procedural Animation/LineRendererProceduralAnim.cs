@@ -101,7 +101,7 @@ public class LineRendererProceduralAnim : MonoBehaviour
         }
         points.Add(segments[segmentAmount - 1].endingPosition);
         //lineRenderer.sortingLayerName = "PixelateBackground";
-        lineRenderer.SetPositions(points.ToArray());
+        lineRenderer.SetPositions(LineSmoother.SmoothLine(points.ToArray(), segmentAmount));
     }
 
     Vector3 GetWorldPositionFromMouse()

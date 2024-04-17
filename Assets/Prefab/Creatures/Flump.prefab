@@ -686,6 +686,7 @@ GameObject:
   - component: {fileID: 5567287950754150770}
   - component: {fileID: 2165007696987796265}
   - component: {fileID: 1294391138471594184}
+  - component: {fileID: 7569737471958814368}
   - component: {fileID: 4330047044230045639}
   m_Layer: 9
   m_Name: Flumpf
@@ -854,7 +855,7 @@ MonoBehaviour:
   healthRegenRate: 0.5
   isInvincible: 0
   flashWhiteDuration: 0.3
-  flashMaterial: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
   creatureGFX:
   - {fileID: 5956065568133121971}
   - {fileID: 3706714023501558623}
@@ -866,6 +867,8 @@ MonoBehaviour:
   - {fileID: 1547896879619761307}
   - {fileID: 4053852636424728535}
   - {fileID: 8408453365779782253}
+  usesLineRenderer: 1
+  line: {fileID: 7933824538052503625}
 --- !u!114 &5567287950754150770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,6 +971,28 @@ MonoBehaviour:
   dnaVial: {fileID: 8819707360973039860, guid: f5d3fcd0691e8fd4a87ad8459669d48b, type: 3}
   isInPod: 0
   species: []
+--- !u!114 &7569737471958814368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646593512024270212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac1c457769bca8468a252b1b5ea1e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  underWaterGravityScale: 0.1
+  underWaterDrag: 2
+  underWaterAngularDrag: 4
+  initialGravityScale: 0
+  initialDrag: 0
+  initialAngularDrag: 0
+  isUnderwater: 0
+  maxOxygen: 40
+  currentOxygen: 0
+  oxygenDepleteRate: 1
 --- !u!70 &4330047044230045639
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

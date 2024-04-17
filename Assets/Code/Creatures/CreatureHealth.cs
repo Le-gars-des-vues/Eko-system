@@ -29,7 +29,14 @@ public class CreatureHealth : MonoBehaviour
     {
         if (currentHp <= 0)
         {
-            GetComponent<CreatureDeath>().Death(GetComponent<Rigidbody2D>().gravityScale);
+            float gravityScale;
+
+            if (!GetComponent<CreatureUnderwater>().isUnderwater)
+                gravityScale = 1;
+            else
+                gravityScale = GetComponent<Rigidbody2D>().gravityScale;
+
+            GetComponent<CreatureDeath>().Death(gravityScale);
             GetComponent<CreatureDeath>().isDead = true;
         }
 

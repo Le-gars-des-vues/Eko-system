@@ -39,6 +39,9 @@ public class CreatureDeath : MonoBehaviour
     public bool isInPod;
  
     public List<GameObject> species;
+
+    float drag;
+    float angularDrag;
     
 
     // Start is called before the first frame update
@@ -119,6 +122,9 @@ public class CreatureDeath : MonoBehaviour
 
     public void Death(float gravityScale)
     {
+        drag = GetComponent<Rigidbody2D>().drag;
+        angularDrag = GetComponent<Rigidbody2D>().angularDrag;
+
         behaviorScript.enabled = false;
         foreach (MonoBehaviour script in scripts)
         {
@@ -145,11 +151,16 @@ public class CreatureDeath : MonoBehaviour
         {
             line.gameObject.GetComponent<Tentacles>().wiggleMagnitude = 0;
             line.gameObject.GetComponent<Tentacles>().wiggleSpeed = 0;
+            line.gameObject.GetComponent<LineRendererCollision>().enabled = false;
         }
 
         if (lineRenderer && ragdollOn)
             foreach (Rigidbody2D rb in creatureRbs)
-                rb.gravityScale = 1;
+            {
+                rb.gravityScale = gravityScale;
+                rb.drag = drag;
+                rb.angularDrag = angularDrag;
+            }
 
         foreach (var col in creatureColliders)
         {
@@ -163,7 +174,11 @@ public class CreatureDeath : MonoBehaviour
         {
             rb.simulated = ragdollOn;
             if (ragdollOn)
+            {
                 rb.gravityScale = gravityScale;
+                rb.drag = drag;
+                rb.angularDrag = angularDrag;
+            }
         }
         foreach (var limb in limbs)
         {
