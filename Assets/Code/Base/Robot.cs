@@ -41,6 +41,7 @@ public class Robot : MonoBehaviour
         {
             DialogueManager.instance.StartDialogue(speaker.dialogueSequence, speaker, true);
             DialogueManager.onDialogueEnd = GoToCrafting;
+            DialogueManager.onDialogueEnd += GiveItem;
             //DialogueManager.onDialogueEnd = GoToRespawn;
         }
     }
@@ -79,7 +80,6 @@ public class Robot : MonoBehaviour
         {
             DialogueManager.instance.StartDialogue(speaker.dialogueSequence4, speaker);
             DialogueManager.onDialogueEnd = GoToSellingScreen;
-            DialogueManager.onDialogueEnd += GiveItem;
             hasShowedCrafting = true;
         }
         else if (!Tutorial.instance.firstTimeOutside && !Tutorial.instance.readyToGoOut)
@@ -146,8 +146,6 @@ public class Robot : MonoBehaviour
     {
         isMoving = true;
         target.position = new Vector2(respawnPoint.transform.position.x + offset, robotPos.position.y);
-        PromptManager.instance.CreateNewPrompt(new Prompt("Play the movement tutorial?", false, "Yes", "No"));
-        PromptManager.onButtonClick = TeleportToTrainingRoom;
     }
 
     void TeleportToTrainingRoom()
@@ -165,6 +163,8 @@ public class Robot : MonoBehaviour
     {
         isMoving = true;
         target.position = new Vector2(craftingBench.transform.position.x + offset + 2f, robotPos.position.y);
+        PromptManager.instance.CreateNewPrompt(new Prompt("Play the movement tutorial?", false, "Yes", "No"));
+        PromptManager.onButtonClick = TeleportToTrainingRoom;
     }
 
     void GiveItem()

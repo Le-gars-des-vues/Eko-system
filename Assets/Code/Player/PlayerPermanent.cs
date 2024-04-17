@@ -705,11 +705,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     
     public void ShowOrHideInventory(bool withButtons = true)
     {
-        if (withButtons)
-        {
-            playerInventory.transform.Find("NextUI").gameObject.SetActive(withButtons);
-            playerInventory.transform.Find("PreviousUI").gameObject.SetActive(withButtons);
-        }
+        playerInventory.transform.Find("NextUI").gameObject.SetActive(withButtons);
+        playerInventory.transform.Find("PreviousUI").gameObject.SetActive(withButtons);
 
         if (!inventoryOpen)
         {

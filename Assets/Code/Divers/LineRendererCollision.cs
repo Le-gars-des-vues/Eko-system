@@ -27,8 +27,8 @@ public class LineRendererCollision : MonoBehaviour
 
         for (int i = 0; i < lineRenderer.positionCount; i++)
         {
-            Vector3 lineRendererPoint = transform.InverseTransformPoint(lineRenderer.GetPosition(i));
-            edges.Add(new Vector2(lineRendererPoint.x, lineRendererPoint.y));
+            Vector2 lineRendererPoint = transform.InverseTransformPoint(lineRenderer.GetPosition(i));
+            edges.Add(lineRendererPoint);
         }
         edgeCollider.SetPoints(edges);
     }

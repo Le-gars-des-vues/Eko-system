@@ -33,6 +33,10 @@ public class sharkMovement : MonoBehaviour
     public float rayCount = 10;
     public float rayDistance = 5;
 
+    [Header("BodyParts")]
+    [SerializeField] Transform[] fins;
+    [SerializeField] Transform body;
+
     [SerializeField] CreatureState state;
     [SerializeField] CreaturePathfinding pathfinding;
 
@@ -96,11 +100,16 @@ public class sharkMovement : MonoBehaviour
             float angle = isFacingUp ? 0 : 180;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
         }
-
+        /*
         if (Mathf.Abs(transform.rotation.eulerAngles.z) >= 95 && isFacingUp)
             Turn();
         else if (Mathf.Abs(transform.rotation.eulerAngles.z) < 85 && !isFacingUp)
             Turn();
+        */
+        if (targetIsRight != isFacingRight)
+        {
+            Turn();
+        }
 
 
         if (state.isPathfinding)
@@ -161,6 +170,7 @@ public class sharkMovement : MonoBehaviour
         }
     }
 
+    /*
     void Turn()
     {
         Vector3 scale = transform.localScale;
@@ -168,6 +178,40 @@ public class sharkMovement : MonoBehaviour
         transform.localScale = scale;
 
         isFacingUp = !isFacingUp;
+
+        isFacingRight = !isFacingRight;
+    }
+    */
+
+    void Turn()
+    {
+        if (isFacingRight)
+        {
+            body.eulerAngles = new Vector3(0, 0, 180);
+            Vector2 texScale = body.gameObject.GetComponent<LineRenderer>().textureScale;
+            texScale.y *= -1;
+            body.gameObject.GetComponent<LineRenderer>().textureScale = texScale;
+        }
+        else
+        {
+            body.eulerAngles = new Vector3(0, 0, 0);
+            Vector2 texScale = body.gameObject.GetComponent<LineRenderer>().textureScale;
+            texScale.y *= -1;
+            body.gameObject.GetComponent<LineRenderer>().textureScale = texScale;
+        }
+
+        Vector3 scale = head.transform.localScale;
+        scale.y *= -1;
+        head.transform.localScale = scale;
+
+
+        foreach (Transform leg in fins)
+        {
+            scale = leg.transform.localScale;
+            scale.y *= -1;
+            leg.transform.localScale = scale;
+        }
+
 
         isFacingRight = !isFacingRight;
     }

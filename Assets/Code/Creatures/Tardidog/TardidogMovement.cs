@@ -31,6 +31,7 @@ public class TardidogMovement : MonoBehaviour
     [SerializeField] float maxMoveSpeed;
     [SerializeField] float minMoveSpeed;
     [SerializeField] float slowDownThreshold;
+    [SerializeField] float chargeFactor = 2;
     [SerializeField] List<TardidogLegAnimation> legs = new List<TardidogLegAnimation>();
     float dragForce;
 
@@ -342,7 +343,7 @@ public class TardidogMovement : MonoBehaviour
                 else
                 {
                     moveSpeed = maxMoveSpeed;
-                    speedFactor = 1.5f;
+                    speedFactor = chargeFactor;
                 }
             }
             else
@@ -389,7 +390,7 @@ public class TardidogMovement : MonoBehaviour
                 //Debug.Log(Vector2.Distance(target.position, rb.position));
                 if (state.isPathfinding && pathfinding.path != null)
                 {
-                    if (Mathf.Approximately(Mathf.Abs(jumpCheck.normal.x), 1f) && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], transform.position) > 3f)
+                    if ((Mathf.Abs(jumpCheck.normal.x) == 1f) && Vector2.Distance(pathfinding.path.lookPoints[pathfinding.pathIndex], transform.position) > 3f)
                     {
                         if (!isJumping && isGrounded)
                         {
@@ -403,7 +404,7 @@ public class TardidogMovement : MonoBehaviour
                 }
                 else
                 {
-                    if (Mathf.Approximately(Mathf.Abs(jumpCheck.normal.x), 1f))
+                    if ((Mathf.Abs(jumpCheck.normal.x) == 1f))
                     {
                         if (dist > 2f && !isJumping && isGrounded)
                         {

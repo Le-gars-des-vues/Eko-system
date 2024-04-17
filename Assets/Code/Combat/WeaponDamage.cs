@@ -21,6 +21,7 @@ public class WeaponDamage : MonoBehaviour
     public bool isThrown;
     [SerializeField] LayerMask groundLayer;
 
+    public Collider2D creatureCollider;
 
     private void OnEnable()
     {
@@ -83,9 +84,27 @@ public class WeaponDamage : MonoBehaviour
                         if (isThrown)
                         {
                             isThrown = false;
-                            Vector2 hitDirection = contact.point - (Vector2)transform.position;
-                            Vector2 stickPos = (Vector2)transform.position + hitDirection.normalized;
-                            StartCoroutine(Stick(collision.collider, stickPos));
+                            if (collision.gameObject.GetComponent<LineRenderer>() != null)
+                            {
+                                float distance = 10;
+                                Vector2 stickPos = Vector2.zero;
+                                for (int i = 0; i < collision.gameObject.GetComponent<LineRenderer>().positionCount; i++)
+                                {
+                                    Vector2 lineRendererPoint = transform.InverseTransformPoint(collision.gameObject.GetComponent<LineRenderer>().GetPosition(i));
+                                    if (Vector2.Distance(lineRendererPoint, contact.point) < distance)
+                                    {
+                                        distance = Vector2.Distance(lineRendererPoint, contact.point);
+                                        stickPos = lineRendererPoint;
+                                    }
+                                    StartCoroutine(Stick(collision.collider, stickPos));
+                                }
+                            }
+                            else
+                            {
+                                Vector2 hitDirection = contact.point - (Vector2)transform.position;
+                                Vector2 stickPos = (Vector2)transform.position + hitDirection.normalized;
+                                StartCoroutine(Stick(collision.collider, stickPos));
+                            }
                         }
                     }
                 }
@@ -114,19 +133,31 @@ public class WeaponDamage : MonoBehaviour
 
     IEnumerator Stick(Collider2D collider, Vector2 targetPos)
     {
+        //Timer setup
         float elapsedTime = 0;
         float duration = 0.1f;
-        Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), collider, true);
+
+        //Ajuste le sorting order pour que l'objet soit derriere la creature
+        GetComponent<SpriteRenderer>().sortingOrder = 1;
+
+        //Store le collider de la creature dans une variable, puis desactive les collisions avec l'objet
+        creatureCollider = collider;
+        Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), creatureCollider, true);
+
+        //Desactive la physique pour l'objet
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0;
         GetComponent<Rigidbody2D>().simulated = false;
+
+        //Set la creature comme le parent de l'objet
+        transform.SetParent(collider.gameObject.transform);
+
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             transform.position = Vector2.Lerp(transform.position, targetPos, elapsedTime / duration);
             yield return null;
         }
-        transform.SetParent(collider.gameObject.transform);
     }
 
     CreatureHealth GetScript(GameObject objectToSearch)

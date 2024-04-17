@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class TardidogHead : MonoBehaviour
 {
-    [SerializeField] GameObject creature;
-    [SerializeField] float damage;
+    [Header("Creature Variables")]
+    [SerializeField] TardidogMovement dog;
+    [SerializeField] CreatureState state;
 
+    [Header("Bend Variables")]
     [SerializeField] GameObject neck;
     [SerializeField] float duration;
     float timer;
@@ -18,9 +20,14 @@ public class TardidogHead : MonoBehaviour
     [SerializeField] float rotateSpeed;
     float facingDirection;
 
-    [SerializeField] CreatureState state;
-    bool isAttacking;
+    [Header("Charge Variables")]
+    public bool isCharging;
+    Coroutine charge;
+    [SerializeField] float damage;
+    [SerializeField] float headbuttThreshold;
+    [SerializeField] float knockBackForce;
 
+    [Header("Colliders")]
     [SerializeField] Collider2D headCollider;
     [SerializeField] Collider2D bodyCollider;
     [SerializeField] Collider2D hornCollider;
@@ -35,30 +42,36 @@ public class TardidogHead : MonoBehaviour
 
     private void Update()
     {
-        facingDirection = creature.GetComponent<TardidogMovement>().facingDirection;
+        facingDirection = dog.facingDirection;
         if (!state.isAttacking)
         {
-            if (!isAttacking)
+            if (!isCharging)
             {
                 float angle = -yCurve.Evaluate(Time.time % 2) * rotateFactor;
                 neck.transform.rotation = Quaternion.Lerp(neck.transform.rotation, Quaternion.Euler(0, 0, angle * facingDirection), Time.deltaTime * rotateSpeed);
             }
-            else
+            else if (isCharging && !dog.targetIsInFront)
             {
-                //Debug.Log("Up");
-                StartCoroutine(BendNeck(false));
+                if (charge != null)
+                    StopCoroutine(charge);
+                charge = StartCoroutine(BendNeck(false));
             }
-
         }
-        else if (state.isAttacking && !isAttacking)
+        else if (state.isAttacking && !isCharging && dog.targetIsInFront)
         {
-            //Debug.Log("Down");
-            //neck.transform.eulerAngles = new Vector3(0, 0, ogAngle);
-            isAttacking = true;
-            StartCoroutine(BendNeck(true));
+            isCharging = true;
+            if (charge != null)
+                StopCoroutine(charge);
+            charge = StartCoroutine(BendNeck(true));
+        }
+        else
+        {
+            if (charge != null)
+                StopCoroutine(charge);
+            charge = StartCoroutine(BendNeck(false));
         }
 
-        if (creature.GetComponent<CreatureState>().isTamed)
+        if (state.isTamed)
             Physics2D.IgnoreCollision(hornCollider, GameObject.FindGameObjectWithTag("Player").GetComponent<CapsuleCollider2D>());
     }
 
@@ -78,45 +91,21 @@ public class TardidogHead : MonoBehaviour
             while (timer < duration)
             {
                 timer += Time.deltaTime;
-                //float angle = Mathf.LerpAngle(ogAngle, bentDownAngle, timer / duration);
-                //neck.transform.eulerAngles = new Vector3(0, 0, angle * facingDirection);
                 Quaternion targetAngle = Quaternion.Euler(0, 0, bentDownAngle * facingDirection);
                 neck.transform.rotation = Quaternion.Lerp(neck.transform.rotation, targetAngle, timer / duration);
                 yield return null;
             }
-            //neck.transform.eulerAngles = new Vector3(0, 0, bentDownAngle);
         }
         else
         {
             while (timer < duration)
             {
                 timer += Time.deltaTime;
-                //float angle = Mathf.LerpAngle(bentDownAngle, ogAngle, timer / duration);
-                //neck.transform.eulerAngles = new Vector3(0, 0, angle * facingDirection);
                 Quaternion targetAngle = Quaternion.Euler(0, 0, ogAngle * facingDirection);
                 neck.transform.rotation = Quaternion.Lerp(neck.transform.rotation, targetAngle, timer / duration);
                 yield return null;
             }
-            //neck.transform.eulerAngles = new Vector3(0, 0, ogAngle);
-            isAttacking = false;
+            isCharging = false;
         }
     }
-
-    /*
-    // Update is called once per frame
-    void Update()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(head.position, new Vector2(head.position.x + hornOffset.x, head.position.y + hornOffset.y), hornRaycastLength, LayerMask.GetMask("Player", "Creature"));
-        if (hit.collider != null && hit.collider.gameObject.tag == "Player")
-        {
-            hit.collider.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(head.position, new Vector2(head.position.x + hornOffset.x, head.position.y + hornOffset.y) * hornRaycastLength);
-    }
-    */
 }

@@ -14,6 +14,8 @@ public class CreatureHealth : MonoBehaviour
     [SerializeField] float flashWhiteDuration = 0.3f;
     [SerializeField] Material flashMaterial;
     [SerializeField] private List<SpriteRenderer> creatureGFX = new List<SpriteRenderer>();
+    [SerializeField] bool usesLineRenderer = false;
+    [SerializeField] private LineRenderer line;
     private List<Material> ogMaterials = new List<Material>();
 
     // Start is called before the first frame update
@@ -58,12 +60,20 @@ public class CreatureHealth : MonoBehaviour
             ogMaterials.Add(spriteList[i].material);
             spriteList[i].material = flashMaterial;
         }
+        if (usesLineRenderer)
+        {
+            ogMaterials.Add(line.material);
+            line.material = flashMaterial;
+        }
+
         yield return new WaitForSecondsRealtime(duration);
 
         for (int i = 0; i < spriteList.Count; i++)
         {
             spriteList[i].material = ogMaterials[i];
         }
+        if (usesLineRenderer)
+            line.material = ogMaterials[spriteList.Count];
         isInvincible = false;
     }
 }

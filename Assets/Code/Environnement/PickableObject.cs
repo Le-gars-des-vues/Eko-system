@@ -165,7 +165,7 @@ public class PickableObject : MonoBehaviour
                 Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.gameObject.transform.position;
                 if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
                 {
-                    Turn();
+                    Turn('Y');
                 }
                 //transform.rotation = Quaternion.Euler(0, 0, angle);
             }
@@ -178,7 +178,7 @@ public class PickableObject : MonoBehaviour
                 Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.gameObject.transform.position;
                 if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))
                 {
-                    Turn();
+                    Turn('Y');
                 }
             }
         }
@@ -191,19 +191,22 @@ public class PickableObject : MonoBehaviour
             itemInInventory.GetComponent<InventoryItem>().currentDurability -= damage;
     }
 
-    void Turn()
+    void Turn(char flipAxis)
     {
-        Vector3 scale = transform.localScale;
-        scale.y *= -1;
-        transform.localScale = scale;
+        if (flipAxis == 'Y')
+        {
+            Vector3 scale = transform.localScale;
+            scale.y *= -1;
+            transform.localScale = scale;
 
-        /*
-        scale = arrow.transform.localScale;
-        scale.y *= -1;
-        arrow.transform.localScale = scale;
-        */
-
-        isFacingRight = !isFacingRight;
+            isFacingRight = !isFacingRight;
+        }
+        else if (flipAxis == 'X')
+        {
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
     }
 
     public void PickUp(bool isAlreadyInInventory, bool bypassObjectInHand)
@@ -289,6 +292,12 @@ public class PickableObject : MonoBehaviour
             {
                 //On ignore les collisions avec le joueur et on desactive le mouvement sur l'objet
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.gameObject.GetComponent<Collider2D>(), true);
+
+                //On reactive les collisions avec les creatures si la l'objet était planté
+                if (GetComponent<WeaponDamage>() != null && GetComponent<WeaponDamage>().creatureCollider != null)
+                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), GetComponent<WeaponDamage>().creatureCollider, false);
+
+                //On desactive la physique quand on tient l'objet en main
                 GetComponent<Rigidbody2D>().simulated = true;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 GetComponent<Rigidbody2D>().angularVelocity = 0;
@@ -304,6 +313,9 @@ public class PickableObject : MonoBehaviour
 
                 //On reset le parent de l'objet
                 gameObject.transform.parent = null;
+
+                if (Mathf.Approximately(transform.localScale.x, -1f))
+                    Turn('X');
 
                 //On ajuste le sorting layer
                 sprite.sortingOrder = 18;
