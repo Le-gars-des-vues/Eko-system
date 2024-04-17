@@ -228,6 +228,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         Reset();
         ToggleRagdoll(false);
+        Cursor.SetCursor(cursorImages[1], new Vector2(0, 0), CursorMode.Auto);
     }
 
     // Update is called once per frame
