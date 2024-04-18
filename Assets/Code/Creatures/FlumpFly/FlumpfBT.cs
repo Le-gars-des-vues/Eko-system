@@ -6,7 +6,6 @@ public class FlumpfBT : BTree
 {
     [Header("Movement Variables")]
     [SerializeField] Transform target;
-    [SerializeField] bool isAgressive;
     [SerializeField] int maxMovingDistance;
     [SerializeField] int originalDirection;
     [SerializeField] float creatureSize;
@@ -26,7 +25,7 @@ public class FlumpfBT : BTree
             }),
             new Sequence(new List<BehaviorNode>
             {
-                new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, fly.head, fly.startAngle, fly.angleStep, fly.sightAngle, fly.rayCount, fly.rayDistance, state.minFollowDistance, originalDirection, isAgressive),
+                new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, fly.head, fly.startAngle, fly.angleStep, fly.sightAngle, fly.rayCount, fly.rayDistance, state.minFollowDistance, originalDirection, state.isAgressive, state.isPredator),
                 new AssignTarget(target, gameObject),
             }),
             new Wander(gameObject.transform, target, state.territory, maxMovingDistance, creatureSize)

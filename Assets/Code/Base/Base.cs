@@ -131,7 +131,7 @@ public class Base : MonoBehaviour
         {
             //background.SetActive(false);
             baseBackground.SetActive(false);
-            isInside = false;
+            //isInside = false;
             pixelLight.intensity = 0.03f;
         }
     }

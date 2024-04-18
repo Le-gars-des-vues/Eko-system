@@ -15,6 +15,7 @@ public class CheckForTargetInRange : BehaviorNode
     float fovRange;
     int originalDirection;
     bool isAgressive;
+    bool isPredator;
 
     Transform head;
     float startAngle;
@@ -24,7 +25,7 @@ public class CheckForTargetInRange : BehaviorNode
     float rayDistance;
     float minFollowDistance;
 
-    public CheckForTargetInRange(Transform _transform, float _senseOfSmell, string _foodName, float _fovRange, Transform _head, float _startAngle, float _angleStep, float _sightAngle, float _rayCount, float _rayDistance, float _minFollowDistance, int _originalDirection, bool _isAgressive)
+    public CheckForTargetInRange(Transform _transform, float _senseOfSmell, string _foodName, float _fovRange, Transform _head, float _startAngle, float _angleStep, float _sightAngle, float _rayCount, float _rayDistance, float _minFollowDistance, int _originalDirection, bool _isAgressive, bool _isPredator)
     {
         transform = _transform;
         senseOfSmell = _senseOfSmell;
@@ -39,6 +40,7 @@ public class CheckForTargetInRange : BehaviorNode
         minFollowDistance = _minFollowDistance;
         originalDirection = _originalDirection;
         isAgressive = _isAgressive;
+        isPredator = _isPredator;
     }
 
     public override NodeState Evaluate()
@@ -59,11 +61,9 @@ public class CheckForTargetInRange : BehaviorNode
                 foreach (Collider2D collider in colliders)
                 {
                     //Si le collider est celui du joueur et que la creature est aggressive
-                    if (collider.gameObject.tag == "Player" && isAgressive)
+                    if (collider.gameObject.tag == "Player")
                     {
-                        //Debug.Log(collider.gameObject.transform.position);
-                        //Si le joueur est proche, on lance le pathfinding et l'attaque
-                        if (Vector2.Distance(collider.gameObject.transform.position, transform.position) < fovRange)
+                        if (isPredator)
                         {
                             parent.parent.SetData("target", collider.transform);
                             parent.parent.SetData("pathTarget", "player");
@@ -72,24 +72,38 @@ public class CheckForTargetInRange : BehaviorNode
                             state = NodeState.SUCCESS;
                             return state;
                         }
-                        //Sinon, on regarde si le joueur est dans le champ de vision, et si oui, on commence le pathfinding et l'attaque
-                        else
+                        else if (isAgressive)
                         {
-                            facingDirection = transform.localScale.x == 1 ? 1 : -1;
-                            facingDirection *= originalDirection;
-                            int targetIsRight = (collider.gameObject.transform.position.x - transform.position.x) > 0 ? 1 : -1;
-
-                            if (targetIsRight == facingDirection)
+                            //Debug.Log(collider.gameObject.transform.position);
+                            //Si le joueur est proche, on lance le pathfinding et l'attaque
+                            if (Vector2.Distance(collider.gameObject.transform.position, transform.position) < fovRange)
                             {
-                                if (Vision())
+                                parent.parent.SetData("target", collider.transform);
+                                parent.parent.SetData("pathTarget", "player");
+                                parent.parent.SetData("pathState", 1);
+                                parent.parent.SetData("isAttacking", true);
+                                state = NodeState.SUCCESS;
+                                return state;
+                            }
+                            //Sinon, on regarde si le joueur est dans le champ de vision, et si oui, on commence le pathfinding et l'attaque
+                            else
+                            {
+                                facingDirection = transform.localScale.x == 1 ? 1 : -1;
+                                facingDirection *= originalDirection;
+                                int targetIsRight = (collider.gameObject.transform.position.x - transform.position.x) > 0 ? 1 : -1;
+
+                                if (targetIsRight == facingDirection)
                                 {
-                                    //Debug.Log("Player is seen!");
-                                    parent.parent.SetData("target", collider.transform);
-                                    parent.parent.SetData("pathTarget", "player");
-                                    parent.parent.SetData("pathState", 1);
-                                    parent.parent.SetData("isAttacking", true);
-                                    state = NodeState.SUCCESS;
-                                    return state;
+                                    if (Vision())
+                                    {
+                                        //Debug.Log("Player is seen!");
+                                        parent.parent.SetData("target", collider.transform);
+                                        parent.parent.SetData("pathTarget", "player");
+                                        parent.parent.SetData("pathState", 1);
+                                        parent.parent.SetData("isAttacking", true);
+                                        state = NodeState.SUCCESS;
+                                        return state;
+                                    }
                                 }
                             }
                         }

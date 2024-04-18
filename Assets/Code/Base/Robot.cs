@@ -41,7 +41,6 @@ public class Robot : MonoBehaviour
         {
             DialogueManager.instance.StartDialogue(speaker.dialogueSequence, speaker, true);
             DialogueManager.onDialogueEnd = GoToCrafting;
-            DialogueManager.onDialogueEnd += GiveItem;
             //DialogueManager.onDialogueEnd = GoToRespawn;
         }
     }
@@ -80,6 +79,7 @@ public class Robot : MonoBehaviour
         {
             DialogueManager.instance.StartDialogue(speaker.dialogueSequence4, speaker);
             DialogueManager.onDialogueEnd = GoToSellingScreen;
+            DialogueManager.onDialogueEnd += GiveItem;
             hasShowedCrafting = true;
         }
         else if (!Tutorial.instance.firstTimeOutside && !Tutorial.instance.readyToGoOut)

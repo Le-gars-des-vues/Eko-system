@@ -12,6 +12,8 @@ public class CreatureState : MonoBehaviour
     public bool isStunned;
     public bool isFlying;
     public bool isAWaterCreature;
+    public bool isAgressive;
+    public bool isPredator;
 
     [Header("Hunger Variables")]
     public float currentFood;

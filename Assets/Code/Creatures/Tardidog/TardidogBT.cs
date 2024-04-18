@@ -6,7 +6,6 @@ public class TardidogBT : BTree
 {
     [Header("Movement Variables")]
     [SerializeField] Transform target;
-    [SerializeField] bool isAgressive;
     [SerializeField] int maxMovingDistance;
     [SerializeField] int originalDirection;
     [SerializeField] float creatureSize;
@@ -26,7 +25,7 @@ public class TardidogBT : BTree
             }),
             new Sequence(new List<BehaviorNode>
             {
-                new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, dog.head, dog.startAngle, dog.angleStep, dog.sightAngle, dog.rayCount, dog.rayDistance, state.minFollowDistance, originalDirection, isAgressive),
+                new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, dog.head, dog.startAngle, dog.angleStep, dog.sightAngle, dog.rayCount, dog.rayDistance, state.minFollowDistance, originalDirection, state.isAgressive, state.isPredator),
                 new AssignTarget(target, gameObject),
             }),
             new Wander(gameObject.transform, target, state.territory, maxMovingDistance, creatureSize)

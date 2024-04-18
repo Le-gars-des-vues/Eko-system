@@ -178,6 +178,7 @@ MonoBehaviour:
   isSelected: 0
   isPickedUp: 0
   rotateSpeed: 0
+  isUnderWaterWeapon: 0
   isSceneLoaded: 0
 --- !u!114 &1605999152266830575
 MonoBehaviour:
@@ -191,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f815772709fc5644f98a7864b13823a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0
+  force: 50
   consummalbePrefab: {fileID: 0}
   timeToMaxThrow: 2
   timer: 0
@@ -218,9 +219,16 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: fd0402d664509114ebdebb5f789e5f5d, type: 2}
   itemGrid: {fileID: 0}
   stackAmount: 0
+  maxStack: 5
   sprites: []
   markedForDestroy: 0
   isPlaced: 0
+  isInInventory: 0
+  currentDurability: 0
+  maxDurability: 20
+  lowDurabilityThreshold: 0
+  lowDurability: 0
+  broken: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
@@ -342,3 +350,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentCount: 50
   curveLength: 3.5
+  startPosOffset: {x: 0, y: 0}

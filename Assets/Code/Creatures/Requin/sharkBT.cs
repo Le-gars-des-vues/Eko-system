@@ -6,7 +6,6 @@ public class sharkBT : BTree
 {
     [Header("Movement Variables")]
     [SerializeField] Transform target;
-    [SerializeField] bool isAgressive;
 
     [SerializeField] int minWaitTime;
     [SerializeField] int maxWaitTime;
@@ -28,7 +27,7 @@ public class sharkBT : BTree
             }),
             new Sequence(new List<BehaviorNode>
             {
-                new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, shark.head, shark.startAngle, shark.angleStep, shark.sightAngle, shark.rayCount, shark.rayDistance, state.minFollowDistance, originalDirection, isAgressive),
+                new CheckForTargetInRange(transform, state.senseOfSmell, state.foodName, state.fovRange, shark.head, shark.startAngle, shark.angleStep, shark.sightAngle, shark.rayCount, shark.rayDistance, state.minFollowDistance, originalDirection, state.isAgressive, state.isPredator),
                 new AssignTarget(target, gameObject),
             }),
             new Wander(gameObject.transform, target, state.territory, maxMovingDistance, minWaitTime, maxWaitTime)
