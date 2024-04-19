@@ -50,7 +50,8 @@ namespace AK
         static const AkUniqueID PLY_ATTAQUE_RELACHE_GRENADE = 2572263400U;
         static const AkUniqueID PLY_ATTAQUE_RELACHE_LANCE = 4045475007U;
         static const AkUniqueID PLY_DEGAT = 3021703992U;
-        static const AkUniqueID PLY_GRIMPE = 1065587537U;
+        static const AkUniqueID PLY_GRIMPE_PLAY = 205347722U;
+        static const AkUniqueID PLY_GRIMPE_STOP = 1609549748U;
         static const AkUniqueID PLY_MULTITOOL_BARK = 895662967U;
         static const AkUniqueID PLY_MULTITOOL_CHARGE = 1777682481U;
         static const AkUniqueID PLY_MULTITOOL_MAGNETITE = 1174519973U;
@@ -61,8 +62,10 @@ namespace AK
         static const AkUniqueID PLY_MULTITOOL_TROMPE = 467761838U;
         static const AkUniqueID PLY_MULTITOOL_TRONC = 2648129411U;
         static const AkUniqueID PLY_MULTITOOL_TUNGSTONE = 3906859172U;
+        static const AkUniqueID PLY_NAGE = 2316187866U;
         static const AkUniqueID PLY_PAS = 1629615691U;
         static const AkUniqueID PLY_RAMASSE = 988414139U;
+        static const AkUniqueID PLY_REBONDIS = 2872366425U;
         static const AkUniqueID PLY_SAUTE = 2736888903U;
         static const AkUniqueID SWT_BOISMOUSSU = 2467918837U;
         static const AkUniqueID SWT_COURSE = 763223215U;
@@ -97,6 +100,8 @@ namespace AK
         static const AkUniqueID UI_ENDURANCE = 1998450481U;
         static const AkUniqueID UI_GAMEOVER_TEMPS = 3454429038U;
         static const AkUniqueID UI_GAMEOVER_VIE = 3136319167U;
+        static const AkUniqueID UI_GENERAL_FERMER = 4283987504U;
+        static const AkUniqueID UI_GENERAL_OUVRIR = 1780827120U;
         static const AkUniqueID UI_HOTBARDEPLACEMENT = 2295926980U;
         static const AkUniqueID UI_INVENTAIRE_FERMER = 3461596575U;
         static const AkUniqueID UI_INVENTAIRE_INTERVERTIR = 2985199436U;
@@ -111,6 +116,7 @@ namespace AK
         static const AkUniqueID UI_PAUSE_OUVRIR = 3671474502U;
         static const AkUniqueID UI_RESPIRATION = 45966240U;
         static const AkUniqueID UI_TEMPS = 3192806191U;
+        static const AkUniqueID UI_TEXTE = 3496921912U;
         static const AkUniqueID UI_VENTE_FERMER = 2605645130U;
         static const AkUniqueID UI_VENTE_OUVRIR = 4177524486U;
         static const AkUniqueID UI_VENTE_VENDRE = 762427217U;
@@ -128,7 +134,8 @@ namespace AK
         static const AkUniqueID VO_JOUEUR_NOYADE = 2890522026U;
         static const AkUniqueID VO_JOUEUR_SURPRIS = 1485537732U;
         static const AkUniqueID VO_JOUEUR_TRISTE = 3659862611U;
-        static const AkUniqueID VO_NARRATEUR_NEUTRE = 545824151U;
+        static const AkUniqueID VO_NARRATEUR_DEBUT = 1006093918U;
+        static const AkUniqueID VO_NARRATEUR_FIN = 77741599U;
     } // namespace EVENTS
 
     namespace STATES

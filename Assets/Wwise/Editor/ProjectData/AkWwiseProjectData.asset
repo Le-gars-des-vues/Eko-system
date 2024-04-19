@@ -1608,7 +1608,7 @@ MonoBehaviour:
     ParentPath: Events\PLY
     guid: 660195bf917e784f83108aaf9eba5a57
     GuidInternal: 
-    m_lastTime: -8584881112282874794
+    m_lastTime: -8584880396465814127
     List:
     - name: PLY_Attaque
       guid: f3fb3285d620b247b63577a64456ef5c
@@ -1774,11 +1774,11 @@ MonoBehaviour:
         guid: f287a87fd0c8b442b3d9104704fe7171
       Path: Events\PLY\PLY_Degat
       maxAttenuation: 0
-      maxDuration: 0.6959265
-      minDuration: 0.5523572
-    - name: PLY_Grimpe
+      maxDuration: 1.0625082
+      minDuration: 0.27269337
+    - name: PLY_Grimpe_play
       guid: b6fcc7f68f1a8b4b80a3395535ee7895
-      id: 1065587537
+      id: 205347722
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -1786,13 +1786,30 @@ MonoBehaviour:
       - ElementName: PLY
         ObjectType: 12
         guid: 660195bf917e784f83108aaf9eba5a57
-      - ElementName: PLY_Grimpe
+      - ElementName: PLY_Grimpe_play
         ObjectType: 3
         guid: b6fcc7f68f1a8b4b80a3395535ee7895
-      Path: Events\PLY\PLY_Grimpe
+      Path: Events\PLY\PLY_Grimpe_play
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: PLY_Grimpe_stop
+      guid: b77fece98a797846859c9249839698b1
+      id: 1609549748
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Grimpe_stop
+        ObjectType: 3
+        guid: b77fece98a797846859c9249839698b1
+      Path: Events\PLY\PLY_Grimpe_stop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: PLY_Multitool
       guid: 1f996b0886d3344f94868b07303e0fe2
       id: 1497997642
@@ -2054,6 +2071,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.3132806
       minDuration: 1.0423515
+    - name: PLY_Nage
+      guid: a237314ee5879d408fc2d97568e60dbc
+      id: 2316187866
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Nage
+        ObjectType: 3
+        guid: a237314ee5879d408fc2d97568e60dbc
+      Path: Events\PLY\PLY_Nage
+      maxAttenuation: 0
+      maxDuration: 1.4651946
+      minDuration: 0.3530661
     - name: PLY_Pas
       guid: 9e00b54e4a9bb047937c627082f09723
       id: 1629615691
@@ -2069,7 +2103,7 @@ MonoBehaviour:
         guid: 9e00b54e4a9bb047937c627082f09723
       Path: Events\PLY\PLY_Pas
       maxAttenuation: 0
-      maxDuration: 0
+      maxDuration: 0.4293885
       minDuration: 0
     - name: PLY_Ramasse
       guid: 82f7346c5af26d44907abd6dd3134804
@@ -2088,6 +2122,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.66225255
       minDuration: 0.52563024
+    - name: PLY_Rebondis
+      guid: f6ccdecb211659408e6daf49514e19eb
+      id: 2872366425
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Rebondis
+        ObjectType: 3
+        guid: f6ccdecb211659408e6daf49514e19eb
+      Path: Events\PLY\PLY_Rebondis
+      maxAttenuation: 0
+      maxDuration: 3.4313471
+      minDuration: 1.2220501
     - name: PLY_Saute
       guid: 940bdd77ccba2c4a9e718b6e4d6bc974
       id: 2736888903
@@ -2278,7 +2329,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: b6e3f30f45b0394684194edd0a23d091
     GuidInternal: 
-    m_lastTime: -8584885639652537138
+    m_lastTime: -8584880608870699814
     List:
     - name: UI_Amelioration
       guid: 9dda6e5766be2f4b928a70d3864e2984
@@ -3181,6 +3232,72 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 5
       minDuration: 5
+    - name: UI_General
+      guid: 2bfe2750194c2b46b3fdc2acdbaae080
+      id: 1222112018
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: b6e3f30f45b0394684194edd0a23d091
+      - ElementName: UI_Menus
+        ObjectType: 4
+        guid: cb048bdbbcc6eb498a2e54820097e1fb
+      - ElementName: UI_General
+        ObjectType: 4
+        guid: 2bfe2750194c2b46b3fdc2acdbaae080
+      Path: Events\UI\UI_Menus\UI_General
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI_General_Fermer
+      guid: 3e5ef857ae86cd45894ecaa31bef6e42
+      id: 4283987504
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: b6e3f30f45b0394684194edd0a23d091
+      - ElementName: UI_Menus
+        ObjectType: 4
+        guid: cb048bdbbcc6eb498a2e54820097e1fb
+      - ElementName: UI_General
+        ObjectType: 4
+        guid: 2bfe2750194c2b46b3fdc2acdbaae080
+      - ElementName: UI_General_Fermer
+        ObjectType: 3
+        guid: 3e5ef857ae86cd45894ecaa31bef6e42
+      Path: Events\UI\UI_Menus\UI_General\UI_General_Fermer
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: UI_General_Ouvrir
+      guid: 1b1c8865e8122c45baf7467ef33d95c1
+      id: 1780827120
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: b6e3f30f45b0394684194edd0a23d091
+      - ElementName: UI_Menus
+        ObjectType: 4
+        guid: cb048bdbbcc6eb498a2e54820097e1fb
+      - ElementName: UI_General
+        ObjectType: 4
+        guid: 2bfe2750194c2b46b3fdc2acdbaae080
+      - ElementName: UI_General_Ouvrir
+        ObjectType: 3
+        guid: 1b1c8865e8122c45baf7467ef33d95c1
+      Path: Events\UI\UI_Menus\UI_General\UI_General_Ouvrir
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: UI_HotbarDeplacement
       guid: 3b1cebedfd699b409d6cafa3a4a21ba1
       id: 2295926980
@@ -3519,26 +3636,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.7515208
       minDuration: 0.7515208
-    - name: UI_Principal
-      guid: 2bfe2750194c2b46b3fdc2acdbaae080
-      id: 1786230456
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: UI
-        ObjectType: 12
-        guid: b6e3f30f45b0394684194edd0a23d091
-      - ElementName: UI_Menus
-        ObjectType: 4
-        guid: cb048bdbbcc6eb498a2e54820097e1fb
-      - ElementName: UI_Principal
-        ObjectType: 4
-        guid: 2bfe2750194c2b46b3fdc2acdbaae080
-      Path: Events\UI\UI_Menus\UI_Principal
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: UI_Respiration
       guid: 02f66f6c681ce7419ef3ce54605971f0
       id: 45966240
@@ -3573,6 +3670,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: UI_Texte
+      guid: acb086f841220d4cbdf6a9ae1f15ad0e
+      id: 3496921912
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: b6e3f30f45b0394684194edd0a23d091
+      - ElementName: UI_Texte
+        ObjectType: 3
+        guid: acb086f841220d4cbdf6a9ae1f15ad0e
+      Path: Events\UI\UI_Texte
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: UI_Vente
       guid: 28081dfba3f4b64ab88efee4dc7ae1e5
       id: 4240624648
@@ -3673,7 +3787,7 @@ MonoBehaviour:
     ParentPath: Events\VO
     guid: 7f13dcded35b164f9fdebe68eb968c62
     GuidInternal: 
-    m_lastTime: -8584881112282864894
+    m_lastTime: -8584880608870498506
     List:
     - name: VO_Joueur
       guid: 6cd8a9b46a4a7a4fa26ac33694cda99a
@@ -4033,9 +4147,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: VO_Narrateur_Neutre
+    - name: VO_Narrateur_Debut
       guid: fd86d3511ee79e41a42837171fbd3a25
-      id: 545824151
+      id: 1006093918
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -4046,13 +4160,33 @@ MonoBehaviour:
       - ElementName: VO_Narrateur
         ObjectType: 4
         guid: 073d98258b5bb84c9e7250bd403e7fd5
-      - ElementName: VO_Narrateur_Neutre
+      - ElementName: VO_Narrateur_Debut
         ObjectType: 3
         guid: fd86d3511ee79e41a42837171fbd3a25
-      Path: Events\VO\VO_Narrateur\VO_Narrateur_Neutre
+      Path: Events\VO\VO_Narrateur\VO_Narrateur_Debut
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: VO_Narrateur_Fin
+      guid: b6c336a2e38357488e02d3abb6df6059
+      id: 77741599
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: VO
+        ObjectType: 12
+        guid: 7f13dcded35b164f9fdebe68eb968c62
+      - ElementName: VO_Narrateur
+        ObjectType: 4
+        guid: 073d98258b5bb84c9e7250bd403e7fd5
+      - ElementName: VO_Narrateur_Fin
+        ObjectType: 3
+        guid: b6c336a2e38357488e02d3abb6df6059
+      Path: Events\VO\VO_Narrateur\VO_Narrateur_Fin
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
