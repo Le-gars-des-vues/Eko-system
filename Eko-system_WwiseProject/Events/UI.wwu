@@ -515,7 +515,32 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
-						<Folder Name="UI_Principal" ID="{5027FE2B-4C19-462B-B3FD-C2ACDBAAE080}" ShortID="809223991"/>
+						<Folder Name="UI_General" ID="{5027FE2B-4C19-462B-B3FD-C2ACDBAAE080}" ShortID="809223991">
+							<ChildrenList>
+								<Event Name="UI_General_Ouvrir" ID="{65881C1B-12E8-452C-BAF7-467EF33D95C1}">
+									<ChildrenList>
+										<Action Name="" ID="{ADA40D76-8D1E-43B9-AD87-53310277ACE4}" ShortID="816971108">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_General_Ouvrir" ID="{037A1C93-F6F8-4FB7-A829-0D125C17C47F}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_General_Fermer" ID="{57F85E3E-86AE-45CD-894E-CAA31BEF6E42}">
+									<ChildrenList>
+										<Action Name="" ID="{E70F3C2D-FC6E-41E4-B4FB-47EFBB1D1983}" ShortID="408094735">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_General_Fermer" ID="{05EA9BA7-4993-4E41-AA4C-BF22C4D2FC24}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 						<Event Name="UI_Menus_Deplacement" ID="{320D7C82-480A-42C8-A73A-5116C7FF4622}">
 							<ChildrenList>
 								<Action Name="" ID="{A1E999A6-CB57-4C9D-9D5B-74BDEDE7D44A}" ShortID="582176873">
@@ -561,6 +586,17 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="UI_Respiration" ID="{6B0BAC03-426A-442F-AD67-393E022BE6D0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Texte" ID="{F886B0AC-2241-4C0D-BDF6-A9AE1F15AD0E}">
+					<ChildrenList>
+						<Action Name="" ID="{280D72DA-CDE5-4F04-8A66-D988F4333B8A}" ShortID="58172478">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Texte" ID="{E6E7E683-CCC4-4AEA-B4D3-5BC20662AEE8}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

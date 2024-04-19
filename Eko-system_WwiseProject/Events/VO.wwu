@@ -167,12 +167,26 @@
 				</Folder>
 				<Folder Name="VO_Narrateur" ID="{25983D07-5B8B-4CB8-9E72-50BD403E7FD5}" ShortID="890756165">
 					<ChildrenList>
-						<Event Name="VO_Narrateur_Neutre" ID="{51D386FD-E71E-419E-A428-37171FBD3A25}">
+						<Event Name="VO_Narrateur_Debut" ID="{51D386FD-E71E-419E-A428-37171FBD3A25}">
 							<ChildrenList>
 								<Action Name="" ID="{43CBF485-426D-4233-BBBF-1E0BCFD2554E}" ShortID="1053255560">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="VO_Narrateur_Neutre" ID="{CD16AE73-4BF9-4289-B60E-1AE3B8821511}" WorkUnitID="{F8AAB88E-CD74-4D7B-BF01-BDE01BF6D753}"/>
+											<ObjectRef Name="VO_Narrateur" ID="{CD16AE73-4BF9-4289-B60E-1AE3B8821511}" WorkUnitID="{F8AAB88E-CD74-4D7B-BF01-BDE01BF6D753}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="VO_Narrateur_Fin" ID="{A236C3B6-83E3-4857-8E02-D3ABB6DF6059}">
+							<ChildrenList>
+								<Action Name="" ID="{6F696811-19EA-4B87-8C70-539EF779F6E0}" ShortID="955310019">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="VO_Narrateur" ID="{CD16AE73-4BF9-4289-B60E-1AE3B8821511}" WorkUnitID="{F8AAB88E-CD74-4D7B-BF01-BDE01BF6D753}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
