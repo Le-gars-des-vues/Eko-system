@@ -155,7 +155,61 @@
 										</Bus>
 									</ChildrenList>
 								</Bus>
-								<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}"/>
+								<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}">
+									<ChildrenList>
+										<Bus Name="AMB_Grotte" ID="{A41DCFA7-B149-40A1-B01C-C9F9EF1A53A7}">
+											<ReferenceList/>
+											<ChildrenList>
+												<Bus Name="AMB_Grotte_L2" ID="{FC29499E-C1DF-4581-A0F0-86F2817A0066}">
+													<ReferenceList>
+														<Reference Name="UserAuxSend0">
+															<ObjectRef Name="AMB_Grotte_RVB" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ObjectLists>
+														<ObjectList Name="RTPC">
+															<Reference>
+																<Local>
+																	<RTPC Name="" ID="{B92CE9F0-B4E7-4E0D-8699-BF3B19895BBB}" ShortID="1071155233">
+																		<PropertyList>
+																			<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
+																		</PropertyList>
+																		<ReferenceList>
+																			<Reference Name="ControlInput">
+																				<ObjectRef Name="New Modulator LFO_07" ID="{A3069B34-C16B-41D8-8AEC-BCF7A3C4337B}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+																			</Reference>
+																			<Reference Name="Curve">
+																				<Custom>
+																					<Curve Name="" ID="{C26B0AA0-9D41-4992-804E-375F81879619}">
+																						<PropertyList>
+																							<Property Name="Flags" Type="int32" Value="3"/>
+																						</PropertyList>
+																						<PointList>
+																							<Point>
+																								<XPos>0</XPos>
+																								<YPos>-3.26253</YPos>
+																								<Flags>21</Flags>
+																							</Point>
+																							<Point>
+																								<XPos>1</XPos>
+																								<YPos>-200</YPos>
+																								<Flags>53</Flags>
+																							</Point>
+																						</PointList>
+																					</Curve>
+																				</Custom>
+																			</Reference>
+																		</ReferenceList>
+																	</RTPC>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</Bus>
+											</ChildrenList>
+										</Bus>
+									</ChildrenList>
+								</Bus>
 								<Bus Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}"/>
 								<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}"/>
 								<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}"/>
@@ -214,10 +268,13 @@
 								</Property>
 							</PropertyList>
 							<ChildrenList>
-								<AuxBus Name="Reverb_Room_01" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}">
+								<AuxBus Name="AMB_Grotte_RVB" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}">
 									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										<Reference Name="Effect1" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="Dark_Cathedral_Stereo" ID="{5D107457-F392-439F-AF71-8D0235D9C0F8}" WorkUnitID="{9D68BE5F-8CA6-43E0-BCE2-C7D59F63E582}"/>
+										</Reference>
+										<Reference Name="Effect3" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+											<ObjectRef Name="New_Parametric_EQ_01" ID="{FAFBDF6C-4659-49C3-B40E-C965FB80FA93}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
 										</Reference>
 									</ReferenceList>
 								</AuxBus>

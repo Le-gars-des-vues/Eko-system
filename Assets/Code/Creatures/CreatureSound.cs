@@ -9,6 +9,8 @@ public class CreatureSound : MonoBehaviour
 
     public AK.Wwise.Event hurtSound;
 
+    public AK.Wwise.Event jumpSound;
+
     public AK.Wwise.Event atkSound;
 
     private void Start()

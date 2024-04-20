@@ -39,6 +39,7 @@ namespace AK
         static const AkUniqueID LIF_RHINORTUE_MORT = 1118706794U;
         static const AkUniqueID LIF_RHINORTUE_PAS = 3907224896U;
         static const AkUniqueID LIF_RHINORTUE_PASSIF = 1899188614U;
+        static const AkUniqueID LIF_RHINORTUE_PASSIF_STOP = 195570517U;
         static const AkUniqueID LIF_RHINORTUE_SAUT = 909898291U;
         static const AkUniqueID LIF_SERPENT_ALERTE = 2389496250U;
         static const AkUniqueID LIF_SERPENT_ATTAQUE = 2624188390U;

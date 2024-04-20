@@ -857,7 +857,11 @@ IR Pre-delay: 3ms
 </Comment>
 							<PropertyList>
 								<Property Name="IRConvolutionStop" Type="Real64" Value="0.573875"/>
-								<Property Name="IRLRMix" Type="Real32" Value="6"/>
+								<Property Name="IRLRMix" Type="Real32">
+									<ValueList>
+										<Value>6</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IRLevel" Type="Real32" Value="-25"/>
 								<Property Name="PreDelay" Type="Real32" Value="3"/>
 							</PropertyList>
@@ -949,7 +953,11 @@ IR Pre-delay: 8ms
 										<Value>-76</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IRLRMix" Type="Real32" Value="8"/>
+								<Property Name="IRLRMix" Type="Real32">
+									<ValueList>
+										<Value>8</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IRLevel" Type="Real32" Value="-28"/>
 								<Property Name="PreDelay" Type="Real32" Value="8"/>
 							</PropertyList>
@@ -1119,12 +1127,11 @@ IR Pre-delay: 8ms
 IR Pre-delay: 6ms </Comment>
 							<PropertyList>
 								<Property Name="IRConvolutionStop" Type="Real64" Value="0.9055"/>
-								<Property Name="IRConvolutionThreshold" Type="Real32">
+								<Property Name="IRLRMix" Type="Real32">
 									<ValueList>
-										<Value>-75</Value>
+										<Value>5</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IRLRMix" Type="Real32" Value="5"/>
 								<Property Name="IRLevel" Type="Real32" Value="-27"/>
 								<Property Name="PreDelay" Type="Real32" Value="6"/>
 							</PropertyList>
@@ -1395,7 +1402,11 @@ IR Pre-delay: 4ms
 										<Value>-77</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IRLRMix" Type="Real32" Value="4"/>
+								<Property Name="IRLRMix" Type="Real32">
+									<ValueList>
+										<Value>4</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IRLevel" Type="Real32" Value="-13"/>
 								<Property Name="PreDelay" Type="Real32" Value="4"/>
 							</PropertyList>
@@ -1963,7 +1974,11 @@ IR Pre-delay: 0ms </Comment>
 										<Value>-74</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IRLRMix" Type="Real32" Value="7"/>
+								<Property Name="IRLRMix" Type="Real32">
+									<ValueList>
+										<Value>7</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IRLevel" Type="Real32" Value="-40"/>
 							</PropertyList>
 							<ChildrenList>
@@ -2053,7 +2068,11 @@ IR Pre-delay: 0ms
 										<Value>-82</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IRLRMix" Type="Real32" Value="32"/>
+								<Property Name="IRLRMix" Type="Real32">
+									<ValueList>
+										<Value>32</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IRLevel" Type="Real32" Value="-25"/>
 							</PropertyList>
 							<ChildrenList>
@@ -2241,9 +2260,10 @@ IR Pre-delay: 20ms
 									</ValueList>
 								</Property>
 								<Property Name="IRLPFAutomate" Type="bool" Value="True"/>
-								<Property Name="IRLevel" Type="Real32" Value="-45"/>
+								<Property Name="IRLevel" Type="Real32" Value="-10.3"/>
 								<Property Name="IRStretch" Type="Real32" Value="119"/>
 								<Property Name="PreDelay" Type="Real32" Value="64"/>
+								<Property Name="WetLevel" Type="Real32" Value="3"/>
 							</PropertyList>
 							<ChildrenList>
 								<PluginMediaSource Name="AK St-Katharinen" ID="{5314F988-340E-4631-B4BC-52FB22E4AD77}">
@@ -2330,12 +2350,14 @@ IR Pre-delay: 20ms </Comment>
 								<Property Name="IRConvolutionStop" Type="Real64" Value="4.04647541966427"/>
 								<Property Name="IRConvolutionThreshold" Type="Real32">
 									<ValueList>
-										<Value>-67</Value>
+										<Value>-54</Value>
 									</ValueList>
 								</Property>
 								<Property Name="IRLPFAutomate" Type="bool" Value="True"/>
-								<Property Name="IRLevel" Type="Real32" Value="-45"/>
-								<Property Name="PreDelay" Type="Real32" Value="49"/>
+								<Property Name="IRLevel" Type="Real32" Value="-14.5"/>
+								<Property Name="PreDelay" Type="Real32" Value="17"/>
+								<Property Name="StereoWidth" Type="Real32" Value="131"/>
+								<Property Name="WetLevel" Type="Real32" Value="13"/>
 							</PropertyList>
 							<ChildrenList>
 								<PluginMediaSource Name="AK St-Katharinen" ID="{C5313782-BD0A-4C94-9B74-E9F268B84A87}">
@@ -2793,7 +2815,11 @@ IR Pre-delay: 20ms </Comment>
 										<Value>-71</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IRLRMix" Type="Real32" Value="5"/>
+								<Property Name="IRLRMix" Type="Real32">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IRLevel" Type="Real32" Value="-42"/>
 								<Property Name="PreDelay" Type="Real32" Value="20"/>
 							</PropertyList>
@@ -3566,7 +3592,11 @@ IR Pre-delay: 5ms
 										<Value>-60</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IRLRMix" Type="Real32" Value="-4"/>
+								<Property Name="IRLRMix" Type="Real32">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IRLevel" Type="Real32" Value="-21"/>
 								<Property Name="PreDelay" Type="Real32" Value="5"/>
 							</PropertyList>
@@ -4508,7 +4538,11 @@ IR Pre-delay: 8ms
 </Comment>
 							<PropertyList>
 								<Property Name="IRConvolutionStop" Type="Real64" Value="0.830041666666667"/>
-								<Property Name="IRLRMix" Type="Real32" Value="9"/>
+								<Property Name="IRLRMix" Type="Real32">
+									<ValueList>
+										<Value>9</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IRLevel" Type="Real32" Value="-27"/>
 								<Property Name="PreDelay" Type="Real32" Value="8"/>
 							</PropertyList>
@@ -4599,7 +4633,11 @@ IR Pre-delay: 3ms
 										<Value>-82</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IRLRMix" Type="Real32" Value="-26"/>
+								<Property Name="IRLRMix" Type="Real32">
+									<ValueList>
+										<Value>-26</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IRLevel" Type="Real32" Value="-20"/>
 								<Property Name="PreDelay" Type="Real32" Value="3"/>
 							</PropertyList>

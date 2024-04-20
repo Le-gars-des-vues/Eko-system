@@ -53,6 +53,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="VOJoueurAttaque_PH" ID="{EAE4318B-B8AC-4CBB-BAD8-F2E6EFE85BE3}" ShortID="885622573">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -74,6 +81,311 @@
 												<ActiveSource Name="VOJoueurAttaque_PH" ID="{3265212B-BC1F-4975-A945-A74C3266B50B}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="VO_Joueur_Attaque" ID="{E22062CD-183E-4034-B0ED-2CEDC7B43779}" ShortID="515987515">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Ingame - Track 1" ID="{D788F5F9-E8C1-4BEE-9F7B-D07A3F533083}" ShortID="901075335">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{14FBA182-1B0F-4E30-8B5E-BB932E91CCB1}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.52581638611692"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.31637715544119"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="122014534"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{14FBA182-1B0F-4E30-8B5E-BB932E91CCB1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 1_01" ID="{DA48D1D3-0271-4F42-9DDB-9D8EC133C2DD}" ShortID="173397924">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{2C481131-D3CD-4D64-AD67-D8995B31ECED}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="3.86144841227682"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.35347241778766"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="85066395"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{2C481131-D3CD-4D64-AD67-D8995B31ECED}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 1_02" ID="{653F2C5D-0E77-477F-A79A-6E88949C1578}" ShortID="31702026">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{557161A4-589B-4B0E-B826-E66B007ACBCD}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="10.8558925916661"/>
+																<Property Name="TrimEnd" Type="Real64" Value="11.5553370096051"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="56321458"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{557161A4-589B-4B0E-B826-E66B007ACBCD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 1_03" ID="{DC1365AA-642D-4114-9AA7-4E77607BE2C0}" ShortID="375170329">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{D0125547-6DA1-4D67-A2A6-18F222FBC5A6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="16.3737318887399"/>
+																<Property Name="TrimEnd" Type="Real64" Value="17.4256796511508"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="808088995"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{D0125547-6DA1-4D67-A2A6-18F222FBC5A6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 1_04" ID="{D2B3306C-4BB0-480B-BF13-F8982ACA23E3}" ShortID="637486839">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{7A503FDB-9B82-4EA0-BF00-B5C2E6014743}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="18.7789262378794"/>
+																<Property Name="TrimEnd" Type="Real64" Value="20.4566054622195"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="83597679"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{7A503FDB-9B82-4EA0-BF00-B5C2E6014743}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 1_05" ID="{591DA7E6-AE12-412C-B26B-20244669F39E}" ShortID="199189541">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{C13EC0B6-2605-42D0-AA26-4F3225FE7996}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="21.8098520489481"/>
+																<Property Name="TrimEnd" Type="Real64" Value="22.6647285597623"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="412925337"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{C13EC0B6-2605-42D0-AA26-4F3225FE7996}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 1_06" ID="{51B254FD-31C9-449F-B72E-C6E0A3D27278}" ShortID="342435150">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{44A40209-63FE-4D5A-9B56-D9E044910B9E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="24.375820800733"/>
+																<Property Name="TrimEnd" Type="Real64" Value="25.1516420457674"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="465903535"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{44A40209-63FE-4D5A-9B56-D9E044910B9E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 1_07" ID="{F734BFCA-A464-4CAA-9863-B24167075981}" ShortID="571727618">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{1C292B0D-2D73-4501-9243-B3155FD5F467}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="28.10165348401"/>
+																<Property Name="TrimEnd" Type="Real64" Value="29.1928764605257"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="601984271"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{1C292B0D-2D73-4501-9243-B3155FD5F467}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 1_08" ID="{E589850F-AF1E-44FB-A2CE-A9CA29C5B015}" ShortID="529571182">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{8E823862-7C85-4E5C-A3DD-9F43D09CC87F}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="31.2333940819766"/>
+																<Property Name="TrimEnd" Type="Real64" Value="32.534666457345"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="329114577"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{8E823862-7C85-4E5C-A3DD-9F43D09CC87F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 1_09" ID="{45F9ED45-3095-4AC4-8C9B-1E7B53F6DB6E}" ShortID="168212862">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 1" ID="{1B658C57-85B3-4A65-A427-F9605D7B233E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.167734968825667"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.363425765788945"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="35.5604765910709"/>
+																<Property Name="TrimEnd" Type="Real64" Value="36.1295050075491"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="388424272"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 1" ID="{1B658C57-85B3-4A65-A427-F9605D7B233E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Degat" ID="{DFB8F09F-C89F-4C9F-9B96-3D847A14ED32}" ShortID="662215590">
@@ -97,6 +409,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="VOJoueurDegat_PH" ID="{95E55038-7464-4298-AC27-89FCE221944B}" ShortID="301887566">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -118,10 +437,361 @@
 												<ActiveSource Name="VOJoueurDegat_PH" ID="{781F3269-26C3-47B3-BCA7-79D301D0E9C5}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="VO_Joueur_Degat" ID="{2A026999-2F44-4BEC-A571-C238A83D8306}" ShortID="796635973">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="6"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Ingame - Track 2" ID="{70F191D7-A4D4-49D1-81D8-CE32A7B73399}" ShortID="435085770">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{5BFDC90F-7544-4AD3-87A8-078329618779}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0970700022777748"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.377661879764805"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="15.9228821851197"/>
+																<Property Name="TrimEnd" Type="Real64" Value="16.80090412716"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="873929258"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{5BFDC90F-7544-4AD3-87A8-078329618779}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_01" ID="{938070D8-17B8-4A3F-8B2E-FB0EB6F517C6}" ShortID="519545173">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{FABDED13-8E1C-49ED-ACF5-72746BE2B524}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0970700022777748"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.377661879764805"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="18.1558956223564"/>
+																<Property Name="TrimEnd" Type="Real64" Value="18.9245289850843"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="820336811"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{FABDED13-8E1C-49ED-ACF5-72746BE2B524}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_02" ID="{8D99C6BB-CD05-4434-8E16-C8AB63EA1A8C}" ShortID="253827742">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{D0F5FC56-C655-41EE-B03E-329EF1BDEC6F}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0970700022777748"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="20.4153627241271"/>
+																<Property Name="TrimEnd" Type="Real64" Value="21.2277553899323"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="658033047"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{D0F5FC56-C655-41EE-B03E-329EF1BDEC6F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_03" ID="{AE9E5C34-8D0C-4B07-84EA-EF0CD032EA9E}" ShortID="1054689992">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{C4134271-9168-4A33-840B-F15AA30945F5}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0970700022777748"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="22.639659017544"/>
+																<Property Name="TrimEnd" Type="Real64" Value="23.2022948203708"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="491384156"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{C4134271-9168-4A33-840B-F15AA30945F5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_04" ID="{0E0AF4E8-F4B4-4414-9AC7-C06B600D0EFD}" ShortID="647101992">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{29FCDDF1-A0B2-4B33-B4B6-88420753DFC8}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="29.8417676138446"/>
+																<Property Name="TrimEnd" Type="Real64" Value="30.8700544276561"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="252083416"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{29FCDDF1-A0B2-4B33-B4B6-88420753DFC8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_05" ID="{09A88B06-A3FF-415D-A6E4-B47EE75B6237}" ShortID="48575512">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{BB9D41DA-FDAF-49A6-B0EC-494C76ADED15}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="32.7866910273884"/>
+																<Property Name="TrimEnd" Type="Real64" Value="33.2952748107417"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="635989996"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{BB9D41DA-FDAF-49A6-B0EC-494C76ADED15}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_06" ID="{6B610EBB-CF23-4C47-B0E9-1EF60AD38907}" ShortID="53917542">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{D47118A9-948E-4AF7-B7F6-DF8A44D0E578}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="35.5111914686237"/>
+																<Property Name="TrimEnd" Type="Real64" Value="36.8059422797507"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="991862810"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{D47118A9-948E-4AF7-B7F6-DF8A44D0E578}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_07" ID="{84D6F862-E5A9-4B50-8045-ED7332B0FC36}" ShortID="569735042">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{65CAF9C2-B002-4E7E-B1CE-0F86A0234C58}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="38.114210671868"/>
+																<Property Name="TrimEnd" Type="Real64" Value="39.1746999768934"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="33012233"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{65CAF9C2-B002-4E7E-B1CE-0F86A0234C58}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_08" ID="{53987A27-17BF-4F1E-AC97-99C77E526AF0}" ShortID="759050990">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{ABE96CD8-E93E-46E1-8938-5EEA095375CB}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="40.4936471918688"/>
+																<Property Name="TrimEnd" Type="Real64" Value="42.5489841292471"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="350652965"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{ABE96CD8-E93E-46E1-8938-5EEA095375CB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_09" ID="{3B270284-70F1-46DA-A54D-ABF91418CD79}" ShortID="951495920">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{49C49F01-E2F6-4054-87F2-F1AB085BB59E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="43.5454603616855"/>
+																<Property Name="TrimEnd" Type="Real64" Value="44.7661856296121"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="484112042"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{49C49F01-E2F6-4054-87F2-F1AB085BB59E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 2_10" ID="{3961B19F-883D-4F83-A4DC-3CF98ABD0E17}" ShortID="1056358034">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 2" ID="{A277CF34-6AFB-4CFE-B608-F2EEC27766F6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="46.8220218157679"/>
+																<Property Name="TrimEnd" Type="Real64" Value="47.9476535446885"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="209144850"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 2" ID="{A277CF34-6AFB-4CFE-B608-F2EEC27766F6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Mort" ID="{6AE71C45-65F7-49DD-B1C5-8B060CB19315}" ShortID="594331247">
 									<PropertyList>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>24</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>39</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -141,6 +811,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="VOJoueurMort_PH" ID="{9F9D0EEC-A75C-4E08-BEA3-9BAA77031F41}" ShortID="131303794">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -162,6 +839,137 @@
 												<ActiveSource Name="VOJoueurMort_PH" ID="{8E65FA3C-5A96-496E-8650-B29A64135536}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="VO_Joueur_Mort" ID="{7AABC8AE-7DAA-444F-8E33-3B7F7A20E1B5}" ShortID="800221766">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Ingame - Track 3" ID="{09ABC464-5EB0-4413-88F5-F3F9654BF864}" ShortID="611922738">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 3" ID="{96D37B9C-BA3A-4BD7-A3BE-057802FE5A2D}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.408066703105924"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.22420010931777"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="19.1677397411273"/>
+																<Property Name="TrimEnd" Type="Real64" Value="23.1577252826074"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="15568602"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 3" ID="{96D37B9C-BA3A-4BD7-A3BE-057802FE5A2D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 3_01" ID="{D4AC777D-D230-4CDB-B566-97B66C5EEF23}" ShortID="853001361">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 3" ID="{FAC3E8A5-5963-4678-A143-D27C6A0D2212}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.126536350673796"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.22420010931777"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="30.2784582978821"/>
+																<Property Name="TrimEnd" Type="Real64" Value="33.2182727190074"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="638429649"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 3" ID="{FAC3E8A5-5963-4678-A143-D27C6A0D2212}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 3_02" ID="{06CF29C5-99A6-4676-BC83-8E606E59C21D}" ShortID="665706627">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 3" ID="{3FF18006-775B-40F1-80CD-21F192894135}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.126536350673796"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.985356233512462"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="39.7088910527513"/>
+																<Property Name="TrimEnd" Type="Real64" Value="43.7910811630172"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="394622159"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 3" ID="{3FF18006-775B-40F1-80CD-21F192894135}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 3_03" ID="{42E743E8-2A32-4028-A480-CEC90A7FC1E9}" ShortID="607517694">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 3" ID="{CBF958AA-A9CB-46DB-BE24-B4D287D8710B}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.126536350673796"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.985356233512462"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="45.2851293902589"/>
+																<Property Name="TrimEnd" Type="Real64" Value="49.3485617133168"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="351384840"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 3" ID="{CBF958AA-A9CB-46DB-BE24-B4D287D8710B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Effort" ID="{60BFF773-B8A2-448B-803A-6DD8C996949F}" ShortID="206472147">
@@ -185,6 +993,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="VOJoueurEffort_PH" ID="{1C16288C-2C7A-41B2-89D4-40454FA1DB7A}" ShortID="1070303887">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -206,10 +1021,233 @@
 												<ActiveSource Name="VOJoueurEffort_PH" ID="{B0E31065-F1FD-4569-8A54-1A9A7428A454}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="VO_Joueur_Effort" ID="{7498729D-CFEF-4F2C-BB75-3A1F4293B1F0}" ShortID="732957755">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Ingame - Track 6" ID="{830E9260-9B6E-4D31-BC4D-1E32DAA46AAC}" ShortID="193093007">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 6" ID="{1F3E2C49-4E13-4B59-A400-AFFB7962B466}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0383480880948817"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.241045125167833"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="8.83554200474973"/>
+																<Property Name="TrimEnd" Type="Real64" Value="9.49954325181283"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 6.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="224617764"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 6" ID="{1F3E2C49-4E13-4B59-A400-AFFB7962B466}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 6_01" ID="{C4C3EEB3-F54E-4164-9FAC-9225BBA06FA7}" ShortID="446891805">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 6" ID="{2687CBC9-FD02-4C15-9A7F-092939DEBFBB}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0383480880948817"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.241045125167833"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="11.0602505681205"/>
+																<Property Name="TrimEnd" Type="Real64" Value="11.9897081151355"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 6.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1044363562"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 6" ID="{2687CBC9-FD02-4C15-9A7F-092939DEBFBB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 6_02" ID="{BB016343-9FB1-43A6-90A3-EBF27334617C}" ShortID="691952720">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 6" ID="{341030F3-67D4-4716-9FA8-77BFEF854C72}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0383480880948817"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.241045125167833"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="16.0926229071116"/>
+																<Property Name="TrimEnd" Type="Real64" Value="16.6104239616754"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 6.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="190742280"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 6" ID="{341030F3-67D4-4716-9FA8-77BFEF854C72}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 6_03" ID="{F2CFE2CB-3F09-4FA4-9131-705F49087CE4}" ShortID="319168932">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 6" ID="{1C304CF6-104A-4922-96EA-C66AD2CF18CE}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0383480880948817"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.241045125167833"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="21.9473498892354"/>
+																<Property Name="TrimEnd" Type="Real64" Value="22.9849377072087"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 6.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="390409820"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 6" ID="{1C304CF6-104A-4922-96EA-C66AD2CF18CE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 6_04" ID="{24D609B0-FB9D-4B81-8DCA-9E774882168B}" ShortID="817054711">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 6" ID="{B81B6450-2C9B-4211-9CFB-32385445C2B0}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0383480880948817"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.241045125167833"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="29.5077950318757"/>
+																<Property Name="TrimEnd" Type="Real64" Value="30.1474316286899"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 6.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="52713633"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 6" ID="{B81B6450-2C9B-4211-9CFB-32385445C2B0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 6_05" ID="{5503B7F5-48C7-4C9C-928C-1C1B4C99AF71}" ShortID="440634724">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 6" ID="{CB753D31-C011-49F4-A0F6-43668DFB631E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0383480880948817"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.241045125167833"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="32.4308877084024"/>
+																<Property Name="TrimEnd" Type="Real64" Value="33.7107097422762"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 6.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="381072008"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 6" ID="{CB753D31-C011-49F4-A0F6-43668DFB631E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 6_06" ID="{6BC00CD9-498A-46C9-BF11-0B52026D6C4E}" ShortID="32667464">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 6" ID="{FCEC5425-C91C-43E9-8393-7637E6E05E60}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0383480880948817"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.241045125167833"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="37.7751043198507"/>
+																<Property Name="TrimEnd" Type="Real64" Value="38.4638062545509"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 6.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="341672232"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 6" ID="{FCEC5425-C91C-43E9-8393-7637E6E05E60}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<ActorMixer Name="VO_Joueur_Parle" ID="{1BA5CD4C-424A-4453-9936-9F798EF80362}" ShortID="582583618">
 									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -576,6 +1614,11 @@
 								</ActorMixer>
 								<BlendContainer Name="VO_Joueur_Noyade" ID="{9FD72752-3B2E-4D54-A2AD-CA943D52F666}" ShortID="316585159">
 									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>62</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -595,6 +1638,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="VOJoueurDegat_PH" ID="{B73C53C2-F407-493C-8810-796127B1440D}" ShortID="440052592">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -616,6 +1666,181 @@
 												<ActiveSource Name="VOJoueurDegat_PH" ID="{73CA2A9C-B301-4B2E-8A61-E60103683F48}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="VO_Joueur_Noyade" ID="{BDBBD33C-E3AC-4692-8109-C36842B91E54}" ShortID="76923005">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Ingame - Track 4" ID="{7FA32697-E028-4457-8EF9-1E7002F53304}" ShortID="912703170">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 4" ID="{9DDAD4CC-5862-4132-B102-4C89EBB337E8}">
+															<PropertyList>
+																<Property Name="CrossfadeShape" Type="int16" Value="8"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0973872491173466"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.941410074801027"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="41.168245918694"/>
+																<Property Name="TrimEnd" Type="Real64" Value="44.0627531988873"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="826051975"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 4" ID="{9DDAD4CC-5862-4132-B102-4C89EBB337E8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 4_01" ID="{670FF8A1-630A-4E06-862A-8B59C75BF95A}" ShortID="794683267">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 4" ID="{5A37EDF1-1ACB-45D0-BEBF-4D919A099917}">
+															<PropertyList>
+																<Property Name="CrossfadeShape" Type="int16" Value="8"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0973872491173466"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="2.62945572616837"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="49.9980231720001"/>
+																<Property Name="TrimEnd" Type="Real64" Value="54.185674884046"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="640551528"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 4" ID="{5A37EDF1-1ACB-45D0-BEBF-4D919A099917}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 4_02" ID="{CA8E9D36-2E0A-4CC9-8DA8-ED0145945BF3}" ShortID="561919698">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 4" ID="{0F35A71B-2B35-42B6-884E-3D7C2A372495}">
+															<PropertyList>
+																<Property Name="CrossfadeShape" Type="int16" Value="8"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0973872491173466"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="2.62945572616837"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="62.2323799481609"/>
+																<Property Name="TrimEnd" Type="Real64" Value="66.7060363709202"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="855072048"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 4" ID="{0F35A71B-2B35-42B6-884E-3D7C2A372495}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 4_03" ID="{F4165A99-DDBA-4BBD-A8F0-CA1D50A0E363}" ShortID="510727055">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 4" ID="{BE1041DF-A1AE-412F-88F7-F8F8304D2BE7}">
+															<PropertyList>
+																<Property Name="CrossfadeShape" Type="int16" Value="8"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0973872491173466"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="4.00777421668454"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="69.319548352496"/>
+																<Property Name="TrimEnd" Type="Real64" Value="75.5319596394016"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="270238327"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 4" ID="{BE1041DF-A1AE-412F-88F7-F8F8304D2BE7}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 4_04" ID="{A5163815-C90F-43D5-B15E-A032C3904F69}" ShortID="689403394">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 4" ID="{5EE37B7E-AC3F-47B1-8287-F20E92019DA2}">
+															<PropertyList>
+																<Property Name="CrossfadeShape" Type="int16" Value="8"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0973872491173466"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="3.06178718918784"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="88.8008990474845"/>
+																<Property Name="TrimEnd" Type="Real64" Value="93.1111090075969"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="462461259"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 4" ID="{5EE37B7E-AC3F-47B1-8287-F20E92019DA2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="VO_Joueur_Inspire" ID="{47683494-A069-4F0C-A4D9-A30BBDE7A4F3}" ShortID="583413269">
@@ -639,6 +1864,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="VOJoueurDegat_PH" ID="{39357AE2-98F7-4CAC-9556-820290DB3169}" ShortID="729255482">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -660,8 +1892,249 @@
 												<ActiveSource Name="VOJoueurDegat_PH" ID="{8611674D-48BE-40CA-8BD9-CBEC0AA0E95E}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="VO_Joueur_Inspire" ID="{86E49ABD-7A6C-4FA7-B68D-0F2C39AD6230}" ShortID="220743670">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Ingame - Track 5" ID="{69380D28-B9C0-4050-9B32-15E2C242373A}" ShortID="642294658">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 5" ID="{6639E686-AEBB-48BB-B56D-776CD07CA7EC}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.295269910801959"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.794510374533552"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="29.4458146357578"/>
+																<Property Name="TrimEnd" Type="Real64" Value="30.7538647972938"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 5.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="325959823"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 5" ID="{6639E686-AEBB-48BB-B56D-776CD07CA7EC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 5_01" ID="{0A6C301B-0658-47BB-BBE9-6B3B4E749E60}" ShortID="304582413">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 5" ID="{B69A7794-A0C0-4471-86ED-DA8B7660EC30}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.295269910801959"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.794510374533552"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="88.3352564924285"/>
+																<Property Name="TrimEnd" Type="Real64" Value="90.2086703955354"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 5.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="981189777"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 5" ID="{B69A7794-A0C0-4471-86ED-DA8B7660EC30}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 5_02" ID="{06322DEC-BAF7-48F8-8AFA-D0BED60EAA77}" ShortID="836797155">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 5" ID="{7B58B40D-44B3-4F82-9721-60EDB4D49C30}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.295269910801959"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.17942047110494"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="73.1151208936445"/>
+																<Property Name="TrimEnd" Type="Real64" Value="73.9951309555765"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 5.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="446695842"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 5" ID="{7B58B40D-44B3-4F82-9721-60EDB4D49C30}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 5_03" ID="{D7D0AD46-9CAA-4090-9092-7F74CF63807F}" ShortID="568945092">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 5" ID="{183783EE-FB3F-44D6-B081-04F8A1A1CD30}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.295269910801959"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.17942047110494"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="51.4231446559501"/>
+																<Property Name="TrimEnd" Type="Real64" Value="52.9125934034765"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 5.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="762827917"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 5" ID="{183783EE-FB3F-44D6-B081-04F8A1A1CD30}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ingame - Track 5_04" ID="{177774DD-0EC8-4600-B578-C7B29C01EEC2}" ShortID="279637610">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Ingame - Track 5" ID="{440F4EA4-2A8C-458C-8459-E42E17A95618}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.295269910801959"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.17942047110494"/>
+																<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="17.5995843990484"/>
+																<Property Name="TrimEnd" Type="Real64" Value="19.1071042151931"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ingame - Track 5.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1049675433"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Ingame - Track 5" ID="{440F4EA4-2A8C-458C-8459-E42E17A95618}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
+								<ActorMixer Name="VO_Joueur_Respire_TBC_si_course" ID="{AF5DF539-E2EB-45EF-A731-BBE13D1F261B}" ShortID="508610845">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Ingame - Track 7" ID="{ED44DED1-0A88-4518-BA65-C5B71462C523}" ShortID="491102717">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VO" ID="{287AC683-F2BA-4831-A202-F8F2B2904174}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Ingame - Track 7" ID="{4C4ABDB4-B0C5-4A61-B018-9B6720CD6077}">
+													<Language>SFX</Language>
+													<AudioFile>Ingame - Track 7.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="179429662"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Ingame - Track 7" ID="{4C4ABDB4-B0C5-4A61-B018-9B6720CD6077}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Ingame - Track 8" ID="{A4CB23F0-AD60-4F88-9612-503E6EE251EE}" ShortID="1021490332">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VO" ID="{287AC683-F2BA-4831-A202-F8F2B2904174}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Ingame - Track 8" ID="{E9D0E392-CF18-4351-9FE1-A9B5F1A3B283}">
+													<Language>SFX</Language>
+													<AudioFile>Ingame - Track 8.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="550231736"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Ingame - Track 8" ID="{E9D0E392-CF18-4351-9FE1-A9B5F1A3B283}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Ingame - Track 9" ID="{40AA3AE3-2880-49C6-89FA-C4F2BC36F975}" ShortID="814130797">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VO" ID="{287AC683-F2BA-4831-A202-F8F2B2904174}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Ingame - Track 9" ID="{EA22FBD6-D346-4AD6-A76D-EAFF00128DF8}">
+													<Language>SFX</Language>
+													<AudioFile>Ingame - Track 9.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="909428022"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Ingame - Track 9" ID="{EA22FBD6-D346-4AD6-A76D-EAFF00128DF8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</ActorMixer>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="VO_Narrateur" ID="{F298CF1E-2CE4-4B64-B632-0F1D101A125E}" ShortID="760969579">
