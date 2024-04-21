@@ -14,10 +14,10 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID AMB_BASE = 2291972081U;
-        static const AkUniqueID AMB_FORET = 2983803460U;
-        static const AkUniqueID AMB_GROTTE = 971073617U;
+        static const AkUniqueID AMB_FORETETGROTTE = 1929160180U;
         static const AkUniqueID AMB_SOUSMARINE = 4285823446U;
         static const AkUniqueID ENV_ATELIER = 1108568571U;
+        static const AkUniqueID ENV_BUBBLE = 870339791U;
         static const AkUniqueID ENV_CUBICULE = 2546991491U;
         static const AkUniqueID ENV_DEGATBUISSON = 505094345U;
         static const AkUniqueID ENV_MACHINEVENTE = 1985830118U;
@@ -25,15 +25,14 @@ namespace AK
         static const AkUniqueID ENV_PORTEFERMETURE = 1930754588U;
         static const AkUniqueID ENV_PORTEOUVERTURE = 1952691670U;
         static const AkUniqueID ENV_TELEPORTEUR = 1783139436U;
+        static const AkUniqueID ENV_TEMPETE = 2129556429U;
         static const AkUniqueID LIF_MOUSTIQUE_DEGAT = 3471878825U;
         static const AkUniqueID LIF_MOUSTIQUE_MORT = 292996144U;
         static const AkUniqueID LIF_MOUSTIQUE_PASSIF = 3251876752U;
-        static const AkUniqueID LIF_PLANTECARNIVORE_ALERTE = 769260168U;
         static const AkUniqueID LIF_PLANTECARNIVORE_ATTAQUE = 3426910044U;
         static const AkUniqueID LIF_PLANTECARNIVORE_DEGAT = 4109000626U;
         static const AkUniqueID LIF_PLANTECARNIVORE_MORT = 259530661U;
         static const AkUniqueID LIF_PLANTECARNIVORE_PASSIF = 64562537U;
-        static const AkUniqueID LIF_RHINORTUE_ALERTE = 1784156715U;
         static const AkUniqueID LIF_RHINORTUE_ATTAQUE = 2466167957U;
         static const AkUniqueID LIF_RHINORTUE_DEGAT = 2964860923U;
         static const AkUniqueID LIF_RHINORTUE_MORT = 1118706794U;
@@ -41,16 +40,17 @@ namespace AK
         static const AkUniqueID LIF_RHINORTUE_PASSIF = 1899188614U;
         static const AkUniqueID LIF_RHINORTUE_PASSIF_STOP = 195570517U;
         static const AkUniqueID LIF_RHINORTUE_SAUT = 909898291U;
-        static const AkUniqueID LIF_SERPENT_ALERTE = 2389496250U;
         static const AkUniqueID LIF_SERPENT_ATTAQUE = 2624188390U;
         static const AkUniqueID LIF_SERPENT_DEGAT = 419486480U;
         static const AkUniqueID LIF_SERPENT_MORT = 3563350091U;
         static const AkUniqueID LIF_SERPENT_PASSIF = 3710083091U;
+        static const AkUniqueID PLY_ALERTE = 1046058370U;
         static const AkUniqueID PLY_ATTAQUE_INIT_GRENADE = 590554840U;
         static const AkUniqueID PLY_ATTAQUE_INIT_LANCE = 2235315151U;
         static const AkUniqueID PLY_ATTAQUE_RELACHE_GRENADE = 2572263400U;
         static const AkUniqueID PLY_ATTAQUE_RELACHE_LANCE = 4045475007U;
         static const AkUniqueID PLY_DEGAT = 3021703992U;
+        static const AkUniqueID PLY_EXPLORE = 3595328170U;
         static const AkUniqueID PLY_GRIMPE_PLAY = 205347722U;
         static const AkUniqueID PLY_GRIMPE_STOP = 1609549748U;
         static const AkUniqueID PLY_MULTITOOL_BARK = 895662967U;
@@ -65,9 +65,13 @@ namespace AK
         static const AkUniqueID PLY_MULTITOOL_TUNGSTONE = 3906859172U;
         static const AkUniqueID PLY_NAGE = 2316187866U;
         static const AkUniqueID PLY_PAS = 1629615691U;
+        static const AkUniqueID PLY_PAS_METAL = 2189212075U;
+        static const AkUniqueID PLY_PAS_ROCHE = 4159984555U;
+        static const AkUniqueID PLY_PAS_TERRE = 463366984U;
         static const AkUniqueID PLY_RAMASSE = 988414139U;
         static const AkUniqueID PLY_REBONDIS = 2872366425U;
         static const AkUniqueID PLY_SAUTE = 2736888903U;
+        static const AkUniqueID PLY_SPAWN = 1701239554U;
         static const AkUniqueID SWT_BOISMOUSSU = 2467918837U;
         static const AkUniqueID SWT_COURSE = 763223215U;
         static const AkUniqueID SWT_MARCHE = 134355214U;
@@ -103,6 +107,7 @@ namespace AK
         static const AkUniqueID UI_GAMEOVER_VIE = 3136319167U;
         static const AkUniqueID UI_GENERAL_FERMER = 4283987504U;
         static const AkUniqueID UI_GENERAL_OUVRIR = 1780827120U;
+        static const AkUniqueID UI_GENERAL_PICK = 2019181674U;
         static const AkUniqueID UI_HOTBARDEPLACEMENT = 2295926980U;
         static const AkUniqueID UI_INVENTAIRE_FERMER = 3461596575U;
         static const AkUniqueID UI_INVENTAIRE_INTERVERTIR = 2985199436U;
@@ -110,6 +115,7 @@ namespace AK
         static const AkUniqueID UI_INVENTAIRE_PLACER = 245720647U;
         static const AkUniqueID UI_INVENTAIRE_PRENDRE = 1000665540U;
         static const AkUniqueID UI_JOUEURVISE = 2115875219U;
+        static const AkUniqueID UI_JOUEURVISE_STOP = 2134775902U;
         static const AkUniqueID UI_MENUMORT_RETOURBASE = 1287766270U;
         static const AkUniqueID UI_MENUMORT_RETOURPRINCIPAL = 4115809185U;
         static const AkUniqueID UI_MENUS_DEPLACEMENT = 32378197U;
@@ -118,6 +124,7 @@ namespace AK
         static const AkUniqueID UI_RESPIRATION = 45966240U;
         static const AkUniqueID UI_TEMPS = 3192806191U;
         static const AkUniqueID UI_TEXTE = 3496921912U;
+        static const AkUniqueID UI_TEXTE_FIN = 3168475150U;
         static const AkUniqueID UI_VENTE_FERMER = 2605645130U;
         static const AkUniqueID UI_VENTE_OUVRIR = 4177524486U;
         static const AkUniqueID UI_VENTE_VENDRE = 762427217U;
@@ -141,6 +148,18 @@ namespace AK
 
     namespace STATES
     {
+        namespace AMB_BASEAFORETETGROTTE
+        {
+            static const AkUniqueID GROUP = 4176303900U;
+
+            namespace STATE
+            {
+                static const AkUniqueID AMB_BASE = 2291972081U;
+                static const AkUniqueID AMB_FORETETGROTTE = 1929160180U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace AMB_BASEAFORETETGROTTE
+
         namespace PLY_VIE
         {
             static const AkUniqueID GROUP = 1697020375U;
@@ -169,20 +188,6 @@ namespace AK
 
     namespace SWITCHES
     {
-        namespace AMB_SWITCH
-        {
-            static const AkUniqueID GROUP = 439968226U;
-
-            namespace SWITCH
-            {
-                static const AkUniqueID AMB_BASE = 2291972081U;
-                static const AkUniqueID AMB_CANOPEE = 137933303U;
-                static const AkUniqueID AMB_FORET = 2983803460U;
-                static const AkUniqueID AMB_GROTTE = 971073617U;
-                static const AkUniqueID AMB_SOUSMARINE = 4285823446U;
-            } // namespace SWITCH
-        } // namespace AMB_SWITCH
-
         namespace PAS_MATERIAU
         {
             static const AkUniqueID GROUP = 2913619480U;
@@ -210,6 +215,8 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID AMB_DISTANCE = 2342375655U;
+        static const AkUniqueID DEEPNESS = 2722922482U;
         static const AkUniqueID MUSICVOLUME = 2346531308U;
         static const AkUniqueID PLY_SANTE = 2769016988U;
         static const AkUniqueID SC_PLANTECARNIVORE = 2185427101U;
@@ -227,6 +234,8 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID AMB = 1117531639U;
+        static const AkUniqueID AMB_GROTTE = 971073617U;
+        static const AkUniqueID AMB_GROTTE_L2 = 43816218U;
         static const AkUniqueID ENV = 529726550U;
         static const AkUniqueID LIF = 444705606U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
@@ -246,23 +255,9 @@ namespace AK
 
     namespace AUX_BUSSES
     {
+        static const AkUniqueID AMB_GROTTE_RVB = 1783753294U;
         static const AkUniqueID REVERB = 348963605U;
         static const AkUniqueID REVERB_DEFAULT = 873836703U;
-        static const AkUniqueID REVERB_ROOM_01 = 2401020461U;
-        static const AkUniqueID REVERB_ROOM_02 = 2401020462U;
-        static const AkUniqueID REVERB_ROOM_03 = 2401020463U;
-        static const AkUniqueID REVERB_ROOM_04 = 2401020456U;
-        static const AkUniqueID REVERB_ROOM_05 = 2401020457U;
-        static const AkUniqueID REVERB_ROOM_06 = 2401020458U;
-        static const AkUniqueID REVERB_ROOM_07 = 2401020459U;
-        static const AkUniqueID REVERB_ROOM_08 = 2401020452U;
-        static const AkUniqueID REVERB_ROOM_09 = 2401020453U;
-        static const AkUniqueID REVERB_ROOM_10 = 2417798047U;
-        static const AkUniqueID REVERB_ROOM_11 = 2417798046U;
-        static const AkUniqueID REVERB_ROOM_12 = 2417798045U;
-        static const AkUniqueID REVERB_ROOM_13 = 2417798044U;
-        static const AkUniqueID REVERB_ROOM_14 = 2417798043U;
-        static const AkUniqueID REVERB_ROOM_15 = 2417798042U;
         static const AkUniqueID REVERB_TEST = 2941827740U;
     } // namespace AUX_BUSSES
 

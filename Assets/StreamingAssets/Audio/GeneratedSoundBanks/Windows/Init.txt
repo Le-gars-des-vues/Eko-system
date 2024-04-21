@@ -1,6 +1,7 @@
 State Group	ID	Name			Wwise Object Path	Notes
 	1697020375	PLY_Vie			\Default Work Unit\PLY_Vie	
 	2941827740	Reverb_test			\Default Work Unit\Reverb_test	
+	4176303900	AMB_BaseAForetEtGrotte			\Default Work Unit\AMB\AMB_BaseAForetEtGrotte	
 
 State	ID	Name	State Group			Notes
 	748895195	None	PLY_Vie			
@@ -9,13 +10,22 @@ State	ID	Name	State Group			Notes
 	748895195	None	Reverb_test			
 	930712164	Off	Reverb_test			
 	1651971902	On	Reverb_test			
+	748895195	None	AMB_BaseAForetEtGrotte			
+	1929160180	AMB_ForetEtGrotte	AMB_BaseAForetEtGrotte			
+	2291972081	AMB_Base	AMB_BaseAForetEtGrotte			
+
+Modulator LFO	ID	Name			Wwise Object Path	Notes
+	94821471	New Modulator LFO_03			\Default Work Unit\New Modulator LFO_03	
+	665858835	New Modulator LFO_07			\Default Work Unit\New Modulator LFO_07	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	43816218	AMB_Grotte_L2			\Default Work Unit\Master Audio Bus\SUB-MASTER\AMB\AMB_Grotte\AMB_Grotte_L2	
 	197418210	VO_Joueur_Mort			\Default Work Unit\Master Audio Bus\SUB-MASTER\VO\VO_Joueur\VO_Joueur_Mort	
 	444705606	LIF			\Default Work Unit\Master Audio Bus\SUB-MASTER\LIF	
 	529726550	ENV			\Default Work Unit\Master Audio Bus\SUB-MASTER\ENV	
 	618531677	VO_Joueur_Attaque			\Default Work Unit\Master Audio Bus\SUB-MASTER\VO\VO_Joueur\VO_Joueur_Attaque	
 	805203703	Master Secondary Bus			\Default Work Unit\Master Secondary Bus	
+	971073617	AMB_Grotte			\Default Work Unit\Master Audio Bus\SUB-MASTER\AMB\AMB_Grotte	
 	1064786042	PLY			\Default Work Unit\Master Audio Bus\SUB-MASTER\PLY	
 	1085865485	VO_Joueur			\Default Work Unit\Master Audio Bus\SUB-MASTER\VO\VO_Joueur	
 	1117531639	AMB			\Default Work Unit\Master Audio Bus\SUB-MASTER\AMB	
@@ -31,29 +41,14 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 	348963605	Reverb			\Default Work Unit\Master Secondary Bus\Reverb	
 	873836703	Reverb_Default			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Default	
-	2401020452	Reverb_Room_08			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_08	
-	2401020453	Reverb_Room_09			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_09	
-	2401020456	Reverb_Room_04			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_04	
-	2401020457	Reverb_Room_05			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_05	
-	2401020458	Reverb_Room_06			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_06	
-	2401020459	Reverb_Room_07			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_07	
-	2401020461	Reverb_Room_01			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_01	
-	2401020462	Reverb_Room_02			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_02	
-	2401020463	Reverb_Room_03			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_03	
-	2417798042	Reverb_Room_15			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_15	
-	2417798043	Reverb_Room_14			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_14	
-	2417798044	Reverb_Room_13			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_13	
-	2417798045	Reverb_Room_12			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_12	
-	2417798046	Reverb_Room_11			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_11	
-	2417798047	Reverb_Room_10			\Default Work Unit\Master Secondary Bus\Reverb\Reverb_Room_10	
+	1783753294	AMB_Grotte_RVB			\Default Work Unit\Master Secondary Bus\Reverb\AMB_Grotte_RVB	
 	2941827740	Reverb_test			\Default Work Unit\Master Audio Bus\SUB-MASTER\Reverb_test	
 
 Effect plug-ins	ID	Name	Type				Notes
-	602546716	Room_Large	Wwise RoomVerb			
-	1009805735	Room_Large (Custom)	Wwise RoomVerb			
+	29232603	New_Parametric_EQ_01	Wwise Parametric EQ			
 	1259256166	New_RoomVerb	Wwise RoomVerb			
 	1990128658	Room_Medium	Wwise RoomVerb			
-	2995775460	Room_Small	Wwise RoomVerb			
+	3077109135	Dark_Cathedral_Stereo	Wwise Convolution Reverb			Impulse response created by Pinguin ing.büro © 2010 Pinguin ing.büro.  All rights reserved. IR Pre-delay: 20ms  
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			
