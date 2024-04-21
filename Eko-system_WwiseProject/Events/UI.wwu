@@ -84,6 +84,17 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{C07AA630-228B-4E94-A160-B4990DA1A59F}" ShortID="932445301">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Temps" ID="{0ECF0963-0A4C-4121-BD27-8575D7BB690D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="UI_GameOver_Vie" ID="{81D02055-9B23-4AB8-8C60-9909A59E94A2}">
@@ -92,6 +103,17 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="UI_GameOver_Vie" ID="{7E06967E-572A-44F4-A8E8-10BF7ACF8FEC}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{27B8E350-6D87-4DD2-92AF-91D817DD8DCB}" ShortID="305697072">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Temps" ID="{0ECF0963-0A4C-4121-BD27-8575D7BB690D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -642,6 +664,21 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="UI_JoueurVise_Stop" ID="{BEEA3E24-47E1-424A-800A-8305F19DE47B}">
+					<ChildrenList>
+						<Action Name="" ID="{0A211549-4425-4714-B51C-8074029F6ED4}" ShortID="921753089">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_JoueurVise" ID="{B948AC85-AB9F-43F9-8890-A4E5DD86BBE0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

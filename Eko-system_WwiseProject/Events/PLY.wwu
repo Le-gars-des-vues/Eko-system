@@ -320,17 +320,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="PLY_Pas" ID="{4EB5009E-9B4A-47B0-937C-627082F09723}">
-					<ChildrenList>
-						<Action Name="" ID="{B8D1346A-B3A7-4D0C-B654-16189E14620D}" ShortID="763052140">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="PLY_Pas" ID="{5E42D87E-B83B-4C69-A446-B65846747FEA}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="PLY_Ramasse" ID="{6C34F782-F25A-446D-907A-BD6DD3134804}">
 					<ChildrenList>
 						<Action Name="" ID="{203BEBF1-EA53-454B-A608-F9785BC8A644}" ShortID="318654567">
@@ -416,6 +405,63 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Folder Name="PLY_Pas" ID="{0C750AC2-2B2E-42E0-A08C-6D6292337CE9}" ShortID="567779743">
+					<ChildrenList>
+						<Event Name="PLY_Pas" ID="{4EB5009E-9B4A-47B0-937C-627082F09723}">
+							<ChildrenList>
+								<Action Name="" ID="{B8D1346A-B3A7-4D0C-B654-16189E14620D}" ShortID="763052140">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PLY_Pas" ID="{5E42D87E-B83B-4C69-A446-B65846747FEA}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PLY_Pas_Metal" ID="{6954C817-345B-42BB-A2A6-067D0D9B45B7}">
+							<ChildrenList>
+								<Action Name="" ID="{104C9AF1-CACE-4C48-9AA4-F17E84B8B40B}" ShortID="269338267">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="23"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Pas_Metal" ID="{DF93A1CE-2750-42BD-AFC7-9B6730775D5F}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PLY_Pas_Roche" ID="{9248E34A-A109-49E9-895D-9C02838D228B}">
+							<ChildrenList>
+								<Action Name="" ID="{15157EF4-7851-4184-AA8E-995EB08D7869}" ShortID="428801137">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="23"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Pas_Roche" ID="{9CD7FBD5-5331-45A1-B76F-8BF1C9BC2ADD}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PLY_Pas_Terre" ID="{0A4CCCB0-9AD7-4889-9B41-F801D8446949}">
+							<ChildrenList>
+								<Action Name="" ID="{47B37CB7-94B6-485A-A190-217D57DFDDBD}" ShortID="784763516">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="23"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Pas_Terre" ID="{17C9316B-2C91-45DF-A713-CCD19FA27BEC}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
