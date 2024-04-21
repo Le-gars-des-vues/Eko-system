@@ -869,7 +869,7 @@
 © 2011 AudioEase.  All rights reserved.</Comment>
 									<PropertyList>
 										<Property Name="CenterLevel" Type="Real32" Value="-12"/>
-										<Property Name="IRConvolutionSmooth" Type="Real32" Value="11"/>
+										<Property Name="IRConvolutionSmooth" Type="Real32" Value="40"/>
 										<Property Name="IRConvolutionStop" Type="Real64" Value="1.81183574879227"/>
 										<Property Name="IRConvolutionThreshold" Type="Real32">
 											<ValueList>
@@ -878,10 +878,13 @@
 										</Property>
 										<Property Name="IRLRMix" Type="Real32">
 											<ValueList>
-												<Value>5</Value>
+												<Value>1</Value>
 											</ValueList>
 										</Property>
-										<Property Name="IRLevel" Type="Real32" Value="-16"/>
+										<Property Name="IRLevel" Type="Real32" Value="3.3"/>
+										<Property Name="IRStretch" Type="Real32" Value="161"/>
+										<Property Name="InputStereoWidth" Type="Real32" Value="31"/>
+										<Property Name="WetLevel" Type="Real32" Value="24"/>
 									</PropertyList>
 									<ChildrenList>
 										<PluginMediaSource Name="AE_Tunnel" ID="{8DB8FDD3-EE88-4513-920B-1D65FAB465DC}">
@@ -1262,6 +1265,7 @@
 										</Property>
 										<Property Name="IRLevel" Type="Real32" Value="-12"/>
 										<Property Name="PreDelay" Type="Real32" Value="12"/>
+										<Property Name="WetLevel" Type="Real32" Value="19"/>
 									</PropertyList>
 									<ChildrenList>
 										<PluginMediaSource Name="AE_Street_DistantEcho" ID="{97A51EC9-F17A-41DE-9639-245B44C52A39}">

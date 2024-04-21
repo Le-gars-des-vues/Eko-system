@@ -243,6 +243,99 @@
 						<Property Name="TimeModDuration" Type="Real64" Value="3.6"/>
 					</PropertyList>
 				</ModulatorTime>
+				<ModulatorTime Name="New Modulator Time_02" ID="{8C00CE9A-F0F7-4820-B76B-9166B613C995}" ShortID="395124784">
+					<PropertyList>
+						<Property Name="TimeModDuration" Type="Real64" Value="0.3"/>
+					</PropertyList>
+				</ModulatorTime>
+				<ModulatorLfo Name="New Modulator LFO_07" ID="{A3069B34-C16B-41D8-8AEC-BCF7A3C4337B}" ShortID="665858835">
+					<PropertyList>
+						<Property Name="LfoDepth" Type="Real64" Value="39"/>
+					</PropertyList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{8C7D2214-FA30-43CF-ABFE-726F77721F37}" ShortID="780105184">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="LfoFrequency"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="New Modulator LFO_03" ID="{FC9FF0EF-F244-4A5D-8E19-542591486552}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{9F71743A-3249-41BE-9DEE-213EFF7AC282}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="5"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0.408</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0.055</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</ModulatorLfo>
+				<ModulatorLfo Name="New Modulator LFO_08" ID="{086B160A-CA8E-4781-87A2-48B44CA6A7E2}" ShortID="449272795">
+					<PropertyList>
+						<Property Name="LfoDepth" Type="Real64" Value="14.3"/>
+					</PropertyList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{741665E7-90F9-489D-9167-B868D47EA030}" ShortID="384897134">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="LfoFrequency"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="New Modulator LFO_03" ID="{FC9FF0EF-F244-4A5D-8E19-542591486552}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{1297CC20-49CA-4737-8E3B-1DAA4A8D03A1}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="5"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0.408</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0.055</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</ModulatorLfo>
 			</ChildrenList>
 		</WorkUnit>
 	</Modulators>

@@ -155,7 +155,60 @@
 										</Bus>
 									</ChildrenList>
 								</Bus>
-								<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}"/>
+								<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}">
+									<ChildrenList>
+										<Bus Name="AMB_Grotte" ID="{A41DCFA7-B149-40A1-B01C-C9F9EF1A53A7}">
+											<ChildrenList>
+												<Bus Name="AMB_Grotte_L2" ID="{FC29499E-C1DF-4581-A0F0-86F2817A0066}">
+													<ReferenceList>
+														<Reference Name="UserAuxSend0">
+															<ObjectRef Name="AMB_Grotte_RVB" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ObjectLists>
+														<ObjectList Name="RTPC">
+															<Reference>
+																<Local>
+																	<RTPC Name="" ID="{B92CE9F0-B4E7-4E0D-8699-BF3B19895BBB}" ShortID="1071155233">
+																		<PropertyList>
+																			<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
+																		</PropertyList>
+																		<ReferenceList>
+																			<Reference Name="ControlInput">
+																				<ObjectRef Name="New Modulator LFO_07" ID="{A3069B34-C16B-41D8-8AEC-BCF7A3C4337B}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+																			</Reference>
+																			<Reference Name="Curve">
+																				<Custom>
+																					<Curve Name="" ID="{C26B0AA0-9D41-4992-804E-375F81879619}">
+																						<PropertyList>
+																							<Property Name="Flags" Type="int32" Value="3"/>
+																						</PropertyList>
+																						<PointList>
+																							<Point>
+																								<XPos>0</XPos>
+																								<YPos>-3.26253</YPos>
+																								<Flags>21</Flags>
+																							</Point>
+																							<Point>
+																								<XPos>1</XPos>
+																								<YPos>-200</YPos>
+																								<Flags>53</Flags>
+																							</Point>
+																						</PointList>
+																					</Curve>
+																				</Custom>
+																			</Reference>
+																		</ReferenceList>
+																	</RTPC>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</Bus>
+											</ChildrenList>
+										</Bus>
+									</ChildrenList>
+								</Bus>
 								<Bus Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}"/>
 								<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}"/>
 								<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}"/>
@@ -214,127 +267,13 @@
 								</Property>
 							</PropertyList>
 							<ChildrenList>
-								<AuxBus Name="Reverb_Room_01" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}">
+								<AuxBus Name="AMB_Grotte_RVB" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}">
 									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										<Reference Name="Effect1" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+											<ObjectRef Name="Dark_Cathedral_Stereo" ID="{5D107457-F392-439F-AF71-8D0235D9C0F8}" WorkUnitID="{9D68BE5F-8CA6-43E0-BCE2-C7D59F63E582}"/>
 										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_02" ID="{A45F496E-7327-4403-A057-C556440F54C9}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_03" ID="{B2F24955-C988-4E17-8E99-03C333521336}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_04" ID="{CC6224A5-6F26-4C2B-A24F-3A781B147DBF}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_05" ID="{62F58F6D-5ECA-4B63-9A25-1BF4D5704CBF}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_06" ID="{1A1BAF66-67B7-42B8-9C91-2995465386B3}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_07" ID="{2D981F78-04A1-43B7-9C3C-3260B107AFC8}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_08" ID="{042CD04F-6ACD-4811-B5D4-F29159D331FF}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_09" ID="{3740B3AF-2E29-4E00-A300-24FCEA9D171B}">
-									<ReferenceList>
-										<Reference Name="Effect0">
-											<Custom CreatedFrom="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}">
-												<Effect Name="Room_Large (Custom)" ID="{BFF55560-BF7C-4AB7-B911-343F1A7BB429}" ShortID="1009805735" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-													<PropertyList>
-														<Property Name="DecayTime" Type="Real32" Value="2.5"/>
-														<Property Name="Density" Type="Real32" Value="60"/>
-														<Property Name="Diffusion" Type="Real32" Value="46"/>
-														<Property Name="ERLevel" Type="Real32" Value="-23"/>
-														<Property Name="Filter1Freq" Type="Real32" Value="590"/>
-														<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
-														<Property Name="Filter3Gain" Type="Real32" Value="-4.5"/>
-														<Property Name="HFDamping" Type="Real32" Value="2.7"/>
-														<Property Name="PreDelay" Type="Real32" Value="45"/>
-														<Property Name="Quality" Type="int32" Value="12"/>
-														<Property Name="ReverbLevel" Type="Real32" Value="-21"/>
-														<Property Name="RoomShape" Type="Real32" Value="55"/>
-														<Property Name="RoomSize" Type="Real32" Value="15"/>
-														<Property Name="StereoWidth" Type="Real32" Value="160"/>
-													</PropertyList>
-												</Effect>
-											</Custom>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_10" ID="{A9A46457-29A5-4B5B-A78C-6CEF5DE59831}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_11" ID="{1D00FA64-AFFD-45FB-9FCC-5AB878AF03F0}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_12" ID="{53CE0992-6C8D-4491-9E37-88ED072ED1A3}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_13" ID="{6AF5DCEB-5756-4B86-A81A-81A3838F2424}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Medium" ID="{F5C06EC1-E4A4-4332-A7D3-A89E2986B74F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_14" ID="{796A0A59-44B9-40E8-B097-2108F5983CD1}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Small" ID="{577F1466-A63B-47F7-98BD-C56E433F8B5D}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-										</Reference>
-									</ReferenceList>
-								</AuxBus>
-								<AuxBus Name="Reverb_Room_15" ID="{9008C379-BBB4-4457-AED6-9BF3094839F5}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-											<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										<Reference Name="Effect3" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+											<ObjectRef Name="New_Parametric_EQ_01" ID="{FAFBDF6C-4659-49C3-B40E-C965FB80FA93}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
 										</Reference>
 									</ReferenceList>
 								</AuxBus>

@@ -539,6 +539,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="UI_General_Pick" ID="{3F6D05B5-4DA9-476B-8B75-4D06146EC254}">
+									<ChildrenList>
+										<Action Name="" ID="{6D1BC1FE-6337-4524-AB78-CB3BB1C514F0}" ShortID="385899798">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_General_Pick" ID="{914635FA-BA95-4F3A-B61C-27A771E6EB35}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Event Name="UI_Menus_Deplacement" ID="{320D7C82-480A-42C8-A73A-5116C7FF4622}">
@@ -591,17 +602,46 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="UI_Texte" ID="{F886B0AC-2241-4C0D-BDF6-A9AE1F15AD0E}">
+				<Folder Name="UI_Texte" ID="{445BB7B8-0FA9-4E35-8D5E-CBDE2BC3F742}" ShortID="73188779">
 					<ChildrenList>
-						<Action Name="" ID="{280D72DA-CDE5-4F04-8A66-D988F4333B8A}" ShortID="58172478">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="UI_Texte" ID="{E6E7E683-CCC4-4AEA-B4D3-5BC20662AEE8}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="UI_Texte" ID="{F886B0AC-2241-4C0D-BDF6-A9AE1F15AD0E}">
+							<ChildrenList>
+								<Action Name="" ID="{280D72DA-CDE5-4F04-8A66-D988F4333B8A}" ShortID="58172478">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Texte" ID="{E6E7E683-CCC4-4AEA-B4D3-5BC20662AEE8}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="UI_Texte_Fin" ID="{B426B2D2-B4F1-49E5-A8C2-7EE19F84B3E4}">
+							<ChildrenList>
+								<Action Name="" ID="{8BE1AE3A-CEE3-461C-9177-ED7DA091B308}" ShortID="465196218">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Texte" ID="{E6E7E683-CCC4-4AEA-B4D3-5BC20662AEE8}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{6A8EB729-C905-4618-830D-85344E1C46F1}" ShortID="811824050">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.04"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Texte_Fin" ID="{3B5D55EE-9FAB-47E0-AB62-B1E2E2563CB8}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

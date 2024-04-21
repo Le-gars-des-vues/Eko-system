@@ -5,21 +5,35 @@
 			<ChildrenList>
 				<Event Name="AMB_Base" ID="{2E935D6D-CBF5-4E5D-8576-86200D6CE732}">
 					<ChildrenList>
-						<Action Name="" ID="{D1F3EBE2-AC5D-444A-A911-7C94A593BAAF}" ShortID="494825287">
+						<Action Name="" ID="{93EC75C8-4936-4467-91A2-7643A248E2B8}" ShortID="608672462">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AMB_Base" ID="{B41E4DE0-A8B9-4326-80C3-893F90103C07}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
+									<ObjectRef Name="AMB_Base" ID="{5E66AE8B-1F81-41FB-9ED0-A39711E3D3A3}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="AMB_Grotte" ID="{65DEBD87-47E3-4BA4-BDA9-2BA1A729287B}">
-					<ChildrenList>
-						<Action Name="" ID="{AE364DDE-A607-4B26-A9A0-8885278834A5}" ShortID="904132182">
+						<Action Name="" ID="{CC18C266-44FA-4901-B9C9-5991B2337ADE}" ShortID="783043732">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.4"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AMB_Grotte" ID="{2BC09D03-EA87-4724-8545-04A8DD678CCB}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
+									<ObjectRef Name="AMB_SousMarine" ID="{3894A2AA-FF14-46E9-994C-E0B564560D18}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{F8057DE1-E6F8-4E52-B963-7A36CC96E022}" ShortID="965495553">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.4"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Deepness" ID="{8FB93522-F4E8-4044-96D8-F29F7C6C58B6}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -27,21 +41,61 @@
 				</Event>
 				<Event Name="AMB_SousMarine" ID="{C075D3EA-C72C-4EB9-84B1-22F7DCC4EE3D}">
 					<ChildrenList>
-						<Action Name="" ID="{2C587F4F-8C6E-4014-BA3F-7A4BEA1D2AB8}" ShortID="341172756">
+						<Action Name="" ID="{628C515D-AF2B-48BE-8B3B-12783FB73C0D}" ShortID="524067754">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="0.4"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="AMB_SousMarine" ID="{3894A2AA-FF14-46E9-994C-E0B564560D18}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="AMB_Foret" ID="{26A63A0B-321A-4DFC-A7DE-8B4DEFBBE5BB}">
-					<ChildrenList>
-						<Action Name="" ID="{E7122997-3294-4B47-BCDA-1AD25E74719F}" ShortID="785873347">
+						<Action Name="" ID="{63008C04-F53B-4170-BFA9-0427E14E261E}" ShortID="477632080">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.4"/>
+								<Property Name="GameParameterValue" Type="Real64" Value="2"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AMB_Foret" ID="{2C825210-B943-48C2-B4AB-2AD506B0D517}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
+									<ObjectRef Name="Deepness" ID="{8FB93522-F4E8-4044-96D8-F29F7C6C58B6}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="AMB_ForetEtGrotte" ID="{26A63A0B-321A-4DFC-A7DE-8B4DEFBBE5BB}">
+					<ChildrenList>
+						<Action Name="" ID="{141C2D56-9F57-48D8-B67E-2A3F85CDE1A2}" ShortID="262341266">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_ForetEtGrotte" ID="{D72AC69D-0018-420D-8FEE-E2E65AA9FA3B}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E2EF9B7E-DB3B-445C-B680-EF9805BD4138}" ShortID="231796960">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.4"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_SousMarine" ID="{3894A2AA-FF14-46E9-994C-E0B564560D18}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{3FB8A568-CB71-44E6-A369-B64F69AD1457}" ShortID="1070297600">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.4"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Deepness" ID="{8FB93522-F4E8-4044-96D8-F29F7C6C58B6}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
