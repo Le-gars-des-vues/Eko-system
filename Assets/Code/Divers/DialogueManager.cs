@@ -24,9 +24,11 @@ public class DialogueManager : MonoBehaviour
         {"hasOpenInventory", false },
         {"hasSoldItem", false },
         {"hasOpenInfo", false },
+        {"hasEquippedMutltitool", false },
         {"hasHovered", false },
         {"hasHarvested", false },
         {"hasPickedUpSpear", false },
+        {"hasHitDummy", false },
         {"craftedFirstItem", false }
     };
 

@@ -112,6 +112,7 @@ public class HotbarManager : MonoBehaviour
                     player.UnequipObject();
 
                     player.EquipMultiTool(true);
+                    Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
                 }
                 else
                 {

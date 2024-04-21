@@ -245,24 +245,33 @@ public class Robot : MonoBehaviour
                     trainingRoomDialogue.onDialogueEnd += TalkAboutQuickMenu;
                     break;
                 case 6:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[8].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[8].dialogueSequence);
                     trainingRoomDialogue.onDialogueEnd += TeleportBackSellingScreen;
-                    trainingRoomDialogue.onDialogueEnd += TalkAboutCrafting;
                     break;
                 case 7:
+                    TeleportCrafting();
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[9].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += GiveItemToCraft;
+                    break;
+                case 8:
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[10].dialogueSequence, false);
                     trainingRoomDialogue.onDialogueEnd += TeleportBackCrafting;
                     break;
-                case 8:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[11].dialogueSequence, false);
-                    break;
                 case 9:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[12].dialogueSequence, false);
-                    trainingRoomDialogue.onDialogueEnd += TalkAboutHotbar;
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[11].dialogueSequence, false);
                     break;
                 case 10:
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[12].dialogueSequence, false);
                     trainingRoomDialogue.onDialogueEnd += TalkAboutHotbar;
+                    break;
+                case 11:
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[14].dialogueSequence, false);
+                    break;
+                case 12:
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[15].dialogueSequence, false);
+                    break;
+                case 13:
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[15].dialogueSequence, false);
                     break;
             }
         }
@@ -275,12 +284,6 @@ public class Robot : MonoBehaviour
     void TalkAboutQuickMenu()
     {
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[7].dialogueSequence, false);
-    }
-
-    void TalkAboutCrafting()
-    {
-        TeleportCrafting();
-        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[9].dialogueSequence);
     }
 
     void TalkAboutHotbar()

@@ -80,7 +80,7 @@ public class WeaponDamage : MonoBehaviour
                             color = 2;
                         ShowDamage(hitDamage, collision.GetContact(0).point, color);
                         GetComponent<PickableObject>().DurabilityDamage(durabilityDamage);
-
+                        Tutorial.instance.ListenForInputs("hasHitDummy");
                         if (isThrown)
                         {
                             isThrown = false;

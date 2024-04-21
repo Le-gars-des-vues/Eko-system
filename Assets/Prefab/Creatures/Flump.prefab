@@ -743,6 +743,10 @@ MonoBehaviour:
   hurtSound:
     idInternal: 0
     valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b41c5ec9efb180444affae154d08b3f6, type: 2}
+  jumpSound:
+    idInternal: 0
+    valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
   atkSound:
     idInternal: 0
@@ -788,7 +792,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 983182926786358263}
-  isAgressive: 0
   maxMovingDistance: 20
   originalDirection: 1
   creatureSize: 0
@@ -853,6 +856,7 @@ MonoBehaviour:
   currentHp: 0
   lowHpThreshold: 10
   healthRegenRate: 0.5
+  isACreature: 1
   isInvincible: 0
   flashWhiteDuration: 0.3
   flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
@@ -908,6 +912,8 @@ MonoBehaviour:
   isStunned: 0
   isFlying: 1
   isAWaterCreature: 0
+  isAgressive: 0
+  isPredator: 0
   currentFood: 0
   maxFood: 100
   digestRate: 1

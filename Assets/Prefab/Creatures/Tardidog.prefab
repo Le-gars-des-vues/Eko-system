@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 5529066485903392333}
   - component: {fileID: 3227109609252742886}
   - component: {fileID: 7163264113067079540}
+  - component: {fileID: 2381071028066269969}
   - component: {fileID: 4392491570789503142}
   - component: {fileID: 4473523068497175590}
   - component: {fileID: 3509843861052164604}
@@ -512,6 +513,38 @@ PolygonCollider2D:
       - {x: 0.44927132, y: -0.025981024}
       - {x: 0.2145958, y: 0.60923696}
   m_UseDelaunayMesh: 0
+--- !u!114 &2381071028066269969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375505516168346676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9e9340a1137924da7d26f9fa193c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundBank:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6736dae1ba0cfd048a954e39b7b34fa3, type: 2}
+  idleSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: afd658c3e4ce66e4b8e7fdb533713b9b, type: 2}
+  hurtSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 7dccd31f23d3a4f48b7ba23a1fe04120, type: 2}
+  jumpSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5246cef22af855844b13b2c5e668de63, type: 2}
+  atkSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8ceda54fe24c432459d0d2849793c9ee, type: 2}
 --- !u!114 &4392491570789503142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +644,7 @@ MonoBehaviour:
   currentHp: 0
   lowHpThreshold: 10
   healthRegenRate: 0.5
+  isACreature: 1
   isInvincible: 0
   flashWhiteDuration: 0.3
   flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
