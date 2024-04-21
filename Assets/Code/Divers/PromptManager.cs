@@ -10,6 +10,9 @@ public class PromptManager : MonoBehaviour
     public delegate void OnButtonClick();
     public static OnButtonClick onButtonClick;
 
+    public delegate void OnButtonNull();
+    public static OnButtonNull onButtonNull;
+
     [SerializeField] GameObject prompt;
     [SerializeField] TextMeshProUGUI promptText;
     [SerializeField] TextMeshProUGUI button1Text;
@@ -62,11 +65,19 @@ public class PromptManager : MonoBehaviour
     public void ButtonClick(bool clickedYes)
     {
         if (clickedYes)
+        {
             onButtonClick += ClosePrompt;
+            onButtonClick?.Invoke();
+            onButtonClick = null;
+            onButtonNull = null;
+        }
         else
-            onButtonClick = ClosePrompt;
-        onButtonClick?.Invoke();
-        onButtonClick = null;
+        {
+            onButtonNull += ClosePrompt;
+            onButtonNull?.Invoke();
+            onButtonClick = null;
+            onButtonNull = null;
+        }
     }
 }
 

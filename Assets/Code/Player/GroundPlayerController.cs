@@ -128,6 +128,7 @@ public class GroundPlayerController : MonoBehaviour
 
     [Header("Slide Variables")]
     [SerializeField] private float slideSpeed;
+    [SerializeField] private float climbSpeed;
     //Acceleration quand le joueur slide
     [SerializeField] private float slideAccel;
     //Check si le joueur est en train de slide
@@ -195,6 +196,8 @@ public class GroundPlayerController : MonoBehaviour
             {
                 if (isGrounded)
                 {
+                    Tutorial.instance.ListenForInputs("hasRun");
+
                     if (!player.staminaDepleted)
                     {
                         maxSpeed = runSpeed;
@@ -213,6 +216,7 @@ public class GroundPlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 OnJumpInput();
+                Tutorial.instance.ListenForInputs("hasJumped");
             }
             if (Input.GetKeyUp(KeyCode.Space))
             {
@@ -284,7 +288,7 @@ public class GroundPlayerController : MonoBehaviour
             Jump();
         }
 
-        if (CanSlide() && ((lastOnWallLeftTime > 0 && GetInput().x < 0) || (lastOnWallRightTime > 0 && GetInput().x > 0)))
+        if (!player.staminaDepleted && CanSlide() && ((lastOnWallLeftTime > 0 && GetInput().x < 0) || (lastOnWallRightTime > 0 && GetInput().x > 0)))
         {
             isSliding = true;
         }
@@ -400,6 +404,9 @@ public class GroundPlayerController : MonoBehaviour
 
         if (player.CanMove())
         {
+            if (Mathf.Abs(GetInput().x) >= 1)
+                Tutorial.instance.ListenForInputs("hasMovedAround");
+
             if (isWallJumping)
                 MoveCharacter(wallJumpRunLerp);
 
@@ -521,13 +528,7 @@ public class GroundPlayerController : MonoBehaviour
 
     private void Slide()
     {
-        //We remove the remaining upwards Impulse to prevent upwards sliding
-        /*
-        if (rb.velocity.y > 0)
-        {
-            rb.AddForce(-rb.velocity.y * Vector2.up, ForceMode2D.Impulse);
-        }
-        */
+
         float speedDif = slideSpeed - rb.velocity.y;
         float movement = speedDif * slideAccel;
         //So, we clamp the movement here to prevent any over corrections (these aren't noticeable in the Run)
@@ -538,16 +539,39 @@ public class GroundPlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                rb.AddForce(Mathf.Abs(slideSpeed) * Vector2.up);
-                if (rb.velocity.magnitude > slideSpeed)
-                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, Mathf.Abs(slideSpeed));
+                if (rb.velocity.y < 0)
+                    rb.AddForce(rb.velocity.y * Vector2.down, ForceMode2D.Impulse);
+
+                rb.AddForce(climbSpeed * Vector2.up);
+                if (rb.velocity.magnitude > climbSpeed)
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, climbSpeed);
                 player.ChangeStamina(-climbStaminaCost);
+                Tutorial.instance.ListenForInputs("hasClimbed");
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                if (rb.velocity.y > 0)
+                    rb.AddForce(-rb.velocity.y * Vector2.up, ForceMode2D.Impulse);
+
+                rb.AddForce(climbSpeed * Vector2.down);
+                if (rb.velocity.magnitude < -climbSpeed)
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, -climbSpeed);
+                player.ChangeStamina(-climbStaminaCost);
+                Tutorial.instance.ListenForInputs("hasClimbed");
             }
             else
+            {
+                Tutorial.instance.ListenForInputs("hasHanged");
+
+                if (rb.velocity.y > 0)
+                    rb.AddForce(-rb.velocity.y * Vector2.up, ForceMode2D.Impulse);
+
+                player.ChangeStamina(-(climbStaminaCost/2));
+
+                //We remove the remaining upwards Impulse to prevent upwards sliding
                 rb.AddForce(movement * Vector2.up);
+            }
         }
-        else
-            rb.AddForce(movement * Vector2.up);
     }
 
     public void VineJump()

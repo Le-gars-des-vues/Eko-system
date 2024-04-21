@@ -5,17 +5,174 @@ using TMPro;
 
 public class DialogueSpeaker : MonoBehaviour
 {
+    PlayerPermanent player;
+    [SerializeField] Color colorHex;
     public TextMeshPro speechBubbleText;
     public TextMeshPro speechBubbleTextB;
+    public Vector2 speakerOffset;
 
-    public List<Dialogue> dialogueSequence;
-    public List<Dialogue> dialogueSequence2;
-    public List<Dialogue> dialogueSequence3;
-    public List<Dialogue> dialogueSequence4;
-    public List<Dialogue> dialogueSequence5;
+    public delegate void OnDialogueEnd();
+    public OnDialogueEnd onDialogueEnd;
+
+    public List<DialogueSequence> dialogueSequences = new List<DialogueSequence>();
 
     public bool isSpeaking;
+    public bool isReadyToSpeak = false;
+    bool hasACondition;
+    [SerializeField] float startDialogueDistance = 4;
+    bool pressedKey;
+    float speakingTime;
+    [SerializeField] float speakCooldown = 2;
+
     public AK.Wwise.Event speechSound;
+    uint speechSoundID;
+
+    Coroutine dialogue;
+    public int dialogueIndex = 0;
+    List<Dialogue> currentDialogue;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
+    }
+
+    private void Update()
+    {
+        if (currentDialogue != null)
+        {
+            if (player.isInDialogue)
+            {
+                //Si on appuie sur E
+                if (Input.GetKeyDown(KeyCode.E) && !pressedKey)
+                {
+                    //On skip l'animation du texte ou on passe a la prochaine phrase
+                    pressedKey = true;
+                    NextSentence();
+                }
+            }
+            else
+            {
+                if (player.CanMove())
+                {
+                    //Si le parleur est pret a parler
+                    if (isReadyToSpeak && !isSpeaking)
+                    {
+                        //Si la distance est suffisement courte et que la condition est remplie
+                        if (Vector2.Distance((Vector2)transform.parent.transform.position + speakerOffset, player.gameObject.transform.position) < startDialogueDistance)
+                        {
+                            if (currentDialogue[dialogueIndex].conditionIsMet)
+                            {
+                                //On parle
+                                StartDialogue(speechSound);
+                            }
+                            else
+                            {
+                                Tutorial.instance.isListeningForInputs = true;
+                                if (!DialogueManager.instance.currentConditions.Contains(currentDialogue[dialogueIndex].conditionName) && !DialogueManager.conditions[currentDialogue[dialogueIndex].conditionName])
+                                    DialogueManager.instance.currentConditions.Add(currentDialogue[dialogueIndex].conditionName);
+
+                                currentDialogue[dialogueIndex].conditionIsMet = DialogueManager.conditions[currentDialogue[dialogueIndex].conditionName];
+                            }
+                        }
+                    }
+                    else if (!isReadyToSpeak && !isSpeaking)
+                    {
+                        if (dialogueIndex < currentDialogue.Count - 1 && !currentDialogue[dialogueIndex + 1].conditionIsMet)
+                            hasACondition = true;
+
+                        if ((Time.time - speakingTime > speakCooldown) || hasACondition)
+                        {
+                            if (dialogueIndex < currentDialogue.Count - 1)
+                            {
+                                if (currentDialogue[dialogueIndex + 1].conditionIsMet)
+                                    NextSentence();
+                                else
+                                {
+                                    Tutorial.instance.isListeningForInputs = true;
+                                    if (!DialogueManager.instance.currentConditions.Contains(currentDialogue[dialogueIndex + 1].conditionName) && !DialogueManager.conditions[currentDialogue[dialogueIndex + 1].conditionName])
+                                        DialogueManager.instance.currentConditions.Add(currentDialogue[dialogueIndex + 1].conditionName);
+
+                                    currentDialogue[dialogueIndex + 1].conditionIsMet = DialogueManager.conditions[currentDialogue[dialogueIndex + 1].conditionName];
+                                }
+                            }
+                            else
+                            {
+                                NextSentence();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void PrepareDialogue(List<Dialogue> dialogueSequence, bool _isInDialogue = true)
+    {
+        currentDialogue = dialogueSequence;
+        dialogueIndex = 0;
+        DialogueManager.instance.isInDialogue = _isInDialogue;
+        isReadyToSpeak = true;
+    }
+
+    public void StartDialogue(AK.Wwise.Event dialogueSound = null)
+    {
+        speakingTime = Time.time;
+        dialogue = StartCoroutine(Speech(currentDialogue[dialogueIndex].text));
+        if (dialogueSound != null)
+            speechSoundID = dialogueSound.Post(transform.parent.gameObject);
+        player.isInDialogue = DialogueManager.instance.isInDialogue;
+        if (player.isInDialogue)
+            StartCoroutine(player.MoveCamera("ZoomIn"));
+        isReadyToSpeak = false;
+    }
+
+    public void NextSentence()
+    {
+        hasACondition = false;
+        if (isSpeaking)
+        {
+            StopCoroutine(dialogue);
+            speechBubbleText.text = currentDialogue[dialogueIndex].text;
+            speechBubbleTextB.text = currentDialogue[dialogueIndex].text;
+            speechBubbleText.maxVisibleCharacters = speechBubbleText.text.ToCharArray().Length;
+            speechBubbleTextB.maxVisibleCharacters = speechBubbleTextB.text.ToCharArray().Length;
+            isSpeaking = false;
+            pressedKey = false;
+        }
+        else
+        {
+            dialogueIndex++;
+            if (dialogueIndex < currentDialogue.Count)
+            {
+                StopCoroutine(dialogue);
+                dialogue = StartCoroutine(Speech(currentDialogue[dialogueIndex].text));
+                pressedKey = false;
+            }
+            else
+            {
+                EndDialogue();
+                pressedKey = false;
+            }
+        }
+    }
+
+    public void EndDialogue()
+    {
+        DialogueManager.instance.isInDialogue = false;
+        player.isInDialogue = false;
+
+        StopCoroutine(dialogue);
+        StopDialogue();
+
+        currentDialogue = null;
+        dialogueIndex = 0;
+
+        AkSoundEngine.StopPlayingID(speechSoundID);
+        onDialogueEnd?.Invoke();
+        onDialogueEnd = null;
+        isSpeaking = false;
+        StartCoroutine(player.MoveCamera("NormalZoom"));
+    }
 
     public IEnumerator Speech(string textToWrite = null)
     {
@@ -24,14 +181,7 @@ public class DialogueSpeaker : MonoBehaviour
         if (textToWrite != null)
         {
             speechBubbleText.text = textToWrite;
-            speechBubbleTextB.text = textToWrite.Replace("<color=red>", "<color=black>")
-                                                .Replace("<color=green>", "<color=black>")
-                                                .Replace("<color=yellow>", "<color=black>")
-                                                .Replace("<color=white>", "<color=black>")
-                                                .Replace("<color=lime>", "<color=black>")
-                                                .Replace("<color=lightblue>", "<color=black>")
-                                                .Replace("<color=blue>", "<color=black>")
-                                                .Replace("<color=orange>", "<color=black>");
+            speechBubbleTextB.text = textToWrite;
             char[] charArray = textToWrite.ToCharArray();
             bool isLetter = true;
             for (int i = 0; i < charArray.Length; i++)
@@ -53,7 +203,7 @@ public class DialogueSpeaker : MonoBehaviour
                     index++;
                     speechBubbleText.maxVisibleCharacters = index;
                     speechBubbleTextB.maxVisibleCharacters = index;
-                    yield return new WaitForSeconds(0.025f);
+                    yield return new WaitForSeconds(0.02f);
                 }
                 else
                 {
@@ -63,6 +213,7 @@ public class DialogueSpeaker : MonoBehaviour
             }
         }
         isSpeaking = false;
+        speakingTime = Time.time;
         yield return null;
     }
 
@@ -70,5 +221,11 @@ public class DialogueSpeaker : MonoBehaviour
     {
         speechBubbleText.text = "";
         speechBubbleTextB.text = "";
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere((Vector2)transform.parent.transform.position + speakerOffset, 0.1f);
     }
 }

@@ -38,14 +38,15 @@ public class Vente : MonoBehaviour
              for (int y = 0; y < tempHeight; y++)
              {
               
-              anItem=theItemGrid.CheckIfItemPresent(x, y);
+                anItem=theItemGrid.CheckIfItemPresent(x, y);
                 if (anItem != null)
                 {
-                    profit += (float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height);
+                    profit += Mathf.RoundToInt((float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height));
                     QuickMenu.instance.quotaText.text = profit.ToString() + "/" + GameManager.instance.gameObject.GetComponent<Quota>().quota.ToString() + "$";
                     profitText.text = profit.ToString() + "$";
                     GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>().text = profit.ToString() + "$";
                     anItem.Delete();
+                    Tutorial.instance.ListenForInputs("hasSoldItem");
                 }
              }
          } 

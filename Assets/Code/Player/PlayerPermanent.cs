@@ -173,6 +173,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     [Header("Base Variables")]
     public bool hasBuiltMap = false;
     public bool hasBuiltStorage = false;
+    bool isTeleporting;
 
     public void LoadData(GameData data)
     {
@@ -366,9 +367,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
         //Open UI
         if (Input.GetKeyDown(KeyCode.I) && !marketIsOpen && !craftingIsOpen)
-        {
             ShowOrHideInventory();
-        }
 
         if (Input.GetKeyDown(KeyCode.M) && !marketIsOpen && !craftingIsOpen)
             ShowOrHideMap();
@@ -416,98 +415,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         gameOverScreen.SetActive(false);
     }
 
-    public void Death()
-    {
-        CloseUI();
 
-        ToggleRagdoll(true);
-        MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
-        foreach (MonoBehaviour script in scripts)
-        {
-            script.enabled = false;
-        }
-
-        ItemGrid inventoryGrid = playerInventory.transform.Find("GridInventaire").gameObject.GetComponent<ItemGrid>();
-        InventoryItem anItem;
-        List<InventoryItem> itemsInInventory = new List<InventoryItem>();
-
-        float inventoryWidth = inventoryGrid.GetGridSizeWidth();
-        float inventoryHeight = inventoryGrid.GetGridSizeHeight();
-
-        for (int x = 0; x < inventoryWidth; x++)
-        {
-
-            for (int y = 0; y < inventoryHeight; y++)
-            {
-                anItem = inventoryGrid.CheckIfItemPresent(x, y);
-                if (anItem != null)
-                {
-                    if (!itemsInInventory.Contains(anItem))
-                        itemsInInventory.Add(anItem);
-                }
-            }
-        }
-        int numberOfItemToDestroy = itemsInInventory.Count / 2;
-        for (int i = 0; i < numberOfItemToDestroy; i++)
-        {
-            int index = Random.Range(0, itemsInInventory.Count - 1);
-            itemsInInventory[index].GetComponent<InventoryItem>().Delete();
-            itemsInInventory.RemoveAt(index);
-        }
-        if (objectInRightHand != null && !isUsingMultiTool)
-        {
-            objectInRightHand.GetComponent<PickableObject>().isPickedUp = false;
-            UnequipObject();
-        }
-
-        gameOverScreen.SetActive(true);
-        gameOverScreen.GetComponent<GameOverScreen>().player = gameObject;
-    }
-
-    public void CheckForClosestObject()
-    {
-        //Pick up ressources
-        if (objectsNear.Count >= 1)
-        {
-            foreach (var obj in objectsNear)
-            {
-                if (obj != null)
-                {
-                    if (obj.GetComponent<WeaponDamage>() != null && obj.GetComponent<WeaponDamage>().isThrown)
-                        continue;
-
-                    float distance = Vector2.Distance(transform.position, obj.transform.position);
-
-                    if (distance < nearestObjectDistance || nearestObject == obj)
-                    {
-                        nearestObjectDistance = distance;
-                        nearestObject = obj;
-                        obj.GetComponent<PickableObject>().isSelected = true;
-                    }
-                    else
-                        obj.GetComponent<PickableObject>().isSelected = false;
-                }
-            }
-        }
-        else
-            nearestObjectDistance = 10;
-    }
-
-    void CloseUI()
-    {
-        if (inventoryOpen)
-            ShowOrHideInventory();
-        if (marketIsOpen)
-            ShowOrHideMarket();
-        if (craftingIsOpen)
-            ShowOrHideCrafting();
-        if (mapIsOpen)
-            ShowOrHideMap();
-        if (upgradeIsOpen)
-            ShowOrHideUpgrades();
-        if (buildingIsOpen)
-            ShowOrHideBuilding();
-    }
+    #region Stats
 
     //Pour changer les slider, bar est le slider qu'on veut changer et value est la valeur qu'on veut lui donner
     public void SetBar(Slider bar, float value)
@@ -616,6 +525,87 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         SetBar(oxygenSlider, currentOxygen);
     }
 
+    #endregion
+
+    #region Exploration
+
+    public void Death()
+    {
+        CloseUI();
+
+        ToggleRagdoll(true);
+        MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            script.enabled = false;
+        }
+
+        ItemGrid inventoryGrid = playerInventory.transform.Find("GridInventaire").gameObject.GetComponent<ItemGrid>();
+        InventoryItem anItem;
+        List<InventoryItem> itemsInInventory = new List<InventoryItem>();
+
+        float inventoryWidth = inventoryGrid.GetGridSizeWidth();
+        float inventoryHeight = inventoryGrid.GetGridSizeHeight();
+
+        for (int x = 0; x < inventoryWidth; x++)
+        {
+
+            for (int y = 0; y < inventoryHeight; y++)
+            {
+                anItem = inventoryGrid.CheckIfItemPresent(x, y);
+                if (anItem != null)
+                {
+                    if (!itemsInInventory.Contains(anItem))
+                        itemsInInventory.Add(anItem);
+                }
+            }
+        }
+        int numberOfItemToDestroy = itemsInInventory.Count / 2;
+        for (int i = 0; i < numberOfItemToDestroy; i++)
+        {
+            int index = Random.Range(0, itemsInInventory.Count - 1);
+            itemsInInventory[index].GetComponent<InventoryItem>().Delete();
+            itemsInInventory.RemoveAt(index);
+        }
+        if (objectInRightHand != null && !isUsingMultiTool)
+        {
+            objectInRightHand.GetComponent<PickableObject>().isPickedUp = false;
+            UnequipObject();
+        }
+
+        gameOverScreen.SetActive(true);
+        gameOverScreen.GetComponent<GameOverScreen>().player = gameObject;
+    }
+
+    public void CheckForClosestObject()
+    {
+        //Pick up ressources
+        if (objectsNear.Count >= 1)
+        {
+            foreach (var obj in objectsNear)
+            {
+                if (obj != null)
+                {
+                    if (obj.GetComponent<WeaponDamage>() != null && obj.GetComponent<WeaponDamage>().isThrown)
+                        continue;
+
+                    float distance = Vector2.Distance(transform.position, obj.transform.position);
+
+                    if (distance < nearestObjectDistance || nearestObject == obj)
+                    {
+                        nearestObjectDistance = distance;
+                        nearestObject = obj;
+                        obj.GetComponent<PickableObject>().isSelected = true;
+                    }
+                    else
+                        obj.GetComponent<PickableObject>().isSelected = false;
+                }
+            }
+        }
+        else
+            nearestObjectDistance = 10;
+    }
+
     public void ToggleRagdoll(bool ragdollOn)
     {
         anim.enabled = !ragdollOn;
@@ -703,7 +693,27 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             Turn();
         }
     }
-    
+
+    #endregion
+
+    #region UI
+
+    void CloseUI()
+    {
+        if (inventoryOpen)
+            ShowOrHideInventory();
+        if (marketIsOpen)
+            ShowOrHideMarket();
+        if (craftingIsOpen)
+            ShowOrHideCrafting();
+        if (mapIsOpen)
+            ShowOrHideMap();
+        if (upgradeIsOpen)
+            ShowOrHideUpgrades();
+        if (buildingIsOpen)
+            ShowOrHideBuilding();
+    }
+
     public void ShowOrHideInventory(bool withButtons = true)
     {
         playerInventory.transform.Find("NextUI").gameObject.SetActive(withButtons);
@@ -733,6 +743,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         }
         else
         {
+            Tutorial.instance.ListenForInputs("hasOpenInventory");
             inventoryOpen = false;
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             if (CanOpenStorage() && storageInventory != null)
@@ -807,7 +818,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (cameraTrigger)
             {
                 cameraTrigger = false;
-                StartCoroutine(MoveCamera("ZoomIn"));
+                StartCoroutine(MoveCamera("NormalZoom"));
             }
             if (building != null)
                 building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y - gridOffset);
@@ -981,7 +992,9 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         }
         farming.GetComponent<Farming>().Activate(isFarming);
     }
+    #endregion
 
+    #region Miscellaneaous
 
     //Arrete le temps pour la duree choisit
     private IEnumerator Hitstun(float duration)
@@ -1007,6 +1020,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
     public IEnumerator Dissolve(float dissolveTime, bool teleport, Vector2 target, bool isTrue = true, bool outside = false, bool inside = false)
     {
+        isTeleporting = true;
         float elapsedTime = 0;
         if (teleport)
         {
@@ -1018,9 +1032,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                 elapsedTime += Time.deltaTime;
                 float dissolveAmount = Mathf.Lerp(0.01f, 1f, elapsedTime / dissolveTime);
                 foreach (var sprite in playerGFX)
-                {
                     sprite.material.SetFloat("_Transparency", dissolveAmount);
-                }
+
                 yield return null;
             }
 
@@ -1067,9 +1080,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                     elapsedTime += Time.deltaTime;
                     float dissolveAmount = Mathf.Lerp(1f, 0.01f, elapsedTime / dissolveTime);
                     foreach (var sprite in playerGFX)
-                    {
                         sprite.material.SetFloat("_Transparency", dissolveAmount);
-                    }
+
                     yield return null;
                 }
 
@@ -1077,6 +1089,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                     playerGFX[i].material = ogMaterials;
             }
         }
+        isTeleporting = false;
     }
 
     IEnumerator InvicibilityFrames(float duration)
@@ -1108,7 +1121,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         isInvincible = false;
     }
 
-    IEnumerator MoveCamera(string effect)
+    public IEnumerator MoveCamera(string effect)
     {
         float timer = 0;
         float duration = 0.1f;
@@ -1128,12 +1141,17 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             else if (effect == "ZoomIn")
             {
                 if (vcam != null)
-                    vcam.m_Lens.OrthographicSize = Mathf.Lerp(20f, 8.2f, timer / duration);
+                    vcam.m_Lens.OrthographicSize = Mathf.Lerp(vcam.m_Lens.OrthographicSize, 6.5f, timer / duration);
+            }
+            else if (effect == "NormalZoom")
+            {
+                if (vcam != null)
+                    vcam.m_Lens.OrthographicSize = Mathf.Lerp(vcam.m_Lens.OrthographicSize, 8.2f, timer / duration);
             }
             else if (effect == "ZoomOut")
             {
                 if (vcam != null)
-                    vcam.m_Lens.OrthographicSize = Mathf.Lerp(8.2f, 20f, timer / duration);
+                    vcam.m_Lens.OrthographicSize = Mathf.Lerp(vcam.m_Lens.OrthographicSize, 20f, timer / duration);
             }
             yield return null;
         }
@@ -1198,6 +1216,9 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             playerRb.angularDrag = initialAngularDrag;
         }
     }
+    #endregion
+
+    #region Checks
 
     public bool CanOpenStorage()
     {
@@ -1211,7 +1232,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
     public bool CanMove()
     {
-        return !uiOpened && !isInDialogue;
+        return !uiOpened && !isInDialogue && !isTeleporting;
     }
 
     private Vector2 GetInput()
@@ -1224,6 +1245,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         gameObject.transform.Find("RightLegSolver").transform.Find("RightLegSolver_Target").GetComponent<PlayerLegAnimation>().ResetPosition();
         gameObject.transform.Find("LeftLegSolver").transform.Find("LeftLegSolver_Target").GetComponent<PlayerLegAnimation>().ResetPosition();
     }
+
+    #endregion
 
     private void OnDrawGizmos()
     {

@@ -11,7 +11,7 @@ public class ArrowManager : MonoBehaviour
     [SerializeField] float timeToFill = 0.02f;
     [SerializeField] float timer;
     public bool readyToActivate;
-    bool isActive;
+    public bool isActive;
     bool isInvis;
 
     float moveSpeed = 10f;
@@ -41,7 +41,7 @@ public class ArrowManager : MonoBehaviour
     void Update()
     {
         if (targetObject != null)
-            transform.position = Vector2.Lerp(transform.position, arrowPos + arrowOffset, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.Lerp(transform.position, (Vector2)targetObject.transform.position + arrowOffset, moveSpeed * Time.deltaTime);
 
         if (!player.isInDialogue)
         {

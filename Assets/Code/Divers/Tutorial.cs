@@ -6,6 +6,8 @@ public class Tutorial : MonoBehaviour
 {
     public static Tutorial instance;
 
+    public bool isListeningForInputs = false;
+
     public List<Dialogue> tutorialTexts = new List<Dialogue>();
     [SerializeField] Sprite sprite;
     [SerializeField] string robotName;
@@ -27,5 +29,26 @@ public class Tutorial : MonoBehaviour
     {
         TextMessage message = new TextMessage(sprite, robotName, textToWrite);
         QuickMenu.instance.textMessages.Enqueue(message);
+    }
+
+    public void ListenForInputs(string conditionName)
+    {
+        if (isListeningForInputs && !DialogueManager.conditions[conditionName])
+        {
+            bool conditionIsMet = false;
+            foreach (string condition in DialogueManager.instance.currentConditions)
+            {
+                if (conditionName == condition)
+                {
+                    DialogueManager.conditions[conditionName] = true;
+                    conditionIsMet = true;
+                    Debug.Log("Met condition!");
+                }
+            }
+            if (conditionIsMet)
+                DialogueManager.instance.currentConditions.Remove(conditionName);
+        }
+        else
+            return;
     }
 }

@@ -24,7 +24,8 @@ public class RoomManagement : MonoBehaviour
         if (Vector2.Distance(GetComponent<SpriteRenderer>().sprite.bounds.center, player.gameObject.transform.position) < distanceThreshold)
         {
             isInRange = true;
-            ArrowManager.instance.PlaceArrow(GetComponent<SpriteRenderer>().sprite.bounds.center, "MANAGE ROOM", new Vector2(0, 1), gameObject, 1);
+            if (!ArrowManager.instance.isActive)
+                ArrowManager.instance.PlaceArrow(GetComponent<SpriteRenderer>().sprite.bounds.center, "MANAGE ROOM", new Vector2(0, 1), gameObject, 1);
         }
         else
         {

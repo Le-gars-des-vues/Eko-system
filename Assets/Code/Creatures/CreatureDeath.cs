@@ -106,7 +106,7 @@ public class CreatureDeath : MonoBehaviour
             }
             else
                 if (ArrowManager.instance.targetObject == gameObject)
-                ArrowManager.instance.RemoveArrow();
+                    ArrowManager.instance.RemoveArrow();
 
             if (isDead)
             {

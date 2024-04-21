@@ -8,6 +8,7 @@ public class CreatureHealth : MonoBehaviour
     public float currentHp;
     [SerializeField] float lowHpThreshold;
     [SerializeField] float healthRegenRate = 0.5f;
+    [SerializeField] bool isACreature = true;
 
     [Header("Flash White Variables")]
     public bool isInvincible;
@@ -27,32 +28,38 @@ public class CreatureHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHp <= 0)
+        if (isACreature)
         {
-            float gravityScale;
+            if (currentHp <= 0)
+            {
+                float gravityScale;
 
-            if (!GetComponent<CreatureUnderwater>().isUnderwater)
-                gravityScale = 1;
-            else
-                gravityScale = GetComponent<Rigidbody2D>().gravityScale;
+                if (!GetComponent<CreatureUnderwater>().isUnderwater)
+                    gravityScale = 1;
+                else
+                    gravityScale = GetComponent<Rigidbody2D>().gravityScale;
 
-            GetComponent<CreatureDeath>().Death(gravityScale);
-            GetComponent<CreatureDeath>().isDead = true;
+                GetComponent<CreatureDeath>().Death(gravityScale);
+                GetComponent<CreatureDeath>().isDead = true;
+            }
+
+            if (currentHp < lowHpThreshold && !GetComponent<CreatureState>().hasFled)
+                GetComponent<CreatureState>().isFleeing = true;
+
+            if (GetComponent<CreatureState>().isFull && currentHp < maxHp)
+                currentHp += Time.deltaTime * healthRegenRate;
         }
-
-        if (currentHp < lowHpThreshold && !GetComponent<CreatureState>().hasFled)
-            GetComponent<CreatureState>().isFleeing = true;
-
-        if (GetComponent<CreatureState>().isFull && currentHp < maxHp)
-            currentHp += Time.deltaTime * healthRegenRate;
     }
 
     public void LoseHealth(float value, GameObject damageFrom)
     {
         if (!isInvincible)
         {
-            GetComponent<CreatureState>().lastSourceOfDamage = damageFrom;
-            GetComponent<CreatureState>().hasFled = false;
+            if (isACreature)
+            {
+                GetComponent<CreatureState>().lastSourceOfDamage = damageFrom;
+                GetComponent<CreatureState>().hasFled = false;
+            }
             currentHp -= value;
             StartCoroutine(FlashWhite(creatureGFX, flashWhiteDuration));
         }

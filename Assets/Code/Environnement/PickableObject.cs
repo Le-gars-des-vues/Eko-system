@@ -287,6 +287,8 @@ public class PickableObject : MonoBehaviour
         //Si l'objet n'est pas une ressource ou du gear
         if (gameObject.tag != "Ressource" && gameObject.tag != "Gear")
         {
+            Tutorial.instance.ListenForInputs("hasPickedUpSpear");
+
             //Si le joueur n'a rien dans la main ou que c'est un item qui bypass l'objet en main
             if (player.objectInRightHand == null || (bypassObjectInHand && player.objectInRightHand != null))
             {
@@ -327,6 +329,7 @@ public class PickableObject : MonoBehaviour
             //Sinon, on le delete
             else
             {
+                Tutorial.instance.ListenForInputs("hasPickedUpRessource");
                 Destroy(gameObject);
             }
         }

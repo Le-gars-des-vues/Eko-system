@@ -38,7 +38,18 @@ public class TrainingRoom : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject, 1);
+            if (!ArrowManager.instance.isActive)
+                ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject, 1);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            isInRange = true;
+            if (!ArrowManager.instance.isActive)
+                ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject, 1);
         }
     }
 

@@ -116,6 +116,7 @@ public class HarvestableRessourceNode : MonoBehaviour
             {
                 sprite_empty.material = outlineMaterial;
                 sprite_full.material = outlineMaterial;
+                Tutorial.instance.ListenForInputs("hasHovered");
             }
             else
             {
@@ -129,7 +130,10 @@ public class HarvestableRessourceNode : MonoBehaviour
                 sprite_empty.color = Color.Lerp(sprite_empty.color, Color.red, timer * Time.deltaTime);
                 sprite_full.color = Color.Lerp(sprite_full.color, Color.red, timer * Time.deltaTime);
                 if (!player.isHarvesting)
+                {
                     player.Harvest(true);
+                    Tutorial.instance.ListenForInputs("hasHarvested");
+                }
             }
 
             if (Input.GetMouseButtonUp(0))

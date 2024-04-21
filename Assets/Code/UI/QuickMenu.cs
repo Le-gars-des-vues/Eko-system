@@ -65,7 +65,10 @@ public class QuickMenu : MonoBehaviour
         if (!isAnimating)
         {
             if (Input.GetKeyDown(KeyCode.Z))
+            {
+                Tutorial.instance.ListenForInputs("hasOpenInfo");
                 ShowInfos();
+            }
 
             if (Input.GetKeyDown(KeyCode.X))
                 ShowMessages();
