@@ -25,7 +25,7 @@ public class DialogueSpeaker : MonoBehaviour
     [SerializeField] float speakCooldown = 2;
 
     public AK.Wwise.Event speechSound;
-    uint speechSoundID;
+    public AK.Wwise.Event stopSound;
 
     Coroutine dialogue;
     public int dialogueIndex = 0;
@@ -63,7 +63,7 @@ public class DialogueSpeaker : MonoBehaviour
                             if (currentDialogue[dialogueIndex].conditionIsMet)
                             {
                                 //On parle
-                                StartDialogue(speechSound);
+                                StartDialogue();
                             }
                             else
                             {
@@ -114,12 +114,12 @@ public class DialogueSpeaker : MonoBehaviour
         isReadyToSpeak = true;
     }
 
-    public void StartDialogue(AK.Wwise.Event dialogueSound = null)
+    public void StartDialogue()
     {
         speakingTime = Time.time;
         dialogue = StartCoroutine(Speech(currentDialogue[dialogueIndex].text));
-        if (dialogueSound != null)
-            speechSoundID = dialogueSound.Post(transform.parent.gameObject);
+        if (speechSound != null)
+            speechSound.Post(transform.parent.gameObject);
         player.isInDialogue = DialogueManager.instance.isInDialogue;
         if (player.isInDialogue)
             StartCoroutine(player.MoveCamera("ZoomIn"));
@@ -132,6 +132,8 @@ public class DialogueSpeaker : MonoBehaviour
         if (isSpeaking)
         {
             StopCoroutine(dialogue);
+            if (stopSound != null)
+                stopSound.Post(transform.parent.gameObject);
             speechBubbleText.text = currentDialogue[dialogueIndex].text;
             speechBubbleTextB.text = currentDialogue[dialogueIndex].text;
             speechBubbleText.maxVisibleCharacters = speechBubbleText.text.ToCharArray().Length;
@@ -146,6 +148,8 @@ public class DialogueSpeaker : MonoBehaviour
             {
                 StopCoroutine(dialogue);
                 dialogue = StartCoroutine(Speech(currentDialogue[dialogueIndex].text));
+                if (speechSound != null)
+                    speechSound.Post(transform.parent.gameObject);
                 pressedKey = false;
             }
             else
@@ -163,11 +167,12 @@ public class DialogueSpeaker : MonoBehaviour
 
         StopCoroutine(dialogue);
         StopDialogue();
+        if (stopSound != null)
+            stopSound.Post(transform.parent.gameObject);
 
         currentDialogue = null;
         dialogueIndex = 0;
 
-        AkSoundEngine.StopPlayingID(speechSoundID);
         onDialogueEnd?.Invoke();
         onDialogueEnd = null;
         isSpeaking = false;
@@ -213,6 +218,8 @@ public class DialogueSpeaker : MonoBehaviour
             }
         }
         isSpeaking = false;
+        if (stopSound != null)
+            stopSound.Post(transform.parent.gameObject);
         speakingTime = Time.time;
         yield return null;
     }

@@ -226,6 +226,8 @@ public class PickableObject : MonoBehaviour
             InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
             ItemData itemData = Instantiate(item.itemData);
 
+            AudioManager.instance.PlaySound(AudioManager.instance.pickUpSound, player.gameObject);
+
             //Si c'est n'est pas une ressource ou du gear
             if (gameObject.tag != "Ressource" && gameObject.tag != "Gear")
             {
@@ -329,12 +331,14 @@ public class PickableObject : MonoBehaviour
             //Sinon, on le delete
             else
             {
-                Tutorial.instance.ListenForInputs("hasPickedUpRessource");
                 Destroy(gameObject);
             }
         }
         else
+        {
+            Tutorial.instance.ListenForInputs("hasPickedUpRessource");
             Destroy(gameObject);
+        }
     }
 
     //Flash en blanc en changeant le materiel du joueur

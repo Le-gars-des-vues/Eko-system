@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     [Header("Ambient Noises")]
-    public AK.Wwise.RTPC soundtrackRTPC;
+    //public AK.Wwise.RTPC soundtrackRTPC;
     public AK.Wwise.Event forestSountrack;
     public bool forestIsPlaying;
     uint playingID;
@@ -25,6 +25,9 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event upgradeOuvrir;
 
     public AK.Wwise.Event uiFermer;
+
+    [Header("Exploration Sound")]
+    public AK.Wwise.Event pickUpSound;
 
     private void Awake()
     {

@@ -487,6 +487,7 @@ public class TardidogMovement : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, angle);
             yield return null;
         }
+        GetComponent<CreatureSound>().jumpSound.Post(gameObject);
         rb.AddForce(jumpForce, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(1f);

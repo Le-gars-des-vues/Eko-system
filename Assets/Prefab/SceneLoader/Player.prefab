@@ -88,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266828277365575069}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.09412662, w: 0.9955602}
+  m_LocalRotation: {x: -0, y: -0, z: -0.09412749, w: 0.9955602}
   m_LocalPosition: {x: 0.41, y: 0.007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21771,17 +21771,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42ebf2f007afc1458305d26aac7b375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isListeningForInputs: 0
   tutorialTexts:
   - name: TOM
+    conditionIsMet: 1
+    conditionName: 
     text: I'LL USE THE QUICK MENU TO COMMUNICATE WITH YOU, SHOULD YOU NEED MY INVALUABLE
       HELP
   - name: TOM
+    conditionIsMet: 1
+    conditionName: 
     text: HEY MY SENSORS SHOW THERE'S A RESSOURCE NEAR YOU! USE THE "ALT" KEY TO
       EQUIP YOU MULTI-TOOL
   - name: TOM
+    conditionIsMet: 1
+    conditionName: 
     text: WITH YOUR MULTI-TOOL EQUIPPED, POINT AT A RESSOURCE WITH YOUR MOUSE AND
       HOLD LMB TO HARVEST IT
   - name: TOM
+    conditionIsMet: 1
+    conditionName: 
     text: SOME RESSOURCE WILL ALSO DROP USEFUL ITEMS, WHICH YOU CAN PICK UP WITHOUT
       HARVESTING THE RESSOURCE
   sprite: {fileID: 21300000, guid: 05b071b4349f7684a80fc47b1b74dc4e, type: 3}
@@ -21846,8 +21855,9 @@ MonoBehaviour:
   wallJumpForce: {x: 15, y: 10}
   wallJumpRunLerp: 0.2
   wallJumpTime: 0.5
-  slideSpeed: -5
-  slideAccel: 1
+  slideSpeed: -0.1
+  climbSpeed: 5
+  slideAccel: 0.7
   isVineJumping: 0
   vineLerp: 0.35
   vineLerpTime: 0.6
@@ -21952,7 +21962,7 @@ MonoBehaviour:
   isThrowing: 0
   multiTool: {fileID: 2176743614223148577}
   isUsingMultiTool: 0
-  spawnAtBase: 0
+  spawnAtBase: 1
   minDistanceToHarvest: 2
   timeToHarvest: 5
   isHarvesting: 0
@@ -22582,7 +22592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8747436237696859891}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.25426093, w: 0.9671357}
+  m_LocalRotation: {x: -0, y: -0, z: -0.254261, w: 0.9671357}
   m_LocalPosition: {x: 0.355, y: -0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22994,7 +23004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -485990856666115531, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.049073126
+      value: 0.049073335
       objectReference: {fileID: 0}
     - target: {fileID: -485990856666115531, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -23006,7 +23016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -485990856666115531, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9987952
+      value: 0.9987953
       objectReference: {fileID: 0}
     - target: {fileID: -485990856666115531, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -23090,7 +23100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319998805419544334, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.30183038
+      value: 0.30183065
       objectReference: {fileID: 0}
     - target: {fileID: 2319998805419544334, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -23098,7 +23108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2471920254983572574, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92479384
+      value: 0.9247927
       objectReference: {fileID: 0}
     - target: {fileID: 2471920254983572574, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -23110,7 +23120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2471920254983572574, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.3804688
+      value: 0.3804715
       objectReference: {fileID: 0}
     - target: {fileID: 2608102985780763276, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_SortingLayer
@@ -23206,7 +23216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7905440446968883676, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.102908075
+      value: 0.10291008
       objectReference: {fileID: 0}
     - target: {fileID: 7905440446968883676, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.y
@@ -23214,7 +23224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7905440446968883676, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9946909
+      value: 0.9946907
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23430,7 +23440,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.19775808, y: 0.30343112}
+  m_ConnectedAnchor: {x: 0.19775796, y: 0.30343112}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -23731,7 +23741,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.42391658, y: 0.0000019036237}
+  m_ConnectedAnchor: {x: 0.42391664, y: 0.0000019110744}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -23823,7 +23833,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.37510395, y: 0.00000057625584}
+  m_ConnectedAnchor: {x: 0.375104, y: 0.0000005764887}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -23920,7 +23930,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.30509618, y: -0.0000009350475}
+  m_ConnectedAnchor: {x: 0.30509612, y: 0.00000030174834}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -24012,7 +24022,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.34212932, y: -0.00000019458821}
+  m_ConnectedAnchor: {x: 0.34212905, y: -0.0000000724685}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
