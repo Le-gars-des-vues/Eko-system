@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class Robot : MonoBehaviour
 {
@@ -32,6 +32,7 @@ public class Robot : MonoBehaviour
     bool hasShowedBuilding;
     [SerializeField] GameObject ressourceToGive;
     [SerializeField] GameObject ressourceToSell;
+    Vector2 initialPos;
 
     [Header("Training Room Variables")]
     bool isInTraining;
@@ -42,10 +43,15 @@ public class Robot : MonoBehaviour
     [SerializeField] List<Transform> teleportPoints = new List<Transform>();
     public int teleportIndex = 0;
     int currentIndex;
+    [SerializeField] Light2D holoLight;
+
+    [SerializeField] List<SpriteRenderer> dissolveSprites = new List<SpriteRenderer>();
+    List<SpriteRenderer> sprites = new List<SpriteRenderer>();
 
     // Start is called before the first frame update
     void Start()
     {
+        initialPos = robotPos.position;
         anim = GetComponent<Animator>();
         //rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -54,7 +60,6 @@ public class Robot : MonoBehaviour
         {
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[0].dialogueSequence);
             baseDialogue.onDialogueEnd = GoToTraining;
-            //DialogueManager.onDialogueEnd = GoToRespawn;
         }
     }
 
@@ -62,6 +67,8 @@ public class Robot : MonoBehaviour
     {
         if (!isInTraining)
         {
+            if (holoLight.enabled)
+                holoLight.enabled = false;
             if (isMoving)
             {
                 if (Mathf.Abs(target.position.x - robotPos.position.x) > movementDistanceThreshold)
@@ -89,6 +96,8 @@ public class Robot : MonoBehaviour
         }
         else
         {
+            if (!holoLight.enabled)
+                holoLight.enabled = true;
             if ((!isFacingRight && player.transform.position.x - robotPos.position.x > 0.5f) || (isFacingRight && player.transform.position.x - robotPos.position.x < -0.5f))
                 Turn();
 
@@ -130,34 +139,28 @@ public class Robot : MonoBehaviour
     #region Base Tutorial
     void RobotTutorial()
     {
-        if (!hasShowedCrafting)
+        if (!hasShowedRespawn)
         {
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[3].dialogueSequence);
-            baseDialogue.onDialogueEnd = GoToSellingScreen;
-            baseDialogue.onDialogueEnd += GiveItemToCraft;
-            hasShowedCrafting = true;
-        }
-        else if (!Tutorial.instance.firstTimeOutside && !Tutorial.instance.readyToGoOut)
-        {
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[4].dialogueSequence);
-            baseDialogue.onDialogueEnd += ReadyToGoOut;
-        }
-        else if (!hasShowedRespawn)
-        {
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[1].dialogueSequence);
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[2].dialogueSequence);
             baseDialogue.onDialogueEnd = GoToSellingScreen;
             hasShowedRespawn = true;
         }
         else if (!hasShowedMarket)
         {
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[2].dialogueSequence);
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[3].dialogueSequence);
             baseDialogue.onDialogueEnd = GoToCrafting;
             hasShowedMarket = true;
         }
-        else if (!hasShowedBuilding)
+        else if (!hasShowedCrafting)
         {
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[4].dialogueSequence);
-            hasShowedBuilding = true;
+            baseDialogue.onDialogueEnd = GoToSellingScreen;
+            hasShowedCrafting = true;
+        }
+        else if (!Tutorial.instance.firstTimeOutside && !Tutorial.instance.readyToGoOut)
+        {
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[5].dialogueSequence);
+            baseDialogue.onDialogueEnd += ReadyToGoOut;
         }
     }
 
@@ -198,10 +201,25 @@ public class Robot : MonoBehaviour
         target.position = new Vector2(craftingBench.transform.position.x + offset + 2f, robotPos.position.y);
     }
 
-    void GiveItemToCraft()
+    void RefuseTutorial()
     {
-        Vector2 offset = isFacingRight ? new Vector2(2, 0) : new Vector2(-2, 0);
-        Instantiate(ressourceToGive, (Vector2)transform.position + offset, transform.rotation);
+        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[1].dialogueSequence);
+        baseDialogue.onDialogueEnd += TourOfTheBase;
+    }
+    void RefuseTour()
+    {
+        hasShowedRespawn = true;
+        hasShowedMarket = true;
+        hasShowedCrafting = true;
+        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[7].dialogueSequence, false);
+    }
+
+
+    void TourOfTheBase()
+    {
+        PromptManager.instance.CreateNewPrompt(new Prompt("Would you like a tour of the base?", false, "Yes", "No"));
+        PromptManager.onButtonClick = GoToRespawn;
+        PromptManager.onButtonNull = RefuseTour;
     }
 
     #endregion
@@ -213,7 +231,7 @@ public class Robot : MonoBehaviour
         if (teleportIndex != currentIndex)
         {
             trainingRoomDialogue.EndDialogue();
-            Teleport(teleportPoints[teleportIndex].position, holoMaterial, holoMaterial, LayerMask.GetMask("Default"));
+            Teleport(teleportPoints[teleportIndex].position, holoMaterial, holoMaterial, LayerMask.NameToLayer("Default"));
 
             switch (currentIndex)
             {
@@ -252,6 +270,7 @@ public class Robot : MonoBehaviour
                     TeleportCrafting();
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[9].dialogueSequence);
                     trainingRoomDialogue.onDialogueEnd += GiveItemToCraft;
+                    trainingRoomDialogue.onDialogueEnd += TalkAboutRecipes;
                     break;
                 case 8:
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[10].dialogueSequence, false);
@@ -261,29 +280,40 @@ public class Robot : MonoBehaviour
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[11].dialogueSequence, false);
                     break;
                 case 10:
+                    sprites.Clear();
+                    sprites.Add(dissolveSprites[0]);
+                    sprites.Add(dissolveSprites[1]);
+                    StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[12].dialogueSequence, false);
                     trainingRoomDialogue.onDialogueEnd += TalkAboutHotbar;
                     break;
                 case 11:
+                    sprites.Clear();
+                    sprites.Add(dissolveSprites[2]);
+                    StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[14].dialogueSequence, false);
                     break;
                 case 12:
+                    sprites.Clear();
+                    sprites.Add(dissolveSprites[3]);
+                    StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[15].dialogueSequence, false);
                     break;
                 case 13:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[15].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[17].dialogueSequence);
                     break;
             }
         }
     }
 
+    #region Miscellaneous
     void TalkAboutInventory()
     {
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[5].dialogueSequence, false);
     }
     void TalkAboutQuickMenu()
     {
-        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[7].dialogueSequence, false);
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[7].dialogueSequence);
     }
 
     void TalkAboutHotbar()
@@ -291,10 +321,21 @@ public class Robot : MonoBehaviour
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[13].dialogueSequence);
     }
 
+    void TalkAboutRecipes()
+    {
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[16].dialogueSequence);
+    }
+
     void GiveItemToSell()
     {
         Vector2 offset = isFacingRight ? new Vector2(2, 0) : new Vector2(-2, 0);
         Instantiate(ressourceToSell, (Vector2)transform.position + offset, transform.rotation);
+    }
+
+    void GiveItemToCraft()
+    {
+        Vector2 offset = isFacingRight ? new Vector2(2, 0) : new Vector2(-2, 0);
+        Instantiate(ressourceToGive, (Vector2)transform.position + offset, transform.rotation);
     }
 
     void TeleportSellingScreen()
@@ -317,11 +358,20 @@ public class Robot : MonoBehaviour
         craftingBench.GetComponent<CraftingBench>().TrainingRoom(false);
     }
 
+    public void RevealLastRoom()
+    {
+        sprites.Clear();
+        sprites.Add(dissolveSprites[4]);
+        StartCoroutine(Base.instance.Dissolve(sprites, 2f, true));
+    }
+
+    #endregion
+
     void GoToTraining()
     {
-        PromptManager.instance.CreateNewPrompt(new Prompt("Play the movement tutorial?", false, "Yes", "No"));
+        PromptManager.instance.CreateNewPrompt(new Prompt("Play the tutorial?", false, "Yes", "No"));
         PromptManager.onButtonClick = TeleportToTrainingRoom;
-        PromptManager.onButtonNull = GoToCrafting;
+        PromptManager.onButtonNull = RefuseTutorial;
     }
 
     void TeleportToTrainingRoom()
@@ -329,9 +379,19 @@ public class Robot : MonoBehaviour
         trainingRoomDialogue.enabled = true;
         baseDialogue.enabled = false;
         StartCoroutine(player.GetComponent<PlayerPermanent>().Dissolve(2f, true, GameObject.Find("Base").GetComponent<Base>().trainingRoom.position));
-        Teleport(teleportPoints[teleportIndex].position, dissolveMaterial, holoMaterial, LayerMask.GetMask("Default"));
+        Teleport(teleportPoints[teleportIndex].position, dissolveMaterial, holoMaterial, LayerMask.NameToLayer("Default"));
         isInTraining = true;
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[0].dialogueSequence, false);
+    }
+    
+    public void TeleportToBase()
+    {
+        trainingRoomDialogue.enabled = false;
+        baseDialogue.enabled = true;
+        Teleport(initialPos, holoMaterial, ogMaterial, LayerMask.NameToLayer("Pixelate"));
+        isInTraining = false;
+        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[6].dialogueSequence, true);
+        baseDialogue.onDialogueEnd += GoToRespawn;
     }
 
     void Teleport(Vector2 target, Material startMaterial, Material endMaterial, LayerMask endLayer)

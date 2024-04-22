@@ -278,43 +278,14 @@ public class InventoryController : MonoBehaviour
                 return; 
             }
             upgradeItemGrid.PlaceItem(inventoryItem, posOnGrid.Value.x, posOnGrid.Value.y);
-            /*
-            Recipes.listOfRecipes.Remove(recipeChoice);
-            if (recipeChoice != Recipes.listOfRecipes.Count)
-            {
-                Recipes.listOfRecipes.Add(recipeChoice, Recipes.listOfRecipes[recipeChoice + 1]);
-                for (int i = recipeChoice + 1; i < Recipes.listOfRecipes.Count; i++)
-                {
-                    Recipes.listOfRecipes.Remove(i);
-                    if (i != Recipes.listOfRecipes.Count)
-                        Recipes.listOfRecipes.Add(i, Recipes.listOfRecipes[i + 1]);
-                }
-            }
-            */
+
             dropDown.GetComponent<CraftingManager>().knownRecipes.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
-            //dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
-            //dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
         }
         else if (recipeChoice == 0)
         {
-            DialogueManager.conditions["craftedFirstItem"] = true;
-            Debug.Log(DialogueManager.conditions["craftedFirstItem"]);
-            /*
-            Recipes.listOfRecipes.Remove(recipeChoice);
-            if (recipeChoice != Recipes.listOfRecipes.Count)
-            {
-                Recipes.listOfRecipes.Add(recipeChoice, Recipes.listOfRecipes[recipeChoice + 1]);
-                for (int i = recipeChoice + 1; i < Recipes.listOfRecipes.Count; i++)
-                {
-                    Recipes.listOfRecipes.Remove(i);
-                    if (i != Recipes.listOfRecipes.Count)
-                        Recipes.listOfRecipes.Add(i, Recipes.listOfRecipes[i + 1]);
-                }
-            }
-            */
+            Tutorial.instance.ListenForInputs("hasCraftedFirstItem");
             dropDown.GetComponent<CraftingManager>().knownRecipes.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
-            //dropDown.GetComponent<TMP_Dropdown>().options.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
-            //dropDown.GetComponent<TMP_Dropdown>().RefreshShownValue();
+
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasMultitool = true;
             notWorking.SetActive(false);
         }

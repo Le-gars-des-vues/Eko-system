@@ -136,6 +136,33 @@ public class Base : MonoBehaviour
         }
     }
 
+    public IEnumerator Dissolve(List<SpriteRenderer> sprites, float dissolveTime, bool isTrue)
+    {
+        float elapsedTime = 0;
+        if (isTrue)
+        {
+            while (elapsedTime < dissolveTime)
+            {
+                elapsedTime += Time.deltaTime;
+                float dissolveAmount = Mathf.Lerp(0.01f, 1f, elapsedTime / dissolveTime);
+                foreach (SpriteRenderer sprite in sprites)
+                    sprite.material.SetFloat("_Transparency", dissolveAmount);
+                yield return null;
+            }
+        }
+        else
+        {
+            while (elapsedTime < dissolveTime)
+            {
+                elapsedTime += Time.deltaTime;
+                float dissolveAmount = Mathf.Lerp(1f, 0.01f, elapsedTime / dissolveTime);
+                foreach (SpriteRenderer sprite in sprites)
+                    sprite.material.SetFloat("_Transparency", dissolveAmount);
+                yield return null;
+            }
+        }
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

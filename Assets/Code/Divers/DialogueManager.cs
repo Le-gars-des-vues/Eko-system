@@ -24,12 +24,15 @@ public class DialogueManager : MonoBehaviour
         {"hasOpenInventory", false },
         {"hasSoldItem", false },
         {"hasOpenInfo", false },
+        {"hasCraftedFirstItem", false },
+        {"hasWallJumped", false },
         {"hasEquippedMutltitool", false },
         {"hasHovered", false },
         {"hasHarvested", false },
+        {"hasDestroyedPlant", false },
         {"hasPickedUpSpear", false },
         {"hasHitDummy", false },
-        {"craftedFirstItem", false }
+        {"hasHitTarget", false },
     };
 
     public List<string> currentConditions = new List<string>();

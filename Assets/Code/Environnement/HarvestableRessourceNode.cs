@@ -52,11 +52,6 @@ public class HarvestableRessourceNode : MonoBehaviour
 
         if (Vector2.Distance(player.gameObject.transform.position, transform.position) < player.minDistanceToHarvest)
         {
-            if (!Tutorial.instance.hasSeenFirstRessource)
-            {
-                Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[1].text);
-                Tutorial.instance.hasSeenFirstRessource = true;
-            }
             isInRange = true;
         }
         else
@@ -65,6 +60,7 @@ public class HarvestableRessourceNode : MonoBehaviour
 
     void EmptyRessources()
     {
+        Tutorial.instance.ListenForInputs("hasDestroyedPlant");
         isHarvested = true;
         GetComponent<Collider2D>().enabled = false;
         int i = 0;

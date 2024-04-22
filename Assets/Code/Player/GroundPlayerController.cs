@@ -502,6 +502,7 @@ public class GroundPlayerController : MonoBehaviour
     {
         if (!player.staminaDepleted)
         {
+            Tutorial.instance.ListenForInputs("hasWallJumped");
             player.ChangeStamina(-jumpStaminaCost);
             //Ensures we can't call Wall Jump multiple times from one press
             pressedJumpTime = 0;
@@ -566,7 +567,7 @@ public class GroundPlayerController : MonoBehaviour
                 if (rb.velocity.y > 0)
                     rb.AddForce(-rb.velocity.y * Vector2.up, ForceMode2D.Impulse);
 
-                player.ChangeStamina(-(climbStaminaCost/2));
+                player.ChangeStamina(-(climbStaminaCost/3));
 
                 //We remove the remaining upwards Impulse to prevent upwards sliding
                 rb.AddForce(movement * Vector2.up);

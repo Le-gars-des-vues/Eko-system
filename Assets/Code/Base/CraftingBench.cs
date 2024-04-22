@@ -88,7 +88,7 @@ public class CraftingBench : MonoBehaviour
             for (int i = 0; i < sprites.Count; i++)
                 sprites[i].material = startMaterial;
 
-            while (elapsedTime < dissolveTime / 10)
+            while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;
                 float dissolveAmount = Mathf.Lerp(0.01f, 1f, elapsedTime / dissolveTime);

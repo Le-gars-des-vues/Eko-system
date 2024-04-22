@@ -14,8 +14,6 @@ public class Tutorial : MonoBehaviour
 
     public bool readyToGoOut = false;
     public bool firstTimeOutside = false;
-    public bool hasSeenFirstRessource;
-    public bool hasHarvestedFirstRessource;
 
     private void Awake()
     {

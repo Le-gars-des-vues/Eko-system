@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrainingRoom : MonoBehaviour
 {
     [SerializeField] Base theBase;
+    [SerializeField] Robot robot;
 
     PlayerPermanent player;
     bool isInRange;
@@ -31,6 +32,7 @@ public class TrainingRoom : MonoBehaviour
     void TeleportToBase()
     {
         StartCoroutine(player.GetComponent<PlayerPermanent>().Dissolve(2f, true, GameObject.Find("Base").GetComponent<Base>().baseSpawnPoint.position));
+        robot.TeleportToBase();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,7 +41,7 @@ public class TrainingRoom : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive)
-                ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "BACK TO BASE", new Vector2(0, -2), gameObject, 1);
         }
     }
 
@@ -49,7 +51,7 @@ public class TrainingRoom : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive)
-                ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "BACK TO BASE", new Vector2(0, -2), gameObject, 1);
         }
     }
 
