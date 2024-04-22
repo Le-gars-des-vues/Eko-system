@@ -37,18 +37,26 @@
 				</AuxBus>
 			</AuxBusses>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F7943EAB-96F4-C809-5409-9A1CAF213DDF}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{B2844742-8FE3-A269-DD73-B8BBE9B6870E}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<Media>
+				<File Id="99990636" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>AK_Factory_IR\Churches\AK St-Katharinen.wav</ShortName>
+					<Path>Media/99990636.wem</Path>
+					<CachePath>Plugins/Wwise Convolution Reverb/AK_Factory_IR/Churches/AK St-Katharinen_84404D9D.wem</CachePath>
+				</File>
+			</Media>
 			<Plugins>
-				<Custom>
-					<Plugin Id="1009805735" Name="Room_Large (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</Custom>
 				<ShareSets>
-					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="29232603" Name="New_Parametric_EQ_01" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="1259256166" Name="New_RoomVerb" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
-					<Plugin Id="2995775460" Name="Room_Small" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3077109135" Name="Dark_Cathedral_Stereo" LibName="Wwise Convolution Reverb" LibId="8323075">
+						<MediaRefs>
+							<MediaRef Id="99990636"/>
+						</MediaRefs>
+					</Plugin>
 				</ShareSets>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
@@ -56,11 +64,17 @@
 				</AudioDevices>
 			</Plugins>
 			<Busses>
+				<Bus Id="43816218" Name="AMB_Grotte_L2">
+					<AuxBusRefs>
+						<AuxBusRef Id="1783753294" Name="AMB_Grotte_RVB"/>
+					</AuxBusRefs>
+				</Bus>
 				<Bus Id="197418210" Name="VO_Joueur_Mort"/>
 				<Bus Id="444705606" Name="LIF"/>
 				<Bus Id="529726550" Name="ENV"/>
 				<Bus Id="618531677" Name="VO_Joueur_Attaque"/>
 				<Bus Id="805203703" Name="Master Secondary Bus"/>
+				<Bus Id="971073617" Name="AMB_Grotte"/>
 				<Bus Id="1064786042" Name="PLY"/>
 				<Bus Id="1085865485" Name="VO_Joueur"/>
 				<Bus Id="1117531639" Name="AMB"/>
@@ -85,150 +99,11 @@
 						<AuxBusRef Id="348963605" Name="Reverb"/>
 					</AuxBusRefs>
 				</AuxBus>
-				<AuxBus Id="2401020452" Name="Reverb_Room_08">
+				<AuxBus Id="1783753294" Name="AMB_Grotte_RVB">
 					<PluginRefs>
 						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2401020453" Name="Reverb_Room_09">
-					<PluginRefs>
-						<Custom>
-							<PluginRef Id="1009805735"/>
-						</Custom>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2401020456" Name="Reverb_Room_04">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="602546716"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2401020457" Name="Reverb_Room_05">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2401020458" Name="Reverb_Room_06">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="602546716"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2401020459" Name="Reverb_Room_07">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2401020461" Name="Reverb_Room_01">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2401020462" Name="Reverb_Room_02">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2401020463" Name="Reverb_Room_03">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2417798042" Name="Reverb_Room_15">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="602546716"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2417798043" Name="Reverb_Room_14">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="2995775460"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2417798044" Name="Reverb_Room_13">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2417798045" Name="Reverb_Room_12">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2417798046" Name="Reverb_Room_11">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-				<AuxBus Id="2417798047" Name="Reverb_Room_10">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="602546716"/>
+							<PluginRef Id="29232603"/>
+							<PluginRef Id="3077109135"/>
 						</ShareSets>
 					</PluginRefs>
 					<AuxBusRefs>
@@ -248,7 +123,9 @@
 				<GameParameter Id="414646191" Name="VoiceVolume"/>
 				<GameParameter Id="988953028" Name="SFXVolume"/>
 				<GameParameter Id="2185427101" Name="SC_PlanteCarnivore"/>
+				<GameParameter Id="2342375655" Name="AMB_Distance"/>
 				<GameParameter Id="2346531308" Name="MusicVolume"/>
+				<GameParameter Id="2722922482" Name="Deepness"/>
 				<GameParameter Id="2769016988" Name="PLY_Sante"/>
 			</GameParameters>
 			<StateGroups>
@@ -266,17 +143,15 @@
 						<State Id="1651971902" Name="On"/>
 					</States>
 				</StateGroup>
+				<StateGroup Id="4176303900" Name="AMB_BaseAForetEtGrotte">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="1929160180" Name="AMB_ForetEtGrotte"/>
+						<State Id="2291972081" Name="AMB_Base"/>
+					</States>
+				</StateGroup>
 			</StateGroups>
 			<SwitchGroups>
-				<SwitchGroup Id="439968226" Name="AMB_Switch">
-					<Switches>
-						<Switch Id="137933303" Name="AMB_Canopee"/>
-						<Switch Id="971073617" Name="AMB_Grotte"/>
-						<Switch Id="2291972081" Name="AMB_Base"/>
-						<Switch Id="2983803460" Name="AMB_Foret"/>
-						<Switch Id="4285823446" Name="AMB_SousMarine"/>
-					</Switches>
-				</SwitchGroup>
 				<SwitchGroup Id="1145780075" Name="Pas_Vitesse">
 					<Switches>
 						<Switch Id="1500988072" Name="Pas_Marche"/>
@@ -292,313 +167,32 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2401020452" Type="Bus" Language="SFX" Hash="{3D4EDE98-2777-5FAF-9B9A-CD789B8FCE6A}">
-			<ShortName>Reverb_Room_08</ShortName>
-			<Path>Bus/Reverb_Room_08.bnk</Path>
+		<SoundBank Id="1783753294" Type="Bus" Language="SFX" Hash="{4E204C17-4494-8BDA-DF08-C6C02680CA16}">
+			<ShortName>AMB_Grotte_RVB</ShortName>
+			<Path>Bus/AMB_Grotte_RVB.bnk</Path>
+			<Media>
+				<File Id="99990636" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>AK_Factory_IR\Churches\AK St-Katharinen.wav</ShortName>
+					<Path>Media/99990636.wem</Path>
+					<CachePath>Plugins/Wwise Convolution Reverb/AK_Factory_IR/Churches/AK St-Katharinen_84404D9D.wem</CachePath>
+				</File>
+			</Media>
 			<Plugins>
 				<ShareSets>
-					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="29232603" Name="New_Parametric_EQ_01" LibName="Wwise Parametric EQ" LibId="6881283"/>
+					<Plugin Id="3077109135" Name="Dark_Cathedral_Stereo" LibName="Wwise Convolution Reverb" LibId="8323075">
+						<MediaRefs>
+							<MediaRef Id="99990636"/>
+						</MediaRefs>
+					</Plugin>
 				</ShareSets>
 			</Plugins>
 			<AuxBusses>
-				<AuxBus Id="2401020452" Name="Reverb_Room_08">
+				<AuxBus Id="1783753294" Name="AMB_Grotte_RVB">
 					<PluginRefs>
 						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2401020453" Type="Bus" Language="SFX" Hash="{C1B8AFFD-6B55-F020-66EB-C04EB07F39CB}">
-			<ShortName>Reverb_Room_09</ShortName>
-			<Path>Bus/Reverb_Room_09.bnk</Path>
-			<Plugins>
-				<Custom>
-					<Plugin Id="1009805735" Name="Room_Large (Custom)" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</Custom>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2401020453" Name="Reverb_Room_09">
-					<PluginRefs>
-						<Custom>
-							<PluginRef Id="1009805735"/>
-						</Custom>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2401020456" Type="Bus" Language="SFX" Hash="{E19FD826-9B77-1B6D-EEBF-91EE7C5FE92D}">
-			<ShortName>Reverb_Room_04</ShortName>
-			<Path>Bus/Reverb_Room_04.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2401020456" Name="Reverb_Room_04">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="602546716"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2401020457" Type="Bus" Language="SFX" Hash="{0C06A231-CC76-05E4-8222-3BFDC92B2798}">
-			<ShortName>Reverb_Room_05</ShortName>
-			<Path>Bus/Reverb_Room_05.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2401020457" Name="Reverb_Room_05">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2401020458" Type="Bus" Language="SFX" Hash="{2CD54E42-CD85-F3F8-1A04-FB56BBB9876A}">
-			<ShortName>Reverb_Room_06</ShortName>
-			<Path>Bus/Reverb_Room_06.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2401020458" Name="Reverb_Room_06">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="602546716"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2401020459" Type="Bus" Language="SFX" Hash="{7966A91C-CD77-3BBA-22A7-172693A0FC66}">
-			<ShortName>Reverb_Room_07</ShortName>
-			<Path>Bus/Reverb_Room_07.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2401020459" Name="Reverb_Room_07">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2401020461" Type="Bus" Language="SFX" Hash="{271D0629-BF6C-FB58-033E-F0D84F5816EF}">
-			<ShortName>Reverb_Room_01</ShortName>
-			<Path>Bus/Reverb_Room_01.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2401020461" Name="Reverb_Room_01">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2401020462" Type="Bus" Language="SFX" Hash="{0B0784C7-120B-A334-C1A5-B3E051297029}">
-			<ShortName>Reverb_Room_02</ShortName>
-			<Path>Bus/Reverb_Room_02.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2401020462" Name="Reverb_Room_02">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2401020463" Type="Bus" Language="SFX" Hash="{BC0D0A08-52DC-2109-6A7E-5DA23BA24798}">
-			<ShortName>Reverb_Room_03</ShortName>
-			<Path>Bus/Reverb_Room_03.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2401020463" Name="Reverb_Room_03">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2417798042" Type="Bus" Language="SFX" Hash="{B328359B-39F7-DCE7-50C3-E0D7D3B89799}">
-			<ShortName>Reverb_Room_15</ShortName>
-			<Path>Bus/Reverb_Room_15.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2417798042" Name="Reverb_Room_15">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="602546716"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2417798043" Type="Bus" Language="SFX" Hash="{969B9421-3341-CC95-AA68-BB846F0C46A4}">
-			<ShortName>Reverb_Room_14</ShortName>
-			<Path>Bus/Reverb_Room_14.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="2995775460" Name="Room_Small" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2417798043" Name="Reverb_Room_14">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="2995775460"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2417798044" Type="Bus" Language="SFX" Hash="{E0C7A5A7-0F1E-A703-C174-2D880791938C}">
-			<ShortName>Reverb_Room_13</ShortName>
-			<Path>Bus/Reverb_Room_13.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2417798044" Name="Reverb_Room_13">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2417798045" Type="Bus" Language="SFX" Hash="{95337FA4-2314-9CDF-02D9-607285B70601}">
-			<ShortName>Reverb_Room_12</ShortName>
-			<Path>Bus/Reverb_Room_12.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2417798045" Name="Reverb_Room_12">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2417798046" Type="Bus" Language="SFX" Hash="{6401C8A8-132D-5EDB-49D7-52DBAB3084DB}">
-			<ShortName>Reverb_Room_11</ShortName>
-			<Path>Bus/Reverb_Room_11.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="1990128658" Name="Room_Medium" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2417798046" Name="Reverb_Room_11">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="1990128658"/>
-						</ShareSets>
-					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="348963605" Name="Reverb"/>
-					</AuxBusRefs>
-				</AuxBus>
-			</AuxBusses>
-		</SoundBank>
-		<SoundBank Id="2417798047" Type="Bus" Language="SFX" Hash="{E82C220D-79FE-5C6F-E684-C316A0413166}">
-			<ShortName>Reverb_Room_10</ShortName>
-			<Path>Bus/Reverb_Room_10.bnk</Path>
-			<Plugins>
-				<ShareSets>
-					<Plugin Id="602546716" Name="Room_Large" LibName="Wwise RoomVerb" LibId="7733251"/>
-				</ShareSets>
-			</Plugins>
-			<AuxBusses>
-				<AuxBus Id="2417798047" Name="Reverb_Room_10">
-					<PluginRefs>
-						<ShareSets>
-							<PluginRef Id="602546716"/>
+							<PluginRef Id="29232603"/>
+							<PluginRef Id="3077109135"/>
 						</ShareSets>
 					</PluginRefs>
 					<AuxBusRefs>
@@ -634,7 +228,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{8EB010D1-009A-D4ED-86FC-64E5F2CB871A}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{3E1A6E32-2451-190D-750C-6AAE5B212D1D}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -650,9 +244,21 @@
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Wartog_37593270.wem</CachePath>
 				</File>
+				<File Id="6773772" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Mid\MUS_IntoTheForest_Mid C4 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Mid/MUS_IntoTheForest_Mid C4 REC_10C4C929.wem</CachePath>
+				</File>
 				<File Id="6933992" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_2L2.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_2L2_E80D861F.wem</CachePath>
+				</File>
+				<File Id="8430119" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Bubble_1.wav</ShortName>
+					<CachePath>SFX/ENV_Bubble_1_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="11024379" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_16.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_16_10C4C929.wem</CachePath>
 				</File>
 				<File Id="11259207" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
@@ -662,17 +268,29 @@
 					<ShortName>Attaque init Grenade.wav</ShortName>
 					<CachePath>SFX/Attaque init Grenade_10C4C929.wem</CachePath>
 				</File>
+				<File Id="15568602" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 3.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 3_F94D630E.wem</CachePath>
+				</File>
 				<File Id="17970472" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-047.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-047_10C4C929.wem</CachePath>
 				</File>
-				<File Id="20050508" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_05.wav</ShortName>
-					<CachePath>SFX/FS_Roche_05_10C4C929.wem</CachePath>
+				<File Id="19714962" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_GeneralUI_Ouvrir_v1.wav</ShortName>
+					<CachePath>SFX/UI_GeneralUI_Ouvrir_v1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="22873282" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_2.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_2_10C4C929.wem</CachePath>
 				</File>
 				<File Id="26624252" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_3L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_3L1_FBC464DE.wem</CachePath>
+				</File>
+				<File Id="27774248" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_10.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_10_10C4C929.wem</CachePath>
 				</File>
 				<File Id="28097534" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-001.wav</ShortName>
@@ -681,6 +299,10 @@
 				<File Id="30162679" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlanteCarnivoreDegat_PH.wav</ShortName>
 					<CachePath>SFX/PlanteCarnivoreDegat_PH_10C4C929.wem</CachePath>
+				</File>
+				<File Id="33012233" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_27F50C57.wem</CachePath>
 				</File>
 				<File Id="33020486" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
@@ -710,21 +332,45 @@
 					<ShortName>LIF_Moustique_Degat_5L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_5L1_74CD3C28.wem</CachePath>
 				</File>
+				<File Id="45770380" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_08.wav</ShortName>
+					<CachePath>SFX/FS_Papier_08_10C4C929.wem</CachePath>
+				</File>
 				<File Id="46823762" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_B27672E8.wem</CachePath>
+				</File>
+				<File Id="49884430" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_LowMid\MUS_IntoTheForest_LowMid G3.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_LowMid/MUS_IntoTheForest_LowMid G3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="52713633" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 6.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 6_D8768926.wem</CachePath>
+				</File>
+				<File Id="53068597" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_07.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_07_10C4C929.wem</CachePath>
 				</File>
 				<File Id="55861736" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Vente_Ouvrir_v2.wav</ShortName>
 					<CachePath>SFX/UI_Vente_Ouvrir_v2_10C4C929.wem</CachePath>
 				</File>
+				<File Id="56321458" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_A7E399BA.wem</CachePath>
+				</File>
 				<File Id="58058071" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_7EA11B4F.wem</CachePath>
 				</File>
-				<File Id="62416048" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireAmeliorationEndurance_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireAmeliorationEndurance_PH_10C4C929.wem</CachePath>
+				<File Id="62340369" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Ameliorations_Combat.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Ameliorations_Combat_10C4C929.wem</CachePath>
+				</File>
+				<File Id="63994307" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_02.wav</ShortName>
+					<CachePath>SFX/FS_Papier_02_10C4C929.wem</CachePath>
 				</File>
 				<File Id="67148845" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Grimpe.wav</ShortName>
@@ -738,17 +384,29 @@
 					<ShortName>UI_TabFermeture_v1.wav</ShortName>
 					<CachePath>SFX/UI_TabFermeture_v1_10C4C929.wem</CachePath>
 				</File>
-				<File Id="71995516" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_04.wav</ShortName>
-					<CachePath>SFX/FS_Roche_04_10C4C929.wem</CachePath>
-				</File>
-				<File Id="77288420" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Saute_PH.wav</ShortName>
-					<CachePath>SFX/Saute_PH_10C4C929.wem</CachePath>
+				<File Id="70823165" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_23.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_23_10C4C929.wem</CachePath>
 				</File>
 				<File Id="78276103" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_4L2.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_4L2_1B3EEFD1.wem</CachePath>
+				</File>
+				<File Id="82146739" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Mid\MUS_IntoTheForest_Mid A#3 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Mid/MUS_IntoTheForest_Mid A#3 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="83597679" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_BEBAD78A.wem</CachePath>
+				</File>
+				<File Id="85066395" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_E2F13938.wem</CachePath>
+				</File>
+				<File Id="90607429" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_LowMid\MUS_IntoTheForest_LowMid D3.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_LowMid/MUS_IntoTheForest_LowMid D3_10C4C929.wem</CachePath>
 				</File>
 				<File Id="93894929" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Atelier_Fermer_v2.wav</ShortName>
@@ -758,25 +416,33 @@
 					<ShortName>UI_HotbarDeplacement_v1.wav</ShortName>
 					<CachePath>SFX/UI_HotbarDeplacement_v1_10C4C929.wem</CachePath>
 				</File>
-				<File Id="95085767" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_10.wav</ShortName>
-					<CachePath>SFX/FS_Roche_10_10C4C929.wem</CachePath>
-				</File>
 				<File Id="95533244" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_2_FD89C673.wem</CachePath>
 				</File>
-				<File Id="103020854" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurEffort_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurEffort_PH_10C4C929.wem</CachePath>
+				<File Id="106299074" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_7.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_7_10C4C929.wem</CachePath>
 				</File>
 				<File Id="106501362" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Amelioration_Ouvrir_v3.wav</ShortName>
 					<CachePath>SFX/UI_Amelioration_Ouvrir_v3_10C4C929.wem</CachePath>
 				</File>
+				<File Id="107987347" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_HiMid\MUS_IntoTheForest_HiMid 1 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_HiMid/MUS_IntoTheForest_HiMid 1 REC_10C4C929.wem</CachePath>
+				</File>
 				<File Id="112692764" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_1.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_1_5CD812D5.wem</CachePath>
+				</File>
+				<File Id="115530221" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_17.wav</ShortName>
+					<CachePath>SFX/FS_Papier_17_10C4C929.wem</CachePath>
+				</File>
+				<File Id="117036888" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Tempete_Thunder Rec-003.wav</ShortName>
+					<CachePath>SFX/ENV_Tempete_Thunder Rec-003_256953E8.wem</CachePath>
 				</File>
 				<File Id="120744920" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MenuMortRetourPrincipal_PH.wav</ShortName>
@@ -785,6 +451,10 @@
 				<File Id="120814222" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
 					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_F737605E.wem</CachePath>
+				</File>
+				<File Id="122014534" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_43483BA8.wem</CachePath>
 				</File>
 				<File Id="122946283" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
@@ -806,10 +476,6 @@
 					<ShortName>VO_Narrateur_Neutre-038.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-038_10C4C929.wem</CachePath>
 				</File>
-				<File Id="137021063" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolMagnetite_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolMagnetite_PH_10C4C929.wem</CachePath>
-				</File>
 				<File Id="138367406" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Saut.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Saut_884FB2F9.wem</CachePath>
@@ -818,25 +484,33 @@
 					<ShortName>PLY_Nage_3.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_3_97DCC9E4.wem</CachePath>
 				</File>
-				<File Id="141785624" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_01.wav</ShortName>
-					<CachePath>SFX/FS_Roche_01_10C4C929.wem</CachePath>
-				</File>
-				<File Id="145022247" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>PiegePiques_PH.wav</ShortName>
-					<CachePath>SFX/PiegePiques_PH_10C4C929.wem</CachePath>
+				<File Id="148406443" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_09.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_09_10C4C929.wem</CachePath>
 				</File>
 				<File Id="150526086" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_3.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_3_D5BCCD93.wem</CachePath>
 				</File>
-				<File Id="153567185" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_07.wav</ShortName>
-					<CachePath>SFX/FS_Roche_07_10C4C929.wem</CachePath>
+				<File Id="151707136" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Bass\MUS_IntoTheForest_Bass F1 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Bass/MUS_IntoTheForest_Bass F1 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="157102506" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_09.wav</ShortName>
+					<CachePath>SFX/FS_Papier_09_10C4C929.wem</CachePath>
+				</File>
+				<File Id="163462147" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_15.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_15_10C4C929.wem</CachePath>
 				</File>
 				<File Id="165085056" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_1.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_1_FC320F4B.wem</CachePath>
+				</File>
+				<File Id="165889865" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_01.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_01_10C4C929.wem</CachePath>
 				</File>
 				<File Id="170356181" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_BarreDeVie_Gagner_v2.wav</ShortName>
@@ -846,13 +520,13 @@
 					<ShortName>VO_Narrateur_Neutre-037.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-037_10C4C929.wem</CachePath>
 				</File>
+				<File Id="174266175" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Tempete_Low Wind Stereo Rec.wav</ShortName>
+					<CachePath>SFX/ENV_Tempete_Low Wind Stereo Rec_0EC1C7ED.wem</CachePath>
+				</File>
 				<File Id="176342500" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166547-Bullet-Hit-Body-Flesh_07.wav</ShortName>
 					<CachePath>SFX/166547-Bullet-Hit-Body-Flesh_07_10C4C929.wem</CachePath>
-				</File>
-				<File Id="178581982" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_11.wav</ShortName>
-					<CachePath>SFX/FS_Roche_11_10C4C929.wem</CachePath>
 				</File>
 				<File Id="180165786" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_JoueurVise_v3.wav</ShortName>
@@ -862,17 +536,33 @@
 					<ShortName>VO_Narrateur_Neutre-004.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-004_10C4C929.wem</CachePath>
 				</File>
+				<File Id="183610218" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_11.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_11_10C4C929.wem</CachePath>
+				</File>
+				<File Id="184769739" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Respiration.wav</ShortName>
+					<CachePath>SFX/UI_Respiration_10C4C929.wem</CachePath>
+				</File>
 				<File Id="186410922" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Passif_673D248E.wem</CachePath>
 				</File>
+				<File Id="186900188" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_14.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_14_10C4C929.wem</CachePath>
+				</File>
+				<File Id="190742280" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 6.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 6_C2006C25.wem</CachePath>
+				</File>
+				<File Id="191062173" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_19.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_19_10C4C929.wem</CachePath>
+				</File>
 				<File Id="191148018" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-049.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-049_10C4C929.wem</CachePath>
-				</File>
-				<File Id="197620101" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurSurpris_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurSurpris_PH_10C4C929.wem</CachePath>
 				</File>
 				<File Id="199043391" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
@@ -882,9 +572,25 @@
 					<ShortName>Attaque Init Lance.wav</ShortName>
 					<CachePath>SFX/Attaque Init Lance_10C4C929.wem</CachePath>
 				</File>
+				<File Id="201622981" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Charge.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Charge_143F2731.wem</CachePath>
+				</File>
 				<File Id="205328605" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
 					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_F7C3D715.wem</CachePath>
+				</File>
+				<File Id="209102656" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Bubble_2.wav</ShortName>
+					<CachePath>SFX/ENV_Bubble_2_6A17919A.wem</CachePath>
+				</File>
+				<File Id="209144850" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_BA5A5D99.wem</CachePath>
+				</File>
+				<File Id="215146308" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_SousMarine.wav</ShortName>
+					<CachePath>SFX/AMB_SousMarine_D8216024.wem</CachePath>
 				</File>
 				<File Id="219544829" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_3.wav</ShortName>
@@ -894,13 +600,13 @@
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_8F9698B1.wem</CachePath>
 				</File>
-				<File Id="224496648" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireAmeliorationBouclier_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireAmeliorationBouclier_PH_10C4C929.wem</CachePath>
+				<File Id="224617764" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 6.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 6_EB1C7E06.wem</CachePath>
 				</File>
-				<File Id="227468904" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireAmeliorationSante_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireAmeliorationSante_PH_10C4C929.wem</CachePath>
+				<File Id="225680182" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Ameliorations_Utilitz.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Ameliorations_Utilitz_10C4C929.wem</CachePath>
 				</File>
 				<File Id="227667919" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various_2.wav</ShortName>
@@ -910,13 +616,13 @@
 					<ShortName>PLY_Ramasse.wav</ShortName>
 					<CachePath>SFX/PLY_Ramasse_7EB91734.wem</CachePath>
 				</File>
-				<File Id="234491463" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolRacine_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolRacine_PH_10C4C929.wem</CachePath>
+				<File Id="235317842" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Hi\MUS_IntoTheForest_Hi D7 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Hi/MUS_IntoTheForest_Hi D7 REC_10C4C929.wem</CachePath>
 				</File>
-				<File Id="235150559" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolEcorce_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolEcorce_PH_10C4C929.wem</CachePath>
+				<File Id="238440703" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_11.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_11_10C4C929.wem</CachePath>
 				</File>
 				<File Id="245721636" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-042.wav</ShortName>
@@ -926,6 +632,14 @@
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_BE41178F.wem</CachePath>
 				</File>
+				<File Id="248961253" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Bubble_3.wav</ShortName>
+					<CachePath>SFX/ENV_Bubble_3_7DB234DC.wem</CachePath>
+				</File>
+				<File Id="249172550" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_06.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_06_10C4C929.wem</CachePath>
+				</File>
 				<File Id="250325720" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-011.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-011_10C4C929.wem</CachePath>
@@ -934,13 +648,13 @@
 					<ShortName>AMB_Foret_CloseBird.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_75291086.wem</CachePath>
 				</File>
-				<File Id="252565045" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurEnerve_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurEnerve_PH_10C4C929.wem</CachePath>
+				<File Id="252083416" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_9B83CBF5.wem</CachePath>
 				</File>
-				<File Id="260458260" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMBGrotte_PH.wav</ShortName>
-					<CachePath>SFX/AMBGrotte_PH_10C4C929.wem</CachePath>
+				<File Id="253750133" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Trompe.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Trompe_10C4C929.wem</CachePath>
 				</File>
 				<File Id="260686157" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-020.wav</ShortName>
@@ -958,6 +672,10 @@
 					<ShortName>VO_Narrateur_Neutre-003.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-003_10C4C929.wem</CachePath>
 				</File>
+				<File Id="270238327" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 4.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 4_80D7BD4B.wem</CachePath>
+				</File>
 				<File Id="275627558" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Vente_Vendre_v1.1.wav</ShortName>
 					<CachePath>SFX/UI_Vente_Vendre_v1.1_10C4C929.wem</CachePath>
@@ -973,6 +691,10 @@
 				<File Id="282520052" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_5L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_5L1_14B1BDE1.wem</CachePath>
+				</File>
+				<File Id="285527162" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Teleporteur_v1.wav</ShortName>
+					<CachePath>SFX/ENV_Teleporteur_v1_45E58483.wem</CachePath>
 				</File>
 				<File Id="286199453" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
@@ -990,6 +712,10 @@
 					<ShortName>PLY_Nage_drops_1.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_drops_1_949EAEE0.wem</CachePath>
 				</File>
+				<File Id="296606178" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Ameliorations_Sante.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Ameliorations_Sante_10C4C929.wem</CachePath>
+				</File>
 				<File Id="297841667" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_3.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_3_1B51089C.wem</CachePath>
@@ -998,49 +724,89 @@
 					<ShortName>UI_Menus_Deplacement_v1.wav</ShortName>
 					<CachePath>SFX/UI_Menus_Deplacement_v1_49EC6DB7.wem</CachePath>
 				</File>
+				<File Id="305952526" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_02.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_02_10C4C929.wem</CachePath>
+				</File>
 				<File Id="307413991" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_53D403F8.wem</CachePath>
+				</File>
+				<File Id="309856000" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Rubiol.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Rubiol_10C4C929.wem</CachePath>
+				</File>
+				<File Id="309890479" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Cable_v1.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Cable_v1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="315877644" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_1FA27248.wem</CachePath>
 				</File>
+				<File Id="317730467" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_WhiteClap_120BPM_4M.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_WhiteClap_120BPM_4M_D79FB2B7.wem</CachePath>
+				</File>
 				<File Id="318303942" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-007.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-007_10C4C929.wem</CachePath>
-				</File>
-				<File Id="321808165" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireAmeliorationUtilitaire_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireAmeliorationUtilitaire_PH_10C4C929.wem</CachePath>
 				</File>
 				<File Id="325849913" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_3.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_3_91540E60.wem</CachePath>
 				</File>
+				<File Id="325959823" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 5.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 5_51DFA6A2.wem</CachePath>
+				</File>
+				<File Id="329114577" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_80D38615.wem</CachePath>
+				</File>
+				<File Id="330682914" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_14.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_14_10C4C929.wem</CachePath>
+				</File>
 				<File Id="336549561" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_0887FD5C.wem</CachePath>
+				</File>
+				<File Id="338117178" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Ameliorations_RecolteÉv2.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Ameliorations_RecolteÉv2_EA768DD7.wem</CachePath>
+				</File>
+				<File Id="339271221" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Bass\MUS_IntoTheForest_Bass E1 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Bass/MUS_IntoTheForest_Bass E1 REC_10C4C929.wem</CachePath>
 				</File>
 				<File Id="339440700" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_GameOver_Temps_v1.wav</ShortName>
 					<CachePath>SFX/UI_GameOver_Temps_v1_10C4C929.wem</CachePath>
 				</File>
-				<File Id="343064125" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurDegat_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurDegat_PH_10C4C929.wem</CachePath>
+				<File Id="341672232" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 6.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 6_C91F5792.wem</CachePath>
 				</File>
 				<File Id="344312199" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_1L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_1L1_10C4C929.wem</CachePath>
 				</File>
+				<File Id="345280062" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_23.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_23_10C4C929.wem</CachePath>
+				</File>
+				<File Id="350652965" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_F5960019.wem</CachePath>
+				</File>
+				<File Id="351384840" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 3.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 3_C069C1E3.wem</CachePath>
+				</File>
 				<File Id="352848444" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166588-Bullet-Hit-Body-Flesh_10.wav</ShortName>
 					<CachePath>SFX/166588-Bullet-Hit-Body-Flesh_10_10C4C929.wem</CachePath>
-				</File>
-				<File Id="356345619" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireMicroprocesseur_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireMicroprocesseur_PH_10C4C929.wem</CachePath>
 				</File>
 				<File Id="356887938" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
@@ -1058,9 +824,17 @@
 					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
 					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_68624453.wem</CachePath>
 				</File>
-				<File Id="367864486" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>PorteOuverture_PH.wav</ShortName>
-					<CachePath>SFX/PorteOuverture_PH_10C4C929.wem</CachePath>
+				<File Id="366740170" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_16.wav</ShortName>
+					<CachePath>SFX/FS_Papier_16_10C4C929.wem</CachePath>
+				</File>
+				<File Id="367241721" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_SousMarine.wav</ShortName>
+					<CachePath>SFX/AMB_SousMarine_3BE6E8F0.wem</CachePath>
+				</File>
+				<File Id="368308892" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_SousMarine.wav</ShortName>
+					<CachePath>SFX/AMB_SousMarine_2153C4F6.wem</CachePath>
 				</File>
 				<File Id="368411354" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
@@ -1070,9 +844,17 @@
 					<ShortName>LIF_Moustique_Degat_6L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_6L1_E05713C3.wem</CachePath>
 				</File>
+				<File Id="373463152" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_MenuMort_RetourBase.wav</ShortName>
+					<CachePath>SFX/UI_MenuMort_RetourBase_92F755D0.wem</CachePath>
+				</File>
 				<File Id="379794874" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-029.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-029_10C4C929.wem</CachePath>
+				</File>
+				<File Id="381072008" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 6.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 6_C23DF813.wem</CachePath>
 				</File>
 				<File Id="385587304" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_7L1.wav</ShortName>
@@ -1081,6 +863,26 @@
 				<File Id="385876782" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_C5BFDCFD.wem</CachePath>
+				</File>
+				<File Id="388424272" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_2C9EF20D.wem</CachePath>
+				</File>
+				<File Id="390409820" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 6.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 6_0D851327.wem</CachePath>
+				</File>
+				<File Id="391249433" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_6.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_6_10C4C929.wem</CachePath>
+				</File>
+				<File Id="392683132" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Base.wav</ShortName>
+					<CachePath>SFX/AMB_Base_0AD45B72.wem</CachePath>
+				</File>
+				<File Id="394622159" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 3.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 3_B00DB46B.wem</CachePath>
 				</File>
 				<File Id="399086820" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
@@ -1094,21 +896,25 @@
 					<ShortName>AMB_Foret_Crickets.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Crickets_3453E629.wem</CachePath>
 				</File>
+				<File Id="410560239" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_10.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_10_10C4C929.wem</CachePath>
+				</File>
 				<File Id="410723692" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Inventaire_Intervertir_v1.wav</ShortName>
 					<CachePath>SFX/UI_Inventaire_Intervertir_v1_90A384A6.wem</CachePath>
 				</File>
-				<File Id="414060833" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Endurance_PH.wav</ShortName>
-					<CachePath>SFX/Endurance_PH_10C4C929.wem</CachePath>
-				</File>
-				<File Id="417730561" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMBSousMarine_PH.wav</ShortName>
-					<CachePath>SFX/AMBSousMarine_PH_10C4C929.wem</CachePath>
+				<File Id="412925337" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_81A9CBA4.wem</CachePath>
 				</File>
 				<File Id="418054284" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_61FE756A.wem</CachePath>
+				</File>
+				<File Id="424150538" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Ecorce.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Ecorce_10C4C929.wem</CachePath>
 				</File>
 				<File Id="424336240" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_6L1.wav</ShortName>
@@ -1122,9 +928,9 @@
 					<ShortName>PLY_Nage_1.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_1_54266E6A.wem</CachePath>
 				</File>
-				<File Id="432151175" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolTronc_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolTronc_PH_10C4C929.wem</CachePath>
+				<File Id="430507958" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_05.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_05_10C4C929.wem</CachePath>
 				</File>
 				<File Id="434467101" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_FarBirds_R.wav</ShortName>
@@ -1134,17 +940,17 @@
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Passif_0E32C5EE.wem</CachePath>
 				</File>
-				<File Id="438244175" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurHeureux_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurHeureux_PH_10C4C929.wem</CachePath>
+				<File Id="438053428" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_12.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_12_10C4C929.wem</CachePath>
 				</File>
 				<File Id="440515815" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-002.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-002_10C4C929.wem</CachePath>
 				</File>
-				<File Id="442835477" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>PorteFermeture_PH.wav</ShortName>
-					<CachePath>SFX/PorteFermeture_PH_10C4C929.wem</CachePath>
+				<File Id="446695842" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 5.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 5_C6A62522.wem</CachePath>
 				</File>
 				<File Id="446720781" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-032.wav</ShortName>
@@ -1154,13 +960,21 @@
 					<ShortName>LIF_Moustique_Degat_3L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_3L1_5273E001.wem</CachePath>
 				</File>
-				<File Id="455366516" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_09.wav</ShortName>
-					<CachePath>SFX/FS_Roche_09_10C4C929.wem</CachePath>
+				<File Id="450065628" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_20.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_20_10C4C929.wem</CachePath>
 				</File>
 				<File Id="459104198" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
 					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_9EEF70BC.wem</CachePath>
+				</File>
+				<File Id="462461259" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 4.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 4_01346122.wem</CachePath>
+				</File>
+				<File Id="462735099" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Mid\MUS_IntoTheForest_Mid D4 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Mid/MUS_IntoTheForest_Mid D4 REC_10C4C929.wem</CachePath>
 				</File>
 				<File Id="463520322" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_drops_1.wav</ShortName>
@@ -1170,9 +984,9 @@
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_987E92AE.wem</CachePath>
 				</File>
-				<File Id="472197859" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_02.wav</ShortName>
-					<CachePath>SFX/FS_Roche_02_10C4C929.wem</CachePath>
+				<File Id="465903535" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_897019D0.wem</CachePath>
 				</File>
 				<File Id="473490049" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_1.wav</ShortName>
@@ -1186,21 +1000,49 @@
 					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
 					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_F21B6590.wem</CachePath>
 				</File>
+				<File Id="478394814" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Mid\MUS_IntoTheForest_Mid A4 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Mid/MUS_IntoTheForest_Mid A4 REC_10C4C929.wem</CachePath>
+				</File>
 				<File Id="480570866" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Passif_L2.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Passif_L2_2E21F870.wem</CachePath>
+				</File>
+				<File Id="482239836" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Hi\MUS_IntoTheForest_Hi A6 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Hi/MUS_IntoTheForest_Hi A6 REC_10C4C929.wem</CachePath>
 				</File>
 				<File Id="482964783" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_C714C4F4.wem</CachePath>
 				</File>
+				<File Id="484112042" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_5549F8FD.wem</CachePath>
+				</File>
 				<File Id="484181716" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-048.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-048_10C4C929.wem</CachePath>
 				</File>
+				<File Id="485010774" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_LowMid\MUS_IntoTheForest_LowMid C3.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_LowMid/MUS_IntoTheForest_LowMid C3_10C4C929.wem</CachePath>
+				</File>
 				<File Id="490092445" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Pause_Fermer_v1.wav</ShortName>
 					<CachePath>SFX/UI_Pause_Fermer_v1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="491384156" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_75378C84.wem</CachePath>
+				</File>
+				<File Id="491495006" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Hi\MUS_IntoTheForest_Hi G6 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Hi/MUS_IntoTheForest_Hi G6 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="491840834" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Enviro_Door_Close_1.wav</ShortName>
+					<CachePath>SFX/SFX_Enviro_Door_Close_1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="494577839" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various_2.wav</ShortName>
@@ -1218,6 +1060,14 @@
 					<ShortName>VO_Narrateur_Neutre-030.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-030_10C4C929.wem</CachePath>
 				</File>
+				<File Id="499975589" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_SousMarine.wav</ShortName>
+					<CachePath>SFX/AMB_SousMarine_AE13A29D.wem</CachePath>
+				</File>
+				<File Id="502842531" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_09.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_09_10C4C929.wem</CachePath>
+				</File>
 				<File Id="502963919" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166559-Bullet-Hit-Body-Flesh_14.wav</ShortName>
 					<CachePath>SFX/166559-Bullet-Hit-Body-Flesh_14_10C4C929.wem</CachePath>
@@ -1226,21 +1076,21 @@
 					<ShortName>SerpentDegat_PH.wav</ShortName>
 					<CachePath>SFX/SerpentDegat_PH_10C4C929.wem</CachePath>
 				</File>
-				<File Id="504780681" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurMort_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurMort_PH_10C4C929.wem</CachePath>
+				<File Id="504727055" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L2.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L2_C603EA44.wem</CachePath>
 				</File>
 				<File Id="510109064" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Construire_Batterie_v1.wav</ShortName>
 					<CachePath>SFX/UI_Construire_Batterie_v1_10C4C929.wem</CachePath>
 				</File>
-				<File Id="516244779" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireAmeliorationCombat_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireAmeliorationCombat_PH_10C4C929.wem</CachePath>
-				</File>
 				<File Id="516290057" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_drops_1.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_drops_1_0C869C3F.wem</CachePath>
+				</File>
+				<File Id="518237452" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_14.wav</ShortName>
+					<CachePath>SFX/FS_Papier_14_10C4C929.wem</CachePath>
 				</File>
 				<File Id="520184572" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-050.wav</ShortName>
@@ -1253,6 +1103,10 @@
 				<File Id="521306769" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_BarreDeVie_Faible_v1.wav</ShortName>
 					<CachePath>SFX/UI_BarreDeVie_Faible_v1_24C9C279.wem</CachePath>
+				</File>
+				<File Id="524440913" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Tempete_Wind Rec.wav</ShortName>
+					<CachePath>SFX/ENV_Tempete_Wind Rec_D1C5127F.wem</CachePath>
 				</File>
 				<File Id="525034644" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
@@ -1274,6 +1128,10 @@
 					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_DDD34B96.wem</CachePath>
 				</File>
+				<File Id="533693791" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_3.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_3_10C4C929.wem</CachePath>
+				</File>
 				<File Id="534322574" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_515109DE.wem</CachePath>
@@ -1282,17 +1140,33 @@
 					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
 					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_06621020.wem</CachePath>
 				</File>
+				<File Id="539003864" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_12.wav</ShortName>
+					<CachePath>SFX/FS_Papier_12_10C4C929.wem</CachePath>
+				</File>
+				<File Id="540086649" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Vente_v1.wav</ShortName>
+					<CachePath>SFX/ENV_Vente_v1_67A11767.wem</CachePath>
+				</File>
+				<File Id="540118499" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Base_L2.wav</ShortName>
+					<CachePath>SFX/AMB_Base_L2_22CB8241.wem</CachePath>
+				</File>
+				<File Id="544278146" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Tempete_Rain Stereo Rec.wav</ShortName>
+					<CachePath>SFX/ENV_Tempete_Rain Stereo Rec_EEEF5658.wem</CachePath>
+				</File>
 				<File Id="545052881" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_drops_1.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_drops_1_7286C245.wem</CachePath>
 				</File>
+				<File Id="545773615" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_01.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_01_10C4C929.wem</CachePath>
+				</File>
 				<File Id="547866083" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-033.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-033_10C4C929.wem</CachePath>
-				</File>
-				<File Id="554836253" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MenuMortRetourBase_PH.wav</ShortName>
-					<CachePath>SFX/MenuMortRetourBase_PH_10C4C929.wem</CachePath>
 				</File>
 				<File Id="555598047" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_3.wav</ShortName>
@@ -1302,6 +1176,18 @@
 					<ShortName>Attaque relache Lance.wav</ShortName>
 					<CachePath>SFX/Attaque relache Lance_10C4C929.wem</CachePath>
 				</File>
+				<File Id="556911684" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Magnetite.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Magnetite_10C4C929.wem</CachePath>
+				</File>
+				<File Id="557466080" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_PorteFermeture.wav</ShortName>
+					<CachePath>SFX/ENV_PorteFermeture_D6FF415A.wem</CachePath>
+				</File>
+				<File Id="558117674" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Moss.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Moss_10C4C929.wem</CachePath>
+				</File>
 				<File Id="559970004" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166573-Bullet-Hit-Body-Flesh_16.wav</ShortName>
 					<CachePath>SFX/166573-Bullet-Hit-Body-Flesh_16_10C4C929.wem</CachePath>
@@ -1310,17 +1196,17 @@
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_16DBE7B0.wem</CachePath>
 				</File>
-				<File Id="564656186" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>RhinortueAlerte_PH.wav</ShortName>
-					<CachePath>SFX/RhinortueAlerte_PH_10C4C929.wem</CachePath>
+				<File Id="563288796" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_4.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_4_10C4C929.wem</CachePath>
 				</File>
 				<File Id="565665096" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-031.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-031_10C4C929.wem</CachePath>
 				</File>
-				<File Id="568758034" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurNeutre_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurNeutre_PH_10C4C929.wem</CachePath>
+				<File Id="568765051" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_05.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_05_10C4C929.wem</CachePath>
 				</File>
 				<File Id="569906250" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
@@ -1330,13 +1216,21 @@
 					<ShortName>UI_Inventaire_Ouvrir_v2.wav</ShortName>
 					<CachePath>SFX/UI_Inventaire_Ouvrir_v2_10C4C929.wem</CachePath>
 				</File>
+				<File Id="574600228" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_19.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_19_10C4C929.wem</CachePath>
+				</File>
 				<File Id="575769636" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_4L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_4L1_BAFA8663.wem</CachePath>
 				</File>
-				<File Id="578044342" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurInterroge_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurInterroge_PH_10C4C929.wem</CachePath>
+				<File Id="577293708" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Charge.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Charge_D4DAE684.wem</CachePath>
+				</File>
+				<File Id="582370662" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Saute.wav</ShortName>
+					<CachePath>SFX/PLY_Saute_A1C4ADF0.wem</CachePath>
 				</File>
 				<File Id="584035463" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Swamp_2.wav</ShortName>
@@ -1346,13 +1240,29 @@
 					<ShortName>PLY_Nage_3.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_3_D2ECC727.wem</CachePath>
 				</File>
+				<File Id="586126585" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_5.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_5_10C4C929.wem</CachePath>
+				</File>
 				<File Id="586588224" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166607-Bullet-Hit-Body-Flesh_01.wav</ShortName>
 					<CachePath>SFX/166607-Bullet-Hit-Body-Flesh_01_10C4C929.wem</CachePath>
 				</File>
+				<File Id="588161799" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_02.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_02_10C4C929.wem</CachePath>
+				</File>
 				<File Id="588728228" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166582-Bullet-Hit-Body-Flesh_11.wav</ShortName>
 					<CachePath>SFX/166582-Bullet-Hit-Body-Flesh_11_10C4C929.wem</CachePath>
+				</File>
+				<File Id="590167755" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_21.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_21_10C4C929.wem</CachePath>
+				</File>
+				<File Id="590997950" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_10.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_10_10C4C929.wem</CachePath>
 				</File>
 				<File Id="591719911" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-041.wav</ShortName>
@@ -1374,41 +1284,73 @@
 					<ShortName>UI_Vente_Fermer_v2.wav</ShortName>
 					<CachePath>SFX/UI_Vente_Fermer_v2_10C4C929.wem</CachePath>
 				</File>
-				<File Id="609461526" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurApeure_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurApeure_PH_10C4C929.wem</CachePath>
+				<File Id="601984271" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_027FE54D.wem</CachePath>
 				</File>
-				<File Id="611548988" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolTrompe_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolTrompe_PH_10C4C929.wem</CachePath>
+				<File Id="611534099" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_13.wav</ShortName>
+					<CachePath>SFX/FS_Papier_13_10C4C929.wem</CachePath>
 				</File>
 				<File Id="618474151" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_FarBirds_L.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_FarBirds_L_E05ECF7C.wem</CachePath>
 				</File>
+				<File Id="621330683" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Click_120BPM_4M.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Click_120BPM_4M_D79FB2B7.wem</CachePath>
+				</File>
 				<File Id="622112506" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Saut.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Saut_AD67E159.wem</CachePath>
 				</File>
-				<File Id="623294684" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolTungstone_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolTungstone_PH_10C4C929.wem</CachePath>
+				<File Id="623144731" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_GeneralUI_BoutonSide_v1.wav</ShortName>
+					<CachePath>SFX/UI_GeneralUI_BoutonSide_v1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="623602689" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_07.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_07_10C4C929.wem</CachePath>
+				</File>
+				<File Id="625422408" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Trunk.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Trunk_10C4C929.wem</CachePath>
 				</File>
 				<File Id="628271505" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_3.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_3_FF54ADC3.wem</CachePath>
 				</File>
+				<File Id="633023560" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_10.wav</ShortName>
+					<CachePath>SFX/FS_Papier_10_10C4C929.wem</CachePath>
+				</File>
+				<File Id="635989996" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_1AA027B6.wem</CachePath>
+				</File>
+				<File Id="636248439" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_13.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_13_10C4C929.wem</CachePath>
+				</File>
 				<File Id="637697127" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
 					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L1_4B708024.wem</CachePath>
 				</File>
-				<File Id="642402357" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolCharge_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolCharge_PH_10C4C929.wem</CachePath>
+				<File Id="638429649" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 3.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 3_5A381760.wem</CachePath>
 				</File>
-				<File Id="643744780" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_12.wav</ShortName>
-					<CachePath>SFX/FS_Roche_12_10C4C929.wem</CachePath>
+				<File Id="640551528" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 4.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 4_8524248C.wem</CachePath>
+				</File>
+				<File Id="641084983" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Tungstone.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Tungstone_10C4C929.wem</CachePath>
+				</File>
+				<File Id="642197460" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_04.wav</ShortName>
+					<CachePath>SFX/FS_Papier_04_10C4C929.wem</CachePath>
 				</File>
 				<File Id="643804652" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_drops_1.wav</ShortName>
@@ -1426,6 +1368,22 @@
 					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_CD384A5A.wem</CachePath>
 				</File>
+				<File Id="654784606" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_07.wav</ShortName>
+					<CachePath>SFX/FS_Papier_07_10C4C929.wem</CachePath>
+				</File>
+				<File Id="658033047" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_64E96AA9.wem</CachePath>
+				</File>
+				<File Id="658080784" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Hi\MUS_IntoTheForest_Hi C7 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Hi/MUS_IntoTheForest_Hi C7 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="661437950" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_1.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_1_10C4C929.wem</CachePath>
+				</File>
 				<File Id="663322381" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Wartog_866BFF5A.wem</CachePath>
@@ -1434,21 +1392,65 @@
 					<ShortName>166526-Bullet-Hit-Body-Flesh_09.wav</ShortName>
 					<CachePath>SFX/166526-Bullet-Hit-Body-Flesh_09_10C4C929.wem</CachePath>
 				</File>
-				<File Id="673241860" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_08.wav</ShortName>
-					<CachePath>SFX/FS_Roche_08_10C4C929.wem</CachePath>
+				<File Id="668492052" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Bass\MUS_IntoTheForest_Bass G1 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Bass/MUS_IntoTheForest_Bass G1 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="670705536" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_9.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_9_10C4C929.wem</CachePath>
+				</File>
+				<File Id="676633998" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_20.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_20_10C4C929.wem</CachePath>
 				</File>
 				<File Id="677004657" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Passif_DD851E76.wem</CachePath>
 				</File>
+				<File Id="677012577" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Tempete_Wind Stereo Rec.wav</ShortName>
+					<CachePath>SFX/ENV_Tempete_Wind Stereo Rec_C5ECC683.wem</CachePath>
+				</File>
+				<File Id="678358141" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_18.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_18_10C4C929.wem</CachePath>
+				</File>
 				<File Id="682287277" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-021.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-021_10C4C929.wem</CachePath>
 				</File>
+				<File Id="686075466" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Enviro_Door_Close_2.wav</ShortName>
+					<CachePath>SFX/SFX_Enviro_Door_Close_2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="691506552" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_16.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_16_10C4C929.wem</CachePath>
+				</File>
 				<File Id="695592662" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-040.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-040_10C4C929.wem</CachePath>
+				</File>
+				<File Id="695785288" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Enviro_Door_Open_3.wav</ShortName>
+					<CachePath>SFX/SFX_Enviro_Door_Open_3_7C143311.wem</CachePath>
+				</File>
+				<File Id="699243073" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_SousMarine.wav</ShortName>
+					<CachePath>SFX/AMB_SousMarine_DEE93F71.wem</CachePath>
+				</File>
+				<File Id="699262370" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_01.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="703374443" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Enviro_Door_Open_2.wav</ShortName>
+					<CachePath>SFX/SFX_Enviro_Door_Open_2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="703557520" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_05.wav</ShortName>
+					<CachePath>SFX/FS_Papier_05_10C4C929.wem</CachePath>
 				</File>
 				<File Id="707607612" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_3.wav</ShortName>
@@ -1458,17 +1460,21 @@
 					<ShortName>VO_Narrateur_Neutre-039.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-039_10C4C929.wem</CachePath>
 				</File>
-				<File Id="713223439" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_06.wav</ShortName>
-					<CachePath>SFX/FS_Roche_06_10C4C929.wem</CachePath>
-				</File>
 				<File Id="714005279" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_001620F7.wem</CachePath>
 				</File>
+				<File Id="715069436" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Bass\MUS_IntoTheForest_Bass A#1 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Bass/MUS_IntoTheForest_Bass A#1 REC_10C4C929.wem</CachePath>
+				</File>
 				<File Id="719058831" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-043.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-043_10C4C929.wem</CachePath>
+				</File>
+				<File Id="719757032" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_12.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_12_10C4C929.wem</CachePath>
 				</File>
 				<File Id="720078075" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlanteCarnivoreMort_PH.wav</ShortName>
@@ -1478,6 +1484,14 @@
 					<ShortName>AMB_Foret_Wartog.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Wartog_BCB166EE.wem</CachePath>
 				</File>
+				<File Id="723196388" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Enviro_Door_Close_3.wav</ShortName>
+					<CachePath>SFX/SFX_Enviro_Door_Close_3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="725374370" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_22.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_22_10C4C929.wem</CachePath>
+				</File>
 				<File Id="726553854" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_3.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_3_57025772.wem</CachePath>
@@ -1486,21 +1500,17 @@
 					<ShortName>PLY_Grimpe.wav</ShortName>
 					<CachePath>SFX/PLY_Grimpe_06258E55.wem</CachePath>
 				</File>
+				<File Id="732676403" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_04.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_04_10C4C929.wem</CachePath>
+				</File>
 				<File Id="741750893" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_54752E51.wem</CachePath>
 				</File>
-				<File Id="742528111" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SerpentAlerte_PH.wav</ShortName>
-					<CachePath>SFX/SerpentAlerte_PH_10C4C929.wem</CachePath>
-				</File>
 				<File Id="742838283" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-024.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-024_10C4C929.wem</CachePath>
-				</File>
-				<File Id="744026751" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>AMBBase_PH.wav</ShortName>
-					<CachePath>SFX/AMBBase_PH_10C4C929.wem</CachePath>
 				</File>
 				<File Id="744714108" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Saut.wav</ShortName>
@@ -1509,10 +1519,6 @@
 				<File Id="748046191" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_F6C99614.wem</CachePath>
-				</File>
-				<File Id="754218864" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>FS_Roche_03.wav</ShortName>
-					<CachePath>SFX/FS_Roche_03_10C4C929.wem</CachePath>
 				</File>
 				<File Id="755025142" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
@@ -1526,9 +1532,29 @@
 					<ShortName>166553-Bullet-Hit-Body-Flesh_05.wav</ShortName>
 					<CachePath>SFX/166553-Bullet-Hit-Body-Flesh_05_10C4C929.wem</CachePath>
 				</File>
+				<File Id="761304221" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_03.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_03_10C4C929.wem</CachePath>
+				</File>
+				<File Id="762827917" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 5.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 5_903BF558.wem</CachePath>
+				</File>
+				<File Id="762879648" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_11.wav</ShortName>
+					<CachePath>SFX/FS_Papier_11_10C4C929.wem</CachePath>
+				</File>
 				<File Id="764905482" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_F63121E0.wem</CachePath>
+				</File>
+				<File Id="768812133" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_HiMid\MUS_IntoTheForest_HiMid 2 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_HiMid/MUS_IntoTheForest_HiMid 2 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="768835146" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Tempete_Rain Rec.wav</ShortName>
+					<CachePath>SFX/ENV_Tempete_Rain Rec_148D7AF6.wem</CachePath>
 				</File>
 				<File Id="769147433" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-012.wav</ShortName>
@@ -1542,6 +1568,10 @@
 					<ShortName>LIF_Rhinortue_Saut.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Saut_CF03DC70.wem</CachePath>
 				</File>
+				<File Id="772102732" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_07.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_07_10C4C929.wem</CachePath>
+				</File>
 				<File Id="773024795" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Grimpe.wav</ShortName>
 					<CachePath>SFX/PLY_Grimpe_4826CD35.wem</CachePath>
@@ -1550,9 +1580,17 @@
 					<ShortName>VO_Narrateur_Neutre-014.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-014_10C4C929.wem</CachePath>
 				</File>
+				<File Id="791607087" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Stop.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Stop_02A5745B.wem</CachePath>
+				</File>
 				<File Id="794080885" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_1.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_1_676818E4.wem</CachePath>
+				</File>
+				<File Id="796436657" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_LowMid\MUS_IntoTheForest_LowMid D#3.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_LowMid/MUS_IntoTheForest_LowMid D#3_10C4C929.wem</CachePath>
 				</File>
 				<File Id="798400265" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L1.wav</ShortName>
@@ -1570,6 +1608,10 @@
 					<ShortName>AMB_Foret_CloseBird.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_9B2CDE75.wem</CachePath>
 				</File>
+				<File Id="808088995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 1.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 1_9B861E09.wem</CachePath>
+				</File>
 				<File Id="808565386" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Carte_Ouvrir_v1.wav</ShortName>
 					<CachePath>SFX/UI_Carte_Ouvrir_v1_10C4C929.wem</CachePath>
@@ -1577,6 +1619,18 @@
 				<File Id="813070388" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-022.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-022_10C4C929.wem</CachePath>
+				</File>
+				<File Id="813911036" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_06.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_06_10C4C929.wem</CachePath>
+				</File>
+				<File Id="815635348" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_03.wav</ShortName>
+					<CachePath>SFX/FS_Papier_03_10C4C929.wem</CachePath>
+				</File>
+				<File Id="820336811" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_422724E2.wem</CachePath>
 				</File>
 				<File Id="822946522" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_3.wav</ShortName>
@@ -1590,13 +1644,41 @@
 					<ShortName>UI_Inventaire_Placer_v3.wav</ShortName>
 					<CachePath>SFX/UI_Inventaire_Placer_v3_318E2A03.wem</CachePath>
 				</File>
-				<File Id="830661371" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolRubiol_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolRubiol_PH_10C4C929.wem</CachePath>
+				<File Id="826051975" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 4.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 4_E3911185.wem</CachePath>
+				</File>
+				<File Id="826971778" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Mid\MUS_IntoTheForest_Mid D#4 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Mid/MUS_IntoTheForest_Mid D#4 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="830780439" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Kick_120BPM_4M.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Kick_120BPM_4M_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="848745498" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_17.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_17_10C4C929.wem</CachePath>
 				</File>
 				<File Id="851370385" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-005.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-005_10C4C929.wem</CachePath>
+				</File>
+				<File Id="851895897" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_PiegePiques.wav</ShortName>
+					<CachePath>SFX/ENV_PiegePiques_10C4C929.wem</CachePath>
+				</File>
+				<File Id="855023336" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_03.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_03_10C4C929.wem</CachePath>
+				</File>
+				<File Id="855072048" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 4.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 4_F58A7A36.wem</CachePath>
+				</File>
+				<File Id="857731174" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_DegatBuisson.wav</ShortName>
+					<CachePath>SFX/ENV_DegatBuisson_B03787A3.wem</CachePath>
 				</File>
 				<File Id="858826766" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Mort.wav</ShortName>
@@ -1622,6 +1704,14 @@
 					<ShortName>LIF_Moustique_Degat_8L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_8L1_96D02851.wem</CachePath>
 				</File>
+				<File Id="865722501" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_HiMid\MUS_IntoTheForest_HiMid 3 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_HiMid/MUS_IntoTheForest_HiMid 3 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="867457597" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_SousMarine.wav</ShortName>
+					<CachePath>SFX/AMB_SousMarine_46CA00CF.wem</CachePath>
+				</File>
 				<File Id="871914218" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Pause_Ouvrir_v1.1.wav</ShortName>
 					<CachePath>SFX/UI_Pause_Ouvrir_v1.1_10C4C929.wem</CachePath>
@@ -1629,6 +1719,10 @@
 				<File Id="873684731" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AudioEase\Altiverb - Outdoor and More\Outdoor\Forest\AE_ForestAuterlitz_DenseClose.wav</ShortName>
 					<CachePath>Plugins/Wwise Convolution Reverb/AudioEase/Altiverb - Outdoor and More/Outdoor/Forest/AE_ForestAuterlitz_DenseClose_C2355123.wem</CachePath>
+				</File>
+				<File Id="873929258" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_5FF55DFF.wem</CachePath>
 				</File>
 				<File Id="875759382" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
@@ -1638,17 +1732,25 @@
 					<ShortName>UI_Atelier_Ouvrir_v2.wav</ShortName>
 					<CachePath>SFX/UI_Atelier_Ouvrir_v2_10C4C929.wem</CachePath>
 				</File>
+				<File Id="877284471" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_04.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_04_10C4C929.wem</CachePath>
+				</File>
 				<File Id="880679580" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Moustique_Degat_7L1.wav</ShortName>
 					<CachePath>SFX/LIF_Moustique_Degat_7L1_5E1BE196.wem</CachePath>
 				</File>
-				<File Id="891123559" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolMousse_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolMousse_PH_10C4C929.wem</CachePath>
+				<File Id="890575902" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_15.wav</ShortName>
+					<CachePath>SFX/FS_Papier_15_10C4C929.wem</CachePath>
 				</File>
 				<File Id="891285907" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166542-Bullet-Hit-Body-Flesh_06.wav</ShortName>
 					<CachePath>SFX/166542-Bullet-Hit-Body-Flesh_06_10C4C929.wem</CachePath>
+				</File>
+				<File Id="892882947" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Atelier_v1.wav</ShortName>
+					<CachePath>SFX/ENV_Atelier_v1_57FAB0EB.wem</CachePath>
 				</File>
 				<File Id="893658050" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Mort.wav</ShortName>
@@ -1658,13 +1760,41 @@
 					<ShortName>SerpentMort_PH.wav</ShortName>
 					<CachePath>SFX/SerpentMort_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="894184392" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L1.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L1_FC2FA8E1.wem</CachePath>
+				</File>
 				<File Id="898750120" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SerpentAttaque_PH.wav</ShortName>
 					<CachePath>SFX/SerpentAttaque_PH_10C4C929.wem</CachePath>
 				</File>
+				<File Id="899716436" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_15.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_15_10C4C929.wem</CachePath>
+				</File>
+				<File Id="901749189" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Mid\MUS_IntoTheForest_Mid G4 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Mid/MUS_IntoTheForest_Mid G4 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="904707216" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Texte.wav</ShortName>
+					<CachePath>SFX/UI_Texte_298C441E.wem</CachePath>
+				</File>
+				<File Id="904852995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_GeneralUI_Fermer_v1.wav</ShortName>
+					<CachePath>SFX/UI_GeneralUI_Fermer_v1_10C4C929.wem</CachePath>
+				</File>
 				<File Id="904958668" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Degat_Attaque_48910557.wem</CachePath>
+				</File>
+				<File Id="908508983" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_PorteOuverture.wav</ShortName>
+					<CachePath>SFX/ENV_PorteOuverture_B2476B9E.wem</CachePath>
+				</File>
+				<File Id="911462759" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Tempete_Thunder Rec-002.wav</ShortName>
+					<CachePath>SFX/ENV_Tempete_Thunder Rec-002_9512FD96.wem</CachePath>
 				</File>
 				<File Id="912656198" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Saut.wav</ShortName>
@@ -1674,17 +1804,61 @@
 					<ShortName>AMB_Foret_CloseBird_2.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2_AD31BE59.wem</CachePath>
 				</File>
-				<File Id="945305452" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireCable_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireCable_PH_10C4C929.wem</CachePath>
+				<File Id="918051677" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_12.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_12_10C4C929.wem</CachePath>
 				</File>
-				<File Id="949868496" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>PlanteCarnivoreAlerte_PH.wav</ShortName>
-					<CachePath>SFX/PlanteCarnivoreAlerte_PH_10C4C929.wem</CachePath>
+				<File Id="923802760" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Tempete_Thunder Rec-001.wav</ShortName>
+					<CachePath>SFX/ENV_Tempete_Thunder Rec-001_DDBCFB5C.wem</CachePath>
 				</File>
-				<File Id="955784222" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ConstruireAmeliorationRecolte_PH.wav</ShortName>
-					<CachePath>SFX/ConstruireAmeliorationRecolte_PH_10C4C929.wem</CachePath>
+				<File Id="927671925" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Texte_Fin.wav</ShortName>
+					<CachePath>SFX/UI_Texte_Fin_582EDF38.wem</CachePath>
+				</File>
+				<File Id="928050316" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Ameliorations_Endurance.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Ameliorations_Endurance_10C4C929.wem</CachePath>
+				</File>
+				<File Id="933831882" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_08.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_08_10C4C929.wem</CachePath>
+				</File>
+				<File Id="934904239" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Microprocesseur_v2.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Microprocesseur_v2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="935801208" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_24.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_24_10C4C929.wem</CachePath>
+				</File>
+				<File Id="936434174" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_08.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_08_10C4C929.wem</CachePath>
+				</File>
+				<File Id="943933697" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ENV_Tempete_Thunder Rec.wav</ShortName>
+					<CachePath>SFX/ENV_Tempete_Thunder Rec_AD467F02.wem</CachePath>
+				</File>
+				<File Id="945868443" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_06.wav</ShortName>
+					<CachePath>SFX/FS_Papier_06_10C4C929.wem</CachePath>
+				</File>
+				<File Id="946101210" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Multitool_Racine.wav</ShortName>
+					<CachePath>SFX/PLY_Multitool_Racine_10C4C929.wem</CachePath>
+				</File>
+				<File Id="952970103" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB_Grotte_L3_8.wav</ShortName>
+					<CachePath>SFX/AMB_Grotte_L3_8_10C4C929.wem</CachePath>
+				</File>
+				<File Id="958798133" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Enviro_Door_Open_1.wav</ShortName>
+					<CachePath>SFX/SFX_Enviro_Door_Open_1_10C4C929.wem</CachePath>
+				</File>
+				<File Id="961779832" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Papier_01.wav</ShortName>
+					<CachePath>SFX/FS_Papier_01_10C4C929.wem</CachePath>
 				</File>
 				<File Id="962506391" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-013.wav</ShortName>
@@ -1698,9 +1872,13 @@
 					<ShortName>AMB_Foret_FarBirds_Opt.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_FarBirds_Opt_8248A532.wem</CachePath>
 				</File>
-				<File Id="975917079" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurExclame_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurExclame_PH_10C4C929.wem</CachePath>
+				<File Id="981189777" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 5.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 5_3F172EA4.wem</CachePath>
+				</File>
+				<File Id="981231219" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_22.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_22_10C4C929.wem</CachePath>
 				</File>
 				<File Id="981352151" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
@@ -1714,6 +1892,10 @@
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Passif_4E215490.wem</CachePath>
 				</File>
+				<File Id="984714807" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Bass\MUS_IntoTheForest_Bass C1 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Bass/MUS_IntoTheForest_Bass C1 REC_10C4C929.wem</CachePath>
+				</File>
 				<File Id="985355215" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
 					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_10375EB8.wem</CachePath>
@@ -1722,25 +1904,41 @@
 					<ShortName>LIF_Rhinortue_Passif.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Passif_6B887AC6.wem</CachePath>
 				</File>
+				<File Id="991862810" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 2.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 2_375E187D.wem</CachePath>
+				</File>
 				<File Id="992048152" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-025.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-025_10C4C929.wem</CachePath>
+				</File>
+				<File Id="994530746" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_13.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_13_10C4C929.wem</CachePath>
 				</File>
 				<File Id="999350642" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_PlanteCarnivore_Passif_L2.wav</ShortName>
 					<CachePath>SFX/LIF_PlanteCarnivore_Passif_L2_93F248ED.wem</CachePath>
 				</File>
-				<File Id="999984505" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurTriste_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurTriste_PH_10C4C929.wem</CachePath>
-				</File>
 				<File Id="1000012097" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_CloseBird.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_A3F4CF83.wem</CachePath>
 				</File>
+				<File Id="1001163783" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_03.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_03_10C4C929.wem</CachePath>
+				</File>
 				<File Id="1004392837" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SerpentPassif_PH.wav</ShortName>
 					<CachePath>SFX/SerpentPassif_PH_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1004521814" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Endurance.wav</ShortName>
+					<CachePath>SFX/UI_Endurance_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1007024800" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_HiMid\MUS_IntoTheForest_HiMid 4 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_HiMid/MUS_IntoTheForest_HiMid 4 REC_10C4C929.wem</CachePath>
 				</File>
 				<File Id="1007858372" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
@@ -1754,17 +1952,33 @@
 					<ShortName>AMB_Foret_CloseBird.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_CloseBird_2506FB7D.wem</CachePath>
 				</File>
+				<File Id="1015124408" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Metal2.0_21.wav</ShortName>
+					<CachePath>SFX/FS_Metal2.0_21_10C4C929.wem</CachePath>
+				</File>
 				<File Id="1016441441" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_GameOver_Vie_v1.wav</ShortName>
 					<CachePath>SFX/UI_GameOver_Vie_v1_10C4C929.wem</CachePath>
 				</File>
+				<File Id="1017269230" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_Hi\MUS_IntoTheForest_Hi A#6 REC.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_Hi/MUS_IntoTheForest_Hi A#6 REC_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1017303820" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_LowMid\MUS_IntoTheForest_LowMid A2.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_LowMid/MUS_IntoTheForest_LowMid A2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1017388671" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MUS_IntoTheForest_LowMid\MUS_IntoTheForest_LowMid G2.wav</ShortName>
+					<CachePath>SFX/MUS_IntoTheForest_LowMid/MUS_IntoTheForest_LowMid G2_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1018189355" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_Roche3.0_02.wav</ShortName>
+					<CachePath>SFX/FS_Roche3.0_02_10C4C929.wem</CachePath>
+				</File>
 				<File Id="1022125182" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Attaque relache Grenade.wav</ShortName>
 					<CachePath>SFX/Attaque relache Grenade_10C4C929.wem</CachePath>
-				</File>
-				<File Id="1022833489" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>MultitoolStop_PH.wav</ShortName>
-					<CachePath>SFX/MultitoolStop_PH_10C4C929.wem</CachePath>
 				</File>
 				<File Id="1029227583" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Rhinortue_Degat_Attaque.wav</ShortName>
@@ -1778,13 +1992,17 @@
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_172A8D1B.wem</CachePath>
 				</File>
-				<File Id="1042753719" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>VOJoueurAttaque_PH.wav</ShortName>
-					<CachePath>SFX/VOJoueurAttaque_PH_10C4C929.wem</CachePath>
+				<File Id="1044363562" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 6.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 6_5BEDA656.wem</CachePath>
 				</File>
 				<File Id="1046663375" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VO_Narrateur_Neutre-023.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-023_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1049675433" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ingame - Track 5.wav</ShortName>
+					<CachePath>SFX/Ingame - Track 5_E07BE100.wem</CachePath>
 				</File>
 				<File Id="1051884941" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Construire_FeuilleMetallique_v1.wav</ShortName>
@@ -1794,12 +2012,26 @@
 					<ShortName>VO_Narrateur_Neutre-015.wav</ShortName>
 					<CachePath>SFX/VO_Narrateur_Neutre-015_10C4C929.wem</CachePath>
 				</File>
+				<File Id="1066836060" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>FS_GrassMain_09.wav</ShortName>
+					<CachePath>SFX/FS_GrassMain_09_10C4C929.wem</CachePath>
+				</File>
 				<File Id="1068309541" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Nage_1.wav</ShortName>
 					<CachePath>SFX/PLY_Nage_1_7690D238.wem</CachePath>
 				</File>
+				<File Id="1073100842" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_Construire_Ameliorations_Bouclier.wav</ShortName>
+					<CachePath>SFX/UI_Construire_Ameliorations_Bouclier_10C4C929.wem</CachePath>
+				</File>
 			</Media>
 			<Plugins>
+				<Custom>
+					<Plugin Id="110641688" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="187857213" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="283113597" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+					<Plugin Id="942039286" Name="Silence" LibName="Wwise Silence" LibId="6619138"/>
+				</Custom>
 				<ShareSets>
 					<Plugin Id="556305844" Name="New_RoomVerb_01" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="1096258038" Name="ForestAuterlitz_DenseClose" LibName="Wwise Convolution Reverb" LibId="8323075">
@@ -1807,98 +2039,99 @@
 							<MediaRef Id="873684731"/>
 						</MediaRefs>
 					</Plugin>
+					<Plugin Id="1724990773" Name="New_Time_Stretch" LibName="Wwise Time Stretch" LibId="8519683"/>
 					<Plugin Id="2185427101" Name="SC_PlanteCarnivore" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="3657550167" Name="New_Parametric_EQ" LibName="Wwise Parametric EQ" LibId="6881283"/>
 				</ShareSets>
 			</Plugins>
 			<Events>
-				<Event Id="2291972081" Name="AMB_Base" DurationType="OneShot" DurationMin="0.84" DurationMax="0.84">
+				<Event Id="2291972081" Name="AMB_Base" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="4176303900" Id="2291972081" Name="AMB_Base"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1929160180" Name="AMB_ForetEtGrotte" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="4176303900" Id="1929160180" Name="AMB_ForetEtGrotte"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="4285823446" Name="AMB_SousMarine" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="744026751"/>
+						<MediaRef Id="215146308"/>
+						<MediaRef Id="367241721"/>
+						<MediaRef Id="368308892"/>
+						<MediaRef Id="499975589"/>
+						<MediaRef Id="699243073"/>
+						<MediaRef Id="867457597"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2983803460" Name="AMB_Foret" DurationType="Infinite">
+				<Event Id="1108568571" Name="ENV_Atelier" MaxAttenuation="100" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="2655203"/>
-						<MediaRef Id="4867961"/>
-						<MediaRef Id="11259207"/>
-						<MediaRef Id="58058071"/>
-						<MediaRef Id="68968614"/>
-						<MediaRef Id="95533244"/>
-						<MediaRef Id="128600922"/>
-						<MediaRef Id="199043391"/>
-						<MediaRef Id="221866344"/>
-						<MediaRef Id="227667919"/>
-						<MediaRef Id="245725194"/>
-						<MediaRef Id="251879149"/>
-						<MediaRef Id="286199453"/>
-						<MediaRef Id="315877644"/>
-						<MediaRef Id="336549561"/>
-						<MediaRef Id="385876782"/>
-						<MediaRef Id="410371760"/>
-						<MediaRef Id="434467101"/>
-						<MediaRef Id="465232822"/>
-						<MediaRef Id="482964783"/>
-						<MediaRef Id="494577839"/>
-						<MediaRef Id="496076357"/>
-						<MediaRef Id="534322574"/>
-						<MediaRef Id="561812457"/>
-						<MediaRef Id="569906250"/>
-						<MediaRef Id="584035463"/>
-						<MediaRef Id="618474151"/>
-						<MediaRef Id="650146780"/>
-						<MediaRef Id="663322381"/>
-						<MediaRef Id="714005279"/>
-						<MediaRef Id="721724545"/>
-						<MediaRef Id="741750893"/>
-						<MediaRef Id="764905482"/>
-						<MediaRef Id="806891696"/>
-						<MediaRef Id="864859683"/>
-						<MediaRef Id="875759382"/>
-						<MediaRef Id="915811521"/>
-						<MediaRef Id="974094568"/>
-						<MediaRef Id="1000012097"/>
-						<MediaRef Id="1014648078"/>
-						<MediaRef Id="1036072939"/>
+						<MediaRef Id="892882947"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="870339791" Name="ENV_Bubble" MaxAttenuation="100" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="8430119"/>
+						<MediaRef Id="209102656"/>
+						<MediaRef Id="248961253"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2546991491" Name="ENV_Cubicule" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="505094345" Name="ENV_DegatBuisson" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.2937784" DurationMax="0.37013757">
+					<MediaRefs>
+						<MediaRef Id="857731174"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1985830118" Name="ENV_MachineVente" MaxAttenuation="100" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="540086649"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2451493374" Name="ENV_PiegePiques" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.2960382" DurationMax="0.37298477">
+					<MediaRefs>
+						<MediaRef Id="851895897"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1930754588" Name="ENV_PorteFermeture" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.84425" DurationMax="1.1725752">
+					<MediaRefs>
+						<MediaRef Id="491840834"/>
+						<MediaRef Id="557466080"/>
+						<MediaRef Id="686075466"/>
+						<MediaRef Id="723196388"/>
 					</MediaRefs>
 					<PluginRefs>
 						<ShareSets>
-							<PluginRef Id="556305844"/>
-							<PluginRef Id="1096258038"/>
-							<PluginRef Id="3657550167"/>
+							<PluginRef Id="1724990773"/>
 						</ShareSets>
 					</PluginRefs>
 				</Event>
-				<Event Id="971073617" Name="AMB_Grotte" DurationType="OneShot" DurationMin="0.86" DurationMax="0.86">
+				<Event Id="1952691670" Name="ENV_PorteOuverture" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.1661521" DurationMax="1.4692596">
 					<MediaRefs>
-						<MediaRef Id="260458260"/>
+						<MediaRef Id="695785288"/>
+						<MediaRef Id="703374443"/>
+						<MediaRef Id="908508983"/>
+						<MediaRef Id="958798133"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4285823446" Name="AMB_SousMarine" DurationType="OneShot" DurationMin="1" DurationMax="1">
+				<Event Id="1783139436" Name="ENV_Teleporteur" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.0111458" DurationMax="1.0111458">
 					<MediaRefs>
-						<MediaRef Id="417730561"/>
+						<MediaRef Id="285527162"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1108568571" Name="ENV_Atelier" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="2546991491" Name="ENV_Cubicule" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="505094345" Name="ENV_DegatBuisson" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="1985830118" Name="ENV_MachineVente" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="2451493374" Name="ENV_PiegePiques" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.6739092" DurationMax="0.84907234">
+				<Event Id="2129556429" Name="ENV_Tempete" MaxAttenuation="100" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="145022247"/>
+						<MediaRef Id="117036888"/>
+						<MediaRef Id="174266175"/>
+						<MediaRef Id="524440913"/>
+						<MediaRef Id="544278146"/>
+						<MediaRef Id="677012577"/>
+						<MediaRef Id="768835146"/>
+						<MediaRef Id="911462759"/>
+						<MediaRef Id="923802760"/>
+						<MediaRef Id="943933697"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1930754588" Name="ENV_PorteFermeture" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.9973796" DurationMax="1.2566196">
-					<MediaRefs>
-						<MediaRef Id="442835477"/>
-					</MediaRefs>
-				</Event>
-				<Event Id="1952691670" Name="ENV_PorteOuverture" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.97042996" DurationMax="1.2226652">
-					<MediaRefs>
-						<MediaRef Id="367864486"/>
-					</MediaRefs>
-				</Event>
-				<Event Id="1783139436" Name="ENV_Teleporteur" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="3471878825" Name="LIF_Moustique_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.1283644" DurationMax="2.8031344">
 					<MediaRefs>
 						<MediaRef Id="6933992"/>
@@ -1958,11 +2191,6 @@
 						<MediaRef Id="480570866"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="769260168" Name="LIF_PlanteCarnivore_Alerte" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.3478184" DurationMax="1.6981447">
-					<MediaRefs>
-						<MediaRef Id="949868496"/>
-					</MediaRefs>
-				</Event>
 				<Event Id="3426910044" Name="LIF_PlanteCarnivore_Attaque" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.1411484" DurationMax="1.4377569">
 					<MediaRefs>
 						<MediaRef Id="33076637"/>
@@ -2003,11 +2231,6 @@
 							<PluginRef Id="2185427101"/>
 						</ShareSets>
 					</PluginRefs>
-				</Event>
-				<Event Id="1784156715" Name="LIF_Rhinortue_Alerte" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.0153646" DurationMax="1.2792792">
-					<MediaRefs>
-						<MediaRef Id="564656186"/>
-					</MediaRefs>
 				</Event>
 				<Event Id="2466167957" Name="LIF_Rhinortue_Attaque" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.8036249" DurationMax="2.8704314">
 					<MediaRefs>
@@ -2104,11 +2327,6 @@
 						<MediaRef Id="989129932"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2389496250" Name="LIF_Serpent_Alerte" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.9344785" DurationMax="1.1773691">
-					<MediaRefs>
-						<MediaRef Id="742528111"/>
-					</MediaRefs>
-				</Event>
 				<Event Id="2624188390" Name="LIF_Serpent_Attaque" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.90752876" DurationMax="1.1434146">
 					<MediaRefs>
 						<MediaRef Id="898750120"/>
@@ -2127,6 +2345,13 @@
 				<Event Id="3710083091" Name="LIF_Serpent_Passif" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.0153646" DurationMax="1.2792792">
 					<MediaRefs>
 						<MediaRef Id="1004392837"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1046058370" Name="PLY_Alerte" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="317730467"/>
+						<MediaRef Id="621330683"/>
+						<MediaRef Id="830780439"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="590554840" Name="PLY_Attaque_Init_Grenade" DurationType="OneShot" DurationMin="0.8819897" DurationMax="1.1112374">
@@ -2163,6 +2388,7 @@
 						<MediaRef Id="891285907"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3595328170" Name="PLY_Explore" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="205347722" Name="PLY_Grimpe_play" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="67148845"/>
@@ -2174,54 +2400,62 @@
 					</MediaRefs>
 				</Event>
 				<Event Id="1609549748" Name="PLY_Grimpe_stop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="895662967" Name="PLY_Multitool_Bark" DurationType="OneShot" DurationMin="1.1225324" DurationMax="1.4143021">
+				<Event Id="895662967" Name="PLY_Multitool_Bark" DurationType="OneShot" DurationMin="1.2593384" DurationMax="1.586667">
 					<MediaRefs>
-						<MediaRef Id="235150559"/>
+						<MediaRef Id="201622981"/>
+						<MediaRef Id="424150538"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1777682481" Name="PLY_Multitool_Charge" DurationType="OneShot" DurationMin="0.9710796" DurationMax="1.2234837">
+				<Event Id="1777682481" Name="PLY_Multitool_Charge" DurationType="Infinite">
 					<MediaRefs>
-						<MediaRef Id="642402357"/>
+						<MediaRef Id="577293708"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1174519973" Name="PLY_Multitool_Magnetite" DurationType="OneShot" DurationMin="1.0958054" DurationMax="1.3806283">
+				<Event Id="1174519973" Name="PLY_Multitool_Magnetite" DurationType="OneShot" DurationMin="1.2593384" DurationMax="1.586667">
 					<MediaRefs>
-						<MediaRef Id="137021063"/>
+						<MediaRef Id="201622981"/>
+						<MediaRef Id="556911684"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2827505401" Name="PLY_Multitool_Mousse" DurationType="OneShot" DurationMin="0.87308073" DurationMax="1.1000128">
+				<Event Id="2827505401" Name="PLY_Multitool_Mousse" DurationType="OneShot" DurationMin="1.2593384" DurationMax="1.586667">
 					<MediaRefs>
-						<MediaRef Id="891123559"/>
+						<MediaRef Id="201622981"/>
+						<MediaRef Id="558117674"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3034212817" Name="PLY_Multitool_Racine" DurationType="OneShot" DurationMin="0.99780655" DurationMax="1.2571574">
+				<Event Id="3034212817" Name="PLY_Multitool_Racine" DurationType="OneShot" DurationMin="1.2593384" DurationMax="1.586667">
 					<MediaRefs>
-						<MediaRef Id="234491463"/>
+						<MediaRef Id="201622981"/>
+						<MediaRef Id="946101210"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="987111760" Name="PLY_Multitool_Rubiol" DurationType="OneShot" DurationMin="0.9799886" DurationMax="1.2347083">
+				<Event Id="987111760" Name="PLY_Multitool_Rubiol" DurationType="OneShot" DurationMin="1.2593384" DurationMax="1.586667">
 					<MediaRefs>
-						<MediaRef Id="830661371"/>
+						<MediaRef Id="201622981"/>
+						<MediaRef Id="309856000"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="276950649" Name="PLY_Multitool_Stop" DurationType="OneShot" DurationMin="1.0958054" DurationMax="1.3806283">
+				<Event Id="276950649" Name="PLY_Multitool_Stop" DurationType="OneShot" DurationMin="1.2442185" DurationMax="1.2442185">
 					<MediaRefs>
-						<MediaRef Id="1022833489"/>
+						<MediaRef Id="791607087"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="467761838" Name="PLY_Multitool_Trompe" DurationType="OneShot" DurationMin="0.9710796" DurationMax="1.2234837">
+				<Event Id="467761838" Name="PLY_Multitool_Trompe" DurationType="OneShot" DurationMin="1.2593384" DurationMax="1.586667">
 					<MediaRefs>
-						<MediaRef Id="611548988"/>
+						<MediaRef Id="201622981"/>
+						<MediaRef Id="253750133"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2648129411" Name="PLY_Multitool_Tronc" DurationType="OneShot" DurationMin="0.9354436" DurationMax="1.178585">
+				<Event Id="2648129411" Name="PLY_Multitool_Tronc" DurationType="OneShot" DurationMin="1.2593384" DurationMax="1.586667">
 					<MediaRefs>
-						<MediaRef Id="432151175"/>
+						<MediaRef Id="201622981"/>
+						<MediaRef Id="625422408"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3906859172" Name="PLY_Multitool_Tungstone" DurationType="OneShot" DurationMin="1.0423515" DurationMax="1.3132806">
+				<Event Id="3906859172" Name="PLY_Multitool_Tungstone" DurationType="OneShot" DurationMin="1.2593384" DurationMax="1.586667">
 					<MediaRefs>
-						<MediaRef Id="623294684"/>
+						<MediaRef Id="201622981"/>
+						<MediaRef Id="641084983"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2316187866" Name="PLY_Nage" DurationType="OneShot" DurationMin="0.3530661" DurationMax="1.4651946">
@@ -2248,35 +2482,110 @@
 						<MediaRef Id="982312147"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1629615691" Name="PLY_Pas" DurationType="OneShot" DurationMin="0" DurationMax="0.4293885">
+				<Event Id="1629615691" Name="PLY_Pas" DurationType="OneShot" DurationMin="0.31114635" DurationMax="0.4612851">
 					<SwitchContainers>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="1145780075" Id="3580700625"/>
-							<Children/>
-						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1145780075" Id="1500988072" Default="true"/>
 							<Children>
 								<SwitchContainer>
+									<SwitchValue GroupType="Switch" GroupId="2913619480" Id="1973442484" Default="true"/>
+									<MediaRefs>
+										<MediaRef Id="11024379"/>
+										<MediaRef Id="45770380"/>
+										<MediaRef Id="53068597"/>
+										<MediaRef Id="63994307"/>
+										<MediaRef Id="70823165"/>
+										<MediaRef Id="115530221"/>
+										<MediaRef Id="157102506"/>
+										<MediaRef Id="163462147"/>
+										<MediaRef Id="165889865"/>
+										<MediaRef Id="191062173"/>
+										<MediaRef Id="330682914"/>
+										<MediaRef Id="366740170"/>
+										<MediaRef Id="438053428"/>
+										<MediaRef Id="518237452"/>
+										<MediaRef Id="539003864"/>
+										<MediaRef Id="588161799"/>
+										<MediaRef Id="590167755"/>
+										<MediaRef Id="611534099"/>
+										<MediaRef Id="633023560"/>
+										<MediaRef Id="642197460"/>
+										<MediaRef Id="654784606"/>
+										<MediaRef Id="676633998"/>
+										<MediaRef Id="703557520"/>
+										<MediaRef Id="761304221"/>
+										<MediaRef Id="762879648"/>
+										<MediaRef Id="815635348"/>
+										<MediaRef Id="890575902"/>
+										<MediaRef Id="945868443"/>
+										<MediaRef Id="961779832"/>
+										<MediaRef Id="981231219"/>
+										<MediaRef Id="994530746"/>
+										<MediaRef Id="1066836060"/>
+									</MediaRefs>
+								</SwitchContainer>
+								<SwitchContainer>
+									<SwitchValue GroupType="Switch" GroupId="2913619480" Id="2572821535"/>
+									<MediaRefs>
+										<MediaRef Id="27774248"/>
+										<MediaRef Id="148406443"/>
+										<MediaRef Id="186900188"/>
+										<MediaRef Id="238440703"/>
+										<MediaRef Id="249172550"/>
+										<MediaRef Id="305952526"/>
+										<MediaRef Id="345280062"/>
+										<MediaRef Id="450065628"/>
+										<MediaRef Id="568765051"/>
+										<MediaRef Id="574600228"/>
+										<MediaRef Id="623602689"/>
+										<MediaRef Id="636248439"/>
+										<MediaRef Id="678358141"/>
+										<MediaRef Id="691506552"/>
+										<MediaRef Id="699262370"/>
+										<MediaRef Id="719757032"/>
+										<MediaRef Id="725374370"/>
+										<MediaRef Id="732676403"/>
+										<MediaRef Id="848745498"/>
+										<MediaRef Id="855023336"/>
+										<MediaRef Id="899716436"/>
+										<MediaRef Id="933831882"/>
+										<MediaRef Id="935801208"/>
+										<MediaRef Id="1015124408"/>
+									</MediaRefs>
+								</SwitchContainer>
+								<SwitchContainer>
 									<SwitchValue GroupType="Switch" GroupId="2913619480" Id="3792916879"/>
 									<MediaRefs>
-										<MediaRef Id="20050508"/>
-										<MediaRef Id="71995516"/>
-										<MediaRef Id="95085767"/>
-										<MediaRef Id="141785624"/>
-										<MediaRef Id="153567185"/>
-										<MediaRef Id="178581982"/>
-										<MediaRef Id="455366516"/>
-										<MediaRef Id="472197859"/>
-										<MediaRef Id="643744780"/>
-										<MediaRef Id="673241860"/>
-										<MediaRef Id="713223439"/>
-										<MediaRef Id="754218864"/>
+										<MediaRef Id="430507958"/>
+										<MediaRef Id="502842531"/>
+										<MediaRef Id="545773615"/>
+										<MediaRef Id="590997950"/>
+										<MediaRef Id="772102732"/>
+										<MediaRef Id="813911036"/>
+										<MediaRef Id="877284471"/>
+										<MediaRef Id="936434174"/>
+										<MediaRef Id="1001163783"/>
+										<MediaRef Id="1018189355"/>
 									</MediaRefs>
 								</SwitchContainer>
 							</Children>
 						</SwitchContainer>
 					</SwitchContainers>
+				</Event>
+				<Event Id="2189212075" Name="PLY_Pas_Metal" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry GroupId="2913619480" Id="2572821535" Name="Pas_Metal"/>
+					</ActionSetSwitch>
+				</Event>
+				<Event Id="4159984555" Name="PLY_Pas_Roche" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry GroupId="2913619480" Id="3792916879" Name="Pas_Roche"/>
+					</ActionSetSwitch>
+				</Event>
+				<Event Id="463366984" Name="PLY_Pas_Terre" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry GroupId="2913619480" Id="1973442484" Name="Pas_Terre"/>
+					</ActionSetSwitch>
 				</Event>
 				<Event Id="988414139" Name="PLY_Ramasse" DurationType="OneShot" DurationMin="0.7957862" DurationMax="0.7957862">
 					<MediaRefs>
@@ -2293,10 +2602,125 @@
 						<MediaRef Id="1068309541"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2736888903" Name="PLY_Saute" DurationType="OneShot" DurationMin="0.44544935" DurationMax="0.561231">
+				<Event Id="2736888903" Name="PLY_Saute" DurationType="OneShot" DurationMin="0.45269206" DurationMax="0.73005605">
 					<MediaRefs>
-						<MediaRef Id="77288420"/>
+						<MediaRef Id="138367406"/>
+						<MediaRef Id="582370662"/>
+						<MediaRef Id="622112506"/>
+						<MediaRef Id="744714108"/>
+						<MediaRef Id="771853367"/>
+						<MediaRef Id="912656198"/>
 					</MediaRefs>
+				</Event>
+				<Event Id="1701239554" Name="PLY_Spawn" DurationType="Infinite">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="4176303900" Id="2291972081" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="392683132"/>
+								<MediaRef Id="540118499"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="4176303900" Id="1929160180"/>
+							<MediaRefs>
+								<MediaRef Id="2655203"/>
+								<MediaRef Id="4867961"/>
+								<MediaRef Id="6773772"/>
+								<MediaRef Id="11259207"/>
+								<MediaRef Id="22873282"/>
+								<MediaRef Id="49884430"/>
+								<MediaRef Id="58058071"/>
+								<MediaRef Id="68968614"/>
+								<MediaRef Id="82146739"/>
+								<MediaRef Id="90607429"/>
+								<MediaRef Id="95533244"/>
+								<MediaRef Id="106299074"/>
+								<MediaRef Id="107987347"/>
+								<MediaRef Id="128600922"/>
+								<MediaRef Id="151707136"/>
+								<MediaRef Id="183610218"/>
+								<MediaRef Id="199043391"/>
+								<MediaRef Id="221866344"/>
+								<MediaRef Id="227667919"/>
+								<MediaRef Id="235317842"/>
+								<MediaRef Id="245725194"/>
+								<MediaRef Id="251879149"/>
+								<MediaRef Id="286199453"/>
+								<MediaRef Id="315877644"/>
+								<MediaRef Id="336549561"/>
+								<MediaRef Id="339271221"/>
+								<MediaRef Id="385876782"/>
+								<MediaRef Id="391249433"/>
+								<MediaRef Id="410371760"/>
+								<MediaRef Id="410560239"/>
+								<MediaRef Id="434467101"/>
+								<MediaRef Id="462735099"/>
+								<MediaRef Id="465232822"/>
+								<MediaRef Id="478394814"/>
+								<MediaRef Id="482239836"/>
+								<MediaRef Id="482964783"/>
+								<MediaRef Id="485010774"/>
+								<MediaRef Id="491495006"/>
+								<MediaRef Id="494577839"/>
+								<MediaRef Id="496076357"/>
+								<MediaRef Id="504727055"/>
+								<MediaRef Id="533693791"/>
+								<MediaRef Id="534322574"/>
+								<MediaRef Id="561812457"/>
+								<MediaRef Id="563288796"/>
+								<MediaRef Id="569906250"/>
+								<MediaRef Id="584035463"/>
+								<MediaRef Id="586126585"/>
+								<MediaRef Id="618474151"/>
+								<MediaRef Id="650146780"/>
+								<MediaRef Id="658080784"/>
+								<MediaRef Id="661437950"/>
+								<MediaRef Id="663322381"/>
+								<MediaRef Id="668492052"/>
+								<MediaRef Id="670705536"/>
+								<MediaRef Id="714005279"/>
+								<MediaRef Id="715069436"/>
+								<MediaRef Id="721724545"/>
+								<MediaRef Id="741750893"/>
+								<MediaRef Id="764905482"/>
+								<MediaRef Id="768812133"/>
+								<MediaRef Id="796436657"/>
+								<MediaRef Id="806891696"/>
+								<MediaRef Id="826971778"/>
+								<MediaRef Id="864859683"/>
+								<MediaRef Id="865722501"/>
+								<MediaRef Id="875759382"/>
+								<MediaRef Id="894184392"/>
+								<MediaRef Id="901749189"/>
+								<MediaRef Id="915811521"/>
+								<MediaRef Id="918051677"/>
+								<MediaRef Id="952970103"/>
+								<MediaRef Id="974094568"/>
+								<MediaRef Id="984714807"/>
+								<MediaRef Id="1000012097"/>
+								<MediaRef Id="1007024800"/>
+								<MediaRef Id="1014648078"/>
+								<MediaRef Id="1017269230"/>
+								<MediaRef Id="1017303820"/>
+								<MediaRef Id="1017388671"/>
+								<MediaRef Id="1036072939"/>
+							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="110641688"/>
+									<PluginRef Id="187857213"/>
+									<PluginRef Id="283113597"/>
+									<PluginRef Id="942039286"/>
+								</Custom>
+								<ShareSets>
+									<PluginRef Id="556305844"/>
+									<PluginRef Id="1096258038"/>
+									<PluginRef Id="3657550167"/>
+								</ShareSets>
+							</PluginRefs>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
 				<Event Id="2467918837" Name="SWT_BoisMoussu" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<ActionSetSwitch>
@@ -2365,34 +2789,34 @@
 						<MediaRef Id="808565386"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1478891302" Name="UI_Construire_Ameliorations_Bouclier" DurationType="OneShot" DurationMin="1.7045" DurationMax="1.7045">
+				<Event Id="1478891302" Name="UI_Construire_Ameliorations_Bouclier" DurationType="OneShot" DurationMin="2.25" DurationMax="2.25">
 					<MediaRefs>
-						<MediaRef Id="224496648"/>
+						<MediaRef Id="1073100842"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3445807767" Name="UI_Construire_Ameliorations_Combat" DurationType="OneShot" DurationMin="1.8759583" DurationMax="1.8759583">
+				<Event Id="3445807767" Name="UI_Construire_Ameliorations_Combat" DurationType="OneShot" DurationMin="2.1428542" DurationMax="2.1428542">
 					<MediaRefs>
-						<MediaRef Id="516244779"/>
+						<MediaRef Id="62340369"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4242173486" Name="UI_Construire_Ameliorations_Endurance" DurationType="OneShot" DurationMin="1.997" DurationMax="1.997">
+				<Event Id="4242173486" Name="UI_Construire_Ameliorations_Endurance" DurationType="OneShot" DurationMin="1.3839375" DurationMax="1.3839375">
 					<MediaRefs>
-						<MediaRef Id="62416048"/>
+						<MediaRef Id="928050316"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="16112675" Name="UI_Construire_Ameliorations_Recolte" DurationType="OneShot" DurationMin="1.67425" DurationMax="1.67425">
+				<Event Id="16112675" Name="UI_Construire_Ameliorations_Recolte" DurationType="OneShot" DurationMin="2.0662594" DurationMax="2.0662594">
 					<MediaRefs>
-						<MediaRef Id="955784222"/>
+						<MediaRef Id="338117178"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2165972810" Name="UI_Construire_Ameliorations_Sante" DurationType="OneShot" DurationMin="1.9869167" DurationMax="1.9869167">
+				<Event Id="2165972810" Name="UI_Construire_Ameliorations_Sante" DurationType="OneShot" DurationMin="2.1428542" DurationMax="2.1428542">
 					<MediaRefs>
-						<MediaRef Id="227468904"/>
+						<MediaRef Id="296606178"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="271362505" Name="UI_Construire_Ameliorations_Utilitaire" DurationType="OneShot" DurationMin="1.8860416" DurationMax="1.8860416">
+				<Event Id="271362505" Name="UI_Construire_Ameliorations_Utilitaire" DurationType="OneShot" DurationMin="2.5714376" DurationMax="2.5714376">
 					<MediaRefs>
-						<MediaRef Id="321808165"/>
+						<MediaRef Id="225680182"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1194441137" Name="UI_Construire_Batterie" DurationType="OneShot" DurationMin="0.38302085" DurationMax="0.38302085">
@@ -2400,9 +2824,9 @@
 						<MediaRef Id="510109064"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3882776175" Name="UI_Construire_Cables" DurationType="OneShot" DurationMin="1.0489167" DurationMax="1.0489167">
+				<Event Id="3882776175" Name="UI_Construire_Cables" DurationType="OneShot" DurationMin="0.5550208" DurationMax="0.5550208">
 					<MediaRefs>
-						<MediaRef Id="945305452"/>
+						<MediaRef Id="309890479"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2884316364" Name="UI_Construire_Cuir" DurationType="OneShot" DurationMin="0.28266665" DurationMax="0.28266665">
@@ -2415,14 +2839,14 @@
 						<MediaRef Id="1051884941"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3178688842" Name="UI_Construire_Microprocesseur" DurationType="OneShot" DurationMin="1.4221041" DurationMax="1.4221041">
+				<Event Id="3178688842" Name="UI_Construire_Microprocesseur" DurationType="OneShot" DurationMin="0.436375" DurationMax="0.436375">
 					<MediaRefs>
-						<MediaRef Id="356345619"/>
+						<MediaRef Id="934904239"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1998450481" Name="UI_Endurance" DurationType="OneShot" DurationMin="0.71610415" DurationMax="0.71610415">
+				<Event Id="1998450481" Name="UI_Endurance" DurationType="OneShot" DurationMin="3" DurationMax="3">
 					<MediaRefs>
-						<MediaRef Id="414060833"/>
+						<MediaRef Id="1004521814"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3454429038" Name="UI_GameOver_Temps" DurationType="OneShot" DurationMin="5" DurationMax="5">
@@ -2435,8 +2859,21 @@
 						<MediaRef Id="1016441441"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="4283987504" Name="UI_General_Fermer" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="1780827120" Name="UI_General_Ouvrir" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4283987504" Name="UI_General_Fermer" DurationType="OneShot" DurationMin="0.76829165" DurationMax="0.76829165">
+					<MediaRefs>
+						<MediaRef Id="904852995"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1780827120" Name="UI_General_Ouvrir" DurationType="OneShot" DurationMin="0.76829165" DurationMax="0.76829165">
+					<MediaRefs>
+						<MediaRef Id="19714962"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2019181674" Name="UI_General_Pick" DurationType="OneShot" DurationMin="0.10427083" DurationMax="0.10427083">
+					<MediaRefs>
+						<MediaRef Id="623144731"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2295926980" Name="UI_HotbarDeplacement" DurationType="OneShot" DurationMin="0.09189583" DurationMax="0.09189583">
 					<MediaRefs>
 						<MediaRef Id="94866023"/>
@@ -2472,9 +2909,10 @@
 						<MediaRef Id="180165786"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1287766270" Name="UI_MenuMort_RetourBase" DurationType="OneShot" DurationMin="1.5532084" DurationMax="1.5532084">
+				<Event Id="2134775902" Name="UI_JoueurVise_Stop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1287766270" Name="UI_MenuMort_RetourBase" DurationType="OneShot" DurationMin="0.4789375" DurationMax="0.4789375">
 					<MediaRefs>
-						<MediaRef Id="554836253"/>
+						<MediaRef Id="373463152"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="4115809185" Name="UI_MenuMort_RetourPrincipal" DurationType="OneShot" DurationMin="1.5733958" DurationMax="1.5733958">
@@ -2497,13 +2935,26 @@
 						<MediaRef Id="871914218"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="45966240" Name="UI_Respiration" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="45966240" Name="UI_Respiration" DurationType="OneShot" DurationMin="1.472" DurationMax="1.472">
+					<MediaRefs>
+						<MediaRef Id="184769739"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3192806191" Name="UI_Temps" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="289254179"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3496921912" Name="UI_Texte" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3496921912" Name="UI_Texte" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="904707216"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3168475150" Name="UI_Texte_Fin" DurationType="OneShot" DurationMin="0.17522916" DurationMax="0.17522916">
+					<MediaRefs>
+						<MediaRef Id="927671925"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2605645130" Name="UI_Vente_Fermer" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
 					<MediaRefs>
 						<MediaRef Id="601280793"/>
@@ -2519,76 +2970,80 @@
 						<MediaRef Id="275627558"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="70496768" Name="VO_Joueur_Appeure" DurationType="OneShot" DurationMin="1.09" DurationMax="1.09">
+				<Event Id="70496768" Name="VO_Joueur_Appeure" DurationType="OneShot" DurationMin="1.09" DurationMax="1.09"/>
+				<Event Id="618531677" Name="VO_Joueur_Attaque" DurationType="OneShot" DurationMin="0.492024" DurationMax="1.6776792">
 					<MediaRefs>
-						<MediaRef Id="609461526"/>
+						<MediaRef Id="56321458"/>
+						<MediaRef Id="83597679"/>
+						<MediaRef Id="85066395"/>
+						<MediaRef Id="122014534"/>
+						<MediaRef Id="329114577"/>
+						<MediaRef Id="388424272"/>
+						<MediaRef Id="412925337"/>
+						<MediaRef Id="465903535"/>
+						<MediaRef Id="601984271"/>
+						<MediaRef Id="808088995"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="618531677" Name="VO_Joueur_Attaque" DurationType="OneShot" DurationMin="1.01" DurationMax="1.01">
+				<Event Id="2579258019" Name="VO_Joueur_Degat" DurationType="OneShot" DurationMin="0.5085838" DurationMax="2.055337">
 					<MediaRefs>
-						<MediaRef Id="1042753719"/>
+						<MediaRef Id="33012233"/>
+						<MediaRef Id="209144850"/>
+						<MediaRef Id="252083416"/>
+						<MediaRef Id="350652965"/>
+						<MediaRef Id="484112042"/>
+						<MediaRef Id="491384156"/>
+						<MediaRef Id="635989996"/>
+						<MediaRef Id="658033047"/>
+						<MediaRef Id="820336811"/>
+						<MediaRef Id="873929258"/>
+						<MediaRef Id="991862810"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2579258019" Name="VO_Joueur_Degat" DurationType="OneShot" DurationMin="1.21" DurationMax="1.21">
+				<Event Id="2942549762" Name="VO_Joueur_Effort" DurationType="OneShot" DurationMin="0.51780105" DurationMax="1.279822">
 					<MediaRefs>
-						<MediaRef Id="343064125"/>
+						<MediaRef Id="52713633"/>
+						<MediaRef Id="190742280"/>
+						<MediaRef Id="224617764"/>
+						<MediaRef Id="341672232"/>
+						<MediaRef Id="381072008"/>
+						<MediaRef Id="390409820"/>
+						<MediaRef Id="1044363562"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2942549762" Name="VO_Joueur_Effort" DurationType="OneShot" DurationMin="1.12" DurationMax="1.12">
+				<Event Id="3391233375" Name="VO_Joueur_Enerve" DurationType="OneShot" DurationMin="1.22" DurationMax="1.22"/>
+				<Event Id="3641631337" Name="VO_Joueur_Exclame" DurationType="OneShot" DurationMin="1.32" DurationMax="1.32"/>
+				<Event Id="3341177082" Name="VO_Joueur_Heureux" DurationType="OneShot" DurationMin="1.05" DurationMax="1.05"/>
+				<Event Id="284601546" Name="VO_Joueur_Inspire" DurationType="OneShot" DurationMin="0.88001007" DurationMax="1.8734139">
 					<MediaRefs>
-						<MediaRef Id="103020854"/>
+						<MediaRef Id="325959823"/>
+						<MediaRef Id="446695842"/>
+						<MediaRef Id="762827917"/>
+						<MediaRef Id="981189777"/>
+						<MediaRef Id="1049675433"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3391233375" Name="VO_Joueur_Enerve" DurationType="OneShot" DurationMin="1.22" DurationMax="1.22">
+				<Event Id="1161539083" Name="VO_Joueur_Interroge" DurationType="OneShot" DurationMin="1.2159792" DurationMax="1.2159792"/>
+				<Event Id="197418210" Name="VO_Joueur_Mort" DurationType="OneShot" DurationMin="2.9398143" DurationMax="4.08219">
 					<MediaRefs>
-						<MediaRef Id="252565045"/>
+						<MediaRef Id="15568602"/>
+						<MediaRef Id="351384840"/>
+						<MediaRef Id="394622159"/>
+						<MediaRef Id="638429649"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3641631337" Name="VO_Joueur_Exclame" DurationType="OneShot" DurationMin="1.32" DurationMax="1.32">
+				<Event Id="2629164127" Name="VO_Joueur_Neutre" DurationType="OneShot" DurationMin="1.0892708" DurationMax="1.0892708"/>
+				<Event Id="2890522026" Name="VO_Joueur_Noyade" DurationType="OneShot" DurationMin="2.8945072" DurationMax="6.2124114">
 					<MediaRefs>
-						<MediaRef Id="975917079"/>
+						<MediaRef Id="270238327"/>
+						<MediaRef Id="462461259"/>
+						<MediaRef Id="640551528"/>
+						<MediaRef Id="826051975"/>
+						<MediaRef Id="855072048"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3341177082" Name="VO_Joueur_Heureux" DurationType="OneShot" DurationMin="1.05" DurationMax="1.05">
-					<MediaRefs>
-						<MediaRef Id="438244175"/>
-					</MediaRefs>
-				</Event>
-				<Event Id="284601546" Name="VO_Joueur_Inspire" DurationType="OneShot" DurationMin="1.21" DurationMax="1.21">
-					<MediaRefs>
-						<MediaRef Id="343064125"/>
-					</MediaRefs>
-				</Event>
-				<Event Id="1161539083" Name="VO_Joueur_Interroge" DurationType="OneShot" DurationMin="1.2159792" DurationMax="1.2159792">
-					<MediaRefs>
-						<MediaRef Id="578044342"/>
-					</MediaRefs>
-				</Event>
-				<Event Id="197418210" Name="VO_Joueur_Mort" DurationType="OneShot" DurationMin="1.05" DurationMax="1.05">
-					<MediaRefs>
-						<MediaRef Id="504780681"/>
-					</MediaRefs>
-				</Event>
-				<Event Id="2629164127" Name="VO_Joueur_Neutre" DurationType="OneShot" DurationMin="1.0892708" DurationMax="1.0892708">
-					<MediaRefs>
-						<MediaRef Id="568758034"/>
-					</MediaRefs>
-				</Event>
-				<Event Id="2890522026" Name="VO_Joueur_Noyade" DurationType="OneShot" DurationMin="1.21" DurationMax="1.21">
-					<MediaRefs>
-						<MediaRef Id="343064125"/>
-					</MediaRefs>
-				</Event>
-				<Event Id="1485537732" Name="VO_Joueur_Surpris" DurationType="OneShot" DurationMin="1.2405626" DurationMax="1.2405626">
-					<MediaRefs>
-						<MediaRef Id="197620101"/>
-					</MediaRefs>
-				</Event>
-				<Event Id="3659862611" Name="VO_Joueur_Triste" DurationType="OneShot" DurationMin="1.0186666" DurationMax="1.0186666">
-					<MediaRefs>
-						<MediaRef Id="999984505"/>
-					</MediaRefs>
-				</Event>
+				<Event Id="1485537732" Name="VO_Joueur_Surpris" DurationType="OneShot" DurationMin="1.2405626" DurationMax="1.2405626"/>
+				<Event Id="3659862611" Name="VO_Joueur_Triste" DurationType="OneShot" DurationMin="1.0186666" DurationMax="1.0186666"/>
 				<Event Id="1006093918" Name="VO_Narrateur_Debut" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="17970472"/>
@@ -2635,8 +3090,19 @@
 			</Events>
 			<GameParameters>
 				<GameParameter Id="2185427101" Name="SC_PlanteCarnivore"/>
+				<GameParameter Id="2342375655" Name="AMB_Distance"/>
+				<GameParameter Id="2722922482" Name="Deepness"/>
 				<GameParameter Id="2769016988" Name="PLY_Sante"/>
 			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="4176303900" Name="AMB_BaseAForetEtGrotte">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="1929160180" Name="AMB_ForetEtGrotte"/>
+						<State Id="2291972081" Name="AMB_Base"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 			<SwitchGroups>
 				<SwitchGroup Id="1145780075" Name="Pas_Vitesse">
 					<Switches>
@@ -2654,5 +3120,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6F0573FC-ADC7-E3EE-8897-7AC05CBE1316}</FileHash>
+	<FileHash>{56D6E0D0-7C34-EFB8-3CB0-B8542C69A289}</FileHash>
 </SoundBanksInfo>
