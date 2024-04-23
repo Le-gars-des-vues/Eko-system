@@ -270,12 +270,18 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                     EquipMultiTool(false);
                 }
                 isInBase = true;
-                //AudioManager.instance.StopSoundtrack();
-                //AudioManager.instance.forestIsPlaying = false;
+                AudioManager.instance.StopSoundtrack();
+                AudioManager.instance.forestIsPlaying = false;
             }
         }
         else
         {
+            if (!AudioManager.instance.forestIsPlaying)
+            {
+                AudioManager.instance.forestIsPlaying = true;
+                AudioManager.instance.PlaySoundtrack(AudioManager.instance.forestSountrack);
+                Debug.Log("Playing forest soundtrack!");
+            }
             if (isInBase)
             {
                 isInBase = false;
@@ -285,15 +291,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                 {
                     Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[0].text);
                     Tutorial.instance.firstTimeOutside = true;
-                }
-                
-                /*
-                if (!AudioManager.instance.forestIsPlaying)
-                {
-                    AudioManager.instance.forestIsPlaying = true;
-                    AudioManager.instance.PlaySoundtrack(AudioManager.instance.forestSountrack);
-                }
-                */
+                }             
             }
         }
 

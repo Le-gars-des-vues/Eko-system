@@ -30,14 +30,17 @@ public class CreatureUnderwater : MonoBehaviour
 
     private void Update()
     {
-        if (!GetComponent<CreatureState>().isAWaterCreature)
+        if (isUnderwater)
         {
-            currentOxygen -= Time.deltaTime * oxygenDepleteRate;
-        }
+            if (!GetComponent<CreatureState>().isAWaterCreature)
+            {
+                currentOxygen -= Time.deltaTime * oxygenDepleteRate;
+            }
 
-        if (currentOxygen <= 0)
-        {
-            GetComponent<CreatureHealth>().currentHp -= 0.01f;
+            if (currentOxygen <= 0)
+            {
+                GetComponent<CreatureHealth>().currentHp -= 0.01f;
+            }
         }
     }
 
@@ -61,6 +64,15 @@ public class CreatureUnderwater : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Water")
+        {
+            if (!isUnderwater)
+                GoUnderwater(true);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Water")
         {

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree;
 
-public class sharkBT : BTree
+public class SharkBT : BTree
 {
     [Header("Movement Variables")]
     [SerializeField] Transform target;
@@ -12,7 +12,7 @@ public class sharkBT : BTree
     [SerializeField] int maxMovingDistance;
     [SerializeField] int originalDirection;
 
-    [SerializeField] sharkMovement shark;
+    [SerializeField] SharkMovement shark;
     [SerializeField] CreatureState state;
 
     protected override BehaviorNode SetupTree()

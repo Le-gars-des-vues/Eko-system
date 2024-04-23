@@ -28,6 +28,7 @@ public class CreatureState : MonoBehaviour
 
     [Header("Senses Variables")]
     public float senseOfSmell = 3.5f;
+    public float maxSenseOfSmellFactor = 2;
     public float fovRange = 3.5f;
     public float minFollowDistance = 10f;
     public string foodName;
@@ -57,7 +58,7 @@ public class CreatureState : MonoBehaviour
     {
         currentFood = maxFood;
         minSenseOfSmellRadius = senseOfSmell;
-        maxSenseOfSmellRadius = senseOfSmell * 2;
+        maxSenseOfSmellRadius = senseOfSmell * maxSenseOfSmellFactor;
         isFull = true;
 
         territory = Physics2D.OverlapCircle(transform.position, 1f, LayerMask.GetMask("SceneView", "Water", "Enclosure"));

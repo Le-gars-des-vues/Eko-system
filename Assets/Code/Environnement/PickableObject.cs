@@ -226,7 +226,7 @@ public class PickableObject : MonoBehaviour
             InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
             ItemData itemData = Instantiate(item.itemData);
 
-            AudioManager.instance.PlaySound(AudioManager.instance.pickUpSound, player.gameObject);
+            AudioManager.instance.PlaySound(AudioManager.instance.pickUp, player.gameObject);
 
             //Si c'est n'est pas une ressource ou du gear
             if (gameObject.tag != "Ressource" && gameObject.tag != "Gear")

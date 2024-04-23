@@ -83,6 +83,7 @@ public class Recipes
         {19, new Recipes("Harpoon Gun", "Corallium", 3, "Scale", 3, "Trunk", 2) },
         {20, new Recipes("Arrow", "Lushalite",3, "Metal Sheet",1) },
         {21, new Recipes("Harpoon", "Corallium", 3, "Reinforced Plate", 1)},
+        /*
         {22, new Recipes("Reinforced Plate", "Fin", 3)},
         {23, new Recipes("Signal Amplifier", "Aquabulbus", 3, "Battery",1,"Wires",1)},
         {24, new Recipes("Waterproof Chip", "Petralucen", 1, "Fin", 1, "Rubiol",2)},
@@ -107,6 +108,7 @@ public class Recipes
         {42, new Recipes("Shield Upgrade 3", "Quantum Chip", 1, "Leg", 3,"Tugnstone",3)},
         {43, new Recipes("Health Upgrade 3", "Quantum Chip", 1, "Shroomies", 2, "Corallium",3)},
         {44, new Recipes("Stamina Upgrade 3", "Quantum Chip", 1, "Magnetyne", 3,"Bone",3)},
+        */
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sharkMovement : MonoBehaviour
+public class SharkMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     [SerializeField] Transform target;
@@ -35,7 +35,6 @@ public class sharkMovement : MonoBehaviour
 
     [Header("BodyParts")]
     [SerializeField] Transform[] fins;
-    [SerializeField] Transform body;
 
     [SerializeField] CreatureState state;
     [SerializeField] CreaturePathfinding pathfinding;
@@ -44,6 +43,8 @@ public class sharkMovement : MonoBehaviour
     [SerializeField] float checkInterval = 15f; // Time interval to check for stuck condition
     private Vector3 lastPosition; // Last recorded position of the creature
     private float timeSinceLastCheck = 0f;
+
+    [SerializeField] SharkAttack attack;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -79,8 +80,8 @@ public class sharkMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
         else if (dist < slowDownThreshold)
             moveSpeed = Mathf.Lerp(maxMoveSpeed, minMoveSpeed, (slowDownThreshold - dist / slowDownThreshold));
-        
-        if (dist > slowDownThreshold)
+
+        if (!attack.isCharging)
         {
             if (state.isPathfinding && pathfinding.path != null)
             {
@@ -95,22 +96,6 @@ public class sharkMovement : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
             }
         }
-        else
-        {
-            float angle = isFacingUp ? 0 : 180;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
-        }
-        /*
-        if (Mathf.Abs(transform.rotation.eulerAngles.z) >= 95 && isFacingUp)
-            Turn();
-        else if (Mathf.Abs(transform.rotation.eulerAngles.z) < 85 && !isFacingUp)
-            Turn();
-        */
-        if (targetIsRight != isFacingRight)
-        {
-            Turn();
-        }
-
 
         if (state.isPathfinding)
         {
@@ -136,23 +121,11 @@ public class sharkMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (CanMove())
+        if (CanMove() && !attack.isCharging)
         {
             if (dist > 0.5f)
             {
                 isStopped = false;
-                /*
-                if (state.isPathfinding && pathfinding.path != null)
-                {
-                    Vector2 direction = pathfinding.path.lookPoints[pathfinding.pathIndex] - rb.position;
-                    rb.velocity = (direction.normalized * moveSpeed);
-                }
-                else
-                {
-                    Vector2 direction = (Vector2)target.position - rb.position;
-                    rb.velocity = (direction.normalized * moveSpeed);
-                }
-                */
                 
                 if (targetIsRight)
                     GoRight(1);
@@ -170,31 +143,18 @@ public class sharkMovement : MonoBehaviour
         }
     }
 
-    /*
-    void Turn()
-    {
-        Vector3 scale = transform.localScale;
-        scale.y *= -1;
-        transform.localScale = scale;
-
-        isFacingUp = !isFacingUp;
-
-        isFacingRight = !isFacingRight;
-    }
-    */
-
     void Turn()
     {
         if (isFacingRight)
         {
-            body.eulerAngles = new Vector3(0, 0, 180);
+            //body.eulerAngles = new Vector3(0, 0, 180);
             Vector2 texScale = transform.GetChild(1).GetComponent<LineRenderer>().textureScale;
             texScale.y *= -1;
             transform.GetChild(1).GetComponent<LineRenderer>().textureScale = texScale;
         }
         else
         {
-            body.eulerAngles = new Vector3(0, 0, 0);
+            //body.eulerAngles = new Vector3(0, 0, 0);
             Vector2 texScale = transform.GetChild(1).GetComponent<LineRenderer>().textureScale;
             texScale.y *= -1;
             transform.GetChild(1).GetComponent<LineRenderer>().textureScale = texScale;
@@ -226,6 +186,9 @@ public class sharkMovement : MonoBehaviour
             force.x += minMoveSpeed;
 
         rb.AddForce(force);
+
+        if (!isFacingRight && rb.velocity.x > 0)
+            Turn();
     }
 
     void GoLeft(float speedFactor)
@@ -238,6 +201,9 @@ public class sharkMovement : MonoBehaviour
             force.x -= minMoveSpeed;
 
         rb.AddForce(force);
+
+        if (isFacingRight && rb.velocity.x < 0)
+            Turn();
     }
 
     void GoUp(float speedFactor)
