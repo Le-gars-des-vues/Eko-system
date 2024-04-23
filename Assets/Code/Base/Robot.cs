@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using TMPro;
 
 public class Robot : MonoBehaviour
 {
@@ -213,6 +214,7 @@ public class Robot : MonoBehaviour
     {
         baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[1].dialogueSequence);
         baseDialogue.onDialogueEnd += TourOfTheBase;
+        baseDialogue.onDialogueEnd += RepairMultitool;
     }
     void RefuseTour()
     {
@@ -222,12 +224,18 @@ public class Robot : MonoBehaviour
         baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[7].dialogueSequence, false);
     }
 
-
     void TourOfTheBase()
     {
         PromptManager.instance.CreateNewPrompt(new Prompt("Would you like a tour of the base?", false, "Yes", "No"));
         PromptManager.onButtonClick = GoToRespawn;
         PromptManager.onButtonNull = RefuseTour;
+        PromptManager.onButtonNull = ReadyToGoOut;
+    }
+
+    void RepairMultitool()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasMultitool = true;
+        Camera.main.GetComponent<InventoryController>().notWorking.SetActive(false);
     }
 
     #endregion

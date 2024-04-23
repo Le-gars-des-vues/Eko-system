@@ -47,7 +47,7 @@ public class InventoryController : MonoBehaviour
     string gridName2;
 
     [SerializeField] GameObject invalid;
-    [SerializeField] GameObject notWorking;
+    public GameObject notWorking;
     public Sprite multitool;
 
     [SerializeField] GameObject itemInfo;

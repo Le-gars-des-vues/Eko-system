@@ -169,6 +169,9 @@ public class CraftingManager : MonoBehaviour
     {
         foreach (KeyValuePair<int, Recipes> recipe in Recipes.listOfRecipes)
         {
+            if (recipe.Key == 0 && GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasMultitool == true)
+                continue;
+
             if (!learnedRecipes.Contains(recipe))
             {
                 bool firstMatPresent = false;
