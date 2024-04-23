@@ -28,38 +28,30 @@ public class SellingScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!player.marketIsOpen)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
+            if (isInRange)
             {
-                if (isInRange)
+                if (!player.marketIsOpen)
                 {
-                    if (!player.inventoryOpen)
+                    if (ArrowManager.instance.targetObject == gameObject)
                     {
-                        player.ShowOrHideInventory(false);
+                        if (!player.inventoryOpen)
+                            player.ShowOrHideInventory(false);
+                        if (!player.marketIsOpen)
+                            player.ShowOrHideMarket();
+                        if (!tvText.activeSelf)
+                            tvText.SetActive(true);
+                        if (!tvLight.activeSelf)
+                            tvLight.SetActive(true);
                     }
-                    if (!player.marketIsOpen)
-                    {
-                        player.ShowOrHideMarket();
-                    }
-                    if (!tvText.activeSelf)
-                        tvText.SetActive(true);
-                    if (!tvLight.activeSelf)
-                        tvLight.SetActive(true);
                 }
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (isInRange)
+                else
                 {
-                    if (player.inventoryOpen && player.marketIsOpen)
-                    {
+                    if (player.inventoryOpen)
                         player.ShowOrHideInventory(false);
+                    if (player.marketIsOpen)
                         player.ShowOrHideMarket();
-                    }
                 }
             }
         }
@@ -170,7 +162,7 @@ public class SellingScreen : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive && !isTeleporting)
-                ArrowManager.instance.PlaceArrow(transform.position, "SELL", new Vector2(0, 1), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "SELL", new Vector2(0, 1), gameObject);
         }
     }
 
@@ -180,7 +172,7 @@ public class SellingScreen : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive && !isTeleporting)
-                ArrowManager.instance.PlaceArrow(transform.position, "SELL", new Vector2(0, 1), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "SELL", new Vector2(0, 1), gameObject);
         }
     }
 

@@ -31,6 +31,8 @@ public class DialogueSpeaker : MonoBehaviour
     public int dialogueIndex = 0;
     List<Dialogue> currentDialogue;
 
+    public GameObject UI;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
@@ -80,12 +82,19 @@ public class DialogueSpeaker : MonoBehaviour
                         if (dialogueIndex < currentDialogue.Count - 1 && !currentDialogue[dialogueIndex + 1].conditionIsMet)
                             hasACondition = true;
 
-                        if ((Time.time - speakingTime > speakCooldown) || hasACondition)
+
+                        if ((Input.GetKeyDown(KeyCode.E) && !pressedKey) || (hasACondition && Time.time - speakingTime > speakCooldown))
                         {
                             if (dialogueIndex < currentDialogue.Count - 1)
                             {
                                 if (currentDialogue[dialogueIndex + 1].conditionIsMet)
+                                {
+                                    //On skip l'animation du texte ou on passe a la prochaine phrase
+                                    pressedKey = true;
                                     NextSentence();
+                                    if (dialogueIndex == currentDialogue.Count - 1)
+                                        UI.SetActive(false);
+                                }
                                 else
                                 {
                                     Tutorial.instance.isListeningForInputs = true;
@@ -97,6 +106,7 @@ public class DialogueSpeaker : MonoBehaviour
                             }
                             else
                             {
+                                pressedKey = true;
                                 NextSentence();
                             }
                         }
@@ -123,6 +133,8 @@ public class DialogueSpeaker : MonoBehaviour
         player.isInDialogue = DialogueManager.instance.isInDialogue;
         if (player.isInDialogue)
             StartCoroutine(player.MoveCamera("ZoomIn"));
+        UI.SetActive(true);
+        hasACondition = false;
         isReadyToSpeak = false;
     }
 
@@ -175,6 +187,7 @@ public class DialogueSpeaker : MonoBehaviour
 
         onDialogueEnd?.Invoke();
         onDialogueEnd = null;
+        UI.SetActive(false);
         isSpeaking = false;
         StartCoroutine(player.MoveCamera("NormalZoom"));
     }

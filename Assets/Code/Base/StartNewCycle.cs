@@ -13,18 +13,23 @@ public class StartNewCycle : MonoBehaviour
     {
         if (isInRange)
         {
-            if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate && !startedANewCycle)
+            if (Input.GetKeyDown(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && !startedANewCycle)
             {
-                startedANewCycle = true;
-                newCycleTime = Time.time;
                 string promptText = GameObject.Find("Vente").GetComponent<Vente>().profit >= GameManager.instance.gameObject.GetComponent<Quota>().quota ? "Start a new day?" : "Start a new day? \n\nWARNING : INSUFFICIENT PROFITS!";
                 PromptManager.instance.CreateNewPrompt(new Prompt(promptText, false, "Yes", "No"));
                 PromptManager.onButtonClick = GameManager.instance.StartNewCycle;
+                PromptManager.onButtonClick = ResetNewCycle;
             }
 
-            if (Time.time - newCycleTime > 5.1f)
+            if (Time.time - newCycleTime > 5.1f && startedANewCycle)
                 startedANewCycle = false;
         }
+    }
+
+    void ResetNewCycle()
+    {
+        startedANewCycle = true;
+        newCycleTime = Time.time;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +38,7 @@ public class StartNewCycle : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive)
-                ArrowManager.instance.PlaceArrow(transform.position, "START NEW CYCLE", new Vector2(0, 1), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "START NEW CYCLE", new Vector2(0, 1), gameObject);
         }
     }
 
@@ -43,7 +48,7 @@ public class StartNewCycle : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive)
-                ArrowManager.instance.PlaceArrow(transform.position, "START NEW CYCLE", new Vector2(0, 1), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "START NEW CYCLE", new Vector2(0, 1), gameObject);
         }
     }
 

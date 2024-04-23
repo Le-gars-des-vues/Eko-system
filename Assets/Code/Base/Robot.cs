@@ -131,6 +131,14 @@ public class Robot : MonoBehaviour
         scale.x *= -1;
         trainingRoomDialogue.speechBubbleTextB.gameObject.transform.localScale = scale;
 
+        scale = baseDialogue.UI.transform.localScale;
+        scale.x *= -1;
+        baseDialogue.UI.transform.localScale = scale;
+
+        scale = trainingRoomDialogue.UI.transform.localScale;
+        scale.x *= -1;
+        trainingRoomDialogue.UI.transform.localScale = scale;
+
         isFacingRight = !isFacingRight;
     }
 

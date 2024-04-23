@@ -58,7 +58,7 @@ public class CreatureDeath : MonoBehaviour
             if (CanExtract())
             {
                 if (ArrowManager.instance.targetObject != gameObject)
-                    ArrowManager.instance.PlaceArrow(transform.position, "EXTRACT DNA", new Vector2(0, 0), gameObject, 1);
+                    ArrowManager.instance.PlaceArrow(transform.position, "EXTRACT DNA", new Vector2(0, 0), gameObject);
                 //Debug.Log("can harvest");
                 if (Input.GetKey(KeyCode.E))
                 {
@@ -84,7 +84,7 @@ public class CreatureDeath : MonoBehaviour
             else if (CanHarvest())
             {
                 if (ArrowManager.instance.targetObject != gameObject)
-                    ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, 0), gameObject, 1);
+                    ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, 0), gameObject);
                 //Debug.Log("can harvest");
                 if (Input.GetKey(KeyCode.E))
                 {

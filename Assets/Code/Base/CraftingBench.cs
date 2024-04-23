@@ -26,32 +26,27 @@ public class CraftingBench : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!player.craftingIsOpen)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKey(KeyCode.E))
+            if (isInRange)
             {
-                if (isInRange && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
+                if (!player.craftingIsOpen)
                 {
-                    crafting.OnValueChanged();
-                    if (!player.inventoryOpen)
+                    if (ArrowManager.instance.targetObject == gameObject)
                     {
-                        player.ShowOrHideInventory(false);
-                    }
-                    if (!player.craftingIsOpen)
-                    {
-                        player.ShowOrHideCrafting();
+                        crafting.OnValueChanged();
+                        if (!player.inventoryOpen)
+                            player.ShowOrHideInventory(false);
+                        if (!player.craftingIsOpen)
+                            player.ShowOrHideCrafting();
                     }
                 }
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (player.inventoryOpen && player.craftingIsOpen)
+                else
                 {
-                    player.ShowOrHideInventory(false);
-                    player.ShowOrHideCrafting();
+                    if (player.craftingIsOpen)
+                        player.ShowOrHideCrafting();
+                    if (player.inventoryOpen)
+                        player.ShowOrHideInventory(false);
                 }
             }
         }
@@ -162,7 +157,7 @@ public class CraftingBench : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive && !isTeleporting)
-                ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject);
         }
     }
 
@@ -172,7 +167,7 @@ public class CraftingBench : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive && !isTeleporting)
-                ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject);
         }
     }
 

@@ -88,6 +88,7 @@ public class ArrowManager : MonoBehaviour
         transform.Find("Visual").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         timer = 0;
 
+        offset.y += 0.5f;
         arrowOffset = offset;
         Vector2 diff = pos - (Vector2)targetObject.transform.position;
         arrowPos = (Vector2)targetObject.transform.position + diff;
