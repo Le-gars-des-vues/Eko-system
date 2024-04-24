@@ -127,6 +127,7 @@ public class GroundPlayerController : MonoBehaviour
     private int lastWallJumpDir;
 
     [Header("Slide Variables")]
+    bool climbSoundPlaying;
     [SerializeField] private float slideSpeed;
     [SerializeField] private float climbSpeed;
     //Acceleration quand le joueur slide
@@ -204,7 +205,10 @@ public class GroundPlayerController : MonoBehaviour
                         player.ChangeStamina(-runStaminaCost);
                     }
                     else
+                    {
+                        AudioManager.instance.PlaySound(AudioManager.instance.noStamina, gameObject);
                         maxSpeed = walkSpeed;
+                    }
                 }
             }
             else
@@ -295,6 +299,11 @@ public class GroundPlayerController : MonoBehaviour
         else
         {
             isSliding = false;
+            if (climbSoundPlaying)
+            {
+                climbSoundPlaying = false;
+                AudioManager.instance.PlaySound(AudioManager.instance.playerClimbStop, gameObject);
+            }
         }
 
         if (!isFlying)
@@ -479,6 +488,7 @@ public class GroundPlayerController : MonoBehaviour
         {
             if (!player.staminaDepleted)
             {
+                AudioManager.instance.PlaySound(AudioManager.instance.voJump, gameObject);
                 player.ChangeStamina(-jumpStaminaCost);
                 jumpedOnce = true;
                 pressedJumpTime = 0;
@@ -489,6 +499,8 @@ public class GroundPlayerController : MonoBehaviour
                 }
                 rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
             }
+            else
+                AudioManager.instance.PlaySound(AudioManager.instance.noStamina, gameObject);
         }
     }
 
@@ -502,6 +514,7 @@ public class GroundPlayerController : MonoBehaviour
     {
         if (!player.staminaDepleted)
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.voJump, gameObject);
             Tutorial.instance.ListenForInputs("hasWallJumped");
             player.ChangeStamina(-jumpStaminaCost);
             //Ensures we can't call Wall Jump multiple times from one press
@@ -525,6 +538,8 @@ public class GroundPlayerController : MonoBehaviour
             jumpedOnce = false;
             //hasWallJumped = true;
         }
+        else
+            AudioManager.instance.PlaySound(AudioManager.instance.noStamina, gameObject);
     }
 
     private void Slide()
@@ -540,6 +555,12 @@ public class GroundPlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
+                if (!climbSoundPlaying)
+                {
+                    climbSoundPlaying = true;
+                    AudioManager.instance.PlaySound(AudioManager.instance.playerClimb, gameObject);
+                }
+
                 if (rb.velocity.y < 0)
                     rb.AddForce(rb.velocity.y * Vector2.down, ForceMode2D.Impulse);
 
@@ -551,6 +572,12 @@ public class GroundPlayerController : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.S))
             {
+                if (!climbSoundPlaying)
+                {
+                    climbSoundPlaying = true;
+                    AudioManager.instance.PlaySound(AudioManager.instance.playerClimb, gameObject);
+                }
+
                 if (rb.velocity.y > 0)
                     rb.AddForce(-rb.velocity.y * Vector2.up, ForceMode2D.Impulse);
 
@@ -573,6 +600,8 @@ public class GroundPlayerController : MonoBehaviour
                 rb.AddForce(movement * Vector2.up);
             }
         }
+        else
+            AudioManager.instance.PlaySound(AudioManager.instance.noStamina, gameObject);
     }
 
     public void VineJump()

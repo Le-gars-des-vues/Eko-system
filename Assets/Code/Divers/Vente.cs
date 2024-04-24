@@ -32,7 +32,7 @@ public class Vente : MonoBehaviour
 
         theItemGrid=inventaireVente.GetComponent<ItemGrid>();
 
-
+        bool hasSoldItem = false;
          for (int x = 0; x < tempWidth; x++){
 
              for (int y = 0; y < tempHeight; y++)
@@ -41,6 +41,7 @@ public class Vente : MonoBehaviour
                 anItem=theItemGrid.CheckIfItemPresent(x, y);
                 if (anItem != null)
                 {
+                    hasSoldItem = true;
                     profit += Mathf.RoundToInt((float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height));
                     QuickMenu.instance.quotaText.text = profit.ToString() + "/" + GameManager.instance.gameObject.GetComponent<Quota>().quota.ToString() + "$";
                     profitText.text = profit.ToString() + "$";
@@ -50,6 +51,9 @@ public class Vente : MonoBehaviour
                 }
              }
          } 
+
+         if (hasSoldItem)
+            AudioManager.instance.PlaySound(AudioManager.instance.sellingScreenSell, Camera.main.gameObject);
     }
 
     public float calculStorage()

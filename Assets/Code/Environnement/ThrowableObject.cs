@@ -32,7 +32,10 @@ public class ThrowableObject : MonoBehaviour
             if (player.CanMove())
             {
                 if (Input.GetMouseButtonDown(0))
+                {
                     timer = 0;
+                    AudioManager.instance.PlaySound(AudioManager.instance.aim, gameObject);
+                }
 
                 if (Input.GetMouseButton(0))
                 {
@@ -58,6 +61,7 @@ public class ThrowableObject : MonoBehaviour
                         }
                     }
                     timer = 0;
+                    AudioManager.instance.PlaySound(AudioManager.instance.aimStop, gameObject);
                 }
             }
         }
@@ -167,5 +171,10 @@ public class ThrowableObject : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.aimStop, gameObject);
     }
 }

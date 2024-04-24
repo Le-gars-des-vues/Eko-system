@@ -87,7 +87,7 @@ public class SellingScreen : MonoBehaviour
         {
             for (int i = 0; i < sprites.Count; i++)
                 sprites[i].material = startMaterial;
-
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;
@@ -104,6 +104,7 @@ public class SellingScreen : MonoBehaviour
                 sprite.gameObject.layer = endLayer;
 
             elapsedTime = 0;
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;

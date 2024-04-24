@@ -49,6 +49,7 @@ public class SpikeTrap : MonoBehaviour
         yield return new WaitForSeconds(spikeGracePeriod);
         timer = 0;
         var startPos = transform.position;
+        AudioManager.instance.PlaySound(AudioManager.instance.spikeTrap, gameObject);
         while (timer < spikeUpTime)
         {
             timer += Time.deltaTime;

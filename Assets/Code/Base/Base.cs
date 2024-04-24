@@ -17,6 +17,8 @@ public class Base : MonoBehaviour
     [SerializeField] float baseEntryThreshold;
     [SerializeField] Animator leftDoorAnim;
     [SerializeField] Animator rightDoorAnim;
+    bool outsideDoorOpened;
+    bool insideDoorOpened;
     [SerializeField] Animator insideDoorsAnim;
     [SerializeField] GameObject buildButton;
 
@@ -68,13 +70,17 @@ public class Base : MonoBehaviour
                 if (!isInside)
                 {
                     //Debug.Log(Vector2.Distance(player.transform.position, door));
-                    if (Vector2.Distance(player.transform.position, door) < distanceOpenThreshold)
+                    if (Vector2.Distance(player.transform.position, door) < distanceOpenThreshold && !outsideDoorOpened)
                     {
+                        outsideDoorOpened = true;
+                        AudioManager.instance.PlaySound(AudioManager.instance.porteOuverture, leftDoorAnim.gameObject);
                         leftDoorAnim.SetBool("isOpen", true);
                         rightDoorAnim.SetBool("isOpen", true);
                     }
-                    else
+                    else if (Vector2.Distance(player.transform.position, door) > distanceOpenThreshold && outsideDoorOpened)
                     {
+                        outsideDoorOpened = false;
+                        AudioManager.instance.PlaySound(AudioManager.instance.porteFermeture, leftDoorAnim.gameObject);
                         leftDoorAnim.SetBool("isOpen", false);
                         rightDoorAnim.SetBool("isOpen", false);
                     }
@@ -82,12 +88,19 @@ public class Base : MonoBehaviour
                 else
                 {
                     //Debug.Log(Vector2.Distance(player.transform.position, door));
-                    if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < distanceOpenThreshold)
+                    if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < distanceOpenThreshold && !insideDoorOpened)
                     {
-                        insideDoorsAnim.SetBool("isOpen", true);
+                        if (GameManager.instance.TimeLeft > 0)
+                        {
+                            insideDoorOpened = true;
+                            AudioManager.instance.PlaySound(AudioManager.instance.porteOuverture, insideDoorsAnim.gameObject);
+                            insideDoorsAnim.SetBool("isOpen", true);
+                        }
                     }
-                    else
+                    else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) > distanceOpenThreshold && insideDoorOpened)
                     {
+                        insideDoorOpened = false;
+                        AudioManager.instance.PlaySound(AudioManager.instance.porteFermeture, insideDoorsAnim.gameObject);
                         insideDoorsAnim.SetBool("isOpen", false);
                     }
                 }
@@ -97,12 +110,19 @@ public class Base : MonoBehaviour
                     if (Vector2.Distance(player.transform.position, door) < baseEntryThreshold)
                     {
                         Teleport(false, true, baseEntryPoint.position);
+                        if (GameManager.instance.isStorm)
+                            GameManager.instance.Storm(false);
                     }
                     else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < baseEntryThreshold)
                     {
-                        Teleport(true, false, door);
-                        if (!GameManager.instance.TimerOn)
-                            GameManager.instance.TimerOn = true;
+                        if (GameManager.instance.TimeLeft > 0)
+                        {
+                            Teleport(true, false, door);
+                            if (GameManager.instance.isStorm)
+                                GameManager.instance.Storm(true);
+                            if (!GameManager.instance.TimerOn)
+                                GameManager.instance.TimerOn = true;
+                        }
                     }
                 }
             }
@@ -141,6 +161,7 @@ public class Base : MonoBehaviour
         float elapsedTime = 0;
         if (isTrue)
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, sprites[1].gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;
@@ -152,6 +173,7 @@ public class Base : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, sprites[1].gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;

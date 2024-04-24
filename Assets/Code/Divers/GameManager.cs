@@ -81,7 +81,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Animator lightningFlash;
     [SerializeField] float lightningCooldown = 20;
     [SerializeField] float lightningTime;
-    [SerializeField] bool isStorm;
+    public bool isStorm;
+    uint stormSoundID;
 
     private void Awake()
     {
@@ -208,8 +209,8 @@ public class GameManager : MonoBehaviour
                 TimerOn = false;
                 if (!theCharacter.GetComponent<PlayerPermanent>().isInBase)
                 {
-                    theCharacter.GetComponent<PlayerPermanent>().currentHp = 0;
-                    theCharacter.GetComponent<PlayerPermanent>().SetBar(theCharacter.GetComponent<PlayerPermanent>().hpSlider, theCharacter.GetComponent<PlayerPermanent>().currentHp);
+                    theCharacter.GetComponent<PlayerPermanent>().Death();
+                    AudioManager.instance.PlaySound(AudioManager.instance.gameOverTimer, Camera.main.gameObject);
                 }
                 else
                 {
@@ -240,11 +241,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Storm(bool isTrue)
+    public void Storm(bool isTrue)
     {
         isStorm = isTrue;
         if (isTrue)
         {
+            stormSoundID = AudioManager.instance.PlaySound(AudioManager.instance.storm, Camera.main.gameObject);
             lightningTime = Time.time;
             rainFront.Play();
             rainGround.Play();
@@ -252,6 +254,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            AkSoundEngine.StopPlayingID(stormSoundID);
             var emissionF = rainFront.emission;
             var emissionG = rainGround.emission;
             var emissionB = rainBack.emission;
@@ -289,15 +292,15 @@ public class GameManager : MonoBehaviour
         cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
         textToWrite = "////////////\n\nSYSTEM.REBOOT\nTERRAFORMA CORP.\n\nNEW TRANSMISSION\n.\n.\n.\n.\n\nGOOD MORNING EMPLOYEE 1212781827!\n.\n.\n.\n.\n\nCYCLE : " + cycleCount.ToString("000") + "\n.\n.\n\nQUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $\n\nEND TRANSMISSION\n\n/////////////";
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
-
         yield return new WaitForSeconds(1.1f);
         newCycleText.text = "";
+        AudioManager.instance.PlaySound(AudioManager.instance.uiTexte, Camera.main.gameObject);
         foreach(char letter in textToWrite.ToCharArray())
         {
             newCycleText.text += letter;
             yield return new WaitForSeconds(0.03f);
         }
-
+        AudioManager.instance.PlaySound(AudioManager.instance.uiTexteFin, Camera.main.gameObject);
         yield return new WaitForSeconds(2f);
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", false);
         yield return new WaitForSeconds(2f);

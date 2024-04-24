@@ -14,9 +14,6 @@ public class MultiTool : MonoBehaviour
     [SerializeField] GameObject endVFX;
     private List<ParticleSystem> particles = new List<ParticleSystem>();
 
-    public AK.Wwise.Event multitoolCharge;
-    uint playingSoundID;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +48,7 @@ public class MultiTool : MonoBehaviour
     public void EnableLaser()
     {
         laser.enabled = true;
-        playingSoundID = multitoolCharge.Post(gameObject);
+        AudioManager.instance.PlaySound(AudioManager.instance.multitoolCharge, gameObject);
         for (int i = 0; i < particles.Count; i++)
         {
             particles[i].Play();
@@ -82,7 +79,7 @@ public class MultiTool : MonoBehaviour
     public void DisableLaser()
     {
         laser.enabled = false;
-        AkSoundEngine.StopPlayingID(playingSoundID);
+        AudioManager.instance.PlaySound(AudioManager.instance.multitoolChargeStop, gameObject);
         for (int i = 0; i < particles.Count; i++)
         {
             particles[i].Stop();

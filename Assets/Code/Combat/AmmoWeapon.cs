@@ -38,7 +38,10 @@ public class AmmoWeapon : MonoBehaviour
                 if (!GetComponent<InventoryItem>().broken)
                 {
                     if (Input.GetMouseButtonDown(0))
+                    {
+                        AudioManager.instance.PlaySound(AudioManager.instance.aim, gameObject);
                         timer = 0;
+                    }
 
                     if (Input.GetMouseButton(0))
                     {
@@ -62,6 +65,7 @@ public class AmmoWeapon : MonoBehaviour
                             GetComponent<PickableObject>().DurabilityDamage(durabilityDamage);
                         }
                         timer = 0;
+                        AudioManager.instance.PlaySound(AudioManager.instance.aimStop, gameObject);
                     }
                 }
             }
@@ -143,5 +147,10 @@ public class AmmoWeapon : MonoBehaviour
                 break;
         }
         */
+    }
+
+    private void OnDestroy()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.aimStop, gameObject);
     }
 }

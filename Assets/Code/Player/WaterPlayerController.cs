@@ -55,7 +55,14 @@ public class WaterPlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 if (CanDash())
-                    StartCoroutine(UnderwaterDash());
+                {
+                    if (!player.staminaDepleted)
+                    {
+                        StartCoroutine(UnderwaterDash());
+                    }
+                    else
+                        AudioManager.instance.PlaySound(AudioManager.instance.noStamina, gameObject);
+                }
             }
         }
     }
@@ -68,6 +75,7 @@ public class WaterPlayerController : MonoBehaviour
     IEnumerator UnderwaterDash()
     {
         dashing = true;
+        AudioManager.instance.PlaySound(AudioManager.instance.nage, gameObject);
         rb.velocity = new Vector2(rb.velocity.x / 2, rb.velocity.y / 2);
         rb.AddForce(movement * uwDashSpeed, ForceMode2D.Impulse);
         player.ChangeStamina(-dashStaminaCost);

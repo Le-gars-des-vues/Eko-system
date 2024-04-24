@@ -10,6 +10,7 @@ public class Spike : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.thorns, gameObject);
             collision.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
         }
     }

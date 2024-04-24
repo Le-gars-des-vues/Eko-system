@@ -98,6 +98,7 @@ public class DialogueSpeaker : MonoBehaviour
                                 else
                                 {
                                     Tutorial.instance.isListeningForInputs = true;
+                                    UI.SetActive(false);
                                     if (!DialogueManager.instance.currentConditions.Contains(currentDialogue[dialogueIndex + 1].conditionName) && !DialogueManager.conditions[currentDialogue[dialogueIndex + 1].conditionName])
                                         DialogueManager.instance.currentConditions.Add(currentDialogue[dialogueIndex + 1].conditionName);
 

@@ -19,6 +19,8 @@ public class VinePlayerController : MonoBehaviour
 
     PlayerPermanent player;
 
+    bool climbSoundPlaying;
+
     private void OnEnable()
     {
         player = gameObject.GetComponent<PlayerPermanent>();
@@ -89,7 +91,14 @@ public class VinePlayerController : MonoBehaviour
             }
 
             if (!slidingUp && !slidingDown)
-                transform.position = new Vector2(attachedVine.transform.position.x + (vineOffset * facingDirection), attachedVine.transform.position.y);
+            {
+                if (climbSoundPlaying)
+                {
+                    climbSoundPlaying = false;
+                    AudioManager.instance.PlaySound(AudioManager.instance.playerClimbStop, gameObject);
+                    transform.position = new Vector2(attachedVine.transform.position.x + (vineOffset * facingDirection), attachedVine.transform.position.y);
+                }
+            }
         }
     }
 
@@ -133,6 +142,11 @@ public class VinePlayerController : MonoBehaviour
     //Slide dans une direction choisi en Lerpant vers la position de la vigne au dessus ou au dessous
     public void Slide(int direction)
     {
+        if (!climbSoundPlaying)
+        {
+            climbSoundPlaying = true;
+            AudioManager.instance.PlaySound(AudioManager.instance.playerClimb, gameObject);
+        }
         if (direction > 0)
         {
             if (attachedVine.GetComponent<RopeSegment>().connectedAbove != null && attachedVine.GetComponent<RopeSegment>().connectedAbove.gameObject.name != "Hook")

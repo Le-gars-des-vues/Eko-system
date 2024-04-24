@@ -55,6 +55,8 @@ public class WaterSpring : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.waterSplash, gameObject);
+
             var speed = collider.gameObject.GetComponent<Rigidbody2D>().velocity;
 
             velocity += speed.y / resistance;

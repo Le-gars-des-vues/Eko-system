@@ -106,6 +106,10 @@ public class QuickMenu : MonoBehaviour
 
         isShown = isTrue;
         anim.SetBool("isShown", isTrue);
+        if (isTrue)
+            AudioManager.instance.PlaySound(AudioManager.instance.quickeMenuOpen, gameObject);
+        else
+            AudioManager.instance.PlaySound(AudioManager.instance.quickMenuClose, gameObject);
     }
 
     public void AnimationEnd()
@@ -153,6 +157,7 @@ public class QuickMenu : MonoBehaviour
 
     public void ActivateMessage()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.quickMenuPick, gameObject);
         messageMenu.SetActive(true);
         messageMenuActive = true;
         messageButton.interactable = false;
@@ -195,6 +200,7 @@ public class QuickMenu : MonoBehaviour
 
     public void ActivateInfos()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.quickMenuPick, gameObject);
         infoMenuActive = true;
         infoButton.interactable = false;
 
@@ -239,6 +245,7 @@ public class QuickMenu : MonoBehaviour
 
     public void ActivateTeleport()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.quickMenuPick, gameObject);
         teleportMenu.SetActive(true);
         teleportMenuActive = true;
         teleportButton.interactable = false;

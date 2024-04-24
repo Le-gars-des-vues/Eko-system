@@ -41,6 +41,7 @@ public class HotbarManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentlySelected--;
+            AudioManager.instance.PlaySound(AudioManager.instance.hotbar, gameObject);
             if(currentlySelected < 0)
             {
 
@@ -55,6 +56,12 @@ public class HotbarManager : MonoBehaviour
 
             if (grids[currentlySelected].GetItem(0, 0) != null)
                 SwitchItem();
+            else
+            {
+                if (player.objectInRightHand != null)
+                    Destroy(player.objectInRightHand);
+                player.UnequipObject();
+            }
 
             for (int i = 0; i < hotbars.Length; i++)
             {
@@ -71,6 +78,7 @@ public class HotbarManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             currentlySelected++;
+            AudioManager.instance.PlaySound(AudioManager.instance.hotbar, gameObject);
             if (currentlySelected == hotbars.Length)
             {
 
@@ -85,6 +93,13 @@ public class HotbarManager : MonoBehaviour
 
             if (grids[currentlySelected].GetItem(0, 0) != null)
                 SwitchItem();
+            else
+            {
+                if (player.objectInRightHand != null)
+                    Destroy(player.objectInRightHand);
+                player.UnequipObject();
+            }
+
 
             for (int i = 0; i < hotbars.Length; i++)
             {

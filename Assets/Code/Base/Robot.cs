@@ -221,7 +221,8 @@ public class Robot : MonoBehaviour
         hasShowedRespawn = true;
         hasShowedMarket = true;
         hasShowedCrafting = true;
-        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[7].dialogueSequence, false);
+        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[7].dialogueSequence);
+        ReadyToGoOut();
     }
 
     void TourOfTheBase()
@@ -229,7 +230,6 @@ public class Robot : MonoBehaviour
         PromptManager.instance.CreateNewPrompt(new Prompt("Would you like a tour of the base?", false, "Yes", "No"));
         PromptManager.onButtonClick = GoToRespawn;
         PromptManager.onButtonNull = RefuseTour;
-        PromptManager.onButtonNull = ReadyToGoOut;
     }
 
     void RepairMultitool()
@@ -424,7 +424,7 @@ public class Robot : MonoBehaviour
         if (teleport)
         {
             sprite.material = startMaterial;
-
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;
@@ -436,6 +436,7 @@ public class Robot : MonoBehaviour
             transform.position = target;
 
             elapsedTime = 0;
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;

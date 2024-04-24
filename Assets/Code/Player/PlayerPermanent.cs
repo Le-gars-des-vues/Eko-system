@@ -94,6 +94,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public bool isPoisoned;
 
     [Header("UnderWater Variables")]
+    uint lowOxygenSoundID;
+    bool lowOxygenIsPlaying;
     [SerializeField] float underWaterGravityScale = 0.1f;
     [SerializeField] float underWaterDrag = 2f;
     [SerializeField] float underWaterAngularDrag = 4f;
@@ -320,7 +322,22 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
         if (currentOxygen <= 0)
         {
+            if (!lowOxygenIsPlaying)
+            {
+                lowOxygenIsPlaying = true;
+                lowOxygenSoundID = AudioManager.instance.PlaySound(AudioManager.instance.voDrown, gameObject);
+                AudioManager.instance.PlaySound(AudioManager.instance.noOxygen, gameObject);
+            }
             ChangeHp(-0.01f, false);
+        }
+        else
+        {
+            if (lowOxygenIsPlaying)
+            {
+                lowOxygenIsPlaying = false;
+                AkSoundEngine.StopPlayingID(lowOxygenSoundID);
+                AudioManager.instance.PlaySound(AudioManager.instance.voBreath, gameObject);
+            }
         }
 
         //Timer de 2 seconds avec que le joueur commence a regagner de la stamina, reset a chaque fois qu'il utilise de la stamina
@@ -386,6 +403,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         if (currentHp <= 0)
         {
             Death();
+            AudioManager.instance.PlaySound(AudioManager.instance.gameOverDeath, Camera.main.gameObject);
         }
     }
 
@@ -450,6 +468,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             if (!isInvincible)
             {
+                AudioManager.instance.PlaySound(AudioManager.instance.playerTakeDamange, gameObject);
+                AudioManager.instance.PlaySound(AudioManager.instance.voDamage, gameObject);
                 isInvincible = true;
 
                 //Hitstun
@@ -532,6 +552,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public void Death()
     {
         CloseUI();
+
+        AudioManager.instance.PlaySound(AudioManager.instance.voDeath, gameObject);
 
         ToggleRagdoll(true);
         MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
@@ -857,6 +879,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     {
         if (!marketIsOpen)
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.sellingScreenOpen, Camera.main.gameObject);
+
             if (market != null)
                 market.GetComponent<RectTransform>().localPosition = new Vector2(market.GetComponent<RectTransform>().localPosition.x, market.GetComponent<RectTransform>().localPosition.y + gridOffset);
             marketIsOpen = true;
@@ -879,6 +903,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (market != null)
                 market.GetComponent<RectTransform>().localPosition = new Vector2(market.GetComponent<RectTransform>().localPosition.x, market.GetComponent<RectTransform>().localPosition.y - gridOffset);
             marketIsOpen = false;
+            AudioManager.instance.PlaySound(AudioManager.instance.sellingScreenClose, Camera.main.gameObject);
         }
     }
 
@@ -1027,6 +1052,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             for (int i = 0; i < playerGFX.Count; i++)
                 playerGFX[i].material = dissolveMaterial;
 
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;
@@ -1041,6 +1067,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             yield return new WaitForSeconds(dissolveTime);
 
             elapsedTime = 0;
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;
@@ -1062,6 +1089,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                 for (int i = 0; i < playerGFX.Count; i++)
                     playerGFX[i].material = dissolveMaterial;
 
+                AudioManager.instance.PlaySound(AudioManager.instance.teleport, gameObject);
                 while (elapsedTime < dissolveTime)
                 {
                     elapsedTime += Time.deltaTime;
@@ -1075,6 +1103,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             }
             else
             {
+                AudioManager.instance.PlaySound(AudioManager.instance.teleport, gameObject);
                 while (elapsedTime < dissolveTime)
                 {
                     elapsedTime += Time.deltaTime;

@@ -16,6 +16,8 @@ public class GameOverScreen : MonoBehaviour
 
     public void BackToBase()
     {
+        GameManager.instance.Storm(false);
+        AudioManager.instance.PlaySound(AudioManager.instance.backToBase, Camera.main.gameObject);
         player.GetComponent<PlayerPermanent>().enabled = true;
         player.GetComponent<PlayerPermanent>().ToggleRagdoll(false);
         player.GetComponent<GroundPlayerController>().enabled = true;

@@ -113,32 +113,32 @@ public class HarvestableRessourceNode : MonoBehaviour
                 sprite_empty.material = outlineMaterial;
                 sprite_full.material = outlineMaterial;
                 Tutorial.instance.ListenForInputs("hasHovered");
+
+                if (Input.GetMouseButton(0))
+                {
+                    timer += Time.deltaTime;
+                    sprite_empty.color = Color.Lerp(sprite_empty.color, Color.red, timer * Time.deltaTime);
+                    sprite_full.color = Color.Lerp(sprite_full.color, Color.red, timer * Time.deltaTime);
+                    if (!player.isHarvesting)
+                    {
+                        player.Harvest(true);
+                        Tutorial.instance.ListenForInputs("hasHarvested");
+                    }
+                }
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    timer = 0f;
+                    sprite_empty.color = Color.white;
+                    sprite_full.color = Color.white;
+                    if (player.isHarvesting)
+                        player.Harvest(false);
+                }
             }
             else
             {
                 sprite_empty.material = ogMaterial1;
                 sprite_full.material = ogMaterial2;
-            }
-
-            if (Input.GetMouseButton(0))
-            {
-                timer += Time.deltaTime;
-                sprite_empty.color = Color.Lerp(sprite_empty.color, Color.red, timer * Time.deltaTime);
-                sprite_full.color = Color.Lerp(sprite_full.color, Color.red, timer * Time.deltaTime);
-                if (!player.isHarvesting)
-                {
-                    player.Harvest(true);
-                    Tutorial.instance.ListenForInputs("hasHarvested");
-                }
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                timer = 0f;
-                sprite_empty.color = Color.white;
-                sprite_full.color = Color.white;
-                if (player.isHarvesting)
-                    player.Harvest(false);
             }
         }
         else

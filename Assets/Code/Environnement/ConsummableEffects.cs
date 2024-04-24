@@ -12,6 +12,7 @@ public class ConsummableEffects
     public void Heal(PlayerPermanent player, float healAmount)
     {
         player.ChangeHp(healAmount, false);
+        AudioManager.instance.PlaySound(AudioManager.instance.gainHealth, player.gameObject);
     }
 
     public void Cleanse(PlayerPermanent player)
