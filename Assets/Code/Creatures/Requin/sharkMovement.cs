@@ -15,6 +15,7 @@ public class SharkMovement : MonoBehaviour
     [SerializeField] float maxMoveSpeed;
     [SerializeField] float minMoveSpeed;
     [SerializeField] float slowDownThreshold;
+    [SerializeField] Animator anim;
 
     [Header("Checks")]
     public bool isStopped;
@@ -81,7 +82,7 @@ public class SharkMovement : MonoBehaviour
         else if (dist < slowDownThreshold)
             moveSpeed = Mathf.Lerp(maxMoveSpeed, minMoveSpeed, (slowDownThreshold - dist / slowDownThreshold));
 
-        if (!attack.isCharging)
+        if (!attack.isCharging && !isStopped)
         {
             if (state.isPathfinding && pathfinding.path != null)
             {
@@ -126,7 +127,7 @@ public class SharkMovement : MonoBehaviour
             if (dist > 0.5f)
             {
                 isStopped = false;
-                
+                anim.SetFloat("AnimSpeed", 1);
                 if (targetIsRight)
                     GoRight(1);
                 else
@@ -139,7 +140,17 @@ public class SharkMovement : MonoBehaviour
                 
             }
             else
+            {
+                if (!state.isAttacking)
+                {
+                    if (isFacingRight)
+                        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 0), rotateSpeed * Time.deltaTime);
+                    else
+                        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 180), rotateSpeed * Time.deltaTime);
+                }
                 isStopped = true;
+                anim.SetFloat("AnimSpeed", 0);
+            }
         }
     }
 

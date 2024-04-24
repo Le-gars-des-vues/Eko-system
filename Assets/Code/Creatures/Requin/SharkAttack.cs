@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SharkAttack : MonoBehaviour
 {
-    [SerializeField] float damage;
+    [SerializeField] float chargeDamage;
 
     [Header("Shark Variables")]
     [SerializeField] CreatureState state;
@@ -13,14 +13,14 @@ public class SharkAttack : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
 
     [Header("Charge Variables")]
-    Coroutine charge;
     [SerializeField] Collider2D hurtBox;
-    [SerializeField] float chargeCooldown;
     [SerializeField] float chargeDelay;
     [SerializeField] float chargeForce;
-    float chargeTime;
+    [SerializeField] float chargeCooldown;
+    Coroutine charge;
     public bool isCharging;
     Vector2 chargeTarget;
+    [SerializeField] float chargeDistanceThreshold;
 
     [Header("Wiggle Variables")]
     [SerializeField] Tentacles body;
@@ -29,21 +29,41 @@ public class SharkAttack : MonoBehaviour
 
     bool isInCombat;
 
+    [Header("Bite Variables")]
+    [SerializeField] float biteDamage;
+    [SerializeField] float biteDistanceThreshold;
+    [SerializeField] float biteCooldown;
+
+    float damage;
+    float attackTime;
+    bool isBiting;
+
     private void Update()
     {
         if (state.isAttacking && !isInCombat)
         {
             isInCombat = true;
-            chargeTime = Time.time;
+            attackTime = Time.time;
         }
         else if (!state.isAttacking && isInCombat)
             isInCombat = false;
 
         if (isInCombat)
         {
-            if (Time.time - chargeTime > chargeCooldown && !isCharging)
+            if (Vector2.Distance(transform.position, target.position) > chargeDistanceThreshold)
             {
-                charge = StartCoroutine(Charge());
+                if (Time.time - attackTime > chargeCooldown && !isCharging && !isBiting)
+                {
+                    charge = StartCoroutine(Charge());
+                }
+            }
+            else if (Vector2.Distance(transform.position, target.position) < biteDistanceThreshold)
+            {
+                if (Time.time - attackTime > biteCooldown && !isBiting && !isCharging)
+                {
+                    StartCoroutine(BiteAttack());
+                    Debug.Log("is biting!");
+                }
             }
         }
     }
@@ -51,6 +71,7 @@ public class SharkAttack : MonoBehaviour
     IEnumerator Charge()
     {
         isCharging = true;
+        damage = chargeDamage;
         shark.head.GetComponent<BodyRotation>().enabled = false;
         chargeTarget = target.position;
         body.wiggleSpeed = chargeWiggleSpeed;
@@ -87,10 +108,35 @@ public class SharkAttack : MonoBehaviour
         hurtBox.enabled = false;
         body.canShorten = true;
         isCharging = false;
-        chargeTime = Time.time;
+        attackTime = Time.time;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    IEnumerator BiteAttack()
+    {
+        isBiting = true;
+        damage = biteDamage;
+        shark.head.GetComponent<BodyRotation>().enabled = false;
+
+        float elapsedTime = 0;
+        float angle = shark.isFacingRight ? 60 : -60;
+        while (elapsedTime < 0.5f)
+        {
+            elapsedTime += Time.deltaTime;
+            shark.head.localRotation = Quaternion.Slerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, angle), elapsedTime / 0.5f);
+            yield return null;
+        }
+        shark.head.localRotation = Quaternion.Euler(0, 0, angle);
+        hurtBox.enabled = true;
+
+        yield return new WaitForSeconds(0.1f);
+        shark.head.localRotation = Quaternion.Euler(0, 0, 0);
+        shark.head.GetComponent<BodyRotation>().enabled = true;
+        hurtBox.enabled = false;
+        attackTime = Time.time;
+        isBiting = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -104,7 +150,7 @@ public class SharkAttack : MonoBehaviour
                 hurtBox.enabled = false;
                 body.canShorten = true;
                 isCharging = false;
-                chargeTime = Time.time;
+                attackTime = Time.time;
             }
         }
     }

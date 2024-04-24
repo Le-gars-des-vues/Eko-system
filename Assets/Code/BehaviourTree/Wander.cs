@@ -69,7 +69,7 @@ public class Wander : BehaviorNode
                     bool isUnderwater = Physics2D.OverlapCircle(tempPos, 0.1f, LayerMask.GetMask("Water"));
 
                     //Si oui, on commence le pathfinding vers la destination
-                    if ((!unWalkable && isWalkable || (bool)GetData("isFlying")) && ((bool)GetData("isUnderwater") || (!(bool)GetData("isUnderwater") && !isUnderwater)))
+                    if ((!unWalkable && (isWalkable || (bool)GetData("isFlying"))) && ((bool)GetData("isUnderwater") || (!(bool)GetData("isUnderwater") && !isUnderwater)))
                     {
                         if ((bool)GetData("debug"))
                             Debug.Log("Found target for path!");

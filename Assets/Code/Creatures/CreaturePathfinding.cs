@@ -65,7 +65,7 @@ public class CreaturePathfinding : MonoBehaviour
         else
         {
             Debug.Log(gameObject.transform.parent.gameObject.name + " has a problem with his pathfinding!");
-            ReachedEndOfPath();
+            //ReachedEndOfPath();
         }
     }
 

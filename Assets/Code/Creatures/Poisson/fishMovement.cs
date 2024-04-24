@@ -15,6 +15,7 @@ public class FishMovement : MonoBehaviour
     [SerializeField] float maxMoveSpeed;
     [SerializeField] float minMoveSpeed;
     [SerializeField] float slowDownThreshold;
+    [SerializeField] Animator anim;
 
     [Header("Checks")]
     public bool isStopped;
@@ -144,7 +145,8 @@ public class FishMovement : MonoBehaviour
                     rb.velocity = (direction.normalized * moveSpeed);
                 }
                 */
-                
+                anim.SetFloat("AnimSpeed", 1);
+
                 if (targetIsRight)
                     GoRight(1);
                 else
@@ -157,7 +159,10 @@ public class FishMovement : MonoBehaviour
                 
             }
             else
+            {
+                anim.SetFloat("AnimSpeed", 0);
                 isStopped = true;
+            }
         }
     }
 
