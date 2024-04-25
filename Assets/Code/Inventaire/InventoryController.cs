@@ -420,6 +420,7 @@ public class InventoryController : MonoBehaviour
             bool isAmmo = false;
             if (overlapItem != null)
             {
+                AudioManager.instance.PlaySound(AudioManager.instance.inventaireSwap, Camera.main.gameObject);
                 if (selectedItem.itemData.itemType == "Ammo")
                 {
                     if (selectedItem.itemData.itemName == overlapItem.itemData.itemName)

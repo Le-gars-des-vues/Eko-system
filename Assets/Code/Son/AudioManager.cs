@@ -10,7 +10,9 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.RTPC soundtrackRTPC;
     [SerializeField] [Range(0, 30)] float rtpcValue;
     public AK.Wwise.Event forestSountrack;
+    public AK.Wwise.Event baseSoundtrack;
     public bool forestIsPlaying;
+    public bool baseIsPlaying;
     uint playingID;
 
     [Header("Base Sounds")]
@@ -59,6 +61,8 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event gameOverDeath;
 
     [Header("Player Sounds")]
+    public AK.Wwise.Event playerSpawn;
+
     //Player UI
     public AK.Wwise.Event noStamina;
     public AK.Wwise.Event noOxygen;

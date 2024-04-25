@@ -252,19 +252,23 @@ public class Robot : MonoBehaviour
             switch (currentIndex)
             {
                 case 0:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[0].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[0].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     DialogueManager.conditions["hasMovedAround"] = false;
                     break;
                 case 1:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[1].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[1].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     DialogueManager.conditions["hasJumped"] = false;
                     break;
                 case 2:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[2].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[2].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     DialogueManager.conditions["hasRun"] = false;
                     break;
                 case 3:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[3].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[3].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     DialogueManager.conditions["staminaIsEmpty"] = false;
                     DialogueManager.conditions["hasClimbed"] = false;
                     break;
@@ -280,6 +284,7 @@ public class Robot : MonoBehaviour
                     break;
                 case 6:
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[8].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     trainingRoomDialogue.onDialogueEnd += TeleportBackSellingScreen;
                     break;
                 case 7:
@@ -289,33 +294,41 @@ public class Robot : MonoBehaviour
                     trainingRoomDialogue.onDialogueEnd += TalkAboutRecipes;
                     break;
                 case 8:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[10].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[10].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     trainingRoomDialogue.onDialogueEnd += TeleportBackCrafting;
                     break;
                 case 9:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[11].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[11].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     break;
                 case 10:
                     sprites.Clear();
                     sprites.Add(dissolveSprites[0]);
                     sprites.Add(dissolveSprites[1]);
                     StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[12].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[12].dialogueSequence);
                     trainingRoomDialogue.onDialogueEnd += TalkAboutHotbar;
                     break;
                 case 11:
                     sprites.Clear();
                     sprites.Add(dissolveSprites[2]);
                     StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[14].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[14].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     break;
                 case 12:
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[18].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
+                    break;
+                case 13:
                     sprites.Clear();
                     sprites.Add(dissolveSprites[3]);
                     StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[15].dialogueSequence, false);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[15].dialogueSequence);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     break;
-                case 13:
+                case 14:
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[17].dialogueSequence);
                     break;
             }
@@ -325,21 +338,25 @@ public class Robot : MonoBehaviour
     #region Miscellaneous
     void TalkAboutInventory()
     {
-        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[5].dialogueSequence, false);
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[5].dialogueSequence);
+        trainingRoomDialogue.onDialogueEnd += NextTeleport;
     }
     void TalkAboutQuickMenu()
     {
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[7].dialogueSequence);
+        trainingRoomDialogue.onDialogueEnd += NextTeleport;
     }
 
     void TalkAboutHotbar()
     {
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[13].dialogueSequence);
+        trainingRoomDialogue.onDialogueEnd += NextTeleport;
     }
 
     void TalkAboutRecipes()
     {
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[16].dialogueSequence);
+        trainingRoomDialogue.onDialogueEnd += NextTeleport;
     }
 
     void GiveItemToSell()
@@ -367,6 +384,11 @@ public class Robot : MonoBehaviour
     void TeleportBackSellingScreen()
     {
         sellingScreen.GetComponent<SellingScreen>().TrainingRoom(false);
+    }
+
+    void NextTeleport()
+    {
+        teleportIndex++;
     }
 
     void TeleportBackCrafting()
@@ -397,7 +419,8 @@ public class Robot : MonoBehaviour
         StartCoroutine(player.GetComponent<PlayerPermanent>().Dissolve(2f, true, GameObject.Find("Base").GetComponent<Base>().trainingRoom.position));
         Teleport(teleportPoints[teleportIndex].position, dissolveMaterial, holoMaterial, LayerMask.NameToLayer("Default"));
         isInTraining = true;
-        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[0].dialogueSequence, false);
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[0].dialogueSequence);
+        trainingRoomDialogue.onDialogueEnd += NextTeleport;
     }
     
     public void TeleportToBase()
@@ -406,7 +429,7 @@ public class Robot : MonoBehaviour
         baseDialogue.enabled = true;
         Teleport(initialPos, holoMaterial, ogMaterial, LayerMask.NameToLayer("Pixelate"));
         isInTraining = false;
-        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[6].dialogueSequence, true);
+        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[6].dialogueSequence);
         baseDialogue.onDialogueEnd += GoToRespawn;
     }
 

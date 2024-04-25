@@ -13,6 +13,13 @@ public class ParallaxEffect : MonoBehaviour
     [SerializeField] private bool infinityHorizontal;
     [SerializeField] private bool infinityVertical;
 
+    [Header("Limits")]
+    [SerializeField] private bool hasLimits = false;
+    [SerializeField] private float limitRight;
+    [SerializeField] private float limitLeft;
+    [SerializeField] private float limitUp;
+    [SerializeField] private float limitDown;
+
     private void Start()
     {
         cameraTransform = Camera.main.transform;
@@ -26,7 +33,14 @@ public class ParallaxEffect : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
-        transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier.x, deltaMovement.y * parallaxEffectMultiplier.y);
+        if (hasLimits)
+        {
+            transform.position += new Vector3(Mathf.Clamp(deltaMovement.x * parallaxEffectMultiplier.x, limitLeft, limitRight), Mathf.Clamp(deltaMovement.y * parallaxEffectMultiplier.y, limitDown, limitUp));
+        }
+        else
+        {
+            transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier.x, deltaMovement.y * parallaxEffectMultiplier.y);
+        }
         lastCameraPosition = cameraTransform.position;
 
         //Debug.Log(cameraTransform.position.x - transform.position.x);
@@ -34,6 +48,7 @@ public class ParallaxEffect : MonoBehaviour
         {
             if (Mathf.Abs(cameraTransform.position.x - transform.position.x) >= textureUnitSizeX)
             {
+
                 float offsetPositionX = (cameraTransform.position.x - transform.position.x) % textureUnitSizeX;
                 transform.position = new Vector3(cameraTransform.position.x + offsetPositionX, transform.position.y);
             }

@@ -36,67 +36,70 @@ public class PlayerTorsoAnimation : MonoBehaviour
         bool isMovingRight = Input.GetAxis("Horizontal") >= 0 ? true : false;
         //float walkAngle = player.GetComponent<PlayerPermanent>().isFacingRight ? 75 : 105
 
-        if (player.gameObject.GetComponent<GroundPlayerController>().enabled)
+        if (player.CanMove())
         {
-            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !isRunning)
+            if (player.gameObject.GetComponent<GroundPlayerController>().enabled)
             {
-                isRunning = true;
-                timer = 0;
-            }
-            else if (IsNotMoving() && isRunning)
-            {
-                isRunning = false;
-                timer = 0;
-                transform.position = torsoNeutralPos.position;
-            }
-
-            if (isRunning)
-            {
-                float torsoHeight = torsoNeutralPos.position.y + yCurve.Evaluate((Time.time % yCurve.length));
-                transform.position = new Vector2(transform.position.x, torsoHeight);
-                timer += Time.deltaTime;
-                if (isMovingRight == player.isFacingRight)
+                if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !isRunning)
                 {
-                    float angle = Mathf.LerpAngle(transform.eulerAngles.z, leanForwardAngle * facingDirection, timer / duration);
-                    transform.eulerAngles = new Vector3(0, 0, angle);
+                    isRunning = true;
+                    timer = 0;
+                }
+                else if (IsNotMoving() && isRunning)
+                {
+                    isRunning = false;
+                    timer = 0;
+                    transform.position = torsoNeutralPos.position;
+                }
+
+                if (isRunning)
+                {
+                    float torsoHeight = torsoNeutralPos.position.y + yCurve.Evaluate((Time.time % yCurve.length));
+                    transform.position = new Vector2(transform.position.x, torsoHeight);
+                    timer += Time.deltaTime;
+                    if (isMovingRight == player.isFacingRight)
+                    {
+                        float angle = Mathf.LerpAngle(transform.eulerAngles.z, leanForwardAngle * facingDirection, timer / duration);
+                        transform.eulerAngles = new Vector3(0, 0, angle);
+                    }
+                    else
+                    {
+                        float angle = Mathf.LerpAngle(transform.eulerAngles.z, leanBackwardAngle * facingDirection, timer / duration);
+                        transform.eulerAngles = new Vector3(0, 0, angle);
+                    }
                 }
                 else
                 {
-                    float angle = Mathf.LerpAngle(transform.eulerAngles.z, leanBackwardAngle * facingDirection, timer / duration);
+                    timer += Time.deltaTime;
+                    float angle = Mathf.LerpAngle(transform.eulerAngles.z, 90 * facingDirection, timer / duration);
                     transform.eulerAngles = new Vector3(0, 0, angle);
                 }
             }
-            else
+            else if (player.gameObject.GetComponent<WaterPlayerController>().enabled)
             {
-                timer += Time.deltaTime;
-                float angle = Mathf.LerpAngle(transform.eulerAngles.z, 90 * facingDirection, timer / duration);
-                transform.eulerAngles = new Vector3(0, 0, angle);
-            }
-        }
-        else if (player.gameObject.GetComponent<WaterPlayerController>().enabled)
-        {
-            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) && !isSwimming)
-            {
-                isSwimming = true;
-                timer = 0;
-            }
-            else if (IsNotMoving() && isSwimming)
-            {
-                isSwimming = false;
-                timer = 0;
-            }
+                if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) && !isSwimming)
+                {
+                    isSwimming = true;
+                    timer = 0;
+                }
+                else if (IsNotMoving() && isSwimming)
+                {
+                    isSwimming = false;
+                    timer = 0;
+                }
 
-            if (isSwimming)
-            {
-                timer += Time.deltaTime;
-                Vector2 direction = new Vector2(transform.position.x + Input.GetAxis("Horizontal"), transform.position.y + Input.GetAxis("Vertical"));
-                transform.right = Vector2.Lerp(transform.right, ((direction - (Vector2)transform.position).normalized * facingDirection), 2 * Time.deltaTime);
-            }
-            else
-            {
-                timer += Time.deltaTime;
-                float angle1 = Mathf.LerpAngle(transform.eulerAngles.z, fbInitialAngle * facingDirection, timer / duration);
-                transform.eulerAngles = new Vector3(0, 0, angle1);
+                if (isSwimming)
+                {
+                    timer += Time.deltaTime;
+                    Vector2 direction = new Vector2(transform.position.x + Input.GetAxis("Horizontal"), transform.position.y + Input.GetAxis("Vertical"));
+                    transform.right = Vector2.Lerp(transform.right, ((direction - (Vector2)transform.position).normalized * facingDirection), 2 * Time.deltaTime);
+                }
+                else
+                {
+                    timer += Time.deltaTime;
+                    float angle1 = Mathf.LerpAngle(transform.eulerAngles.z, fbInitialAngle * facingDirection, timer / duration);
+                    transform.eulerAngles = new Vector3(0, 0, angle1);
+                }
             }
         }
     }
