@@ -64,16 +64,16 @@ public class QuickMenu : MonoBehaviour
     {
         if (!isAnimating)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z) && Tutorial.instance.hasUnlockedInfos)
             {
                 Tutorial.instance.ListenForInputs("hasOpenInfo");
                 ShowInfos();
             }
 
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.X) && Tutorial.instance.hasUnlockedMessages)
                 ShowMessages();
 
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.C) && Tutorial.instance.hasUnlockedTeleporter)
                 ShowTeleport();
         }
 
@@ -148,7 +148,8 @@ public class QuickMenu : MonoBehaviour
             messageMenu.SetActive(false);
             messageMenuActive = false;
 
-            messageButton.interactable = true;
+            if (Tutorial.instance.hasUnlockedMessages)
+                messageButton.interactable = true;
 
             if (isShown && QuickMenuNotOpen())
                 OnButtonClick(false);
@@ -191,7 +192,8 @@ public class QuickMenu : MonoBehaviour
             timerText.color = new Color(timerText.color.r, timerText.color.g, timerText.color.b, alpha);
             infoText.color = new Color(infoText.color.r, infoText.color.g, infoText.color.b, alpha);
 
-            infoButton.interactable = true;
+            if (Tutorial.instance.hasUnlockedInfos)
+                infoButton.interactable = true;
 
             if (isShown && QuickMenuNotOpen())
                 OnButtonClick(false);
@@ -236,7 +238,8 @@ public class QuickMenu : MonoBehaviour
             teleportMenu.SetActive(false);
             teleportMenuActive = false;
 
-            teleportButton.interactable = true;
+            if (Tutorial.instance.hasUnlockedTeleporter)
+                teleportButton.interactable = true;
 
             if (isShown && QuickMenuNotOpen())
                 OnButtonClick(false);

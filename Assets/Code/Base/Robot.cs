@@ -343,6 +343,7 @@ public class Robot : MonoBehaviour
     }
     void TalkAboutQuickMenu()
     {
+        Tutorial.instance.hasUnlockedInfos = true;
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[7].dialogueSequence);
         trainingRoomDialogue.onDialogueEnd += NextTeleport;
     }

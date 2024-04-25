@@ -377,7 +377,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                     CheckDirectionToFace(GetInput().x > 0);
                 }
             }
-            else if (!waterPlayerController.isSwimming && CanMove())
+            else if (!waterPlayerController.isSwimming)
             {
                 Vector2 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
                 if ((difference.x < 0f && isFacingRight) || (difference.x > 0f && !isFacingRight))

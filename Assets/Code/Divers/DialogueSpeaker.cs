@@ -102,7 +102,7 @@ public class DialogueSpeaker : MonoBehaviour
                             hasACondition = true;
                         }
 
-                        if ((Input.GetKeyDown(KeyCode.E) && !pressedKey) || (hasACondition && Time.time - speakingTime > speakCooldown))
+                        if ((Input.GetKeyDown(KeyCode.E) && !pressedKey) || hasACondition)
                         {
                             if (dialogueIndex < currentDialogue.Count - 1)
                             {
@@ -285,7 +285,7 @@ public class DialogueSpeaker : MonoBehaviour
             UI.GetComponent<DialogueToolTip>().ChangeTooltip(2);
         else
         {
-            if (!currentDialogue[dialogueIndex + 1].dialogueMode)
+            if (!currentDialogue[dialogueIndex + 1].conditionIsMet)
                 UI.GetComponent<DialogueToolTip>().ChangeTooltip(3);
             else
                 UI.GetComponent<DialogueToolTip>().ChangeTooltip(0);
