@@ -15,6 +15,10 @@ public class Tutorial : MonoBehaviour
     public bool readyToGoOut = false;
     public bool firstTimeOutside = false;
 
+    public bool hasUnlockedInfos;
+    public bool hasUnlockedMessages;
+    public bool hasUnlockedTeleporter;
+
     private void Awake()
     {
         if (instance != null)

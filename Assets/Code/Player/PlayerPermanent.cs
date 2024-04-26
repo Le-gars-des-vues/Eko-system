@@ -232,6 +232,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         Reset();
         ToggleRagdoll(false);
         Cursor.SetCursor(cursorImages[1], new Vector2(0, 0), CursorMode.Auto);
+        AudioManager.instance.PlaySound(AudioManager.instance.playerSpawn, gameObject);
     }
 
     // Update is called once per frame
@@ -272,17 +273,21 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                     EquipMultiTool(false);
                 }
                 isInBase = true;
-                AudioManager.instance.StopSoundtrack();
-                AudioManager.instance.forestIsPlaying = false;
+                if (!AudioManager.instance.baseIsPlaying)
+                {
+                    AudioManager.instance.forestIsPlaying = false;
+                    AudioManager.instance.PlaySound(AudioManager.instance.baseSoundtrack, Base.instance.gameObject);
+                    AudioManager.instance.baseIsPlaying = true;
+                }
             }
         }
         else
         {
             if (!AudioManager.instance.forestIsPlaying)
             {
-                AudioManager.instance.forestIsPlaying = true;
+                AudioManager.instance.baseIsPlaying = false;
                 AudioManager.instance.PlaySoundtrack(AudioManager.instance.forestSountrack);
-                Debug.Log("Playing forest soundtrack!");
+                AudioManager.instance.forestIsPlaying = true;
             }
             if (isInBase)
             {

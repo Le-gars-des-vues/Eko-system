@@ -13,7 +13,7 @@ public class StartNewCycle : MonoBehaviour
     {
         if (isInRange)
         {
-            if (Input.GetKeyDown(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && !startedANewCycle)
+            if (Input.GetKeyDown(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && !startedANewCycle && !DialogueManager.instance.dialogueRunning)
             {
                 string promptText = GameObject.Find("Vente").GetComponent<Vente>().profit >= GameManager.instance.gameObject.GetComponent<Quota>().quota ? "Start a new day?" : "Start a new day? \n\nWARNING : INSUFFICIENT PROFITS!";
                 PromptManager.instance.CreateNewPrompt(new Prompt(promptText, false, "Yes", "No"));

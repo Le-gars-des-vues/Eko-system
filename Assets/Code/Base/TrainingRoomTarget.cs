@@ -8,8 +8,8 @@ public class TrainingRoomTarget : MonoBehaviour
     bool isRevealed;
     [SerializeField] Robot robot;
     [SerializeField] SpriteRenderer sprite;
-    Light2D light1;
-    Light2D light2;
+    [SerializeField] Light2D light1;
+    [SerializeField] Light2D light2;
 
     [SerializeField] List<SpriteRenderer> sprites = new List<SpriteRenderer>();
     private void Start()

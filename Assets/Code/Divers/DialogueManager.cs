@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
     PlayerPermanent player;
 
     bool dialogueScreenIsOpen = false;
-    public bool isInDialogue;
+    public bool dialogueRunning;
 
     public static Dictionary<string, bool> conditions = new Dictionary<string, bool>
     {
@@ -81,6 +81,8 @@ public class Dialogue
     public string name;
     public bool conditionIsMet = true;
     public string conditionName;
+
+    public bool dialogueMode = true;
 
     [TextArea(3, 10)]
     public string text;

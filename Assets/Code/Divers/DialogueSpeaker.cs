@@ -28,10 +28,13 @@ public class DialogueSpeaker : MonoBehaviour
     public AK.Wwise.Event stopSound;
 
     Coroutine dialogue;
+    bool isZoomedIn;
     public int dialogueIndex = 0;
     List<Dialogue> currentDialogue;
 
     public GameObject UI;
+
+    public bool dialogueEnded;
 
     private void Start()
     {
@@ -44,6 +47,18 @@ public class DialogueSpeaker : MonoBehaviour
         {
             if (player.isInDialogue)
             {
+                if (dialogueIndex < currentDialogue.Count - 1 && !currentDialogue[dialogueIndex + 1].dialogueMode && !isSpeaking)
+                {
+                    player.isInDialogue = false;
+                    if (isZoomedIn)
+                    {
+                        isZoomedIn = false;
+                        StartCoroutine(player.MoveCamera("NormalZoom"));
+                    }
+                    return;
+                }
+
+
                 //Si on appuie sur E
                 if (Input.GetKeyDown(KeyCode.E) && !pressedKey)
                 {
@@ -79,11 +94,15 @@ public class DialogueSpeaker : MonoBehaviour
                     }
                     else if (!isReadyToSpeak && !isSpeaking)
                     {
+                        if (dialogueIndex < currentDialogue.Count - 1 && !currentDialogue[dialogueIndex + 1].dialogueMode)
+                            player.isInDialogue = false;
+
                         if (dialogueIndex < currentDialogue.Count - 1 && !currentDialogue[dialogueIndex + 1].conditionIsMet)
+                        {
                             hasACondition = true;
+                        }
 
-
-                        if ((Input.GetKeyDown(KeyCode.E) && !pressedKey) || (hasACondition && Time.time - speakingTime > speakCooldown))
+                        if ((Input.GetKeyDown(KeyCode.E) && !pressedKey) || hasACondition)
                         {
                             if (dialogueIndex < currentDialogue.Count - 1)
                             {
@@ -93,12 +112,13 @@ public class DialogueSpeaker : MonoBehaviour
                                     pressedKey = true;
                                     NextSentence();
                                     if (dialogueIndex == currentDialogue.Count - 1)
-                                        UI.SetActive(false);
+                                    {
+                                        UI.GetComponent<DialogueToolTip>().ChangeTooltip(0);
+                                    }
                                 }
                                 else
                                 {
                                     Tutorial.instance.isListeningForInputs = true;
-                                    UI.SetActive(false);
                                     if (!DialogueManager.instance.currentConditions.Contains(currentDialogue[dialogueIndex + 1].conditionName) && !DialogueManager.conditions[currentDialogue[dialogueIndex + 1].conditionName])
                                         DialogueManager.instance.currentConditions.Add(currentDialogue[dialogueIndex + 1].conditionName);
 
@@ -117,24 +137,28 @@ public class DialogueSpeaker : MonoBehaviour
         }
     }
 
-    public void PrepareDialogue(List<Dialogue> dialogueSequence, bool _isInDialogue = true)
+    public void PrepareDialogue(List<Dialogue> dialogueSequence)
     {
         currentDialogue = dialogueSequence;
         dialogueIndex = 0;
-        DialogueManager.instance.isInDialogue = _isInDialogue;
         isReadyToSpeak = true;
     }
 
     public void StartDialogue()
     {
         speakingTime = Time.time;
+        dialogueEnded = false;
+        DialogueManager.instance.dialogueRunning = true;
+        player.isInDialogue = currentDialogue[dialogueIndex].dialogueMode;
+        UI.SetActive(true);
         dialogue = StartCoroutine(Speech(currentDialogue[dialogueIndex].text));
         if (speechSound != null)
             speechSound.Post(transform.parent.gameObject);
-        player.isInDialogue = DialogueManager.instance.isInDialogue;
-        if (player.isInDialogue)
+        if (player.isInDialogue && currentDialogue[dialogueIndex + 1].dialogueMode)
+        {
+            isZoomedIn = true;
             StartCoroutine(player.MoveCamera("ZoomIn"));
-        UI.SetActive(true);
+        }
         hasACondition = false;
         isReadyToSpeak = false;
     }
@@ -153,6 +177,15 @@ public class DialogueSpeaker : MonoBehaviour
             speechBubbleTextB.maxVisibleCharacters = speechBubbleTextB.text.ToCharArray().Length;
             isSpeaking = false;
             pressedKey = false;
+            if (dialogueIndex == currentDialogue.Count - 1)
+                UI.GetComponent<DialogueToolTip>().ChangeTooltip(2);
+            else
+            {
+                if (!currentDialogue[dialogueIndex + 1].dialogueMode)
+                    UI.GetComponent<DialogueToolTip>().ChangeTooltip(3);
+                else
+                    UI.GetComponent<DialogueToolTip>().ChangeTooltip(0);
+            }
         }
         else
         {
@@ -160,6 +193,12 @@ public class DialogueSpeaker : MonoBehaviour
             if (dialogueIndex < currentDialogue.Count)
             {
                 StopCoroutine(dialogue);
+                player.isInDialogue = currentDialogue[dialogueIndex].dialogueMode;
+                if (player.isInDialogue && !currentDialogue[dialogueIndex - 1].dialogueMode)
+                {
+                    isZoomedIn = true;
+                    StartCoroutine(player.MoveCamera("ZoomIn"));
+                }
                 dialogue = StartCoroutine(Speech(currentDialogue[dialogueIndex].text));
                 if (speechSound != null)
                     speechSound.Post(transform.parent.gameObject);
@@ -167,6 +206,7 @@ public class DialogueSpeaker : MonoBehaviour
             }
             else
             {
+                dialogueEnded = true;
                 EndDialogue();
                 pressedKey = false;
             }
@@ -175,7 +215,6 @@ public class DialogueSpeaker : MonoBehaviour
 
     public void EndDialogue()
     {
-        DialogueManager.instance.isInDialogue = false;
         player.isInDialogue = false;
 
         StopCoroutine(dialogue);
@@ -186,16 +225,23 @@ public class DialogueSpeaker : MonoBehaviour
         currentDialogue = null;
         dialogueIndex = 0;
 
-        onDialogueEnd?.Invoke();
+        if (dialogueEnded)
+            onDialogueEnd?.Invoke();
         onDialogueEnd = null;
         UI.SetActive(false);
         isSpeaking = false;
-        StartCoroutine(player.MoveCamera("NormalZoom"));
+        DialogueManager.instance.dialogueRunning = false;
+        if (isZoomedIn)
+        {
+            isZoomedIn = false;
+            StartCoroutine(player.MoveCamera("NormalZoom"));
+        }
     }
 
     public IEnumerator Speech(string textToWrite = null)
     {
         isSpeaking = true;
+        UI.GetComponent<DialogueToolTip>().ChangeTooltip(1);
         int index = 0;
         if (textToWrite != null)
         {
@@ -235,6 +281,16 @@ public class DialogueSpeaker : MonoBehaviour
         if (stopSound != null)
             stopSound.Post(transform.parent.gameObject);
         speakingTime = Time.time;
+        if (dialogueIndex == currentDialogue.Count - 1)
+            UI.GetComponent<DialogueToolTip>().ChangeTooltip(2);
+        else
+        {
+            if (!currentDialogue[dialogueIndex + 1].conditionIsMet)
+                UI.GetComponent<DialogueToolTip>().ChangeTooltip(3);
+            else
+                UI.GetComponent<DialogueToolTip>().ChangeTooltip(0);
+        }
+            
         yield return null;
     }
 

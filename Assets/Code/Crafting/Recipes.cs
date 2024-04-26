@@ -112,13 +112,18 @@ public class Recipes
     };
     public static Dictionary<int,Recipes> listOfBasePods = new()
     {
+        /*
         {0, new Recipes("Storage Room", "Metal Sheet", 3, "Battery", 1,"Lushalite",5)},
         {1, new Recipes("Map Room", "Metal Sheet", 3, "Scale", 4, "Rubiol", 4) },
         {2, new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
         {3 ,new Recipes("Planter Room", "Metal Sheet", 3,"Battery", 1, "Rubiol",5)},
         {4, new Recipes("Teleporter Room", "Reinforced Plate", 3, "Signal Amplifier", 2, "Rubiol", 5)}
-        //{2, new Recipes("Enclosure Room", "Trunk", 1)},
-        //{3, new Recipes("Planter Room", "Trunk", 1)},
+        */
+        { 0, new Recipes("Storage Room", "Trunk", 1) },
+        { 1, new Recipes("Map Room", "Trunk", 1) },
+        { 2, new Recipes("Enclosure Room", "Trunk", 1) },
+        { 3, new Recipes("Planter Room", "Trunk", 1) },
+        { 4, new Recipes("Teleporter Room", "Trunk", 1) }
     };
 
     public static Dictionary<string, bool> discoveredRessources = new()

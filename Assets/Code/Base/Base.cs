@@ -161,7 +161,7 @@ public class Base : MonoBehaviour
         float elapsedTime = 0;
         if (isTrue)
         {
-            AudioManager.instance.PlaySound(AudioManager.instance.teleport, sprites[1].gameObject);
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, sprites[0].gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;
@@ -173,7 +173,7 @@ public class Base : MonoBehaviour
         }
         else
         {
-            AudioManager.instance.PlaySound(AudioManager.instance.teleport, sprites[1].gameObject);
+            AudioManager.instance.PlaySound(AudioManager.instance.teleport, sprites[0].gameObject);
             while (elapsedTime < dissolveTime)
             {
                 elapsedTime += Time.deltaTime;
