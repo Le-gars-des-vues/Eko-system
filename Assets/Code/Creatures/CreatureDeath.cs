@@ -20,7 +20,7 @@ public class CreatureDeath : MonoBehaviour
     public List<Collider2D> creatureColliders;
 
     [SerializeField] bool isLineRenderer;
-    [SerializeField] private LineRenderer line;
+    [SerializeField] private List<LineRenderer> lines = new List<LineRenderer>();
 
     [Header("Death Variables")]
     [SerializeField] MonoBehaviour[] scripts;
@@ -145,31 +145,39 @@ public class CreatureDeath : MonoBehaviour
         }
 
         if (!lineRenderer)
+        {
             foreach (Rigidbody2D rb in creatureRbs)
                 rb.simulated = !ragdollOn;
+
+            foreach (var col in creatureColliders)
+            {
+                col.enabled = !ragdollOn;
+            }
+        }
         else
         {
-            line.gameObject.GetComponent<Tentacles>().wiggleMagnitude = 0;
-            line.gameObject.GetComponent<Tentacles>().wiggleSpeed = 0;
-            line.gameObject.GetComponent<LineRendererCollision>().enabled = false;
+            foreach (LineRenderer line in lines)
+            {
+                line.gameObject.GetComponent<Tentacles>().wiggleMagnitude = 0;
+                line.gameObject.GetComponent<Tentacles>().wiggleSpeed = 0;
+            }
+        }
+
+        foreach (var col in colliders)
+        {
+            col.enabled = ragdollOn;
         }
 
         if (lineRenderer && ragdollOn)
+        {
             foreach (Rigidbody2D rb in creatureRbs)
             {
                 rb.gravityScale = gravityScale;
                 rb.drag = drag;
                 rb.angularDrag = angularDrag;
             }
+        }
 
-        foreach (var col in creatureColliders)
-        {
-            col.enabled = !ragdollOn;
-        }
-        foreach (var col in colliders)
-        {
-            col.enabled = ragdollOn;
-        }
         foreach (var rb in rbs)
         {
             rb.simulated = ragdollOn;
@@ -191,6 +199,13 @@ public class CreatureDeath : MonoBehaviour
         foreach (var joint in joints)
         {
             joint.enabled = ragdollOn;
+        }
+
+        if (gameObject.name == "Flumpf")
+        {
+            Vector2 scale = lines[0].gameObject.transform.localScale;
+            scale.x = -1;
+            lines[0].gameObject.transform.localScale = scale;
         }
     }
 

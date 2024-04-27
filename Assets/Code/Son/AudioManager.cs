@@ -11,8 +11,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] [Range(0, 30)] float rtpcValue;
     public AK.Wwise.Event forestSountrack;
     public AK.Wwise.Event baseSoundtrack;
+    public AK.Wwise.Event underwaterSoundtrack;
     public bool forestIsPlaying;
     public bool baseIsPlaying;
+    public bool underwaterIsPlaying;
     uint playingID;
 
     [Header("Base Sounds")]

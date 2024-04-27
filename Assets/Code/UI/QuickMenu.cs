@@ -29,9 +29,9 @@ public class QuickMenu : MonoBehaviour
     public Button teleporterButton;
     [SerializeField] GameObject portal;
 
-    [SerializeField] Button infoButton;
-    [SerializeField] Button messageButton;
-    [SerializeField] Button teleportButton;
+    public Button infoButton;
+    public Button messageButton;
+    public Button teleportButton;
 
     Animator anim;
     public bool isAnimating;

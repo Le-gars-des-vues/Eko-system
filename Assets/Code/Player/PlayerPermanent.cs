@@ -286,7 +286,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (!AudioManager.instance.forestIsPlaying)
             {
                 AudioManager.instance.baseIsPlaying = false;
-                AudioManager.instance.PlaySoundtrack(AudioManager.instance.forestSountrack);
+                AudioManager.instance.PlaySound(AudioManager.instance.forestSountrack, AudioManager.instance.gameObject);
                 AudioManager.instance.forestIsPlaying = true;
             }
             if (isInBase)
@@ -1239,12 +1239,22 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         isUnderwater = isTrue;
         if (isTrue)
         {
+            if (!AudioManager.instance.underwaterIsPlaying)
+            {
+                AudioManager.instance.underwaterIsPlaying = true;
+                AudioManager.instance.PlaySoundtrack(AudioManager.instance.underwaterSoundtrack);
+            }
             groundPlayerController.SetGravityScale(underWaterGravityScale);
             playerRb.drag = underWaterDrag;
             playerRb.angularDrag = underWaterAngularDrag;
         }
         else
         {
+            if (AudioManager.instance.underwaterIsPlaying)
+            {
+                AudioManager.instance.underwaterIsPlaying = false;
+                AudioManager.instance.StopSoundtrack();
+            }
             groundPlayerController.SetGravityScale(groundPlayerController.gravityScale);
             playerRb.drag = initialDrag;
             playerRb.angularDrag = initialAngularDrag;

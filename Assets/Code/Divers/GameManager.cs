@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> frogSpawner = new List<GameObject>();
     [SerializeField] List<GameObject> flySpawner = new List<GameObject>();
     [SerializeField] List<GameObject> fishSpawner = new List<GameObject>();
+    [SerializeField] List<GameObject> sharkSpawner = new List<GameObject>();
+    [SerializeField] List<GameObject> jellyfishSpawner = new List<GameObject>();
 
     [SerializeField] List<GameObject> caeruletamSpawner = new List<GameObject>();
     [SerializeField] List<GameObject> infpisumSpawner = new List<GameObject>();
@@ -52,6 +54,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int maxFlyCount;
     [SerializeField] int maxFrogCount;
     [SerializeField] int maxFishCount;
+    [SerializeField] int maxJellyfishCount;
+    [SerializeField] int maxSharkCount;
 
     [SerializeField] int maxInfpisumCount;
     [SerializeField] int maxMacrebosiaCount;
@@ -69,6 +73,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> flys = new List<GameObject>();
     public List<GameObject> frogs = new List<GameObject>();
     public List<GameObject> fishes = new List<GameObject>();
+    public List<GameObject> jellyfishes = new List<GameObject>();
+    public List<GameObject> sharks = new List<GameObject>();
 
     [Header("Storm Variables")]
     [SerializeField] float timeToFullStorm;
@@ -127,6 +133,14 @@ public class GameManager : MonoBehaviour
                 case "Fish":
                     fishSpawner.Add(spawner);
                     spawner.GetComponent<Spawner>().index = fishSpawner.Count;
+                    break;
+                case "Jellyfish":
+                    jellyfishSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = jellyfishSpawner.Count;
+                    break;
+                case "Shark":
+                    sharkSpawner.Add(spawner);
+                    spawner.GetComponent<Spawner>().index = sharkSpawner.Count;
                     break;
                 case "Macrebosia":
                     macrebosiaSpawner.Add(spawner);
@@ -475,6 +489,78 @@ public class GameManager : MonoBehaviour
             {
                 var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
                 spawner.Spawn(fishes);
+                availableSpawners.Remove(spawner);
+            }
+        }
+
+        //Jellyfish
+        targetNumber = maxJellyfishCount;
+        alreadyInGame = 0;
+        availableSpawners.Clear();
+        foreach (GameObject spawner in jellyfishSpawner)
+        {
+            if (start)
+            {
+                spawner.GetComponent<Spawner>().canSpawn = true;
+                availableSpawners.Add(spawner.GetComponent<Spawner>());
+            }
+            else
+            {
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && (spawner.GetComponent<Spawner>().objectSpawned.GetComponentInChildren<CreatureDeath>().isDead || !spawner.GetComponent<Spawner>().objectSpawned.activeSelf))
+                {
+                    spawner.GetComponent<Spawner>().canSpawn = true;
+                    availableSpawners.Add(spawner.GetComponent<Spawner>());
+                }
+                else
+                {
+                    spawner.GetComponent<Spawner>().canSpawn = false;
+                    alreadyInGame++;
+                }
+            }
+        }
+        numberToSpawn = targetNumber - alreadyInGame;
+        if (numberToSpawn > 0)
+        {
+            for (int i = 0; i < numberToSpawn; i++)
+            {
+                var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
+                spawner.Spawn(jellyfishes);
+                availableSpawners.Remove(spawner);
+            }
+        }
+
+        //Shark
+        targetNumber = maxSharkCount;
+        alreadyInGame = 0;
+        availableSpawners.Clear();
+        foreach (GameObject spawner in sharkSpawner)
+        {
+            if (start)
+            {
+                spawner.GetComponent<Spawner>().canSpawn = true;
+                availableSpawners.Add(spawner.GetComponent<Spawner>());
+            }
+            else
+            {
+                if (spawner.GetComponent<Spawner>().objectSpawned != null && (spawner.GetComponent<Spawner>().objectSpawned.GetComponentInChildren<CreatureDeath>().isDead || !spawner.GetComponent<Spawner>().objectSpawned.activeSelf))
+                {
+                    spawner.GetComponent<Spawner>().canSpawn = true;
+                    availableSpawners.Add(spawner.GetComponent<Spawner>());
+                }
+                else
+                {
+                    spawner.GetComponent<Spawner>().canSpawn = false;
+                    alreadyInGame++;
+                }
+            }
+        }
+        numberToSpawn = targetNumber - alreadyInGame;
+        if (numberToSpawn > 0)
+        {
+            for (int i = 0; i < numberToSpawn; i++)
+            {
+                var spawner = availableSpawners[Random.Range(0, availableSpawners.Count - 1)];
+                spawner.Spawn(sharks);
                 availableSpawners.Remove(spawner);
             }
         }

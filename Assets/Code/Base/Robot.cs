@@ -176,6 +176,8 @@ public class Robot : MonoBehaviour
     void ReadyToGoOut()
     {
         Tutorial.instance.readyToGoOut = true;
+        Tutorial.instance.hasUnlockedMessages = true;
+        QuickMenu.instance.messageButton.interactable = true;
     }
 
     void GoRight()
@@ -213,6 +215,8 @@ public class Robot : MonoBehaviour
     void RefuseTutorial()
     {
         baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[1].dialogueSequence);
+        Tutorial.instance.hasUnlockedInfos = true;
+        QuickMenu.instance.infoButton.interactable = true;
         baseDialogue.onDialogueEnd += TourOfTheBase;
         baseDialogue.onDialogueEnd += RepairMultitool;
     }
@@ -280,6 +284,8 @@ public class Robot : MonoBehaviour
                 case 5:
                     TeleportSellingScreen();
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[6].dialogueSequence);
+                    Tutorial.instance.hasUnlockedInfos = true;
+                    QuickMenu.instance.infoButton.interactable = true;
                     trainingRoomDialogue.onDialogueEnd += TalkAboutQuickMenu;
                     break;
                 case 6:

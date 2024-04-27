@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class SharkAttack : MonoBehaviour
 {
-    [SerializeField] float chargeDamage;
-
     [Header("Shark Variables")]
     [SerializeField] CreatureState state;
     [SerializeField] SharkMovement shark;
+    [SerializeField] Transform jaw;
     [SerializeField] Transform target;
     [SerializeField] Rigidbody2D rb;
 
     [Header("Charge Variables")]
     [SerializeField] Collider2D hurtBox;
+    [SerializeField] float chargeDamage;
     [SerializeField] float chargeDelay;
     [SerializeField] float chargeForce;
     [SerializeField] float chargeCooldown;
@@ -33,10 +33,11 @@ public class SharkAttack : MonoBehaviour
     [SerializeField] float biteDamage;
     [SerializeField] float biteDistanceThreshold;
     [SerializeField] float biteCooldown;
+    [SerializeField] float biteDelay = 0.2f;
 
     float damage;
     float attackTime;
-    bool isBiting;
+    public bool isBiting;
 
     private void Update()
     {
@@ -62,6 +63,7 @@ public class SharkAttack : MonoBehaviour
                 if (Time.time - attackTime > biteCooldown && !isBiting && !isCharging)
                 {
                     StartCoroutine(BiteAttack());
+                    attackTime = Time.time;
                     Debug.Log("is biting!");
                 }
             }
@@ -70,41 +72,80 @@ public class SharkAttack : MonoBehaviour
 
     IEnumerator Charge()
     {
+        //Commencer la charge et assigne le degats
         isCharging = true;
         damage = chargeDamage;
+
+        //Empeche la tete de tourner durant la charge
         shark.head.GetComponent<BodyRotation>().enabled = false;
+        jaw.gameObject.GetComponent<BodyRotation>().enabled = false;
+
+        //Assigne la cible de la charge
         chargeTarget = target.position;
+
+        //Commence a shaker et arrete le deplacement
         body.wiggleSpeed = chargeWiggleSpeed;
         body.wiggleMagnitude = chargeWiggleMagnitude;
         rb.velocity = Vector2.zero;
 
+        //Shake et reste immobile le temps d'ouvrir la machoire
         float elapsedTime = 0;
-        float angle = shark.isFacingRight ? 60 : -60;
+
+        //Angle selon la direction du requin
+        float angle = shark.isFacingRight ? 20 : -20;
         while (elapsedTime < chargeDelay)
         {
             elapsedTime += Time.deltaTime;
+            //Ouvre la machoire
             shark.head.localRotation = Quaternion.Slerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, angle), elapsedTime / chargeDelay);
-            //Vector2 scale = Vector2.Lerp(shark.head.localScale, new Vector2(2, shark.head.localScale.y), elapsedTime / chargeDelay);
-            //shark.head.localScale = scale;
+            jaw.localRotation = Quaternion.Slerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, -angle), elapsedTime / chargeDelay);
+
+            //Fait grandir la machoire pour donner plus d'impacte
+            float scale = Mathf.Lerp(1, 1.5f, elapsedTime / biteDelay);
+            shark.head.localScale = new Vector2(scale, shark.head.localScale.y);
+            jaw.localScale = new Vector2(scale, shark.head.localScale.y);
             yield return null;
         }
+
+        //Assigne les valeur final de l'ouverture
         shark.head.localRotation = Quaternion.Euler(0, 0, angle);
+        jaw.localRotation = Quaternion.Euler(0, 0, -angle);
+        shark.head.localScale = new Vector2(1.5f, shark.head.localScale.y);
+        jaw.localScale = new Vector2(1.5f, shark.head.localScale.y);
+
+        //Empeche le corps de s'etirer
         body.canShorten = false;
+
+        //Arrete de shaker
         body.wiggleSpeed = 0;
         body.wiggleMagnitude = 0;
+
+        //Prend la direction de la charge et fonce en activant la hurtbox
         Vector2 direction = (chargeTarget - rb.position).normalized;
         hurtBox.enabled = true;
         rb.AddForce(direction * chargeForce, ForceMode2D.Impulse);
-        shark.head.localScale = new Vector2(2, shark.head.localScale.y);
 
-
-
+        //Attend un moment puis referme la bouche
         yield return new WaitForSeconds(chargeDelay / 2);
+        while (elapsedTime < 0.1f)
+        {
+            elapsedTime += Time.deltaTime;
+            shark.head.localRotation = Quaternion.Slerp(shark.head.localRotation, Quaternion.Euler(0, 0, 0), elapsedTime / biteDelay);
+            jaw.localRotation = Quaternion.Slerp(jaw.localRotation, Quaternion.Euler(0, 0, 0), elapsedTime / biteDelay);
+            float scale = Mathf.Lerp(1.5f, 1, elapsedTime / biteDelay);
+            shark.head.localScale = new Vector2(scale, shark.head.localScale.y);
+            jaw.localScale = new Vector2(scale, shark.head.localScale.y);
+            yield return null;
+        }
+        //Remet les valeurs de base
         shark.head.localRotation = Quaternion.Euler(0, 0, 0);
+        jaw.localRotation = Quaternion.Euler(0, 0, 0);
         shark.head.localScale = new Vector2(1, shark.head.localScale.y);
+        jaw.localScale = new Vector2(1, shark.head.localScale.y);
         shark.head.GetComponent<BodyRotation>().enabled = true;
+        jaw.gameObject.GetComponent<BodyRotation>().enabled = true;
 
-        yield return new WaitForSeconds(chargeDelay);
+        //Desactive la hurtbox et reinitialise l'attaque
         hurtBox.enabled = false;
         body.canShorten = true;
         isCharging = false;
@@ -116,21 +157,45 @@ public class SharkAttack : MonoBehaviour
         isBiting = true;
         damage = biteDamage;
         shark.head.GetComponent<BodyRotation>().enabled = false;
+        jaw.gameObject.GetComponent<BodyRotation>().enabled = false;
 
         float elapsedTime = 0;
-        float angle = shark.isFacingRight ? 60 : -60;
-        while (elapsedTime < 0.5f)
+        float angle = shark.isFacingRight ? 20 : -20;
+        while (elapsedTime < biteDelay)
         {
             elapsedTime += Time.deltaTime;
-            shark.head.localRotation = Quaternion.Slerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, angle), elapsedTime / 0.5f);
+            shark.head.localRotation = Quaternion.Slerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, angle), elapsedTime / biteDelay);
+            jaw.localRotation = Quaternion.Slerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, -angle), elapsedTime / biteDelay);
+            float scale = Mathf.Lerp(1, 1.5f, elapsedTime / biteDelay);
+            shark.head.localScale = new Vector2(scale, shark.head.localScale.y);
+            jaw.localScale = new Vector2(scale, shark.head.localScale.y);
             yield return null;
         }
         shark.head.localRotation = Quaternion.Euler(0, 0, angle);
-        hurtBox.enabled = true;
+        jaw.localRotation = Quaternion.Euler(0, 0, -angle);
+        shark.head.localScale = new Vector2(1.5f, shark.head.localScale.y);
+        jaw.localScale = new Vector2(1.5f, shark.head.localScale.y);
 
         yield return new WaitForSeconds(0.1f);
+        hurtBox.enabled = true;
+        elapsedTime = 0;
+        while (elapsedTime < 0.1f)
+        {
+            elapsedTime += Time.deltaTime;
+            shark.head.localRotation = Quaternion.Slerp(shark.head.localRotation, Quaternion.Euler(0, 0, 0), elapsedTime / biteDelay);
+            jaw.localRotation = Quaternion.Slerp(jaw.localRotation, Quaternion.Euler(0, 0, 0), elapsedTime / biteDelay);
+            float scale = Mathf.Lerp(1.5f, 1, elapsedTime / biteDelay);
+            shark.head.localScale = new Vector2(scale, shark.head.localScale.y);
+            jaw.localScale = new Vector2(scale, shark.head.localScale.y);
+            yield return null;
+        }
         shark.head.localRotation = Quaternion.Euler(0, 0, 0);
+        jaw.localRotation = Quaternion.Euler(0, 0, 0);
+        shark.head.localScale = new Vector2(1, shark.head.localScale.y);
+        jaw.localScale = new Vector2(1, shark.head.localScale.y);
         shark.head.GetComponent<BodyRotation>().enabled = true;
+        jaw.gameObject.GetComponent<BodyRotation>().enabled = true;
+
         hurtBox.enabled = false;
         attackTime = Time.time;
         isBiting = false;
@@ -145,8 +210,11 @@ public class SharkAttack : MonoBehaviour
             {
                 StopCoroutine(charge);
                 shark.head.localRotation = Quaternion.Euler(0, 0, 0);
+                jaw.localRotation = Quaternion.Euler(0, 0, 0);
                 shark.head.localScale = new Vector2(1, shark.head.localScale.y);
+                jaw.localScale = new Vector2(1, shark.head.localScale.y);
                 shark.head.GetComponent<BodyRotation>().enabled = true;
+                jaw.gameObject.GetComponent<BodyRotation>().enabled = true;
                 hurtBox.enabled = false;
                 body.canShorten = true;
                 isCharging = false;

@@ -35,7 +35,7 @@ public class SharkMovement : MonoBehaviour
     public float rayDistance = 5;
 
     [Header("BodyParts")]
-    [SerializeField] Transform[] fins;
+    [SerializeField] Transform[] bodyParts;
 
     [SerializeField] CreatureState state;
     [SerializeField] CreaturePathfinding pathfinding;
@@ -75,12 +75,19 @@ public class SharkMovement : MonoBehaviour
             dist = Vector2.Distance(target.position, transform.position);
         }
 
-        if (dist >= slowDownThreshold)
+        if (!state.isAttacking)
+        {
+            if (dist >= slowDownThreshold)
+                moveSpeed = maxMoveSpeed;
+            else if (dist < 0.1f)
+                rb.velocity = Vector2.zero;
+            else if (dist < slowDownThreshold)
+                moveSpeed = Mathf.Lerp(maxMoveSpeed, minMoveSpeed, (slowDownThreshold - dist / slowDownThreshold));
+        }
+        else
+        {
             moveSpeed = maxMoveSpeed;
-        else if (dist < 0.1f)
-            rb.velocity = Vector2.zero;
-        else if (dist < slowDownThreshold)
-            moveSpeed = Mathf.Lerp(maxMoveSpeed, minMoveSpeed, (slowDownThreshold - dist / slowDownThreshold));
+        }
 
         if (!attack.isCharging && !isStopped)
         {
@@ -171,14 +178,10 @@ public class SharkMovement : MonoBehaviour
             transform.GetChild(1).GetComponent<LineRenderer>().textureScale = texScale;
         }
 
-        Vector3 scale = head.transform.localScale;
-        scale.y *= -1;
-        head.transform.localScale = scale;
 
-
-        foreach (Transform leg in fins)
+        foreach (Transform leg in bodyParts)
         {
-            scale = leg.transform.localScale;
+            Vector3 scale = leg.transform.localScale;
             scale.y *= -1;
             leg.transform.localScale = scale;
         }
@@ -198,7 +201,7 @@ public class SharkMovement : MonoBehaviour
 
         rb.AddForce(force);
 
-        if (!isFacingRight && rb.velocity.x > 0)
+        if (!isFacingRight && rb.velocity.x > 0 && !attack.isBiting)
             Turn();
     }
 
@@ -213,7 +216,7 @@ public class SharkMovement : MonoBehaviour
 
         rb.AddForce(force);
 
-        if (isFacingRight && rb.velocity.x < 0)
+        if (isFacingRight && rb.velocity.x < 0 && !attack.isBiting)
             Turn();
     }
 

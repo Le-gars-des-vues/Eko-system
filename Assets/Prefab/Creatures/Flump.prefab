@@ -872,7 +872,8 @@ MonoBehaviour:
   - {fileID: 4053852636424728535}
   - {fileID: 8408453365779782253}
   usesLineRenderer: 1
-  line: {fileID: 7933824538052503625}
+  lines:
+  - {fileID: 7933824538052503625}
 --- !u!114 &5567287950754150770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,6 +923,7 @@ MonoBehaviour:
   isFullTime: 0
   eatingTime: 2
   senseOfSmell: 3.5
+  maxSenseOfSmellFactor: 2
   fovRange: 3.5
   minFollowDistance: 10
   foodName: Macrebosia
@@ -949,8 +951,7 @@ MonoBehaviour:
   creatureAnimators:
   - {fileID: 964831289648665470}
   - {fileID: 8760482271706033860}
-  colliders:
-  - {fileID: 4330047044230045639}
+  colliders: []
   rbs: []
   joints: []
   limbs: []
@@ -960,7 +961,8 @@ MonoBehaviour:
   creatureColliders:
   - {fileID: 1658518980294979451}
   isLineRenderer: 1
-  line: {fileID: 7933824538052503625}
+  lines:
+  - {fileID: 7933824538052503625}
   scripts:
   - {fileID: 2165007696987796265}
   - {fileID: 5567287950754150770}
@@ -1006,7 +1008,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5646593512024270212}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
