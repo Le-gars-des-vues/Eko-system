@@ -59,7 +59,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-5</Value>
+												<Value>-16</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -2177,8 +2177,10 @@
 														</RandomSequenceContainer>
 														<Sound Name="AMB_Foret_Crickets" ID="{2B237565-AA39-4028-97F3-279C0646AA4A}" ShortID="571608035">
 															<PropertyList>
+																<Property Name="3DPosition" Type="int16" Value="2"/>
+																<Property Name="3DSpatialization" Type="int16" Value="1"/>
 																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-																<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="Pitch" Type="int32">
 																	<ModifierList>
 																		<ModifierInfo>
@@ -2186,9 +2188,11 @@
 																		</ModifierInfo>
 																	</ModifierList>
 																</Property>
+																<Property Name="SpeakerPanning" Type="int16" Value="1"/>
+																<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="37"/>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-5</Value>
+																		<Value>-10</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -2215,6 +2219,10 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<PositioningInfo>
+																<Panner Name="" ID="{27930C18-866F-466F-A73F-55DD16D6C9F5}"/>
+																<Position Name="" ID="{0DA340DB-1F06-40BF-911B-B27CCC58A9B8}"/>
+															</PositioningInfo>
 															<ActiveSourceList>
 																<ActiveSource Name="AMB_Foret_Crickets" ID="{768D04BB-8BBD-40EF-9710-1208CB0C8F91}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5465,6 +5473,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
