@@ -19,207 +19,6 @@
 								</Property>
 							</PropertyList>
 							<ChildrenList>
-								<Bus Name="VO" ID="{287AC683-F2BA-4831-A202-F8F2B2904174}">
-									<ChildrenList>
-										<Bus Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}">
-											<ChildrenList>
-												<Bus Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}">
-													<PropertyList>
-														<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
-													</PropertyList>
-													<DuckingList>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLinear</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-													</DuckingList>
-												</Bus>
-												<Bus Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}">
-													<PropertyList>
-														<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
-													</PropertyList>
-													<DuckingList>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLinear</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-													</DuckingList>
-												</Bus>
-												<Bus Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-												<Bus Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}">
-													<PropertyList>
-														<Property Name="RecoveryTime" Type="Real64" Value="0"/>
-													</PropertyList>
-													<DuckingList>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-															<DuckingParam>
-																<Volume>-93</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0.100000001490116</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0.100000001490116</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0.100000001490116</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0.100000001490116</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-													</DuckingList>
-												</Bus>
-												<Bus Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}">
-													<PropertyList>
-														<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
-													</PropertyList>
-													<DuckingList>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-													</DuckingList>
-												</Bus>
-											</ChildrenList>
-										</Bus>
-										<Bus Name="VO_Narrateur" ID="{BD1D11EF-9E0B-462E-8FE4-20436BBFCCCB}">
-											<PropertyList>
-												<Property Name="RecoveryTime" Type="Real64" Value="2"/>
-											</PropertyList>
-											<DuckingList>
-												<DuckItem>
-													<BusRef Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}"/>
-													<DuckingParam>
-														<Volume>-94</Volume>
-														<FadeInTime>0.200000002980232</FadeInTime>
-														<FadeOutTime>0</FadeOutTime>
-														<FadeCurve>FadeLog2</FadeCurve>
-													</DuckingParam>
-												</DuckItem>
-											</DuckingList>
-										</Bus>
-									</ChildrenList>
-								</Bus>
-								<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}">
-									<ChildrenList>
-										<Bus Name="AMB_Grotte" ID="{A41DCFA7-B149-40A1-B01C-C9F9EF1A53A7}">
-											<ChildrenList>
-												<Bus Name="AMB_Grotte_L2" ID="{FC29499E-C1DF-4581-A0F0-86F2817A0066}">
-													<ReferenceList>
-														<Reference Name="UserAuxSend0">
-															<ObjectRef Name="AMB_Grotte_RVB" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-														</Reference>
-													</ReferenceList>
-													<ObjectLists>
-														<ObjectList Name="RTPC">
-															<Reference>
-																<Local>
-																	<RTPC Name="" ID="{B92CE9F0-B4E7-4E0D-8699-BF3B19895BBB}" ShortID="1071155233">
-																		<PropertyList>
-																			<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
-																		</PropertyList>
-																		<ReferenceList>
-																			<Reference Name="ControlInput">
-																				<ObjectRef Name="New Modulator LFO_07" ID="{A3069B34-C16B-41D8-8AEC-BCF7A3C4337B}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
-																			</Reference>
-																			<Reference Name="Curve">
-																				<Custom>
-																					<Curve Name="" ID="{C26B0AA0-9D41-4992-804E-375F81879619}">
-																						<PropertyList>
-																							<Property Name="Flags" Type="int32" Value="3"/>
-																						</PropertyList>
-																						<PointList>
-																							<Point>
-																								<XPos>0</XPos>
-																								<YPos>-3.26253</YPos>
-																								<Flags>21</Flags>
-																							</Point>
-																							<Point>
-																								<XPos>1</XPos>
-																								<YPos>-200</YPos>
-																								<Flags>53</Flags>
-																							</Point>
-																						</PointList>
-																					</Curve>
-																				</Custom>
-																			</Reference>
-																		</ReferenceList>
-																	</RTPC>
-																</Local>
-															</Reference>
-														</ObjectList>
-													</ObjectLists>
-												</Bus>
-											</ChildrenList>
-										</Bus>
-									</ChildrenList>
-								</Bus>
-								<Bus Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}"/>
-								<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}"/>
-								<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}"/>
-								<Bus Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}"/>
 								<AuxBus Name="Reverb_test" ID="{F1FD25B1-1A3F-425B-9E49-94D125984B39}">
 									<ReferenceList>
 										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
@@ -254,6 +53,339 @@
 										</CustomStateList>
 									</StateInfo>
 								</AuxBus>
+								<Bus Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}">
+									<ChildrenList>
+										<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}">
+											<ChildrenList>
+												<Bus Name="AMB_Grotte" ID="{A41DCFA7-B149-40A1-B01C-C9F9EF1A53A7}">
+													<ChildrenList>
+														<Bus Name="AMB_Grotte_L2" ID="{FC29499E-C1DF-4581-A0F0-86F2817A0066}">
+															<ReferenceList>
+																<Reference Name="UserAuxSend0">
+																	<ObjectRef Name="AMB_Grotte_RVB" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ObjectLists>
+																<ObjectList Name="RTPC">
+																	<Reference>
+																		<Local>
+																			<RTPC Name="" ID="{B92CE9F0-B4E7-4E0D-8699-BF3B19895BBB}" ShortID="1071155233">
+																				<PropertyList>
+																					<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
+																				</PropertyList>
+																				<ReferenceList>
+																					<Reference Name="ControlInput">
+																						<ObjectRef Name="New Modulator LFO_07" ID="{A3069B34-C16B-41D8-8AEC-BCF7A3C4337B}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+																					</Reference>
+																					<Reference Name="Curve">
+																						<Custom>
+																							<Curve Name="" ID="{C26B0AA0-9D41-4992-804E-375F81879619}">
+																								<PropertyList>
+																									<Property Name="Flags" Type="int32" Value="3"/>
+																								</PropertyList>
+																								<PointList>
+																									<Point>
+																										<XPos>0</XPos>
+																										<YPos>-3.26253</YPos>
+																										<Flags>21</Flags>
+																									</Point>
+																									<Point>
+																										<XPos>1</XPos>
+																										<YPos>-200</YPos>
+																										<Flags>53</Flags>
+																									</Point>
+																								</PointList>
+																							</Curve>
+																						</Custom>
+																					</Reference>
+																				</ReferenceList>
+																			</RTPC>
+																		</Local>
+																	</Reference>
+																</ObjectList>
+															</ObjectLists>
+														</Bus>
+													</ChildrenList>
+												</Bus>
+											</ChildrenList>
+										</Bus>
+										<Bus Name="VO" ID="{287AC683-F2BA-4831-A202-F8F2B2904174}">
+											<ChildrenList>
+												<Bus Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}">
+													<ChildrenList>
+														<Bus Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}">
+															<PropertyList>
+																<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+															</PropertyList>
+															<DuckingList>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLinear</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+															</DuckingList>
+														</Bus>
+														<Bus Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}">
+															<PropertyList>
+																<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+															</PropertyList>
+															<DuckingList>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLinear</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+															</DuckingList>
+														</Bus>
+														<Bus Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+														<Bus Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}">
+															<PropertyList>
+																<Property Name="RecoveryTime" Type="Real64" Value="0"/>
+															</PropertyList>
+															<DuckingList>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+																	<DuckingParam>
+																		<Volume>-93</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0.100000001490116</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0.100000001490116</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0.100000001490116</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0.100000001490116</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+															</DuckingList>
+														</Bus>
+														<Bus Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}">
+															<PropertyList>
+																<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+															</PropertyList>
+															<DuckingList>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+															</DuckingList>
+														</Bus>
+													</ChildrenList>
+												</Bus>
+												<Bus Name="VO_Narrateur" ID="{BD1D11EF-9E0B-462E-8FE4-20436BBFCCCB}">
+													<PropertyList>
+														<Property Name="RecoveryTime" Type="Real64" Value="2"/>
+													</PropertyList>
+													<DuckingList>
+														<DuckItem>
+															<BusRef Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}"/>
+															<DuckingParam>
+																<Volume>-94</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+													</DuckingList>
+												</Bus>
+											</ChildrenList>
+										</Bus>
+										<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64">
+													<ValueList>
+														<Value>-12</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+										</Bus>
+										<Bus Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}"/>
+										<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}"/>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{5AABCF3A-B768-4A26-9C82-AD4176E44C8E}" ShortID="419433902">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Deepness" ID="{8FB93522-F4E8-4044-96D8-F29F7C6C58B6}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{9614D5DD-CB5E-4F03-BDD8-33101A7E0B25}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>0.999</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1.64725</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>2</XPos>
+																				<YPos>15</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>3.54742</XPos>
+																				<YPos>20</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>13.32779</XPos>
+																				<YPos>16.99014</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>15.88422</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{3FC9A9EA-EB2C-43B1-8E39-394CC92E5A63}" ShortID="935914414">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Deepness" ID="{8FB93522-F4E8-4044-96D8-F29F7C6C58B6}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{069F589D-63C6-458B-B9E8-039AF107AEAF}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>0.999</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>2</XPos>
+																				<YPos>66</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>16.57238</XPos>
+																				<YPos>74</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>100</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</Bus>
+								<Bus Name="Normal" ID="{CA9B86B5-E4F9-46D1-A990-CC3F122EE761}">
+									<ChildrenList>
+										<Bus Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}"/>
+										<Bus Name="PLY_Nage" ID="{62EAF518-E51B-40BE-9F1E-62121FE84251}"/>
+										<Bus Name="AMB_SousMarine" ID="{1D88F862-1A96-48A6-AC86-FA263CE34CAE}"/>
+									</ChildrenList>
+								</Bus>
 							</ChildrenList>
 						</Bus>
 					</ChildrenList>

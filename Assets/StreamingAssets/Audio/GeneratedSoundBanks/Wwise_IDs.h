@@ -236,11 +236,15 @@ namespace AK
         static const AkUniqueID AMB = 1117531639U;
         static const AkUniqueID AMB_GROTTE = 971073617U;
         static const AkUniqueID AMB_GROTTE_L2 = 43816218U;
+        static const AkUniqueID AMB_SOUSMARINE = 4285823446U;
         static const AkUniqueID ENV = 529726550U;
         static const AkUniqueID LIF = 444705606U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MASTER_SECONDARY_BUS = 805203703U;
+        static const AkUniqueID NORMAL = 1160234136U;
         static const AkUniqueID PLY = 1064786042U;
+        static const AkUniqueID PLY_NAGE = 2316187866U;
+        static const AkUniqueID SOUS_MARIN = 2290390165U;
         static const AkUniqueID SUB_MASTER = 2412407096U;
         static const AkUniqueID UI = 1551306167U;
         static const AkUniqueID VO = 1534528548U;
