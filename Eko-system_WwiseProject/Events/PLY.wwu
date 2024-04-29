@@ -2,6 +2,10 @@
 <WwiseDocument Type="WorkUnit" ID="{BF950166-7E91-4F78-8310-8AAF9EBA5A57}" SchemaVersion="110">
 	<Events>
 		<WorkUnit Name="PLY" ID="{BF950166-7E91-4F78-8310-8AAF9EBA5A57}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<Folder Name="PLY_Attaque" ID="{8532FBF3-20D6-47B2-B635-77A64456EF5C}" ShortID="835878579">
 					<ChildrenList>
@@ -373,10 +377,34 @@
 				</Event>
 				<Event Name="PLY_Spawn" ID="{F63B9C23-9D63-4E29-A9E3-5E29E9E49F2B}">
 					<ChildrenList>
+						<Action Name="" ID="{5101DD04-7270-4EEA-A7F4-46E759C4CFB3}" ShortID="386427040">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{7FBA8775-31F7-4B56-8190-482B8568FF5D}" ShortID="907498201">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="AMB_switch" ID="{7AF79DE4-9779-4CEF-B790-E685B964BEEE}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{23BF2E95-C3D3-4C9F-BC48-8F088E136C8E}" ShortID="1034145513">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_BarreDeVie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{7745B2F6-B14E-4291-B99F-7B950C1A9F4D}" ShortID="599902735">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Temps" ID="{0ECF0963-0A4C-4121-BD27-8575D7BB690D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -387,7 +415,7 @@
 						<Action Name="" ID="{340A8590-F7DA-4AD2-B84C-FB625F20B7AE}" ShortID="961042758">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MUS_IntoTheForest_Click_120BPM_4M" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
+									<ObjectRef Name="MUS_Combat_Foret_120BPM_4M" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -403,7 +431,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MUS_IntoTheForest_Click_120BPM_4M" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
+									<ObjectRef Name="MUS_Combat_Foret_120BPM_4M" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

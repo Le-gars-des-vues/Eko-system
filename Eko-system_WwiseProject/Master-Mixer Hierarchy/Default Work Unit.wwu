@@ -20,6 +20,10 @@
 							</PropertyList>
 							<ChildrenList>
 								<Bus Name="VO" ID="{287AC683-F2BA-4831-A202-F8F2B2904174}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="23"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Bus Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}">
 											<ChildrenList>
@@ -163,6 +167,10 @@
 									</ChildrenList>
 								</Bus>
 								<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Bus Name="AMB_Grotte" ID="{A41DCFA7-B149-40A1-B01C-C9F9EF1A53A7}">
 											<ChildrenList>
@@ -215,11 +223,147 @@
 											</ChildrenList>
 										</Bus>
 									</ChildrenList>
+									<StateInfo>
+										<StatePropertyList>
+											<Property Name="BusVolume"/>
+											<Property Name="Highpass"/>
+											<Property Name="Lowpass"/>
+											<Property Name="MakeUpGain"/>
+											<Property Name="Pitch"/>
+											<Property Name="Volume"/>
+										</StatePropertyList>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+												<CustomState Name="" ID="{526FB479-E5A5-4E58-9642-97C2DC23FA34}" ShortID="730229045">
+													<PropertyList>
+														<Property Name="BusVolume" Type="Real64" Value="-108"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+												<CustomState Name="" ID="{A66C76E8-BD72-4584-91F1-8254942F3BD2}" ShortID="480411218"/>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
 								</Bus>
-								<Bus Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}"/>
-								<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}"/>
-								<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}"/>
-								<Bus Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}"/>
+								<Bus Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="4"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<StateInfo>
+										<StatePropertyList>
+											<Property Name="BusVolume"/>
+											<Property Name="Highpass"/>
+											<Property Name="Lowpass"/>
+											<Property Name="MakeUpGain"/>
+											<Property Name="Pitch"/>
+											<Property Name="Volume"/>
+										</StatePropertyList>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+												<CustomState Name="" ID="{F5354716-63E1-4487-9BB8-82E80D720DBF}" ShortID="365533133">
+													<PropertyList>
+														<Property Name="BusVolume" Type="Real64" Value="-108"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+												<CustomState Name="" ID="{C6C653DE-7CCC-41B2-B1EC-9FB01598FF40}" ShortID="598480507"/>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
+								</Bus>
+								<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="26"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<StateInfo>
+										<StatePropertyList>
+											<Property Name="BusVolume"/>
+											<Property Name="Highpass"/>
+											<Property Name="Lowpass"/>
+											<Property Name="MakeUpGain"/>
+											<Property Name="Pitch"/>
+											<Property Name="Volume"/>
+										</StatePropertyList>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+												<CustomState Name="" ID="{2291CD34-CC08-4748-B05B-11CEE41376EF}" ShortID="711670226">
+													<PropertyList>
+														<Property Name="BusVolume" Type="Real64" Value="-108"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+												<CustomState Name="" ID="{0B9809EF-5C7E-4369-ABE1-8195F5D64289}" ShortID="732410509"/>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
+								</Bus>
+								<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="8"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<StateInfo>
+										<StatePropertyList>
+											<Property Name="BusVolume"/>
+											<Property Name="Highpass"/>
+											<Property Name="Lowpass"/>
+											<Property Name="MakeUpGain"/>
+											<Property Name="Pitch"/>
+											<Property Name="Volume"/>
+										</StatePropertyList>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+												<CustomState Name="" ID="{4A8180BA-BBCF-4AEB-80B9-C502384AC8DF}" ShortID="900503067">
+													<PropertyList>
+														<Property Name="BusVolume" Type="Real64" Value="-108"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+												<CustomState Name="" ID="{833690B8-3E46-4708-B92F-E9B62CDB1F7A}" ShortID="951237067"/>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
+								</Bus>
+								<Bus Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="1"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+								</Bus>
 								<AuxBus Name="Reverb_test" ID="{F1FD25B1-1A3F-425B-9E49-94D125984B39}">
 									<ReferenceList>
 										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">

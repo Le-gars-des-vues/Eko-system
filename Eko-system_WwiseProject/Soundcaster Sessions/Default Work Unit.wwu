@@ -110,6 +110,48 @@
 						<CurrentSwitchRef Name="Pas_Metal" ID="{DF93A1CE-2750-42BD-AFC7-9B6730775D5F}"/>
 					</CurrentSwitchList>
 				</SoundcasterSession>
+				<SoundcasterSession Name="Soundcaster - Rose" ID="{4FFB5BF8-D6E0-4F84-B6DC-FE06654F55E7}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="PLY_Spawn" ID="{F63B9C23-9D63-4E29-A9E3-5E29E9E49F2B}" WorkUnitID="{BF950166-7E91-4F78-8310-8AAF9EBA5A57}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_GameOver_Vie" ID="{81D02055-9B23-4AB8-8C60-9909A59E94A2}" WorkUnitID="{0FF3E3B6-B045-4639-8419-4EDD0A23D091}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_GameOver_Temps" ID="{2EAAD0A0-1FB0-492F-BA1C-758A39A4101D}" WorkUnitID="{0FF3E3B6-B045-4639-8419-4EDD0A23D091}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_Pause_Ouvrir" ID="{735393C7-35A7-462E-8AC8-804A368F8D48}" WorkUnitID="{0FF3E3B6-B045-4639-8419-4EDD0A23D091}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_Pause_Fermer" ID="{62B712EB-CBF2-4AD0-A054-FDBAE3F0D5F2}" WorkUnitID="{0FF3E3B6-B045-4639-8419-4EDD0A23D091}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="Temps" ID="{5AD906E2-92DC-45A4-A4B0-04474023F7AD}"/>
+							<Value>600</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="PLY_Sante" ID="{6852CAED-DFBD-4967-BE2D-E11663A50975}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="MusicVolume" ID="{B8AFD35F-9122-4E98-9F88-44B9088D1887}"/>
+							<Value>50</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundcasterSessions>

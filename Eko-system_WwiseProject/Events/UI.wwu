@@ -2,6 +2,10 @@
 <WwiseDocument Type="WorkUnit" ID="{0FF3E3B6-B045-4639-8419-4EDD0A23D091}" SchemaVersion="110">
 	<Events>
 		<WorkUnit Name="UI" ID="{0FF3E3B6-B045-4639-8419-4EDD0A23D091}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="1"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<Event Name="UI_Endurance" ID="{09770AF6-0E10-4543-9BF8-4B934F1DE170}">
 					<ChildrenList>
@@ -77,10 +81,23 @@
 					<ChildrenList>
 						<Event Name="UI_GameOver_Temps" ID="{2EAAD0A0-1FB0-492F-BA1C-758A39A4101D}">
 							<ChildrenList>
-								<Action Name="" ID="{83A62959-6648-4D22-BC38-FA8C7CD6599C}" ShortID="259899301">
+								<Action Name="" ID="{8D0DB353-8DB1-41AE-B71D-7701D152D237}" ShortID="122043129">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="UI_GameOver_Temps" ID="{CC97041D-494D-4E63-9836-6DA90D6B705B}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+											<ObjectRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{777164B0-3B31-434B-A2FC-294EB08B67FB}" ShortID="259493657">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_BarreDeVie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -95,14 +112,35 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{83A62959-6648-4D22-BC38-FA8C7CD6599C}" ShortID="259899301">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_GameOver_Temps" ID="{CC97041D-494D-4E63-9836-6DA90D6B705B}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="UI_GameOver_Vie" ID="{81D02055-9B23-4AB8-8C60-9909A59E94A2}">
 							<ChildrenList>
-								<Action Name="" ID="{49A06282-B259-47DE-B054-C59091E526A2}" ShortID="702958214">
+								<Action Name="" ID="{20DE55B4-76DE-4054-8A55-152AFAD71CEB}" ShortID="560639129">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="UI_GameOver_Vie" ID="{7E06967E-572A-44F4-A8E8-10BF7ACF8FEC}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+											<ObjectRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{B9CD095B-8F59-4C59-9367-D7B149D7DB20}" ShortID="101367486">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_BarreDeVie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -114,6 +152,13 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="UI_Temps" ID="{0ECF0963-0A4C-4121-BD27-8575D7BB690D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{49A06282-B259-47DE-B054-C59091E526A2}" ShortID="702958214">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_GameOver_Vie" ID="{7E06967E-572A-44F4-A8E8-10BF7ACF8FEC}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -522,6 +567,16 @@
 												</Reference>
 											</ReferenceList>
 										</Action>
+										<Action Name="" ID="{58929636-0E56-4469-AC29-AB14CBCEA8BB}" ShortID="880371156">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="9"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Temps" ID="{0ECF0963-0A4C-4121-BD27-8575D7BB690D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 									</ChildrenList>
 								</Event>
 								<Event Name="UI_Pause_Ouvrir" ID="{735393C7-35A7-462E-8AC8-804A368F8D48}">
@@ -530,6 +585,16 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="UI_Pause_Ouvrir" ID="{4F6CC7A3-D8B0-49F5-93D5-7B7A907CE471}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{4697DDC5-C8DE-4081-91FD-8FD0B3B15A6F}" ShortID="660303327">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="7"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Temps" ID="{0ECF0963-0A4C-4121-BD27-8575D7BB690D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
