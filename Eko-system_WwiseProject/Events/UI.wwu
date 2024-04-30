@@ -112,6 +112,16 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{1F2733BF-1886-4F7F-B451-43EA551A9534}" ShortID="537174689">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Respiration" ID="{6B0BAC03-426A-442F-AD67-393E022BE6D0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{83A62959-6648-4D22-BC38-FA8C7CD6599C}" ShortID="259899301">
 									<ReferenceList>
 										<Reference Name="Target">
@@ -152,6 +162,16 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="UI_Temps" ID="{0ECF0963-0A4C-4121-BD27-8575D7BB690D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{A46574B4-09C0-4ADC-9C40-14A268151923}" ShortID="341154020">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Respiration" ID="{6B0BAC03-426A-442F-AD67-393E022BE6D0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -560,6 +580,16 @@
 							<ChildrenList>
 								<Event Name="UI_Pause_Fermer" ID="{62B712EB-CBF2-4AD0-A054-FDBAE3F0D5F2}">
 									<ChildrenList>
+										<Action Name="" ID="{304C19E7-ED93-40C1-8A22-BB05597F9E1A}" ShortID="862966666">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 										<Action Name="" ID="{8FE9953F-EB88-4450-8C52-F8FCC71F3AC1}" ShortID="267875478">
 											<ReferenceList>
 												<Reference Name="Target">
@@ -577,10 +607,60 @@
 												</Reference>
 											</ReferenceList>
 										</Action>
+										<Action Name="" ID="{8E9ED4D5-87EC-4E8C-AE65-576244B46A8D}" ShortID="898061686">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="9"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ENV" ID="{2953D738-415B-494F-9C31-B9AB080AAAE6}" WorkUnitID="{04F76E87-D2FD-4A2C-8E9C-9B3294EB319D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{C79EFA5D-7F11-4FF4-ADBA-29E7AD1A9235}" ShortID="817703209">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="9"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF" ID="{B62A180C-6D1D-4A84-B93D-A1A178E35068}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{9B05594B-3B8E-4C71-A4E4-3812DBC817CE}" ShortID="884725391">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="9"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY" ID="{4E178A2F-B668-4CC2-8D25-777AD3658A1F}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{B44DFD2D-A99D-4621-BD77-C4F9BEF68BBF}" ShortID="753156798">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="9"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="VO" ID="{AD7CFFCB-2243-44C1-8B1C-94CA1B6B0F32}" WorkUnitID="{F8AAB88E-CD74-4D7B-BF01-BDE01BF6D753}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 									</ChildrenList>
 								</Event>
 								<Event Name="UI_Pause_Ouvrir" ID="{735393C7-35A7-462E-8AC8-804A368F8D48}">
 									<ChildrenList>
+										<Action Name="" ID="{486364D7-7A27-4E8E-92E7-43B353BE89D7}" ShortID="405088614">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 										<Action Name="" ID="{212B4867-5E89-4A6A-BA48-19B7CBB47258}" ShortID="235362612">
 											<ReferenceList>
 												<Reference Name="Target">
@@ -595,6 +675,46 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="UI_Temps" ID="{0ECF0963-0A4C-4121-BD27-8575D7BB690D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{076A66E7-D238-47A9-87E5-79E9D084D3DC}" ShortID="890515717">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="7"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ENV" ID="{2953D738-415B-494F-9C31-B9AB080AAAE6}" WorkUnitID="{04F76E87-D2FD-4A2C-8E9C-9B3294EB319D}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{FFEFDDAC-BDBD-4BB7-B9A0-B1C775BFD2F1}" ShortID="1001728357">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="7"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF" ID="{B62A180C-6D1D-4A84-B93D-A1A178E35068}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{68488D73-FC01-4369-80E0-1A7CA8A34EDB}" ShortID="33422081">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="7"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY" ID="{4E178A2F-B668-4CC2-8D25-777AD3658A1F}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{A7079592-C6A2-487E-8A2F-90816152E12C}" ShortID="698054167">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="7"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="VO" ID="{AD7CFFCB-2243-44C1-8B1C-94CA1B6B0F32}" WorkUnitID="{F8AAB88E-CD74-4D7B-BF01-BDE01BF6D753}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

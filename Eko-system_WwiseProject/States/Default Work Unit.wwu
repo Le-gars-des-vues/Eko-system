@@ -42,6 +42,21 @@
 						</StateGroup>
 					</ChildrenList>
 				</Folder>
+				<StateGroup Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}">
+					<ChildrenList>
+						<State Name="None" ID="{55196173-2010-40BD-8E3B-2CFE55B07F75}"/>
+						<State Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+						<State Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+							<EndState Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+							<Time>0.25</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</States>

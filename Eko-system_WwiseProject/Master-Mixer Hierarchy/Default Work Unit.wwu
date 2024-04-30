@@ -171,6 +171,7 @@
 										<Property Name="Color" Type="int16" Value="19"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
+									<ReferenceList/>
 									<ChildrenList>
 										<Bus Name="AMB_Grotte" ID="{A41DCFA7-B149-40A1-B01C-C9F9EF1A53A7}">
 											<ChildrenList>
@@ -236,8 +237,20 @@
 											<StateGroupInfo>
 												<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
 											</StateGroupInfo>
+											<StateGroupInfo>
+												<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
+											</StateGroupInfo>
 										</StateGroupList>
 										<CustomStateList>
+											<CustomState>
+												<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+												<CustomState Name="" ID="{AF1F6E79-5916-4FE8-86F9-DA1854B51728}" ShortID="909685969">
+													<PropertyList>
+														<Property Name="Lowpass" Type="int16" Value="50"/>
+														<Property Name="MakeUpGain" Type="Real64" Value="-5"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
 											<CustomState>
 												<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
 												<CustomState Name="" ID="{526FB479-E5A5-4E58-9642-97C2DC23FA34}" ShortID="730229045">
@@ -249,6 +262,10 @@
 											<CustomState>
 												<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
 												<CustomState Name="" ID="{A66C76E8-BD72-4584-91F1-8254942F3BD2}" ShortID="480411218"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+												<CustomState Name="" ID="{17B30E7A-5452-4595-A23A-5A2D10B26143}" ShortID="1001647983"/>
 											</CustomState>
 										</CustomStateList>
 									</StateInfo>
