@@ -533,6 +533,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: afd658c3e4ce66e4b8e7fdb533713b9b, type: 2}
+  stopIdle:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8691ecc73fdfc274ab0c25fbe7cb0517, type: 2}
   hurtSound:
     idInternal: 0
     valueGuidInternal: 
@@ -545,6 +549,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 8ceda54fe24c432459d0d2849793c9ee, type: 2}
+  deathSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f136f7f3702c96445a245858b58ed531, type: 2}
 --- !u!114 &4392491570789503142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +665,7 @@ MonoBehaviour:
   - {fileID: 2608522728892360947}
   - {fileID: 5241061563424271989}
   usesLineRenderer: 0
-  line: {fileID: 0}
+  lines: []
 --- !u!114 &6209915281714404190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,6 +695,7 @@ MonoBehaviour:
   isFullTime: 0
   eatingTime: 2
   senseOfSmell: 6
+  maxSenseOfSmellFactor: 2
   fovRange: 3.5
   minFollowDistance: 15
   foodName: Infpisum
@@ -782,14 +791,13 @@ MonoBehaviour:
   - {fileID: 3911207706338485626}
   - {fileID: 1513162474177626724}
   isLineRenderer: 0
-  line: {fileID: 0}
+  lines: []
   scripts:
   - {fileID: 8387820628380428130}
   - {fileID: 6209915281714404190}
   - {fileID: 3509843861052164604}
   - {fileID: 4473523068497175590}
   - {fileID: 4087431530198120389}
-  - {fileID: 6169062983522129610}
   behaviorScript: {fileID: 4392491570789503142}
   ressourceSpawnedCount: 1
   ressourceToHarvest: {fileID: 8819707360973039860, guid: 7f495b1b555372243843b49bb672872a, type: 3}
@@ -816,9 +824,8 @@ MonoBehaviour:
   underWaterGravityScale: 0.1
   underWaterDrag: 2
   underWaterAngularDrag: 4
-  initialGravityScale: 0
-  initialDrag: 0
-  initialAngularDrag: 0
+  head: {fileID: 9045490284689017004}
+  breathRaycastLenght: 0.57
   isUnderwater: 0
   maxOxygen: 40
   currentOxygen: 0
@@ -2664,10 +2671,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_LowerAngle: -20
+    m_UpperAngle: 20
 --- !u!4 &920082748781473695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
@@ -2766,10 +2773,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_LowerAngle: -20
+    m_UpperAngle: 20
 --- !u!1 &2212732069265544999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 386791141387813222, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
@@ -2935,7 +2942,7 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -20
     m_UpperAngle: 20
@@ -3037,10 +3044,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_LowerAngle: -20
+    m_UpperAngle: 20
 --- !u!212 &3726093027737853353 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2908940205763300328, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
@@ -3155,7 +3162,7 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -20
     m_UpperAngle: 20
@@ -3354,10 +3361,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_LowerAngle: -20
+    m_UpperAngle: 20
 --- !u!212 &5241061563424271989 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6003546589956356148, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
@@ -3553,10 +3560,10 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_LowerAngle: -20
+    m_UpperAngle: 20
 --- !u!4 &8155831544760834484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7693355417021534197, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
@@ -3650,13 +3657,18 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_LowerAngle: -20
+    m_UpperAngle: 20
 --- !u!4 &9031027704495540485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1819529356487467196, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
+  m_PrefabInstance: {fileID: 2011732898046039617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9045490284689017004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1845608243877732627, guid: 3f76dad04651d034b88091746af0d74a, type: 3}
   m_PrefabInstance: {fileID: 2011732898046039617}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &9211857471532988250 stripped

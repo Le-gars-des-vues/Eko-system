@@ -16,7 +16,7 @@ public class CreatureDeath : MonoBehaviour
     [SerializeField] private List<LimbSolver2D> limbs;
     [SerializeField] private List<FabrikSolver2D> longLimbs;
 
-    [SerializeField] private List<Rigidbody2D> creatureRbs;
+    public List<Rigidbody2D> creatureRbs;
     public List<Collider2D> creatureColliders;
 
     [SerializeField] bool isLineRenderer;
@@ -60,49 +60,32 @@ public class CreatureDeath : MonoBehaviour
                 if (ArrowManager.instance.targetObject != gameObject)
                     ArrowManager.instance.PlaceArrow(transform.position, "EXTRACT DNA", new Vector2(0, 0), gameObject);
                 //Debug.Log("can harvest");
-                if (Input.GetKey(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && ArrowManager.instance.targetObject == gameObject)
                 {
-                    //Debug.Log("Is harvesting");
-                    timer += Time.deltaTime;
-                    if (timer > timeToHarvest && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
-                    {
-                        for (int i = 0; i < ressourceSpawnedCount; i++)
-                        {
-                            var ressourceSpawned = Instantiate(dnaVial, transform.position, transform.rotation);
-                            //ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
-                            isExtracted = true;
-                        }
-                        timer = 0;
-                        if (ArrowManager.instance.targetObject == gameObject)
-                            ArrowManager.instance.RemoveArrow();
-                        //gameObject.SetActive(false);
-                    }
+                    var ressourceSpawned = Instantiate(dnaVial, transform.position, transform.rotation);
+                    //ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
+                    isExtracted = true;
+                    if (ArrowManager.instance.targetObject == gameObject)
+                        ArrowManager.instance.RemoveArrow();
+                    //gameObject.SetActive(false);
                 }
-                else if (Input.GetKeyUp(KeyCode.E))
-                    timer = 0;
             }
             else if (CanHarvest())
             {
                 if (ArrowManager.instance.targetObject != gameObject)
                     ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, 0), gameObject);
                 //Debug.Log("can harvest");
-                if (Input.GetKey(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && ArrowManager.instance.targetObject == gameObject)
                 {
-                    //Debug.Log("Is harvesting");
-                    timer += Time.deltaTime;
-                    if (timer > timeToHarvest && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
+                    for (int i = 0; i < ressourceSpawnedCount; i++)
                     {
                         var ressourceSpawned = Instantiate(ressourceToHarvest, transform.position, transform.rotation);
                         //ressourceSpawned.GetComponent<PickableObject>().PickUp(false, false);
-                        isHarvested = true;
-                        //timer = 0;
-                        if (ArrowManager.instance.targetObject == gameObject)
-                            ArrowManager.instance.RemoveArrow();
-                        //gameObject.SetActive(false);
                     }
+                    isHarvested = true;
+                    if (ArrowManager.instance.targetObject == gameObject)
+                        ArrowManager.instance.RemoveArrow();
                 }
-                else if (Input.GetKeyUp(KeyCode.E))
-                    timer = 0;
             }
             else
                 if (ArrowManager.instance.targetObject == gameObject)
@@ -122,6 +105,12 @@ public class CreatureDeath : MonoBehaviour
 
     public void Death(float gravityScale)
     {
+        if (GetComponent<CreatureSound>() != null)
+        {
+            AkSoundEngine.StopPlayingID(GetComponent<CreatureSound>().idleSoundID);
+            if (GetComponent<CreatureSound>().deathSound != null)
+                AudioManager.instance.PlaySound(GetComponent<CreatureSound>().deathSound, gameObject);
+        }
         drag = GetComponent<Rigidbody2D>().drag;
         angularDrag = GetComponent<Rigidbody2D>().angularDrag;
 

@@ -160,6 +160,18 @@ namespace AK
             } // namespace STATE
         } // namespace AMB_BASEAFORETETGROTTE
 
+        namespace PAUSE
+        {
+            static const AkUniqueID GROUP = 3092587493U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID PAUSE_OFF = 3967028551U;
+                static const AkUniqueID PAUSE_ON = 3537680115U;
+            } // namespace STATE
+        } // namespace PAUSE
+
         namespace PLY_VIE
         {
             static const AkUniqueID GROUP = 1697020375U;
@@ -219,6 +231,7 @@ namespace AK
         static const AkUniqueID DEEPNESS = 2722922482U;
         static const AkUniqueID MUSICVOLUME = 2346531308U;
         static const AkUniqueID PLY_SANTE = 2769016988U;
+        static const AkUniqueID RESPIRATION = 3140998137U;
         static const AkUniqueID SC_PLANTECARNIVORE = 2185427101U;
         static const AkUniqueID SFXVOLUME = 988953028U;
         static const AkUniqueID TEMPS = 307962810U;

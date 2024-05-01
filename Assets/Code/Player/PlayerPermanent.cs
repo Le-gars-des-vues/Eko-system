@@ -557,6 +557,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public void Death()
     {
         CloseUI();
+        if (!Tutorial.instance.hasDied)
+            Tutorial.instance.hasDied = true;
 
         AudioManager.instance.PlaySound(AudioManager.instance.voDeath, gameObject);
 
@@ -599,6 +601,10 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             objectInRightHand.GetComponent<PickableObject>().isPickedUp = false;
             UnequipObject();
         }
+
+        GameObject.Find("Vente").GetComponent<Vente>().profit -= 10;
+        if (GameObject.Find("Vente").GetComponent<Vente>().profit < 0)
+            GameObject.Find("Vente").GetComponent<Vente>().profit = 0;
 
         gameOverScreen.SetActive(true);
         gameOverScreen.GetComponent<GameOverScreen>().player = gameObject;
@@ -646,10 +652,6 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             rb.simulated = ragdollOn;
         }
-        foreach (var limb in limbs)
-        {
-            limb.weight = ragdollOn ? 0 : 1;
-        }
         foreach (var joint in joints)
         {
             joint.enabled = ragdollOn;
@@ -662,6 +664,12 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                 bones[i].transform.position = bonesPosition[i];
                 bones[i].transform.rotation = bonesRotation[i];
             }
+            GetComponent<IKManager2D>().enabled = true;
+        }
+
+        foreach (var limb in limbs)
+        {
+            limb.weight = ragdollOn ? 0 : 1;
         }
     }
 
@@ -686,7 +694,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         else
         {
             objectInRightHand = null;
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(cursorImages[1], new Vector2(0, 0), CursorMode.Auto);
             multiTool.UseMultiTool(false);
         }
     }
@@ -1276,7 +1284,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
     public bool CanMove()
     {
-        return !uiOpened && !isInDialogue && !isTeleporting;
+        return !uiOpened && !isInDialogue && !isTeleporting && !PromptManager.instance.promptOpen;
     }
 
     private Vector2 GetInput()

@@ -2,6 +2,10 @@
 <WwiseDocument Type="WorkUnit" ID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}" SchemaVersion="110">
 	<AudioObjects>
 		<WorkUnit Name="UI" ID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="1"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="UI" ID="{1578715E-2938-4D78-B61D-9AF2C9E61826}" ShortID="823734676">
 					<PropertyList>
@@ -65,6 +69,14 @@
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="UI_BarreDeVie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" ShortID="666156631">
+									<PropertyList>
+										<Property Name="BlendBehavior" Type="int16" Value="1"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -129,9 +141,10 @@
 																				<XPos>0</XPos>
 																				<YPos>0</YPos>
 																				<Flags>5</Flags>
+																				<SegmentShape>Exp3</SegmentShape>
 																			</Point>
 																			<Point>
-																				<XPos>45</XPos>
+																				<XPos>35</XPos>
 																				<YPos>-192</YPos>
 																				<Flags>0</Flags>
 																			</Point>
@@ -495,6 +508,11 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -2866,6 +2884,7 @@
 							<ChildrenList>
 								<Sound Name="UI_Respiration" ID="{F4DA2ED5-9B98-4C10-A8B8-963E53037CB6}" ShortID="991770798">
 									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="Lowpass" Type="int16">
 											<ValueList>
 												<Value>36</Value>
@@ -2889,6 +2908,55 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{B8ECE9C4-BF62-4086-BE14-901E23C9354F}" ShortID="677390314">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="MakeUpGain"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Respiration" ID="{E28FE1DB-C6A2-4ACF-B36A-A5CC752D5E5D}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{428986D1-209C-4A1B-9068-AEE74702E925}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>19.999</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>20</XPos>
+																				<YPos>-97.89573</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>100</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_Respiration" ID="{BFF5280E-9B9D-424D-BE4E-B5976A786A9A}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2943,6 +3011,55 @@
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{259A05AB-B424-4C2C-86B9-4E4CA55FE335}" ShortID="652108613">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="MakeUpGain"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Temps" ID="{5AD906E2-92DC-45A4-A4B0-04474023F7AD}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{C91E1339-6E21-486E-B8D5-0D55C86BD647}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0.00014</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>60</XPos>
+																		<YPos>3E-05</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>60.001</XPos>
+																		<YPos>-192</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>600</XPos>
+																		<YPos>-192</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</BlendContainer>
 						<ActorMixer Name="UI_Texte" ID="{5E6BD58C-1707-497F-AEEB-2234BA4D3F9F}" ShortID="202066061">
 							<ReferenceList>

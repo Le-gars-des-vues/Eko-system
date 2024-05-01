@@ -19,9 +19,9 @@ public class TrainingRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
+        if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject)
         {
-            if (isInRange)
+            if (isInRange && !DialogueManager.instance.dialogueRunning)
             {
                 PromptManager.instance.CreateNewPrompt(new Prompt("Go Back to base?", false, "Yes", "No"));
                 PromptManager.onButtonClick = TeleportToBase;
@@ -41,7 +41,7 @@ public class TrainingRoom : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive)
-                ArrowManager.instance.PlaceArrow(transform.position, "BACK TO BASE", new Vector2(0, -2), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "BACK TO BASE", new Vector2(0, -2), gameObject);
         }
     }
 
@@ -51,7 +51,7 @@ public class TrainingRoom : MonoBehaviour
         {
             isInRange = true;
             if (!ArrowManager.instance.isActive)
-                ArrowManager.instance.PlaceArrow(transform.position, "BACK TO BASE", new Vector2(0, -2), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "BACK TO BASE", new Vector2(0, -2), gameObject);
         }
     }
 

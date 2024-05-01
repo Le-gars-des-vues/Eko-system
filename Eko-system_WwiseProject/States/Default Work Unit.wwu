@@ -16,6 +16,20 @@
 						<State Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
 						<State Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
 					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+							<EndState Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+							<Time>1.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+							<EndState Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+							<Time>0.5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
 				</StateGroup>
 				<Folder Name="AMB" ID="{C42EC763-FEAB-4DC6-BBE2-DE09E34E2A28}" ShortID="572779393">
 					<ChildrenList>
@@ -28,6 +42,21 @@
 						</StateGroup>
 					</ChildrenList>
 				</Folder>
+				<StateGroup Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}">
+					<ChildrenList>
+						<State Name="None" ID="{55196173-2010-40BD-8E3B-2CFE55B07F75}"/>
+						<State Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+						<State Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+							<EndState Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+							<Time>0.25</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</States>

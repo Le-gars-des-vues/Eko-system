@@ -31,9 +31,14 @@ public class Robot : MonoBehaviour
     bool hasShowedMarket;
     bool hasShowedCrafting;
     bool hasShowedBuilding;
+    bool hasDied;
+    bool hasSeenStorm;
+    bool cameBackWithQuota;
+    bool cameBackWithoutQuota;
     [SerializeField] GameObject ressourceToGive;
     [SerializeField] GameObject ressourceToSell;
     Vector2 initialPos;
+    bool isInTour;
 
     [Header("Training Room Variables")]
     bool isInTraining;
@@ -86,13 +91,16 @@ public class Robot : MonoBehaviour
                 {
                     isMoving = false;
                     anim.SetBool("isWalking", false);
-                    RobotTutorial();
+                    if (isInTour)
+                        RobotTutorial();
                 }
             }
             else
             {
                 if ((!isFacingRight && player.transform.position.x - robotPos.position.x > 0) || (isFacingRight && player.transform.position.x - robotPos.position.x < 0))
                     Turn();
+
+                RobotConditionnalDialogue();
             }
         }
         else
@@ -165,11 +173,36 @@ public class Robot : MonoBehaviour
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[4].dialogueSequence);
             baseDialogue.onDialogueEnd = GoToSellingScreen;
             hasShowedCrafting = true;
+            isInTour = false;
         }
-        else if (!Tutorial.instance.firstTimeOutside && !Tutorial.instance.readyToGoOut)
+    }
+
+    void RobotConditionnalDialogue()
+    {
+        if (!hasDied && Tutorial.instance.hasDied)
         {
+            hasDied = true;
+            GoToRespawn();
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[5].dialogueSequence);
-            baseDialogue.onDialogueEnd += ReadyToGoOut;
+        }
+        else if (!cameBackWithoutQuota && Tutorial.instance.cameBackWithoutQuota)
+        {
+            cameBackWithoutQuota = true;
+            GoToSellingScreen();
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[8].dialogueSequence);
+        }
+        else if (!cameBackWithQuota && Tutorial.instance.cameBackWithQuota)
+        {
+            cameBackWithQuota = true;
+            GoToSellingScreen();
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[9].dialogueSequence);
+            baseDialogue.onDialogueEnd += TourOfTheBase;
+        }
+        else if (!hasSeenStorm && Tutorial.instance.hasSeenStorm)
+        {
+            hasSeenStorm = true;
+            GoToSellingScreen();
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[10].dialogueSequence);
         }
     }
 
@@ -217,8 +250,8 @@ public class Robot : MonoBehaviour
         baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[1].dialogueSequence);
         Tutorial.instance.hasUnlockedInfos = true;
         QuickMenu.instance.infoButton.interactable = true;
-        baseDialogue.onDialogueEnd += TourOfTheBase;
         baseDialogue.onDialogueEnd += RepairMultitool;
+        baseDialogue.onDialogueEnd += ReadyToGoOut;
     }
     void RefuseTour()
     {
@@ -226,14 +259,19 @@ public class Robot : MonoBehaviour
         hasShowedMarket = true;
         hasShowedCrafting = true;
         baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[7].dialogueSequence);
-        ReadyToGoOut();
     }
 
     void TourOfTheBase()
     {
         PromptManager.instance.CreateNewPrompt(new Prompt("Would you like a tour of the base?", false, "Yes", "No"));
-        PromptManager.onButtonClick = GoToRespawn;
+        PromptManager.onButtonClick += GoToRespawn;
+        PromptManager.onButtonClick += IsInTour;
         PromptManager.onButtonNull = RefuseTour;
+    }
+
+    void IsInTour()
+    {
+        isInTour = true;
     }
 
     void RepairMultitool()
@@ -291,7 +329,6 @@ public class Robot : MonoBehaviour
                 case 6:
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[8].dialogueSequence);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
-                    trainingRoomDialogue.onDialogueEnd += TeleportBackSellingScreen;
                     break;
                 case 7:
                     TeleportCrafting();
@@ -302,9 +339,10 @@ public class Robot : MonoBehaviour
                 case 8:
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[10].dialogueSequence);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
-                    trainingRoomDialogue.onDialogueEnd += TeleportBackCrafting;
                     break;
                 case 9:
+                    TeleportBackSellingScreen();
+                    TeleportBackCrafting();
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[11].dialogueSequence);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     break;
@@ -437,7 +475,7 @@ public class Robot : MonoBehaviour
         Teleport(initialPos, holoMaterial, ogMaterial, LayerMask.NameToLayer("Pixelate"));
         isInTraining = false;
         baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[6].dialogueSequence);
-        baseDialogue.onDialogueEnd += GoToRespawn;
+        baseDialogue.onDialogueEnd += ReadyToGoOut;
     }
 
     void Teleport(Vector2 target, Material startMaterial, Material endMaterial, LayerMask endLayer)

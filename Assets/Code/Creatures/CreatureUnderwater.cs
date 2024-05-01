@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class CreatureUnderwater : MonoBehaviour
 {
+    [Header("Underwater Variables")]
     [SerializeField] float underWaterGravityScale = 0.1f;
     [SerializeField] float underWaterDrag = 2f;
     [SerializeField] float underWaterAngularDrag = 4f;
-    [SerializeField] float initialGravityScale;
-    [SerializeField] float initialDrag;
-    [SerializeField] float initialAngularDrag;
+    CreatureState state;
 
-    Rigidbody2D rb;
+    [Header("Underwater Detection Variables")]
+    [SerializeField] Transform head;
+    [SerializeField] float breathRaycastLenght;
     public bool isUnderwater;
 
+    float initialGravityScale;
+    float initialDrag;
+    float initialAngularDrag;
+
+    [Header("Oxygen Variables")]
     [SerializeField] float maxOxygen = 40;
     [SerializeField] float currentOxygen;
     [SerializeField] float oxygenDepleteRate = 1;
@@ -21,7 +27,8 @@ public class CreatureUnderwater : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        state = GetComponent<CreatureState>();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         initialGravityScale = rb.gravityScale;
         initialDrag = rb.drag;
         initialAngularDrag = rb.angularDrag;
@@ -30,9 +37,22 @@ public class CreatureUnderwater : MonoBehaviour
 
     private void Update()
     {
+        RaycastHit2D headUnderWater = Physics2D.Raycast(head.position, Vector2.up, breathRaycastLenght, LayerMask.GetMask("Water"));
+        if (headUnderWater)
+        {
+            if (!isUnderwater)
+                GoUnderwater(true);
+        }
+        else
+        {
+            if (isUnderwater)
+                GoUnderwater(false);
+        }
+
+
         if (isUnderwater)
         {
-            if (!GetComponent<CreatureState>().isAWaterCreature)
+            if (!state.isAWaterCreature)
             {
                 currentOxygen -= Time.deltaTime * oxygenDepleteRate;
             }
@@ -47,22 +67,49 @@ public class CreatureUnderwater : MonoBehaviour
     void GoUnderwater(bool isTrue)
     {
         isUnderwater = isTrue;
-        if (GetComponent<CreatureState>().isAWaterCreature)
-            GetComponent<CreatureState>().isFlying = isTrue;
+        if (state.isAWaterCreature)
+            state.isFlying = isTrue;
         if (isTrue)
         {
-            rb.gravityScale = underWaterGravityScale;
-            rb.drag = underWaterDrag;
-            rb.angularDrag = underWaterAngularDrag;
+            foreach (Rigidbody2D rb in GetComponent<CreatureDeath>().creatureRbs)
+            {
+                rb.gravityScale = underWaterGravityScale;
+                rb.drag = underWaterDrag;
+                rb.angularDrag = underWaterAngularDrag;
+            }
+
+            foreach (Rigidbody2D rb in GetComponent<CreatureDeath>().rbs)
+            {
+                rb.gravityScale = underWaterGravityScale;
+                rb.drag = underWaterDrag;
+                rb.angularDrag = underWaterAngularDrag;
+            }
         }
         else
         {
-            rb.gravityScale = initialGravityScale;
-            rb.drag = initialDrag;
-            rb.angularDrag = initialAngularDrag;
+            foreach (Rigidbody2D rb in GetComponent<CreatureDeath>().creatureRbs)
+            {
+                rb.gravityScale = initialGravityScale;
+                rb.drag = initialDrag;
+                rb.angularDrag = initialAngularDrag;
+            }
+
+            foreach (Rigidbody2D rb in GetComponent<CreatureDeath>().rbs)
+            {
+                rb.gravityScale = initialGravityScale;
+                rb.drag = initialDrag;
+                rb.angularDrag = initialAngularDrag;
+            }
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(head.position, Vector2.up * breathRaycastLenght);
+    }
+
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Water")
@@ -89,4 +136,5 @@ public class CreatureUnderwater : MonoBehaviour
                 GoUnderwater(false);
         }
     }
+    */
 }

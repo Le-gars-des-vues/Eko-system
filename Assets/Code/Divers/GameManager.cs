@@ -198,7 +198,6 @@ public class GameManager : MonoBehaviour
                 {
                     twoMinLeft = true;
                     QuickMenu.instance.frame.sprite = timeLeft[4];
-                    Storm(true);
                 }
                 else if (TimeLeft < 240 && !fourMinLeft)
                 {
@@ -214,6 +213,14 @@ public class GameManager : MonoBehaviour
                 {
                     QuickMenu.instance.frame.sprite = timeLeft[1];
                     eightMinLeft = true;
+                }
+
+                if (twoMinLeft && !Base.instance.isInside)
+                {
+                    if (!isStorm)
+                    {
+                        Storm(true);
+                    }
                 }
             }
             else
@@ -233,24 +240,28 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (isStorm)
+        if (twoMinLeft)
         {
             timer += Time.deltaTime;
-            stormVolume.weight = Mathf.Lerp(0, 1, timer / timeToFullStorm);
-            var emissionF = rainFront.emission;
-            var emissionG = rainGround.emission;
-            var emissionB = rainBack.emission;
-            emissionF.rateOverTime = Mathf.Lerp(15, 500, timer / timeToFullStorm);
-            emissionG.rateOverTime = Mathf.Lerp(20, 625, timer / timeToFullStorm);
-            emissionB.rateOverTime = Mathf.Lerp(40, 1000, timer / timeToFullStorm);
 
-            if (Time.time - lightningTime > lightningCooldown)
+            if (isStorm)
             {
-                lightningTime = Time.time;
-                lightningFlash.SetTrigger("Lightning");
-                float minCooldown = Mathf.Lerp(10, 2, timer / timeToFullStorm);
-                float maxCooldown = Mathf.Lerp(15, 5, timer / timeToFullStorm);
-                lightningCooldown = Random.Range(minCooldown, maxCooldown);
+                stormVolume.weight = Mathf.Lerp(0, 1, timer / timeToFullStorm);
+                var emissionF = rainFront.emission;
+                var emissionG = rainGround.emission;
+                var emissionB = rainBack.emission;
+                emissionF.rateOverTime = Mathf.Lerp(0, 500, timer / timeToFullStorm);
+                emissionG.rateOverTime = Mathf.Lerp(0, 625, timer / timeToFullStorm);
+                emissionB.rateOverTime = Mathf.Lerp(0, 1000, timer / timeToFullStorm);
+
+                if (Time.time - lightningTime > lightningCooldown)
+                {
+                    lightningTime = Time.time;
+                    lightningFlash.SetTrigger("Lightning");
+                    float minCooldown = Mathf.Lerp(20, 2, timer / timeToFullStorm);
+                    float maxCooldown = Mathf.Lerp(30, 5, timer / timeToFullStorm);
+                    lightningCooldown = Random.Range(minCooldown, maxCooldown);
+                }
             }
         }
     }
@@ -265,21 +276,16 @@ public class GameManager : MonoBehaviour
             rainFront.Play();
             rainGround.Play();
             rainBack.Play();
+            Debug.Log("Started Storm");
         }
         else
         {
             AkSoundEngine.StopPlayingID(stormSoundID);
-            var emissionF = rainFront.emission;
-            var emissionG = rainGround.emission;
-            var emissionB = rainBack.emission;
-            emissionF.rateOverTime = 15;
-            emissionG.rateOverTime = 20;
-            emissionB.rateOverTime = 40;
             rainFront.Stop();
             rainGround.Stop();
             rainBack.Stop();
-            timer = 0;
             stormVolume.weight = 0;
+            Debug.Log("Stopped Storm");
         }
     }
 
@@ -296,6 +302,18 @@ public class GameManager : MonoBehaviour
     public void StartNewCycle()
     {
         StartCoroutine(NewCycle());
+        Debug.Log("Started new cycle!");
+    }
+
+    void ResetTimer()
+    {
+        TimeLeft = initialTime;
+        QuickMenu.instance.frame.sprite = timeLeft[0];
+        timer = 0;
+        twoMinLeft = false;
+        fourMinLeft = false;
+        sixMinLeft = false;
+        eightMinLeft = false;
     }
 
     public IEnumerator NewCycle()
@@ -303,6 +321,8 @@ public class GameManager : MonoBehaviour
         newCycleScreen.SetActive(true);
         this.gameObject.GetComponent<Quota>().nouveauQuota();
         cycleCount++;
+        if (cycleCount == 1)
+            this.gameObject.GetComponent<Quota>().quota = 50;
         cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
         textToWrite = "////////////\n\nSYSTEM.REBOOT\nTERRAFORMA CORP.\n\nNEW TRANSMISSION\n.\n.\n.\n.\n\nGOOD MORNING EMPLOYEE 1212781827!\n.\n.\n.\n.\n\nCYCLE : " + cycleCount.ToString("000") + "\n.\n.\n\nQUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $\n\nEND TRANSMISSION\n\n/////////////";
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
@@ -320,13 +340,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         newCycleScreen.SetActive(false);
-        TimeLeft = initialTime;
-        QuickMenu.instance.frame.sprite = timeLeft[0];
-        Storm(false);
-        twoMinLeft = false;
-        fourMinLeft = false;
-        sixMinLeft = false;
-        eightMinLeft = false;
+
+        ResetTimer();
+
         Debug.Log("New Cycle");
         for (int i = 0; i <= planters.Count - 1; i++)
         {

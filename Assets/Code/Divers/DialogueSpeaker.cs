@@ -132,6 +132,14 @@ public class DialogueSpeaker : MonoBehaviour
                             }
                         }
                     }
+                    else if (!isReadyToSpeak && isSpeaking)
+                    {
+                        if (Input.GetKeyDown(KeyCode.E) && !pressedKey)
+                        {
+                            pressedKey = true;
+                            NextSentence();
+                        }
+                    }
                 }
             }
         }

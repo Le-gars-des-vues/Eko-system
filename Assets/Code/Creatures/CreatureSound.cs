@@ -6,15 +6,15 @@ public class CreatureSound : MonoBehaviour
 {
     public AK.Wwise.Bank soundBank;
     public AK.Wwise.Event idleSound;
-
+    public AK.Wwise.Event stopIdle;
     public AK.Wwise.Event hurtSound;
-
     public AK.Wwise.Event jumpSound;
-
     public AK.Wwise.Event atkSound;
+    public AK.Wwise.Event deathSound;
+    public uint idleSoundID;
 
     private void Start()
     {
-        idleSound.Post(gameObject);
+        idleSoundID = idleSound.Post(gameObject);
     }
 }

@@ -306,7 +306,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
   m_Points:
   - {x: -10.035045, y: -97.439964}
   - {x: -8.410514, y: -97.439964}
@@ -341,8 +341,16 @@ MonoBehaviour:
   head: {fileID: 3523332883187709208}
   target: {fileID: 0}
   tentacleTarget: {fileID: 899258645998627241}
-  pullForce: 5
-  speed: 2
+  pullForce: 10
+  minSpeed: 1
+  maxSpeed: 15
+  maxFollowDistance: 10
+  isGrabbing: 0
+  state: {fileID: 10635226556836824}
+  tentacles:
+  - {fileID: 2469553722597801611}
+  - {fileID: 7591251212722713797}
+  - {fileID: 5018229364603875493}
 --- !u!114 &1032593777171253670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,13 +366,13 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   isFixed: 1
   anchoredStart: {fileID: 6211327798794456672}
-  segmentAmount: 25
+  segmentAmount: 24
   segmentsLength: 0.3
   followMouse: 0
   followTransform: {fileID: 899258645998627241}
   MyRenderer: {fileID: 0}
-  MySortingLayer: Pixelare
-  MySortingOrderInLayer: 0
+  MySortingLayer: Pixelate
+  MySortingOrderInLayer: 20
   changeSortingLayer: 0
 --- !u!1 &2011803522976604067
 GameObject:
@@ -683,7 +691,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
   m_Points:
   - {x: 47.69275, y: -100.24598}
   - {x: 49.294334, y: -100.24598}
@@ -718,8 +726,16 @@ MonoBehaviour:
   head: {fileID: 3523332883187709208}
   target: {fileID: 0}
   tentacleTarget: {fileID: 6796669463479590360}
-  pullForce: 5
-  speed: 2
+  pullForce: 10
+  minSpeed: 5
+  maxSpeed: 10
+  maxFollowDistance: 10
+  isGrabbing: 0
+  state: {fileID: 10635226556836824}
+  tentacles:
+  - {fileID: 7591251212722713797}
+  - {fileID: 5018229364603875493}
+  - {fileID: 1630523014016317462}
 --- !u!114 &6111019675456031963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,13 +751,13 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   isFixed: 1
   anchoredStart: {fileID: 3879961692304058202}
-  segmentAmount: 25
+  segmentAmount: 24
   segmentsLength: 0.3
   followMouse: 0
   followTransform: {fileID: 6796669463479590360}
   MyRenderer: {fileID: 0}
-  MySortingLayer: Pixelare
-  MySortingOrderInLayer: 0
+  MySortingLayer: Pixelate
+  MySortingOrderInLayer: 20
   changeSortingLayer: 0
 --- !u!1 &3477497417572382699
 GameObject:
@@ -1091,9 +1107,8 @@ MonoBehaviour:
   underWaterGravityScale: 0.1
   underWaterDrag: 2
   underWaterAngularDrag: 4
-  initialGravityScale: 0
-  initialDrag: 0
-  initialAngularDrag: 0
+  head: {fileID: 6468337682148755884}
+  breathRaycastLenght: 0
   isUnderwater: 0
   maxOxygen: 40
   currentOxygen: 0
@@ -1479,7 +1494,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
   m_Points:
   - {x: 0.33486164, y: -100.422745}
   - {x: 1.7499424, y: -100.422745}
@@ -1514,8 +1529,16 @@ MonoBehaviour:
   head: {fileID: 3523332883187709208}
   target: {fileID: 0}
   tentacleTarget: {fileID: 4131871933600892842}
-  pullForce: 5
-  speed: 2
+  pullForce: 10
+  minSpeed: 5
+  maxSpeed: 10
+  maxFollowDistance: 10
+  isGrabbing: 0
+  state: {fileID: 10635226556836824}
+  tentacles:
+  - {fileID: 2469553722597801611}
+  - {fileID: 7591251212722713797}
+  - {fileID: 1630523014016317462}
 --- !u!114 &425211429262866031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,13 +1554,13 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   isFixed: 1
   anchoredStart: {fileID: 4706820707939135086}
-  segmentAmount: 25
+  segmentAmount: 24
   segmentsLength: 0.3
   followMouse: 0
   followTransform: {fileID: 4131871933600892842}
   MyRenderer: {fileID: 0}
-  MySortingLayer: Pixelare
-  MySortingOrderInLayer: 0
+  MySortingLayer: Pixelate
+  MySortingOrderInLayer: 20
   changeSortingLayer: 0
 --- !u!1 &6156821188359211200
 GameObject:
@@ -1843,7 +1866,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
   m_Points:
   - {x: 19.679127, y: -103.00364}
   - {x: 20.68, y: -103.00364}
@@ -1878,8 +1901,16 @@ MonoBehaviour:
   head: {fileID: 3523332883187709208}
   target: {fileID: 0}
   tentacleTarget: {fileID: 7573243892967696206}
-  pullForce: 5
-  speed: 2
+  pullForce: 10
+  minSpeed: 5
+  maxSpeed: 10
+  maxFollowDistance: 10
+  isGrabbing: 0
+  state: {fileID: 10635226556836824}
+  tentacles:
+  - {fileID: 2469553722597801611}
+  - {fileID: 5018229364603875493}
+  - {fileID: 1630523014016317462}
 --- !u!114 &7337815090742917709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1895,13 +1926,13 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   isFixed: 1
   anchoredStart: {fileID: 460205577213356609}
-  segmentAmount: 25
+  segmentAmount: 24
   segmentsLength: 0.3
   followMouse: 0
   followTransform: {fileID: 7573243892967696206}
   MyRenderer: {fileID: 0}
-  MySortingLayer: Pixelare
-  MySortingOrderInLayer: 0
+  MySortingLayer: Pixelate
+  MySortingOrderInLayer: 20
   changeSortingLayer: 0
 --- !u!1 &7786675184569657153
 GameObject:

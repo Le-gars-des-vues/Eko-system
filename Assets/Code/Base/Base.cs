@@ -112,14 +112,19 @@ public class Base : MonoBehaviour
                         Teleport(false, true, baseEntryPoint.position);
                         if (GameManager.instance.isStorm)
                             GameManager.instance.Storm(false);
+                        if (!Tutorial.instance.cameBackWithQuota || !Tutorial.instance.cameBackWithoutQuota)
+                        {
+                            if (Camera.main.GetComponent<InventoryController>().CheckInventoryValue())
+                                Tutorial.instance.cameBackWithQuota = true;
+                            else
+                                Tutorial.instance.cameBackWithoutQuota = true;
+                        }
                     }
                     else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < baseEntryThreshold)
                     {
                         if (GameManager.instance.TimeLeft > 0)
                         {
                             Teleport(true, false, door);
-                            if (GameManager.instance.isStorm)
-                                GameManager.instance.Storm(true);
                             if (!GameManager.instance.TimerOn)
                                 GameManager.instance.TimerOn = true;
                         }
