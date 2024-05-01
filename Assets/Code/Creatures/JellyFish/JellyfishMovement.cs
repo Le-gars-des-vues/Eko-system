@@ -168,7 +168,7 @@ public class JellyfishMovement : MonoBehaviour
     void Turn()
     {
         Vector3 scale = transform.localScale;
-        scale.y *= -1;
+        scale.x *= -1;
         transform.localScale = scale;
 
         isFacingUp = !isFacingUp;
@@ -226,6 +226,6 @@ public class JellyfishMovement : MonoBehaviour
 
     bool CanMove()
     {
-        return !state.isEating && !state.isStunned;
+        return !state.isEating && !state.isStunned && GetComponent<CreatureUnderwater>().isUnderwater;
     }
 }

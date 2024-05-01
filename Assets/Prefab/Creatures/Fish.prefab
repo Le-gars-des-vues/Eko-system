@@ -261,7 +261,7 @@ MonoBehaviour:
   - {fileID: 2341823388047417361}
   - {fileID: 6742685532009583042}
   usesLineRenderer: 0
-  line: {fileID: 0}
+  lines: []
 --- !u!114 &6110391908609758464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
   creatureColliders:
   - {fileID: 8865218330812229221}
   isLineRenderer: 0
-  line: {fileID: 0}
+  lines: []
   scripts:
   - {fileID: 4400271415102998941}
   - {fileID: 6110391908609758464}
@@ -401,9 +401,8 @@ MonoBehaviour:
   underWaterGravityScale: 0
   underWaterDrag: 2
   underWaterAngularDrag: 4
-  initialGravityScale: 0
-  initialDrag: 0
-  initialAngularDrag: 0
+  head: {fileID: 6501729902326141596}
+  breathRaycastLenght: 0.51
   isUnderwater: 0
   maxOxygen: 40
   currentOxygen: 0
@@ -1172,6 +1171,11 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: -20
     m_UpperAngle: 20
+--- !u!4 &6501729902326141596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4564149248111275871, guid: 34bb962c1ccf8b14c8386fdc3c96a3c4, type: 3}
+  m_PrefabInstance: {fileID: 1914639618840019517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &6742685532009583042 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5116368807220319231, guid: 34bb962c1ccf8b14c8386fdc3c96a3c4, type: 3}

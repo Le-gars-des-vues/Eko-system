@@ -646,10 +646,6 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             rb.simulated = ragdollOn;
         }
-        foreach (var limb in limbs)
-        {
-            limb.weight = ragdollOn ? 0 : 1;
-        }
         foreach (var joint in joints)
         {
             joint.enabled = ragdollOn;
@@ -662,6 +658,12 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                 bones[i].transform.position = bonesPosition[i];
                 bones[i].transform.rotation = bonesRotation[i];
             }
+            GetComponent<IKManager2D>().enabled = true;
+        }
+
+        foreach (var limb in limbs)
+        {
+            limb.weight = ragdollOn ? 0 : 1;
         }
     }
 

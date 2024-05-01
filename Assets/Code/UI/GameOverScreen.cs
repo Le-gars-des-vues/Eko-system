@@ -21,7 +21,6 @@ public class GameOverScreen : MonoBehaviour
         player.GetComponent<PlayerPermanent>().enabled = true;
         player.GetComponent<PlayerPermanent>().ToggleRagdoll(false);
         player.GetComponent<GroundPlayerController>().enabled = true;
-        player.GetComponent<IKManager2D>().enabled = true;
 
         Base.instance.Teleport(false, true, respawnPoint);
         player.GetComponent<PlayerPermanent>().Reset();

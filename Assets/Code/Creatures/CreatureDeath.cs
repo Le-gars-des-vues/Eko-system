@@ -16,7 +16,7 @@ public class CreatureDeath : MonoBehaviour
     [SerializeField] private List<LimbSolver2D> limbs;
     [SerializeField] private List<FabrikSolver2D> longLimbs;
 
-    [SerializeField] private List<Rigidbody2D> creatureRbs;
+    public List<Rigidbody2D> creatureRbs;
     public List<Collider2D> creatureColliders;
 
     [SerializeField] bool isLineRenderer;

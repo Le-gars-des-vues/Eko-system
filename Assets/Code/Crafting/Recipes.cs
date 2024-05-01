@@ -61,7 +61,7 @@ public class Recipes
 
     public static Dictionary<int,Recipes> listOfRecipes = new()
     {
-        {0, new Recipes("Reparer le MultiTool", "Roots", 1)},
+        {0, new Recipes("Repair Multi-tool", "Roots", 1)},
         {1, new Recipes("Microprocessor", "Tugnstone", 1, "Roots", 1, "Rubiol", 2) },
         {2, new Recipes("Cured Leather", "Bark", 1, "Moss", 2, "Spit", 1)},
         {3, new Recipes("Battery", "Tugnstone", 2, "Wires",1,"Rubiol",1)},
@@ -87,16 +87,15 @@ public class Recipes
         {23, new Recipes("Signal Amplifier", "Aquabulbus", 3, "Battery",1,"Wires",1)},
         {24, new Recipes("Waterproof Chip", "Petralucen", 1, "Fin", 1, "Rubiol",2)},
         {25, new Recipes("Stretching Fibers", "Tentacle", 3, "Fish Eyes",1,"Trunk",2)},
-        {26, new Recipes("Reinforced Plate", "Fin", 3)},
-        {27, new Recipes("Lantern", "Petralucen", 3, "Metal Sheet", 1, "Fish DNA Vial",3)},
-        {28, new Recipes("Map Tag", "Signal Amplifier", 1, "Rubiol", 2, "Petralucen",2)},
-        {29, new Recipes("Map Upgrade 2", "Waterproof Chip", 1, "Stretching Fibers", 3)},
-        {30, new Recipes("Gathering Upgrade 2", "Waterproof Chip", 1, "Signal Amplifier", 2)},
-        {31, new Recipes("Combat Upgrade 2", "Waterproof Chip", 1, "Reinforced Plate", 2, "Petralucen",2)},
-        {32, new Recipes("Shield Upgrade 2", "Waterproof Chip", 1, "Corallium", 3, "Tentacle",5)},
-        {33, new Recipes("Health Upgrade 2", "Waterproof Chip", 1, "Corallium", 3, "Fish Eyes",2)},
-        {34, new Recipes("Stamina Upgrade 2", "Waterproof Chip", 1, "Tentacle", 3, "Trunk",2)},
+        {26, new Recipes("Map Tag", "Signal Amplifier", 1, "Rubiol", 2, "Petralucen",2)},
+        {27, new Recipes("Map Upgrade 2", "Waterproof Chip", 1, "Stretching Fibers", 3)},
+        {28, new Recipes("Gathering Upgrade 2", "Waterproof Chip", 1, "Signal Amplifier", 2)},
+        {29, new Recipes("Combat Upgrade 2", "Waterproof Chip", 1, "Reinforced Plate", 2, "Petralucen",2)},
+        {30, new Recipes("Shield Upgrade 2", "Waterproof Chip", 1, "Corallium", 3, "Tentacle",5)},
+        {31, new Recipes("Health Upgrade 2", "Waterproof Chip", 1, "Corallium", 3, "Fish Eyes",2)},
+        {32, new Recipes("Stamina Upgrade 2", "Waterproof Chip", 1, "Tentacle", 3, "Trunk",2)},
         /*
+        {27, new Recipes("Lantern", "Petralucen", 3, "Metal Sheet", 1, "Fish DNA Vial",3)},
         {34, new Recipes("N.O.P.E. Laser Rifle", "Magnetic Core", 1, "Signal Amplifier", 3, "Battery",3)},
         {35, new Recipes("Stun Stick", "Leg", 3, "Battery", 2, "Wires",5)},
         {36, new Recipes("Power Cell", "Battery", 1, "Magnetyne", 3, "Fish Eyes",3)},

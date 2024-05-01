@@ -8,14 +8,43 @@ public class JellyFishTentacle : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] Transform tentacleTarget;
     [SerializeField] float pullForce;
-    [SerializeField] float speed;
-    bool isGrabbing;
+    float speed;
+    [SerializeField] float minSpeed;
+    [SerializeField] float maxSpeed;
+    [SerializeField] float maxFollowDistance;
+    public bool isGrabbing;
+
+    [SerializeField] CreatureState state;
+    [SerializeField] List<GameObject> tentacles = new List<GameObject>();
 
     private void Update()
     {
-        if (target != null)
+        if (state.isAttacking)
         {
-            tentacleTarget.position = Vector2.Lerp(tentacleTarget.position, target.position, speed * Time.deltaTime);
+            if (target != null)
+            {
+                if (Vector2.Distance(target.position, tentacleTarget.position) < maxFollowDistance)
+                {
+                    speed = Mathf.Lerp(maxSpeed, minSpeed, Vector2.Distance(target.position, tentacleTarget.position) / maxFollowDistance);
+                    tentacleTarget.position = Vector2.Lerp(tentacleTarget.position, target.position, speed * Time.deltaTime);
+                }
+                else
+                {
+                    isGrabbing = false;
+                    GetComponent<Tentacles>().enabled = true;
+                    target = null;
+                    GetComponent<LineRendererProceduralAnim>().enabled = false;
+                    GetComponent<EdgeCollider2D>().isTrigger = false;
+                }
+            }
+        }
+        else
+        {
+            isGrabbing = false;
+            GetComponent<Tentacles>().enabled = true;
+            target = null;
+            GetComponent<LineRendererProceduralAnim>().enabled = false;
+            GetComponent<EdgeCollider2D>().isTrigger = false;
         }
     }
 
@@ -29,7 +58,17 @@ public class JellyFishTentacle : MonoBehaviour
             GetComponent<LineRendererProceduralAnim>().enabled = true;
             GetComponent<EdgeCollider2D>().isTrigger = true;
 
-            //GetComponent<LineRenderer>().useWorldSpace = false
+            foreach (GameObject tentacle in tentacles)
+            {
+                tentacle.GetComponent<JellyFishTentacle>().isGrabbing = true;
+                tentacle.GetComponent<Tentacles>().enabled = false;
+                tentacle.GetComponent<JellyFishTentacle>().target = collision.gameObject.transform;
+                tentacle.GetComponent<LineRendererProceduralAnim>().enabled = true;
+                tentacle.GetComponent<EdgeCollider2D>().isTrigger = true;
+            }
+
+            if (!state.isAttacking)
+                state.isAttacking = true;
         }
     }
 

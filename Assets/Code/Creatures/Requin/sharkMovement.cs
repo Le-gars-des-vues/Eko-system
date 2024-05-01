@@ -39,6 +39,7 @@ public class SharkMovement : MonoBehaviour
 
     [SerializeField] CreatureState state;
     [SerializeField] CreaturePathfinding pathfinding;
+    [SerializeField] CreatureUnderwater underwater;
 
     [SerializeField] float movementThreshold = 1f; // Minimum movement distance to consider the creature stuck
     [SerializeField] float checkInterval = 15f; // Time interval to check for stuck condition
@@ -246,6 +247,6 @@ public class SharkMovement : MonoBehaviour
 
     bool CanMove()
     {
-        return !state.isEating && !state.isStunned;
+        return !state.isEating && !state.isStunned && underwater.isUnderwater;
     }
 }

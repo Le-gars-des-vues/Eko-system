@@ -118,8 +118,6 @@ public class Base : MonoBehaviour
                         if (GameManager.instance.TimeLeft > 0)
                         {
                             Teleport(true, false, door);
-                            if (GameManager.instance.isStorm)
-                                GameManager.instance.Storm(true);
                             if (!GameManager.instance.TimerOn)
                                 GameManager.instance.TimerOn = true;
                         }
