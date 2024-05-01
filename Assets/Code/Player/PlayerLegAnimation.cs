@@ -103,7 +103,7 @@ public class PlayerLegAnimation : MonoBehaviour
                 else
                     thereIsAWall = false;
 
-                if (isRunning)
+                if (isRunning && player.GetComponent<PlayerPermanent>().CanMove())
                 {
                     //Calcule la distance entre la cible du pied et sa position actuelle
                     targetDistance = Vector2.Distance(currentTarget.position, desiredTarget.position);

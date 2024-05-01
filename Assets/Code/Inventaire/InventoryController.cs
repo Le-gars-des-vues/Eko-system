@@ -55,6 +55,7 @@ public class InventoryController : MonoBehaviour
 
     [SerializeField] bool canSpawnItem = true;
 
+    [SerializeField] List<ItemGrid> playerInventories = new List<ItemGrid>();
 
     private void Awake()
     {
@@ -531,5 +532,37 @@ public class InventoryController : MonoBehaviour
             if (invalid.activeSelf)
                 invalid.SetActive(false);
         }
+    }
+
+    public bool CheckInventoryValue()
+    {
+        float tempHeight;
+        float tempWidth;
+        InventoryItem anItem;
+        float value = 0;
+
+        foreach (ItemGrid grid in playerInventories)
+        {
+            tempHeight = grid.GetGridSizeHeight();
+            tempWidth = grid.GetGridSizeWidth();
+
+            for (int x = 0; x < tempWidth; x++)
+            {
+                for (int y = 0; y < tempHeight; y++)
+                {
+
+                    anItem = grid.CheckIfItemPresent(x, y);
+                    if (anItem != null)
+                    {
+                        value += Mathf.RoundToInt((float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height));
+                    }
+                }
+            }
+        }
+        Debug.Log(value);
+        if (value >= GameManager.instance.gameObject.GetComponent<Quota>().getQuota())
+            return true;
+        else
+            return false;
     }
 }

@@ -43,7 +43,7 @@ public class ArrowManager : MonoBehaviour
         if (targetObject != null)
             transform.position = Vector2.Lerp(transform.position, (Vector2)targetObject.transform.position + arrowOffset, moveSpeed * Time.deltaTime);
 
-        if (!player.isInDialogue)
+        if (!DialogueManager.instance.dialogueRunning)
         {
             if (isInvis)
             {
@@ -80,6 +80,8 @@ public class ArrowManager : MonoBehaviour
 
     public void PlaceArrow(Vector2 pos, string textToWrite, Vector2 offset, GameObject objectToTarget, float _timeToFill = 0.02f)
     {
+        if (DialogueManager.instance.dialogueRunning)
+            return;
         timeToFill = _timeToFill;
         text.text = textToWrite;
         textB.text = textToWrite;
@@ -94,6 +96,7 @@ public class ArrowManager : MonoBehaviour
         arrowPos = (Vector2)targetObject.transform.position + diff;
         gameObject.transform.position = pos + offset;
         isActive = true;
+        isInvis = false;
     }
 
     public void ToggleArrow(bool isTrue)

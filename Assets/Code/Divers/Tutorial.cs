@@ -19,6 +19,11 @@ public class Tutorial : MonoBehaviour
     public bool hasUnlockedMessages;
     public bool hasUnlockedTeleporter;
 
+    public bool hasDied;
+    public bool hasSeenStorm;
+    public bool cameBackWithQuota;
+    public bool cameBackWithoutQuota;
+
     private void Awake()
     {
         if (instance != null)
