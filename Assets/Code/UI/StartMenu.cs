@@ -12,10 +12,12 @@ public class StartMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("MainScene");
+        Debug.Log("LoadMainScene");
     }
 
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("Quit to Desktop");
     }
 }
