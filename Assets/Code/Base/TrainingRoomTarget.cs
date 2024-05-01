@@ -22,7 +22,7 @@ public class TrainingRoomTarget : MonoBehaviour
         if (collision.gameObject.tag == "Spear" && !isRevealed)
         {
             isRevealed = true;
-            StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
+            StartCoroutine(Base.instance.Dissolve(sprites, 2f, true));
             sprite.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             light1.enabled = true;
             light2.enabled = true;

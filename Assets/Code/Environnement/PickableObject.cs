@@ -156,7 +156,7 @@ public class PickableObject : MonoBehaviour
 
             transform.position = rightHand.transform.Find("RightArmEffector").transform.position;
 
-            if ((gameObject.tag == "Spear" || gameObject.tag == "TwoHandedWeapon") && player.CanMove())
+            if ((gameObject.tag == "Spear" || gameObject.tag == "TwoHandedWeapon"))
             {   
                 Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

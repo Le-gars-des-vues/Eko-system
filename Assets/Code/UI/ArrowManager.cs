@@ -43,7 +43,7 @@ public class ArrowManager : MonoBehaviour
         if (targetObject != null)
             transform.position = Vector2.Lerp(transform.position, (Vector2)targetObject.transform.position + arrowOffset, moveSpeed * Time.deltaTime);
 
-        if (!player.isInDialogue)
+        if (!DialogueManager.instance.dialogueRunning)
         {
             if (isInvis)
             {

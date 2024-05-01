@@ -321,6 +321,8 @@ public class GameManager : MonoBehaviour
         newCycleScreen.SetActive(true);
         this.gameObject.GetComponent<Quota>().nouveauQuota();
         cycleCount++;
+        if (cycleCount == 1)
+            this.gameObject.GetComponent<Quota>().quota = 50;
         cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
         textToWrite = "////////////\n\nSYSTEM.REBOOT\nTERRAFORMA CORP.\n\nNEW TRANSMISSION\n.\n.\n.\n.\n\nGOOD MORNING EMPLOYEE 1212781827!\n.\n.\n.\n.\n\nCYCLE : " + cycleCount.ToString("000") + "\n.\n.\n\nQUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $\n\nEND TRANSMISSION\n\n/////////////";
         newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);

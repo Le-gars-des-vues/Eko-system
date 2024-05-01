@@ -557,6 +557,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public void Death()
     {
         CloseUI();
+        if (!Tutorial.instance.hasDied)
+            Tutorial.instance.hasDied = true;
 
         AudioManager.instance.PlaySound(AudioManager.instance.voDeath, gameObject);
 
@@ -1278,7 +1280,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
     public bool CanMove()
     {
-        return !uiOpened && !isInDialogue && !isTeleporting;
+        return !uiOpened && !isInDialogue && !isTeleporting && !PromptManager.instance.promptOpen;
     }
 
     private Vector2 GetInput()

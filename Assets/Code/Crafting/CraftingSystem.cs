@@ -52,7 +52,6 @@ public class CraftingSystem : MonoBehaviour
 
         for (int x = 0; x < tempWidth; x++)
         {
-
             for (int y = 0; y < tempHeight; y++)
             {
                
@@ -188,6 +187,7 @@ public class CraftingSystem : MonoBehaviour
                     }
                 }
             }
+            AudioManager.instance.PlaySound(AudioManager.instance.craftingSound, gameObject);
             theController.GetComponent<InventoryController>().CreateRecipeItem(laRecette, gameObject);
             GetComponent<CraftingManager>().OnValueChanged();
         }

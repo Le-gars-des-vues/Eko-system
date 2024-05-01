@@ -102,6 +102,12 @@ public class PlayerTorsoAnimation : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            timer += Time.deltaTime;
+            float angle = Mathf.LerpAngle(transform.eulerAngles.z, 90 * facingDirection, timer / duration);
+            transform.eulerAngles = new Vector3(0, 0, angle);
+        }
     }
 
     bool IsNotMoving()

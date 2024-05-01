@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
     //Crafting
     public AK.Wwise.Event craftingOuvrir;
     public AK.Wwise.Event craftingFermer;
+    public AK.Wwise.Event craftingSound;
 
     //Map
     public AK.Wwise.Event carteOuvrir;

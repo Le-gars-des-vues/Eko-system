@@ -19,6 +19,8 @@ public class PromptManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI button2Text;
     [SerializeField] TextMeshProUGUI button3Text;
 
+    public bool promptOpen;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -39,6 +41,7 @@ public class PromptManager : MonoBehaviour
 
     public void CreateNewPrompt(Prompt thePrompt)
     {
+        promptOpen = true;
         promptText.text = thePrompt.textToWrite;
         if (thePrompt.useOnlyOneButton)
         {
@@ -58,6 +61,7 @@ public class PromptManager : MonoBehaviour
 
     void ClosePrompt()
     {
+        promptOpen = false;
         Time.timeScale = 1;
         prompt.SetActive(false);
     }
