@@ -26,6 +26,7 @@ namespace AK
         static const AkUniqueID ENV_PORTEOUVERTURE = 1952691670U;
         static const AkUniqueID ENV_TELEPORTEUR = 1783139436U;
         static const AkUniqueID ENV_TEMPETE = 2129556429U;
+        static const AkUniqueID ENV_TONNERRE = 3403933012U;
         static const AkUniqueID LIF_MOUSTIQUE_DEGAT = 3471878825U;
         static const AkUniqueID LIF_MOUSTIQUE_MORT = 292996144U;
         static const AkUniqueID LIF_MOUSTIQUE_PASSIF = 3251876752U;
@@ -105,9 +106,9 @@ namespace AK
         static const AkUniqueID UI_ENDURANCE = 1998450481U;
         static const AkUniqueID UI_GAMEOVER_TEMPS = 3454429038U;
         static const AkUniqueID UI_GAMEOVER_VIE = 3136319167U;
+        static const AkUniqueID UI_GENERAL_DEPLACEMENT = 3602731749U;
         static const AkUniqueID UI_GENERAL_FERMER = 4283987504U;
         static const AkUniqueID UI_GENERAL_OUVRIR = 1780827120U;
-        static const AkUniqueID UI_GENERAL_PICK = 2019181674U;
         static const AkUniqueID UI_HOTBARDEPLACEMENT = 2295926980U;
         static const AkUniqueID UI_INVENTAIRE_FERMER = 3461596575U;
         static const AkUniqueID UI_INVENTAIRE_INTERVERTIR = 2985199436U;

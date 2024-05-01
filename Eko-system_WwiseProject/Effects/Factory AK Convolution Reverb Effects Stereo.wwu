@@ -2350,14 +2350,15 @@ IR Pre-delay: 20ms </Comment>
 								<Property Name="IRConvolutionStop" Type="Real64" Value="4.04647541966427"/>
 								<Property Name="IRConvolutionThreshold" Type="Real32">
 									<ValueList>
-										<Value>-54</Value>
+										<Value>-66</Value>
 									</ValueList>
 								</Property>
 								<Property Name="IRLPFAutomate" Type="bool" Value="True"/>
-								<Property Name="IRLevel" Type="Real32" Value="-14.5"/>
+								<Property Name="IRLevel" Type="Real32" Value="-7"/>
+								<Property Name="IRStretch" Type="Real32" Value="144"/>
 								<Property Name="PreDelay" Type="Real32" Value="17"/>
 								<Property Name="StereoWidth" Type="Real32" Value="131"/>
-								<Property Name="WetLevel" Type="Real32" Value="13"/>
+								<Property Name="WetLevel" Type="Real32" Value="0.5"/>
 							</PropertyList>
 							<ChildrenList>
 								<PluginMediaSource Name="AK St-Katharinen" ID="{C5313782-BD0A-4C94-9B74-E9F268B84A87}">
@@ -2370,6 +2371,150 @@ IR Pre-delay: 20ms </Comment>
 									</MediaIDList>
 								</PluginMediaSource>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{ADEE8E64-10D5-4326-91AD-2782CB8122B6}" ShortID="421888081">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="DryLevel"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO" ID="{FF186DA7-1948-4C17-AC1A-AE00034CC16A}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{15DD802F-9205-4D2D-B170-C80DF870A7A2}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>90</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>80</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{42A24F23-D449-4797-9122-EEF902E463D6}" ShortID="1069088615">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="DryLevel"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO_02" ID="{563ECDED-FD7C-4975-97A5-517E2CB14045}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{6E87D7F8-339D-40D3-968A-4586DC466566}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-7.15977</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>-10.76293</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{827562F9-A995-4912-A61A-8A5CA17822FA}" ShortID="899058707">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="WetLevel"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO" ID="{FF186DA7-1948-4C17-AC1A-AE00034CC16A}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{4060953A-3949-4B0C-A4B3-DD63608E71E3}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-10</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>-14</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{8FB0887E-D08D-4511-9B6C-A588E53A6623}" ShortID="373667354">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="WetLevel"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="New Modulator LFO_02" ID="{563ECDED-FD7C-4975-97A5-517E2CB14045}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{441F4B61-2DF5-496F-8071-1824BF0FC119}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-20</YPos>
+																		<Flags>21</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>-16</YPos>
+																		<Flags>53</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 							<PluginData>
 	<ConvolutionData>
 		<CurveList Version="1">

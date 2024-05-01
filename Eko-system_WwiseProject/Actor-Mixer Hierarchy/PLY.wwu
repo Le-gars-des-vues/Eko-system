@@ -457,6 +457,8 @@
 								</BlendContainer>
 								<ActorMixer Name="PLY_Multitool_Ressources" ID="{D6C817B8-BD89-4BE8-930D-560BF0FC51DE}" ShortID="626967888">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -464,6 +466,7 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="SpeakerPanning" Type="int16" Value="1"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
 												<Value>-20</Value>
@@ -1483,6 +1486,9 @@
 											</ChildrenList>
 										</BlendContainer>
 									</ChildrenList>
+									<PositioningInfo>
+										<Panner Name="" ID="{76CD8C1F-DFB1-4C07-A3D2-7335D9B070EA}"/>
+									</PositioningInfo>
 								</ActorMixer>
 							</ChildrenList>
 						</ActorMixer>
@@ -3746,7 +3752,7 @@
 										<ActiveSource Name="Degat_PH" ID="{5618FDCA-02FF-41A2-B9AC-55AECC86EDCF}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<RandomSequenceContainer Name="PLY_Moustique_Degat_G" ID="{02E9206F-C201-46F5-AF4A-27978FC8DA35}" ShortID="419654455">
+								<RandomSequenceContainer Name="PLY_Degat_G" ID="{02E9206F-C201-46F5-AF4A-27978FC8DA35}" ShortID="419654455">
 									<PropertyList>
 										<Property Name="InitialDelay" Type="Real64">
 											<ModifierList>

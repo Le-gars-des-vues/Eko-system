@@ -2082,7 +2082,7 @@
 																<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="37"/>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-10</Value>
+																		<Value>-13</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -2614,6 +2614,11 @@
 												</BlendContainer>
 												<BlendContainer Name="AMB_Foret_MUS" ID="{6FD3804E-EB91-4528-8ECE-FAE535623B58}" ShortID="167782389">
 													<PropertyList>
+														<Property Name="Highpass" Type="int16">
+															<ValueList>
+																<Value>20</Value>
+															</ValueList>
+														</Property>
 														<Property Name="InitialDelay" Type="Real64">
 															<ValueList>
 																<Value>15</Value>
@@ -2629,15 +2634,19 @@
 																</ModifierInfo>
 															</ModifierList>
 														</Property>
+														<Property Name="OverrideEffect" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-10</Value>
+																<Value>-18</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+															<ObjectRef Name="Colossal_Cathedral_Stereo" ID="{512A7648-07B6-486E-9D3E-8B7323C79E8C}" WorkUnitID="{9D68BE5F-8CA6-43E0-BCE2-C7D59F63E582}"/>
 														</Reference>
 														<Reference Name="OutputBus">
 															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
@@ -2710,6 +2719,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Bass A#1 REC_v2" ID="{B9B8A770-731F-4132-9D71-4B8BF95FAFCB}" ShortID="598040899">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -2732,6 +2748,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Bass C1 REC_v2" ID="{C8B815A9-1C94-46CD-BDCF-CE17C124A9BB}" ShortID="733492315">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -2754,6 +2777,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Bass E1 REC_v2" ID="{2206E035-8BFF-424A-AC91-5D5D7CB17321}" ShortID="777038298">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -2776,6 +2806,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Bass F1 REC_v2" ID="{886E5EB9-2A53-415B-A0F1-144AFEECFB27}" ShortID="232195445">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -2798,6 +2835,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Bass G1 REC_v2" ID="{D3AB55FF-014F-4AAA-B7CB-849FE79B06E0}" ShortID="543304830">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -2829,6 +2873,16 @@
 																	<ValueList>
 																		<Value>15</Value>
 																	</ValueList>
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{514E4DB8-742A-43CF-B24D-038B2907635B}">
+																				<PropertyList>
+																					<Property Name="Enabled" Type="bool" Value="True"/>
+																					<Property Name="Max" Type="Real64" Value="10"/>
+																				</PropertyList>
+																			</Modifier>
+																		</ModifierInfo>
+																	</ModifierList>
 																</Property>
 																<Property Name="OverrideEffect" Type="bool" Value="True"/>
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -3316,6 +3370,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="LowMid A2 REC_v2" ID="{DBD85BAC-A7F9-45B2-B1DE-1BBF63EEF621}" ShortID="981373794">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3338,6 +3399,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="LowMid C3 REC_v2" ID="{7667A863-C62B-4BFA-8AF3-AF0C83FA901D}" ShortID="962007700">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3360,6 +3428,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="LowMid D3 REC_v2" ID="{D28B484B-A99A-48F0-8363-B41B4C4B5CAB}" ShortID="831046106">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3382,6 +3457,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="LowMid D#3 REC_v2" ID="{91801767-9ADB-4865-BA24-1B905C8F4CAF}" ShortID="637837625">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3404,6 +3486,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="LowMid G2 REC_v2" ID="{1BB51F39-FF4E-491A-B319-E62D54559909}" ShortID="286658010">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3426,6 +3515,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="LowMid G3 REC_v2" ID="{44CC38DF-C950-45DE-B2A8-3D9D291C8BF4}" ShortID="521006217">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3777,6 +3873,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Mid A4 REC_v2" ID="{B50E9408-488C-4120-8836-70DEE64BD42B}" ShortID="705573726">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3799,6 +3902,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Mid A#3 REC_v2" ID="{AA576AB4-16D9-4EE6-9BA2-88BF3E71F470}" ShortID="183968891">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3821,6 +3931,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Mid C4 REC_v2" ID="{7B9CF2E9-C8EC-4222-B6CA-E9D5549BA42E}" ShortID="904979212">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3843,6 +3960,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Mid D4 REC_v2" ID="{296089DE-E4AF-4888-BF7C-B3096B5EFF21}" ShortID="450022066">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3865,6 +3989,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Mid D#4 REC_v2" ID="{9FEB1AFB-C111-4559-938F-7E4AE462C278}" ShortID="875437009">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -3887,6 +4018,13 @@
 																	</ActiveSourceList>
 																</Sound>
 																<Sound Name="Mid G4 REC_v2" ID="{2853BCAA-C02A-4840-9654-A5BEB12B089C}" ShortID="697555125">
+																	<PropertyList>
+																		<Property Name="Weight" Type="Real64">
+																			<ValueList>
+																				<Value>5</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>

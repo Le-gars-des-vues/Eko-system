@@ -13,6 +13,17 @@
 							<ChildrenList>
 								<Event Name="PLY_Attaque_Init_Grenade" ID="{329D3101-D42D-43A0-AF09-44A0586A53AB}">
 									<ChildrenList>
+										<Action Name="" ID="{06E06D0E-65A0-4987-8577-9E8F8C3B1035}" ShortID="851869862">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_JoueurVise" ID="{B948AC85-AB9F-43F9-8890-A4E5DD86BBE0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 										<Action Name="" ID="{7EE9E1F8-3F76-47B9-9099-05CB77AE5B85}" ShortID="333287310">
 											<ReferenceList>
 												<Reference Name="Target">
@@ -24,6 +35,17 @@
 								</Event>
 								<Event Name="PLY_Attaque_Init_Lance" ID="{FFD8069C-97F5-4F9A-AD3D-ABAC1994025F}">
 									<ChildrenList>
+										<Action Name="" ID="{552CAC2F-8BB9-4795-A9D8-6686B0D219C2}" ShortID="818623716">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_JoueurVise" ID="{B948AC85-AB9F-43F9-8890-A4E5DD86BBE0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 										<Action Name="" ID="{5DE169FD-7558-4620-80FA-9153BC7D884E}" ShortID="39005143">
 											<ReferenceList>
 												<Reference Name="Target">
@@ -319,6 +341,17 @@
 				<Event Name="PLY_Saute" ID="{77DD0B94-BACC-4A2C-9E71-8B6E4D6BC974}">
 					<ChildrenList>
 						<Action Name="" ID="{E1F90E24-406E-48DB-B347-625B2B1A638B}" ShortID="425904039">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PLY_Grimpe" ID="{085D2397-D8D3-42E6-88B7-2D6ADC70969F}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{41F54732-0FDD-4C67-8E07-8CEADEB73D50}" ShortID="73590175">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="PLY_Saute" ID="{1873323D-E3CC-4D07-99E1-E466DD6C3FAD}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
@@ -387,7 +420,22 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{9B938260-F2C3-45FB-A359-2D492EF78799}" ShortID="821678375">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_switch" ID="{7AF79DE4-9779-4CEF-B790-E685B964BEEE}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{7FBA8775-31F7-4B56-8190-482B8568FF5D}" ShortID="907498201">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.001"/>
+								<Property Name="FadeInCurve" Type="int16" Value="7"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="AMB_switch" ID="{7AF79DE4-9779-4CEF-B790-E685B964BEEE}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
