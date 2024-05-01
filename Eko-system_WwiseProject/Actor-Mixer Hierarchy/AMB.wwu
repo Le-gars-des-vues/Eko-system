@@ -2778,6 +2778,11 @@
 																</Property>
 																<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 																<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>2</Value>
+																	</ValueList>
+																</Property>
 															</PropertyList>
 															<ReferenceList>
 																<Reference Name="Conversion">
@@ -2932,12 +2937,15 @@
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MUS_IntoTheForest_Hi" ID="{9857FEA8-7C4E-4DA9-A04A-CBFBD14D8C69}" ShortID="620001118">
 															<PropertyList>
+																<Property Name="3DPosition" Type="int16" Value="2"/>
+																<Property Name="3DSpatialization" Type="int16" Value="1"/>
 																<Property Name="InitialDelay" Type="Real64">
 																	<ValueList>
 																		<Value>15</Value>
 																	</ValueList>
 																</Property>
-																<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																<Property Name="OverrideEffect" Type="bool" Value="True"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
@@ -2957,13 +2965,16 @@
 																<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-25</Value>
+																		<Value>-20</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
 															<ReferenceList>
 																<Reference Name="Conversion">
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																	<ObjectRef Name="Test_Hi" ID="{202D8ABC-BC93-4017-81EF-191D441BE14E}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
 																</Reference>
 																<Reference Name="OutputBus">
 																	<ObjectRef Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
@@ -3081,6 +3092,88 @@
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
+															<PositioningInfo>
+																<Panner Name="" ID="{10EBF387-7A88-4D29-8181-B05E1648F165}"/>
+																<Position Name="" ID="{EB59B34F-A3C9-4380-982B-9D667B4200C2}">
+																	<ChildrenList>
+																		<Path2D Name="MUS_IntoTheForest_Hi_Path" ID="{1EB23ED1-B2B6-4133-B771-BC4EAAB74572}">
+																			<PointList>
+																				<Point>
+																					<XPos>68.52792</XPos>
+																					<YPos>78.24859</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_Hi_Path_01" ID="{7D52D66C-E452-429D-8C13-5473BB595E66}">
+																			<PointList>
+																				<Point>
+																					<XPos>-68.52792</XPos>
+																					<YPos>74.85876</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_Hi_Path_02" ID="{8147F1E0-2DFA-4ADB-9B68-679A9EA199F2}">
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>50</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_Hi_Path_03" ID="{DA159396-BDFA-4CC3-B4BC-C4C07BB299C7}">
+																			<PointList>
+																				<Point>
+																					<XPos>42.63959</XPos>
+																					<YPos>19.49153</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_Hi_Path_04" ID="{7DD81C9A-E03D-4737-BB02-FFBBBCF60777}">
+																			<PointList>
+																				<Point>
+																					<XPos>-52.28426</XPos>
+																					<YPos>-45.48023</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_Hi_Path_05" ID="{EC757C7F-AE34-46AB-9D00-450664E2CF36}">
+																			<PointList>
+																				<Point>
+																					<XPos>44.67005</XPos>
+																					<YPos>-30.79096</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_Hi_Path_06" ID="{51B93716-B1DB-4731-8C1A-F03B5F5B74FB}">
+																			<PropertyList>
+																				<Property Name="RandomX" Type="Real64" Value="10"/>
+																				<Property Name="RandomY" Type="Real64" Value="10"/>
+																				<Property Name="RandomZ" Type="Real64" Value="10"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>-48.22335</XPos>
+																					<YPos>14.40678</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																	</ChildrenList>
+																</Position>
+															</PositioningInfo>
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MUS_IntoTheForest_HiMid" ID="{688D6F80-5753-4322-B0B6-16F03231CD94}" ShortID="355081299">
 															<PropertyList>
@@ -3270,7 +3363,10 @@
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MUS_IntoTheForest_LowMid" ID="{59F0B630-E386-4D72-ACF2-8E90BC9520BE}" ShortID="316138364">
 															<PropertyList>
-																<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																<Property Name="3DPosition" Type="int16" Value="2"/>
+																<Property Name="3DSpatialization" Type="int16" Value="1"/>
+																<Property Name="OverrideEffect" Type="bool" Value="True"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
@@ -3466,6 +3562,273 @@
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
+															<PositioningInfo>
+																<Panner Name="" ID="{88526DB7-887A-4749-80E6-BABCB5C98A5B}"/>
+																<Position Name="" ID="{4244DDCE-EF2D-4765-AB46-9BB29FE3396B}">
+																	<PropertyList>
+																		<Property Name="NewPathForEachSound" Type="bool" Value="True"/>
+																		<Property Name="PlayMechanismRandomOrSequence" Type="int16" Value="1"/>
+																	</PropertyList>
+																	<ChildrenList>
+																		<Path2D Name="MUS_IntoTheForest_LowMid_Path" ID="{4870B0C9-D222-41F4-8F5A-068A1DBAD374}">
+																			<PropertyList>
+																				<Property Name="Duration" Type="Uint32" Value="30000"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>50</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																				<Point>
+																					<XPos>56.85279</XPos>
+																					<YPos>63.84181</YPos>
+																					<Flags>0</Flags>
+																					<Time>10000</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-13.19797</XPos>
+																					<YPos>77.40113</YPos>
+																					<Flags>0</Flags>
+																					<Time>20000</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-73.09645</XPos>
+																					<YPos>41.24294</YPos>
+																					<Flags>0</Flags>
+																					<Time>30000</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_LowMid_Path_01" ID="{C11C2D14-D7A1-4893-9BBE-86461F69C61E}">
+																			<PropertyList>
+																				<Property Name="Duration" Type="Uint32" Value="30000"/>
+																				<Property Name="LinearTime" Type="bool" Value="False"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>76.64975</XPos>
+																					<YPos>70.90395</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																				<Point>
+																					<XPos>22.3350253807107</XPos>
+																					<YPos>44.6327683615819</YPos>
+																					<Flags>0</Flags>
+																					<Time>3669</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-29.9492385786802</XPos>
+																					<YPos>67.7966101694915</YPos>
+																					<Flags>0</Flags>
+																					<Time>16569</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-70.0507614213198</XPos>
+																					<YPos>32.7683615819209</YPos>
+																					<Flags>0</Flags>
+																					<Time>23469</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-18.2741116751269</XPos>
+																					<YPos>22.0338983050847</YPos>
+																					<Flags>0</Flags>
+																					<Time>30000</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_LowMid_Path_02" ID="{FBD82312-ADF1-43EB-87B7-C2BDBFDEECCB}">
+																			<PropertyList>
+																				<Property Name="Duration" Type="Uint32" Value="30000"/>
+																				<Property Name="LinearTime" Type="bool" Value="False"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>-82.74112</XPos>
+																					<YPos>59.03955</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-36.5482233502538</XPos>
+																					<YPos>44.6327683615819</YPos>
+																					<Flags>0</Flags>
+																					<Time>3723</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-67.005076142132</XPos>
+																					<YPos>15.819209039548</YPos>
+																					<Flags>0</Flags>
+																					<Time>8877</Time>
+																				</Point>
+																				<Point>
+																					<XPos>73.60406</XPos>
+																					<YPos>29.9435</YPos>
+																					<Flags>0</Flags>
+																					<Time>14631</Time>
+																				</Point>
+																				<Point>
+																					<XPos>50.761421319797</XPos>
+																					<YPos>72.316384180791</YPos>
+																					<Flags>0</Flags>
+																					<Time>22138</Time>
+																				</Point>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>40.6779661016949</YPos>
+																					<Flags>0</Flags>
+																					<Time>30000</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_LowMid_Path_03" ID="{AEC2AF8F-DFCD-4480-A9F0-112DCBDC62C7}">
+																			<PropertyList>
+																				<Property Name="Duration" Type="Uint32" Value="30000"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>50</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-53.8071065989848</XPos>
+																					<YPos>28.2485875706215</YPos>
+																					<Flags>0</Flags>
+																					<Time>7500</Time>
+																				</Point>
+																				<Point>
+																					<XPos>54.8223350253807</XPos>
+																					<YPos>20.9039548022599</YPos>
+																					<Flags>0</Flags>
+																					<Time>15000</Time>
+																				</Point>
+																				<Point>
+																					<XPos>1.5228426395939</XPos>
+																					<YPos>74.0112994350282</YPos>
+																					<Flags>0</Flags>
+																					<Time>22500</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-76.1421319796954</XPos>
+																					<YPos>46.3276836158192</YPos>
+																					<Flags>0</Flags>
+																					<Time>30000</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_LowMid_Path_04" ID="{62C15894-2F18-43B3-86A2-06C79C21304A}">
+																			<PropertyList>
+																				<Property Name="Duration" Type="Uint32" Value="30000"/>
+																				<Property Name="LinearTime" Type="bool" Value="False"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>50</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-70.5583756345178</XPos>
+																					<YPos>39.5480225988701</YPos>
+																					<Flags>0</Flags>
+																					<Time>6308</Time>
+																				</Point>
+																				<Point>
+																					<XPos>64.97462</XPos>
+																					<YPos>-22.59887</YPos>
+																					<Flags>0</Flags>
+																					<Time>20000</Time>
+																				</Point>
+																				<Point>
+																					<XPos>70.0507614213198</XPos>
+																					<YPos>74.5762711864407</YPos>
+																					<Flags>0</Flags>
+																					<Time>30000</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_LowMid_Path_06" ID="{C96C848B-4A49-468A-8FB3-1158ADFAE148}">
+																			<PropertyList>
+																				<Property Name="Duration" Type="Uint32" Value="30000"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>83.24873</XPos>
+																					<YPos>77.11864</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																				<Point>
+																					<XPos>60.9137055837564</XPos>
+																					<YPos>27.683615819209</YPos>
+																					<Flags>0</Flags>
+																					<Time>7500</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-57.3604060913706</XPos>
+																					<YPos>15.2542372881356</YPos>
+																					<Flags>0</Flags>
+																					<Time>15000</Time>
+																				</Point>
+																				<Point>
+																					<XPos>39.0862944162436</XPos>
+																					<YPos>58.1920903954802</YPos>
+																					<Flags>0</Flags>
+																					<Time>22500</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-59.8984771573604</XPos>
+																					<YPos>76.271186440678</YPos>
+																					<Flags>0</Flags>
+																					<Time>30000</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																		<Path2D Name="MUS_IntoTheForest_LowMid_Path_05" ID="{5CAD0E89-CBF2-41E2-8C02-407F183115E2}">
+																			<PropertyList>
+																				<Property Name="Duration" Type="Uint32" Value="30000"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>-76.64975</XPos>
+																					<YPos>72.59887</YPos>
+																					<Flags>12</Flags>
+																					<Time>0</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-29.4416243654822</XPos>
+																					<YPos>33.8983050847458</YPos>
+																					<Flags>0</Flags>
+																					<Time>7500</Time>
+																				</Point>
+																				<Point>
+																					<XPos>39.5939086294416</XPos>
+																					<YPos>67.7966101694915</YPos>
+																					<Flags>0</Flags>
+																					<Time>15000</Time>
+																				</Point>
+																				<Point>
+																					<XPos>-58.8832487309645</XPos>
+																					<YPos>13.5593220338983</YPos>
+																					<Flags>0</Flags>
+																					<Time>22500</Time>
+																				</Point>
+																				<Point>
+																					<XPos>57.3604060913705</XPos>
+																					<YPos>27.683615819209</YPos>
+																					<Flags>0</Flags>
+																					<Time>30000</Time>
+																				</Point>
+																			</PointList>
+																		</Path2D>
+																	</ChildrenList>
+																</Position>
+															</PositioningInfo>
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MUS_IntoTheForest_Mid" ID="{0E7BCD01-A50D-400D-A72D-CBD75BCB5396}" ShortID="1070905882">
 															<PropertyList>
