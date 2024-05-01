@@ -602,6 +602,10 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             UnequipObject();
         }
 
+        GameObject.Find("Vente").GetComponent<Vente>().profit -= 10;
+        if (GameObject.Find("Vente").GetComponent<Vente>().profit < 0)
+            GameObject.Find("Vente").GetComponent<Vente>().profit = 0;
+
         gameOverScreen.SetActive(true);
         gameOverScreen.GetComponent<GameOverScreen>().player = gameObject;
     }
@@ -690,7 +694,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         else
         {
             objectInRightHand = null;
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(cursorImages[1], new Vector2(0, 0), CursorMode.Auto);
             multiTool.UseMultiTool(false);
         }
     }

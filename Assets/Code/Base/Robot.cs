@@ -329,7 +329,6 @@ public class Robot : MonoBehaviour
                 case 6:
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[8].dialogueSequence);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
-                    trainingRoomDialogue.onDialogueEnd += TeleportBackSellingScreen;
                     break;
                 case 7:
                     TeleportCrafting();
@@ -340,9 +339,10 @@ public class Robot : MonoBehaviour
                 case 8:
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[10].dialogueSequence);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
-                    trainingRoomDialogue.onDialogueEnd += TeleportBackCrafting;
                     break;
                 case 9:
+                    TeleportBackSellingScreen();
+                    TeleportBackCrafting();
                     trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[11].dialogueSequence);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     break;
