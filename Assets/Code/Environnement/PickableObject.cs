@@ -187,6 +187,14 @@ public class PickableObject : MonoBehaviour
     public void DurabilityDamage(int damage)
     {
         GetComponent<InventoryItem>().currentDurability -= damage;
+        if(GetComponent<InventoryItem>().currentDurability <= 0)
+        {
+            if (!Tutorial.instance.firstWeaponBreak)
+            {
+                Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[3].text);
+                Tutorial.instance.firstWeaponBreak = true;
+            }
+        }
         if (itemInInventory != null)
             itemInInventory.GetComponent<InventoryItem>().currentDurability -= damage;
     }

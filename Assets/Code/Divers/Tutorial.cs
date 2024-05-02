@@ -14,6 +14,11 @@ public class Tutorial : MonoBehaviour
 
     public bool readyToGoOut = false;
     public bool firstTimeOutside = false;
+    public bool firstTimeWater = false;
+    public bool firstVineCollision = false;
+    public bool firstWeaponBreak = false;
+    public bool firstCreatureDeath = false;
+    public bool firstHarvest = false;
 
     public bool hasUnlockedInfos;
     public bool hasUnlockedMessages;

@@ -97,6 +97,11 @@ public class CreatureDeath : MonoBehaviour
                 float dist = Vector2.Distance(player.transform.position, transform.position);
                 if (dist < rangeToHarvest)
                     isInRangeToHarvest = true;
+                    if (!Tutorial.instance.firstHarvest)
+                    {
+                        Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[4].text);
+                        Tutorial.instance.firstHarvest = true;
+                    }
                 else
                     isInRangeToHarvest = false;
             }
