@@ -63,7 +63,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-16</Value>
+												<Value>-20</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -215,7 +215,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-15</Value>
+														<Value>-17</Value>
 													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
@@ -2614,6 +2614,11 @@
 												</BlendContainer>
 												<BlendContainer Name="AMB_Foret_MUS" ID="{6FD3804E-EB91-4528-8ECE-FAE535623B58}" ShortID="167782389">
 													<PropertyList>
+														<Property Name="BypassEffect1" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
 														<Property Name="Highpass" Type="int16">
 															<ValueList>
 																<Value>20</Value>
@@ -2647,6 +2652,9 @@
 														</Reference>
 														<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
 															<ObjectRef Name="Colossal_Cathedral_Stereo" ID="{512A7648-07B6-486E-9D3E-8B7323C79E8C}" WorkUnitID="{9D68BE5F-8CA6-43E0-BCE2-C7D59F63E582}"/>
+														</Reference>
+														<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+															<ObjectRef Name="Inside_My_Head" ID="{94B53301-9AA1-468F-8419-92AEDAAE39DF}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 														</Reference>
 														<Reference Name="OutputBus">
 															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
@@ -2910,6 +2918,9 @@
 																</Property>
 															</PropertyList>
 															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="MUS_Foret" ID="{204EC902-8C72-49F2-B520-1C14C739B6D6}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+																</Reference>
 																<Reference Name="Conversion">
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 																</Reference>
@@ -3305,7 +3316,6 @@
 															<PropertyList>
 																<Property Name="3DPosition" Type="int16" Value="2"/>
 																<Property Name="3DSpatialization" Type="int16" Value="1"/>
-																<Property Name="OverrideEffect" Type="bool" Value="True"/>
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
@@ -3331,6 +3341,9 @@
 																</Property>
 															</PropertyList>
 															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="MUS_Foret" ID="{204EC902-8C72-49F2-B520-1C14C739B6D6}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+																</Reference>
 																<Reference Name="Conversion">
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 																</Reference>
