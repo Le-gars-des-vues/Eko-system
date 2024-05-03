@@ -63,7 +63,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-16</Value>
+												<Value>-20</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -215,7 +215,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-15</Value>
+														<Value>-17</Value>
 													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
@@ -2614,6 +2614,11 @@
 												</BlendContainer>
 												<BlendContainer Name="AMB_Foret_MUS" ID="{6FD3804E-EB91-4528-8ECE-FAE535623B58}" ShortID="167782389">
 													<PropertyList>
+														<Property Name="BypassEffect1" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
 														<Property Name="Highpass" Type="int16">
 															<ValueList>
 																<Value>20</Value>
@@ -2647,6 +2652,9 @@
 														</Reference>
 														<Reference Name="Effect0" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
 															<ObjectRef Name="Colossal_Cathedral_Stereo" ID="{512A7648-07B6-486E-9D3E-8B7323C79E8C}" WorkUnitID="{9D68BE5F-8CA6-43E0-BCE2-C7D59F63E582}"/>
+														</Reference>
+														<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+															<ObjectRef Name="Inside_My_Head" ID="{94B53301-9AA1-468F-8419-92AEDAAE39DF}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 														</Reference>
 														<Reference Name="OutputBus">
 															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
@@ -2910,6 +2918,9 @@
 																</Property>
 															</PropertyList>
 															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="MUS_Foret" ID="{204EC902-8C72-49F2-B520-1C14C739B6D6}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+																</Reference>
 																<Reference Name="Conversion">
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 																</Reference>
@@ -3305,7 +3316,6 @@
 															<PropertyList>
 																<Property Name="3DPosition" Type="int16" Value="2"/>
 																<Property Name="3DSpatialization" Type="int16" Value="1"/>
-																<Property Name="OverrideEffect" Type="bool" Value="True"/>
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 																<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
@@ -3331,6 +3341,9 @@
 																</Property>
 															</PropertyList>
 															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="MUS_Foret" ID="{204EC902-8C72-49F2-B520-1C14C739B6D6}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+																</Reference>
 																<Reference Name="Conversion">
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 																</Reference>
@@ -5826,6 +5839,428 @@
 										</Sound>
 									</ChildrenList>
 								</RandomSequenceContainer>
+							</ChildrenList>
+						</BlendContainer>
+						<BlendContainer Name="AMB_Tempete" ID="{55774B3A-2C05-4C59-8E04-06F29FF687C5}" ShortID="274735041">
+							<PropertyList>
+								<Property Name="BlendBehavior" Type="int16" Value="1"/>
+								<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="ENV_Tempete_Low Wind Stereo Rec" ID="{707FEE87-FC57-4936-974C-F4278E2988D6}" ShortID="953167353">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Att_ENV" ID="{759B5063-5D0E-42FD-9695-D800100BFEF1}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ENV_Tempete_Low Wind Stereo Rec" ID="{486224AA-4366-410C-9819-4848C3766A58}">
+											<PropertyList>
+												<Property Name="CrossfadeDuration" Type="Real64" Value="1263.158"/>
+												<Property Name="LoopBegin" Type="Real64" Value="1.02564102564103"/>
+												<Property Name="LoopEnd" Type="Real64" Value="30.02331002331"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ENV_Tempete_Low Wind Stereo Rec.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="174266175"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{A208A849-FC91-4B30-837A-08DD5EBB4CA2}" ShortID="222430364">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="MakeUpGain"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Temps" ID="{5AD906E2-92DC-45A4-A4B0-04474023F7AD}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{68F219F8-380C-43A1-AB45-85C3AE448886}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																				<SegmentShape>Exp3</SegmentShape>
+																			</Point>
+																			<Point>
+																				<XPos>120</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>600</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<ActiveSourceList>
+										<ActiveSource Name="ENV_Tempete_Low Wind Stereo Rec" ID="{486224AA-4366-410C-9819-4848C3766A58}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ENV_Tempete_Rain Rec" ID="{8BDBB4DD-3F2F-4A12-A73A-941E37160083}" ShortID="385037567">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Att_ENV" ID="{759B5063-5D0E-42FD-9695-D800100BFEF1}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ENV_Tempete_Rain Rec" ID="{91C6A4FA-2A23-4FA4-A61A-C6E09C198374}">
+											<PropertyList>
+												<Property Name="CrossfadeDuration" Type="Real64" Value="1368.421"/>
+												<Property Name="LoopBegin" Type="Real64" Value="1.95804195804196"/>
+												<Property Name="LoopEnd" Type="Real64" Value="28.997668997669"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ENV_Tempete_Rain Rec.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="768835146"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{52AFBF2B-8309-4131-BBA2-7D0B00425893}" ShortID="979256092">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="MakeUpGain"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Temps" ID="{5AD906E2-92DC-45A4-A4B0-04474023F7AD}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{215CE2E8-D0E1-4F0F-9C44-0F6372B7733B}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																				<SegmentShape>Exp2</SegmentShape>
+																			</Point>
+																			<Point>
+																				<XPos>105</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>600</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<ActiveSourceList>
+										<ActiveSource Name="ENV_Tempete_Rain Rec" ID="{91C6A4FA-2A23-4FA4-A61A-C6E09C198374}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ENV_Tempete_Rain Stereo Rec" ID="{2107D391-6AA5-47E3-B905-4CA388CF7BFD}" ShortID="16242388">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Att_ENV" ID="{759B5063-5D0E-42FD-9695-D800100BFEF1}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ENV_Tempete_Rain Stereo Rec" ID="{8CC066C6-DBB2-4489-AE37-7043945A55D5}">
+											<PropertyList>
+												<Property Name="CrossfadeDuration" Type="Real64" Value="1684.211"/>
+												<Property Name="LoopBegin" Type="Real64" Value="2.61072261072261"/>
+												<Property Name="LoopEnd" Type="Real64" Value="31.1421911421911"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ENV_Tempete_Rain Stereo Rec.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="544278146"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{420677B3-9A79-4A20-946A-C9563C8A9224}" ShortID="185881250">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="MakeUpGain"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Temps" ID="{5AD906E2-92DC-45A4-A4B0-04474023F7AD}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{B58DD4D9-0963-4EE2-9E9B-6C9FD5BBF99C}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																				<SegmentShape>InvertedSCurve</SegmentShape>
+																			</Point>
+																			<Point>
+																				<XPos>100</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>600</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<ActiveSourceList>
+										<ActiveSource Name="ENV_Tempete_Rain Stereo Rec" ID="{8CC066C6-DBB2-4489-AE37-7043945A55D5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ENV_Tempete_Wind Rec" ID="{8412D4F6-2FBA-484E-8D87-5F6DA6498F1C}" ShortID="236397876">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Att_ENV" ID="{759B5063-5D0E-42FD-9695-D800100BFEF1}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ENV_Tempete_Wind Rec" ID="{D3C656F4-C471-4DB8-AE44-6A0080B9B6E3}">
+											<PropertyList>
+												<Property Name="CrossfadeDuration" Type="Real64" Value="1473.684"/>
+												<Property Name="LoopBegin" Type="Real64" Value="1.86480186480186"/>
+												<Property Name="LoopEnd" Type="Real64" Value="29.7435897435897"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ENV_Tempete_Wind Rec.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="524440913"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{AA2FBFD4-F830-47C0-90D3-6D252BF175DC}" ShortID="981604947">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="MakeUpGain"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Temps" ID="{5AD906E2-92DC-45A4-A4B0-04474023F7AD}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{0AC00C84-215F-4A79-8299-3CBCE1B0BFBC}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																				<SegmentShape>Log2</SegmentShape>
+																			</Point>
+																			<Point>
+																				<XPos>100</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>600</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<ActiveSourceList>
+										<ActiveSource Name="ENV_Tempete_Wind Rec" ID="{D3C656F4-C471-4DB8-AE44-6A0080B9B6E3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ENV_Tempete_Wind Stereo Rec" ID="{4165C655-8445-4092-B26C-AE6CA992E410}" ShortID="7073009">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Att_ENV" ID="{759B5063-5D0E-42FD-9695-D800100BFEF1}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ENV_Tempete_Wind Stereo Rec" ID="{F8A9EF27-2C08-424C-A43F-DDF4D54A609B}">
+											<PropertyList>
+												<Property Name="CrossfadeDuration" Type="Real64" Value="1052.632"/>
+												<Property Name="LoopBegin" Type="Real64" Value="2.98368298368298"/>
+												<Property Name="LoopEnd" Type="Real64" Value="30.3030303030303"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ENV_Tempete_Wind Stereo Rec.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="677012577"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{82FAF203-93CA-4CEF-ADD6-8927309AFB36}" ShortID="576445925">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="MakeUpGain"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Temps" ID="{5AD906E2-92DC-45A4-A4B0-04474023F7AD}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{ECA8AB15-B5B1-4E50-82C7-9D15FD993ED6}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																				<SegmentShape>Log3</SegmentShape>
+																			</Point>
+																			<Point>
+																				<XPos>100</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>600</XPos>
+																				<YPos>-192</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+									<ActiveSourceList>
+										<ActiveSource Name="ENV_Tempete_Wind Stereo Rec" ID="{F8A9EF27-2C08-424C-A43F-DDF4D54A609B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</BlendContainer>
 					</ChildrenList>

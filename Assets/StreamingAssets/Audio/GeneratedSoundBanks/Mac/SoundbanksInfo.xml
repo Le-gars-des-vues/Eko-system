@@ -240,7 +240,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{77346FA0-8D55-C7A7-A364-CFA0C422F3F0}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{53932011-9CA9-0BB3-4E6A-BDE90AD7612F}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -418,7 +418,7 @@
 				</File>
 				<File Id="101091315" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AK_Factory_IR\Churches\AK St-Katharinen.wav</ShortName>
-					<CachePath>Plugins/Wwise Convolution Reverb/AK_Factory_IR/Churches/AK St-Katharinen_DC6AF400.wem</CachePath>
+					<CachePath>Plugins/Wwise Convolution Reverb/AK_Factory_IR/Churches/AK St-Katharinen_3A1E8D95.wem</CachePath>
 				</File>
 				<File Id="106299074" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Grotte_L3_7.wav</ShortName>
@@ -1083,10 +1083,6 @@
 				<File Id="502963919" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>166559-Bullet-Hit-Body-Flesh_14.wav</ShortName>
 					<CachePath>SFX/166559-Bullet-Hit-Body-Flesh_14_10C4C929.wem</CachePath>
-				</File>
-				<File Id="503160884" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SerpentDegat_PH.wav</ShortName>
-					<CachePath>SFX/SerpentDegat_PH_10C4C929.wem</CachePath>
 				</File>
 				<File Id="504727055" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Grotte_L2.wav</ShortName>
@@ -1788,17 +1784,9 @@
 					<ShortName>LIF_Rhinortue_Mort.wav</ShortName>
 					<CachePath>SFX/LIF_Rhinortue_Mort_DF59CAF7.wem</CachePath>
 				</File>
-				<File Id="893919370" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SerpentMort_PH.wav</ShortName>
-					<CachePath>SFX/SerpentMort_PH_10C4C929.wem</CachePath>
-				</File>
 				<File Id="894184392" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Grotte_L1.wav</ShortName>
 					<CachePath>SFX/AMB_Grotte_L1_FC2FA8E1.wem</CachePath>
-				</File>
-				<File Id="898750120" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SerpentAttaque_PH.wav</ShortName>
-					<CachePath>SFX/SerpentAttaque_PH_10C4C929.wem</CachePath>
 				</File>
 				<File Id="899716436" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FS_Metal2.0_15.wav</ShortName>
@@ -1956,10 +1944,6 @@
 					<ShortName>FS_Roche3.0_03.wav</ShortName>
 					<CachePath>SFX/FS_Roche3.0_03_10C4C929.wem</CachePath>
 				</File>
-				<File Id="1004392837" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SerpentPassif_PH.wav</ShortName>
-					<CachePath>SFX/SerpentPassif_PH_10C4C929.wem</CachePath>
-				</File>
 				<File Id="1004521814" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Endurance.wav</ShortName>
 					<CachePath>SFX/UI_Endurance_10C4C929.wem</CachePath>
@@ -2050,6 +2034,7 @@
 				</Custom>
 				<ShareSets>
 					<Plugin Id="556305844" Name="New_RoomVerb_01" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="701863527" Name="Inside_My_Head" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="1096258038" Name="ForestAuterlitz_DenseClose" LibName="Wwise Convolution Reverb" LibId="8323075">
 						<MediaRefs>
 							<MediaRef Id="873684731"/>
@@ -2077,7 +2062,6 @@
 						<MediaRef Id="867457597"/>
 					</MediaRefs>
 					<ActionSetState>
-						<ActionSetStateEntry GroupId="1697020375" Id="1698034228" Name="Envie"/>
 						<ActionSetStateEntry GroupId="4176303900" Id="2291972081" Name="AMB_Base"/>
 					</ActionSetState>
 				</Event>
@@ -2175,6 +2159,36 @@
 						<MediaRef Id="943933697"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1017987174" Name="LIF_Meduse_Attaque" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1325045648" Name="LIF_Meduse_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.27269337" DurationMax="1.0625082">
+					<MediaRefs>
+						<MediaRef Id="176342500"/>
+						<MediaRef Id="352848444"/>
+						<MediaRef Id="474658866"/>
+						<MediaRef Id="502963919"/>
+						<MediaRef Id="559970004"/>
+						<MediaRef Id="586588224"/>
+						<MediaRef Id="588728228"/>
+						<MediaRef Id="665190911"/>
+						<MediaRef Id="758217916"/>
+						<MediaRef Id="891285907"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="917211595" Name="LIF_Meduse_Mort" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.27269337" DurationMax="1.0625082">
+					<MediaRefs>
+						<MediaRef Id="176342500"/>
+						<MediaRef Id="352848444"/>
+						<MediaRef Id="474658866"/>
+						<MediaRef Id="502963919"/>
+						<MediaRef Id="559970004"/>
+						<MediaRef Id="586588224"/>
+						<MediaRef Id="588728228"/>
+						<MediaRef Id="665190911"/>
+						<MediaRef Id="758217916"/>
+						<MediaRef Id="891285907"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1430723987" Name="LIF_Meduse_Passif" MaxAttenuation="100" DurationType="Infinite"/>
 				<Event Id="3471878825" Name="LIF_Moustique_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.1283644" DurationMax="2.8031344">
 					<MediaRefs>
 						<MediaRef Id="6933992"/>
@@ -2275,6 +2289,66 @@
 						</ShareSets>
 					</PluginRefs>
 				</Event>
+				<Event Id="3414499982" Name="LIF_Poisson_Attaque" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2154149272" Name="LIF_Poisson_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.27269337" DurationMax="1.0625082">
+					<MediaRefs>
+						<MediaRef Id="176342500"/>
+						<MediaRef Id="352848444"/>
+						<MediaRef Id="474658866"/>
+						<MediaRef Id="502963919"/>
+						<MediaRef Id="559970004"/>
+						<MediaRef Id="586588224"/>
+						<MediaRef Id="588728228"/>
+						<MediaRef Id="665190911"/>
+						<MediaRef Id="758217916"/>
+						<MediaRef Id="891285907"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2567397059" Name="LIF_Poisson_Mort" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.27269337" DurationMax="1.0625082">
+					<MediaRefs>
+						<MediaRef Id="176342500"/>
+						<MediaRef Id="352848444"/>
+						<MediaRef Id="474658866"/>
+						<MediaRef Id="502963919"/>
+						<MediaRef Id="559970004"/>
+						<MediaRef Id="586588224"/>
+						<MediaRef Id="588728228"/>
+						<MediaRef Id="665190911"/>
+						<MediaRef Id="758217916"/>
+						<MediaRef Id="891285907"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2342157435" Name="LIF_Poisson_Passif" MaxAttenuation="100" DurationType="Infinite"/>
+				<Event Id="412913837" Name="LIF_Requin_Attaque" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3134163731" Name="LIF_Requin_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.27269337" DurationMax="1.0625082">
+					<MediaRefs>
+						<MediaRef Id="176342500"/>
+						<MediaRef Id="352848444"/>
+						<MediaRef Id="474658866"/>
+						<MediaRef Id="502963919"/>
+						<MediaRef Id="559970004"/>
+						<MediaRef Id="586588224"/>
+						<MediaRef Id="588728228"/>
+						<MediaRef Id="665190911"/>
+						<MediaRef Id="758217916"/>
+						<MediaRef Id="891285907"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1898723474" Name="LIF_Requin_Mort" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.27269337" DurationMax="1.0625082">
+					<MediaRefs>
+						<MediaRef Id="176342500"/>
+						<MediaRef Id="352848444"/>
+						<MediaRef Id="474658866"/>
+						<MediaRef Id="502963919"/>
+						<MediaRef Id="559970004"/>
+						<MediaRef Id="586588224"/>
+						<MediaRef Id="588728228"/>
+						<MediaRef Id="665190911"/>
+						<MediaRef Id="758217916"/>
+						<MediaRef Id="891285907"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="833444414" Name="LIF_Requin_Passif" MaxAttenuation="100" DurationType="Infinite"/>
 				<Event Id="2466167957" Name="LIF_Rhinortue_Attaque" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.8036249" DurationMax="2.8704314">
 					<MediaRefs>
 						<MediaRef Id="288099723"/>
@@ -2285,7 +2359,7 @@
 						<MediaRef Id="1029227583"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2964860923" Name="LIF_Rhinortue_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.48407808" DurationMax="1.5437851">
+				<Event Id="2964860923" Name="LIF_Rhinortue_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.57566905" DurationMax="1.8358804">
 					<MediaRefs>
 						<MediaRef Id="122946283"/>
 						<MediaRef Id="176342500"/>
@@ -2370,26 +2444,42 @@
 						<MediaRef Id="989129932"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2624188390" Name="LIF_Serpent_Attaque" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.90752876" DurationMax="1.1434146">
+				<Event Id="2896018305" Name="LIF_Salamandre_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1913692056" Name="LIF_Salamandre_Mort" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2700451624" Name="LIF_Salamandre_Passif" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1378523713" Name="LIF_Singe_Attaque" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2838347287" Name="LIF_Singe_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.27269337" DurationMax="1.0625082">
 					<MediaRefs>
-						<MediaRef Id="898750120"/>
+						<MediaRef Id="176342500"/>
+						<MediaRef Id="352848444"/>
+						<MediaRef Id="474658866"/>
+						<MediaRef Id="502963919"/>
+						<MediaRef Id="559970004"/>
+						<MediaRef Id="586588224"/>
+						<MediaRef Id="588728228"/>
+						<MediaRef Id="665190911"/>
+						<MediaRef Id="758217916"/>
+						<MediaRef Id="891285907"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="419486480" Name="LIF_Serpent_Degat" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.7188439" DurationMax="0.90568656">
+				<Event Id="290700278" Name="LIF_Singe_Mort" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.27269337" DurationMax="1.0625082">
 					<MediaRefs>
-						<MediaRef Id="503160884"/>
+						<MediaRef Id="176342500"/>
+						<MediaRef Id="352848444"/>
+						<MediaRef Id="474658866"/>
+						<MediaRef Id="502963919"/>
+						<MediaRef Id="559970004"/>
+						<MediaRef Id="586588224"/>
+						<MediaRef Id="588728228"/>
+						<MediaRef Id="665190911"/>
+						<MediaRef Id="758217916"/>
+						<MediaRef Id="891285907"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3563350091" Name="LIF_Serpent_Mort" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.8086947" DurationMax="1.0188915">
-					<MediaRefs>
-						<MediaRef Id="893919370"/>
-					</MediaRefs>
+				<Event Id="3802937900" Name="LIF_Singe_Pas" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<SwitchContainers/>
 				</Event>
-				<Event Id="3710083091" Name="LIF_Serpent_Passif" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.0153646" DurationMax="1.2792792">
-					<MediaRefs>
-						<MediaRef Id="1004392837"/>
-					</MediaRefs>
-				</Event>
+				<Event Id="965360082" Name="LIF_Singe_Passif" MaxAttenuation="100" DurationType="Infinite"/>
 				<Event Id="1046058370" Name="PLY_Alerte" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="317730467"/>
@@ -2763,6 +2853,7 @@
 								</Custom>
 								<ShareSets>
 									<PluginRef Id="556305844"/>
+									<PluginRef Id="701863527"/>
 									<PluginRef Id="1096258038"/>
 									<PluginRef Id="2080929685"/>
 									<PluginRef Id="3380986947"/>
@@ -2871,6 +2962,7 @@
 								</Custom>
 								<ShareSets>
 									<PluginRef Id="556305844"/>
+									<PluginRef Id="701863527"/>
 									<PluginRef Id="1096258038"/>
 									<PluginRef Id="2080929685"/>
 									<PluginRef Id="3380986947"/>
@@ -3308,5 +3400,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{95FA4180-C73A-B5BC-4268-7DBFB1493847}</FileHash>
+	<FileHash>{F87D79DD-6DC8-35CF-D6AB-9FF304FEFB92}</FileHash>
 </SoundBanksInfo>
