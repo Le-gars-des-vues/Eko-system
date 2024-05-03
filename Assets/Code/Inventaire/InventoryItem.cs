@@ -130,6 +130,7 @@ public class InventoryItem : MonoBehaviour
 
     public void Delete()
     {
+        itemGrid.CleanGridReference(this);
         Destroy(this.gameObject);
     }
 }

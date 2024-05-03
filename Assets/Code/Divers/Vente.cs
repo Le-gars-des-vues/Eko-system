@@ -20,19 +20,23 @@ public class Vente : MonoBehaviour
     [SerializeField] private TextMeshPro profitTV;
     [SerializeField] private Light2D tvLight;
 
-    private void Start()
+    bool isSelling;
+
+    public void BouttonVente()
     {
-        //profitTV = GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>();
+        if (!isSelling)
+            StartCoroutine(VenteItem());
     }
 
-    public void VenteItem()
+    public IEnumerator VenteItem()
     {
+        isSelling = true;
         tempHeight=inventaireVente.GetComponent<ItemGrid>().GetGridSizeHeight();
         tempWidth=inventaireVente.GetComponent <ItemGrid>().GetGridSizeWidth();
 
         theItemGrid=inventaireVente.GetComponent<ItemGrid>();
 
-        bool hasSoldItem = false;
+        //bool hasSoldItem = false;
          for (int x = 0; x < tempWidth; x++){
 
              for (int y = 0; y < tempHeight; y++)
@@ -41,19 +45,23 @@ public class Vente : MonoBehaviour
                 anItem=theItemGrid.CheckIfItemPresent(x, y);
                 if (anItem != null)
                 {
-                    hasSoldItem = true;
-                    profit += Mathf.RoundToInt((float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height));
+                    //hasSoldItem = true;
+                    AudioManager.instance.PlaySound(AudioManager.instance.sellingScreenSell, Camera.main.gameObject);
+                    profit += anItem.itemData.value;
+                    //profit += Mathf.RoundToInt((float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height));
                     QuickMenu.instance.quotaText.text = profit.ToString() + "/" + GameManager.instance.gameObject.GetComponent<Quota>().quota.ToString() + "$";
                     profitText.text = profit.ToString() + "$";
                     GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>().text = profit.ToString() + "$";
                     anItem.Delete();
                     Tutorial.instance.ListenForInputs("hasSoldItem");
+                    yield return new WaitForSeconds(0.3f);
                 }
              }
-         } 
-
-         if (hasSoldItem)
-            AudioManager.instance.PlaySound(AudioManager.instance.sellingScreenSell, Camera.main.gameObject);
+         }
+         isSelling = false;
+         yield return null;
+         //if (hasSoldItem)
+           // AudioManager.instance.PlaySound(AudioManager.instance.sellingScreenSell, Camera.main.gameObject);
     }
 
     public float calculStorage()
