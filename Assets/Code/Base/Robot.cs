@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -64,7 +65,7 @@ public class Robot : MonoBehaviour
         trainingRoomDialogue.enabled = false;
         if (player.GetComponent<PlayerPermanent>().spawnAtBase)
         {
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[0].dialogueSequence);
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[0]);
             baseDialogue.onDialogueEnd = GoToTraining;
         }
     }
@@ -158,20 +159,19 @@ public class Robot : MonoBehaviour
     {
         if (!hasShowedRespawn)
         {
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[2].dialogueSequence);
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[2]);
             baseDialogue.onDialogueEnd = GoToSellingScreen;
             hasShowedRespawn = true;
         }
         else if (!hasShowedMarket)
         {
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[3].dialogueSequence);
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[3]);
             baseDialogue.onDialogueEnd = GoToCrafting;
             hasShowedMarket = true;
         }
         else if (!hasShowedCrafting)
         {
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[4].dialogueSequence);
-            baseDialogue.onDialogueEnd = GoToSellingScreen;
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[4]);
             hasShowedCrafting = true;
             isInTour = false;
         }
@@ -183,26 +183,26 @@ public class Robot : MonoBehaviour
         {
             hasDied = true;
             GoToRespawn();
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[5].dialogueSequence);
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[5]);
         }
         else if (!cameBackWithoutQuota && Tutorial.instance.cameBackWithoutQuota)
         {
             cameBackWithoutQuota = true;
-            GoToSellingScreen();
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[8].dialogueSequence);
+            GoToCrafting();
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[8]);
         }
         else if (!cameBackWithQuota && Tutorial.instance.cameBackWithQuota)
         {
             cameBackWithQuota = true;
-            GoToSellingScreen();
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[9].dialogueSequence);
+            GoToCrafting();
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[9]);
             baseDialogue.onDialogueEnd += TourOfTheBase;
         }
         else if (!hasSeenStorm && Tutorial.instance.hasSeenStorm)
         {
             hasSeenStorm = true;
-            GoToSellingScreen();
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[10].dialogueSequence);
+            GoToCrafting();
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[10]);
         }
     }
 
@@ -247,7 +247,7 @@ public class Robot : MonoBehaviour
 
     void RefuseTutorial()
     {
-        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[1].dialogueSequence);
+        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[1]);
         Tutorial.instance.hasUnlockedInfos = true;
         QuickMenu.instance.infoButton.interactable = true;
         baseDialogue.onDialogueEnd += RepairMultitool;
@@ -258,7 +258,7 @@ public class Robot : MonoBehaviour
         hasShowedRespawn = true;
         hasShowedMarket = true;
         hasShowedCrafting = true;
-        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[7].dialogueSequence);
+        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[7]);
     }
 
     void TourOfTheBase()
@@ -294,114 +294,121 @@ public class Robot : MonoBehaviour
             switch (currentIndex)
             {
                 case 0:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[0].dialogueSequence);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[0]);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     DialogueManager.conditions["hasMovedAround"] = false;
                     break;
                 case 1:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[1].dialogueSequence);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[1]);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     DialogueManager.conditions["hasJumped"] = false;
                     break;
                 case 2:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[2].dialogueSequence);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[2]);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     DialogueManager.conditions["hasRun"] = false;
                     break;
                 case 3:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[3].dialogueSequence);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[3]);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     DialogueManager.conditions["staminaIsEmpty"] = false;
                     DialogueManager.conditions["hasClimbed"] = false;
                     break;
                 case 4:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[4].dialogueSequence);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[4]);
                     trainingRoomDialogue.onDialogueEnd += GiveItemToSell;
                     trainingRoomDialogue.onDialogueEnd += TalkAboutInventory;
                     break;
                 case 5:
                     TeleportSellingScreen();
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[6].dialogueSequence);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[6]);
                     Tutorial.instance.hasUnlockedInfos = true;
                     QuickMenu.instance.infoButton.interactable = true;
                     trainingRoomDialogue.onDialogueEnd += TalkAboutQuickMenu;
                     break;
                 case 6:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[8].dialogueSequence);
-                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[8]);
+                    trainingRoomDialogue.onDialogueEnd += TalkAboutCrafting;
                     break;
                 case 7:
-                    TeleportCrafting();
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[9].dialogueSequence);
-                    trainingRoomDialogue.onDialogueEnd += GiveItemToCraft;
-                    trainingRoomDialogue.onDialogueEnd += TalkAboutRecipes;
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[11]);
+                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     break;
                 case 8:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[10].dialogueSequence);
-                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
-                    break;
-                case 9:
                     TeleportBackSellingScreen();
                     TeleportBackCrafting();
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[11].dialogueSequence);
-                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[12]);
+                    trainingRoomDialogue.onDialogueEnd += TalkAboutHarvest;
                     break;
-                case 10:
-                    sprites.Clear();
-                    sprites.Add(dissolveSprites[0]);
-                    sprites.Add(dissolveSprites[1]);
-                    StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[12].dialogueSequence);
-                    trainingRoomDialogue.onDialogueEnd += TalkAboutHotbar;
-                    break;
-                case 11:
+                case 9:
                     sprites.Clear();
                     sprites.Add(dissolveSprites[2]);
                     StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[14].dialogueSequence);
-                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[15]);
+                    trainingRoomDialogue.onDialogueEnd += TalkAboutDurability;
                     break;
-                case 12:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[18].dialogueSequence);
-                    trainingRoomDialogue.onDialogueEnd += NextTeleport;
-                    break;
-                case 13:
+                case 10:
                     sprites.Clear();
                     sprites.Add(dissolveSprites[3]);
                     StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[15].dialogueSequence);
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[17]);
                     trainingRoomDialogue.onDialogueEnd += NextTeleport;
                     break;
-                case 14:
-                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[17].dialogueSequence);
+                case 11:
+                    trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[18]);
                     break;
             }
         }
     }
 
     #region Miscellaneous
+
     void TalkAboutInventory()
     {
-        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[5].dialogueSequence);
-        trainingRoomDialogue.onDialogueEnd += NextTeleport;
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[5]);
+        trainingRoomDialogue.onNestedDialogueEnd += NextTeleport;
     }
     void TalkAboutQuickMenu()
     {
         Tutorial.instance.hasUnlockedInfos = true;
-        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[7].dialogueSequence);
-        trainingRoomDialogue.onDialogueEnd += NextTeleport;
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[7]);
+        trainingRoomDialogue.onNestedDialogueEnd += NextTeleport;
+    }
+
+    void TalkAboutCrafting()
+    {
+        TeleportCrafting();
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[9]);
+        trainingRoomDialogue.onNestedDialogueEnd += GiveItemToCraft;
+        trainingRoomDialogue.onNestedDialogueEnd += TalkAboutRecipes;
     }
 
     void TalkAboutHotbar()
     {
-        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[13].dialogueSequence);
-        trainingRoomDialogue.onDialogueEnd += NextTeleport;
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[14]);
+        trainingRoomDialogue.onNestedDialogueEnd += NextTeleport;
     }
 
     void TalkAboutRecipes()
     {
-        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[16].dialogueSequence);
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[10]);
+        trainingRoomDialogue.onNestedDialogueEnd += NextTeleport;
+    }
+
+    void TalkAboutDurability()
+    {
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[16]);
         trainingRoomDialogue.onDialogueEnd += NextTeleport;
+    }
+
+    void TalkAboutHarvest()
+    {
+        sprites.Clear();
+        sprites.Add(dissolveSprites[0]);
+        sprites.Add(dissolveSprites[1]);
+        StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[13]);
+        trainingRoomDialogue.onNestedDialogueEnd += TalkAboutHotbar;
     }
 
     void GiveItemToSell()
@@ -434,6 +441,7 @@ public class Robot : MonoBehaviour
     void NextTeleport()
     {
         teleportIndex++;
+        Debug.Log("Moved teleport Index");
     }
 
     void TeleportBackCrafting()
@@ -464,7 +472,7 @@ public class Robot : MonoBehaviour
         StartCoroutine(player.GetComponent<PlayerPermanent>().Dissolve(2f, true, GameObject.Find("Base").GetComponent<Base>().trainingRoom.position));
         Teleport(teleportPoints[teleportIndex].position, dissolveMaterial, holoMaterial, LayerMask.NameToLayer("Default"));
         isInTraining = true;
-        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[0].dialogueSequence);
+        trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[0]);
         trainingRoomDialogue.onDialogueEnd += NextTeleport;
     }
     
@@ -474,7 +482,7 @@ public class Robot : MonoBehaviour
         baseDialogue.enabled = true;
         Teleport(initialPos, holoMaterial, ogMaterial, LayerMask.NameToLayer("Pixelate"));
         isInTraining = false;
-        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[6].dialogueSequence);
+        baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[6]);
         baseDialogue.onDialogueEnd += ReadyToGoOut;
     }
 

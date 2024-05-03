@@ -659,8 +659,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.027049959, y: -21.04875, z: 0}
-    m_Extent: {x: 1.3454499, y: 21.065851, z: 0}
+    m_Center: {x: 0.02365005, y: -21.0613, z: 0}
+    m_Extent: {x: 1.35885, y: 21.066, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -741,8 +741,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.02639997, y: -21.0492, z: 0}
-    m_Extent: {x: 1.533, y: 21.251799, z: 0}
+    m_Center: {x: 0.022799969, y: -21.05435, z: 0}
+    m_Extent: {x: 1.5453, y: 21.25105, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -767,6 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7045874437329674214}
   - component: {fileID: 7860604746862827491}
+  - component: {fileID: 4978481014860571350}
   m_Layer: 0
   m_Name: Neon (1)
   m_TagString: Untagged
@@ -843,6 +844,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4978481014860571350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8599762160942105006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33099e8a8993104d9a08f20d9f8b32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light2D: {fileID: 0}
+  maxInterval: 0.5
+  maxFlicker: 0.2
+  isFlickering: 1
 --- !u!1001 &2358519809566267074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -857,19 +874,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.019900024
+      value: 0.030849993
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.055101
+      value: -21.04755
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.5379
+      value: 1.53825
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.2488
+      value: 21.250648
       objectReference: {fileID: 0}
     - target: {fileID: 3155542606631425395, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_SortingOrder
@@ -921,19 +938,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.025699973
+      value: 0.024649978
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.050701
+      value: -21.058651
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.3511
+      value: 1.34445
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.0625
+      value: 21.06195
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -966,6 +983,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6006496813849692638, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 815255233055642409}
+    - targetCorrespondingSourceObject: {fileID: 6770475984696658017, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3835466503624757549}
   m_SourcePrefab: {fileID: 100100000, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
 --- !u!4 &1954332298861175381 stripped
 Transform:
@@ -1023,6 +1043,27 @@ MonoBehaviour:
   firstMatQuantity: 0
   secondMat: {fileID: 0}
   thirdMat: {fileID: 0}
+--- !u!1 &9029353641093570211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6770475984696658017, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+  m_PrefabInstance: {fileID: 2358519809566267074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3835466503624757549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029353641093570211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33099e8a8993104d9a08f20d9f8b32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light2D: {fileID: 0}
+  maxInterval: 0.5
+  maxFlicker: 0.2
+  isFlickering: 1
 --- !u!1001 &2372765613828866339
 PrefabInstance:
   m_ObjectHideFlags: 0

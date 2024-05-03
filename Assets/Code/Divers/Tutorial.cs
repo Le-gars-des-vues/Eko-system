@@ -54,7 +54,6 @@ public class Tutorial : MonoBehaviour
                 {
                     DialogueManager.conditions[conditionName] = true;
                     conditionIsMet = true;
-                    Debug.Log("Met condition!");
                 }
             }
             if (conditionIsMet)
