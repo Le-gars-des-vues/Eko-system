@@ -9,6 +9,13 @@
 			<ChildrenList>
 				<ActorMixer Name="PLY" ID="{4E178A2F-B668-4CC2-8D25-777AD3658A1F}" ShortID="190961231">
 					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{4DACDA5B-00A6-4129-A927-FEF3A7F194D1}"/>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-5</Value>
@@ -5428,6 +5435,873 @@
 														<ActiveSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{BCBB823A-17DE-4590-B7BD-23AB0CAE2C75}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</BlendContainer>
+								<BlendContainer Name="PLY_Degat_Poison" ID="{9F610B93-1FD0-40A0-AAC2-D50576C174F0}" ShortID="953507287">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{7DDD01D5-3B7C-426B-82D0-012C7BE100A5}">
+														<PropertyList>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="PLY_Degat_Poison" ID="{5E2AA483-E890-47AC-815B-270BBC15D5CC}" ShortID="708472913">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{29F061A3-4EEB-44DD-A4B7-FCF71D72462E}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="8"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PLY_Degat_Poison" ID="{37157D8F-8221-4382-BB2D-61CC5728B08E}" ShortID="791448297">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{87906EEC-4A5D-427C-B41D-2479A652E173}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.117535537911705"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.509211328976035"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="371365531"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{87906EEC-4A5D-427C-B41D-2479A652E173}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_01" ID="{513304E7-2DA9-40CA-9734-0D31CD5BC038}" ShortID="677070752">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{E626DE48-DB99-4C00-9C54-D02CAE52A2E9}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.85905972913098"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.28168368605985"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="445946697"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{E626DE48-DB99-4C00-9C54-D02CAE52A2E9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_02" ID="{4ED1433F-5CAB-4379-82A0-182E67A84C44}" ShortID="876427025">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{B190817B-BBD2-48A2-9C55-AB765369539E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="5.25395477696664"/>
+																<Property Name="TrimEnd" Type="Real64" Value="5.80518121800517"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="286139002"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{B190817B-BBD2-48A2-9C55-AB765369539E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_03" ID="{D82C4191-C823-434A-90BC-A8E3ABB0A542}" ShortID="328183378">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{C70B43F3-9CA6-4AC3-98A6-EED38491AE45}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="6.99865805713465"/>
+																<Property Name="TrimEnd" Type="Real64" Value="7.3164552944793"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="984472196"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{C70B43F3-9CA6-4AC3-98A6-EED38491AE45}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_04" ID="{B4BC1DA0-C889-4071-A830-8CB464FBA95E}" ShortID="421777400">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{EAC6EE62-DCBE-4D20-ADC6-7C6DFAE610ED}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="10.3945365251336"/>
+																<Property Name="TrimEnd" Type="Real64" Value="10.9201179015109"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="453363492"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{EAC6EE62-DCBE-4D20-ADC6-7C6DFAE610ED}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_05" ID="{B9C25DAF-3519-4AC8-992F-EBA8935FC4E8}" ShortID="101158999">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{CC22C4CB-B7EB-4BB5-B9CE-C1591272256E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="12.1625391575744"/>
+																<Property Name="TrimEnd" Type="Real64" Value="12.4588427434131"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="818556976"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{CC22C4CB-B7EB-4BB5-B9CE-C1591272256E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_06" ID="{2E374D71-246F-4148-A6AA-63987569D444}" ShortID="56625120">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{E77B5366-E246-4D51-A499-38C68B8204D6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="15.5457147461611"/>
+																<Property Name="TrimEnd" Type="Real64" Value="15.9879552909981"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="2069243"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{E77B5366-E246-4D51-A499-38C68B8204D6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_07" ID="{0701728C-DD32-45C2-A4C2-AE39F4433B4B}" ShortID="450901429">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{DDA87482-2B43-431C-864A-C4DAC6A670E6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="17.2740943368364"/>
+																<Property Name="TrimEnd" Type="Real64" Value="17.627331992898"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="136889556"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{DDA87482-2B43-431C-864A-C4DAC6A670E6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_08" ID="{8177787D-296E-4CF4-9EDF-3660E9E037C5}" ShortID="987129291">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{ED3320E3-02B7-4BB7-9A46-002C9ECD2A7E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="20.6878314395652"/>
+																<Property Name="TrimEnd" Type="Real64" Value="21.3976239737073"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="629196238"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{ED3320E3-02B7-4BB7-9A46-002C9ECD2A7E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_09" ID="{7E90131B-17BC-4727-994F-753E5BB89B45}" ShortID="65114391">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{E040C31D-D4BB-4B90-ACD5-25EC0507F92C}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="22.4046589615657"/>
+																<Property Name="TrimEnd" Type="Real64" Value="22.81987395476"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="587569869"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{E040C31D-D4BB-4B90-ACD5-25EC0507F92C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_10" ID="{D75A7169-8EE6-4D2F-BE97-D8D630173F91}" ShortID="847797690">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{7FBA1290-2EE1-4B09-B0A4-B5603BBEABC0}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="27.5011594477525"/>
+																<Property Name="TrimEnd" Type="Real64" Value="27.9619023183219"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="323891169"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{7FBA1290-2EE1-4B09-B0A4-B5603BBEABC0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_11" ID="{05EE0A2B-7775-4295-BAC0-A25318FDD1CF}" ShortID="595379106">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{B9E8F13D-D4E9-471A-BA65-CA228F34BE8C}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="30.9751610712483"/>
+																<Property Name="TrimEnd" Type="Real64" Value="31.4764665473525"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="196639728"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{B9E8F13D-D4E9-471A-BA65-CA228F34BE8C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_12" ID="{C505E6C8-3FFC-4D13-A61F-4E26D93E298F}" ShortID="684019632">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{57F473AC-F18F-4DE1-B69E-66D097EEEFD8}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="36.1115803103032"/>
+																<Property Name="TrimEnd" Type="Real64" Value="36.8219280055444"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="260493442"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{57F473AC-F18F-4DE1-B69E-66D097EEEFD8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Degat_Poison_13" ID="{A35D8D32-2B78-4872-BFB3-D044FC79F8F6}" ShortID="55920132">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Degat_Poison" ID="{FB3833DE-10CD-4EA2-968E-B408C60EB21C}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0419769778256089"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="37.80895140689"/>
+																<Property Name="TrimEnd" Type="Real64" Value="38.3605970132807"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Degat_Poison.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="766031569"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Degat_Poison" ID="{FB3833DE-10CD-4EA2-968E-B408C60EB21C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="VO_Joueur_Degat" ID="{2A026999-2F44-4BEC-A571-C238A83D8306}" ShortID="796635973">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{9EA9626A-7DE4-4812-9BE2-3FA256598AEF}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="6"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="void" ID="{BAA2B5BE-71B2-4C27-9A80-9CC8427A4910}" ShortID="448359541">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{7D192643-D065-43E9-8ED6-EFAF3FFACCAC}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Weight" Type="Real64">
+															<ValueList>
+																<Value>80</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<SourcePlugin Name="Silence" ID="{6F373BE9-7567-45D2-8992-51450AD672C8}" ShortID="956485919" PluginName="Wwise Silence" CompanyID="0" PluginID="101">
+															<PropertyList>
+																<Property Name="Length" Type="Real32" Value="0.001"/>
+															</PropertyList>
+															<Language>SFX</Language>
+														</SourcePlugin>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Silence" ID="{6F373BE9-7567-45D2-8992-51450AD672C8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<RandomSequenceContainer Name="VO_Joueur_Degat" ID="{09A6951E-031B-4C35-8169-5F112EA51663}" ShortID="564648679">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{CF0499FD-D71A-40CC-85BA-4EDEE5012E87}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="6"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>8</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Weight" Type="Real64">
+															<ValueList>
+																<Value>20</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="VO_Joueur_Degat" ID="{70F191D7-A4D4-49D1-81D8-CE32A7B73399}" ShortID="435085770">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat" ID="{5BFDC90F-7544-4AD3-87A8-078329618779}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0970700022777748"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.377661879764805"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="15.9228821851197"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="16.80090412716"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="873929258"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat" ID="{5BFDC90F-7544-4AD3-87A8-078329618779}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_01" ID="{938070D8-17B8-4A3F-8B2E-FB0EB6F517C6}" ShortID="519545173">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_01" ID="{FABDED13-8E1C-49ED-ACF5-72746BE2B524}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0970700022777748"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.377661879764805"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="18.1558956223564"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="18.9245289850843"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="820336811"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_01" ID="{FABDED13-8E1C-49ED-ACF5-72746BE2B524}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_02" ID="{8D99C6BB-CD05-4434-8E16-C8AB63EA1A8C}" ShortID="253827742">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_02" ID="{D0F5FC56-C655-41EE-B03E-329EF1BDEC6F}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0970700022777748"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="20.4153627241271"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="21.2277553899323"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="658033047"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_02" ID="{D0F5FC56-C655-41EE-B03E-329EF1BDEC6F}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_03" ID="{AE9E5C34-8D0C-4B07-84EA-EF0CD032EA9E}" ShortID="1054689992">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_03" ID="{C4134271-9168-4A33-840B-F15AA30945F5}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0970700022777748"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="22.639659017544"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="23.2022948203708"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="491384156"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_03" ID="{C4134271-9168-4A33-840B-F15AA30945F5}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_04" ID="{0E0AF4E8-F4B4-4414-9AC7-C06B600D0EFD}" ShortID="647101992">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_04" ID="{29FCDDF1-A0B2-4B33-B4B6-88420753DFC8}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="29.8417676138446"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="30.8700544276561"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="252083416"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_04" ID="{29FCDDF1-A0B2-4B33-B4B6-88420753DFC8}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_05" ID="{09A88B06-A3FF-415D-A6E4-B47EE75B6237}" ShortID="48575512">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_05" ID="{BB9D41DA-FDAF-49A6-B0EC-494C76ADED15}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="32.7866910273884"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="33.2952748107417"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="635989996"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_05" ID="{BB9D41DA-FDAF-49A6-B0EC-494C76ADED15}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_06" ID="{6B610EBB-CF23-4C47-B0E9-1EF60AD38907}" ShortID="53917542">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_06" ID="{D47118A9-948E-4AF7-B7F6-DF8A44D0E578}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="35.5111914686237"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="36.8059422797507"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="991862810"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_06" ID="{D47118A9-948E-4AF7-B7F6-DF8A44D0E578}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_07" ID="{84D6F862-E5A9-4B50-8045-ED7332B0FC36}" ShortID="569735042">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_07" ID="{65CAF9C2-B002-4E7E-B1CE-0F86A0234C58}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="38.114210671868"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="39.1746999768934"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="33012233"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_07" ID="{65CAF9C2-B002-4E7E-B1CE-0F86A0234C58}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_08" ID="{53987A27-17BF-4F1E-AC97-99C77E526AF0}" ShortID="759050990">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_08" ID="{ABE96CD8-E93E-46E1-8938-5EEA095375CB}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="40.4936471918688"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="42.5489841292471"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="350652965"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_08" ID="{ABE96CD8-E93E-46E1-8938-5EEA095375CB}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_09" ID="{3B270284-70F1-46DA-A54D-ABF91418CD79}" ShortID="951495920">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_09" ID="{49C49F01-E2F6-4054-87F2-F1AB085BB59E}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="43.5454603616855"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="44.7661856296121"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="484112042"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_09" ID="{49C49F01-E2F6-4054-87F2-F1AB085BB59E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VO_Joueur_Degat_10" ID="{3961B19F-883D-4F83-A4DC-3CF98ABD0E17}" ShortID="1056358034">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VO_Joueur_Degat_10" ID="{A277CF34-6AFB-4CFE-B608-F2EEC27766F6}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0502731692237575"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.253872708064122"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="46.8220218157679"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="47.9476535446885"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Ingame - Track 2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="209144850"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VO_Joueur_Degat_10" ID="{A277CF34-6AFB-4CFE-B608-F2EEC27766F6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
 											</ChildrenList>
 										</RandomSequenceContainer>
 									</ChildrenList>

@@ -909,6 +909,38 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+						<Folder Name="PLY_Degat_Poison" ID="{9FB0124E-8496-4CEC-A43A-A59C1490218D}" ShortID="875247949">
+							<ChildrenList>
+								<Event Name="PLY_Degat_Poison" ID="{38EB8182-5658-4A7B-97B9-A4A06B82A613}">
+									<ChildrenList>
+										<Action Name="" ID="{DAF0E5C2-03DB-46BD-829E-1E2DFB5AB7B3}" ShortID="218081304">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY_Degat_Poison" ID="{9F610B93-1FD0-40A0-AAC2-D50576C174F0}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="PLY_Degat_Poison_Stop" ID="{E0A9650B-DA92-4064-9DB4-F60A6F3D9BC1}">
+									<ChildrenList>
+										<Action Name="" ID="{D3F18A21-F818-411B-801E-828E3DD40086}" ShortID="323478599">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY_Degat_Poison" ID="{9F610B93-1FD0-40A0-AAC2-D50576C174F0}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
