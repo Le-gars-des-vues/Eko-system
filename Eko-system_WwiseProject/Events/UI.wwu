@@ -7,17 +7,6 @@
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
 			<ChildrenList>
-				<Event Name="UI_Endurance" ID="{09770AF6-0E10-4543-9BF8-4B934F1DE170}">
-					<ChildrenList>
-						<Action Name="" ID="{3DC32916-9472-4383-8EFF-B2FF39B9EB44}" ShortID="398234057">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="UI_Endurance" ID="{F35AA937-7190-4593-BEC9-1FFE4114A01B}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="UI_HotbarDeplacement" ID="{EDEB1C3B-69FD-409B-9D6C-AFA3A4A21BA1}">
 					<ChildrenList>
 						<Action Name="" ID="{5023A46F-03C4-4C91-8A55-CB5592728CB7}" ShortID="77622682">
@@ -29,20 +18,9 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="UI_JoueurVise" ID="{6C3E4BC8-10DD-4D1E-9312-F9C0184BD015}">
-					<ChildrenList>
-						<Action Name="" ID="{76B12135-E6E8-4FB9-85C8-B685137D2CB3}" ShortID="885935894">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="UI_JoueurVise" ID="{B948AC85-AB9F-43F9-8890-A4E5DD86BBE0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="UI_Temps" ID="{D2DB7EEC-DB46-43E9-A18A-3AA390733C1C}">
 					<PropertyList>
-						<Property Name="Color" Type="int16" Value="10"/>
+						<Property Name="Color" Type="int16" Value="1"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ChildrenList>
@@ -55,36 +33,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Folder Name="UI_BarreDeVie" ID="{E43A34DD-5F9A-4677-96EA-C3142362F83A}" ShortID="574065045">
-					<ChildrenList>
-						<Event Name="UI_BarreDeVie_Faible" ID="{67A56789-5A89-4EA6-B525-845977BE9728}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="1"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-							<ChildrenList>
-								<Action Name="" ID="{230EA013-169D-43EA-9A6B-7EBC5F68320C}" ShortID="188594061">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="UI_BarreDeVie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="UI_BarreDeVie_Gagner" ID="{9DEA352C-D370-47D8-A9AE-10D12F2440DB}">
-							<ChildrenList>
-								<Action Name="" ID="{79AB3DBD-6544-4A61-835D-2ED7CDF98C8C}" ShortID="985359635">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="UI_BarreDeVie_Gagner" ID="{BE8E92F4-35B1-4B89-860E-2D3AC75DD7DF}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
 				<Folder Name="UI_GameOver" ID="{F49C0331-255C-411F-90B0-0030BA7EECB2}" ShortID="89834456">
 					<ChildrenList>
 						<Event Name="UI_GameOver_Temps" ID="{2EAAD0A0-1FB0-492F-BA1C-758A39A4101D}">
@@ -105,7 +53,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="UI_BarreDeVie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+											<ObjectRef Name="UI_Barre_Vie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -158,7 +106,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="UI_BarreDeVie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+											<ObjectRef Name="UI_Barre_Vie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -616,11 +564,96 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="UI_Commun" ID="{59A14AB7-37A9-42FD-B09E-CE97CEDB5686}" ShortID="767050331">
+							<ChildrenList>
+								<Event Name="UI_Commun_No" ID="{0F11A495-CC92-4886-9112-BC10872B0691}">
+									<ChildrenList>
+										<Action Name="" ID="{9648D971-5F3D-4935-BBC1-05FFCA941986}" ShortID="234843593">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Commun_No" ID="{3EE3308F-F3E7-479A-9CB8-3467F7C998A6}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_Commun_Yes" ID="{DD90D71E-FCE0-49C1-B19F-27F00BAA0587}">
+									<ChildrenList>
+										<Action Name="" ID="{37856A5A-9319-4E07-B6FC-2EE5088AAA0E}" ShortID="26614545">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Commun_Yes" ID="{A9946FBC-4034-44D8-8500-4B654D2D0436}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="UI_Construire" ID="{1F701D5B-DEB6-438F-9AAE-EC3198FEEF97}" ShortID="651400246">
+							<ChildrenList>
+								<Event Name="UI_Construire_Arme" ID="{166F1536-B5B3-4A63-9032-839291BE10EF}">
+									<ChildrenList>
+										<Action Name="" ID="{0725C539-DD25-49C1-9D9D-7BDCFBC9E510}" ShortID="597586025">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Construire_Arme" ID="{67DAC389-1031-4833-BC26-5B4D330F164D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_Construire_Ameliorations" ID="{06D43971-9BB9-4F74-90D0-D2DC411524C8}">
+									<ChildrenList>
+										<Action Name="" ID="{7DA0E273-1EE0-451E-850D-9142CF8C45ED}" ShortID="42298744">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Construire_Ameliorations" ID="{CB452B9E-C0B7-43CD-B3F2-4B394378562E}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_Construire_Batiment" ID="{E83B6312-D191-4CF8-A704-CD6BB45A7632}">
+									<ChildrenList>
+										<Action Name="" ID="{AB20E158-5125-4C1F-9313-76CE6B9F7CC4}" ShortID="862951892">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Construire_Batiment" ID="{076E6702-97F0-4061-AD32-B5A376785D1C}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_Construire_Equipement" ID="{34D8FDEB-803E-4E29-9D5F-EFC69C35AC86}">
+									<ChildrenList>
+										<Action Name="" ID="{ED06894D-1BCC-473E-89C9-769D0C3F8AC7}" ShortID="717408123">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Construire_Equipement" ID="{C3C9F8B5-DB3D-48BB-B213-EAB865754907}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_Construire_Materiau" ID="{CE1353B3-EF13-4BC3-9FEF-EC9BCBD962A6}">
+									<ChildrenList>
+										<Action Name="" ID="{83E62CF8-1A14-41F6-87A9-D15EEC5AEB72}" ShortID="1058908575">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Construire_Materiau" ID="{C5EB0877-F735-4C0B-8E9C-289215F2811A}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Event Name="UI_Respiration" ID="{6C6FF602-1C68-41E7-9EF3-CE54605971F0}">
 					<PropertyList>
-						<Property Name="Color" Type="int16" Value="10"/>
+						<Property Name="Color" Type="int16" Value="1"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 					</PropertyList>
 					<ChildrenList>
@@ -673,21 +706,200 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
-				<Event Name="UI_JoueurVise_Stop" ID="{BEEA3E24-47E1-424A-800A-8305F19DE47B}">
+				<Folder Name="UI_JoueurVise" ID="{9898AFF0-EA7A-4E03-BC51-EC5A726E1495}" ShortID="48987405">
 					<ChildrenList>
-						<Action Name="" ID="{0A211549-4425-4714-B51C-8074029F6ED4}" ShortID="921753089">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="0.1"/>
-							</PropertyList>
+						<Event Name="UI_JoueurVise" ID="{6C3E4BC8-10DD-4D1E-9312-F9C0184BD015}">
+							<ChildrenList>
+								<Action Name="" ID="{76B12135-E6E8-4FB9-85C8-B685137D2CB3}" ShortID="885935894">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_JoueurVise" ID="{B948AC85-AB9F-43F9-8890-A4E5DD86BBE0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="UI_JoueurVise_Stop" ID="{BEEA3E24-47E1-424A-800A-8305F19DE47B}">
+							<ChildrenList>
+								<Action Name="" ID="{0A211549-4425-4714-B51C-8074029F6ED4}" ShortID="921753089">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_JoueurVise" ID="{B948AC85-AB9F-43F9-8890-A4E5DD86BBE0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="UI_Barre" ID="{03DBD490-25C1-4CD2-B823-CF8D16C2C004}" ShortID="65388999">
+					<ChildrenList>
+						<Folder Name="UI_Barre_Vie" ID="{E43A34DD-5F9A-4677-96EA-C3142362F83A}" ShortID="574065045">
+							<ChildrenList>
+								<Event Name="UI_Barre_Vie_Faible" ID="{67A56789-5A89-4EA6-B525-845977BE9728}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="1"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Action Name="" ID="{230EA013-169D-43EA-9A6B-7EBC5F68320C}" ShortID="188594061">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Barre_Vie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_Barre_Vie_Gagner" ID="{9DEA352C-D370-47D8-A9AE-10D12F2440DB}">
+									<ChildrenList>
+										<Action Name="" ID="{79AB3DBD-6544-4A61-835D-2ED7CDF98C8C}" ShortID="985359635">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Barre_Vie_Gagner" ID="{BE8E92F4-35B1-4B89-860E-2D3AC75DD7DF}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_Barre_Vie_Pleine" ID="{747093B2-D4F4-433D-AEC3-69C80360BBA6}">
+									<ChildrenList>
+										<Action Name="" ID="{4ED74A3C-A4A6-4317-91F7-1F3521D64688}" ShortID="336305316">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Barre_Vie_Pleine" ID="{A1C6F933-86F6-41A5-A31E-4AB075C2EAD2}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Event Name="UI_Barre_Endurance_Vide" ID="{09770AF6-0E10-4543-9BF8-4B934F1DE170}">
+							<ChildrenList>
+								<Action Name="" ID="{3DC32916-9472-4383-8EFF-B2FF39B9EB44}" ShortID="398234057">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Barre_Endurance_Vide" ID="{F35AA937-7190-4593-BEC9-1FFE4114A01B}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Folder Name="UI_Barre_Bouclier" ID="{0558D433-8BAF-4A42-B2D9-ABB45088A503}" ShortID="850116783">
+							<ChildrenList>
+								<Event Name="UI_Barre_Bouclier_Pleine" ID="{B96F1119-F6D6-4FB8-AE16-C26673870A42}">
+									<ChildrenList>
+										<Action Name="" ID="{AD1EB38A-B24C-45BE-9F11-494A202E996F}" ShortID="210679212">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Barre_Bouclier_Pleine" ID="{D059910A-64B8-40BF-B0F7-80E2EED90C2E}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_Barre_Bouclier_Vide" ID="{9D708428-0131-4ED5-9DCF-95248724B24C}">
+									<ChildrenList>
+										<Action Name="" ID="{4A97F845-94FA-4D77-BCA8-0539AF06D126}" ShortID="28706156">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_Barre_Bouclier_Vide" ID="{00BA864E-AB2B-4547-A91F-3CBC4174DB3B}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Event Name="UI_Notification" ID="{9CD235C3-8344-47A4-B914-366B5BD5B724}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="1"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Action Name="" ID="{63A7D256-2A5A-4BAB-BB1C-DC404F178EE9}" ShortID="315635833">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="UI_JoueurVise" ID="{B948AC85-AB9F-43F9-8890-A4E5DD86BBE0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+									<ObjectRef Name="UI_Notification" ID="{4AB995B4-92B9-46CC-9DDF-8D8E9E92D572}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="UI_Unlock" ID="{525ECA13-5475-4749-AF83-DB49BEC4FED0}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="1"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Action Name="" ID="{EB199246-A71C-48AA-A1D0-5ABD677F6836}" ShortID="730210739">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Unlock" ID="{05A95022-C0B2-4186-8140-F32A1823F11D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Cubicule_Ouvrir" ID="{DADFC9C5-C747-4FB0-91FC-9D2792BEED3C}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="1"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Action Name="" ID="{74CC1E6E-FE55-45AC-B6CA-C5AF827CDCFC}" ShortID="819166799">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Cubicule_Ouvrir" ID="{D8ACF7DF-2759-4392-B695-456526D56FDE}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="UI_MenuPrincipal" ID="{900D9EBE-9C13-4880-9839-ACB6415A76B9}" ShortID="356568825">
+					<ChildrenList>
+						<Event Name="UI_MenuPrincipal_Desktop" ID="{A4A9984D-54F9-4361-BC4D-67E710B9D9F9}">
+							<ChildrenList>
+								<Action Name="" ID="{BB8A39A1-0990-4B71-ACFF-5BEBF39AAABA}" ShortID="75764597">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_MenuPrincipal_Desktop" ID="{20F3EB3E-A6C7-4E25-A479-38FCDF669995}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="UI_MenuPrincipal_Play" ID="{24D95DB3-F487-49AA-A49B-4E53C6104986}">
+							<ChildrenList>
+								<Action Name="" ID="{9FEADABB-29F7-4314-AAF3-319D5874A06F}" ShortID="771824135">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_MenuPrincipal_Play" ID="{CED3DF2D-AF55-4E1A-83ED-584D7D767E4D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="UI_MenuPrincipal_Survol" ID="{7C97B693-279F-4E4D-8213-0B05E8E49A50}">
+							<ChildrenList>
+								<Action Name="" ID="{6E15A68D-6153-48A8-BC1B-757DC532EFE0}" ShortID="943467336">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_MenuPrincipal_Survol" ID="{341A70D0-3653-478D-9A57-2023E2329F35}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
