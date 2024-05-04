@@ -34,7 +34,6 @@ public class PlayerFootStep : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Debug.Log("Footstep");
             //GetComponent<TriggerOnFootstep>().Footstep();
             footstepSound.Post(gameObject);
         }

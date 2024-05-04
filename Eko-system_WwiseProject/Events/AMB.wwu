@@ -9,16 +9,6 @@
 			<ChildrenList>
 				<Event Name="AMB_Base" ID="{2E935D6D-CBF5-4E5D-8576-86200D6CE732}">
 					<ChildrenList>
-						<Action Name="" ID="{051A50AA-94D3-44D2-9700-212E5FA03C96}" ShortID="696555251">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="22"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
 						<Action Name="" ID="{93EC75C8-4936-4467-91A2-7643A248E2B8}" ShortID="608672462">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="22"/>
@@ -44,6 +34,7 @@
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="38"/>
 								<Property Name="FadeTime" Type="Real64" Value="0.4"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -69,7 +60,8 @@
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="38"/>
 								<Property Name="FadeTime" Type="Real64" Value="0.4"/>
-								<Property Name="GameParameterValue" Type="Real64" Value="2"/>
+								<Property Name="GameParameterValue" Type="Real64" Value="3"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -106,10 +98,22 @@
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="38"/>
 								<Property Name="FadeTime" Type="Real64" Value="0.4"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Deepness" ID="{8FB93522-F4E8-4044-96D8-F29F7C6C58B6}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="AMB_Tempete" ID="{CEB2828F-51CC-4988-A8E2-73F9D0714E72}">
+					<ChildrenList>
+						<Action Name="" ID="{F9ABD25B-9F32-4B46-B3A4-F2B5B4473106}" ShortID="77548508">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ENV_Tonnerre" ID="{03E0B060-F85D-44C1-BD87-D926CA05AE19}" WorkUnitID="{04F76E87-D2FD-4A2C-8E9C-9B3294EB319D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

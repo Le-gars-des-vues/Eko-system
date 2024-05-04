@@ -19,368 +19,6 @@
 								</Property>
 							</PropertyList>
 							<ChildrenList>
-								<Bus Name="VO" ID="{287AC683-F2BA-4831-A202-F8F2B2904174}">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="23"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<Bus Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}">
-											<ChildrenList>
-												<Bus Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}">
-													<PropertyList>
-														<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
-													</PropertyList>
-													<DuckingList>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLinear</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-													</DuckingList>
-												</Bus>
-												<Bus Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}">
-													<PropertyList>
-														<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
-													</PropertyList>
-													<DuckingList>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLinear</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-													</DuckingList>
-												</Bus>
-												<Bus Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-												<Bus Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}">
-													<PropertyList>
-														<Property Name="RecoveryTime" Type="Real64" Value="0"/>
-													</PropertyList>
-													<DuckingList>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-															<DuckingParam>
-																<Volume>-93</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0.100000001490116</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0.100000001490116</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0.100000001490116</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0.100000001490116</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-													</DuckingList>
-												</Bus>
-												<Bus Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}">
-													<PropertyList>
-														<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
-													</PropertyList>
-													<DuckingList>
-														<DuckItem>
-															<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
-															<DuckingParam>
-																<Volume>-96</Volume>
-																<FadeInTime>0.200000002980232</FadeInTime>
-																<FadeOutTime>0</FadeOutTime>
-																<FadeCurve>FadeLog2</FadeCurve>
-															</DuckingParam>
-														</DuckItem>
-													</DuckingList>
-												</Bus>
-											</ChildrenList>
-										</Bus>
-										<Bus Name="VO_Narrateur" ID="{BD1D11EF-9E0B-462E-8FE4-20436BBFCCCB}">
-											<PropertyList>
-												<Property Name="RecoveryTime" Type="Real64" Value="2"/>
-											</PropertyList>
-											<DuckingList>
-												<DuckItem>
-													<BusRef Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}"/>
-													<DuckingParam>
-														<Volume>-94</Volume>
-														<FadeInTime>0.200000002980232</FadeInTime>
-														<FadeOutTime>0</FadeOutTime>
-														<FadeCurve>FadeLog2</FadeCurve>
-													</DuckingParam>
-												</DuckItem>
-											</DuckingList>
-										</Bus>
-									</ChildrenList>
-								</Bus>
-								<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="19"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList/>
-									<ChildrenList>
-										<Bus Name="AMB_Grotte" ID="{A41DCFA7-B149-40A1-B01C-C9F9EF1A53A7}">
-											<ChildrenList>
-												<Bus Name="AMB_Grotte_L2" ID="{FC29499E-C1DF-4581-A0F0-86F2817A0066}">
-													<ReferenceList>
-														<Reference Name="UserAuxSend0">
-															<ObjectRef Name="AMB_Grotte_RVB" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-														</Reference>
-													</ReferenceList>
-													<ObjectLists>
-														<ObjectList Name="RTPC">
-															<Reference>
-																<Local>
-																	<RTPC Name="" ID="{B92CE9F0-B4E7-4E0D-8699-BF3B19895BBB}" ShortID="1071155233">
-																		<PropertyList>
-																			<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
-																		</PropertyList>
-																		<ReferenceList>
-																			<Reference Name="ControlInput">
-																				<ObjectRef Name="New Modulator LFO_07" ID="{A3069B34-C16B-41D8-8AEC-BCF7A3C4337B}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
-																			</Reference>
-																			<Reference Name="Curve">
-																				<Custom>
-																					<Curve Name="" ID="{C26B0AA0-9D41-4992-804E-375F81879619}">
-																						<PropertyList>
-																							<Property Name="Flags" Type="int32" Value="3"/>
-																						</PropertyList>
-																						<PointList>
-																							<Point>
-																								<XPos>0</XPos>
-																								<YPos>-3.26253</YPos>
-																								<Flags>21</Flags>
-																							</Point>
-																							<Point>
-																								<XPos>1</XPos>
-																								<YPos>-200</YPos>
-																								<Flags>53</Flags>
-																							</Point>
-																						</PointList>
-																					</Curve>
-																				</Custom>
-																			</Reference>
-																		</ReferenceList>
-																	</RTPC>
-																</Local>
-															</Reference>
-														</ObjectList>
-													</ObjectLists>
-												</Bus>
-											</ChildrenList>
-										</Bus>
-									</ChildrenList>
-									<StateInfo>
-										<StatePropertyList>
-											<Property Name="BusVolume"/>
-											<Property Name="Highpass"/>
-											<Property Name="Lowpass"/>
-											<Property Name="MakeUpGain"/>
-											<Property Name="Pitch"/>
-											<Property Name="Volume"/>
-										</StatePropertyList>
-										<StateGroupList>
-											<StateGroupInfo>
-												<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
-											</StateGroupInfo>
-											<StateGroupInfo>
-												<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
-											</StateGroupInfo>
-										</StateGroupList>
-										<CustomStateList>
-											<CustomState>
-												<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
-												<CustomState Name="" ID="{AF1F6E79-5916-4FE8-86F9-DA1854B51728}" ShortID="909685969">
-													<PropertyList>
-														<Property Name="Lowpass" Type="int16" Value="50"/>
-														<Property Name="MakeUpGain" Type="Real64" Value="-5"/>
-													</PropertyList>
-												</CustomState>
-											</CustomState>
-											<CustomState>
-												<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
-												<CustomState Name="" ID="{526FB479-E5A5-4E58-9642-97C2DC23FA34}" ShortID="730229045">
-													<PropertyList>
-														<Property Name="BusVolume" Type="Real64" Value="-108"/>
-													</PropertyList>
-												</CustomState>
-											</CustomState>
-											<CustomState>
-												<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
-												<CustomState Name="" ID="{A66C76E8-BD72-4584-91F1-8254942F3BD2}" ShortID="480411218"/>
-											</CustomState>
-											<CustomState>
-												<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
-												<CustomState Name="" ID="{17B30E7A-5452-4595-A23A-5A2D10B26143}" ShortID="1001647983"/>
-											</CustomState>
-										</CustomStateList>
-									</StateInfo>
-								</Bus>
-								<Bus Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="4"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-									</PropertyList>
-									<StateInfo>
-										<StatePropertyList>
-											<Property Name="BusVolume"/>
-											<Property Name="Highpass"/>
-											<Property Name="Lowpass"/>
-											<Property Name="MakeUpGain"/>
-											<Property Name="Pitch"/>
-											<Property Name="Volume"/>
-										</StatePropertyList>
-										<StateGroupList>
-											<StateGroupInfo>
-												<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
-											</StateGroupInfo>
-										</StateGroupList>
-										<CustomStateList>
-											<CustomState>
-												<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
-												<CustomState Name="" ID="{F5354716-63E1-4487-9BB8-82E80D720DBF}" ShortID="365533133">
-													<PropertyList>
-														<Property Name="BusVolume" Type="Real64" Value="-108"/>
-													</PropertyList>
-												</CustomState>
-											</CustomState>
-											<CustomState>
-												<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
-												<CustomState Name="" ID="{C6C653DE-7CCC-41B2-B1EC-9FB01598FF40}" ShortID="598480507"/>
-											</CustomState>
-										</CustomStateList>
-									</StateInfo>
-								</Bus>
-								<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="26"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-									</PropertyList>
-									<StateInfo>
-										<StatePropertyList>
-											<Property Name="BusVolume"/>
-											<Property Name="Highpass"/>
-											<Property Name="Lowpass"/>
-											<Property Name="MakeUpGain"/>
-											<Property Name="Pitch"/>
-											<Property Name="Volume"/>
-										</StatePropertyList>
-										<StateGroupList>
-											<StateGroupInfo>
-												<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
-											</StateGroupInfo>
-										</StateGroupList>
-										<CustomStateList>
-											<CustomState>
-												<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
-												<CustomState Name="" ID="{2291CD34-CC08-4748-B05B-11CEE41376EF}" ShortID="711670226">
-													<PropertyList>
-														<Property Name="BusVolume" Type="Real64" Value="-108"/>
-													</PropertyList>
-												</CustomState>
-											</CustomState>
-											<CustomState>
-												<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
-												<CustomState Name="" ID="{0B9809EF-5C7E-4369-ABE1-8195F5D64289}" ShortID="732410509"/>
-											</CustomState>
-										</CustomStateList>
-									</StateInfo>
-								</Bus>
-								<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="8"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-									</PropertyList>
-									<StateInfo>
-										<StatePropertyList>
-											<Property Name="BusVolume"/>
-											<Property Name="Highpass"/>
-											<Property Name="Lowpass"/>
-											<Property Name="MakeUpGain"/>
-											<Property Name="Pitch"/>
-											<Property Name="Volume"/>
-										</StatePropertyList>
-										<StateGroupList>
-											<StateGroupInfo>
-												<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
-											</StateGroupInfo>
-										</StateGroupList>
-										<CustomStateList>
-											<CustomState>
-												<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
-												<CustomState Name="" ID="{4A8180BA-BBCF-4AEB-80B9-C502384AC8DF}" ShortID="900503067">
-													<PropertyList>
-														<Property Name="BusVolume" Type="Real64" Value="-108"/>
-													</PropertyList>
-												</CustomState>
-											</CustomState>
-											<CustomState>
-												<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
-												<CustomState Name="" ID="{833690B8-3E46-4708-B92F-E9B62CDB1F7A}" ShortID="951237067"/>
-											</CustomState>
-										</CustomStateList>
-									</StateInfo>
-								</Bus>
-								<Bus Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}">
-									<PropertyList>
-										<Property Name="Color" Type="int16" Value="1"/>
-										<Property Name="OverrideColor" Type="bool" Value="True"/>
-									</PropertyList>
-								</Bus>
 								<AuxBus Name="Reverb_test" ID="{F1FD25B1-1A3F-425B-9E49-94D125984B39}">
 									<ReferenceList>
 										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
@@ -415,6 +53,587 @@
 										</CustomStateList>
 									</StateInfo>
 								</AuxBus>
+								<Bus Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}">
+									<ChildrenList>
+										<Bus Name="AMB" ID="{B53FA21F-5F52-49C5-9B51-5A38B4FF648E}">
+											<ChildrenList>
+												<Bus Name="AMB_Grotte" ID="{A41DCFA7-B149-40A1-B01C-C9F9EF1A53A7}">
+													<ChildrenList>
+														<Bus Name="AMB_Grotte_L2" ID="{FC29499E-C1DF-4581-A0F0-86F2817A0066}">
+															<ReferenceList>
+																<Reference Name="UserAuxSend0">
+																	<ObjectRef Name="AMB_Grotte_RVB" ID="{184A33B9-D782-45AF-88D5-75229C3D5F69}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ObjectLists>
+																<ObjectList Name="RTPC">
+																	<Reference>
+																		<Local>
+																			<RTPC Name="" ID="{B92CE9F0-B4E7-4E0D-8699-BF3B19895BBB}" ShortID="1071155233">
+																				<PropertyList>
+																					<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
+																				</PropertyList>
+																				<ReferenceList>
+																					<Reference Name="ControlInput">
+																						<ObjectRef Name="New Modulator LFO_07" ID="{A3069B34-C16B-41D8-8AEC-BCF7A3C4337B}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+																					</Reference>
+																					<Reference Name="Curve">
+																						<Custom>
+																							<Curve Name="" ID="{C26B0AA0-9D41-4992-804E-375F81879619}">
+																								<PropertyList>
+																									<Property Name="Flags" Type="int32" Value="3"/>
+																								</PropertyList>
+																								<PointList>
+																									<Point>
+																										<XPos>0</XPos>
+																										<YPos>-3.26253</YPos>
+																										<Flags>21</Flags>
+																									</Point>
+																									<Point>
+																										<XPos>1</XPos>
+																										<YPos>-200</YPos>
+																										<Flags>53</Flags>
+																									</Point>
+																								</PointList>
+																							</Curve>
+																						</Custom>
+																					</Reference>
+																				</ReferenceList>
+																			</RTPC>
+																		</Local>
+																	</Reference>
+																</ObjectList>
+															</ObjectLists>
+														</Bus>
+													</ChildrenList>
+												</Bus>
+											</ChildrenList>
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+													</StateGroupInfo>
+													<StateGroupInfo>
+														<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+														<CustomState Name="" ID="{34AC10CC-AFB8-455E-902C-33EC981E7B22}" ShortID="499716603">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+														<CustomState Name="" ID="{091E5388-84A8-412A-9D41-87D1B3ADACDD}" ShortID="683783610">
+															<PropertyList>
+																<Property Name="BusVolume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+														<CustomState Name="" ID="{595C5FFC-9C7C-413F-BE90-C19F23D0196C}" ShortID="163036051"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+														<CustomState Name="" ID="{8913F080-5F92-46F3-A0AF-6934E15829BE}" ShortID="186135915"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="VO" ID="{287AC683-F2BA-4831-A202-F8F2B2904174}">
+											<ChildrenList>
+												<Bus Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}">
+													<ChildrenList>
+														<Bus Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}">
+															<PropertyList>
+																<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+															</PropertyList>
+															<DuckingList>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLinear</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+															</DuckingList>
+														</Bus>
+														<Bus Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}">
+															<PropertyList>
+																<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+															</PropertyList>
+															<DuckingList>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLinear</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+															</DuckingList>
+														</Bus>
+														<Bus Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+														<Bus Name="VO_Joueur_Mort" ID="{BACE3202-7C9C-4346-8B40-900A98243481}">
+															<PropertyList>
+																<Property Name="RecoveryTime" Type="Real64" Value="0"/>
+															</PropertyList>
+															<DuckingList>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+																	<DuckingParam>
+																		<Volume>-93</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0.100000001490116</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Degat" ID="{09C1B544-AB3D-4ECE-A5F3-A96FB26ECAFB}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0.100000001490116</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0.100000001490116</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Parle" ID="{24E623FE-2977-411E-9DB8-C35A0B870B0F}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0.100000001490116</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+															</DuckingList>
+														</Bus>
+														<Bus Name="VO_Joueur_Attaque" ID="{C49FE476-D3BE-4E95-800B-4231B2939F3A}">
+															<PropertyList>
+																<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+															</PropertyList>
+															<DuckingList>
+																<DuckItem>
+																	<BusRef Name="VO_Joueur_Effort" ID="{3D7F3132-60D1-479E-B77B-1D45306C4EC5}"/>
+																	<DuckingParam>
+																		<Volume>-96</Volume>
+																		<FadeInTime>0.200000002980232</FadeInTime>
+																		<FadeOutTime>0</FadeOutTime>
+																		<FadeCurve>FadeLog2</FadeCurve>
+																	</DuckingParam>
+																</DuckItem>
+															</DuckingList>
+														</Bus>
+													</ChildrenList>
+												</Bus>
+												<Bus Name="VO_Narrateur" ID="{BD1D11EF-9E0B-462E-8FE4-20436BBFCCCB}">
+													<PropertyList>
+														<Property Name="RecoveryTime" Type="Real64" Value="2"/>
+													</PropertyList>
+													<DuckingList>
+														<DuckItem>
+															<BusRef Name="VO_Joueur" ID="{F2F34D9A-E13E-411E-89CF-606A89E50C1A}"/>
+															<DuckingParam>
+																<Volume>-94</Volume>
+																<FadeInTime>0.200000002980232</FadeInTime>
+																<FadeOutTime>0</FadeOutTime>
+																<FadeCurve>FadeLog2</FadeCurve>
+															</DuckingParam>
+														</DuckItem>
+													</DuckingList>
+												</Bus>
+											</ChildrenList>
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+														<CustomState Name="" ID="{B5B7B8DC-7577-4476-ABA4-BDFB098EB1E7}" ShortID="793491055">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+														<CustomState Name="" ID="{15635DD9-6BCD-4CA5-B923-19BF92E6D244}" ShortID="885085646"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64">
+													<ValueList>
+														<Value>-12</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+													</StateGroupInfo>
+													<StateGroupInfo>
+														<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+														<CustomState Name="" ID="{83B39767-249C-4156-959D-38EA6A9807A6}" ShortID="913372300">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+														<CustomState Name="" ID="{FF542335-4EC2-4A90-9045-9A662BFEF041}" ShortID="773641304">
+															<PropertyList>
+																<Property Name="BusVolume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+														<CustomState Name="" ID="{1A9E1EC5-3E26-4DB1-84A9-5EF0EA605BD8}" ShortID="262340510"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+														<CustomState Name="" ID="{4D9757EC-9F38-4B89-A30A-BDA2DBC9329D}" ShortID="120826616"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="ENV" ID="{CF78F896-C124-4C22-B5F8-40D10068BCB6}">
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+													</StateGroupInfo>
+													<StateGroupInfo>
+														<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+														<CustomState Name="" ID="{0CA4C21C-C5F1-4C42-B152-C7D6D88E1844}" ShortID="415627911">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+														<CustomState Name="" ID="{616FCCFE-40FA-4299-8D3D-EE9205AB01EF}" ShortID="949457105">
+															<PropertyList>
+																<Property Name="BusVolume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+														<CustomState Name="" ID="{A0E7CFCC-D626-4F31-A0C8-20A241EFE6C3}" ShortID="626638524"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+														<CustomState Name="" ID="{3EA7EF2F-7068-4362-BB52-CCF0231B1294}" ShortID="660664660"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="LIF" ID="{F0174F0F-0229-4EAA-A0A8-7C3DFBC4F976}">
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+													</StateGroupInfo>
+													<StateGroupInfo>
+														<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+														<CustomState Name="" ID="{D05D126A-11A8-47EE-A454-29B833208FBE}" ShortID="656523579">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+														<CustomState Name="" ID="{06F6E71A-918C-4729-80C8-CB15E5F8DAC7}" ShortID="152123125">
+															<PropertyList>
+																<Property Name="BusVolume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+														<CustomState Name="" ID="{ABD0A70A-8014-4588-A5C7-65E04FB98F75}" ShortID="214233025"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+														<CustomState Name="" ID="{5357CA3B-3083-452E-A907-42E14DC65624}" ShortID="207661505"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{5AABCF3A-B768-4A26-9C82-AD4176E44C8E}" ShortID="419433902">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Deepness" ID="{8FB93522-F4E8-4044-96D8-F29F7C6C58B6}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{9614D5DD-CB5E-4F03-BDD8-33101A7E0B25}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>0.999</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1.64725</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>2</XPos>
+																				<YPos>15</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>3.54742</XPos>
+																				<YPos>20</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>13.32779</XPos>
+																				<YPos>16.99014</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>15.88422</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{3FC9A9EA-EB2C-43B1-8E39-394CC92E5A63}" ShortID="935914414">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Deepness" ID="{8FB93522-F4E8-4044-96D8-F29F7C6C58B6}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{069F589D-63C6-458B-B9E8-039AF107AEAF}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>0.999</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>2</XPos>
+																				<YPos>66</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>16.57238</XPos>
+																				<YPos>74</YPos>
+																				<Flags>0</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>30</XPos>
+																				<YPos>100</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</Bus>
+								<Bus Name="Normal" ID="{CA9B86B5-E4F9-46D1-A990-CC3F122EE761}">
+									<ChildrenList>
+										<Bus Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}">
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+														<CustomState Name="" ID="{760FAF18-7039-4178-A00E-DB6EB9A5F931}" ShortID="848075592">
+															<PropertyList>
+																<Property Name="BusVolume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+														<CustomState Name="" ID="{79A757A8-361F-4998-81C9-4134A568F142}" ShortID="23766610"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="PLY_Nage" ID="{62EAF518-E51B-40BE-9F1E-62121FE84251}">
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+														<CustomState Name="" ID="{A9A2A0C7-4989-4F56-8A4E-F09356613CAF}" ShortID="473850386">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+														<CustomState Name="" ID="{DBAC0700-1529-4BFA-BAFD-0345E3B08F84}" ShortID="317918881"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="AMB_SousMarine" ID="{1D88F862-1A96-48A6-AC86-FA263CE34CAE}">
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+													</StateGroupInfo>
+													<StateGroupInfo>
+														<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+														<CustomState Name="" ID="{837C80DB-E383-4F04-88C3-B6CA7F844483}" ShortID="600065439">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+														<CustomState Name="" ID="{B1AB7C85-F819-42E1-BE24-E1915B8ED3FF}" ShortID="687987409">
+															<PropertyList>
+																<Property Name="BusVolume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+														<CustomState Name="" ID="{87650C82-A726-4D90-A400-31CCBF6B9F09}" ShortID="355251050"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+														<CustomState Name="" ID="{EBD6E8AD-FD8D-4FBA-99B4-CF10CF2A8D63}" ShortID="702489303"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+									</ChildrenList>
+								</Bus>
 							</ChildrenList>
 						</Bus>
 					</ChildrenList>

@@ -14,6 +14,11 @@ public class Tutorial : MonoBehaviour
 
     public bool readyToGoOut = false;
     public bool firstTimeOutside = false;
+    public bool firstTimeWater = false;
+    public bool firstVineCollision = false;
+    public bool firstWeaponBreak = false;
+    public bool firstCreatureDeath = false;
+    public bool firstHarvest = false;
 
     public bool hasUnlockedInfos;
     public bool hasUnlockedMessages;
@@ -49,7 +54,6 @@ public class Tutorial : MonoBehaviour
                 {
                     DialogueManager.conditions[conditionName] = true;
                     conditionIsMet = true;
-                    Debug.Log("Met condition!");
                 }
             }
             if (conditionIsMet)

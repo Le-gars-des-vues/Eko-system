@@ -746,6 +746,11 @@ public class GroundPlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Water" && !player.waterPlayerController.enabled)
         {
+            if (!Tutorial.instance.firstTimeWater)
+            {
+                Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[1].text);
+                Tutorial.instance.firstTimeWater = true;
+            }
             Debug.Log("Entered water");
             player.waterPlayerController.enabled = true;
             player.groundPlayerController.enabled = false;
@@ -759,6 +764,11 @@ public class GroundPlayerController : MonoBehaviour
     {
         if (!vineParts.Contains(collision) && collision.gameObject.tag == "Vine")
         {
+            if (!Tutorial.instance.firstVineCollision)
+            {
+                Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[2].text);
+                Tutorial.instance.firstVineCollision = true;
+            }
             vineParts.Add(collision);
         }
     }

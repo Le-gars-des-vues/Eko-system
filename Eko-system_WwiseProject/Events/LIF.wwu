@@ -25,6 +25,17 @@
 								</Event>
 								<Event Name="LIF_Moustique_Mort" ID="{037FE3A8-8D54-447D-8188-492B033FC9AD}">
 									<ChildrenList>
+										<Action Name="" ID="{3C59995A-74A3-4A3E-9B24-2C5B0AA1A927}" ShortID="203103582">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Moustique_Passif" ID="{AC90C3F8-FDF0-4F92-80DC-ACB6920D5F65}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 										<Action Name="" ID="{68D969F8-0C94-490B-AD8E-B1AE241930E1}" ShortID="532195701">
 											<ReferenceList>
 												<Reference Name="Target">
@@ -99,6 +110,17 @@
 							<ChildrenList>
 								<Event Name="LIF_Rhinortue_Attaque" ID="{47B25C09-0024-4F39-A0BF-E9A3E3857233}">
 									<ChildrenList>
+										<Action Name="" ID="{24BF07D8-3356-456F-9BCE-243D387E9B0F}" ShortID="369716843">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Moustique_Passif" ID="{AC90C3F8-FDF0-4F92-80DC-ACB6920D5F65}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 										<Action Name="" ID="{96B549F3-EFB5-4DAB-A6DB-B910923AE216}" ShortID="720171198">
 											<ReferenceList>
 												<Reference Name="Target">
@@ -121,6 +143,17 @@
 								</Event>
 								<Event Name="LIF_Rhinortue_Mort" ID="{3DE5C2E4-CF41-420D-97C6-EB15796B4758}">
 									<ChildrenList>
+										<Action Name="" ID="{89040B86-7025-47BA-96A3-FEE6A45C8E9D}" ShortID="745664497">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Moustique_Passif" ID="{AC90C3F8-FDF0-4F92-80DC-ACB6920D5F65}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 										<Action Name="" ID="{C0376B14-D83C-4603-A790-15FBB11E77EF}" ShortID="492315682">
 											<ReferenceList>
 												<Reference Name="Target">
@@ -179,47 +212,250 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
-						<Folder Name="LIF_Serpent" ID="{1390643E-B2AC-4A8F-822F-84730A77A59D}" ShortID="58312922">
+						<Folder Name="LIF_Salamandre" ID="{1390643E-B2AC-4A8F-822F-84730A77A59D}" ShortID="58312922">
 							<ChildrenList>
-								<Event Name="LIF_Serpent_Attaque" ID="{ECCAE6A5-D404-4D8B-B678-948C923DC9D6}">
-									<ChildrenList>
-										<Action Name="" ID="{AAD15140-1E95-403D-879C-0E79C6150630}" ShortID="657612272">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="LIF_Serpent_Attaque" ID="{4E7E70A5-944E-4EDF-8F88-96577658E39D}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="LIF_Serpent_Degat" ID="{8ABB1A40-0AF0-43A0-B869-26702F250970}">
+								<Event Name="LIF_Salamandre_Degat" ID="{8ABB1A40-0AF0-43A0-B869-26702F250970}">
 									<ChildrenList>
 										<Action Name="" ID="{2C31729F-3BA7-473A-923D-F7D5A3CF941C}" ShortID="60737004">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="LIF_Serpent_Degat" ID="{C41F35D1-1A75-46FB-B60A-AF807D744DD5}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+													<ObjectRef Name="LIF_Salamandre_Degat" ID="{C41F35D1-1A75-46FB-B60A-AF807D744DD5}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="LIF_Serpent_Mort" ID="{891BC569-BA8C-40C2-A877-ABB228B4910D}">
+								<Event Name="LIF_Salamandre_Mort" ID="{891BC569-BA8C-40C2-A877-ABB228B4910D}">
 									<ChildrenList>
 										<Action Name="" ID="{B5936357-63B7-45D5-9508-1F3A7988E4E2}" ShortID="494127809">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="LIF_Serpent_Mort" ID="{F0E0D2B0-CED1-4BF1-B7A5-155972C5BD8B}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+													<ObjectRef Name="LIF_Salamandre_Mort" ID="{F0E0D2B0-CED1-4BF1-B7A5-155972C5BD8B}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="LIF_Serpent_Passif" ID="{C90934F1-74AB-4847-8DEB-37B29F4221F9}">
+								<Event Name="LIF_Salamandre_Passif" ID="{C90934F1-74AB-4847-8DEB-37B29F4221F9}">
 									<ChildrenList>
 										<Action Name="" ID="{DC9B4D08-9337-4EA7-BADB-1384538F2A83}" ShortID="380305654">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="LIF_Serpent_Passif" ID="{5BE3014F-70C7-47A4-9FE2-568866AC50D5}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+													<ObjectRef Name="LIF_Salamandre_Passif" ID="{5BE3014F-70C7-47A4-9FE2-568866AC50D5}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Salamandre_Touche" ID="{DD1D318E-3C5A-4479-9557-A3172613C2A8}">
+									<ChildrenList>
+										<Action Name="" ID="{8A567F32-2844-4AD4-9032-24F9F833BB50}" ShortID="572783722">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Salamandre_Touche" ID="{4E7E70A5-944E-4EDF-8F88-96577658E39D}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="LIF_Singe" ID="{186CE608-E2FF-4958-9EF9-54C8BB1431F0}" ShortID="756841294">
+							<ChildrenList>
+								<Event Name="LIF_Singe_Attaque" ID="{4248D3CC-2EDC-4967-B17B-8EC03426A9A9}">
+									<ChildrenList>
+										<Action Name="" ID="{7A18E75E-316B-43D9-BDA5-11842A475D88}" ShortID="1061333049">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Singe_Attaque" ID="{C9B2ECFD-5ACE-4AF0-AB7F-CFE35ADCA1AD}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Singe_Degat" ID="{6D1CB37F-8C2C-43C8-A25C-FE657FA15F51}">
+									<ChildrenList>
+										<Action Name="" ID="{522F21C5-3D44-4313-9C0E-BB27D68A6D69}" ShortID="887564841">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Singe_Degat" ID="{B6FF653A-85B6-4A9F-A7C1-9187FEF8A888}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Singe_Mort" ID="{2CB8529D-0863-4666-897A-096E665FE907}">
+									<ChildrenList>
+										<Action Name="" ID="{8846E234-991F-4D8B-875C-75C12C9C698E}" ShortID="968159954">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Singe_Mort" ID="{1B5C0DE2-F0F1-427A-B5D8-FED1A8689D2E}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Singe_Passif" ID="{AE2EE708-90D5-464E-944E-461AA88AAA0E}">
+									<ChildrenList>
+										<Action Name="" ID="{AD1A49F7-D4A8-4996-B2AA-18C87B3E2C4E}" ShortID="883909300">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Singe_Passif" ID="{6BA0D814-18DF-4086-A50D-3FBED8BC5A25}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Singe_Pas" ID="{BE030D75-C534-4E0C-94EC-E7EF6FC896A5}">
+									<ChildrenList>
+										<Action Name="" ID="{0C586B20-C4DC-4AFF-97E9-D0812B894973}" ShortID="421541269">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Singe_Pas" ID="{5FA5BF51-A0A8-404B-9BCB-896694E96B6E}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="LIF_Meduse" ID="{51DB4145-2FEA-45F4-A77B-460A0A5AB578}" ShortID="27768195">
+							<ChildrenList>
+								<Event Name="LIF_Meduse_Attaque" ID="{8CABF2A7-68A7-4FAD-BE55-A8D00DD31C13}">
+									<ChildrenList>
+										<Action Name="" ID="{9F7EF296-1065-4E00-9A94-F7CB58AB6CAD}" ShortID="218505861">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Meduse_Attaque" ID="{4A499276-ECB0-47D7-91CF-86774F16031F}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Meduse_Degat" ID="{F61951DB-9692-4B0B-81A6-73FBBAE68AFC}">
+									<ChildrenList>
+										<Action Name="" ID="{69442E43-2A4B-4348-8A2C-1634FBCA9442}" ShortID="798714188">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Meduse_Degat" ID="{0B95C592-27EC-4DED-86F5-0636CDCC61EF}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Meduse_Mort" ID="{D94F91A0-5A98-4029-9CCA-E72E315A5DD5}">
+									<ChildrenList>
+										<Action Name="" ID="{8C2547AA-B18B-4AD9-A3BD-68598EB12C3F}" ShortID="968686466">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Meduse_Mort" ID="{519A00BE-CBAD-4FE2-9162-4428DCED94C8}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Meduse_Passif" ID="{9ED9E0F3-EB51-4DEC-9ACA-A3DABAF0360D}">
+									<ChildrenList>
+										<Action Name="" ID="{BADFF387-DC66-40F1-810E-31D5C850EABC}" ShortID="956695847">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Meduse_Passif" ID="{55F1F008-CB76-4EFB-9737-5B3BB5A895F1}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="LIF_Requin" ID="{4EE5FF28-C04E-4E7C-9AE5-C7B16BF9688A}" ShortID="985061562">
+							<ChildrenList>
+								<Event Name="LIF_Requin_Attaque" ID="{DBD70C2B-E7BD-417A-A072-CD3D01CED273}">
+									<ChildrenList>
+										<Action Name="" ID="{5D82A6C4-B869-461A-ADD7-512EDFB34FBC}" ShortID="313309971">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Requin_Attaque" ID="{7CAAE717-3F4B-4025-BFE7-E9A4BF0A929E}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Requin_Degat" ID="{53B2DA06-A50F-42D3-88C6-B69C471934AC}">
+									<ChildrenList>
+										<Action Name="" ID="{CC0B83C4-5F32-4674-ADB8-8FB8843C3A97}" ShortID="100525672">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Requin_Degat" ID="{26B2C62C-68A0-432D-8A9A-5463A135EE25}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Requin_Mort" ID="{844B3C27-60AB-4F25-8FB8-91C64B0E1349}">
+									<ChildrenList>
+										<Action Name="" ID="{43F8A4AD-03C1-4A10-93E6-6446E4FED25C}" ShortID="932061246">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Requin_Mort" ID="{81EADDD9-774E-4D26-9F56-5DB60C6B5270}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Requin_Passif" ID="{6891F76E-3D94-41FE-AB63-C7DA57CD9E0F}">
+									<ChildrenList>
+										<Action Name="" ID="{7C876358-476E-49E5-9F90-C5051BFE1BB1}" ShortID="189041033">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Requin_Passif" ID="{D8701440-8515-484A-9574-FC345FF46EE1}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="LIF_Poisson" ID="{8CC47507-D252-4050-A219-1DCE2B9AE6E0}" ShortID="1020534692">
+							<ChildrenList>
+								<Event Name="LIF_Poisson_Attaque" ID="{234C728D-51E3-4042-9863-2A8E17DEB92B}">
+									<ChildrenList>
+										<Action Name="" ID="{621BDC97-CF45-4967-B5BA-9C7241F528F7}" ShortID="651781532">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Poisson_Attaque" ID="{332900F5-F73F-4FE7-BF7A-A60153165D8C}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Poisson_Degat" ID="{8380AFC3-874E-4D07-A7B9-AC512D961FD6}">
+									<ChildrenList>
+										<Action Name="" ID="{46F12FCA-1109-44BA-8457-408DE716490C}" ShortID="408660794">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Poisson_Degat" ID="{E6DE2F3C-71E5-4029-B0D0-0300E0FD4ADD}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Poisson_Mort" ID="{37A7470F-AC54-4805-8D31-F05952ED1A38}">
+									<ChildrenList>
+										<Action Name="" ID="{F5503458-E782-428C-A557-EAC4A38EABE2}" ShortID="469911101">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Poisson_Mort" ID="{807986F0-1EAA-491F-8C9B-CA842AD41FED}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="LIF_Poisson_Passif" ID="{E31AA9AB-6205-46EF-89D7-01E1931F564F}">
+									<ChildrenList>
+										<Action Name="" ID="{F7BC922B-35F8-4A36-89D6-90B0CAC38B1B}" ShortID="704868141">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LIF_Poisson_Passif" ID="{E38566B1-F070-479B-AAF3-095EB4C44202}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

@@ -186,7 +186,6 @@ public class QuickMenu : MonoBehaviour
             infoMenuActive = false;
 
             float alpha = infoMenuActive ? 255 : 0;
-            Debug.Log(alpha);
             dayText.color = new Color(dayText.color.r, dayText.color.g, dayText.color.b, alpha);
             quotaText.color = new Color(quotaText.color.r, quotaText.color.g, quotaText.color.b, alpha);
             timerText.color = new Color(timerText.color.r, timerText.color.g, timerText.color.b, alpha);

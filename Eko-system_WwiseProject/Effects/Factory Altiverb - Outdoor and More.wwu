@@ -593,7 +593,7 @@
 												<Value>0</Value>
 											</ValueList>
 										</Property>
-										<Property Name="IRConvolutionSmooth" Type="Real32" Value="53"/>
+										<Property Name="IRConvolutionSmooth" Type="Real32" Value="79"/>
 										<Property Name="IRConvolutionStop" Type="Real64" Value="2.47293925750395"/>
 										<Property Name="IRConvolutionThreshold" Type="Real32">
 											<ValueList>
@@ -605,8 +605,9 @@
 												<Value>-3</Value>
 											</ValueList>
 										</Property>
-										<Property Name="IRLevel" Type="Real32" Value="-2"/>
-										<Property Name="IRStretch" Type="Real32" Value="149"/>
+										<Property Name="IRLevel" Type="Real32" Value="3.2"/>
+										<Property Name="IRStretch" Type="Real32" Value="106"/>
+										<Property Name="PreDelay" Type="Real32" Value="31"/>
 									</PropertyList>
 									<ChildrenList>
 										<PluginMediaSource Name="AE_ForestAuterlitz_DenseClose" ID="{CDA065EA-748A-47AE-8F5B-7D4B29F3A23E}">
@@ -619,6 +620,80 @@
 											</MediaIDList>
 										</PluginMediaSource>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{0CE3E58C-EF7F-49AC-BD8D-7A3E83456BD6}" ShortID="967118955">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="DryLevel"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="New Modulator LFO" ID="{FF186DA7-1948-4C17-AC1A-AE00034CC16A}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{5DABB962-C185-4D47-A743-49503A013360}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-23.96116146845</YPos>
+																				<Flags>21</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>2.69287113562308</YPos>
+																				<Flags>53</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{4D6E110E-B1CB-4192-A408-5B4D7506501E}" ShortID="608043984">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="DryLevel"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="New Modulator LFO_02" ID="{563ECDED-FD7C-4975-97A5-517E2CB14045}" WorkUnitID="{2CA08B30-7B79-454B-A2A8-8341F8069B2D}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{D090B039-1AEE-416E-84BF-2837716022E2}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-2.0173672769654</YPos>
+																				<Flags>21</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>-8.8021248353168</YPos>
+																				<Flags>53</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
 									<PluginData>
 	<ConvolutionData>
 		<CurveList Version="1">

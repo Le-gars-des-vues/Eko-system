@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,16 +14,16 @@ public class DialogueSpeaker : MonoBehaviour
 
     public delegate void OnDialogueEnd();
     public OnDialogueEnd onDialogueEnd;
+    public OnDialogueEnd onNestedDialogueEnd;
 
     public List<DialogueSequence> dialogueSequences = new List<DialogueSequence>();
+    DialogueSequence currentSequence;
 
     public bool isSpeaking;
     public bool isReadyToSpeak = false;
     bool hasACondition;
     [SerializeField] float startDialogueDistance = 4;
     bool pressedKey;
-    float speakingTime;
-    [SerializeField] float speakCooldown = 2;
 
     public AK.Wwise.Event speechSound;
     public AK.Wwise.Event stopSound;
@@ -145,17 +146,17 @@ public class DialogueSpeaker : MonoBehaviour
         }
     }
 
-    public void PrepareDialogue(List<Dialogue> dialogueSequence)
+    public void PrepareDialogue(DialogueSequence dialogueSequence)
     {
-        currentDialogue = dialogueSequence;
+        currentSequence = dialogueSequence;
+        currentDialogue = dialogueSequence.dialogueSequence;
         dialogueIndex = 0;
         isReadyToSpeak = true;
+        dialogueEnded = false;
     }
 
     public void StartDialogue()
     {
-        speakingTime = Time.time;
-        dialogueEnded = false;
         DialogueManager.instance.dialogueRunning = true;
         player.isInDialogue = currentDialogue[dialogueIndex].dialogueMode;
         UI.SetActive(true);
@@ -189,7 +190,7 @@ public class DialogueSpeaker : MonoBehaviour
                 UI.GetComponent<DialogueToolTip>().ChangeTooltip(2);
             else
             {
-                if (!currentDialogue[dialogueIndex + 1].dialogueMode)
+                if (!currentDialogue[dialogueIndex + 1].conditionIsMet)
                     UI.GetComponent<DialogueToolTip>().ChangeTooltip(3);
                 else
                     UI.GetComponent<DialogueToolTip>().ChangeTooltip(0);
@@ -230,15 +231,21 @@ public class DialogueSpeaker : MonoBehaviour
         if (stopSound != null)
             stopSound.Post(transform.parent.gameObject);
 
+        UI.SetActive(false);
+        isSpeaking = false;
+        DialogueManager.instance.dialogueRunning = false;
+
         currentDialogue = null;
         dialogueIndex = 0;
 
         if (dialogueEnded)
+            onNestedDialogueEnd?.Invoke();
+        onNestedDialogueEnd = null;
+
+        if (dialogueEnded)
             onDialogueEnd?.Invoke();
         onDialogueEnd = null;
-        UI.SetActive(false);
-        isSpeaking = false;
-        DialogueManager.instance.dialogueRunning = false;
+
         if (isZoomedIn)
         {
             isZoomedIn = false;
@@ -288,7 +295,6 @@ public class DialogueSpeaker : MonoBehaviour
         isSpeaking = false;
         if (stopSound != null)
             stopSound.Post(transform.parent.gameObject);
-        speakingTime = Time.time;
         if (dialogueIndex == currentDialogue.Count - 1)
             UI.GetComponent<DialogueToolTip>().ChangeTooltip(2);
         else

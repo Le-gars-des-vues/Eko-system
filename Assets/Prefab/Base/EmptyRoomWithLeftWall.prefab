@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1019012503
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 1bb4f92cfc7a81842b44037da588e68d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1019012503
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d7829da90f6e5f64c81a2f11f7e71695, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -228,19 +228,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.03310001
+      value: 0.017499983
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.052898
+      value: -21.0525
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.5388
+      value: 1.5376
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.2598
+      value: 21.247099
       objectReference: {fileID: 0}
     - target: {fileID: 3155542606631425395, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_SortingOrder
@@ -296,19 +296,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.025749981
+      value: 0.022800028
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.05875
+      value: -21.05765
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.3457501
+      value: 1.3547001
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.06565
+      value: 21.06405
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -319,8 +319,32 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4297572701987026071, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7843374865074848462}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6770475984696658017, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 903086690905375036}
   m_SourcePrefab: {fileID: 100100000, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+--- !u!1 &1429429568047903982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6770475984696658017, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+  m_PrefabInstance: {fileID: 5630566710085368975}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &903086690905375036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429429568047903982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33099e8a8993104d9a08f20d9f8b32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light2D: {fileID: 0}
+  maxInterval: 0.5
+  maxFlicker: 0.2
+  isFlickering: 1
 --- !u!4 &8468949887560255512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4297572701987026071, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}

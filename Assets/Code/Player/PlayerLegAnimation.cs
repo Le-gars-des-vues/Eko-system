@@ -91,7 +91,6 @@ public class PlayerLegAnimation : MonoBehaviour
                     isRunning = true;
                 else if ((!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) && isRunning)
                 {
-                    Debug.Log("Stopped Running");
                     isRunning = false;
                     currentTarget.position = transform.position;
                 }
