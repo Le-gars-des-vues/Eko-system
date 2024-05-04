@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2A330AD4-BBC4-4413-ADF4-FB035D7210AC}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="MUS" ID="{2A330AD4-BBC4-4413-ADF4-FB035D7210AC}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="10"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Event Name="MUS_MenuPrincipal" ID="{ADFCBADD-921E-4830-B25D-B26E6B2F6B41}">
+					<ChildrenList>
+						<Action Name="" ID="{CA231053-3216-428C-B000-4C74074578CC}" ShortID="1067886944">
+							<PropertyList>
+								<Property Name="FadeOutCurve" Type="int16" Value="8"/>
+								<Property Name="FadeTime" Type="Real64" Value="3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MUS_MenuPrincipal" ID="{E9ADD2B3-26CE-4595-BBCB-8A7D578EB479}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="MUS_Alerte" ID="{10713767-28A2-439C-84FF-90BF76B78365}" ShortID="538528940">
+					<ChildrenList>
+						<Event Name="MUS_Alerte" ID="{51E7A21B-53DE-4099-A755-652A47DC9984}">
+							<ChildrenList>
+								<Action Name="" ID="{340A8590-F7DA-4AD2-B84C-FB625F20B7AE}" ShortID="961042758">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MUS_Alerte" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="MUS_Alerte_Stop" ID="{D4DDCDA7-B1EE-4D8F-AC86-615AD0899203}">
+							<ChildrenList>
+								<Action Name="" ID="{82654A6C-A2FD-46E3-BCF5-75EAABC5BEEC}" ShortID="544633870">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="8"/>
+										<Property Name="FadeTime" Type="Real64" Value="3"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MUS_Alerte" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
