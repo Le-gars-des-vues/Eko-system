@@ -35,10 +35,10 @@ public class CraftingBench : MonoBehaviour
                     if (ArrowManager.instance.targetObject == gameObject)
                     {
                         crafting.OnValueChanged();
-                        if (!player.inventoryOpen)
-                            player.ShowOrHideInventory(false);
                         if (!player.craftingIsOpen)
                             player.ShowOrHideCrafting();
+                        if (!player.inventoryOpen)
+                            player.ShowOrHideInventory(true);
                     }
                 }
                 else

@@ -224,7 +224,6 @@ public class TardidogMovement : MonoBehaviour
                     for (int i = 0; i < rayCount; i++)
                     {
                         float ledgeDirection = nextPointIsRight ? -1 : 1;
-                        Debug.Log(nextPointIsRight);
                         // Cast a ray in the calculated direction
                         RaycastHit2D hit = Physics2D.Raycast(new Vector2(ledgePos.x + 1, ledgePos.y + ((float)i / 3)), Vector2.left * ledgeDirection, rayDistance, LayerMask.GetMask("Ground"));
 

@@ -297,13 +297,19 @@ public class InventoryController : MonoBehaviour
         }
         else
         {
-            selectedItem = inventoryItem;
+            Vector2Int? posOnGrid = playerInventories[0].FindSpaceForObject(inventoryItem);
+            if (posOnGrid == null)
+            {
+                selectedItem = inventoryItem;
 
-            rectTransform = inventoryItem.GetComponent<RectTransform>();
-            rectTransform.SetParent(canvasTransform);
-            rectTransform.SetAsLastSibling();
+                rectTransform = inventoryItem.GetComponent<RectTransform>();
+                rectTransform.SetParent(canvasTransform);
+                rectTransform.SetAsLastSibling();
+                return;
+            }
+            playerInventories[0].PlaceItem(inventoryItem, posOnGrid.Value.x, posOnGrid.Value.y);
         }
-
+        crafting.OnValueChanged();
         //int selectedItemID = recipeChoice;
         //inventoryItem.Set(craftables[selectedItemID], defaultItemGrid);
     }

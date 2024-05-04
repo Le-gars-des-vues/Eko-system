@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     bool fourMinLeft;
     bool twoMinLeft;
 
-    public GameObject theCharacter;
+    public PlayerPermanent player;
 
     //public List<GameObject> theRooms = new List<GameObject>();
     public List<Planters> planters = new List<Planters>();
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
     {
         TimeLeft = initialTime;
         TimerOn = false;
-        theCharacter = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
         cycleCount = 0;
         cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
 
@@ -228,9 +228,9 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Time is UP!");
                 TimeLeft = 0;
                 TimerOn = false;
-                if (!theCharacter.GetComponent<PlayerPermanent>().isInBase)
+                if (!player.isInBase)
                 {
-                    theCharacter.GetComponent<PlayerPermanent>().Death();
+                    player.Death();
                     AudioManager.instance.PlaySound(AudioManager.instance.gameOverTimer, Camera.main.gameObject);
                 }
                 else

@@ -6,12 +6,10 @@ public class CombatUpgrade1 : MonoBehaviour
 {
     bool isActive = false;
     InventoryItem item;
-    PlayerPermanent player;
 
     private void OnEnable()
     {
         item = GetComponent<InventoryItem>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
     // Update is called once per frame
@@ -31,6 +29,6 @@ public class CombatUpgrade1 : MonoBehaviour
 
     void ActivateUpgrade(bool activated)
     {
-        player.hasOptics = activated;
+        GameManager.instance.player.hasOptics = activated;
     }
 }

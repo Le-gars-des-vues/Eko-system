@@ -188,7 +188,6 @@ public class CraftingSystem : MonoBehaviour
             }
             AudioManager.instance.PlaySound(AudioManager.instance.craftingSound, gameObject);
             theController.GetComponent<InventoryController>().CreateRecipeItem(laRecette, gameObject);
-            GetComponent<CraftingManager>().OnValueChanged();
         }
         if (GetComponent<CraftingManager>().knownRecipes.Count > 0)
             CraftCheck();
