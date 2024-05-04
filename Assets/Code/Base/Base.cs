@@ -22,15 +22,13 @@ public class Base : MonoBehaviour
     [SerializeField] Animator insideDoorsAnim;
     [SerializeField] GameObject buildButton;
 
+    [SerializeField] GameObject background;
     [SerializeField] GameObject baseBackground;
     [SerializeField] Light2D pixelLight;
 
     public bool isSceneLoaded = true;
 
     public bool isInside;
-
-    [SerializeField] GameObject tooltipEnter;
-    [SerializeField] GameObject tooltipExit;
 
     // Start is called before the first frame update
     void Awake()
@@ -40,6 +38,7 @@ public class Base : MonoBehaviour
         else
             instance = this;
 
+        background = GameObject.Find("ParallaxBackground");
         if (isSceneLoaded)
         {
             transform.position = new Vector2(135.3f, 4.6f);
@@ -77,7 +76,6 @@ public class Base : MonoBehaviour
                         AudioManager.instance.PlaySound(AudioManager.instance.porteOuverture, leftDoorAnim.gameObject);
                         leftDoorAnim.SetBool("isOpen", true);
                         rightDoorAnim.SetBool("isOpen", true);
-                        tooltipEnter.SetActive(true);
                     }
                     else if (Vector2.Distance(player.transform.position, door) > distanceOpenThreshold && outsideDoorOpened)
                     {
@@ -85,36 +83,25 @@ public class Base : MonoBehaviour
                         AudioManager.instance.PlaySound(AudioManager.instance.porteFermeture, leftDoorAnim.gameObject);
                         leftDoorAnim.SetBool("isOpen", false);
                         rightDoorAnim.SetBool("isOpen", false);
-                        tooltipEnter.SetActive(false);
                     }
                 }
                 else
                 {
-                    if (!DialogueManager.instance.dialogueRunning)
+                    //Debug.Log(Vector2.Distance(player.transform.position, door));
+                    if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < distanceOpenThreshold && !insideDoorOpened)
                     {
-                        //Debug.Log(Vector2.Distance(player.transform.position, door));
-                        if (Vector2.Distance(player.transform.position, baseEntryPoint.position) < distanceOpenThreshold && !insideDoorOpened)
+                        if (GameManager.instance.TimeLeft > 0)
                         {
-                            if (GameManager.instance.TimeLeft > 0)
-                            {
-                                insideDoorOpened = true;
-                                AudioManager.instance.PlaySound(AudioManager.instance.porteOuverture, insideDoorsAnim.gameObject);
-                                insideDoorsAnim.SetBool("isOpen", true);
-                                tooltipExit.SetActive(true);
-                            }
-                        }
-                        else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) > distanceOpenThreshold && insideDoorOpened)
-                        {
-                            insideDoorOpened = false;
-                            AudioManager.instance.PlaySound(AudioManager.instance.porteFermeture, insideDoorsAnim.gameObject);
-                            insideDoorsAnim.SetBool("isOpen", false);
-                            tooltipExit.SetActive(false);
+                            insideDoorOpened = true;
+                            AudioManager.instance.PlaySound(AudioManager.instance.porteOuverture, insideDoorsAnim.gameObject);
+                            insideDoorsAnim.SetBool("isOpen", true);
                         }
                     }
-                    else
+                    else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) > distanceOpenThreshold && insideDoorOpened)
                     {
-                        if (tooltipExit.activeSelf)
-                            tooltipExit.SetActive(false);
+                        insideDoorOpened = false;
+                        AudioManager.instance.PlaySound(AudioManager.instance.porteFermeture, insideDoorsAnim.gameObject);
+                        insideDoorsAnim.SetBool("isOpen", false);
                     }
                 }
 
