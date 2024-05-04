@@ -28,7 +28,7 @@ public class CraftingSystem : MonoBehaviour
     private bool mat3Complete;
 
     public GameObject theController;
-
+    [SerializeField] Animator craftingAnim;
 
     private void Start()
     {
@@ -113,7 +113,6 @@ public class CraftingSystem : MonoBehaviour
 
     public void Craft()
     {
-
         if (mat1Complete && mat2Complete && mat3Complete)
         {
             int i1 = 0;
@@ -193,5 +192,10 @@ public class CraftingSystem : MonoBehaviour
         }
         if (GetComponent<CraftingManager>().knownRecipes.Count > 0)
             CraftCheck();
+    }
+
+    public void CraftButton()
+    {
+        craftingAnim.SetTrigger("isCrafting");
     }
 }

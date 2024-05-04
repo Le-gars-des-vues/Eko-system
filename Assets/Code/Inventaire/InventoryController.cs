@@ -103,6 +103,11 @@ public class InventoryController : MonoBehaviour
         {
             LeftMouseButtonPress();
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            RightMouseButtonPress();
+        }
     }
 
     void ShowItemInfo()
@@ -383,6 +388,29 @@ public class InventoryController : MonoBehaviour
             }
             else
                 return;
+        }
+    }
+
+    void RightMouseButtonPress()
+    {
+        Debug.Log("Click worked!");
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().marketIsOpen)
+        {
+            Debug.Log("Market is open");
+            if (selectedItemGrid == playerInventories[0])
+            {
+                Debug.Log("Selected item grid is inventory");
+                Vector2Int tileGridPosition = GetTileGridPosition();
+                InventoryItem itemTotransfer = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
+                if (itemTotransfer != null)
+                {
+                    Debug.Log("item found!");
+                    AudioManager.instance.PlaySound(AudioManager.instance.inventaireSwap, gameObject);
+                    GameObject.Find("Vente").transform.Find("GridVente").GetComponent<ItemGrid>().InsertItem(itemTotransfer);
+                }
+                else
+                    Debug.Log("No item here");
+            }
         }
     }
 
