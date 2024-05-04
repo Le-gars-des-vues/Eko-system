@@ -85,7 +85,7 @@ public class ItemGrid : MonoBehaviour, IDataPersistance
         return toReturn;
     }
 
-    public void CleanGridReference(InventoryItem item)
+    private void CleanGridReference(InventoryItem item)
     {
         for (int ix = 0; ix < item.WIDTH; ix++)
         {
@@ -138,8 +138,7 @@ public class ItemGrid : MonoBehaviour, IDataPersistance
             if (inventoryItem.itemData.itemName == ressource && Recipes.discoveredRessources[ressource] == false)
             {
                 Recipes.discoveredRessources[ressource] = true;
-                PromptManager.instance.SendNotification("NEW RESSOURCE!", "DISCOVERED: " + inventoryItem.itemData.itemName, inventoryItem.itemData.itemIcon);
-                //Debug.Log(ressource + " has been discovered");
+                Debug.Log(ressource + " has been discovered");
             }
         }
 
@@ -203,10 +202,19 @@ public class ItemGrid : MonoBehaviour, IDataPersistance
             for (int y = 0; y < height; y++)
             {
                 if (inventoryItemSlot[posX + x, posY + y] != null)
-                    return false;
+                {
+                   
+                 return false;
+                    
+
+                }
+
+
             }
         }
+
         return true;
+
     }
 
     public InventoryItem CheckIfItemPresent(int posX, int posY)
@@ -214,6 +222,7 @@ public class ItemGrid : MonoBehaviour, IDataPersistance
         if (inventoryItemSlot[posX, posY] == null)
         {
             return null;
+
         }
         else
         {

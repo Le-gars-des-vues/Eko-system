@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class PromptManager : MonoBehaviour
@@ -14,7 +13,6 @@ public class PromptManager : MonoBehaviour
     public delegate void OnButtonNull();
     public static OnButtonNull onButtonNull;
 
-    [Header("Prompt Variables")]
     [SerializeField] GameObject prompt;
     [SerializeField] TextMeshProUGUI promptText;
     [SerializeField] TextMeshProUGUI button1Text;
@@ -22,16 +20,6 @@ public class PromptManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI button3Text;
 
     public bool promptOpen;
-
-    [Header("Notification Variables")]
-    [SerializeField] GameObject notification;
-    [SerializeField] TextMeshProUGUI notificationTitle;
-    [SerializeField] TextMeshProUGUI notificationText;
-    [SerializeField] Image notificationImage;
-    [SerializeField] float notitificationCooldown;
-    float notificationTime;
-    [SerializeField] Animator anim;
-    bool notified;
 
     private void Awake()
     {
@@ -49,28 +37,6 @@ public class PromptManager : MonoBehaviour
         button2Text = prompt.transform.Find("Button02").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         button3Text = prompt.transform.Find("Button03").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         prompt.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (notified)
-        {
-            if (Time.time - notificationTime > notitificationCooldown)
-            {
-                notified = false;
-                anim.SetBool("isNotified", false);
-            }
-        }
-    }
-
-    public void SendNotification(string title, string textToWrite, Sprite sprite)
-    {
-        notificationTitle.text = title;
-        notificationText.text = textToWrite;
-        notificationImage.sprite = sprite;
-        anim.SetBool("isNotified", true);
-        notified = true;
-        notificationTime = Time.time;
     }
 
     public void CreateNewPrompt(Prompt thePrompt)

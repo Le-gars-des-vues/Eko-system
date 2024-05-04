@@ -9,83 +9,80 @@
 			<ChildrenList>
 				<Folder Name="PLY_Attaque" ID="{8532FBF3-20D6-47B2-B635-77A64456EF5C}" ShortID="835878579">
 					<ChildrenList>
-						<Event Name="PLY_Attaque_Arc" ID="{F3FD2569-9665-4E99-8FD5-541B0CC0BFC9}">
+						<Folder Name="PLY_Attaque_Init" ID="{7A49F987-39E8-47D4-8480-61A02297DD62}" ShortID="612789876">
 							<ChildrenList>
-								<Action Name="" ID="{6AB4A352-8D71-4F98-8868-069AD3516118}" ShortID="804828205">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Attaque_Arc" ID="{2789234F-3FA9-454F-BCFE-01689893D13B}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
+								<Event Name="PLY_Attaque_Init_Grenade" ID="{329D3101-D42D-43A0-AF09-44A0586A53AB}">
+									<ChildrenList>
+										<Action Name="" ID="{06E06D0E-65A0-4987-8577-9E8F8C3B1035}" ShortID="851869862">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_JoueurVise" ID="{B948AC85-AB9F-43F9-8890-A4E5DD86BBE0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{7EE9E1F8-3F76-47B9-9099-05CB77AE5B85}" ShortID="333287310">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY_Attaque_Init_Grenade" ID="{02A6330B-3B76-415A-B6BA-2CCE973B6EEE}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="PLY_Attaque_Init_Lance" ID="{FFD8069C-97F5-4F9A-AD3D-ABAC1994025F}">
+									<ChildrenList>
+										<Action Name="" ID="{552CAC2F-8BB9-4795-A9D8-6686B0D219C2}" ShortID="818623716">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_JoueurVise" ID="{B948AC85-AB9F-43F9-8890-A4E5DD86BBE0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{5DE169FD-7558-4620-80FA-9153BC7D884E}" ShortID="39005143">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY_Attaque_Init_Lance" ID="{F9CF41E8-B74D-48C2-B7F1-8E14EAD3C42E}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Attaque_FlashGrenade" ID="{2C4F3A60-FF48-48DB-AB9C-DEDEDBA9247A}">
+						</Folder>
+						<Folder Name="PLY_Attaque_Relache" ID="{16FF1F24-6ABE-48B9-87F1-A797CF754B79}" ShortID="816538957">
 							<ChildrenList>
-								<Action Name="" ID="{7AE27A17-C347-44E1-9F3B-C24D37A3EA1E}" ShortID="920280796">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Attaque_FlashGrenade" ID="{0E80A91F-0708-413A-A6F1-48C1EAC59650}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
+								<Event Name="PLY_Attaque_Relache_Grenade" ID="{8FE58CCF-36EB-486E-862A-80D294E756D8}">
+									<ChildrenList>
+										<Action Name="" ID="{18C3DB91-043A-4F8E-91B4-F3B4EC3322FD}" ShortID="934316890">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY_Attaque_Relache_Grenade" ID="{6247F7A0-5237-446E-A5E9-5F9C4A9FC9E2}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="PLY_Attaque_Relache_Lance" ID="{5616D111-553A-4DDA-9E97-F5065EBB3E90}">
+									<ChildrenList>
+										<Action Name="" ID="{0BA2798D-FD49-4018-9142-27A1DFF9B750}" ShortID="898443274">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY_Attaque_Relache_Lance" ID="{78EEC4A4-C97D-4120-A615-B8D4BD6E5F03}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Attaque_Harpon" ID="{3863BA93-6CF9-4DC3-B894-AD069F568BD1}">
-							<ChildrenList>
-								<Action Name="" ID="{976A5518-0D63-42B5-84BD-BB5AA6463AFF}" ShortID="285069467">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Attaque_Harpon" ID="{4DE5A517-5AF6-4DB9-983D-0AA676A18D5E}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Attaque_Lance" ID="{3787C7BF-1C8B-4238-8ED5-9A6755D535BE}">
-							<ChildrenList>
-								<Action Name="" ID="{46ADEDAC-D594-48E8-8B9E-FD8671AC287D}" ShortID="871133463">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Attaque_Lance" ID="{2C6AE1D5-F8CB-424B-A35C-42AD2D031412}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Attaque_Machette" ID="{A60E8FE3-0B30-4419-8BC9-A5B8F1A390B2}">
-							<ChildrenList>
-								<Action Name="" ID="{410AFD4E-9CFF-4FCD-A4CD-69F22A70BE8A}" ShortID="118698667">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Attaque_Machette" ID="{1670D5F7-220C-46B5-832F-E84504149347}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Attaque_Poing" ID="{3FE0261E-0271-4AE2-9253-2F74157F9C17}">
-							<ChildrenList>
-								<Action Name="" ID="{64B68649-B100-4893-A611-A84C96840468}" ShortID="918849422">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Attaque_Poing" ID="{E7F0D124-E95E-4F10-A8F1-FFCDBC6EB10E}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Attaque_Trident" ID="{511EC02E-BA9B-4F8C-A795-69C665AB0D1F}">
-							<ChildrenList>
-								<Action Name="" ID="{BD7C5475-65C1-48F8-80B9-BC61E44208C7}" ShortID="366869338">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Attaque_Trident" ID="{905437F3-457E-465C-9AE3-8B23E0356726}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="PLY_Multitool" ID="{086B991F-D386-4F34-9486-8B07303E0FE2}" ShortID="402475253">
@@ -109,7 +106,7 @@
 										<Action Name="" ID="{520ED245-3B3E-4867-8C7C-3AB0E5745967}" ShortID="866413275">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Bark" ID="{DB5D17EB-6146-47D0-BD2A-4197CE5237AB}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+													<ObjectRef Name="PLY_Multitool_Ecorce" ID="{DB5D17EB-6146-47D0-BD2A-4197CE5237AB}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -276,259 +273,6 @@
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="PLY_Multitool_Algue" ID="{CC6EEE6A-5708-44A7-9863-049BD0F97B42}">
-									<ChildrenList>
-										<Action Name="" ID="{9A3FC3A1-84CB-42E2-99E2-C360172A07E5}" ShortID="101931481">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Algue" ID="{4018D5E9-94FA-4068-9343-13F2AFCAAB68}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{6F1102C8-FC59-4461-BEB6-9F101983BF78}" ShortID="483840606">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_Bone" ID="{3EDB3163-1AFD-4C28-B255-E4F103FEF356}">
-									<ChildrenList>
-										<Action Name="" ID="{ACECC059-1897-47C2-9586-E2559A1481F5}" ShortID="707793479">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Bone" ID="{1A2CFA5F-3619-43AE-A7A0-D868CF84BEC4}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{B87A9007-97E5-4F46-88C8-8329051F5223}" ShortID="738960121">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_Lushalite" ID="{0E9447F8-C738-424B-92FD-6EC10E556FF7}">
-									<ChildrenList>
-										<Action Name="" ID="{9705720B-DAB7-49BA-9A7A-6B2CCAE0E1A1}" ShortID="831463145">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Lushalite" ID="{258DF244-FCE5-481D-8862-A7AE2CF1693E}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{78C6BEE0-3007-4507-B7C7-674E9EA0DE62}" ShortID="682279398">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_Scale" ID="{209D82A2-D99C-4388-8DF9-F748286623AE}">
-									<ChildrenList>
-										<Action Name="" ID="{B1E8BF1C-93E4-4B4C-ADCB-39C26209E87B}" ShortID="841472223">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Scale" ID="{1D14FD9B-FAEA-4F47-87F2-369754251A15}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{4B6EB37C-CEE5-4545-850B-45AAA54EEB20}" ShortID="847576665">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_Spit" ID="{F4D3447F-83DE-49ED-8F0F-77DAB60CAFAD}">
-									<ChildrenList>
-										<Action Name="" ID="{008E3C61-81B2-45A2-80BD-BAFCF423CEB9}" ShortID="857919090">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Spit" ID="{EF00B62C-C0FF-49FC-B159-95E489D5FAD7}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{66C7BA61-47FA-4BB9-916D-7AB88271965D}" ShortID="868268840">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_Aquabulbus" ID="{90182C54-8547-43FF-846F-748CA843AC00}">
-									<ChildrenList>
-										<Action Name="" ID="{12AFFA07-2076-4851-8694-9130D4BE9E8E}" ShortID="419159295">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Aquabulbus" ID="{2B0087AF-F254-4A9C-B22E-AC0FAD3A7F64}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{12A2A51C-81AF-44C2-B211-72C7B1A2B238}" ShortID="263075902">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_Fin" ID="{B84CBFEA-6A19-4CC7-BF56-B5FCC957A20C}">
-									<ChildrenList>
-										<Action Name="" ID="{76E524FD-B126-40FE-846A-4D03181581F8}" ShortID="67600539">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Fin" ID="{B2FB086E-EBA3-4D4A-B903-364B6BA3FC2E}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{5E7F292A-9C13-40E1-9E71-1C8D1F868697}" ShortID="256308014">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_Corallium" ID="{881BE42F-B5FC-49EC-801D-9086A0626E44}">
-									<ChildrenList>
-										<Action Name="" ID="{65D9E2FB-7A5E-4775-B7D1-909562515C98}" ShortID="611506907">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Corallium" ID="{9B54B93C-AB36-4FA3-8149-4F0AEA548002}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{3BC853B1-60C7-4BCA-8EA0-A680C9806172}" ShortID="165933755">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_FishEyes" ID="{483C3C74-3801-433A-BFE0-CF2B808A3EC3}">
-									<ChildrenList>
-										<Action Name="" ID="{5CE9CB1C-3900-4B58-9671-C71B62F5F37B}" ShortID="845774048">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_FishEyes" ID="{FC4C63B7-7589-4D7F-9488-5DA96CC53DB1}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{73672EE4-C00E-4DEF-9C5C-E3F58DFAF0EA}" ShortID="386005272">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_Petralucen" ID="{924B971D-BB6E-4935-9B41-E03B9AD79B81}">
-									<ChildrenList>
-										<Action Name="" ID="{FA423F38-35D3-4909-9189-C48F3B7C5C1C}" ShortID="723664236">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Petralucen" ID="{0E3A3DD9-327D-478F-B53F-6F78A440C6A0}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{B0F3990E-73A8-4D49-AEB3-0F650AEB628F}" ShortID="259306839">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="PLY_Multitool_Tentacle" ID="{804B60D3-B97B-4469-86B2-0DD7F5AFA236}">
-									<ChildrenList>
-										<Action Name="" ID="{ED91FD05-0B46-4408-B60B-F9AF767BC1CA}" ShortID="1010253240">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Tentacle" ID="{BFA80564-840D-4331-821F-71B00C32443D}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-										<Action Name="" ID="{C7705C01-3BAD-44D7-952D-9691E0C22334}" ShortID="9368378">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-												<Property Name="FadeTime" Type="Real64" Value="0.02"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="PLY_Multitool_Charge" ID="{67CB8E43-D53F-4FFC-8160-BFC91F03F672}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
 							</ChildrenList>
 						</Folder>
 						<Event Name="PLY_Multitool_Charge" ID="{199CDADE-6599-415E-846D-53037B776DF4}">
@@ -569,6 +313,31 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="PLY_Degat" ID="{7FA887F2-C8D0-42B4-B3D9-104704FE7171}">
+					<ChildrenList>
+						<Action Name="" ID="{1A5E6A16-8563-4506-A6A3-FA3032ADC3E0}" ShortID="700147185">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PLY_Degat" ID="{0861433B-9025-4CBB-937A-81043D549DFE}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PLY_Grimpe_play" ID="{F6C7FCB6-1A8F-4B8B-80A3-395535EE7895}">
+					<ChildrenList>
+						<Action Name="" ID="{BC5C725A-55AA-4F9D-ABFB-048FF88B43D0}" ShortID="575710378">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PLY_Grimpe" ID="{085D2397-D8D3-42E6-88B7-2D6ADC70969F}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="PLY_Saute" ID="{77DD0B94-BACC-4A2C-9E71-8B6E4D6BC974}">
 					<ChildrenList>
 						<Action Name="" ID="{E1F90E24-406E-48DB-B347-625B2B1A638B}" ShortID="425904039">
@@ -602,6 +371,43 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PLY_Nage" ID="{4E3137A2-87E5-409D-8FC2-D97568E60DBC}">
+					<ChildrenList>
+						<Action Name="" ID="{12BA588D-DEBD-469A-9CB5-E7D5ECF03514}" ShortID="479373964">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PLY_Nage" ID="{62E26B3C-0892-43CB-B51B-42EBFA23EE76}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PLY_Rebondis" ID="{CBDECCF6-1621-4059-8E6D-AF49514E19EB}">
+					<ChildrenList>
+						<Action Name="" ID="{77D70186-9CAC-4A4A-B4FA-3947FFF539D5}" ShortID="947450243">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PLY_Rebondis" ID="{82242132-6D3C-44C7-92CB-7315C4C314D9}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PLY_Grimpe_stop" ID="{E9EC7FB7-798A-4678-859C-9249839698B1}">
+					<ChildrenList>
+						<Action Name="" ID="{5B866426-87B6-4CFA-9962-79592F663E71}" ShortID="158265877">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PLY_Grimpe" ID="{085D2397-D8D3-42E6-88B7-2D6ADC70969F}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="PLY_Spawn" ID="{F63B9C23-9D63-4E29-A9E3-5E29E9E49F2B}">
 					<ChildrenList>
 						<Action Name="" ID="{5101DD04-7270-4EEA-A7F4-46E759C4CFB3}" ShortID="386427040">
@@ -611,17 +417,6 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{2903EF14-5C9F-4717-9AE3-166ABEE18DDB}" ShortID="315326205">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="Scope" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MUS_MenuPrincipal" ID="{E9ADD2B3-26CE-4595-BBCB-8A7D578EB479}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -651,7 +446,7 @@
 						<Action Name="" ID="{23BF2E95-C3D3-4C9F-BC48-8F088E136C8E}" ShortID="1034145513">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="UI_Barre_Vie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+									<ObjectRef Name="UI_BarreDeVie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -666,6 +461,33 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="UI_Respiration" ID="{6B0BAC03-426A-442F-AD67-393E022BE6D0}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PLY_Alerte" ID="{51E7A21B-53DE-4099-A755-652A47DC9984}">
+					<ChildrenList>
+						<Action Name="" ID="{340A8590-F7DA-4AD2-B84C-FB625F20B7AE}" ShortID="961042758">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MUS_Combat_Foret_120BPM_4M" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PLY_Explore" ID="{D4DDCDA7-B1EE-4D8F-AC86-615AD0899203}">
+					<ChildrenList>
+						<Action Name="" ID="{82654A6C-A2FD-46E3-BCF5-75EAABC5BEEC}" ShortID="544633870">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="8"/>
+								<Property Name="FadeTime" Type="Real64" Value="3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MUS_Combat_Foret_120BPM_4M" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -721,187 +543,6 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Pas_Terre" ID="{17C9316B-2C91-45DF-A713-CCD19FA27BEC}" WorkUnitID="{B9280452-2BEA-43F2-BE1B-122445F69E14}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="PLY_Outil" ID="{12945651-FA6E-42D5-8ACB-E7EC37196FCE}" ShortID="833144697">
-					<ChildrenList>
-						<Event Name="PLY_Outil_ADN" ID="{A6B8114F-7D84-4751-9BB3-7C4B8B5F068E}">
-							<ChildrenList>
-								<Action Name="" ID="{E10409DD-6605-4649-BAEE-C52AE073CDE1}" ShortID="250942949">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Outil_ADN" ID="{46EC3D6E-8AB4-4C8F-B67E-50C11A4CC4D3}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Outil_Jetpack" ID="{E0611E5A-12F7-49E7-94A8-5267570E42F4}">
-							<ChildrenList>
-								<Action Name="" ID="{E95062D2-E074-4D34-ADDF-2FD09CCCDD72}" ShortID="264668998">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Outil_Jetpack" ID="{B8901287-FD11-495E-A779-3BA36A7C0D21}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Outil_Masque" ID="{409C76B9-A2FC-4848-A271-30AA7C7BB25F}">
-							<ChildrenList>
-								<Action Name="" ID="{510638B8-BED1-46D4-85FB-4E98E7CBDDCC}" ShortID="656664251">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Outil_Masque" ID="{31FFA97F-71D7-4EB8-936C-81B158A83E72}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Outil_Balise" ID="{81A4433C-DB2D-4105-BB8F-DEF6AE83C4C9}">
-							<ChildrenList>
-								<Action Name="" ID="{D0488EF7-A6EF-491D-8FDB-6347A7423DA8}" ShortID="162436840">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Outil_Balise" ID="{4DF3D3E9-BB9F-466F-AC4A-395FCD60A7FA}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="PLY_Grimpe" ID="{EBBB79B5-9C2B-4FBF-ACFB-7D0B3E0615EA}" ShortID="209224584">
-					<ChildrenList>
-						<Event Name="PLY_Grimpe_play" ID="{F6C7FCB6-1A8F-4B8B-80A3-395535EE7895}">
-							<ChildrenList>
-								<Action Name="" ID="{BC5C725A-55AA-4F9D-ABFB-048FF88B43D0}" ShortID="575710378">
-									<PropertyList>
-										<Property Name="FadeTime" Type="Real64" Value="0.2"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Grimpe" ID="{085D2397-D8D3-42E6-88B7-2D6ADC70969F}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Grimpe_stop" ID="{E9EC7FB7-798A-4678-859C-9249839698B1}">
-							<ChildrenList>
-								<Action Name="" ID="{5B866426-87B6-4CFA-9962-79592F663E71}" ShortID="158265877">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="2"/>
-										<Property Name="FadeTime" Type="Real64" Value="0.2"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Grimpe" ID="{085D2397-D8D3-42E6-88B7-2D6ADC70969F}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Grimpe_Balance" ID="{D3B34A3C-9EAE-4606-85A4-4315C518DD61}">
-							<ChildrenList>
-								<Action Name="" ID="{B3FCB99A-FECA-44D6-9E38-5E17ADF82C23}" ShortID="302441114">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Grimpe_Balance" ID="{251A46E3-4DBA-4AFF-B4B9-D72487BC3292}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="PLY_Mange" ID="{2AB199E3-B05B-450B-980D-7A811BD6DF08}" ShortID="223492731">
-					<ChildrenList>
-						<Event Name="PLY_Mange_Detox" ID="{ACC76B5A-E7FC-4E10-AAF5-ACBD451F34F9}">
-							<ChildrenList>
-								<Action Name="" ID="{095FA3D4-B767-4FB4-9DE6-5979EAEF8F6B}" ShortID="365512348">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Mange_Detox" ID="{D010BFDD-1EE1-485B-B66C-0B8D46730019}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Mange_Invisible" ID="{92F3B62D-B1A8-4253-8FCC-C61E98739A0A}">
-							<ChildrenList>
-								<Action Name="" ID="{880D0F66-12BA-48B8-B070-038FF1EF59B1}" ShortID="781057844">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Mange_Invisible" ID="{C594F4EF-5649-434F-BAD0-4E95848E54FF}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Mange_Sante" ID="{E7C2EA31-53D5-4178-B90E-535B17536861}">
-							<ChildrenList>
-								<Action Name="" ID="{C3CAC7C4-BCC4-4988-95B8-869258AAA4A3}" ShortID="539229673">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Mange_Sante" ID="{D08E515B-1725-4DB2-9166-C3F305E0FE80}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="PLY_Eau" ID="{72BB18AB-BE9A-4DCB-9D32-28034C534876}" ShortID="143248989">
-					<ChildrenList>
-						<Event Name="PLY_Eau_Nage" ID="{4E3137A2-87E5-409D-8FC2-D97568E60DBC}">
-							<ChildrenList>
-								<Action Name="" ID="{12BA588D-DEBD-469A-9CB5-E7D5ECF03514}" ShortID="479373964">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Eau_Nage" ID="{62E26B3C-0892-43CB-B51B-42EBFA23EE76}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Eau_Rebondis" ID="{CBDECCF6-1621-4059-8E6D-AF49514E19EB}">
-							<ChildrenList>
-								<Action Name="" ID="{77D70186-9CAC-4A4A-B4FA-3947FFF539D5}" ShortID="947450243">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Eau_Rebondis" ID="{82242132-6D3C-44C7-92CB-7315C4C314D9}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="PLY_Degat" ID="{27622F2F-3388-4EC0-8B4A-423CB6A8A6B5}" ShortID="1057861989">
-					<ChildrenList>
-						<Event Name="PLY_Degat_Bouclier" ID="{364AEA8F-28E4-4B22-995F-9AC0ADF5C064}">
-							<ChildrenList>
-								<Action Name="" ID="{A59B2973-95B7-41AB-B691-E7E6958FAD62}" ShortID="555865087">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Degat_Bouclier" ID="{585BEAEF-10F6-482F-BB52-B2FA32DDF659}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="PLY_Degat_Vie" ID="{7FA887F2-C8D0-42B4-B3D9-104704FE7171}">
-							<ChildrenList>
-								<Action Name="" ID="{1A5E6A16-8563-4506-A6A3-FA3032ADC3E0}" ShortID="700147185">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Degat_Vie" ID="{0861433B-9025-4CBB-937A-81043D549DFE}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

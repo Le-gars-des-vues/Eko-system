@@ -2,12 +2,8 @@
 <WwiseDocument Type="WorkUnit" ID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}" SchemaVersion="110">
 	<InteractiveMusic>
 		<WorkUnit Name="Default Work Unit" ID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}" PersistMode="Standalone">
-			<PropertyList>
-				<Property Name="Color" Type="int16" Value="10"/>
-				<Property Name="OverrideColor" Type="bool" Value="True"/>
-			</PropertyList>
 			<ChildrenList>
-				<MusicPlaylistContainer Name="MUS_Alerte" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" ShortID="474913510">
+				<MusicPlaylistContainer Name="MUS_Combat_Foret_120BPM_4M" ID="{B3EB1A2E-092C-475A-B09A-04462C48DB0B}" ShortID="474913510">
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
@@ -242,32 +238,6 @@
 								</MusicPlaylistItem>
 							</ChildrenList>
 						</MusicPlaylistItem>
-					</Playlist>
-				</MusicPlaylistContainer>
-				<MusicPlaylistContainer Name="MUS_MenuPrincipal" ID="{E9ADD2B3-26CE-4595-BBCB-8A7D578EB479}" ShortID="226888151">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-						</Reference>
-					</ReferenceList>
-					<TransitionList>
-						<MusicTransition Name="Root" ID="{0B4E6BAF-1B54-4015-9CF4-941A934A7D00}">
-							<PropertyList>
-								<Property Name="IsFolder" Type="bool" Value="True"/>
-							</PropertyList>
-							<ChildrenList>
-								<MusicTransition Name="Transition" ID="{8940ECFC-2A6F-4BA6-9227-C804B72139F0}">
-									<TransitionInfo/>
-								</MusicTransition>
-							</ChildrenList>
-							<TransitionInfo/>
-						</MusicTransition>
-					</TransitionList>
-					<Playlist>
-						<MusicPlaylistItem Name="" ID="{370FEF12-4921-4648-9548-124FC53F01DB}" ShortID="125736421"/>
 					</Playlist>
 				</MusicPlaylistContainer>
 			</ChildrenList>
