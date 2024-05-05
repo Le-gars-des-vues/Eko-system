@@ -94,7 +94,6 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public bool isPoisoned;
 
     [Header("UnderWater Variables")]
-    uint lowOxygenSoundID;
     bool lowOxygenIsPlaying;
     [SerializeField] float underWaterGravityScale = 0.1f;
     [SerializeField] float underWaterDrag = 2f;
@@ -141,13 +140,21 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public GameObject frogMask;
     public bool hasShield;
     public bool hasOptics;
+    public bool hasBionics;
+    public bool hasRessourcesRadar;
+    public bool hasCreatureRadar;
+    public bool hasRegen;
+    public bool hasKnockback;
+    public bool hasMagneticRay;
 
-    public float hpMultiplier;
-    public float oxygenMultiplier;
-    public float oxygenDepleteRateMultiplier;
-    public float staminaMultiplier;
-    public float harvestDistanceMultiplier;
-    public float harvestTimeDivider;
+    public float hpMultiplier = 1.5f;
+    public float regenAmount = 0.01f;
+    public float oxygenMultiplier = 4;
+    public float oxygenDepleteRateMultiplier = 2;
+    public float staminaMultiplier = 1.5f;
+    public float harvestDistanceMultiplier = 1.25f;
+    public float harvestTimeDivider = 2;
+    public float damageUpgrade = 2;
 
     [Header("UI Variables")]
     [SerializeField] CinemachineVirtualCamera vcam;
@@ -170,7 +177,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public bool uiOpened;
     public bool isInDialogue;
     public bool cameraTrigger = false;
-    [SerializeField] Texture2D[] cursorImages;
+    public Texture2D[] cursorImages;
 
     [Header("Base Variables")]
     public bool hasBuiltMap = false;
@@ -231,7 +238,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         Reset();
         ToggleRagdoll(false);
-        Cursor.SetCursor(cursorImages[1], new Vector2(0, 0), CursorMode.Auto);
+        Cursor.SetCursor(cursorImages[1], new Vector2(0, 0), CursorMode.ForceSoftware);
         AudioManager.instance.PlaySound(AudioManager.instance.playerSpawn, gameObject);
     }
 
@@ -330,7 +337,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (!lowOxygenIsPlaying)
             {
                 lowOxygenIsPlaying = true;
-                lowOxygenSoundID = AudioManager.instance.PlaySound(AudioManager.instance.voDrown, gameObject);
+                AudioManager.instance.PlaySound(AudioManager.instance.voDrown, gameObject);
                 AudioManager.instance.PlaySound(AudioManager.instance.noOxygen, gameObject);
             }
             ChangeHp(-0.01f, false);
@@ -340,7 +347,6 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (lowOxygenIsPlaying)
             {
                 lowOxygenIsPlaying = false;
-                AkSoundEngine.StopPlayingID(lowOxygenSoundID);
                 AudioManager.instance.PlaySound(AudioManager.instance.voBreath, gameObject);
             }
         }
@@ -365,6 +371,9 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                 SetBar(shieldSlider, currentShield);
             }
         }
+
+        if (hasRegen)
+            ChangeHp(regenAmount, false);
 
         if (!uiOpened)
         {
@@ -688,13 +697,13 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         if (equipped)
         {
             objectInRightHand = multiTool.gameObject;
-            Cursor.SetCursor(cursorImages[0], new Vector2(40, 35), CursorMode.Auto);
+            Cursor.SetCursor(cursorImages[2], new Vector2(32, 32), CursorMode.ForceSoftware);
             multiTool.UseMultiTool(true);
         }
         else
         {
             objectInRightHand = null;
-            Cursor.SetCursor(cursorImages[1], new Vector2(0, 0), CursorMode.Auto);
+            Cursor.SetCursor(cursorImages[1], new Vector2(0, 0), CursorMode.ForceSoftware);
             multiTool.UseMultiTool(false);
         }
     }
@@ -783,8 +792,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
             if (CanOpenStorage() && storageInventory != null)
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-            if (!uiOpened)
-                AudioManager.instance.PlaySound(AudioManager.instance.uiFermer, Camera.main.gameObject);
+            AudioManager.instance.PlaySound(AudioManager.instance.inventaireFermer, Camera.main.gameObject);
         }
     }
 
@@ -838,6 +846,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (building != null)
                 building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y + gridOffset);
             buildingIsOpen = true;
+            AudioManager.instance.PlaySound(AudioManager.instance.buildingOuvrir, Camera.main.gameObject);
 
             if (inventoryOpen)
                 ShowOrHideInventory();
@@ -858,6 +867,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (building != null)
                 building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y - gridOffset);
             buildingIsOpen = false;
+            AudioManager.instance.PlaySound(AudioManager.instance.buildingFermer, Camera.main.gameObject);
         }
     }
 
@@ -960,8 +970,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             map.SetActive(false);
             noMap.SetActive(false);
             mapIsOpen = false;
-            if (!uiOpened)
-                AudioManager.instance.PlaySound(AudioManager.instance.uiFermer, Camera.main.gameObject);
+            AudioManager.instance.PlaySound(AudioManager.instance.carteFermer, Camera.main.gameObject);
         }
     }
 
@@ -995,9 +1004,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             upgrade.GetComponent<RectTransform>().localPosition = new Vector2(upgrade.GetComponent<RectTransform>().localPosition.x, upgrade.GetComponent<RectTransform>().localPosition.y - gridOffset);
             upgradeIsOpen = false;
-
-            if (!uiOpened)
-                AudioManager.instance.PlaySound(AudioManager.instance.uiFermer, Camera.main.gameObject);
+            AudioManager.instance.PlaySound(AudioManager.instance.upgradeFermer, Camera.main.gameObject);
         }
     }
 
@@ -1207,6 +1214,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         }
         else
         {
+            AudioManager.instance.PlaySound(AudioManager.instance.poison, gameObject);
             hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", true);
             float timer = 0;
             while (timer < duration)
@@ -1217,6 +1225,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             }
             hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", false);
             poison = null;
+            AudioManager.instance.PlaySound(AudioManager.instance.poisonStop, gameObject);
         }
     }
 
@@ -1261,7 +1270,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (AudioManager.instance.underwaterIsPlaying)
             {
                 AudioManager.instance.underwaterIsPlaying = false;
-                AudioManager.instance.StopSoundtrack();
+                AudioManager.instance.PlaySoundtrack(AudioManager.instance.forestSountrack);
+                AudioManager.instance.forestIsPlaying = true;
             }
             groundPlayerController.SetGravityScale(groundPlayerController.gravityScale);
             playerRb.drag = initialDrag;

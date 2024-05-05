@@ -198,6 +198,7 @@ public class GameManager : MonoBehaviour
                 {
                     twoMinLeft = true;
                     QuickMenu.instance.frame.sprite = timeLeft[4];
+                    QuickMenu.instance.anim.SetBool("isBlinking", true);
                 }
                 else if (TimeLeft < 240 && !fourMinLeft)
                 {
@@ -271,7 +272,7 @@ public class GameManager : MonoBehaviour
         isStorm = isTrue;
         if (isTrue)
         {
-            stormSoundID = AudioManager.instance.PlaySound(AudioManager.instance.storm, Camera.main.gameObject);
+            //stormSoundID = AudioManager.instance.PlaySound(AudioManager.instance.storm, Camera.main.gameObject);
             lightningTime = Time.time;
             rainFront.Play();
             rainGround.Play();
@@ -308,6 +309,7 @@ public class GameManager : MonoBehaviour
     void ResetTimer()
     {
         TimeLeft = initialTime;
+        QuickMenu.instance.anim.SetBool("isBlinking", false);
         QuickMenu.instance.frame.sprite = timeLeft[0];
         timer = 0;
         twoMinLeft = false;

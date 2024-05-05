@@ -41,6 +41,7 @@ public class Tutorial : MonoBehaviour
     {
         TextMessage message = new TextMessage(sprite, robotName, textToWrite);
         QuickMenu.instance.textMessages.Enqueue(message);
+        AudioManager.instance.PlaySound(AudioManager.instance.textMessage, Camera.main.gameObject);
     }
 
     public void ListenForInputs(string conditionName)

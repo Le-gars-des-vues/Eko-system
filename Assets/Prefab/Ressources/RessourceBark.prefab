@@ -184,11 +184,12 @@ MonoBehaviour:
   itemInInventory: {fileID: 0}
   itemPrefab: {fileID: 839064163631031773, guid: dedee1f75c5bdc649afdb5672ecbc9dc, type: 3}
   hasFlashed: 0
-  isFlashing: 0
+  tooltipActive: 0
   canFlash: 0
   isSelected: 0
   isPickedUp: 0
   rotateSpeed: 0
+  isUnderWaterWeapon: 0
   isSceneLoaded: 0
 --- !u!114 &-6286538404300590474
 MonoBehaviour:
@@ -205,9 +206,16 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 96ba9f98e75e8cb4299dc7e9f0282f8f, type: 2}
   itemGrid: {fileID: 0}
   stackAmount: 0
+  maxStack: 5
   sprites: []
   markedForDestroy: 0
   isPlaced: 0
+  isInInventory: 0
+  currentDurability: 0
+  maxDurability: 20
+  lowDurabilityThreshold: 0
+  lowDurability: 0
+  broken: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
