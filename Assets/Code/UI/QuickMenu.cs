@@ -11,17 +11,27 @@ public class QuickMenu : MonoBehaviour
     delegate void OnAnimationEnd();
     OnAnimationEnd onAnimationEnd;
 
+    [Header("Info Variables")]
     public TextMeshProUGUI dayText;
     public TextMeshProUGUI infoText;
     public TextMeshProUGUI quotaText;
     public TextMeshProUGUI timerText;
     bool infoMenuActive = true;
 
+    [Header("Message Variables")]
     [SerializeField] GameObject messageMenu;
     bool messageMenuActive = true;
     [SerializeField] Image newMail;
     bool newMessage = false;
+    [SerializeField] GameObject content;
+    [SerializeField] GameObject messagePrefab;
+    public Queue<TextMessage> textMessages = new Queue<TextMessage>();
+    [SerializeField] float textCooldown;
+    float textTime;
+    [SerializeField] ParticleSystem mailGlow;
 
+
+    [Header("Teleport Varialbes")]
     public bool hasTeleport;
     [SerializeField] GameObject teleportMenu;
     bool teleportMenuActive = true;
@@ -29,19 +39,14 @@ public class QuickMenu : MonoBehaviour
     public Button teleporterButton;
     [SerializeField] GameObject portal;
 
+    [Header("Miscellaneous")]
     public Button infoButton;
     public Button messageButton;
     public Button teleportButton;
 
-    Animator anim;
+    public Animator anim;
     public bool isAnimating;
     bool isShown;
-
-    [SerializeField] GameObject content;
-    [SerializeField] GameObject messagePrefab;
-    public Queue<TextMessage> textMessages = new Queue<TextMessage>();
-    [SerializeField] float textCooldown;
-    float textTime;
 
     private void Awake()
     {
@@ -82,10 +87,11 @@ public class QuickMenu : MonoBehaviour
             if (textMessages.Count > 0)
             {
                 SendMessage(textMessages.Dequeue());
-                if (!messageMenuActive)
+                if (!messageMenuActive && !newMessage)
                 {
                     newMessage = true;
                     newMail.color = new Color(newMail.color.r, newMail.color.g, newMail.color.b, 255);
+                    mailGlow.Play();
                 }
             }
         }
@@ -136,6 +142,7 @@ public class QuickMenu : MonoBehaviour
             {
                 newMessage = false;
                 newMail.color = new Color(newMail.color.r, newMail.color.g, newMail.color.b, 0);
+                mailGlow.Stop();
             }
 
             if (infoMenuActive)

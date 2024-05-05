@@ -49,6 +49,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject invalid;
     public GameObject notWorking;
     public Sprite multitool;
+    public ParticleSystem multitoolGlow;
 
     [SerializeField] GameObject itemInfo;
     [SerializeField] GameObject currentInfo;
@@ -281,9 +282,11 @@ public class InventoryController : MonoBehaviour
                 rectTransform = inventoryItem.GetComponent<RectTransform>();
                 rectTransform.SetParent(canvasTransform);
                 rectTransform.SetAsLastSibling();
+                PromptManager.instance.SendNotification(true, "SUCCESS!", "CRAFTED:\n" + craftables[recipeChoice].itemName, craftables[recipeChoice].itemIcon);
                 return; 
             }
             upgradeItemGrid.PlaceItem(inventoryItem, posOnGrid.Value.x, posOnGrid.Value.y);
+            PromptManager.instance.SendNotification(true, "SUCCESS!", "CRAFTED:\n" + craftables[recipeChoice].itemName, craftables[recipeChoice].itemIcon);
 
             dropDown.GetComponent<CraftingManager>().knownRecipes.RemoveAt(dropDown.GetComponent<TMP_Dropdown>().value);
         }
@@ -294,6 +297,7 @@ public class InventoryController : MonoBehaviour
 
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasMultitool = true;
             notWorking.SetActive(false);
+            PromptManager.instance.SendNotification(true, "SUCCESS!", "CRAFTED:\n" + "Multi-tool", multitool);
         }
         else
         {
@@ -305,9 +309,11 @@ public class InventoryController : MonoBehaviour
                 rectTransform = inventoryItem.GetComponent<RectTransform>();
                 rectTransform.SetParent(canvasTransform);
                 rectTransform.SetAsLastSibling();
+                PromptManager.instance.SendNotification(true, "SUCCESS!", "CRAFTED:\n" + craftables[recipeChoice].itemName, craftables[recipeChoice].itemIcon);
                 return;
             }
             playerInventories[0].PlaceItem(inventoryItem, posOnGrid.Value.x, posOnGrid.Value.y);
+            PromptManager.instance.SendNotification(true, "SUCCESS!", "CRAFTED:\n" + craftables[recipeChoice].itemName, craftables[recipeChoice].itemIcon);
         }
         crafting.OnValueChanged();
         //int selectedItemID = recipeChoice;
@@ -399,18 +405,14 @@ public class InventoryController : MonoBehaviour
 
     void RightMouseButtonPress()
     {
-        Debug.Log("Click worked!");
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().marketIsOpen)
         {
-            Debug.Log("Market is open");
             if (selectedItemGrid == playerInventories[0])
             {
-                Debug.Log("Selected item grid is inventory");
                 Vector2Int tileGridPosition = GetTileGridPosition();
                 InventoryItem itemTotransfer = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
                 if (itemTotransfer != null)
                 {
-                    Debug.Log("item found!");
                     AudioManager.instance.PlaySound(AudioManager.instance.inventaireSwap, gameObject);
                     GameObject.Find("Vente").transform.Find("GridVente").GetComponent<ItemGrid>().InsertItem(itemTotransfer);
                 }

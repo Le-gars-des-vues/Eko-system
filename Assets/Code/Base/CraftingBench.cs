@@ -38,7 +38,7 @@ public class CraftingBench : MonoBehaviour
                         if (!player.craftingIsOpen)
                             player.ShowOrHideCrafting();
                         if (!player.inventoryOpen)
-                            player.ShowOrHideInventory(true);
+                            player.ShowOrHideInventory(false);
                     }
                 }
                 else

@@ -27,35 +27,48 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event inventaireSwap;
     public AK.Wwise.Event inventairePickUp;
     public AK.Wwise.Event inventairePlace;
+    public AK.Wwise.Event inventaireFermer;
 
     //Crafting
     public AK.Wwise.Event craftingOuvrir;
     public AK.Wwise.Event craftingFermer;
-    public AK.Wwise.Event craftingSound;
+    public AK.Wwise.Event craftingUpgrade;
+    public AK.Wwise.Event craftingWeapon;
+    public AK.Wwise.Event craftingEquipment;
+    public AK.Wwise.Event craftingBuilding;
+    public AK.Wwise.Event craftingRessource;
 
     //Map
     public AK.Wwise.Event carteOuvrir;
-    public AK.Wwise.Event upgradeOuvrir;
+    public AK.Wwise.Event carteFermer;
 
     //Vente
     public AK.Wwise.Event sellingScreenOpen;
     public AK.Wwise.Event sellingScreenClose;
     public AK.Wwise.Event sellingScreenSell;
 
+    //Upgrade
+    public AK.Wwise.Event upgradeOuvrir;
+    public AK.Wwise.Event upgradeFermer;
+
+    //Building
+    public AK.Wwise.Event buildingOuvrir;
+    public AK.Wwise.Event buildingFermer;
+
     //Misc
-    public AK.Wwise.Event uiFermer;
     public AK.Wwise.Event uiTexte;
     public AK.Wwise.Event uiTexteFin;
     public AK.Wwise.Event hotbar;
     public AK.Wwise.Event menuSwitch;
+    public AK.Wwise.Event newDiscovery;
+    public AK.Wwise.Event textMessage;
+    public AK.Wwise.Event yesButton;
+    public AK.Wwise.Event noButton;
 
     //QuickMenu
     public AK.Wwise.Event quickeMenuOpen;
     public AK.Wwise.Event quickMenuClose;
     public AK.Wwise.Event quickMenuPick;
-    public AK.Wwise.Event info;
-    public AK.Wwise.Event messages;
-    public AK.Wwise.Event teleportMenu;
 
     //GameOver
     public AK.Wwise.Event backToBase;
@@ -72,11 +85,27 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event timerRunningOut;
     public AK.Wwise.Event lowHealth;
     public AK.Wwise.Event gainHealth;
+    public AK.Wwise.Event fullHealth;
+
+    //Consummable
+    public AK.Wwise.Event healLeaf;
+    public AK.Wwise.Event cleanseFruit;
+    public AK.Wwise.Event invisibleFruit;
+
+    //Poison
+    public AK.Wwise.Event poison;
+    public AK.Wwise.Event poisonStop;
+
+    //Shield
+    public AK.Wwise.Event fullShield;
+    public AK.Wwise.Event emptyShield;
+    public AK.Wwise.Event shieldDamage;
 
     //Player state
     public AK.Wwise.Event playerTakeDamange;
     public AK.Wwise.Event playerClimb;
     public AK.Wwise.Event playerClimbStop;
+    public AK.Wwise.Event playerHang;
 
     //VO Player
     public AK.Wwise.Event voAttack;
@@ -101,11 +130,18 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event teleport;
     public AK.Wwise.Event aim;
     public AK.Wwise.Event aimStop;
-    public AK.Wwise.Event storm;
+    public AK.Wwise.Event rain;
+    public AK.Wwise.Event thunder;
+
+    [Header("Music Sounds")]
+    public AK.Wwise.Event alerte;
+    public AK.Wwise.Event alerteStop;
 
     [Header("Hazards Sounds")]
     public AK.Wwise.Event spikeTrap;
     public AK.Wwise.Event thorns;
+    public AK.Wwise.Event urchin;
+    public AK.Wwise.Event bubbles;
 
     private void Awake()
     {

@@ -12,12 +12,14 @@ public class ConsummableEffects
     public void Heal(PlayerPermanent player, float healAmount)
     {
         player.ChangeHp(healAmount, false);
+        AudioManager.instance.PlaySound(AudioManager.instance.healLeaf, player.gameObject);
         AudioManager.instance.PlaySound(AudioManager.instance.gainHealth, player.gameObject);
     }
 
     public void Cleanse(PlayerPermanent player)
     {
         player.Cleanse();
+        AudioManager.instance.PlaySound(AudioManager.instance.cleanseFruit, player.gameObject);
     }
 
     public void Flash(Transform transform, float flashRadius)

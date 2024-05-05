@@ -21,10 +21,11 @@ public class PickableObject : MonoBehaviour
     [SerializeField] private GameObject itemPrefab;
 
     public bool hasFlashed; //Pour les consommable
-    public bool isFlashing; //Pour les ressources
+    public bool tooltipActive; //Pour les ressources
     public bool canFlash;
     public bool isSelected;
     public bool isPickedUp = false;
+    bool isBeingPickedUp = false;
     [SerializeField] private float rotateSpeed;
     bool isFacingRight = true;
 
@@ -101,16 +102,16 @@ public class PickableObject : MonoBehaviour
                 else if (!CanBePickedUp() && hasFlashed)
                     hasFlashed = false;
             }
-            if (isSelected && !isFlashing)
+            if (isSelected && !tooltipActive)
             {
-                isFlashing = true;
+                tooltipActive = true;
                 //sprite.material = flashMaterial;
                 if (ArrowManager.instance.targetObject != gameObject)
                     ArrowManager.instance.PlaceArrow(sprite.bounds.center, "PICK UP", new Vector2(0, -0.5f), gameObject);
             }
-            else if (!isSelected && isFlashing)
+            else if (!isSelected && tooltipActive)
             {
-                isFlashing = false;
+                tooltipActive = false;
                 //sprite.material = flashMaterial;
                 if (ArrowManager.instance.targetObject == gameObject)
                     ArrowManager.instance.RemoveArrow();
@@ -121,7 +122,7 @@ public class PickableObject : MonoBehaviour
 
             if (player == null)
                 player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-            if (Vector2.Distance(player.transform.position, transform.position) <= 3f)
+            if (Vector2.Distance(player.transform.position, transform.position) <= 3f && !isPickedUp)
             {
                 if (!player.objectsNear.Contains(gameObject))
                 {
@@ -141,11 +142,16 @@ public class PickableObject : MonoBehaviour
             }
 
             //Pick up
-            if (Input.GetKeyDown(KeyCode.E) && (hasFlashed || isSelected))
+            if (Input.GetKeyDown(KeyCode.E) && (hasFlashed || CanBePickedUp() || isSelected))
             {
                 if (!isPickedUp && player.CanMove())
                 {
-                    PickUp(false, false);
+                    if ((player.objectInRightHand == null || gameObject.tag == "Ressource" || gameObject.tag == "Gear") && !isBeingPickedUp)
+                    {
+                        StartCoroutine(PickUpAnimation());
+                    }
+                    else
+                        PickUp(false, false);
                 }
             }
         }
@@ -215,6 +221,27 @@ public class PickableObject : MonoBehaviour
             scale.x *= -1;
             transform.localScale = scale;
         }
+    }
+
+    IEnumerator PickUpAnimation()
+    {
+        float elapsedTime = 0;
+        float duration = 1;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        isBeingPickedUp = true;
+        if (ArrowManager.instance.targetObject == gameObject)
+            ArrowManager.instance.RemoveArrow();
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector2.Lerp(transform.position, player.gameObject.transform.position, elapsedTime / duration);
+            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(0, 0, 0), elapsedTime / duration);
+            yield return null;
+        }
+        PickUp(false, false);
+        isBeingPickedUp = false;
+        yield return null;
     }
 
     public void PickUp(bool isAlreadyInInventory, bool bypassObjectInHand)
@@ -381,7 +408,7 @@ public class PickableObject : MonoBehaviour
             return Vector2.Distance(player.transform.position, transform.Find("LeftHandPos").transform.position) <= 2f;
         }
         else
-            return Vector2.Distance(player.transform.position, transform.position) <= 2f;
+            return Vector2.Distance(player.transform.position, transform.position) <= 2.5f;
     }
 
     private void InsertItem(InventoryItem itemToInsert)

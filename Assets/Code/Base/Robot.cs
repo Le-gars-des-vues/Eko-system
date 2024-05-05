@@ -278,6 +278,7 @@ public class Robot : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasMultitool = true;
         Camera.main.GetComponent<InventoryController>().notWorking.SetActive(false);
+        Camera.main.GetComponent<InventoryController>().multitoolGlow.Play();
     }
 
     #endregion
@@ -393,6 +394,7 @@ public class Robot : MonoBehaviour
     {
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[10]);
         trainingRoomDialogue.onNestedDialogueEnd += NextTeleport;
+        trainingRoomDialogue.onNestedDialogueEnd += RepairMultitool;
     }
 
     void TalkAboutDurability()

@@ -186,7 +186,24 @@ public class CraftingSystem : MonoBehaviour
                     }
                 }
             }
-            AudioManager.instance.PlaySound(AudioManager.instance.craftingSound, gameObject);
+            switch (Camera.main.GetComponent<InventoryController>().craftables[laRecette].itemType)
+            {
+                case "Ressource":
+                    AudioManager.instance.PlaySound(AudioManager.instance.craftingRessource, gameObject);
+                    break;
+                case "Weapon":
+                    AudioManager.instance.PlaySound(AudioManager.instance.craftingWeapon, gameObject);
+                    break;
+                case "Equipment":
+                    AudioManager.instance.PlaySound(AudioManager.instance.craftingEquipment, gameObject);
+                    break;
+                case "Upgrade":
+                    AudioManager.instance.PlaySound(AudioManager.instance.craftingUpgrade, gameObject);
+                    break;
+                default:
+                    AudioManager.instance.PlaySound(AudioManager.instance.craftingWeapon, gameObject);
+                    break;
+            }
             theController.GetComponent<InventoryController>().CreateRecipeItem(laRecette, gameObject);
         }
         if (GetComponent<CraftingManager>().knownRecipes.Count > 0)

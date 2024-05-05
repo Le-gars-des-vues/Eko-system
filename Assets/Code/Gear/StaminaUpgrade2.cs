@@ -6,12 +6,10 @@ public class StaminaUpgrade2 : MonoBehaviour
 {
     bool isActive = false;
     InventoryItem item;
-    PlayerPermanent player;
 
     private void OnEnable()
     {
         item = GetComponent<InventoryItem>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
     // Update is called once per frame
@@ -31,15 +29,6 @@ public class StaminaUpgrade2 : MonoBehaviour
 
     void ActivateUpgrade(bool activated)
     {
-        if (activated)
-        {
-            player.maxStamina *= player.staminaMultiplier;
-            player.SetMaxBar(player.staminaSlider, player.maxStamina);
-        }
-        else
-        {
-            player.maxStamina /= player.staminaMultiplier;
-            player.SetMaxBar(player.staminaSlider, player.maxStamina);
-        }
+        GameManager.instance.player.hasBionics = activated;
     }
 }

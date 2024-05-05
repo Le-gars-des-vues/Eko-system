@@ -21,8 +21,7 @@ public class HarvestableRessourceNode : MonoBehaviour
     [SerializeField] float spawnForce;
     public bool isHarvested = false;
 
-    public bool isPointing;
-    public bool isOutlined;
+    bool isOutlined = false;
     PlayerPermanent player;
 
     public Vector2 direction = new Vector2(0, -1);
@@ -88,15 +87,25 @@ public class HarvestableRessourceNode : MonoBehaviour
     {
         if (isInRange && player.isUsingMultiTool)
         {
-            sprite_empty.material = outlineMaterial;
-            sprite_full.material = outlineMaterial;
+            if (!isOutlined)
+            {
+                isOutlined = true;
+                sprite_empty.material = outlineMaterial;
+                sprite_full.material = outlineMaterial;
+                Cursor.SetCursor(GameManager.instance.player.cursorImages[0], new Vector2(32, 32), CursorMode.ForceSoftware);
+            }
         }
     }
 
     private void OnMouseExit()
     {
-        sprite_empty.material = ogMaterial1;
-        sprite_full.material = ogMaterial2;
+        if (isOutlined)
+        {
+            isOutlined = false;
+            sprite_empty.material = ogMaterial1;
+            sprite_full.material = ogMaterial2;
+            Cursor.SetCursor(GameManager.instance.player.cursorImages[2], new Vector2(32, 32), CursorMode.ForceSoftware);
+        }
         timer = 0f;
         sprite_empty.color = Color.white;
         sprite_full.color = Color.white;
@@ -110,8 +119,13 @@ public class HarvestableRessourceNode : MonoBehaviour
         {
             if (isInRange)
             {
-                sprite_empty.material = outlineMaterial;
-                sprite_full.material = outlineMaterial;
+                if (!isOutlined)
+                {
+                    isOutlined = true;
+                    sprite_empty.material = outlineMaterial;
+                    sprite_full.material = outlineMaterial;
+                    Cursor.SetCursor(GameManager.instance.player.cursorImages[0], new Vector2(32, 32), CursorMode.ForceSoftware);
+                }
                 Tutorial.instance.ListenForInputs("hasHovered");
 
                 if (Input.GetMouseButton(0))
@@ -137,14 +151,24 @@ public class HarvestableRessourceNode : MonoBehaviour
             }
             else
             {
-                sprite_empty.material = ogMaterial1;
-                sprite_full.material = ogMaterial2;
+                if (isOutlined)
+                {
+                    isOutlined = false;
+                    sprite_empty.material = ogMaterial1;
+                    sprite_full.material = ogMaterial2;
+                    Cursor.SetCursor(GameManager.instance.player.cursorImages[2], new Vector2(32, 32), CursorMode.ForceSoftware);
+                }
             }
         }
         else
         {
-            sprite_empty.material = ogMaterial1;
-            sprite_full.material = ogMaterial2;
+            if (isOutlined)
+            {
+                isOutlined = false;
+                sprite_empty.material = ogMaterial1;
+                sprite_full.material = ogMaterial2;
+                Cursor.SetCursor(GameManager.instance.player.cursorImages[2], new Vector2(32, 32), CursorMode.ForceSoftware);
+            }
         }
     }
 
