@@ -270,6 +270,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3164399289576692226}
   - component: {fileID: 4342718306826937520}
+  - component: {fileID: 5205659854345384773}
+  - component: {fileID: 3518228802877582655}
   m_Layer: 0
   m_Name: Locker (1)
   m_TagString: Untagged
@@ -344,6 +346,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5205659854345384773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542757794354002689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5507a3f2c6509824d80a05bbd6109f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b96182d08368e134e9d5e2aa6430a880, type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
+  MultiPositionType: 1
+  multiPositionTypeLabel: 0
+  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
+  LargeModePositions: []
+  multiPositionArray: []
+--- !u!114 &3518228802877582655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542757794354002689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aeb2a0e9a2b834ebf5e139e7e2a769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &3760879884554225723
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,8 +801,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.023749948, y: -21.055649, z: 0}
-    m_Extent: {x: 1.35235, y: 21.06245, z: 0}
+    m_Center: {x: 0.024200022, y: -21.049099, z: 0}
+    m_Extent: {x: 1.3536999, y: 21.0598, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -993,8 +1051,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.029600024, y: -21.05545, z: 0}
-    m_Extent: {x: 1.5372, y: 21.25515, z: 0}
+    m_Center: {x: 0.02394998, y: -21.048851, z: 0}
+    m_Extent: {x: 1.54825, y: 21.25415, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1111,6 +1169,7 @@ MonoBehaviour:
   light2D: {fileID: 0}
   maxInterval: 0.5
   maxFlicker: 0.2
+  minIntensity: 0.6
   isFlickering: 1
 --- !u!1001 &2358519809566267074
 PrefabInstance:
@@ -1126,19 +1185,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.022500038
+      value: 0.025449991
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.05245
+      value: -21.052502
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.5466
+      value: 1.53645
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.24615
+      value: 21.2472
       objectReference: {fileID: 0}
     - target: {fileID: 3155542606631425395, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_SortingOrder
@@ -1206,19 +1265,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.017699957
+      value: 0.02125001
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.060902
+      value: -21.061451
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.3499
+      value: 1.34785
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.0639
+      value: 21.06565
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1318,6 +1377,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1954332298861175381}
     m_Modifications:
+    - target: {fileID: 907699096497645624, guid: f0734291e1fecb442839affd336fe244, type: 3}
+      propertyPath: data.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: a39a9b65633e40341b1ba68a5f3e11f6, type: 2}
     - target: {fileID: 6376076789593140266, guid: f0734291e1fecb442839affd336fe244, type: 3}
       propertyPath: m_Size.x
       value: 22.73916

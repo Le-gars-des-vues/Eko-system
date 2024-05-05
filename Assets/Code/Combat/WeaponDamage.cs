@@ -8,6 +8,7 @@ public class WeaponDamage : MonoBehaviour
     [Header("Damage Variables")]
     [SerializeField] int minDamage;
     [SerializeField] int maxDamage;
+    int damageUpgrade = 2;
     int hitDamage;
     bool isDamaging;
 
@@ -70,6 +71,10 @@ public class WeaponDamage : MonoBehaviour
                     if (Vector2.Dot(contact.normal, transform.right) <= -0.700f)
                     {
                         isDamaging = true;
+                        if (GameManager.instance.player.hasOptics)
+                        {
+                            hitDamage += damageUpgrade;
+                        }
                         hp.LoseHealth(hitDamage, GameObject.FindGameObjectWithTag("Player"));
                         int color = 0;
                         if (hitDamage < maxDamage / 3)

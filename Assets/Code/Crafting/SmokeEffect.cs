@@ -9,21 +9,19 @@ public class SmokeEffect : MonoBehaviour
     public void Smoke()
     {
         smokeEffect.gameObject.SetActive(true);
-        Debug.Log("Smoked");
+        StartCoroutine(GlowCraftedItem());
     }
 
     public void ShowCraftedItems()
     {
         smokeEffect.gameObject.SetActive(false);
-        StartCoroutine(GlowCraftedItem());
-
     }
 
     IEnumerator GlowCraftedItem()
     {
         //do stuff
-        yield return new WaitForSeconds(1);
         Craft();
+        yield return new WaitForSeconds(1);
     }
 
     public void Craft()

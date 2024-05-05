@@ -138,7 +138,8 @@ public class ItemGrid : MonoBehaviour, IDataPersistance
             if (inventoryItem.itemData.itemName == ressource && Recipes.discoveredRessources[ressource] == false)
             {
                 Recipes.discoveredRessources[ressource] = true;
-                Debug.Log(ressource + " has been discovered");
+                PromptManager.instance.SendNotification(false, "NEW RESSOURCE!", "DISCOVERED:\n" + inventoryItem.itemData.itemName, inventoryItem.itemData.itemIcon);
+                AudioManager.instance.PlaySound(AudioManager.instance.newDiscovery, Camera.main.gameObject);
             }
         }
 

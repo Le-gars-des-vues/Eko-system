@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class GroundPlayerController : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class GroundPlayerController : MonoBehaviour
     //Acceleration et decceleration dans les airs
     [Range(0.01f, 1)] public float accelAir;
     [Range(0.01f, 1)] public float deccelAir;
+    [SerializeField] VisualEffect runDust;
 
     [Header("Jump Variables")]
     //Force du jump
@@ -192,6 +194,18 @@ public class GroundPlayerController : MonoBehaviour
 
         if (player.CanMove())
         {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if (isGrounded)
+                {
+                    if (!player.staminaDepleted || player.hasBionics)
+                    {
+                        runDust.Play();
+                    }
+                    else
+                        AudioManager.instance.PlaySound(AudioManager.instance.noStamina, gameObject);
+                }
+            }
             //Courir
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -199,14 +213,14 @@ public class GroundPlayerController : MonoBehaviour
                 {
                     Tutorial.instance.ListenForInputs("hasRun");
 
-                    if (!player.staminaDepleted)
+                    if (!player.staminaDepleted || player.hasBionics)
                     {
                         maxSpeed = runSpeed;
-                        player.ChangeStamina(-runStaminaCost);
+                        if (!player.hasBionics)
+                            player.ChangeStamina(-runStaminaCost);
                     }
                     else
                     {
-                        AudioManager.instance.PlaySound(AudioManager.instance.noStamina, gameObject);
                         maxSpeed = walkSpeed;
                     }
                 }
@@ -486,10 +500,11 @@ public class GroundPlayerController : MonoBehaviour
         }
         else
         {
-            if (!player.staminaDepleted)
+            if (!player.staminaDepleted || player.hasBionics)
             {
                 AudioManager.instance.PlaySound(AudioManager.instance.voJump, gameObject);
-                player.ChangeStamina(-jumpStaminaCost);
+                if (!player.hasBionics)
+                    player.ChangeStamina(-jumpStaminaCost);
                 jumpedOnce = true;
                 pressedJumpTime = 0;
                 float force = jumpForce;
@@ -512,11 +527,12 @@ public class GroundPlayerController : MonoBehaviour
 
     private void WallJump(int dir)
     {
-        if (!player.staminaDepleted)
+        if (!player.staminaDepleted || player.hasBionics)
         {
             AudioManager.instance.PlaySound(AudioManager.instance.voJump, gameObject);
             Tutorial.instance.ListenForInputs("hasWallJumped");
-            player.ChangeStamina(-jumpStaminaCost);
+            if (!player.hasBionics)
+                player.ChangeStamina(-jumpStaminaCost);
             //Ensures we can't call Wall Jump multiple times from one press
             pressedJumpTime = 0;
             lastOnWallRightTime = 0;

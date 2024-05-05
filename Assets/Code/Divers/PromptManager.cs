@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PromptManager : MonoBehaviour
 {
@@ -13,13 +14,27 @@ public class PromptManager : MonoBehaviour
     public delegate void OnButtonNull();
     public static OnButtonNull onButtonNull;
 
+    [Header("Prompt Variables")]
     [SerializeField] GameObject prompt;
     [SerializeField] TextMeshProUGUI promptText;
+    [SerializeField] TextMeshProUGUI promptTextB;
     [SerializeField] TextMeshProUGUI button1Text;
     [SerializeField] TextMeshProUGUI button2Text;
     [SerializeField] TextMeshProUGUI button3Text;
 
     public bool promptOpen;
+
+    [Header("Notification Variables")]
+    [SerializeField] GameObject notification;
+    [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] TextMeshProUGUI notificationText;
+    [SerializeField] Image notificationImage;
+    [SerializeField] Animator notificationAnim;
+    [SerializeField] float notificationCooldown = 3;
+    float notificationTime;
+    bool notifiedRessource;
+    bool notifiedCrafting;
+
 
     private void Awake()
     {
@@ -33,16 +48,59 @@ public class PromptManager : MonoBehaviour
     {
         prompt = GameObject.Find("Prompt");
         promptText = prompt.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
+        promptTextB = prompt.transform.Find("Text (TMP) (1)").GetComponent<TextMeshProUGUI>();
         button1Text = prompt.transform.Find("Button01").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         button2Text = prompt.transform.Find("Button02").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         button3Text = prompt.transform.Find("Button03").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         prompt.SetActive(false);
+
+        notification = GameObject.Find("Notification");
+        titleText = notification.transform.Find("Simple Panel").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
+        notificationText = notification.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
+        notificationImage = notification.transform.Find("Image").GetComponent<Image>();
+        notificationAnim = notification.GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Time.time - notificationTime > notificationCooldown)
+        {
+            if (notifiedCrafting)
+            {
+                notifiedCrafting = false;
+                notificationAnim.SetBool("isCrafting", false);
+            }
+            else if (notifiedRessource)
+            {
+                notifiedRessource = false;
+                notificationAnim.SetBool("isDiscovering", false);
+            }
+        }
+    }
+
+    public void SendNotification(bool isCrafting, string _titleText, string _notificationText, Sprite _notificationImage)
+    {
+        titleText.text = _titleText;
+        notificationText.text = _notificationText;
+        notificationImage.sprite = _notificationImage;
+        if (isCrafting)
+        {
+            notificationAnim.SetBool("isCrafting", true);
+            notifiedCrafting = true;
+        }
+        else
+        {
+            notificationAnim.SetBool("isDiscovering", true);
+            notifiedRessource = true;
+        }
+        notificationTime = Time.time;
     }
 
     public void CreateNewPrompt(Prompt thePrompt)
     {
         promptOpen = true;
         promptText.text = thePrompt.textToWrite;
+        promptTextB.text = thePrompt.textToWrite;
         if (thePrompt.useOnlyOneButton)
         {
             button1Text.gameObject.transform.parent.gameObject.SetActive(false);

@@ -6,12 +6,10 @@ public class HealthUpgrade2 : MonoBehaviour
 {
     bool isActive = false;
     InventoryItem item;
-    PlayerPermanent player;
 
     private void OnEnable()
     {
         item = GetComponent<InventoryItem>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
     // Update is called once per frame
@@ -31,15 +29,6 @@ public class HealthUpgrade2 : MonoBehaviour
 
     void ActivateUpgrade(bool activated)
     {
-        if (activated)
-        {
-            player.maxHp *= player.hpMultiplier;
-            player.SetMaxBar(player.hpSlider, player.maxHp);
-        }
-        else
-        {
-            player.maxHp /= player.hpMultiplier;
-            player.SetMaxBar(player.hpSlider, player.maxHp);
-        }
+        GameManager.instance.player.hasRegen = activated;
     }
 }

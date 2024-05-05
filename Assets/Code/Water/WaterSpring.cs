@@ -17,6 +17,14 @@ public class WaterSpring : MonoBehaviour
     private List<WaterSpring> springs = new();
     private float resistance = 40f;
 
+    private void Update()
+    {
+        if (Mathf.Abs(velocity) < 1)
+        {
+            velocity += Random.Range(-0.5f, 0.5f) / resistance;
+        }
+    }
+
     public void WaveSpringUpdate(float springSitffness, float dampening)
     {
         height = transform.localPosition.y;
