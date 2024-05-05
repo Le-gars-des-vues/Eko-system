@@ -30,5 +30,9 @@ public class GatheringUpgrade2 : MonoBehaviour
     void ActivateUpgrade(bool activated)
     {
         GameManager.instance.player.hasMagneticRay = activated;
+        if (activated)
+            GameManager.instance.player.minDistanceToHarvest *= GameManager.instance.player.harvestDistanceMultiplier;
+        else
+            GameManager.instance.player.minDistanceToHarvest /= GameManager.instance.player.harvestDistanceMultiplier;
     }
 }

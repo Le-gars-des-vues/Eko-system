@@ -102,7 +102,7 @@ public class PickableObject : MonoBehaviour
                 else if (!CanBePickedUp() && hasFlashed)
                     hasFlashed = false;
             }
-            if (isSelected && !tooltipActive)
+            if (isSelected && !tooltipActive && !isBeingPickedUp)
             {
                 tooltipActive = true;
                 //sprite.material = flashMaterial;
@@ -146,7 +146,7 @@ public class PickableObject : MonoBehaviour
             {
                 if (!isPickedUp && player.CanMove())
                 {
-                    if ((player.objectInRightHand == null || gameObject.tag == "Ressource" || gameObject.tag == "Gear") && !isBeingPickedUp)
+                    if ((player.objectInRightHand != null || gameObject.tag == "Ressource" || gameObject.tag == "Gear") && !isBeingPickedUp)
                     {
                         StartCoroutine(PickUpAnimation());
                     }
@@ -223,20 +223,24 @@ public class PickableObject : MonoBehaviour
         }
     }
 
-    IEnumerator PickUpAnimation()
+    public IEnumerator PickUpAnimation()
     {
+        isBeingPickedUp = true;
         float elapsedTime = 0;
-        float duration = 1;
+        float duration = Mathf.Lerp(0.5f, 2, Vector2.Distance(transform.position, player.gameObject.transform.position) / 10);
+        Debug.Log(Vector2.Distance(transform.position, player.gameObject.transform.position));
+        Debug.Log(duration);
         gameObject.GetComponent<Collider2D>().enabled = false;
         gameObject.GetComponent<Rigidbody2D>().simulated = false;
-        isBeingPickedUp = true;
         if (ArrowManager.instance.targetObject == gameObject)
             ArrowManager.instance.RemoveArrow();
+        Vector2 initialPos = transform.position;
+        Vector3 initalScale = transform.localScale;
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            transform.position = Vector2.Lerp(transform.position, player.gameObject.transform.position, elapsedTime / duration);
-            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(0, 0, 0), elapsedTime / duration);
+            transform.position = Vector2.Lerp(initialPos, player.gameObject.transform.position, elapsedTime / duration);
+            transform.localScale = Vector3.Lerp(initalScale, new Vector3(0, 0, 0), elapsedTime / duration);
             yield return null;
         }
         PickUp(false, false);

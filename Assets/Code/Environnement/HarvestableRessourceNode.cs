@@ -69,6 +69,10 @@ public class HarvestableRessourceNode : MonoBehaviour
             var ressource = Instantiate(ressourceToSpawn, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), transform.rotation);
             Vector2 direction = new Vector2((float)Random.Range(-4, 4), (float)Random.Range(-4, 4));
             ressource.GetComponent<Rigidbody2D>().AddForce(direction * spawnForce, ForceMode2D.Impulse);
+            if (player.hasMagneticRay)
+            {
+                StartCoroutine(ressource.GetComponent<PickableObject>().PickUpAnimation());
+            }
         }
         if (gameObject.tag == "Plant")
         {

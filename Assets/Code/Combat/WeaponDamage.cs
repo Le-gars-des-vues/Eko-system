@@ -83,8 +83,14 @@ public class WeaponDamage : MonoBehaviour
                             color = 1;
                         else if (hitDamage > (maxDamage / 3) * 2)
                             color = 2;
-                        ShowDamage(hitDamage, collision.GetContact(0).point, color);
+                        //ShowDamage(hitDamage, collision.GetContact(0).point, color);
+                        ShowDamage(hitDamage, collision.collider.gameObject.transform.position, color);
                         GetComponent<PickableObject>().DurabilityDamage(durabilityDamage);
+                        if (GameManager.instance.player.hasKnockback)
+                        {
+                            Vector2 direction = hp.gameObject.GetComponent<Rigidbody2D>().position - (Vector2)GameManager.instance.player.transform.position;
+                            hp.gameObject.GetComponent<Rigidbody2D>().AddForce(GameManager.instance.player.knockBackWeapon * direction.normalized);
+                        }
                         Tutorial.instance.ListenForInputs("hasHitDummy");
                         if (isThrown)
                         {
@@ -118,6 +124,11 @@ public class WeaponDamage : MonoBehaviour
             {
                 isDamaging = true;
                 hp.LoseHealth(hitDamage, GameObject.FindGameObjectWithTag("Player"));
+                if (GameManager.instance.player.hasKnockback)
+                {
+                    Vector2 direction = hp.gameObject.GetComponent<Rigidbody2D>().position - (Vector2)GameManager.instance.player.transform.position;
+                    hp.gameObject.GetComponent<Rigidbody2D>().AddForce(GameManager.instance.player.knockBackWeapon * direction.normalized);
+                }
                 int color = 0;
                 if (hitDamage < maxDamage / 3)
                     color = 0;
@@ -125,7 +136,8 @@ public class WeaponDamage : MonoBehaviour
                     color = 1;
                 else if (hitDamage > (maxDamage / 3) * 2)
                     color = 2;
-                ShowDamage(hitDamage, collision.GetContact(0).point, color);
+                //ShowDamage(hitDamage, collision.GetContact(0).point, color);
+                ShowDamage(hitDamage, collision.collider.gameObject.transform.position, color);
                 GetComponent<PickableObject>().DurabilityDamage(durabilityDamage);
             }
         }

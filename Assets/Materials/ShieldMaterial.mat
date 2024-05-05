@@ -24,16 +24,18 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 390d3678101d6504d96d8b9fdd8365d4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
+  m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
   - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3050
-  stringTagMap: {}
-  disabledShaderPasses: []
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -63,14 +65,14 @@ Material:
     - _CastShadows: 1
     - _Cull: 0
     - _DstBlend: 1
-    - _FresnelPower: 2.2
+    - _FresnelPower: 3.35
     - _Opacity: 0
     - _QueueControl: 0
     - _QueueOffset: 50
     - _ReceiveShadows: 1
     - _SrcBlend: 1
     - _Surface: 1
-    - _VertexFrequency: 1.2
+    - _VertexFrequency: 0.5
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
@@ -78,6 +80,6 @@ Material:
     m_Colors:
     - _BackColor: {r: 0.021301711, g: 0, b: 0.03802456, a: 1}
     - _FresnelColor: {r: 1.9766747, g: 0.8315666, b: 0, a: 1}
-    - _FrontColor: {r: 0, g: 0.17471503, b: 0.16306736, a: 1}
+    - _FrontColor: {r: 0.0003114994, g: 0.066037714, b: 0.061655972, a: 1}
     - _VertexAmount: {r: 0.1, g: 0.1, b: 0.1, a: 0}
   m_BuildTextureStacks: []

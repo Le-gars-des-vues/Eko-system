@@ -31,17 +31,19 @@ public class ShieldUpgrade1 : MonoBehaviour
 
     void ActivateUpgrade(bool activated)
     {
-        player.hasShield = activated;
+        player.hasShield1 = activated;
+        player.shield.SetActive(activated);
+        player.shieldSlider.gameObject.SetActive(activated);
         if (activated)
         {
-            player.currentShield = player.maxShield;
+            player.maxShield *= player.shieldMultiplier;
             player.SetMaxBar(player.shieldSlider, player.maxShield);
         }
         else
         {
+            player.maxShield /= player.shieldMultiplier;
             player.currentShield = 0;
             player.SetMaxBar(player.shieldSlider, player.currentShield);
         }
-        GameObject.Find("shieldBar").SetActive(activated);
     }
 }

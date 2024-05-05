@@ -53,6 +53,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public Slider shieldSlider;
     public float shieldCountdown;
     private float shieldTime;
+    bool shieldDown = true;
+    Coroutine shieldHit;
 
     /*
     [Header("Hunger Variables")]
@@ -92,6 +94,9 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
     public Coroutine poison;
     public bool isPoisoned;
+
+    bool isMaxShield;
+    bool isMaxHealth;
 
     [Header("UnderWater Variables")]
     bool lowOxygenIsPlaying;
@@ -138,7 +143,9 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public GameObject dogFist;
     public bool hasOxygenMask;
     public GameObject frogMask;
-    public bool hasShield;
+    public GameObject shield;
+    public bool hasShield1;
+    public bool hasShield2;
     public bool hasOptics;
     public bool hasBionics;
     public bool hasRessourcesRadar;
@@ -149,12 +156,14 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
     public float hpMultiplier = 1.5f;
     public float regenAmount = 0.01f;
+    public float shieldMultiplier = 1.5f;
     public float oxygenMultiplier = 4;
     public float oxygenDepleteRateMultiplier = 2;
     public float staminaMultiplier = 1.5f;
     public float harvestDistanceMultiplier = 1.25f;
     public float harvestTimeDivider = 2;
     public float damageUpgrade = 2;
+    public float knockBackWeapon = 2f;
 
     [Header("UI Variables")]
     [SerializeField] CinemachineVirtualCamera vcam;
@@ -207,7 +216,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         hpSlider = GameObject.Find("healthBar").GetComponent<Slider>();
         staminaSlider = GameObject.Find("staminaBar").GetComponent<Slider>();
         shieldSlider = GameObject.Find("shieldBar").GetComponent<Slider>();
-        GameObject.Find("shieldBar").SetActive(false);
+        shieldSlider.gameObject.SetActive(false);
 
         playerInventory = GameObject.Find("Inventaire");
         storageInventory = GameObject.Find("Storage");
@@ -363,12 +372,22 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             }
         }
 
-        if (hasShield)
+        if (hasShield1 || hasShield2)
         {
-            if (Time.time - shieldTime > shieldCountdown && currentShield <= maxShield)
+            if (Time.time - shieldTime > shieldCountdown)
             {
-                currentShield += shieldRegainRate * Time.deltaTime;
-                SetBar(shieldSlider, currentShield);
+                if (currentShield < maxShield)
+                {
+                    currentShield += shieldRegainRate * Time.deltaTime;
+                    SetBar(shieldSlider, currentShield);
+                    if (shieldDown)
+                        StartCoroutine(ShieldDown(false));
+                }
+                else if (!isMaxShield)
+                {
+                    isMaxShield = true;
+                    AudioManager.instance.PlaySound(AudioManager.instance.fullShield, gameObject);
+                }
             }
         }
 
@@ -436,7 +455,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         SetMaxBar(hpSlider, maxHp);
         SetMaxBar(staminaSlider, maxStamina);
 
-        if (hasShield)
+        if (hasShield1 || hasShield2)
         {
             currentShield = maxShield;
             SetMaxBar(shieldSlider, maxShield);
@@ -482,26 +501,30 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             if (!isInvincible)
             {
-                AudioManager.instance.PlaySound(AudioManager.instance.playerTakeDamange, gameObject);
-                AudioManager.instance.PlaySound(AudioManager.instance.voDamage, gameObject);
-                isInvincible = true;
-
-                //Hitstun
-                StartCoroutine(Hitstun(hitStunDuration));
-
-                //Si le joueur n'est pas mort, il flash blanc et profite d'un moment d'invincibilite
-                if (currentHp > 0)
-                {
-                    StartCoroutine(FlashWhite(flashWhiteDuration));
-                    StartCoroutine(InvicibilityFrames(invisibilityDuration));
-                }
                 playerRb.velocity = Vector2.zero;
                 Vector2 direction = (transform.position - otherObject.transform.position).normalized;
                 playerRb.AddForce(new Vector2(direction.x, 0.2f) * knockBackForce, ForceMode2D.Impulse);
 
-                if (hasShield)
+                if ((hasShield1 || hasShield2) && currentShield > 0)
                 {
+                    AudioManager.instance.PlaySound(AudioManager.instance.shieldDamage, gameObject);
+                    if (shieldHit == null)
+                    {
+                        shieldHit = StartCoroutine(ShieldHit());
+                        Debug.Log("Should start shield hit");
+                    }
+                    isMaxShield = false;
                     shieldTime = Time.time;
+                    if (hasShield2)
+                    {
+                        CreatureHealth creatureHp = GetCreatureHealthScript(otherObject);
+                        if (creatureHp != null)
+                        {
+                            float shieldClapBack = Mathf.CeilToInt(value / 2);
+                            creatureHp.currentHp -= shieldClapBack;
+                            MessageSystem.instance.WriteMessage(Mathf.Abs(shieldClapBack).ToString(), otherObject.transform.position, 0);
+                        }
+                    }
                     if (Mathf.Abs(value) <= currentShield)
                     {
                         currentShield += value;
@@ -509,6 +532,21 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                     }
                     else if (Mathf.Abs(value) > currentShield)
                     {
+                        StartCoroutine(ShieldDown(true));
+                        AudioManager.instance.PlaySound(AudioManager.instance.emptyShield, gameObject);
+                        AudioManager.instance.PlaySound(AudioManager.instance.playerTakeDamange, gameObject);
+                        AudioManager.instance.PlaySound(AudioManager.instance.voDamage, gameObject);
+                        isInvincible = true;
+
+                        //Hitstun
+                        StartCoroutine(Hitstun(hitStunDuration));
+
+                        //Si le joueur n'est pas mort, il flash blanc et profite d'un moment d'invincibilite
+                        if (currentHp > 0)
+                        {
+                            StartCoroutine(FlashWhite(flashWhiteDuration));
+                            StartCoroutine(InvicibilityFrames(invisibilityDuration));
+                        }
                         float restOfDamage = Mathf.Abs(value) - currentShield;
                         currentShield -= currentShield;
                         SetBar(shieldSlider, currentShield);
@@ -519,6 +557,20 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                 }
                 else
                 {
+                    AudioManager.instance.PlaySound(AudioManager.instance.playerTakeDamange, gameObject);
+                    AudioManager.instance.PlaySound(AudioManager.instance.voDamage, gameObject);
+                    isInvincible = true;
+
+                    //Hitstun
+                    StartCoroutine(Hitstun(hitStunDuration));
+
+                    //Si le joueur n'est pas mort, il flash blanc et profite d'un moment d'invincibilite
+                    if (currentHp > 0)
+                    {
+                        StartCoroutine(FlashWhite(flashWhiteDuration));
+                        StartCoroutine(InvicibilityFrames(invisibilityDuration));
+                    }
+
                     if (currentHp + value > maxHp)
                         currentHp = maxHp;
                     else
@@ -537,6 +589,63 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
             SetBar(hpSlider, currentHp);
         }
+    }
+
+    IEnumerator ShieldHit()
+    {
+        float duration = 0.25f;
+        float elapsedTime = 0;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float fresnelPower = Mathf.Lerp(3.35f, 0.7f, elapsedTime / duration);
+            shield.GetComponent<MeshRenderer>().material.SetFloat("_FresnelPower", fresnelPower);
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.5f);
+        elapsedTime = 0;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float fresnelPower = Mathf.Lerp(0.7f, 3.35f, elapsedTime / duration);
+            shield.GetComponent<MeshRenderer>().material.SetFloat("_FresnelPower", fresnelPower);
+            yield return null;
+        }
+        shieldHit = null;
+        yield return null;
+    }
+
+    IEnumerator ShieldDown(bool isTrue)
+    {
+        float duration = 0.5f;
+        float elapsedTime = 0;
+        shieldDown = isTrue;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            if (isTrue)
+                shield.transform.localScale = Vector3.Lerp(new Vector3(1.242991f, 1.242991f, 1.242991f), Vector3.zero, elapsedTime / duration);
+            else
+                shield.transform.localScale = Vector3.Lerp(Vector3.zero, new Vector3(1.242991f, 1.242991f, 1.242991f), elapsedTime / duration);
+            yield return null;
+        }
+        elapsedTime = 0;
+        yield return null;
+    }
+
+    CreatureHealth GetCreatureHealthScript(GameObject sourceOfDamage)
+    {
+        if (sourceOfDamage.GetComponent<CreatureHealth>() == null)
+        {
+            if (sourceOfDamage.transform.parent != null)
+            {
+                return GetCreatureHealthScript(sourceOfDamage.transform.parent.gameObject);
+            }
+            else
+                return null;
+        }
+        else
+            return sourceOfDamage.GetComponent<CreatureHealth>();
     }
 
     /*
@@ -1208,7 +1317,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
     public IEnumerator Poison(float duration, float tickDamage, float tickInterval)
     {
-        if (hasShield && currentShield > 0)
+        if ((hasShield1 || hasShield2) && currentShield > 0)
         {
             yield return null;
         }
