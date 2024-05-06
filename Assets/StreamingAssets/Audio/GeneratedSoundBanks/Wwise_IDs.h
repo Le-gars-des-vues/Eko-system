@@ -18,6 +18,7 @@ namespace AK
         static const AkUniqueID AMB_SOUSMARINE = 4285823446U;
         static const AkUniqueID AMB_TEMPETE = 1198445304U;
         static const AkUniqueID ENV_BASE_ASCENCEUR = 1513875540U;
+        static const AkUniqueID ENV_BASE_ASCENCEUR_STOP = 2784757075U;
         static const AkUniqueID ENV_BASE_ATELIER = 963579747U;
         static const AkUniqueID ENV_BASE_CUBICULE = 3057081915U;
         static const AkUniqueID ENV_BASE_ENCLOSER = 3632730406U;
@@ -275,6 +276,7 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID AMB_BASE_ETAGE = 661698884U;
         static const AkUniqueID AMB_DISTANCE = 2342375655U;
         static const AkUniqueID DEEPNESS = 2722922482U;
         static const AkUniqueID MUSICVOLUME = 2346531308U;

@@ -6,10 +6,6 @@
 				<SoundcasterSession Name="New Soundcaster Session" ID="{74E969A7-5167-4C6F-8481-02A77151A6AA}">
 					<ModuleList>
 						<Module>
-							<ObjectRef Name="LIF_Moustique_Passif" ID="{AC90C3F8-FDF0-4F92-80DC-ACB6920D5F65}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
-							<Position X="0" Y="0"/>
-						</Module>
-						<Module>
 							<ObjectRef Name="UI_Texte" ID="{F886B0AC-2241-4C0D-BDF6-A9AE1F15AD0E}" WorkUnitID="{0FF3E3B6-B045-4639-8419-4EDD0A23D091}"/>
 							<Position X="0" Y="1"/>
 						</Module>
@@ -26,7 +22,7 @@
 							<Position X="0" Y="4"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="LIF_Moustique_Degat" ID="{06EDFFDD-97DF-4E3D-AC18-FAB9E2D3879A}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+							<ObjectRef Name="ENV_Base_Ascenceur" ID="{C414E8DE-7B82-4780-A585-16C89F4EFEC7}" WorkUnitID="{1D80ECB8-5324-496A-AB54-532363ABA296}"/>
 							<Position X="1" Y="0"/>
 						</Module>
 						<Module>
@@ -46,7 +42,7 @@
 							<Position X="1" Y="4"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="LIF_PlanteCarnivore_Passif_L1" ID="{C9CFF5BA-533C-4BB2-8444-6EF9DCF710DE}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+							<ObjectRef Name="ENV_Base_Ascenceur_Stop" ID="{DA0F0BA5-B076-409B-B06B-56F84B204AC6}" WorkUnitID="{1D80ECB8-5324-496A-AB54-532363ABA296}"/>
 							<Position X="2" Y="0"/>
 						</Module>
 						<Module>
@@ -62,7 +58,7 @@
 							<Position X="2" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="LIF_PlanteCarnivore_Passif_L2" ID="{6106F6BF-5C8C-4F97-91EB-6A34F7A1E7A2}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+							<ObjectRef Name="AMB_Base" ID="{B41E4DE0-A8B9-4326-80C3-893F90103C07}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
 							<Position X="3" Y="0"/>
 						</Module>
 						<Module>
@@ -88,6 +84,10 @@
 							<Value>0</Value>
 						</RTPCValue>
 						<RTPCValue>
+							<GameParameterRef Name="AMB_Base_Etage" ID="{D5F1BE25-0DCF-42D1-8364-B313A80F5D45}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
 							<GameParameterRef Name="SC_PlanteCarnivore" ID="{448474FD-54F9-42FF-BF8C-3CF9182EE4C4}"/>
 							<Value>-48</Value>
 						</RTPCValue>
@@ -106,7 +106,7 @@
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
 						<CurrentStateRef Name="None" ID="{C8696E1D-9CDA-4908-953E-EB08C7C9F7C9}"/>
-						<CurrentStateRef Name="AMB_ForetEtGrotte" ID="{D72AC69D-0018-420D-8FEE-E2E65AA9FA3B}"/>
+						<CurrentStateRef Name="AMB_Base" ID="{5E66AE8B-1F81-41FB-9ED0-A39711E3D3A3}"/>
 						<CurrentStateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
 						<CurrentStateRef Name="None" ID="{55196173-2010-40BD-8E3B-2CFE55B07F75}"/>
 					</CurrentStateList>
