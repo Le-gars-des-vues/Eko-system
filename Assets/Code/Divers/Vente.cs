@@ -25,14 +25,18 @@ public class Vente : MonoBehaviour
         //profitTV = GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>();
     }
 
-    public void VenteItem()
+    public void BouttonVente()
+    {
+        StartCoroutine(VenteItem());
+    }
+
+    IEnumerator VenteItem()
     {
         tempHeight=inventaireVente.GetComponent<ItemGrid>().GetGridSizeHeight();
         tempWidth=inventaireVente.GetComponent <ItemGrid>().GetGridSizeWidth();
 
         theItemGrid=inventaireVente.GetComponent<ItemGrid>();
 
-        bool hasSoldItem = false;
          for (int x = 0; x < tempWidth; x++){
 
              for (int y = 0; y < tempHeight; y++)
@@ -41,19 +45,18 @@ public class Vente : MonoBehaviour
                 anItem=theItemGrid.CheckIfItemPresent(x, y);
                 if (anItem != null)
                 {
-                    hasSoldItem = true;
-                    profit += Mathf.RoundToInt((float)anItem.itemData.value / (anItem.itemData.width * anItem.itemData.height));
+                    profit += anItem.itemData.value;
                     QuickMenu.instance.quotaText.text = profit.ToString() + "/" + GameManager.instance.gameObject.GetComponent<Quota>().quota.ToString() + "$";
                     profitText.text = profit.ToString() + "$";
                     GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>().text = profit.ToString() + "$";
                     anItem.Delete();
+                    AudioManager.instance.PlaySound(AudioManager.instance.sellingScreenSell, Camera.main.gameObject);
                     Tutorial.instance.ListenForInputs("hasSoldItem");
+                    yield return new WaitForSeconds(0.5f);
                 }
              }
-         } 
-
-         if (hasSoldItem)
-            AudioManager.instance.PlaySound(AudioManager.instance.sellingScreenSell, Camera.main.gameObject);
+         }
+         yield return null;
     }
 
     public float calculStorage()

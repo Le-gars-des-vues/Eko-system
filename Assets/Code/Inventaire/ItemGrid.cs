@@ -85,7 +85,7 @@ public class ItemGrid : MonoBehaviour, IDataPersistance
         return toReturn;
     }
 
-    private void CleanGridReference(InventoryItem item)
+    public void CleanGridReference(InventoryItem item)
     {
         for (int ix = 0; ix < item.WIDTH; ix++)
         {
