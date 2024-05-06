@@ -63,7 +63,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-20</Value>
+												<Value>-17</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -105,9 +105,9 @@
 												<ActiveSource Name="AMBBase_PH" ID="{26A9FF8E-02E5-4B48-BF82-D7D23A02F456}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="AMB_Base" ID="{F7A9FEAF-19F6-4AF1-A2BB-4EDCDECBCF57}" ShortID="43635167">
+										<BlendContainer Name="AMB_Base_Etage-1" ID="{836A6005-5816-4F6C-BE16-6413C25F2521}" ShortID="978101334">
 											<PropertyList>
-												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="BlendBehavior" Type="int16" Value="1"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -118,33 +118,88 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="AMB_Base" ID="{8EBB231B-01EA-4C41-B6B8-333C0CD7493B}">
+												<Sound Name="AMB_Base" ID="{F7A9FEAF-19F6-4AF1-A2BB-4EDCDECBCF57}" ShortID="43635167">
 													<PropertyList>
-														<Property Name="CrossfadeDuration" Type="Real64" Value="1308.271"/>
-														<Property Name="LoopBegin" Type="Real64" Value="3.16532943196005"/>
-														<Property Name="LoopEnd" Type="Real64" Value="48.7832915886392"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="1.48956679151061"/>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>AMB_Base.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="392683132"/>
-													</MediaIDList>
-												</AudioFileSource>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="AMB_Base" ID="{8EBB231B-01EA-4C41-B6B8-333C0CD7493B}">
+															<PropertyList>
+																<Property Name="CrossfadeDuration" Type="Real64" Value="1308.271"/>
+																<Property Name="LoopBegin" Type="Real64" Value="3.16532943196005"/>
+																<Property Name="LoopEnd" Type="Real64" Value="48.7832915886392"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.48956679151061"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>AMB_Base.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="392683132"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="AMB_Base" ID="{8EBB231B-01EA-4C41-B6B8-333C0CD7493B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="AMB_Base_L4" ID="{227B031F-95D7-4576-BA3D-946F0FBC3DBB}" ShortID="63807072">
+													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-15</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="AMB_Base_L4" ID="{E8DC661C-9F27-426F-BA5E-92C19DD498D3}">
+															<PropertyList>
+																<Property Name="CrossfadeDuration" Type="Real64" Value="813.816"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.507799808429119"/>
+																<Property Name="LoopBegin" Type="Real64" Value="1.4387661238825"/>
+																<Property Name="LoopEnd" Type="Real64" Value="20.5398920019157"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.423166507024266"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>AMB_Base_L4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="763252689"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="AMB_Base_L4" ID="{E8DC661C-9F27-426F-BA5E-92C19DD498D3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="AMB_Base" ID="{8EBB231B-01EA-4C41-B6B8-333C0CD7493B}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="AMB_Base_L2" ID="{CF618E38-2398-4451-9422-EA3E1027B494}" ShortID="37523557">
+										</BlendContainer>
+										<BlendContainer Name="AMB_Base_Etage-2" ID="{222C0225-B0D6-4C29-A36F-FAB504F04388}" ShortID="369300816">
 											<PropertyList>
-												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>4</Value>
-													</ValueList>
-												</Property>
+												<Property Name="BlendBehavior" Type="int16" Value="1"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -155,25 +210,223 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="AMB_Base_L2" ID="{7CF45CF0-F62F-4173-9EDF-13B8D01D4018}">
+												<Sound Name="AMB_Base" ID="{B1C8BB87-EE8E-4A1F-AF7F-13C282F46DEA}" ShortID="1063308539">
 													<PropertyList>
-														<Property Name="CrossfadeDuration" Type="Real64" Value="1190.978"/>
-														<Property Name="LoopBegin" Type="Real64" Value="0.918138186641698"/>
-														<Property Name="LoopEnd" Type="Real64" Value="36.3723765605493"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>AMB_Base_L2.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="540118499"/>
-													</MediaIDList>
-												</AudioFileSource>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="AMB_Base" ID="{6778071C-EDD1-4D23-B26E-FACE60831159}">
+															<PropertyList>
+																<Property Name="CrossfadeDuration" Type="Real64" Value="1308.271"/>
+																<Property Name="LoopBegin" Type="Real64" Value="3.16532943196005"/>
+																<Property Name="LoopEnd" Type="Real64" Value="48.7832915886392"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.48956679151061"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>AMB_Base.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="392683132"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="AMB_Base" ID="{6778071C-EDD1-4D23-B26E-FACE60831159}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="AMB_Base_L2" ID="{A3CAD55B-F81E-4792-A2A8-58313F1A3A17}" ShortID="1013219739">
+													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="AMB_Base_L2" ID="{13906C5D-E700-40C3-9FF4-B6066235B7CB}">
+															<PropertyList>
+																<Property Name="CrossfadeDuration" Type="Real64" Value="1587.97"/>
+																<Property Name="LoopBegin" Type="Real64" Value="2.09523842592593"/>
+																<Property Name="LoopEnd" Type="Real64" Value="35.4745332056194"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>AMB_Base_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="455806854"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="AMB_Base_L2" ID="{13906C5D-E700-40C3-9FF4-B6066235B7CB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="AMB_Base_L2" ID="{7CF45CF0-F62F-4173-9EDF-13B8D01D4018}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
+										</BlendContainer>
+										<BlendContainer Name="AMB_Base_Etage-3" ID="{5243CD98-3593-4E93-8FCE-1DCDADA334A4}" ShortID="74848499">
+											<PropertyList>
+												<Property Name="BlendBehavior" Type="int16" Value="1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="AMB_Base_L3" ID="{D915B230-42B7-4710-AA30-5D2E9FAD3044}" ShortID="1063059761">
+													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="Lowpass" Type="int16">
+															<ValueList>
+																<Value>40</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="AMB_Base_L3" ID="{B7749BEA-844F-45A8-B34D-8F22AD0BDCD5}">
+															<PropertyList>
+																<Property Name="CrossfadeDuration" Type="Real64" Value="1499.53"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="1.47367564655172"/>
+																<Property Name="LoopBegin" Type="Real64" Value="4.69392983716475"/>
+																<Property Name="LoopEnd" Type="Real64" Value="25.7142708333333"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="2.12864260057471"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>AMB_Base_L3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1059406787"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="AMB_Base_L3" ID="{B7749BEA-844F-45A8-B34D-8F22AD0BDCD5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="AMB_Base" ID="{645CB629-2811-4BC7-9D78-461658F91530}" ShortID="960651959">
+													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="AMB_Base" ID="{E74540FB-170B-4F05-97DF-51D70C750DF9}">
+															<PropertyList>
+																<Property Name="CrossfadeDuration" Type="Real64" Value="1308.271"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="1.23809538633461"/>
+																<Property Name="LoopBegin" Type="Real64" Value="3.16532943196005"/>
+																<Property Name="LoopEnd" Type="Real64" Value="48.7832915886392"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.48956679151061"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>AMB_Base.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="565814018"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="AMB_Base" ID="{E74540FB-170B-4F05-97DF-51D70C750DF9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</BlendContainer>
 									</ChildrenList>
+									<BlendTrackList>
+										<BlendTrack Name="AMB_Base_Etages" ID="{23E89F94-FFCF-45E1-9E11-5E3FE38E5907}" ShortID="895839878">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="AMB_Base_Etage" ID="{D5F1BE25-0DCF-42D1-8364-B313A80F5D45}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_Base_Etage-1" ID="{836A6005-5816-4F6C-BE16-6413C25F2521}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>50</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_Base_Etage-2" ID="{222C0225-B0D6-4C29-A36F-FAB504F04388}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0.0005</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>99.9995</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_Base_Etage-3" ID="{5243CD98-3593-4E93-8FCE-1DCDADA334A4}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>50</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>100</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+									</BlendTrackList>
 								</BlendContainer>
 								<BlendContainer Name="AMB_ForetAGrotte_Crossfade" ID="{500F5BBA-D324-4105-8EF9-0ED42D921907}" ShortID="987006808">
 									<PropertyList>

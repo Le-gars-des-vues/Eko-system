@@ -3086,6 +3086,8 @@
 						</ActorMixer>
 						<BlendContainer Name="UI_Notification" ID="{4AB995B4-92B9-46CC-9DDF-8D8E9E92D572}" ShortID="203356346">
 							<PropertyList>
+								<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
 										<ModifierInfo>
@@ -3093,6 +3095,7 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="SpeakerPanning" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -3126,9 +3129,19 @@
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{2E98E309-B173-4651-834A-E485C3D6D294}">
+									<PropertyList>
+										<Property Name="PanX" Type="Real64" Value="-80.4639804639805"/>
+										<Property Name="PanY" Type="Real64" Value="-9.62288686605983"/>
+									</PropertyList>
+								</Panner>
+							</PositioningInfo>
 						</BlendContainer>
 						<BlendContainer Name="UI_Unlock" ID="{05A95022-C0B2-4186-8140-F32A1823F11D}" ShortID="323991311">
 							<PropertyList>
+								<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
 										<ModifierInfo>
@@ -3136,6 +3149,7 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="SpeakerPanning" Type="int16" Value="1"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>6</Value>
@@ -3174,6 +3188,14 @@
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{0887EEC2-5603-467F-B21E-0CBBFAA1C9AC}">
+									<PropertyList>
+										<Property Name="PanX" Type="Real64" Value="60.0732600732601"/>
+										<Property Name="PanY" Type="Real64" Value="-44.4733420026008"/>
+									</PropertyList>
+								</Panner>
+							</PositioningInfo>
 						</BlendContainer>
 						<BlendContainer Name="UI_Cubicule_Ouvrir" ID="{D8ACF7DF-2759-4392-B695-456526D56FDE}" ShortID="730973429">
 							<PropertyList>
