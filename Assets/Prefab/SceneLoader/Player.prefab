@@ -88,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266828277365575069}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.09412755, w: 0.99556017}
+  m_LocalRotation: {x: -0, y: -0, z: -0.09412731, w: 0.9955602}
   m_LocalPosition: {x: 0.41, y: 0.007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1463,6 +1463,39 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4872470748487391398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3514222793222389709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: da730c7baf2446148b1d8466e8decb44, type: 3}
+  m_PrefabInstance: {fileID: 4324703394826863260}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4291604639287715191}
+  - component: {fileID: 4153619325495395135}
+  - component: {fileID: 311468586559027803}
+  m_Layer: 0
+  m_Name: 'shield (Missing Prefab with guid: da730c7baf2446148b1d8466e8decb44)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4291604639287715191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da730c7baf2446148b1d8466e8decb44, type: 3}
+  m_PrefabInstance: {fileID: 4324703394826863260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3514222793222389709}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -0.005, y: -0.36351267, z: 0}
+  m_LocalScale: {x: 1.2429913, y: 1.2429913, z: 1.2429913}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5190484774854042511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3599972909355394166
 GameObject:
@@ -22021,33 +22054,26 @@ MonoBehaviour:
     conditionIsMet: 1
     conditionName: 
     dialogueMode: 1
-    text: BE CAREFUL FRIEND! THE SENSORS ON YOUR GEAR DETECT YOU ARE NOW "WET". I
-      SUGGEST USING AN OXYGEN MASK TO FURTHER YOU EXPLORATION IF YOU DO NOT HAVE
-      ONE ALREADY!
+    text: BE CAREFUL FRIEND, TO EXPLORE AQUATIC REGIONS FURTHER, I SUGGEST USING
+      SPECIAL EQUIPMENT FOR YOUR SAFETY.
   - name: TOM
     conditionIsMet: 1
     conditionName: 
     dialogueMode: 1
-    text: HELLO FRIEND! IT HAS COME TO MY ATTENTION THAT YOU MIGHT OR MIGHT NOT HAVE
-      COME INTO CONTACT WITH SOME VINES! LEARNING HOW TO USE ELEMENTS OF THE ENVIRONNEMENT
-      SUCH AS THIS WILL PROBABLY INCREASE YOUR PRODUCTIVITY, WHICH TERRAFORMACORP
-      ENCOURAGES! TRY HOLDING ONTO THE VINES AND SWING YOURSELF TO UNACCESSIBLE AREAS!
+    text: HOWDY FRIEND, THOSE VINES YOU JUST CAME INTO CONTACT CAN HELP YOU REACH
+      FURTHER AREAS BY BALANCING OR CLIMBING WITH THEM
   - name: TOM
     conditionIsMet: 1
     conditionName: 
     dialogueMode: 1
-    text: FRIEND, IT SEEMS YOU DESTROYED YOUR ONLY MEANS OF SELF DEFENSE! FRET NOT,
-      SHOULD YOU SURVIVE, YOU CAN ALWAYS FIND NEW WEAPONS TO DEFEND YOURSELF WITH,
-      YOU SIMPLY MUST KEEP AN EYE OUT FOR THE WEAR AND TEAR OF YOUR WEAPONRY IN THE
-      FUTURE!
+    text: FRIEND, IT SEEMS YOU HAVE DESTROYED YOUR WEAPON OF CHOICE. PLEASE BE CAREFUL
+      IN THE FUTURE OR MAKE SURE TO HAVE A BACKUP PLAN
   - name: TOM
     conditionIsMet: 1
     conditionName: 
     dialogueMode: 1
-    text: HELLO, IT IS I, TOM! IT HAS COME TO MY ATTENTION THAT THE CREATURE BEFORE
-      YOU IS DEAD. WHILE DEATH IS A CONCEPT FAR BENEATH MACHINES SUCH AS ME, I MIGHT
-      STILL HAVE SOME WORDS OF WISDOM TO SHARE WITH YOU ABOUT IT! SHOULD YOU HAVE
-      YOUR TRUSTY DNA EXTRACTER WITH YOU, NOW WOULD BE A GREAT TIME TO USE IT!
+    text: HELLO, IT IS I, TOM. DYING MAY BE NATURAL FOR YOU, BUT IT IMPEDES ON TERAFORMACORP'S
+      GROWTH PLAN. REFRAIN FROM DYING MORE PLEASE.
   sprite: {fileID: 21300000, guid: 05b071b4349f7684a80fc47b1b74dc4e, type: 3}
   robotName: T.O.M.
   readyToGoOut: 0
@@ -22313,7 +22339,9 @@ MonoBehaviour:
   dogFist: {fileID: 6149514772716315838}
   hasOxygenMask: 0
   frogMask: {fileID: 8005305895318024856}
-  hasShield: 0
+  shield: {fileID: 0}
+  hasShield1: 0
+  hasShield2: 0
   hasOptics: 0
   hasBionics: 0
   hasRessourcesRadar: 0
@@ -22323,12 +22351,14 @@ MonoBehaviour:
   hasMagneticRay: 0
   hpMultiplier: 1.5
   regenAmount: 0.01
+  shieldMultiplier: 1.5
   oxygenMultiplier: 2
   oxygenDepleteRateMultiplier: 4
   staminaMultiplier: 1.5
   harvestDistanceMultiplier: 1.25
   harvestTimeDivider: 2
   damageUpgrade: 2
+  knockBackWeapon: 2
   vcam: {fileID: 0}
   map: {fileID: 0}
   noMap: {fileID: 0}
@@ -22338,7 +22368,7 @@ MonoBehaviour:
   upgrade: {fileID: 0}
   farming: {fileID: 0}
   room: {fileID: 0}
-  mapIsOpen: 0
+  mapIsOpen: 1
   marketIsOpen: 0
   craftingIsOpen: 0
   buildingIsOpen: 0
@@ -22984,7 +23014,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8747436237696859891}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.25426102, w: 0.9671357}
+  m_LocalRotation: {x: -0, y: -0, z: -0.2542612, w: 0.9671356}
   m_LocalPosition: {x: 0.355, y: -0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23183,11 +23213,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 311468586559027803}
   m_SourcePrefab: {fileID: 100100000, guid: da730c7baf2446148b1d8466e8decb44, type: 3}
---- !u!1 &3514222793222389709 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: da730c7baf2446148b1d8466e8decb44, type: 3}
-  m_PrefabInstance: {fileID: 4324703394826863260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!210 &4153619325495395135
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -23235,11 +23260,6 @@ CircleCollider2D:
   m_Offset: {x: -0.000000029802322, y: 0.000000029802319}
   serializedVersion: 2
   m_Radius: 0.9679587
---- !u!4 &4291604639287715191 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da730c7baf2446148b1d8466e8decb44, type: 3}
-  m_PrefabInstance: {fileID: 4324703394826863260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5736126665418948975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23556,7 +23576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -485990856666115531, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.04907323
+      value: 0.049073506
       objectReference: {fileID: 0}
     - target: {fileID: -485990856666115531, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -23640,7 +23660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319998805419544334, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9533616
+      value: 0.9533615
       objectReference: {fileID: 0}
     - target: {fileID: 2319998805419544334, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -23652,7 +23672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319998805419544334, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.30183056
+      value: 0.301831
       objectReference: {fileID: 0}
     - target: {fileID: 2319998805419544334, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -23660,7 +23680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2471920254983572574, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9247926
+      value: 0.9247928
       objectReference: {fileID: 0}
     - target: {fileID: 2471920254983572574, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -23672,7 +23692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2471920254983572574, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.38047156
+      value: 0.38047096
       objectReference: {fileID: 0}
     - target: {fileID: 2608102985780763276, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_SortingLayer
@@ -23768,7 +23788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7905440446968883676, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.10291013
+      value: 0.10290976
       objectReference: {fileID: 0}
     - target: {fileID: 7905440446968883676, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.y
@@ -23776,7 +23796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7905440446968883676, guid: ab06e2df2de10244db9045c8d2907ca8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9946907
+      value: 0.9946908
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23992,7 +24012,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.19775796, y: 0.30343112}
+  m_ConnectedAnchor: {x: 0.19775811, y: 0.30343208}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -24104,7 +24124,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.008931998, y: -0.1199455}
+  m_ConnectedAnchor: {x: -0.008931998, y: -0.11994478}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -24196,7 +24216,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.009394996, y: 0.12768552}
+  m_ConnectedAnchor: {x: -0.009394996, y: 0.12768528}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -24293,7 +24313,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.42391664, y: 0.0000019110744}
+  m_ConnectedAnchor: {x: 0.42391676, y: 0.00000072270643}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -24385,7 +24405,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.375104, y: 0.0000005764887}
+  m_ConnectedAnchor: {x: 0.37510398, y: 0.0000000995351}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -24482,7 +24502,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.30509615, y: 0.00000037625415}
+  m_ConnectedAnchor: {x: 0.30509627, y: -0.00000058487024}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -24574,7 +24594,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.3421291, y: -0.00000015401743}
+  m_ConnectedAnchor: {x: 0.34212917, y: 0.00000005000037}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -24666,7 +24686,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.28195935, y: -0.000000750646}
+  m_ConnectedAnchor: {x: 0.28195956, y: 0.00000018812716}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -24804,7 +24824,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.41431323, y: -0.000000018110207}
+  m_ConnectedAnchor: {x: 0.4143132, y: -0.00000025652872}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -25043,7 +25063,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.15280166, y: -0.17065611}
+  m_ConnectedAnchor: {x: 0.1528018, y: -0.1706554}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
