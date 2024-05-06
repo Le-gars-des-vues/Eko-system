@@ -21,6 +21,8 @@ public class PromptManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI button1Text;
     [SerializeField] TextMeshProUGUI button2Text;
     [SerializeField] TextMeshProUGUI button3Text;
+    [SerializeField] TMP_InputField inputField;
+    public string inputFieldText;
 
     public bool promptOpen;
 
@@ -52,6 +54,7 @@ public class PromptManager : MonoBehaviour
         button1Text = prompt.transform.Find("Button01").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         button2Text = prompt.transform.Find("Button02").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         button3Text = prompt.transform.Find("Button03").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
+        inputField = prompt.transform.Find("InputField (TMP)").GetComponent<TMP_InputField>();
         prompt.SetActive(false);
 
         notification = GameObject.Find("Notification");
@@ -105,14 +108,24 @@ public class PromptManager : MonoBehaviour
         {
             button1Text.gameObject.transform.parent.gameObject.SetActive(false);
             button2Text.gameObject.transform.parent.gameObject.SetActive(false);
+            button3Text.gameObject.transform.parent.gameObject.SetActive(true);
             button3Text.text = thePrompt.textButton3;
         }
         else
         {
             button3Text.gameObject.transform.parent.gameObject.SetActive(false);
+            button1Text.gameObject.transform.parent.gameObject.SetActive(true);
+            button2Text.gameObject.transform.parent.gameObject.SetActive(true);
             button1Text.text = thePrompt.textButton1;
             button2Text.text = thePrompt.textButton2;
         }
+        if (thePrompt.useInputField)
+        {
+            inputField.gameObject.SetActive(true);
+            inputField.text = "";
+        }
+        else
+            inputField.gameObject.SetActive(false);
         prompt.SetActive(true);
         Time.timeScale = 0;
     }
@@ -128,6 +141,7 @@ public class PromptManager : MonoBehaviour
     {
         if (clickedYes)
         {
+            inputFieldText = inputField.text;
             onButtonClick += ClosePrompt;
             onButtonClick?.Invoke();
             onButtonClick = null;
@@ -150,10 +164,12 @@ public class Prompt
     public string textButton2;
     public string textButton3;
     public bool useOnlyOneButton;
-    public Prompt(string _textToWrite, bool _useOnlyOneButton, string _textButton1 = null, string _textButton2 = null, string _textButton3 = null)
+    public bool useInputField;
+    public Prompt(string _textToWrite, bool _useOnlyOneButton, string _textButton1 = null, string _textButton2 = null, string _textButton3 = null, bool _useInputField = false)
     {
         textToWrite = _textToWrite;
         useOnlyOneButton = _useOnlyOneButton;
+        useInputField = _useInputField;
         if (useOnlyOneButton)
         {
             textButton3 = _textButton3;

@@ -18,7 +18,7 @@ public class UsableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!player.inventoryOpen)
+        if (player.CanMove())
         {
             if (GetComponent<PickableObject>().isPickedUp)
             {
@@ -26,7 +26,7 @@ public class UsableObject : MonoBehaviour
                 {
                     if (player.objectInRightHand != null)
                     {
-                        if (player.objectInRightHand.name == gameObject.name && (gameObject.tag == "Usable"))
+                        if (player.objectInRightHand.name == gameObject.name && ((gameObject.tag == "Usable") || gameObject.tag == "MapBeacon"))
                         {
                             StartCoroutine(UseObject(player.objectInRightHand));
                         }
@@ -46,7 +46,9 @@ public class UsableObject : MonoBehaviour
             case "Cleanse":
                 effect.Cleanse(player);
                 break;
-
+            case "Beacon":
+                GetComponent<Beacon>().ActiveBeacon();
+                break;
             default:
                 break;
         }

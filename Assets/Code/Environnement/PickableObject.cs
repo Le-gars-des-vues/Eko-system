@@ -253,6 +253,11 @@ public class PickableObject : MonoBehaviour
         //Si l'objet n'est pas deja dans l'inventaire
         if (!isAlreadyInInventory)
         {
+            if (gameObject.tag == "MapBeacon")
+            {
+                gameObject.GetComponent<Beacon>().DeactivateButton();
+            }
+
             //On clear les objets proches pour recommencer la recherche
             player.objectsNear.Clear();
             player.nearestObjectDistance = 10;

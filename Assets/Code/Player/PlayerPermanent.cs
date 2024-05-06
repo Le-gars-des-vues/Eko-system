@@ -416,20 +416,23 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         }
 
         //Open UI
-        if (Input.GetKeyDown(KeyCode.I) && !marketIsOpen && !craftingIsOpen)
-            ShowOrHideInventory();
-
-        if (Input.GetKeyDown(KeyCode.M) && !marketIsOpen && !craftingIsOpen)
-            ShowOrHideMap();
-
-        if (Input.GetKeyDown(KeyCode.U) && !marketIsOpen && !craftingIsOpen)
-            ShowOrHideUpgrades();
-
-        if (Input.GetKeyDown(KeyCode.B) && !marketIsOpen && !craftingIsOpen && hasMultitool)
+        if (!PromptManager.instance.promptOpen)
         {
-            if (isInBase)
+            if (Input.GetKeyDown(KeyCode.I) && !marketIsOpen && !craftingIsOpen)
+                ShowOrHideInventory();
+
+            if (Input.GetKeyDown(KeyCode.M) && !marketIsOpen && !craftingIsOpen)
+                ShowOrHideMap();
+
+            if (Input.GetKeyDown(KeyCode.U) && !marketIsOpen && !craftingIsOpen)
+                ShowOrHideUpgrades();
+
+            if (Input.GetKeyDown(KeyCode.B) && !marketIsOpen && !craftingIsOpen && hasMultitool)
             {
-                ShowOrHideBuilding();
+                if (isInBase)
+                {
+                    ShowOrHideBuilding();
+                }
             }
         }
 

@@ -7,10 +7,18 @@ public class MapManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public static MapManager instance;
 
+    [Header("Map Variables")]
     [SerializeField] Camera mapCamera;
     bool mapIsSelected;
-
     float initOrthoSize;
+
+    [Header("Beacon Variables")]
+    [SerializeField] Animator beaconAnim;
+    public List<GameObject> beacons = new List<GameObject>();
+    public List<GameObject> buttons = new List<GameObject>();
+    bool beaconMenuOpen;
+    public int activeBeaconsCount = 0;
+    public GameObject activeBeacon;
 
     void Awake()
     {
@@ -59,5 +67,25 @@ public class MapManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 mapCamera.orthographicSize -= Input.mouseScrollDelta.y;
             }
         }
+    }
+
+    public void OpenAndCloseBeaconMenu()
+    {
+        if (!beaconMenuOpen)
+        {
+            beaconMenuOpen = true;
+            beaconAnim.SetBool("isOpen", true);
+        }
+        else
+        {
+            beaconMenuOpen = false;
+            beaconAnim.SetBool("isOpen", false);
+        }
+    }
+
+    public void MoveCameraToBeacon1()
+    {
+        activeBeacon = beacons[0];
+        mapCamera.transform.position = new Vector3(beacons[0].transform.position.x, beacons[0].transform.position.y, mapCamera.transform.position.z);
     }
 }

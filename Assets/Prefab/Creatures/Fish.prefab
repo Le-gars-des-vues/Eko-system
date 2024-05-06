@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 6997604917615290383}
   - component: {fileID: 4338413898714437144}
   - component: {fileID: 8865218330812229221}
+  - component: {fileID: 4303705700984407214}
   - component: {fileID: 998593632070106411}
   - component: {fileID: 6767102797513747186}
   - component: {fileID: 6083459986373315875}
@@ -375,6 +376,47 @@ PolygonCollider2D:
       - {x: -0.028242469, y: 0.8953574}
       - {x: 0.047537804, y: 0.94558907}
   m_UseDelaunayMesh: 0
+--- !u!114 &4303705700984407214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7384586024410507282}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9e9340a1137924da7d26f9fa193c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundBank:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6736dae1ba0cfd048a954e39b7b34fa3, type: 2}
+  idleSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6912477df54363345ae36fdb792df7e0, type: 2}
+  stopIdle:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  hurtSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 030f9b6bb8dda1e468b9ede95b32edba, type: 2}
+  jumpSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  atkSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  deathSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: be12157a03196d7469ee883926c3fd64, type: 2}
+  idleSoundID: 0
 --- !u!114 &998593632070106411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +493,7 @@ MonoBehaviour:
   - {fileID: 1566123537046604026}
   - {fileID: 2341823388047417361}
   - {fileID: 6742685532009583042}
+  - {fileID: 4828954170714472501}
   usesLineRenderer: 0
   lines: []
 --- !u!114 &6110391908609758464
@@ -529,6 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatureAnimators:
   - {fileID: 7560379358543647786}
+  - {fileID: 8777607734660340112}
   colliders:
   - {fileID: 5586897534498779950}
   - {fileID: 6596910414088794125}
@@ -574,6 +618,7 @@ MonoBehaviour:
   isInRangeToHarvest: 0
   isHarvested: 0
   isDead: 0
+  corpse: {fileID: 2531426074702837832}
   dnaVial: {fileID: 8819707360973039860, guid: 40da84771e34c4b46a5b61c2ebecc9ac, type: 3}
   isInPod: 0
   species: []

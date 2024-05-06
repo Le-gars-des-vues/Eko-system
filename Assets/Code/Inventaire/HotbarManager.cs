@@ -38,240 +38,243 @@ public class HotbarManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (!PromptManager.instance.promptOpen)
         {
-            if (currentlySelected != 0)
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                currentlySelected = 0;
-                HotbarInput();
-            }
-            else
-            {
-                if (multiToolHighlight != null)
+                if (currentlySelected != 0)
                 {
-                    if (!player.isUsingMultiTool)
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(false);
-                        multiToolHighlight.SetActive(true);
-
-                        if (player.objectInRightHand != null)
-                            Destroy(player.objectInRightHand);
-                        player.UnequipObject();
-
-                        player.EquipMultiTool(true);
-                        Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
-                    }
-                    else
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(true);
-                        multiToolHighlight.SetActive(false);
-                        player.EquipMultiTool(false);
-
-                        if (grids[currentlySelected].GetItem(0, 0) != null)
-                        {
-                            SpawnObject(currentlySelected, out GameObject objectSpawned);
-                            player.EquipObject(objectSpawned);
-                        }
-                    }
-                }
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if (currentlySelected != 1)
-            {
-                currentlySelected = 1;
-                HotbarInput();
-            }
-            else
-            {
-                if (multiToolHighlight != null)
-                {
-                    if (!player.isUsingMultiTool)
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(false);
-                        multiToolHighlight.SetActive(true);
-
-                        if (player.objectInRightHand != null)
-                            Destroy(player.objectInRightHand);
-                        player.UnequipObject();
-
-                        player.EquipMultiTool(true);
-                        Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
-                    }
-                    else
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(true);
-                        multiToolHighlight.SetActive(false);
-                        player.EquipMultiTool(false);
-
-                        if (grids[currentlySelected].GetItem(0, 0) != null)
-                        {
-                            SpawnObject(currentlySelected, out GameObject objectSpawned);
-                            player.EquipObject(objectSpawned);
-                        }
-                    }
-                }
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            if (currentlySelected != 2)
-            {
-                currentlySelected = 2;
-                HotbarInput();
-            }
-            else
-            {
-                if (multiToolHighlight != null)
-                {
-                    if (!player.isUsingMultiTool)
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(false);
-                        multiToolHighlight.SetActive(true);
-
-                        if (player.objectInRightHand != null)
-                            Destroy(player.objectInRightHand);
-                        player.UnequipObject();
-
-                        player.EquipMultiTool(true);
-                        Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
-                    }
-                    else
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(true);
-                        multiToolHighlight.SetActive(false);
-                        player.EquipMultiTool(false);
-
-                        if (grids[currentlySelected].GetItem(0, 0) != null)
-                        {
-                            SpawnObject(currentlySelected, out GameObject objectSpawned);
-                            player.EquipObject(objectSpawned);
-                        }
-                    }
-                }
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            if (currentlySelected != 3)
-            {
-                currentlySelected = 3;
-                HotbarInput();
-            }
-            else
-            {
-                if (multiToolHighlight != null)
-                {
-                    if (!player.isUsingMultiTool)
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(false);
-                        multiToolHighlight.SetActive(true);
-
-                        if (player.objectInRightHand != null)
-                            Destroy(player.objectInRightHand);
-                        player.UnequipObject();
-
-                        player.EquipMultiTool(true);
-                        Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
-                    }
-                    else
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(true);
-                        multiToolHighlight.SetActive(false);
-                        player.EquipMultiTool(false);
-
-                        if (grids[currentlySelected].GetItem(0, 0) != null)
-                        {
-                            SpawnObject(currentlySelected, out GameObject objectSpawned);
-                            player.EquipObject(objectSpawned);
-                        }
-                    }
-                }
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            if (currentlySelected != 4)
-            {
-                currentlySelected = 4;
-                HotbarInput();
-            }
-            else
-            {
-                if (multiToolHighlight != null)
-                {
-                    if (!player.isUsingMultiTool)
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(false);
-                        multiToolHighlight.SetActive(true);
-
-                        if (player.objectInRightHand != null)
-                            Destroy(player.objectInRightHand);
-                        player.UnequipObject();
-
-                        player.EquipMultiTool(true);
-                        Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
-                    }
-                    else
-                    {
-                        hotbarHighlights[currentlySelected].SetActive(true);
-                        multiToolHighlight.SetActive(false);
-                        player.EquipMultiTool(false);
-
-                        if (grids[currentlySelected].GetItem(0, 0) != null)
-                        {
-                            SpawnObject(currentlySelected, out GameObject objectSpawned);
-                            player.EquipObject(objectSpawned);
-                        }
-                    }
-                }
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftAlt) && player.hasMultitool)
-        {
-            if (multiToolHighlight != null)
-            {
-                if (!player.isUsingMultiTool)
-                {
-                    hotbarHighlights[currentlySelected].SetActive(false);
-                    multiToolHighlight.SetActive(true);
-
-                    if (player.objectInRightHand != null)
-                        Destroy(player.objectInRightHand);
-                    player.UnequipObject();
-
-                    player.EquipMultiTool(true);
-                    Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
+                    currentlySelected = 0;
+                    HotbarInput();
                 }
                 else
                 {
-                    hotbarHighlights[currentlySelected].SetActive(true);
-                    multiToolHighlight.SetActive(false);
-                    player.EquipMultiTool(false);
-
-                    if (grids[currentlySelected].GetItem(0, 0) != null)
+                    if (multiToolHighlight != null && player.hasMultitool)
                     {
-                        SpawnObject(currentlySelected, out GameObject objectSpawned);
-                        player.EquipObject(objectSpawned);
+                        if (!player.isUsingMultiTool)
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(false);
+                            multiToolHighlight.SetActive(true);
+
+                            if (player.objectInRightHand != null)
+                                Destroy(player.objectInRightHand);
+                            player.UnequipObject();
+
+                            player.EquipMultiTool(true);
+                            Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
+                        }
+                        else
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(true);
+                            multiToolHighlight.SetActive(false);
+                            player.EquipMultiTool(false);
+
+                            if (grids[currentlySelected].GetItem(0, 0) != null)
+                            {
+                                SpawnObject(currentlySelected, out GameObject objectSpawned);
+                                player.EquipObject(objectSpawned);
+                            }
+                        }
                     }
                 }
             }
-        }
-        else if (Input.GetKeyDown(KeyCode.B) && player.hasMultitool)
-        {
-            if (multiToolHighlight != null && player.isInBase)
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                if (!player.isUsingMultiTool)
+                if (currentlySelected != 1)
                 {
-                    hotbarHighlights[currentlySelected].SetActive(false);
-                    multiToolHighlight.SetActive(true);
+                    currentlySelected = 1;
+                    HotbarInput();
+                }
+                else
+                {
+                    if (multiToolHighlight != null && player.hasMultitool)
+                    {
+                        if (!player.isUsingMultiTool)
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(false);
+                            multiToolHighlight.SetActive(true);
 
-                    if (player.objectInRightHand != null)
-                        Destroy(player.objectInRightHand);
-                    player.UnequipObject();
+                            if (player.objectInRightHand != null)
+                                Destroy(player.objectInRightHand);
+                            player.UnequipObject();
 
-                    player.EquipMultiTool(true);
+                            player.EquipMultiTool(true);
+                            Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
+                        }
+                        else
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(true);
+                            multiToolHighlight.SetActive(false);
+                            player.EquipMultiTool(false);
+
+                            if (grids[currentlySelected].GetItem(0, 0) != null)
+                            {
+                                SpawnObject(currentlySelected, out GameObject objectSpawned);
+                                player.EquipObject(objectSpawned);
+                            }
+                        }
+                    }
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (currentlySelected != 2)
+                {
+                    currentlySelected = 2;
+                    HotbarInput();
+                }
+                else
+                {
+                    if (multiToolHighlight != null && player.hasMultitool)
+                    {
+                        if (!player.isUsingMultiTool)
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(false);
+                            multiToolHighlight.SetActive(true);
+
+                            if (player.objectInRightHand != null)
+                                Destroy(player.objectInRightHand);
+                            player.UnequipObject();
+
+                            player.EquipMultiTool(true);
+                            Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
+                        }
+                        else
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(true);
+                            multiToolHighlight.SetActive(false);
+                            player.EquipMultiTool(false);
+
+                            if (grids[currentlySelected].GetItem(0, 0) != null)
+                            {
+                                SpawnObject(currentlySelected, out GameObject objectSpawned);
+                                player.EquipObject(objectSpawned);
+                            }
+                        }
+                    }
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if (currentlySelected != 3)
+                {
+                    currentlySelected = 3;
+                    HotbarInput();
+                }
+                else
+                {
+                    if (multiToolHighlight != null && player.hasMultitool)
+                    {
+                        if (!player.isUsingMultiTool)
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(false);
+                            multiToolHighlight.SetActive(true);
+
+                            if (player.objectInRightHand != null)
+                                Destroy(player.objectInRightHand);
+                            player.UnequipObject();
+
+                            player.EquipMultiTool(true);
+                            Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
+                        }
+                        else
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(true);
+                            multiToolHighlight.SetActive(false);
+                            player.EquipMultiTool(false);
+
+                            if (grids[currentlySelected].GetItem(0, 0) != null)
+                            {
+                                SpawnObject(currentlySelected, out GameObject objectSpawned);
+                                player.EquipObject(objectSpawned);
+                            }
+                        }
+                    }
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                if (currentlySelected != 4)
+                {
+                    currentlySelected = 4;
+                    HotbarInput();
+                }
+                else
+                {
+                    if (multiToolHighlight != null && player.hasMultitool)
+                    {
+                        if (!player.isUsingMultiTool)
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(false);
+                            multiToolHighlight.SetActive(true);
+
+                            if (player.objectInRightHand != null)
+                                Destroy(player.objectInRightHand);
+                            player.UnequipObject();
+
+                            player.EquipMultiTool(true);
+                            Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
+                        }
+                        else
+                        {
+                            hotbarHighlights[currentlySelected].SetActive(true);
+                            multiToolHighlight.SetActive(false);
+                            player.EquipMultiTool(false);
+
+                            if (grids[currentlySelected].GetItem(0, 0) != null)
+                            {
+                                SpawnObject(currentlySelected, out GameObject objectSpawned);
+                                player.EquipObject(objectSpawned);
+                            }
+                        }
+                    }
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftAlt) && player.hasMultitool)
+            {
+                if (multiToolHighlight != null)
+                {
+                    if (!player.isUsingMultiTool)
+                    {
+                        hotbarHighlights[currentlySelected].SetActive(false);
+                        multiToolHighlight.SetActive(true);
+
+                        if (player.objectInRightHand != null)
+                            Destroy(player.objectInRightHand);
+                        player.UnequipObject();
+
+                        player.EquipMultiTool(true);
+                        Tutorial.instance.ListenForInputs("hasEquippedMutltitool");
+                    }
+                    else
+                    {
+                        hotbarHighlights[currentlySelected].SetActive(true);
+                        multiToolHighlight.SetActive(false);
+                        player.EquipMultiTool(false);
+
+                        if (grids[currentlySelected].GetItem(0, 0) != null)
+                        {
+                            SpawnObject(currentlySelected, out GameObject objectSpawned);
+                            player.EquipObject(objectSpawned);
+                        }
+                    }
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.B) && player.hasMultitool)
+            {
+                if (multiToolHighlight != null && player.isInBase)
+                {
+                    if (!player.isUsingMultiTool)
+                    {
+                        hotbarHighlights[currentlySelected].SetActive(false);
+                        multiToolHighlight.SetActive(true);
+
+                        if (player.objectInRightHand != null)
+                            Destroy(player.objectInRightHand);
+                        player.UnequipObject();
+
+                        player.EquipMultiTool(true);
+                    }
                 }
             }
         }

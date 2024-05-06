@@ -68,7 +68,7 @@ public class WeaponDamage : MonoBehaviour
 
 
                     //Check if the angle is within the piercing threshold
-                    if (Vector2.Dot(contact.normal, transform.right) <= -0.700f)
+                    if (Vector2.Dot(contact.normal, transform.right) <= -0.200f)
                     {
                         isDamaging = true;
                         if (GameManager.instance.player.hasOptics)
@@ -89,7 +89,7 @@ public class WeaponDamage : MonoBehaviour
                         if (GameManager.instance.player.hasKnockback)
                         {
                             Vector2 direction = hp.gameObject.GetComponent<Rigidbody2D>().position - (Vector2)GameManager.instance.player.transform.position;
-                            hp.gameObject.GetComponent<Rigidbody2D>().AddForce(GameManager.instance.player.knockBackWeapon * direction.normalized);
+                            hp.gameObject.GetComponent<Rigidbody2D>().AddForce((GameManager.instance.player.knockBackWeapon * hp.gameObject.GetComponent<Rigidbody2D>().mass) * direction.normalized, ForceMode2D.Impulse);
                         }
                         Tutorial.instance.ListenForInputs("hasHitDummy");
                         if (isThrown)
@@ -127,7 +127,7 @@ public class WeaponDamage : MonoBehaviour
                 if (GameManager.instance.player.hasKnockback)
                 {
                     Vector2 direction = hp.gameObject.GetComponent<Rigidbody2D>().position - (Vector2)GameManager.instance.player.transform.position;
-                    hp.gameObject.GetComponent<Rigidbody2D>().AddForce(GameManager.instance.player.knockBackWeapon * direction.normalized);
+                    hp.gameObject.GetComponent<Rigidbody2D>().AddForce(GameManager.instance.player.knockBackWeapon * direction.normalized, ForceMode2D.Impulse);
                 }
                 int color = 0;
                 if (hitDamage < maxDamage / 3)

@@ -454,6 +454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4508246254668022254}
   - component: {fileID: 3414026976088352771}
+  - component: {fileID: 8561574167348233233}
   - component: {fileID: 2835252451358812941}
   - component: {fileID: 5194873380508007492}
   - component: {fileID: 274296711047854160}
@@ -514,6 +515,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8561574167348233233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438259948589465522}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9e9340a1137924da7d26f9fa193c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundBank:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6736dae1ba0cfd048a954e39b7b34fa3, type: 2}
+  idleSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6f0e36e7bcd25e447ba08512ce80a20d, type: 2}
+  stopIdle:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  hurtSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ee973972fa4c57745b9405978ba8cdb4, type: 2}
+  jumpSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  atkSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  deathSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 42d882219d435674ca20fbc6e8ee96ff, type: 2}
+  idleSoundID: 0
 --- !u!114 &2835252451358812941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,6 +706,7 @@ MonoBehaviour:
   - {fileID: 4002688610606779773}
   - {fileID: 1250837111524596046}
   - {fileID: 3550566294793166283}
+  - {fileID: 5035761559267564052}
   usesLineRenderer: 1
   lines:
   - {fileID: 5238459344706737966}
@@ -681,6 +724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatureAnimators:
   - {fileID: 6885231043076034524}
+  - {fileID: 1789221509827064122}
   colliders: []
   rbs: []
   joints: []
@@ -706,6 +750,7 @@ MonoBehaviour:
   isInRangeToHarvest: 0
   isHarvested: 0
   isDead: 0
+  corpse: {fileID: 9210080367363969694}
   dnaVial: {fileID: 8819707360973039860, guid: b315b2b53bf8dae4c8125a5ed6148e3d, type: 3}
   isInPod: 0
   species: []

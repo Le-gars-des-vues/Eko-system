@@ -67,7 +67,7 @@ public class QuickMenu : MonoBehaviour
 
     private void Update()
     {
-        if (!isAnimating)
+        if (!isAnimating && !PromptManager.instance.promptOpen)
         {
             if (Input.GetKeyDown(KeyCode.Z) && Tutorial.instance.hasUnlockedInfos)
             {

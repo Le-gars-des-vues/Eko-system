@@ -802,6 +802,7 @@ GameObject:
   - component: {fileID: 8978488903129336168}
   - component: {fileID: 2907653651447448373}
   - component: {fileID: 1229301839634219546}
+  - component: {fileID: 7718891519912473884}
   - component: {fileID: 7601866297375590959}
   - component: {fileID: 1634399038130404505}
   - component: {fileID: 1901780278543535367}
@@ -879,7 +880,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5d0fab950779eed49aaf75658fc5d63e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -951,6 +952,47 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.2
+--- !u!114 &7718891519912473884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3523332883187709208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9e9340a1137924da7d26f9fa193c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundBank:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6736dae1ba0cfd048a954e39b7b34fa3, type: 2}
+  idleSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 65d49c48e110d734cbcf2218164c9310, type: 2}
+  stopIdle:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  hurtSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 34751a5a39dbdea43b87f06d43950f77, type: 2}
+  jumpSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  atkSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c80a7002b6fa4564cbae993926ea9dde, type: 2}
+  deathSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 66582ef637090c345b9d888d25c8aa6b, type: 2}
+  idleSoundID: 0
 --- !u!114 &7601866297375590959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,7 +1066,7 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
   creatureGFX:
   - {fileID: 8978488903129336168}
-  - {fileID: 0}
+  - {fileID: 8544408933077349475}
   usesLineRenderer: 1
   lines:
   - {fileID: 4683776967171238872}
@@ -1127,7 +1169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creatureAnimators:
-  - {fileID: 0}
+  - {fileID: 6635313665869670112}
   colliders: []
   rbs: []
   joints: []
@@ -1156,6 +1198,7 @@ MonoBehaviour:
   isInRangeToHarvest: 0
   isHarvested: 0
   isDead: 0
+  corpse: {fileID: 3523332883187709208}
   dnaVial: {fileID: 8819707360973039860, guid: effa919906e209547acd7dcd56a142bc, type: 3}
   isInPod: 0
   species: []

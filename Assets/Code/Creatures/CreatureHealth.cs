@@ -59,7 +59,8 @@ public class CreatureHealth : MonoBehaviour
             {
                 GetComponent<CreatureState>().lastSourceOfDamage = damageFrom;
                 GetComponent<CreatureState>().hasFled = false;
-                GetComponent<CreatureSound>().hurtSound.Post(gameObject);
+                if (GetComponent<CreatureSound>() != null)
+                    GetComponent<CreatureSound>().hurtSound.Post(gameObject);
             }
             currentHp -= value;
             StartCoroutine(FlashWhite(creatureGFX, flashWhiteDuration));
