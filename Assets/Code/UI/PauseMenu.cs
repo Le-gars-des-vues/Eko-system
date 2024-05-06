@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] GameObject background;
-    [SerializeField] GameObject text;
+    [SerializeField] GameObject controlTips;
+    [SerializeField] GameObject PauseScreen;
     bool menuIsOpen;
 
     private void Start()
     {
-        background = transform.Find("background").gameObject;
-        text = transform.Find("text").gameObject;
-        background.SetActive(false);
-        text.SetActive(false);
+        controlTips = transform.Find("controlTips").gameObject;
+        PauseScreen = transform.Find("PauseScreen").gameObject;
+        controlTips.SetActive(false);
+        PauseScreen.SetActive(false);
     }
 
     private void Update()
@@ -22,18 +23,32 @@ public class PauseMenu : MonoBehaviour
         {
             if (!menuIsOpen)
             {
-                background.SetActive(true);
-                text.SetActive(true);
+                PauseScreen.SetActive(true);
                 menuIsOpen = true;
                 Time.timeScale = 0;
             }
             else
             {
-                background.SetActive(false);
-                text.SetActive(false);
+                PauseScreen.SetActive(false);
                 menuIsOpen = false;
                 Time.timeScale = 1;
             }
         }
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Debug.Log("LoadMainMenu");
+    }
+
+    public void ShowControlTips()
+    {
+        controlTips.SetActive(true);
+    }
+
+    public void HideControlTips()
+    {
+        controlTips.SetActive(false);
     }
 }
