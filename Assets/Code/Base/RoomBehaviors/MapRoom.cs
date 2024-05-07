@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class MapRoom : MonoBehaviour
 {
+    [SerializeField] float mapUpgradeValue = 10;
+
     private void OnEnable()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasBuiltMap = true;
+        MapManager.instance.maxZoom += mapUpgradeValue;
+        MapManager.instance.maxDistanceFromOrigin += mapUpgradeValue;
     }
 
     private void Update()
@@ -17,6 +21,9 @@ public class MapRoom : MonoBehaviour
                 return;
             else
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>().hasBuiltMap = false;
+
+            MapManager.instance.maxZoom -= mapUpgradeValue;
+            MapManager.instance.maxDistanceFromOrigin -= mapUpgradeValue;
         }
     }
 }

@@ -9,7 +9,7 @@ public class RoomManagement : MonoBehaviour
     PlayerPermanent player;
 
     public RoomManager roomMenu;
-    [SerializeField] float distanceThreshold;
+    [SerializeField] float distanceThreshold = 2;
 
     bool isInRange;
  
@@ -21,11 +21,10 @@ public class RoomManagement : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(GetComponent<SpriteRenderer>().sprite.bounds.center, player.gameObject.transform.position) < distanceThreshold)
+        if (Vector2.Distance(transform.position, player.gameObject.transform.position) < distanceThreshold)
         {
             isInRange = true;
-            if (!ArrowManager.instance.isActive)
-                ArrowManager.instance.PlaceArrow(GetComponent<SpriteRenderer>().sprite.bounds.center, "MANAGE ROOM", new Vector2(0, 1), gameObject, 1);
+            ArrowManager.instance.PlaceArrow(GetComponent<SpriteRenderer>().sprite.bounds.center, "MANAGE ROOM", new Vector2(0, 1), gameObject);
         }
         else
         {
@@ -38,7 +37,7 @@ public class RoomManagement : MonoBehaviour
         {
             if (isInRange)
             {
-                if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
+                if (Input.GetKey(KeyCode.E) && ArrowManager.instance.targetObject == gameObject)
                 {
                     if (!player.roomManageIsOpen)
                     {

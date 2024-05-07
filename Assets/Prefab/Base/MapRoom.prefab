@@ -66,8 +66,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.015950024, y: -21.050049, z: 0}
-    m_Extent: {x: 1.35075, y: 21.06865, z: 0}
+    m_Center: {x: 0.023100019, y: -21.057, z: 0}
+    m_Extent: {x: 1.3576, y: 21.0658, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -314,6 +314,7 @@ MonoBehaviour:
   light2D: {fileID: 0}
   maxInterval: 0.5
   maxFlicker: 0.2
+  minIntensity: 0.6
   isFlickering: 1
 --- !u!1 &6731953910561590493
 GameObject:
@@ -465,8 +466,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.022550046, y: -21.051249, z: 0}
-    m_Extent: {x: 1.54375, y: 21.25495, z: 0}
+    m_Center: {x: 0.020099998, y: -21.057652, z: 0}
+    m_Extent: {x: 1.5446, y: 21.24905, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -579,19 +580,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.019949973
+      value: 0.026649952
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.054
+      value: -21.055399
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.53445
+      value: 1.53265
       objectReference: {fileID: 0}
     - target: {fileID: 509231479071705076, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.2496
+      value: 21.2531
       objectReference: {fileID: 0}
     - target: {fileID: 3155542606631425395, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_SortingOrder
@@ -600,6 +601,14 @@ PrefabInstance:
     - target: {fileID: 3817434527803381882, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: isFlickering
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088060232386662419, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1371
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088060232386662419, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.007
       objectReference: {fileID: 0}
     - target: {fileID: 4297572701987026071, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -663,19 +672,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: 0.022000015
+      value: 0.018899977
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -21.0475
+      value: -21.05465
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 1.3478999
+      value: 1.3461001
       objectReference: {fileID: 0}
     - target: {fileID: 7259817456105838066, guid: e3d370606c7c97b4ebfca76cc7f4e97a, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 21.0611
+      value: 21.05915
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -757,6 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1a7d17b87f2db409826f3791c27829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUpgradeValue: 10
 --- !u!1001 &4830609131738383920
 PrefabInstance:
   m_ObjectHideFlags: 0

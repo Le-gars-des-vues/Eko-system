@@ -99,6 +99,9 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     bool isMaxShield;
     bool isMaxHealth;
 
+    [SerializeField] Camera pixelCamera;
+    [SerializeField] GameObject pixelatedScreen;
+
     [Header("UnderWater Variables")]
     bool lowOxygenIsPlaying;
     [SerializeField] float underWaterGravityScale = 0.1f;
@@ -231,6 +234,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         upgrade = GameObject.Find("Upgrades");
         room = GameObject.Find("RoomMenu");
         gameOverScreen = GameObject.Find("GameOverScreen");
+        pixelatedScreen = GameObject.Find("Pixelated");
+        pixelCamera = GameObject.Find("PixelCamera").GetComponent<Camera>();
         //Au depart du jeu, on set tout les bars au max et on desactive le ragdoll
         for (int i = 0; i < bones.Count; i++)
         {

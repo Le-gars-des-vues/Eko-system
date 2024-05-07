@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    PlayerPermanent player;
     bool isInRange;
     public bool isBaseTeleporter;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -21,7 +14,7 @@ public class Portal : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                if (isInRange && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
+                if (isInRange && ArrowManager.instance.targetObject == gameObject)
                 {
                     foreach (Teleporter teleporter in GameManager.instance.teleporter)
                     {
@@ -45,7 +38,7 @@ public class Portal : MonoBehaviour
         {
             isInRange = true;
             if (!isBaseTeleporter)
-                ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), gameObject, 1);
+                ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), gameObject);
         }
     }
 

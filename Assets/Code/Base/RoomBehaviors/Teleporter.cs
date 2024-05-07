@@ -7,10 +7,13 @@ public class Teleporter : MonoBehaviour
 {
     [SerializeField] GameObject room;
 
+    [Header("Portal Variables")]
     public bool isPoweredUp;
     [SerializeField] VisualEffect portal;
     [SerializeField] SpriteRenderer portalBackground;
+    bool isInRange;
 
+    [Header("Anim Variables")]
     private float desiredAlpha = 1;
     private float currentAlpha = 1;
     [SerializeField] float fadeSpeed = 1;
@@ -47,6 +50,44 @@ public class Teleporter : MonoBehaviour
             GameManager.instance.teleporter.Remove(this);
             if (GameManager.instance.teleporter.Count <= 0)
                 QuickMenu.instance.UnlockTeleporter(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!GameManager.instance.player.mapIsOpen)
+            {
+                if (isInRange && ArrowManager.instance.targetObject == gameObject)
+                {
+                    GameManager.instance.player.ShowOrHideMap();
+                    MapManager.instance.teleportButton.interactable = true;
+                    MapManager.instance.activeTeleporter = this.gameObject;
+                }
+            }
+            else
+            {
+                GameManager.instance.player.ShowOrHideMap();
+                MapManager.instance.teleportButton.interactable = false;
+                MapManager.instance.activeTeleporter = null;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            isInRange = true;
+            ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            isInRange = false;
+            if (ArrowManager.instance.targetObject == gameObject)
+                ArrowManager.instance.RemoveArrow();
         }
     }
 }

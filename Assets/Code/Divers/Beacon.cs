@@ -38,8 +38,8 @@ public class Beacon : MonoBehaviour
 
     void ActivateButton()
     {
-        MapManager.instance.buttons[MapManager.instance.activeBeaconsCount].SetActive(true);
-        MapManager.instance.buttons[MapManager.instance.activeBeaconsCount].GetComponentInChildren<TextMeshProUGUI>().text = PromptManager.instance.inputFieldText;
+        MapManager.instance.buttons[MapManager.instance.activeBeaconsCount - 1].SetActive(true);
+        MapManager.instance.buttons[MapManager.instance.activeBeaconsCount - 1].GetComponentInChildren<TextMeshProUGUI>().text = PromptManager.instance.inputFieldText;
     }
 
     public void DeactivateButton()
