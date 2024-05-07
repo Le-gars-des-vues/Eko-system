@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 460698447
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 28738ba64dfd23c41a1ab80526003a7e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -188,7 +188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: d11596420eda737428b8457866a32957, type: 2}
-  arrow: {fileID: 4731326688469431035}
   item: {fileID: 0}
   inventory: {fileID: 0}
   playerInventory: {fileID: 0}
@@ -196,11 +195,12 @@ MonoBehaviour:
   itemInInventory: {fileID: 0}
   itemPrefab: {fileID: 839064163631031773, guid: dedee1f75c5bdc649afdb5672ecbc9dc, type: 3}
   hasFlashed: 0
-  isFlashing: 0
+  tooltipActive: 0
   canFlash: 0
   isSelected: 0
   isPickedUp: 0
   rotateSpeed: 0
+  isUnderWaterWeapon: 0
   isSceneLoaded: 0
 --- !u!114 &-6286538404300590474
 MonoBehaviour:
@@ -217,9 +217,16 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 9d1c2ac15058e4e4fa1ab73be6462881, type: 2}
   itemGrid: {fileID: 0}
   stackAmount: 0
+  maxStack: 5
   sprites: []
   markedForDestroy: 0
   isPlaced: 0
+  isInInventory: 0
+  currentDurability: 0
+  maxDurability: 20
+  lowDurabilityThreshold: 0
+  lowDurability: 0
+  broken: 0
   onGridPositionX: 0
   onGridPositionY: 0
   rotated: 0
@@ -304,10 +311,5 @@ PrefabInstance:
 --- !u!4 &3847709178561648067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8214892596907868634, guid: d539275ed056eea489df55833fdc451d, type: 3}
-  m_PrefabInstance: {fileID: 5144489932504650777}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4731326688469431035 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 490306149884159714, guid: d539275ed056eea489df55833fdc451d, type: 3}
   m_PrefabInstance: {fileID: 5144489932504650777}
   m_PrefabAsset: {fileID: 0}

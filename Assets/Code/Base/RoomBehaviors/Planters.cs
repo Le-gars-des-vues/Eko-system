@@ -21,6 +21,7 @@ public class Planters : MonoBehaviour
 
     [SerializeField] GameObject room;
     [SerializeField] Farming farming;
+    bool isCorallium = false;
 
 
     private void OnEnable()
@@ -36,11 +37,11 @@ public class Planters : MonoBehaviour
     {
         if (!player.farmingIsOpen)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (ArrowManager.instance.targetObject == gameObject)
                 {
-                    if (isInRange && ArrowManager.instance.readyToActivate)
+                    if (isInRange && !hasAPlant)
                     {
                         if (!player.inventoryOpen)
                         {
@@ -49,6 +50,16 @@ public class Planters : MonoBehaviour
                         if (!player.farmingIsOpen)
                         {
                             player.ShowOrHideFarming(true);
+                        }
+                        if (!hasAPlant)
+                        {
+                            farming.farmingSlot.gameObject.SetActive(true);
+                            farming.hasAPlantText.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            farming.farmingSlot.gameObject.SetActive(false);
+                            farming.hasAPlantText.gameObject.SetActive(false);
                         }
                     }
                 }
@@ -83,8 +94,21 @@ public class Planters : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isInRange = true;
-        if (!hasAPlant)
-            ArrowManager.instance.PlaceArrow(transform.position, "PLANT", new Vector2(-0.35f, -8), gameObject, 1);
+        if (ArrowManager.instance.targetObject != gameObject)
+        {
+            if (!hasAPlant)
+                ArrowManager.instance.PlaceArrow(transform.position, "PLANT", new Vector2(-0.35f, -8), gameObject);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        isInRange = true;
+        if (ArrowManager.instance.targetObject != gameObject)
+        {
+            if (!hasAPlant)
+                ArrowManager.instance.PlaceArrow(transform.position, "PLANT", new Vector2(-0.35f, -8), gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -96,27 +120,40 @@ public class Planters : MonoBehaviour
 
     public void Plant()
     {
-        growthIndex = 0;
-        switch (farming.farmingSlot.GetItem(0, 0).itemData.itemName)
-        {
-            case "Infpisum Pine":
-                plantToGrow = plants[0];
-                break;
-            case "Macrebosia Nut":
-                plantToGrow = plants[1];
-                break;
-            case "Caeruletam Leaf":
-                plantToGrow = plants[2];
-                break;
-            default:
-                return;
-        }
-        if (ArrowManager.instance.targetObject == gameObject)
-            ArrowManager.instance.RemoveArrow();
-
-        hasAPlant = true;
         if (farming.farmingSlot.GetItem(0, 0) != null)
+        {
+            growthIndex = 0;
+            isCorallium = false;
+            switch (farming.farmingSlot.GetItem(0, 0).itemData.itemName)
+            {
+                case "Infpisum Pine":
+                    plantToGrow = plants[0];
+                    break;
+                case "Macrebosia Nut":
+                    plantToGrow = plants[1];
+                    break;
+                case "Caeruletam Leaf":
+                    plantToGrow = plants[2];
+                    isCorallium = true;
+                    break;
+                case "Aquabulbus Bulb":
+                    plantToGrow = plants[3];
+                    break;
+                case "Corallium Fruit":
+                    plantToGrow = plants[4];
+                    break;
+                default:
+                    return;
+            }
+            if (ArrowManager.instance.targetObject == gameObject)
+                ArrowManager.instance.RemoveArrow();
+
+            hasAPlant = true;
             farming.farmingSlot.GetItem(0, 0).Delete();
+
+            farming.farmingSlot.gameObject.SetActive(false);
+            farming.hasAPlantText.gameObject.SetActive(true);
+        }
     }
 
     public void Grow()
@@ -130,6 +167,12 @@ public class Planters : MonoBehaviour
             if (growthIndex == timeToGrow)
             {
                 thePlant = Instantiate(plantToGrow, spawnPoint.position, spawnPoint.rotation);
+                thePlant.transform.SetParent(room.transform);
+                if (isCorallium)
+                {
+                    thePlant.transform.rotation = Quaternion.Euler(0, 0, 90);
+                    thePlant.GetComponent<HarvestableRessourceNode>().direction = new Vector2(0, -1);
+                }
                 thePlant.GetComponent<HarvestableRessourceNode>().ressourceAmount = 1;
                 growLight.SetActive(true);
             }

@@ -263,7 +263,10 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         if (SceneLoader.instance.isLoading) return;
 
         uiOpened = IsInUI();
-
+        if (uiOpened)
+        {
+            Cursor.SetCursor(cursorImages[3], new Vector2(0, 0), CursorMode.ForceSoftware);
+        }
         if (uiOpened && !cameraTrigger)
         {
             StartCoroutine(MoveCamera("GoUp"));
@@ -905,9 +908,17 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             inventoryOpen = true;
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
-            if (CanOpenStorage() && storageInventory != null)
+            if (CanOpenStorage() && StorageManager.instance.storageCount > 0)
+            {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y + gridOffset);
+                for (int i = 0; i < 10; i++)
+                {
+                    if (i == StorageManager.instance.storageIndex) continue;
+                    else
+                        StorageManager.instance.storages[i].GetComponent<RectTransform>().localPosition = new Vector2(StorageManager.instance.storages[i].GetComponent<RectTransform>().localPosition.x, StorageManager.instance.storages[i].GetComponent<RectTransform>().localPosition.y - gridOffset);
 
+                }
+            }
             AudioManager.instance.PlaySound(AudioManager.instance.inventaireOuvrir, Camera.main.gameObject);
 
             if (mapIsOpen)
@@ -928,8 +939,17 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             Tutorial.instance.ListenForInputs("hasOpenInventory");
             inventoryOpen = false;
             playerInventory.GetComponent<RectTransform>().localPosition = new Vector2(playerInventory.GetComponent<RectTransform>().localPosition.x, playerInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
-            if (CanOpenStorage() && storageInventory != null)
+            if (CanOpenStorage() && StorageManager.instance.storageCount > 0)
+            {
                 storageInventory.GetComponent<RectTransform>().localPosition = new Vector2(storageInventory.GetComponent<RectTransform>().localPosition.x, storageInventory.GetComponent<RectTransform>().localPosition.y - gridOffset);
+                for (int i = 0; i < 10; i++)
+                {
+                    if (i == StorageManager.instance.storageIndex) continue;
+                    else
+                        StorageManager.instance.storages[i].GetComponent<RectTransform>().localPosition = new Vector2(StorageManager.instance.storages[i].GetComponent<RectTransform>().localPosition.x, StorageManager.instance.storages[i].GetComponent<RectTransform>().localPosition.y + gridOffset);
+
+                }
+            }
             AudioManager.instance.PlaySound(AudioManager.instance.inventaireFermer, Camera.main.gameObject);
         }
     }
@@ -975,11 +995,15 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             {
                 cameraTrigger = true;
                 StartCoroutine(MoveCamera("ZoomOut"));
+                pixelCamera.orthographicSize = 20f;
+                pixelatedScreen.transform.localScale = new Vector3(71.11098f, 39.99993f, pixelatedScreen.transform.localScale.z);
             }
             else
             {
                 vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_ScreenY = 0.5f;
                 StartCoroutine(MoveCamera("ZoomOut"));
+                pixelCamera.orthographicSize = 20f;
+                pixelatedScreen.transform.localScale = new Vector3(71.11098f, 39.99993f, pixelatedScreen.transform.localScale.z);
             }
             if (building != null)
                 building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y + gridOffset);
@@ -1001,6 +1025,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             {
                 cameraTrigger = false;
                 StartCoroutine(MoveCamera("NormalZoom"));
+                pixelCamera.orthographicSize = 8.2f;
+                pixelatedScreen.transform.localScale = new Vector3(29.1555f, 16.39997f, pixelatedScreen.transform.localScale.z);
             }
             if (building != null)
                 building.GetComponent<RectTransform>().localPosition = new Vector2(building.GetComponent<RectTransform>().localPosition.x, building.GetComponent<RectTransform>().localPosition.y - gridOffset);

@@ -31,7 +31,7 @@ public class ItemGrid : MonoBehaviour, IDataPersistance
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        if (gameObject.tag == "Hotbar" || gameObject.tag == "Upgrade" || gameObject.tag == "Equipment" || gameObject.tag == "Farming")
+        if (gameObject.tag == "Hotbar" || gameObject.tag == "Upgrade" || gameObject.tag == "Equipment" || gameObject.tag == "Farming" || gameObject.tag == "Repair")
         {
             tileSizeWidth = 96;
             tileSizeHeight = 96;

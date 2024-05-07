@@ -30,6 +30,8 @@ public class ItemData : ScriptableObject
     public string description;
     public string itemType;
 
+    public bool useDurability;
+
     //public bool markedForDestroy;
 
     private void OnEnable()

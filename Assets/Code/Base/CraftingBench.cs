@@ -157,7 +157,7 @@ public class CraftingBench : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            if (!ArrowManager.instance.isActive && !isTeleporting)
+            if (ArrowManager.instance.targetObject != gameObject && !isTeleporting)
                 ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject);
         }
     }
@@ -167,7 +167,7 @@ public class CraftingBench : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            if (!ArrowManager.instance.isActive && !isTeleporting)
+            if (ArrowManager.instance.targetObject != gameObject && !isTeleporting)
                 ArrowManager.instance.PlaceArrow(transform.position, "CRAFTING BENCH", new Vector2(0, 1), gameObject);
         }
     }

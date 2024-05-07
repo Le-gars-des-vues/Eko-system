@@ -133,7 +133,7 @@ public class InventoryController : MonoBehaviour
 
             if (gridName2 == selectedItemGrid.gameObject.name)
             {
-                if (currentInfo != null && currentInfo.GetComponent<ItemInfo>().referenceditem != selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y))
+                if (currentInfo != null && currentInfo.GetComponent<ItemInfo>().referencedItem != selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y))
                 {
                     Destroy(currentInfo);
                 }
@@ -143,8 +143,8 @@ public class InventoryController : MonoBehaviour
                     {
                         Debug.Log("Created info");
                         currentInfo = Instantiate(itemInfo);
+                        currentInfo.GetComponent<ItemInfo>().referencedItem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
                         currentInfo.GetComponent<ItemInfo>().Set(selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y).itemData);
-                        currentInfo.GetComponent<ItemInfo>().referenceditem = selectedItemGrid.GetItem(tileGridPosition.x, tileGridPosition.y);
                         rectTransform = currentInfo.GetComponent<RectTransform>();
                     }
                 }

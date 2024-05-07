@@ -334,6 +334,7 @@ public class HotbarManager : MonoBehaviour
     {
         var objectToSpawn = Instantiate(grids[index].GetItem(0, 0).itemData.objectToSpawn);
         objectToSpawn.GetComponent<PickableObject>().itemInInventory = grids[index].GetItem(0, 0).gameObject;
+        objectToSpawn.GetComponent<InventoryItem>().currentDurability = grids[index].GetItem(0, 0).currentDurability;
         objectToSpawn.GetComponent<InventoryItem>().stackAmount = grids[index].GetItem(0, 0).stackAmount;
         objectToSpawn.GetComponent<PickableObject>().PickUp(true, true);
         objectToSpawn.GetComponent<PickableObject>().inventory = grids[index];

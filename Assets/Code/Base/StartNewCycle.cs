@@ -37,7 +37,7 @@ public class StartNewCycle : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            if (!ArrowManager.instance.isActive)
+            if (ArrowManager.instance.targetObject != gameObject)
                 ArrowManager.instance.PlaceArrow(transform.position, "START NEW CYCLE", new Vector2(0, 1), gameObject);
         }
     }
@@ -47,7 +47,7 @@ public class StartNewCycle : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            if (!ArrowManager.instance.isActive)
+            if (ArrowManager.instance.targetObject != gameObject)
                 ArrowManager.instance.PlaceArrow(transform.position, "START NEW CYCLE", new Vector2(0, 1), gameObject);
         }
     }

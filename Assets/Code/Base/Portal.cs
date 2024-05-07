@@ -37,7 +37,17 @@ public class Portal : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            if (!isBaseTeleporter)
+            if (!isBaseTeleporter && ArrowManager.instance.targetObject != gameObject)
+                ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), gameObject);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            isInRange = true;
+            if (!isBaseTeleporter && ArrowManager.instance.targetObject != gameObject)
                 ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), gameObject);
         }
     }

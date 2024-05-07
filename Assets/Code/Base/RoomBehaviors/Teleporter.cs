@@ -59,14 +59,18 @@ public class Teleporter : MonoBehaviour
                 if (isInRange && ArrowManager.instance.targetObject == gameObject)
                 {
                     GameManager.instance.player.ShowOrHideMap();
-                    MapManager.instance.teleportButton.interactable = true;
+                    if (!MapManager.instance.beaconMenuOpen)
+                        MapManager.instance.OpenAndCloseBeaconMenu();
+                    MapManager.instance.isInTeleporterMenu = true;
                     MapManager.instance.activeTeleporter = this.gameObject;
                 }
             }
             else
             {
                 GameManager.instance.player.ShowOrHideMap();
+                MapManager.instance.isInTeleporterMenu = false;
                 MapManager.instance.teleportButton.interactable = false;
+                MapManager.instance.teleportText.color = MapManager.instance.unactiveColor;
                 MapManager.instance.activeTeleporter = null;
             }
         }
@@ -77,7 +81,18 @@ public class Teleporter : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInRange = true;
-            ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), gameObject);
+            if (ArrowManager.instance.targetObject != gameObject)
+                ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), gameObject);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            isInRange = true;
+            if (ArrowManager.instance.targetObject != gameObject)
+                ArrowManager.instance.PlaceArrow(transform.position, "TELEPORT", new Vector2(0, 1), gameObject);
         }
     }
 

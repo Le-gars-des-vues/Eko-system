@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class MapManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -19,11 +20,17 @@ public class MapManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] Animator beaconAnim;
     public List<GameObject> beacons = new List<GameObject>();
     public List<GameObject> buttons = new List<GameObject>();
-    bool beaconMenuOpen;
+    public bool beaconMenuOpen;
     public int activeBeaconsCount = 0;
     public GameObject activeBeacon;
     public Button teleportButton;
     public GameObject activeTeleporter;
+    public bool isInTeleporterMenu;
+    public TextMeshProUGUI teleportText;
+    [SerializeField] GameObject noBeaconText;
+    bool noBeacon = true;
+    public Color activeColor;
+    public Color unactiveColor;
 
     void Awake()
     {
@@ -69,6 +76,31 @@ public class MapManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 mapCamera.orthographicSize -= Input.mouseScrollDelta.y;
                 mapCamera.orthographicSize = Mathf.Clamp(mapCamera.orthographicSize, minZoom, maxZoom);
             }
+        }
+
+        if (isInTeleporterMenu)
+        {
+            if (activeBeacon != null)
+            {
+                teleportButton.interactable = true;
+                teleportText.color = activeColor;
+            }
+            else
+            {
+                teleportButton.interactable = false;
+                teleportText.color = unactiveColor;
+            }
+        }
+
+        if (beacons.Count > 0 && noBeacon)
+        {
+            noBeacon = false;
+            noBeaconText.SetActive(false);
+        }
+        else if (beacons.Count <= 0 && !noBeacon)
+        {
+            noBeacon = true;
+            noBeaconText.SetActive(false);
         }
     }
 
@@ -127,12 +159,14 @@ public class MapManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (activeTeleporter.GetComponent<Teleporter>().isPoweredUp)
         {
             GameManager.instance.player.ShowOrHideMap();
+            isInTeleporterMenu = false;
             Base.instance.Teleport(true, false, MapManager.instance.activeBeacon.transform.position);
             MapManager.instance.activeBeacon.GetComponent<Beacon>().DeactivateButton();
             Destroy(MapManager.instance.activeBeacon);
             activeTeleporter.GetComponent<Teleporter>().isPoweredUp = false;
             activeTeleporter = null;
             teleportButton.interactable = false;
+            teleportText.color = unactiveColor;
         }
     }
 }

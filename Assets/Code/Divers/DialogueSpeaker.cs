@@ -17,12 +17,12 @@ public class DialogueSpeaker : MonoBehaviour
     public OnDialogueEnd onNestedDialogueEnd;
 
     public List<DialogueSequence> dialogueSequences = new List<DialogueSequence>();
-    DialogueSequence currentSequence;
 
     public bool isSpeaking;
     public bool isReadyToSpeak = false;
     bool hasACondition;
     [SerializeField] float startDialogueDistance = 4;
+    [SerializeField] float maxSpeakingDistance = 7;
     bool pressedKey;
 
     public AK.Wwise.Event speechSound;
@@ -46,6 +46,9 @@ public class DialogueSpeaker : MonoBehaviour
     {
         if (currentDialogue != null)
         {
+            if (Vector2.Distance((Vector2)transform.parent.transform.position + speakerOffset, player.gameObject.transform.position) > maxSpeakingDistance)
+                EndDialogue();
+
             if (player.isInDialogue)
             {
                 if (dialogueIndex < currentDialogue.Count - 1 && !currentDialogue[dialogueIndex + 1].dialogueMode && !isSpeaking)
@@ -148,7 +151,6 @@ public class DialogueSpeaker : MonoBehaviour
 
     public void PrepareDialogue(DialogueSequence dialogueSequence)
     {
-        currentSequence = dialogueSequence;
         currentDialogue = dialogueSequence.dialogueSequence;
         dialogueIndex = 0;
         isReadyToSpeak = true;

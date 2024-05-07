@@ -185,6 +185,12 @@ public class Robot : MonoBehaviour
             GoToRespawn();
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[5]);
         }
+        else if (!hasSeenStorm && Tutorial.instance.hasSeenStorm)
+        {
+            hasSeenStorm = true;
+            GoToCrafting();
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[10]);
+        }
         else if (!cameBackWithoutQuota && Tutorial.instance.cameBackWithoutQuota)
         {
             cameBackWithoutQuota = true;
@@ -196,13 +202,6 @@ public class Robot : MonoBehaviour
             cameBackWithQuota = true;
             GoToCrafting();
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[9]);
-            baseDialogue.onDialogueEnd += TourOfTheBase;
-        }
-        else if (!hasSeenStorm && Tutorial.instance.hasSeenStorm)
-        {
-            hasSeenStorm = true;
-            GoToCrafting();
-            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[10]);
         }
     }
 

@@ -226,14 +226,12 @@ public class PickableObject : MonoBehaviour
     public IEnumerator PickUpAnimation()
     {
         isBeingPickedUp = true;
-        float elapsedTime = 0;
-        float duration = Mathf.Lerp(0.5f, 2, Vector2.Distance(transform.position, player.gameObject.transform.position) / 10);
-        Debug.Log(Vector2.Distance(transform.position, player.gameObject.transform.position));
-        Debug.Log(duration);
-        gameObject.GetComponent<Collider2D>().enabled = false;
-        gameObject.GetComponent<Rigidbody2D>().simulated = false;
         if (ArrowManager.instance.targetObject == gameObject)
             ArrowManager.instance.RemoveArrow();
+        float elapsedTime = 0;
+        float duration = Mathf.Lerp(0.5f, 2, Vector2.Distance(transform.position, player.gameObject.transform.position) / 10);
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().simulated = false;
         Vector2 initialPos = transform.position;
         Vector3 initalScale = transform.localScale;
         while (elapsedTime < duration)

@@ -81,7 +81,6 @@ public class CraftingSystem : MonoBehaviour
                     anItem = gridStorage.CheckIfItemPresent(x, y);
                     if (anItem != null)
                     {
-
                         laRecette = GetComponent<CraftingManager>().knownRecipes[GetComponent<TMP_Dropdown>().value].Key;
                         if (anItem.itemData.itemName == Recipes.listOfBasePods[laRecette].firstMaterial)
                             compteurItem1 += 1f / (anItem.itemData.width * anItem.itemData.height);

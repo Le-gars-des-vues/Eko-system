@@ -35,11 +35,11 @@ public class Enclos : MonoBehaviour
     {
         if (!player.farmingIsOpen)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (ArrowManager.instance.targetObject == gameObject)
                 {
-                    if (isInRange && ArrowManager.instance.targetObject == gameObject && ArrowManager.instance.readyToActivate)
+                    if (isInRange)
                     {
                         if (!hasACreature)
                         {
@@ -50,6 +50,16 @@ public class Enclos : MonoBehaviour
                             if (!player.farmingIsOpen)
                             {
                                 player.ShowOrHideFarming(false);
+                            }
+                            if (!hasACreature)
+                            {
+                                farming.farmingSlot.gameObject.SetActive(true);
+                                farming.hasACreatureText.gameObject.SetActive(true);
+                            }
+                            else
+                            {
+                                farming.farmingSlot.gameObject.SetActive(false);
+                                farming.hasACreatureText.gameObject.SetActive(false);
                             }
                         }
                         else
@@ -91,10 +101,25 @@ public class Enclos : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isInRange = true;
-        if (!hasACreature)
-            ArrowManager.instance.PlaceArrow(transform.position, "CLONE", new Vector2(0, -2), gameObject, 1);
-        else
-            ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, -2), gameObject, 1);
+        if (ArrowManager.instance.targetObject != gameObject)
+        {
+            if (!hasACreature)
+                ArrowManager.instance.PlaceArrow(transform.position, "CLONE", new Vector2(0, -2), gameObject);
+            else
+                ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, -2), gameObject);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        isInRange = true;
+        if (ArrowManager.instance.targetObject != gameObject)
+        {
+            if (!hasACreature)
+                ArrowManager.instance.PlaceArrow(transform.position, "CLONE", new Vector2(0, -2), gameObject);
+            else
+                ArrowManager.instance.PlaceArrow(transform.position, "HARVEST", new Vector2(0, -2), gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -118,26 +143,31 @@ public class Enclos : MonoBehaviour
 
     public void Clone()
     {
-        switch (farming.farmingSlot.GetItem(0, 0).itemData.itemName)
-        {
-            case "Dog DNA Vial":
-                creatureToClone = creatures[0];
-                break;
-            case "Fly DNA Vial":
-                creatureToClone = creatures[1];
-                break;
-            case "Frog DNA Vial":
-                creatureToClone = creatures[2];
-                break;
-            default:
-                return;
-        }
-        if (ArrowManager.instance.targetObject == gameObject)
-            ArrowManager.instance.RemoveArrow();
-
-        hasACreature = true;
         if (farming.farmingSlot.GetItem(0, 0) != null)
+        {
+            switch (farming.farmingSlot.GetItem(0, 0).itemData.itemName)
+            {
+                case "Dog DNA Vial":
+                    creatureToClone = creatures[0];
+                    break;
+                case "Fly DNA Vial":
+                    creatureToClone = creatures[1];
+                    break;
+                case "Frog DNA Vial":
+                    creatureToClone = creatures[2];
+                    break;
+                default:
+                    return;
+            }
+            if (ArrowManager.instance.targetObject == gameObject)
+                ArrowManager.instance.RemoveArrow();
+
+            hasACreature = true;
             farming.farmingSlot.GetItem(0, 0).Delete();
+
+            farming.farmingSlot.gameObject.SetActive(false);
+            farming.hasACreatureText.gameObject.SetActive(true);
+        }
     }
 
     public void Grow()
@@ -151,6 +181,7 @@ public class Enclos : MonoBehaviour
             if (growthIndex == timeToGrow)
             {
                 theCreature = Instantiate(creatureToClone, spawnPoint.position, spawnPoint.rotation);
+                theCreature.transform.SetParent(room.transform);
                 theCreature.transform.GetChild(0).GetComponent<CreatureDeath>().Death(0);
                 theCreature.transform.GetChild(0).GetComponent<CreatureDeath>().isInPod = true;
                 theCreature.transform.GetChild(0).GetComponent<CreatureDeath>().ressourceSpawnedCount = 1;

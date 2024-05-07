@@ -58,6 +58,7 @@ public class BuildButtonDown : MonoBehaviour
             if (hit.collider != null && hit.collider.gameObject == gameObject)
             {
                 gameObject.GetComponent<Animator>().SetBool("isSelected", true);
+                Cursor.SetCursor(player.cursorImages[0], new Vector2(32, 32), CursorMode.ForceSoftware);
             }
             else
                 gameObject.GetComponent<Animator>().SetBool("isSelected", false);

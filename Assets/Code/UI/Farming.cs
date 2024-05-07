@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Farming : MonoBehaviour
 {
     [SerializeField] GameObject planting;
     [SerializeField] GameObject cloning;
+    public TextMeshProUGUI hasAPlantText;
+    public TextMeshProUGUI hasACreatureText;
 
     public ItemGrid farmingSlot;
  

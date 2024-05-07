@@ -14,10 +14,13 @@ public class CraftingManager : MonoBehaviour
 
     public TextMeshProUGUI mat1Nom;
     public TextMeshProUGUI nombreMat1;
+    [SerializeField] Image imageMat1;
     public TextMeshProUGUI mat2Nom;
     public TextMeshProUGUI nombreMat2;
+    [SerializeField] Image imageMat2;
     public TextMeshProUGUI mat3Nom;
     public TextMeshProUGUI nombreMat3;
+    [SerializeField] Image imageMat3;
 
     public GameObject theCraftingSystem;
     public TMP_Dropdown dropdown;
@@ -36,6 +39,7 @@ public class CraftingManager : MonoBehaviour
     public List<KeyValuePair<int, Recipes>> learnedRecipes = new List<KeyValuePair<int, Recipes>>();
     //float craftCheckTime;
     [SerializeField] float craftCheckInterval;
+    public List<ItemData> ressources = new List<ItemData>();
 
     private void Start()
     {
@@ -118,25 +122,33 @@ public class CraftingManager : MonoBehaviour
 
                 mat1Nom.text = Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].firstMaterial;
                 nombreMat1.text = mat1Quant.ToString() + " / " + Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].firstMatQuantity.ToString();
+                imageMat1.color = new Color(1, 1, 1, 1);
+                imageMat1.sprite = GetItemDataByName(Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].firstMaterial).itemIcon;
 
                 mat2Nom.text = Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMaterial;
                 if (Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMatQuantity == null)
                 {
                     nombreMat2.text = null;
+                    imageMat2.color = new Color(1, 1, 1, 0);
                 }
                 else
                 {
                     nombreMat2.text = mat2Quant.ToString() + " / " + Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMatQuantity.ToString();
+                    imageMat2.sprite = GetItemDataByName(Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].secondMaterial).itemIcon;
+                    imageMat2.color = new Color(1, 1, 1, 1);
                 }
 
                 mat3Nom.text = Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMaterial;
                 if (Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMatQuantity == null)
                 {
                     nombreMat3.text = null;
+                    imageMat3.color = new Color(1, 1, 1, 0);
                 }
                 else
                 {
                     nombreMat3.text = mat3Quant.ToString() + " / " + Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMatQuantity.ToString();
+                    imageMat3.sprite = GetItemDataByName(Recipes.listOfRecipes[knownRecipes[currentRecipe].Key].thirdMaterial).itemIcon;
+                    imageMat3.color = new Color(1, 1, 1, 1);
                 }
             }
             //craftCheckTime = Time.time;
@@ -157,6 +169,9 @@ public class CraftingManager : MonoBehaviour
             nombreMat1.text = "";
             nombreMat2.text = "";
             nombreMat3.text = "";
+            imageMat1.color = new Color(1, 1, 1, 0);
+            imageMat2.color = new Color(1, 1, 1, 0);
+            imageMat3.color = new Color(1, 1, 1, 0);
             craftingName.text = "";
             craftingDesc.text = "";
             dropdown.value = -1;
@@ -209,6 +224,18 @@ public class CraftingManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    ItemData GetItemDataByName(string name)
+    {
+        foreach (ItemData item in ressources)
+        {
+            if (name == item.itemName)
+            {
+                return item;
+            }
+        }
+        return null;
     }
 }
 

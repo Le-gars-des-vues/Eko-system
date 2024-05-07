@@ -10,8 +10,9 @@ public class RoomManagement : MonoBehaviour
 
     public RoomManager roomMenu;
     [SerializeField] float distanceThreshold = 2;
+    [SerializeField] Vector2 offset;
 
-    bool isInRange;
+    public bool isInRange;
  
     private void OnEnable()
     {
@@ -21,10 +22,11 @@ public class RoomManagement : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, player.gameObject.transform.position) < distanceThreshold)
+        if (Vector2.Distance((Vector2)transform.position + offset, player.gameObject.transform.position) < distanceThreshold)
         {
             isInRange = true;
-            ArrowManager.instance.PlaceArrow(GetComponent<SpriteRenderer>().sprite.bounds.center, "MANAGE ROOM", new Vector2(0, 1), gameObject);
+            if (ArrowManager.instance.targetObject != gameObject)
+                ArrowManager.instance.PlaceArrow((Vector2)transform.position + offset, "MANAGE ROOM", new Vector2(0, -3), gameObject);
         }
         else
         {
@@ -93,5 +95,11 @@ public class RoomManagement : MonoBehaviour
             }
             */
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere((Vector2)transform.position + offset, 0.1f);
     }
 }
