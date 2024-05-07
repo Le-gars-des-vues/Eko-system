@@ -31,7 +31,7 @@ public class TrainingRoom : MonoBehaviour
 
     void TeleportToBase()
     {
-        StartCoroutine(player.GetComponent<PlayerPermanent>().Dissolve(2f, true, GameObject.Find("Base").GetComponent<Base>().baseSpawnPoint.position), true, false, true);
+        StartCoroutine(player.GetComponent<PlayerPermanent>().Dissolve(2f, true, GameObject.Find("Base").GetComponent<Base>().baseSpawnPoint.position, true, false, true));
         robot.TeleportToBase();
     }
 
