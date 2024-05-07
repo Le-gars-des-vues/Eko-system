@@ -22,7 +22,6 @@ public class DialogueSpeaker : MonoBehaviour
     public bool isReadyToSpeak = false;
     bool hasACondition;
     [SerializeField] float startDialogueDistance = 4;
-    [SerializeField] float maxSpeakingDistance = 7;
     bool pressedKey;
 
     public AK.Wwise.Event speechSound;
@@ -46,7 +45,7 @@ public class DialogueSpeaker : MonoBehaviour
     {
         if (currentDialogue != null)
         {
-            if (Vector2.Distance((Vector2)transform.parent.transform.position + speakerOffset, player.gameObject.transform.position) > maxSpeakingDistance)
+            if (Time.time > 5f && !player.isInBase)
                 EndDialogue();
 
             if (player.isInDialogue)

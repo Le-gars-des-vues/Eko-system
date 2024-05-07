@@ -86,7 +86,7 @@ public class IntroText : MonoBehaviour
         yield return null;
     }
 
-    void StartGame()
+    public void StartGame()
     {
         GameObject.Find("SceneLoader").GetComponent<SceneLoader>().LoadGame();
     }
