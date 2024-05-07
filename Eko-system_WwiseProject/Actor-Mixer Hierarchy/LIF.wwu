@@ -10,6 +10,12 @@
 				<ActorMixer Name="LIF" ID="{B62A180C-6D1D-4A84-B93D-A1A178E35068}" ShortID="693543974">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Pitch" Type="int32">
 							<ModifierList>
 								<ModifierInfo>
@@ -98,12 +104,20 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Rhinortue_Attaque" ID="{A22675E3-AED1-4B58-A274-6876B909B4D8}" ShortID="25001947">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{ED21D038-7D33-4801-9CC9-7DE49B223987}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -115,7 +129,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{EDFEF18F-2FB7-4930-AAD7-6AAAE693B8B1}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -404,12 +430,19 @@
 										</Sound>
 										<RandomSequenceContainer Name="LIF_Moustique_Degat_G" ID="{5364262D-9B99-40B8-89A2-062A96421697}" ShortID="195377376">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{AB2B201E-4288-49F3-886E-05921F2A17DB}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -424,6 +457,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B6BAF514-E3CF-411B-A72C-A5277E73E2D7}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -667,6 +707,8 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Rhinortue_Passif_" ID="{9B471C11-EA36-4929-B7E0-31F113B307DA}" ShortID="977310652">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
@@ -677,6 +719,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -700,6 +748,11 @@
 													</ModifierList>
 												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>2</Value>
@@ -1124,6 +1177,8 @@
 										</Sound>
 										<RandomSequenceContainer Name="LIF_Rhinortue_Mort" ID="{3884FD8C-A080-4A73-956A-ADD6E52D501B}" ShortID="94955017">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.1</Value>
@@ -1133,6 +1188,24 @@
 															<Modifier Name="" ID="{1FEA1D76-77AB-4EC1-8DA0-B04241DA08E8}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D9F6E26C-A379-47A2-A10D-A899BA25C4D7}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -1323,12 +1396,32 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Rhinortue_Attaque" ID="{20AB1B68-C4F4-4111-AB25-531CC9843DF7}" ShortID="563900540">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{D18839D8-E71B-4C3D-AC42-E4A09B87F80D}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{CDD8D042-3C9C-4E03-A243-B4FFC5B863C4}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -1583,12 +1676,19 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Moustique_Degat_G" ID="{E2B3980E-772C-4F65-ADE5-5E36878FCF6D}" ShortID="764291458">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{F9F1A1A4-91D5-43DB-A674-32939E5BADFF}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -1603,6 +1703,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{2EBC19E9-B6C9-4CA2-A655-1C97D3EDC2C2}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -1909,6 +2016,8 @@
 										</Sound>
 										<RandomSequenceContainer Name="LIF_Rhinortue_Passif_" ID="{78B8FC4E-3938-4A17-B0A4-C328377A1B34}" ShortID="601470012">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.5</Value>
@@ -1923,6 +2032,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -1948,6 +2063,11 @@
 												</Property>
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="7"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-4</Value>
@@ -2427,12 +2547,20 @@
 										</Sound>
 										<RandomSequenceContainer Name="LIF_Rhinortue_Saut_" ID="{5EFDE0BE-072F-4865-9219-6D7BC386CFCD}" ShortID="672701727">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{D9F774AC-4ECC-434D-9441-40884CF49529}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -2441,7 +2569,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{9737FCA0-49C0-4724-BAF8-EC0BDA805B21}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-14</Value>
@@ -2616,6 +2756,8 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Rhinortue_Passif_" ID="{302D896B-04A5-4687-9081-D9B5993B85AB}" ShortID="678145864">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.2</Value>
@@ -2629,6 +2771,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -2655,6 +2803,11 @@
 													</ModifierList>
 												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>4</Value>
@@ -2961,6 +3114,7 @@
 											<ChildrenList>
 												<RandomSequenceContainer Name="LIF_Rhinortue_Course_Terre" ID="{F64F2662-F2B1-40B3-8D65-AE6A06EFCF44}" ShortID="746509690">
 													<PropertyList>
+														<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 														<Property Name="Pitch" Type="int32">
 															<ModifierList>
 																<ModifierInfo>
@@ -2971,6 +3125,13 @@
 																			<Property Name="Min" Type="Real64" Value="-200"/>
 																		</PropertyList>
 																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{E659D339-2E36-4F2B-99D8-C98715777225}"/>
 																</ModifierInfo>
 															</ModifierList>
 														</Property>
@@ -2987,6 +3148,7 @@
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="LIF_Rhinortue_Course_BoisMoussu" ID="{80E0C243-7E17-4911-B034-6EBB2F9E9E09}" ShortID="126635261">
 													<PropertyList>
+														<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 														<Property Name="Pitch" Type="int32">
 															<ModifierList>
 																<ModifierInfo>
@@ -2997,6 +3159,13 @@
 																			<Property Name="Min" Type="Real64" Value="-200"/>
 																		</PropertyList>
 																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{2B65050F-A75A-49D0-AE59-5A33A079960C}"/>
 																</ModifierInfo>
 															</ModifierList>
 														</Property>
@@ -3064,6 +3233,7 @@
 											<ChildrenList>
 												<RandomSequenceContainer Name="LIF_Rhinortue_Marche_Terre" ID="{7CA51441-7869-446C-83A1-596A8924D396}" ShortID="689314135">
 													<PropertyList>
+														<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 														<Property Name="Pitch" Type="int32">
 															<ModifierList>
 																<ModifierInfo>
@@ -3074,6 +3244,13 @@
 																			<Property Name="Min" Type="Real64" Value="-200"/>
 																		</PropertyList>
 																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{2B0AE446-2F43-4C8F-9049-06337AA8CCDE}"/>
 																</ModifierInfo>
 															</ModifierList>
 														</Property>
@@ -3090,6 +3267,7 @@
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="LIF_Rhinortue_Marche_BoisMoussu" ID="{ACB579C0-CE0B-4806-8760-C8D8A7FC5C16}" ShortID="908704192">
 													<PropertyList>
+														<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 														<Property Name="Pitch" Type="int32">
 															<ModifierList>
 																<ModifierInfo>
@@ -3100,6 +3278,13 @@
 																			<Property Name="Min" Type="Real64" Value="-200"/>
 																		</PropertyList>
 																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{EAAC31F0-361C-4D6A-8727-9A1D2C3ED758}"/>
 																</ModifierInfo>
 															</ModifierList>
 														</Property>
@@ -3387,6 +3572,14 @@
 										</Sound>
 										<RandomSequenceContainer Name="LIF_Moustique_Degat_L1" ID="{A6EE4B52-F809-44ED-89D8-110F59A0CCC0}" ShortID="471621843">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
 														<ModifierInfo>
@@ -3400,7 +3593,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{AEBAC7D6-BA76-49DD-88AF-EF99ABCC464F}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -3661,9 +3866,17 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Moustique_Degat_L2" ID="{AF9721D3-B3B3-4BC2-A276-6CB7BACFB87E}" ShortID="825445096">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="Lowpass" Type="int16">
 													<ValueList>
 														<Value>28</Value>
+													</ValueList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
 													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
@@ -3679,7 +3892,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1BF912FF-92EA-4C37-BFB4-CB7A0B225A9A}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -3837,6 +4062,13 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Moustique_Degat_G" ID="{71F51ED0-15F7-41E2-9620-AD4E3DBCA444}" ShortID="9038737">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
 														<Value>-660</Value>
@@ -3850,6 +4082,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{63B8CCC4-A613-4FFC-A896-0486F6E62D37}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -4154,6 +4393,14 @@
 										</Sound>
 										<RandomSequenceContainer Name="LIF_Moustique_Mort_L1" ID="{AE51918B-BE4B-4F79-B1C5-99A17C9349EC}" ShortID="883097159">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
 														<ModifierInfo>
@@ -4167,7 +4414,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{16330F34-F94B-44F1-ABD2-462B11A1A2C4}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -4491,6 +4750,13 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Moustique_Degat_G" ID="{0D635C53-0AF1-4361-93E8-8128D5BD58BE}" ShortID="393026892">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
 														<Value>-710</Value>
@@ -4504,6 +4770,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{732414F2-EF9F-4E38-9168-CA1036AD77B2}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -4747,9 +5020,17 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Moustique_Degat_L2" ID="{8AC9278E-A14F-4ED4-A7D3-2D88E7D6609E}" ShortID="390353299">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="Lowpass" Type="int16">
 													<ValueList>
 														<Value>28</Value>
+													</ValueList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
 													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
@@ -4765,7 +5046,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B73199B9-F3AA-42ED-85DC-4AB75EF9DF5A}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -5137,12 +5430,32 @@
 										</Sound>
 										<RandomSequenceContainer Name="LIF_PlanteCarnivore_Passif_L1" ID="{C9CFF5BA-533C-4BB2-8444-6EF9DCF710DE}" ShortID="351123834">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
 												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="OverrideOutput" Type="bool" Value="True"/>
 												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{44FFB434-B6A4-40BD-A0F0-B356D6A39203}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="4"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -5348,10 +5661,30 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_PlanteCarnivore_Passif_L2" ID="{6106F6BF-5C8C-4F97-91EB-6A34F7A1E7A2}" ShortID="584473152">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
 												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{49B112E2-BA3F-411E-A905-D1BB31DE94BC}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -5911,6 +6244,58 @@
 												<ActiveSource Name="SerpentAttaque_PH" ID="{491532EA-00D4-47FD-9358-F9370CB6BC33}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Salamandre_Touche" ID="{6EA06C3D-15B4-4265-86D0-1D391254823E}" ShortID="467814959">
+											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{7C4D65DB-32B0-4DBC-B50B-219AA1C0714F}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D3D01977-1D82-4837-B55B-D734D45E1E81}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1B55E991-EB69-4023-8FA3-E025D7587480}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_Salamandre_Degat" ID="{C41F35D1-1A75-46FB-B60A-AF807D744DD5}" ShortID="314989925">
@@ -5967,6 +6352,335 @@
 												<ActiveSource Name="SerpentDegat_PH" ID="{A2192C36-A42C-4B2A-B204-DA8C3616DB61}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Salamandre_Degat_G" ID="{104254EE-DD56-4536-9A0B-31FF35581FC5}" ShortID="257682453">
+											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{4BF6DA79-EE44-446F-B09B-AC21F7878C53}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-660</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D4572DC7-6E90-4ADE-AA9F-65B718C3BD39}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{429E9BE3-CBB3-49A4-9B94-10324DF03579}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-20</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="166526-Bullet-Hit-Body-Flesh_09" ID="{1DE5C845-DCDC-452B-9AF1-EE66B0819EAD}" ShortID="270756046">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{21EB3629-70E1-45F5-B943-99916A45EB8F}">
+															<Language>SFX</Language>
+															<AudioFile>166526-Bullet-Hit-Body-Flesh_09.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="665190911"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{21EB3629-70E1-45F5-B943-99916A45EB8F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166542-Bullet-Hit-Body-Flesh_06" ID="{AABC352D-C22F-4D60-850F-B042620F4D17}" ShortID="264097714">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{112CE152-DEA9-41E5-A3D9-EEE038831BDB}">
+															<Language>SFX</Language>
+															<AudioFile>166542-Bullet-Hit-Body-Flesh_06.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="891285907"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{112CE152-DEA9-41E5-A3D9-EEE038831BDB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166547-Bullet-Hit-Body-Flesh_07" ID="{B83C265D-18ED-47B9-A37B-F2F8A0C6B86E}" ShortID="1027097265">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{6B881201-518D-4985-B1B9-FB547FFBDAFB}">
+															<Language>SFX</Language>
+															<AudioFile>166547-Bullet-Hit-Body-Flesh_07.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="176342500"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{6B881201-518D-4985-B1B9-FB547FFBDAFB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166553-Bullet-Hit-Body-Flesh_05" ID="{ECC0876E-F9C6-464C-8A1A-2DBE9E529116}" ShortID="1012167401">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{B2DC551E-09E9-458D-ADC0-6E6C5BA1ECD2}">
+															<Language>SFX</Language>
+															<AudioFile>166553-Bullet-Hit-Body-Flesh_05.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758217916"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{B2DC551E-09E9-458D-ADC0-6E6C5BA1ECD2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166559-Bullet-Hit-Body-Flesh_14" ID="{0D91972A-7882-4805-81AC-046BEF382FDE}" ShortID="331148242">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{0581DF5C-439A-49BF-A35A-16A30C66EC57}">
+															<Language>SFX</Language>
+															<AudioFile>166559-Bullet-Hit-Body-Flesh_14.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="502963919"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{0581DF5C-439A-49BF-A35A-16A30C66EC57}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166573-Bullet-Hit-Body-Flesh_16" ID="{A14E2010-DA94-4E47-84FE-0696869DFD84}" ShortID="913601107">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{F833B002-09F1-4005-AC57-A99E9C6B9A13}">
+															<Language>SFX</Language>
+															<AudioFile>166573-Bullet-Hit-Body-Flesh_16.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="559970004"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{F833B002-09F1-4005-AC57-A99E9C6B9A13}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166582-Bullet-Hit-Body-Flesh_11" ID="{489EFA23-1873-4A19-8CE3-E0FDCB19BF68}" ShortID="425583293">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{119ED884-036F-4BDC-BE15-BCBA02B569DC}">
+															<Language>SFX</Language>
+															<AudioFile>166582-Bullet-Hit-Body-Flesh_11.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="588728228"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{119ED884-036F-4BDC-BE15-BCBA02B569DC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166588-Bullet-Hit-Body-Flesh_10" ID="{105EA7CD-327F-409D-86B3-D279095AEBA3}" ShortID="558476332">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{F56A8D5E-CF29-4829-8E8A-2EBADE38172A}">
+															<Language>SFX</Language>
+															<AudioFile>166588-Bullet-Hit-Body-Flesh_10.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="352848444"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{F56A8D5E-CF29-4829-8E8A-2EBADE38172A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166597-Bullet-Hit-Body-Flesh_02" ID="{6FE710CF-7BED-46F2-96F0-F662645094DA}" ShortID="933058545">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{37A75137-15D7-4749-8A6C-950375007663}">
+															<Language>SFX</Language>
+															<AudioFile>166597-Bullet-Hit-Body-Flesh_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="474658866"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{37A75137-15D7-4749-8A6C-950375007663}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166607-Bullet-Hit-Body-Flesh_01" ID="{44A351D8-FADF-4E40-9981-F9B4D6CDD22D}" ShortID="169517082">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{5E4B8D77-D7BF-497B-A674-7DAD2871AB87}">
+															<Language>SFX</Language>
+															<AudioFile>166607-Bullet-Hit-Body-Flesh_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="586588224"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{5E4B8D77-D7BF-497B-A674-7DAD2871AB87}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="LIF_Salamandre_Degat" ID="{27DC07AD-94F0-4563-B5E7-88C2879EB6BA}" ShortID="717917951">
+											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1FD5C8B9-B310-40F2-B8E7-CFCDA2131631}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B5DB062E-0135-4F86-ADBB-B622D1AE17D5}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{23065FB6-B37C-40E7-A78E-8FF5F3392AFC}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_Salamandre_Mort" ID="{F0E0D2B0-CED1-4BF1-B7A5-155972C5BD8B}" ShortID="358118197">
@@ -6023,6 +6737,58 @@
 												<ActiveSource Name="SerpentMort_PH" ID="{F61C50C7-3571-409B-8D88-44A690920E98}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Salamandre_Mort" ID="{C4C7D5A3-B4D6-4A2D-95B3-064608F4F2B4}" ShortID="506506114">
+											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{61741EC5-F9C1-401F-95B4-4921408CA2DC}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{5C1F1D2F-3F14-40AA-AE06-0F7391C5E1C9}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{19A90D24-7B60-4E69-931C-D50E5548463D}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_Salamandre_Passif" ID="{5BE3014F-70C7-47A4-9FE2-568866AC50D5}" ShortID="597566213">
@@ -6079,6 +6845,58 @@
 												<ActiveSource Name="SerpentPassif_PH" ID="{AD5C80AB-9E20-4AE7-87E6-2C4344EA9129}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Salamandre_Passif" ID="{082D47CD-81B6-46C8-B8C4-17F26520B119}" ShortID="585939109">
+											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{A227EF70-C8F8-439F-AC45-293FE828D66E}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{BAA08897-6AE7-472A-8DA1-FB883602403A}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{CF1F593B-9205-44FB-94C9-4C05FD00E6EB}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 							</ChildrenList>
@@ -6151,12 +6969,20 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Singe_Attaque" ID="{4D73F8AE-EF8B-416D-AF59-A76B2870840A}" ShortID="104697916">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{2BAEBDD0-61A1-49B9-A087-29941E6EFEE6}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -6168,7 +6994,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{5E10FED2-3524-4A61-82BB-901B6E3BAAF9}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -6220,12 +7058,19 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Singe_Degat_G" ID="{B00252F9-5A52-49A3-AFCD-5AB156BE0016}" ShortID="387831736">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{2F960A77-0302-4292-859B-35C21555720C}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -6240,6 +7085,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{A845AF07-82BD-44E1-B4DA-988D17E36E35}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -6483,6 +7335,8 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Singe_Passif_" ID="{13A96F57-E5E3-421B-81C9-121F87DE6AB1}" ShortID="672032339">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
@@ -6493,6 +7347,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -6516,6 +7376,11 @@
 													</ModifierList>
 												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>2</Value>
@@ -6576,6 +7441,8 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Singe_Mort" ID="{B3BC7721-5A1D-4A12-A091-74051225E8AA}" ShortID="1015734446">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.1</Value>
@@ -6585,6 +7452,24 @@
 															<Modifier Name="" ID="{AFD3F4B1-204B-4294-85BB-2EFBFF713330}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{DEFEA9DE-7538-43EE-917F-280DC6F5E1CA}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -6598,12 +7483,19 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Singe_Degat_G" ID="{0F173A81-51B3-472F-BE51-E1B305E0DAE6}" ShortID="1016376196">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{180E4AC1-F59E-409C-8FA4-C2DAE4B90954}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -6618,6 +7510,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{AA06C0C6-907F-4BED-A613-9B2576EE493D}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -6895,6 +7794,8 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Singe_Passif_" ID="{B0831609-AD9C-4E3F-9D0D-5296722B0CB3}" ShortID="366485540">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.5</Value>
@@ -6909,6 +7810,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -6934,6 +7841,11 @@
 												</Property>
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="7"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-4</Value>
@@ -7298,12 +8210,20 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Poisson_Attaque" ID="{29512105-E52C-48D1-8348-E8A0DB1672F5}" ShortID="187574046">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{5B5C7DFA-C600-4BE0-B817-C56D8DA0F3CD}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -7315,7 +8235,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{AC3B42D7-5308-48DC-9C46-BA517FF3B5DE}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -7367,12 +8299,19 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Poisson_Degat_G" ID="{7E19EB58-F4B4-4CB7-A30D-B5532DED3AE3}" ShortID="22363865">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{BC191FF6-C329-487F-BF42-7F12E9F7232A}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -7387,6 +8326,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{6194E9B2-B47A-41B7-A059-ACC4740E8587}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -7630,6 +8576,8 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Poisson_Degat" ID="{20345DC9-AB80-4312-9469-0A9852D09FB7}" ShortID="1057563195">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
@@ -7640,6 +8588,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7663,6 +8617,11 @@
 													</ModifierList>
 												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>2</Value>
@@ -7723,6 +8682,8 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Poisson_Mort" ID="{694700E4-D670-4843-BF12-348F425C83AF}" ShortID="87911593">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.1</Value>
@@ -7732,6 +8693,24 @@
 															<Modifier Name="" ID="{FAD424E8-22E4-4CE0-BA05-464636BC2CC0}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{C2672A1C-260E-45E0-9E93-280B34D065DC}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -7745,12 +8724,19 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Poisson_Degat_G" ID="{2F0D8DC7-D225-47E0-812B-B2EAC2E48ABC}" ShortID="836764326">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{4D97154B-705E-40FE-B3E0-8FA935F1F8B0}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -7765,6 +8751,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{C49554BC-CF52-4F8C-8089-0F32F2F8C01B}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -8042,6 +9035,8 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Poisson_Passif_" ID="{8FD03ED6-B148-4147-B8A3-0FBBA956BC75}" ShortID="868595197">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.5</Value>
@@ -8056,6 +9051,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -8081,6 +9082,11 @@
 												</Property>
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="7"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-4</Value>
@@ -8178,12 +9184,20 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Requin_Attaque" ID="{728CE265-8092-4B51-852D-CA9A8FE11920}" ShortID="908014222">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{0D4CFEE7-280F-4D22-86E7-F9FFD9A27068}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -8195,7 +9209,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{40D5D615-33E9-4216-956B-0F90B2AE9345}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -8247,12 +9273,19 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Requin_Degat_G" ID="{4E71E2F8-2158-4F54-98FB-1C4484C654A2}" ShortID="1060589693">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{DFE18DB0-2F56-46AF-9CE9-1EC8776D7161}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -8267,6 +9300,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D7D50797-DE16-4460-907C-184561F08762}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -8510,6 +9550,8 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Requin_Degat" ID="{6B89F3EF-7904-4159-8E87-EBA77D1D051E}" ShortID="319708015">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
@@ -8520,6 +9562,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -8543,6 +9591,11 @@
 													</ModifierList>
 												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>2</Value>
@@ -8603,6 +9656,8 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Requin_Mort" ID="{539EF763-1772-42BB-B072-26B7DF8E0284}" ShortID="109802347">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.1</Value>
@@ -8612,6 +9667,24 @@
 															<Modifier Name="" ID="{B22C884C-1428-47E5-86FA-8C8860FDF199}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{9E50F418-9CAF-40B8-A83C-39DDA90B3281}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -8625,12 +9698,19 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Requin_Degat_G" ID="{06E3ECA6-D8F4-4A32-8D07-6897ADD8A900}" ShortID="99457167">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{8EB70223-5F32-462C-BCE2-018EDB697128}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -8645,6 +9725,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{069F6951-79EB-44FC-8F2F-AC66DD07B4A8}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -8922,6 +10009,8 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Requin_Passif_" ID="{0EBEEC4D-AC29-44E6-8074-A5EAE72C2782}" ShortID="499959682">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.5</Value>
@@ -8936,6 +10025,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -8961,6 +10056,11 @@
 												</Property>
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="7"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-4</Value>
@@ -9058,12 +10158,20 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Meduse_Attaque" ID="{EFA5950E-84B0-4485-999D-6CD87D58A5ED}" ShortID="136711451">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{BA178A4E-9B49-4DCD-B46E-82FA27F7860F}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -9075,7 +10183,19 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{137616E7-1B66-48CD-89C9-83631030D4F0}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -9127,12 +10247,19 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Meduse_Degat_G" ID="{C2636A79-EE74-4184-914B-E938D58A7434}" ShortID="393693418">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{9906EBF5-141B-4D00-9DA6-520F13C4213B}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -9147,6 +10274,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{5DEB8B05-675E-45EC-A6D2-67475004FFB4}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -9390,6 +10524,8 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Meduse_Degat" ID="{6495BBA3-2FE9-403C-B2F5-7D214B23B041}" ShortID="727631771">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
@@ -9400,6 +10536,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -9423,6 +10565,11 @@
 													</ModifierList>
 												</Property>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>2</Value>
@@ -9483,6 +10630,8 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Meduse_Mort" ID="{3F7483D9-4027-447E-A848-F46F6115DEC7}" ShortID="966398359">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.1</Value>
@@ -9492,6 +10641,24 @@
 															<Modifier Name="" ID="{347A1A63-07B9-4C38-A902-6270C0352884}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{AB02AC5E-A787-435D-91AF-8A0984F587D6}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -9505,12 +10672,19 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="LIF_Meduse_Degat_G" ID="{5795FDD2-2D57-4624-B502-AC3E6F02586C}" ShortID="87714626">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{86739089-A63D-46BE-BD45-CB82A5F65DDF}"/>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -9525,6 +10699,13 @@
 																	<Property Name="Min" Type="Real64" Value="-200"/>
 																</PropertyList>
 															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{8AB732B1-FB29-4109-AE74-149323D3919F}"/>
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
@@ -9802,6 +10983,8 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="LIF_Meduse_Passif_" ID="{875DA740-DCC8-490F-8FE2-D0DC481872E3}" ShortID="240790749">
 											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.5</Value>
@@ -9816,6 +10999,12 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
 												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -9841,6 +11030,11 @@
 												</Property>
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="7"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-4</Value>

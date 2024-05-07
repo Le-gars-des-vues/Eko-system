@@ -1701,6 +1701,27 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 									</ChildrenList>
+									<StateInfo>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="PLY_Has_Mask" ID="{5B622C16-72EB-497E-93BA-33C2B7DF0E61}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="No" ID="{802059AB-F709-44CD-A8E7-E22D9BBAF4FA}"/>
+												<CustomState Name="" ID="{72DF498F-4B42-4DD9-8CA4-769308D84244}" ShortID="960864826"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="Yes" ID="{C0D12FCC-CE17-4C38-B7AD-A9B4D8A87FD9}"/>
+												<CustomState Name="" ID="{EB04E2C8-CE5D-4778-B180-A684A7F8E41B}" ShortID="1019926460">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64" Value="-108"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
 								</BlendContainer>
 								<ActorMixer Name="VO_Joueur_Respire_TBC_si_course" ID="{AF5DF539-E2EB-45EF-A731-BBE13D1F261B}" ShortID="508610845">
 									<ReferenceList>
@@ -1871,7 +1892,7 @@
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="18"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-21</Value>
+														<Value>-18</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>

@@ -45,7 +45,20 @@
 							<ChildrenList>
 								<BlendContainer Name="PLY_Attaque_Lance" ID="{2C6AE1D5-F8CB-424B-A35C-42AD2D031412}" ShortID="236391878">
 									<PropertyList>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>44</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>39</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>810</Value>
+											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{5875E8B8-B776-42DE-8D1C-F4B8D9F9EE9C}">
@@ -67,10 +80,346 @@
 											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="PLY_Attaque_Lance" ID="{C1DBBD6D-A8AE-4AD4-B76C-DAA78CB9C849}" ShortID="18100743">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{8D740CA1-2845-4DB9-825D-0B9A90020B3A}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{242997F8-0B0A-454D-B556-24A81488651A}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="6"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PLY_Attaque_Lance" ID="{A23B2B13-83DA-4AC0-A1EE-96AA137F5C48}" ShortID="1011164621">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{51EA6C30-AEF6-4D2A-A20D-9764C65F1B1B}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.637679769915593"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.01877911490683"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="529903787"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{51EA6C30-AEF6-4D2A-A20D-9764C65F1B1B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Lance_01" ID="{76E4E2AE-D7E1-4428-AB5E-2296B75AA4D1}" ShortID="1005635419">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{14753EC3-DB3C-446B-B5D7-B2B277D26DE5}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.14991999223362"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.54234428003697"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1061937019"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{14753EC3-DB3C-446B-B5D7-B2B277D26DE5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Lance_02" ID="{EBDB0BF8-4E79-43AA-87BE-587EC0E9C04E}" ShortID="133307004">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{DD75CDA8-EB5E-466A-B429-5C1AAB6343FF}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.74110450454946"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.15671347049449"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="564122726"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{DD75CDA8-EB5E-466A-B429-5C1AAB6343FF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Lance_03" ID="{6AEB7AB4-D648-4604-9428-54F7A5396D4B}" ShortID="899506651">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{8D5E2C4C-C2AC-4078-A3E1-27D95A83B92C}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="2.38621026512439"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.83179743933207"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="156920985"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{8D5E2C4C-C2AC-4078-A3E1-27D95A83B92C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Lance_04" ID="{ECE34045-9B7C-413B-912E-502C5B307F3A}" ShortID="949704855">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{A796A9A8-7769-4C8D-A19A-3CE41D094AA0}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="2.94584169282186"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.51286010984489"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="303644956"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{A796A9A8-7769-4C8D-A19A-3CE41D094AA0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Lance_05" ID="{43834B0E-9A36-4313-AEF9-DA3333B406FD}" ShortID="390391990">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{30174CF7-AEE6-44F8-8131-93918DEE88BD}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="3.55331383475373"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.99354724058009"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="97592930"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{30174CF7-AEE6-44F8-8131-93918DEE88BD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Lance_06" ID="{7ABD0EBD-33FD-4E01-BC8E-1D92BFC87893}" ShortID="340384863">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{2D23A799-D57C-473A-9EE5-D917A236B1F6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="4.29642330680342"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.83577695587175"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="382833833"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{2D23A799-D57C-473A-9EE5-D917A236B1F6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Lance_07" ID="{ACC7E3CD-21D4-4ADC-AEF0-BCD0E44FBC05}" ShortID="185235988">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{ABFFBF81-29E5-4170-A2F0-07CA40448D5F}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="4.87940805824873"/>
+																<Property Name="TrimEnd" Type="Real64" Value="5.3631449682941"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="989631464"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{ABFFBF81-29E5-4170-A2F0-07CA40448D5F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Lance_08" ID="{7B1B2CC6-ACE9-4405-B8BE-65307E0E9735}" ShortID="644311738">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{0CDFA8AC-A388-47DB-B1B1-6920FFF954C8}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="5.63578143550556"/>
+																<Property Name="TrimEnd" Type="Real64" Value="6.07473657277073"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="958391174"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{0CDFA8AC-A388-47DB-B1B1-6920FFF954C8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Lance_09" ID="{712F51A6-018E-4B49-ADAB-30C275DC5063}" ShortID="379918758">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Lance" ID="{0D10E537-FCDE-415E-9C02-A96EE020CBBE}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0356552277876383"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.309926210769472"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="6.25431596338267"/>
+																<Property Name="TrimEnd" Type="Real64" Value="6.63936347079741"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Lance.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="30507292"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Lance" ID="{0D10E537-FCDE-415E-9C02-A96EE020CBBE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="PLY_Attaque_Trident" ID="{905437F3-457E-465C-9AE3-8B23E0356726}" ShortID="593194160">
 									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>32</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>300</Value>
+											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{B33989D7-523D-41F4-96C0-7E64F2F251A9}">
@@ -83,30 +432,10 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-										</Reference>
-									</ReferenceList>
-								</BlendContainer>
-								<BlendContainer Name="PLY_Attaque_FlashGrenade" ID="{0E80A91F-0708-413A-A6F1-48C1EAC59650}" ShortID="925015190">
-									<PropertyList>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{076B952F-1A00-4666-B1B7-9E152F3DFA8D}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="200"/>
-															<Property Name="Min" Type="Real64" Value="-200"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -117,34 +446,407 @@
 											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
-								</BlendContainer>
-								<BlendContainer Name="PLY_Attaque_Machette" ID="{1670D5F7-220C-46B5-832F-E84504149347}" ShortID="185899248">
-									<PropertyList>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{1230FC22-FE27-4815-BD1A-F4BE21427D1A}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="200"/>
-															<Property Name="Min" Type="Real64" Value="-200"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-										</Reference>
-									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="PLY_Attaque_Trident_" ID="{D7F1EB2E-2469-4712-931A-0E42785B581A}" ShortID="861076006">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{4BA33FC5-67A4-4AEB-85B1-C3A877F2A8F2}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="6"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PLY_Attaque_Trident_01" ID="{C1690451-5599-415B-8F25-CF23BF1B344F}" ShortID="414583673">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{98AE6C6D-108E-4F27-A2E2-8DE1164C2988}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.47838102259161"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.24332504680354"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1063617042"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{98AE6C6D-108E-4F27-A2E2-8DE1164C2988}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Trident_02" ID="{01890B38-4E5D-4113-B481-CF6ED5BDD8ED}" ShortID="462483808">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{67E21B3E-0CDC-471E-8C62-B18CFA00EBD6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="2.5264895198887"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.36758232183095"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="579719692"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{67E21B3E-0CDC-471E-8C62-B18CFA00EBD6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Trident_03" ID="{8EF38171-064D-4F0D-BEF5-B98EFDF61269}" ShortID="236085137">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{622325C0-5322-4F1F-88BA-F0C99359C889}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="4.19148510644171"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.99522664346741"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="987442025"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{622325C0-5322-4F1F-88BA-F0C99359C889}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Trident_04" ID="{D5F64B96-C349-4457-A23C-410B245273FE}" ShortID="132016847">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{8AE9D233-CCA0-49F5-BE7B-B6B8B24E937A}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="5.54513772323097"/>
+																<Property Name="TrimEnd" Type="Real64" Value="6.39523263509898"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="422803689"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{8AE9D233-CCA0-49F5-BE7B-B6B8B24E937A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Trident_05" ID="{95B20561-AB24-4ACE-AAF7-C833CCF83E35}" ShortID="170427986">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{4920298D-A157-4FA9-9773-6C8184A10E95}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="6.95403766833922"/>
+																<Property Name="TrimEnd" Type="Real64" Value="7.82449525428687"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="148751970"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{4920298D-A157-4FA9-9773-6C8184A10E95}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Trident_06" ID="{32069085-F33B-4964-A56A-90E0A402D1F7}" ShortID="372410114">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{8D547CAE-62BF-4936-92F7-467DB37671C6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="8.3182545680344"/>
+																<Property Name="TrimEnd" Type="Real64" Value="9.10558075840133"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="364249915"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{8D547CAE-62BF-4936-92F7-467DB37671C6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Trident_07" ID="{5D26A1C3-07B9-436D-931D-ED8D676E493B}" ShortID="617491217">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{7C2A4191-A64E-496E-ABA9-7B91C43BBD8B}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="10.3273539966232"/>
+																<Property Name="TrimEnd" Type="Real64" Value="11.4348221860266"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="951180021"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{7C2A4191-A64E-496E-ABA9-7B91C43BBD8B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Trident_08" ID="{A5563D17-9610-497E-B728-E6B146D26741}" ShortID="280150633">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{1AF35C72-8256-4ABA-A868-AD78F7197607}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="11.5371470497379"/>
+																<Property Name="TrimEnd" Type="Real64" Value="12.1222499700885"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="290189268"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{1AF35C72-8256-4ABA-A868-AD78F7197607}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Trident_09" ID="{34B0FC93-B53F-461A-AF3B-E6C22B11566C}" ShortID="120241826">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{F63AEEB9-5A40-418C-AD95-E8113E668BDA}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="12.1330766469072"/>
+																<Property Name="TrimEnd" Type="Real64" Value="13.0709203416634"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="231728980"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{F63AEEB9-5A40-418C-AD95-E8113E668BDA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Trident" ID="{FBFA7976-E98C-48D3-AFFF-376CC3CB61D6}" ShortID="941697672">
+													<PropertyList>
+														<Property Name="Inclusion" Type="bool">
+															<ValueList>
+																<Value>False</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Trident" ID="{B2DFBAAD-3BE3-4625-8A9B-FFBC06F9DAA3}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0651342269551854"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.352337853576402"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.505748115181439"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.29249538338509"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Trident.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="836998543"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Trident" ID="{B2DFBAAD-3BE3-4625-8A9B-FFBC06F9DAA3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="PLY_Attaque_Harpon" ID="{4DE5A517-5AF6-4DB9-983D-0AA676A18D5E}" ShortID="956476903">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="InitialDelay" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{A49BDBE7-3420-403D-9407-F38BE3FD3666}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -160,6 +862,9 @@
 										</Property>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Att_Armes" ID="{2A8E6BAC-962F-4BF9-95C5-8B743AD7D87E}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 										</Reference>
@@ -167,6 +872,763 @@
 											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="PLY_Attaque_Harpon_L1" ID="{3406C6B4-FFEC-4779-A9CB-96B509092567}" ShortID="709750313">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{F98BAFC9-2597-430E-842E-9E41365C30AA}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{823163AF-A78C-434D-B696-D263ADC42E29}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="6"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PLY_Attaque_Harpon_L1" ID="{DF918D3F-6E94-4A48-8847-E85F031EDE76}" ShortID="652408654">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{470D9C1F-8305-4795-B631-AC7DD6434E4C}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{057268F3-BAFF-4AF1-8365-34CEA2B5F329}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.271774916306509"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.987257873282702"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="957830557"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{057268F3-BAFF-4AF1-8365-34CEA2B5F329}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L1_01" ID="{2446422B-C421-45FB-8D01-D5090E4C8743}" ShortID="32354670">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{EAB28D19-3A8F-48D4-8B9F-FDE928182A16}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{09BDFA1B-D3DC-46F6-97AE-92533A6AFA21}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.31871797067249"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.84113152898901"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="7236046"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{09BDFA1B-D3DC-46F6-97AE-92533A6AFA21}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L1_02" ID="{FC7C0D53-B4C8-4002-920F-B6BBEB23F2D4}" ShortID="577865369">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{CBF68FCD-FFFF-41B2-BB92-15583889D17A}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{BDC7A05E-284A-4E96-B8AF-884AD64BD53F}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="3.23092310178177"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.76068352559995"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="139603926"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{BDC7A05E-284A-4E96-B8AF-884AD64BD53F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L1_03" ID="{19F8F1DE-68C9-4A96-B18B-E85834885A6A}" ShortID="939440545">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{E2734F33-8708-45EB-B989-EDEE291AE541}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{F134D00B-2F0D-482C-9529-37B26EFE6050}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="4.78226967034582"/>
+																<Property Name="TrimEnd" Type="Real64" Value="5.26121524737564"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758764571"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{F134D00B-2F0D-482C-9529-37B26EFE6050}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L1_04" ID="{CE240753-7CD8-4E09-8302-9E307415C3C8}" ShortID="373817665">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{F826C910-8006-40B6-A3C4-BD3B47B03282}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{4590780B-89A1-4A24-B3EF-AFD88A47D860}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="5.74258098813909"/>
+																<Property Name="TrimEnd" Type="Real64" Value="6.34222818241473"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1008168026"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{4590780B-89A1-4A24-B3EF-AFD88A47D860}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L1_06" ID="{B69E9692-CBD3-47B2-AC47-3A063F42EB61}" ShortID="940633938">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{45FDA37A-155E-449A-985F-39114A282C18}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{F38532F0-E004-4583-9D1C-2599FF700348}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="7.3534595234278"/>
+																<Property Name="TrimEnd" Type="Real64" Value="8.17566687572813"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="739222006"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{F38532F0-E004-4583-9D1C-2599FF700348}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L1_07" ID="{CC41CB12-9B56-45B0-87C0-5FC429D03981}" ShortID="29055134">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{5A04F69D-35B5-4C8E-925D-8CA0B342974E}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{DDD26AE5-DBFE-4E0D-9C19-D40AD3275F97}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="10.4390521061604"/>
+																<Property Name="TrimEnd" Type="Real64" Value="11.0442582627678"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="83443797"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{DDD26AE5-DBFE-4E0D-9C19-D40AD3275F97}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L1_08" ID="{7921FAFB-8177-484F-B400-70E1F1D8F953}" ShortID="385564068">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{35B1D16C-CB04-4045-AD44-D05A8C3EE9A1}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{453B7447-AC78-4B91-B9FC-4C4BCED4C095}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="11.3125133876746"/>
+																<Property Name="TrimEnd" Type="Real64" Value="11.858271112558"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="610092341"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{453B7447-AC78-4B91-B9FC-4C4BCED4C095}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L1_09" ID="{A5BA95B5-5A4D-4E0D-A1FD-D72D4E0483F8}" ShortID="570923864">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{FDB12320-6FC8-463A-811B-C0112A3EC3FC}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{16D28DD5-754D-4799-AB79-EB0FCB79544B}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="13.1654089977744"/>
+																<Property Name="TrimEnd" Type="Real64" Value="13.8080902473756"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="23816988"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{16D28DD5-754D-4799-AB79-EB0FCB79544B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L1_10" ID="{055111D8-21BF-47B5-BA2A-433F270FE706}" ShortID="886890366">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{FA22A5A6-5015-454A-A783-9399B0C4C5DF}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>200</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{EA1B63F8-8F33-41F3-A1FB-0B89065596B3}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L1" ID="{5EAC5B16-51F1-4A2F-AB8C-EE7AAC4C8553}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0181660977842165"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.220263935633625"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="14.7664524551612"/>
+																<Property Name="TrimEnd" Type="Real64" Value="15.6541542085023"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="556538347"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L1" ID="{5EAC5B16-51F1-4A2F-AB8C-EE7AAC4C8553}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="PLY_Attaque_Harpon_L2" ID="{B3C5143B-F3BC-42F5-9B30-C83E33E3AE8D}" ShortID="137624204">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{74943BA2-C375-4010-A108-C9D5B150BFD4}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="0.05"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{27661A7F-531D-4575-B695-CE83B628DD18}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>14</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PLY_Attaque_Harpon_L2" ID="{EB5BA3A8-455B-49F8-BC7C-13CD16AF51C8}" ShortID="524660931">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{64DB93D1-0C59-4461-9E72-D6E2C5118C13}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="0.01"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{E4FF8E7F-3996-4614-BDD9-0D30A1CDF8E5}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L2" ID="{8448CA9B-158B-4A3E-8092-2DF3998616F5}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0294791876251703"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.174756824712644"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.435636883794184"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.801825431034485"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="262726718"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L2" ID="{8448CA9B-158B-4A3E-8092-2DF3998616F5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L2_01" ID="{E994FDF0-DB11-4AC8-9B46-F686F6EEA0F4}" ShortID="274733502">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{996FA0D2-97F3-4554-919D-30C21792B214}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="0.01"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{7951D329-E53B-48F6-8FD6-A0E028A00BC1}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>7</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L2" ID="{3768ACDA-CEF1-4AC6-B26B-573E6AC68220}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0294791876251703"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.211515849224967"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="1.04813650040123"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.64862352184027"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="734081482"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L2" ID="{3768ACDA-CEF1-4AC6-B26B-573E6AC68220}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L2_02" ID="{75E3A1D9-24E1-48D2-8B5C-3D698DA98127}" ShortID="570443945">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{1C4BB9C3-2752-45C5-8386-BA5C5F200288}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="0.01"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{6D00B69F-84A5-4F21-9799-B6410A11EC7B}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L2" ID="{79CA2360-74FA-4A47-B419-E8B91B2D70D6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0294791876251703"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.211515849224967"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="2.10695726189548"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.51814979063112"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="444400040"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L2" ID="{79CA2360-74FA-4A47-B419-E8B91B2D70D6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L2_03" ID="{3639DC0D-1D35-4A17-B9DD-456BB6821E01}" ShortID="103459610">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{E2FF0AE5-A389-4658-8433-80F6189B3CAD}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="0.01"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{FB23D853-B270-4BD7-98D2-3919E7090B08}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-1</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L2" ID="{BF758A86-793B-44BA-8DF1-F028F73099D8}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0294791876251703"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.211515849224967"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="3.25829634235525"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.55641092568859"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="372807267"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L2" ID="{BF758A86-793B-44BA-8DF1-F028F73099D8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Harpon_L2_04" ID="{2FA3B9C7-9A5C-420A-B8E4-C6FD25B1F085}" ShortID="878374099">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{46328C65-CA2D-4F84-8EFD-0386196A8CA1}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="0.01"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{0E7CB3D9-C981-4F81-987F-F35E2470DD53}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-1</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Harpon_L2" ID="{CD65BE70-8F59-467C-A80E-65F2173AB12A}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0294791876251703"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.211515849224967"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="4.48159411534375"/>
+																<Property Name="TrimEnd" Type="Real64" Value="5.01614440270008"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Harpon_L2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="352260107"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Harpon_L2" ID="{CD65BE70-8F59-467C-A80E-65F2173AB12A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="PLY_Attaque_Arc" ID="{2789234F-3FA9-454F-BCFE-01689893D13B}" ShortID="104567197">
 									<PropertyList>
@@ -195,14 +1657,21 @@
 								</BlendContainer>
 								<BlendContainer Name="PLY_Attaque_Poing" ID="{E7F0D124-E95E-4F10-A8F1-FFCDBC6EB10E}" ShortID="522382980">
 									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{3EBC9510-A9B3-4F87-A17C-C0F8C23B7336}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{67DE471D-2D41-441C-B998-0D371C04319E}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="200"/>
-															<Property Name="Min" Type="Real64" Value="-200"/>
+															<Property Name="Max" Type="Real64" Value="400"/>
+															<Property Name="Min" Type="Real64" Value="-400"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -217,7 +1686,1589 @@
 											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="PLY_Attaque_Poing" ID="{21E23363-7C6C-4555-AAF9-5DF249D640AD}" ShortID="208248416">
+											<PropertyList>
+												<Property Name="Highpass" Type="int16">
+													<ValueList>
+														<Value>31</Value>
+													</ValueList>
+												</Property>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{38F7CB4B-7162-4C34-945F-EC075ABAED71}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>35</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{5500EC44-B48F-4F91-9927-EA0C1B54DA5A}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PLY_Attaque_Poing" ID="{22134072-26CE-4C9A-9BE4-6096753881BF}" ShortID="948950339">
+													<PropertyList>
+														<Property Name="Inclusion" Type="bool">
+															<ValueList>
+																<Value>False</Value>
+															</ValueList>
+														</Property>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{9B9DCA2D-760B-4E13-866A-B69D61CF65DF}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Poing" ID="{5A5A987B-F8B6-4192-BDAE-70DF0158EF8A}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0256765446540468"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.161450531146315"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.758650156070523"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.29278661221348"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Poing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1050220074"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Poing" ID="{5A5A987B-F8B6-4192-BDAE-70DF0158EF8A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Poing_01" ID="{C04FC95A-DB97-444F-99C0-672FB514DBDD}" ShortID="520541486">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{30D9231C-1AF2-4368-B4F4-0A202EDEE0B9}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Poing" ID="{B50F4BDE-3608-4F60-B383-32CE90FF6897}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0256765446540468"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.161450531146315"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="2.05975935147282"/>
+																<Property Name="TrimEnd" Type="Real64" Value="2.40310761137065"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Poing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="957859427"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Poing" ID="{B50F4BDE-3608-4F60-B383-32CE90FF6897}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Poing_02" ID="{E6475232-562A-4809-B903-97FBA197F032}" ShortID="369033524">
+													<PropertyList>
+														<Property Name="Inclusion" Type="bool">
+															<ValueList>
+																<Value>False</Value>
+															</ValueList>
+														</Property>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{E8B92F0E-F51C-4459-A87F-D3BF48F21F69}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Poing" ID="{B2C37551-BDC1-4C52-A82B-E120C7D589F1}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0256765446540468"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.161450531146315"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="3.27051374163885"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.90299737829274"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Poing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="843607499"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Poing" ID="{B2C37551-BDC1-4C52-A82B-E120C7D589F1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Poing_03" ID="{87F20A71-989B-44A7-BC00-C76AD94F02D8}" ShortID="532942268">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{6FE4217A-D4C0-44D1-8006-2E332CAB9202}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Poing" ID="{88EB3C49-817B-4EA0-B543-748EC45D5F6F}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0256765446540468"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.161450531146315"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="4.01142314457627"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.3547714044741"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Poing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="543134799"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Poing" ID="{88EB3C49-817B-4EA0-B543-748EC45D5F6F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Poing_04" ID="{95B50682-6AC5-425B-9EA7-7D4D7C1C85EF}" ShortID="46330410">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{C8D8D00F-31A7-45C6-AD96-B19EFDC8D64E}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Poing" ID="{9566ACA2-D6D2-4CC0-BC42-26B30D7A5C1E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0256765446540468"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.161450531146315"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="5.27639041788405"/>
+																<Property Name="TrimEnd" Type="Real64" Value="5.61973867778188"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Poing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="757027852"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Poing" ID="{9566ACA2-D6D2-4CC0-BC42-26B30D7A5C1E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Poing_05" ID="{91447C5E-D260-4DAE-B536-469DFF118F9C}" ShortID="280377701">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{668CC3EA-7F37-40C3-97B8-AC92520B937F}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Poing" ID="{805ED054-BAAB-4D1D-ABEC-DE57421FD05A}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0256765446540468"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.161450531146315"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="6.08958366501049"/>
+																<Property Name="TrimEnd" Type="Real64" Value="6.61364153538086"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Poing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="315849714"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Poing" ID="{805ED054-BAAB-4D1D-ABEC-DE57421FD05A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Poing_06" ID="{92BA7E3C-ACC8-4FE5-B6BA-943F7B6E6B98}" ShortID="636656583">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{02C996E1-7CCA-447D-9144-D30E856E6A58}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Poing" ID="{E2B2E2A0-025C-4C01-BBA4-7A8696BA33BC}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0256765446540468"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.161450531146315"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="7.1834640910218"/>
+																<Property Name="TrimEnd" Type="Real64" Value="7.49911862669632"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Poing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="317751983"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Poing" ID="{E2B2E2A0-025C-4C01-BBA4-7A8696BA33BC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Attaque_Poing_07" ID="{AD58C879-F97C-4B17-BC06-7D99D731668F}" ShortID="242775913">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{B1EE3D76-503E-4AA1-9A46-2AC56CCE9568}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Attaque_Poing" ID="{C068AFB9-B3C2-4C2B-AD90-BD824F5D0D90}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.0256765446540468"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.161450531146315"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="8.13160226335022"/>
+																<Property Name="TrimEnd" Type="Real64" Value="8.60144725057882"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Attaque_Poing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="490464343"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Attaque_Poing" ID="{C068AFB9-B3C2-4C2B-AD90-BD824F5D0D90}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
 								</BlendContainer>
+								<ActorMixer Name="PLY_Attaque_Machette" ID="{73355206-5293-4C7A-9A14-BBC23EB76330}" ShortID="950362775">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<BlendContainer Name="PLY_Attaque_Machette_Cut" ID="{1670D5F7-220C-46B5-832F-E84504149347}" ShortID="185899248">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{DBD40F3B-4BAE-4A85-BB28-97B83B7F651A}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>500</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1230FC22-FE27-4815-BD1A-F4BE21427D1A}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="PLY_Attaque_Machette_Cut" ID="{71ACDE6E-9452-4E90-83B3-E8D82D5EFA19}" ShortID="63508050">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="4"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="PLY_Attaque_Machette-001" ID="{9266FC54-03CF-4C01-BF0B-A147C81356FE}" ShortID="484766343">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-001" ID="{6195EAF1-8AEE-475A-87CE-92825D2371DE}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-001.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="949056350"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-001" ID="{6195EAF1-8AEE-475A-87CE-92825D2371DE}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-003" ID="{D9556C37-2CAC-4B0F-895C-31531D538222}" ShortID="649584673">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-003" ID="{19B18276-CCB7-471F-A2C3-64B4A219877B}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-003.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="457760105"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-003" ID="{19B18276-CCB7-471F-A2C3-64B4A219877B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-004" ID="{1DE7B221-9C25-4594-BDFE-A7037FEA4D21}" ShortID="837793745">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-004" ID="{9A6E1A50-1463-4BDC-85FD-1B1AF7E1368E}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-004.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="416362245"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-004" ID="{9A6E1A50-1463-4BDC-85FD-1B1AF7E1368E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-006" ID="{79F8F202-03A3-425E-8B64-FB8FEDB4CD8A}" ShortID="143253811">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-006" ID="{A400D916-216F-486E-8F17-763005E50FD0}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-006.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="556365926"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-006" ID="{A400D916-216F-486E-8F17-763005E50FD0}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-011" ID="{6D32B911-D17A-44B5-80D3-ACD753121566}" ShortID="948771705">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-011" ID="{A2648D34-51C2-444F-8D11-5AFADC33333E}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-011.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1009241243"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-011" ID="{A2648D34-51C2-444F-8D11-5AFADC33333E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-013" ID="{89C2A7F8-5257-47F5-A8E0-C1001F47C06D}" ShortID="258552949">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-013" ID="{4C8D1D4F-C933-4D07-AA37-4959DF5ADD2D}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-013.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1019620147"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-013" ID="{4C8D1D4F-C933-4D07-AA37-4959DF5ADD2D}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-014" ID="{8CE72992-11BB-49DD-AC61-F8771DBB9651}" ShortID="874448626">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-014" ID="{AE8493AC-1FFE-4C06-8753-E2BFD4FEAC11}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.065567139899438"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.224801622512359"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-014.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="780680357"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-014" ID="{AE8493AC-1FFE-4C06-8753-E2BFD4FEAC11}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+										</BlendContainer>
+										<BlendContainer Name="PLY_Attaque_Machette_Miss" ID="{0C59F174-12B3-4E62-B753-4D9625BBEF5B}" ShortID="919887135">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>500</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{6DCC554C-6B06-4A0E-B2EB-999ADB636106}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="PLY_Attaque_Machette_Miss" ID="{E51B0A62-F459-4A3E-9A49-F782BB3C28CC}" ShortID="11364892">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="PLY_Attaque_Machette-005" ID="{F49D0051-1325-494B-8DAB-A98841EFF045}" ShortID="919550878">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-005" ID="{4F730B10-8CFF-41AA-9221-78D2127CB47F}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-005.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="128979782"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-005" ID="{4F730B10-8CFF-41AA-9221-78D2127CB47F}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-002" ID="{2F6D0A70-F52B-473F-B807-D81FA8F7D303}" ShortID="495841697">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-002" ID="{446A5DFE-4A19-44C2-B6AA-6CEB0893C305}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-002.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="638977249"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-002" ID="{446A5DFE-4A19-44C2-B6AA-6CEB0893C305}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-010" ID="{2190831B-61C1-479E-963C-B7E6B80123B2}" ShortID="944482186">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-010" ID="{63583768-93AD-47CA-A35E-16F28045E42F}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-010.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="559653523"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-010" ID="{63583768-93AD-47CA-A35E-16F28045E42F}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-009" ID="{ED649C42-E57B-4DE2-966D-D76C09A3ED0A}" ShortID="522447370">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-009" ID="{66D7EF9D-E2CA-4A3F-92C0-ED9C7D15FAC6}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-009.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="246524551"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-009" ID="{66D7EF9D-E2CA-4A3F-92C0-ED9C7D15FAC6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-008" ID="{7FD09C0C-0E63-4BC1-BFC5-8781FCA7B720}" ShortID="256108842">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-008" ID="{310CEF7B-B993-44CC-8EF0-E744037FF10A}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-008.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="50509135"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-008" ID="{310CEF7B-B993-44CC-8EF0-E744037FF10A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_Machette-007" ID="{9B15E7AA-08F3-4ABE-9F74-7AC8EADEF931}" ShortID="287007760">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_Machette-007" ID="{C4C8EEA2-FE87-44BA-8555-C0DA9C91DE52}">
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_Machette-007.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="60732053"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_Machette-007" ID="{C4C8EEA2-FE87-44BA-8555-C0DA9C91DE52}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+										</BlendContainer>
+									</ChildrenList>
+								</ActorMixer>
+								<ActorMixer Name="PLY_Attaque_FlashGrenade" ID="{C4501236-F461-4D0B-9F61-B356AD947ADD}" ShortID="456398754">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<BlendContainer Name="PLY_Attaque_FlashGrenade" ID="{0E80A91F-0708-413A-A6F1-48C1EAC59650}" ShortID="925015190">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{076B952F-1A00-4666-B1B7-9E152F3DFA8D}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="PLY_Attaque_FlashGrenade" ID="{2988B0BE-B7E8-4BD7-8762-D8C87288E308}" ShortID="911989897">
+													<PropertyList>
+														<Property Name="Highpass" Type="int16">
+															<ValueList>
+																<Value>27</Value>
+															</ValueList>
+														</Property>
+														<Property Name="InitialDelay" Type="Real64">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{FBFDB4EB-4197-469A-8FCA-61E12A6F1A7E}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{6F34E2EA-F117-4165-B6AB-C86E30A6CD75}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="PLY_Attaque_FlashGrenade" ID="{DF3E1797-BE5B-4629-822C-19EAE9D10FE7}" ShortID="6089784">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_FlashGrenade" ID="{A02E8944-729C-4509-B0C2-CF9CC0651F0C}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0505160932955897"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.538838328486289"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.929259533781663"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="1.68519181034483"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_FlashGrenade.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="532192367"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_FlashGrenade" ID="{A02E8944-729C-4509-B0C2-CF9CC0651F0C}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_FlashGrenade_01" ID="{A1FF2FD2-8347-4194-B440-64AAB7115FF9}" ShortID="650328284">
+															<PropertyList>
+																<Property Name="Highpass" Type="int16">
+																	<ValueList>
+																		<Value>15</Value>
+																	</ValueList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_FlashGrenade" ID="{2D14CC1B-EA88-44C7-9313-B3676972801C}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0505160932955897"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.538838328486289"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="5.63288797832641"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="6.45294380102304"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_FlashGrenade.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="353568559"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_FlashGrenade" ID="{2D14CC1B-EA88-44C7-9313-B3676972801C}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_FlashGrenade_02" ID="{08108AC9-6DB1-460D-B751-4BBF6DC72A54}" ShortID="707590707">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-10</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_FlashGrenade" ID="{6ED9EAB3-6CD4-4559-B531-7E284B257EFD}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0505160932955897"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.538838328486289"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="6.57777282401155"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="7.13950342745983"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_FlashGrenade.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="920200723"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_FlashGrenade" ID="{6ED9EAB3-6CD4-4559-B531-7E284B257EFD}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_FlashGrenade_03" ID="{9D98B881-B31D-4DB9-9173-4856207069D8}" ShortID="77640510">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_FlashGrenade" ID="{62FADCE4-F429-4A62-848A-B3BBB7A7D799}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0505160932955897"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.499316091954022"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="8.36508391436552"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="8.9807315165403"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_FlashGrenade.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="14208735"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_FlashGrenade" ID="{62FADCE4-F429-4A62-848A-B3BBB7A7D799}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_FlashGrenade_04" ID="{91A2F3DB-77C5-47BB-BA1A-4E723ED342F2}" ShortID="602865311">
+															<PropertyList>
+																<Property Name="Highpass" Type="int16">
+																	<ValueList>
+																		<Value>11</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_FlashGrenade" ID="{6843FD6B-BA8A-4B1D-8444-0AFE33BB904C}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0505160932955897"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.538838328486289"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="10.3702864610125"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="11.2900684418276"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_FlashGrenade.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="406240487"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_FlashGrenade" ID="{6843FD6B-BA8A-4B1D-8444-0AFE33BB904C}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_FlashGrenade_05" ID="{02C94415-CB94-4D64-A15F-9BA2F1A5903B}" ShortID="108854610">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16">
+																	<ValueList>
+																		<Value>29</Value>
+																	</ValueList>
+																</Property>
+																<Property Name="Pitch" Type="int32">
+																	<ValueList>
+																		<Value>20</Value>
+																	</ValueList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_FlashGrenade" ID="{6678B0B4-F7FD-4610-A05C-F357C30BEC46}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0505160932955897"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.538838328486289"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="12.0078353240116"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="12.9128457406782"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_FlashGrenade.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="590013159"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_FlashGrenade" ID="{6678B0B4-F7FD-4610-A05C-F357C30BEC46}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_FlashGrenade_06" ID="{A6C8AF5D-2A4A-4225-AC11-81D6C3100957}" ShortID="119318352">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_FlashGrenade" ID="{E28EDA5A-6A4F-4E56-81B6-A6511D5F56EE}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0505160932955897"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.538838328486289"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="15.1285608987242"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="15.8463277809081"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_FlashGrenade.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="110495558"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_FlashGrenade" ID="{E28EDA5A-6A4F-4E56-81B6-A6511D5F56EE}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PLY_Attaque_FlashGrenade_07" ID="{77BCB9C1-3744-469E-ABD7-2EC0248E0BFC}" ShortID="1055925561">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PLY_Attaque_FlashGrenade" ID="{3752538E-998A-47DA-8499-EB97C2CF5BFA}">
+																	<PropertyList>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0505160932955897"/>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.538838328486289"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="13.9426851803334"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="15.0349391314828"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>PLY_Attaque_FlashGrenade.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="202299801"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PLY_Attaque_FlashGrenade" ID="{3752538E-998A-47DA-8499-EB97C2CF5BFA}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+										</BlendContainer>
+										<BlendContainer Name="PLY_Attaque_FlashGrenade_Land" ID="{67FAB513-8216-4ED9-AEC3-9B55E49A732D}" ShortID="1485709">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{CD918AD6-349D-4061-9ABD-ADB9C337F28D}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="PLY_Pas_Marche_Terre_L3" ID="{502EC4F8-8145-4307-A9F7-CC9092F4B550}" ShortID="187003314">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>1620</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{E10B8260-52C4-40EE-B006-684154C3F59E}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="600"/>
+																			<Property Name="Min" Type="Real64" Value="-400"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-30</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="FS_Papier_01" ID="{18D332ED-4C3D-430F-8A8A-7B1F7176BC87}" ShortID="550139378">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_01" ID="{DD447696-6D99-4773-8DBC-46503F1D1535}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="961779832"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_01" ID="{DD447696-6D99-4773-8DBC-46503F1D1535}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_02" ID="{F11D7605-3DBD-4D7A-BFC1-988E48692BA7}" ShortID="820491192">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_02" ID="{4F9006CB-2640-4A0F-AB19-8335C823180B}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="63994307"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_02" ID="{4F9006CB-2640-4A0F-AB19-8335C823180B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_03" ID="{1FEFBEC4-21F4-43CB-9BAA-BEEED26F2A2E}" ShortID="157663159">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_03" ID="{342BA6B0-F73D-4C5D-B772-7C4E68104A1A}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="815635348"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_03" ID="{342BA6B0-F73D-4C5D-B772-7C4E68104A1A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_04" ID="{C358B0DA-5501-4B2F-8CAD-19BE6C36ACE1}" ShortID="675284044">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_04" ID="{F1994D59-EA80-4FCD-86D8-1C5FC1A7386A}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="642197460"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_04" ID="{F1994D59-EA80-4FCD-86D8-1C5FC1A7386A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_05" ID="{6D45D169-F1C4-4513-B68D-2E287DFEBE60}" ShortID="61712276">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_05" ID="{C53DF655-6E8B-4E9E-A0E6-D2BA93910980}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_05.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="703557520"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_05" ID="{C53DF655-6E8B-4E9E-A0E6-D2BA93910980}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_06" ID="{B7EA8E67-3CE8-4BD7-A494-2590D13332B9}" ShortID="1071472522">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_06" ID="{048F4584-8968-450B-AE8F-AEC18B006E34}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_06.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="945868443"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_06" ID="{048F4584-8968-450B-AE8F-AEC18B006E34}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_07" ID="{E52FE11C-A2C9-49D6-9082-B50D6CE764B9}" ShortID="667554698">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_07" ID="{1AFEB065-F2AD-4857-B581-8F71926B9E39}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_07.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="654784606"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_07" ID="{1AFEB065-F2AD-4857-B581-8F71926B9E39}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_08" ID="{96157BB3-4326-4218-8059-A536008CAC8C}" ShortID="815794283">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_08" ID="{8EA1E69E-D776-4AD6-BD26-97234B9A2F01}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_08.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="45770380"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_08" ID="{8EA1E69E-D776-4AD6-BD26-97234B9A2F01}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_09" ID="{4639DD6D-C30E-4D6E-91BC-8AA2B56D2FDD}" ShortID="788367826">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_09" ID="{093C8857-8AC8-4A0E-B3D0-78F640C4C89D}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_09.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="157102506"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_09" ID="{093C8857-8AC8-4A0E-B3D0-78F640C4C89D}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_10" ID="{56154270-E07E-4093-8BFD-D0D2AC0DD4B7}" ShortID="947618425">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_10" ID="{AA2B2F28-6A5C-4D8E-BD32-D8770760FB59}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_10.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="633023560"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_10" ID="{AA2B2F28-6A5C-4D8E-BD32-D8770760FB59}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_11" ID="{2C2787D9-068A-404C-A7EC-40AA160937FA}" ShortID="230901859">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_11" ID="{24D6A510-33E9-4926-9563-316C4554DCDC}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_11.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="762879648"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_11" ID="{24D6A510-33E9-4926-9563-316C4554DCDC}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_12" ID="{D43F5FF8-214C-4E52-8AC1-8718EFB350E9}" ShortID="552120111">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_12" ID="{E4FEBBD2-B7A8-4E1A-AFD8-F82F030C2E91}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_12.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="539003864"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_12" ID="{E4FEBBD2-B7A8-4E1A-AFD8-F82F030C2E91}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_13" ID="{D4ABBA23-B2BB-4A92-B64A-1122AF1F34D5}" ShortID="415415853">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_13" ID="{F73528E3-464B-4F03-8AA6-DDA7FBA70E77}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_13.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="611534099"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_13" ID="{F73528E3-464B-4F03-8AA6-DDA7FBA70E77}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_14" ID="{FC30966F-9A15-49AD-842B-D1EB36C30DAD}" ShortID="622001591">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_14" ID="{CEA4CA92-D9BC-4BC9-8F28-A8E1AD1BB4C2}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_14.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="518237452"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_14" ID="{CEA4CA92-D9BC-4BC9-8F28-A8E1AD1BB4C2}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_15" ID="{6B597E7E-4F48-43E1-B0AB-42561FA50A0E}" ShortID="18403033">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_15" ID="{65401BC0-3ACB-4B09-8A6C-B9724D3FD202}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_15.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="890575902"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_15" ID="{65401BC0-3ACB-4B09-8A6C-B9724D3FD202}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_16" ID="{F49759B2-78A5-4B92-ADE4-284FA3DD0EEF}" ShortID="477810549">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_16" ID="{BDC3537B-48E4-41AB-94D5-360BC75B7F4A}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_16.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="366740170"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_16" ID="{BDC3537B-48E4-41AB-94D5-360BC75B7F4A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="FS_Papier_17" ID="{6F3521F1-A730-4ACA-AB85-E1E14A91D16D}" ShortID="510006769">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FS_Papier_17" ID="{47629375-EB30-40B8-AA62-9EB5A8CECDC3}">
+																	<Language>SFX</Language>
+																	<AudioFile>FS_Papier_17.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="115530221"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FS_Papier_17" ID="{47629375-EB30-40B8-AA62-9EB5A8CECDC3}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+										</BlendContainer>
+										<BlendContainer Name="PLY_Attaque_FlashGrenade_Explode" ID="{F214E193-AD0F-400E-80D9-440303A07B47}" ShortID="82795648">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{8C8DDDBF-799D-43A5-BA98-9B8CE1327CED}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+										</BlendContainer>
+									</ChildrenList>
+								</ActorMixer>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="PLY_Multitool" ID="{84400B41-60A4-47E3-8D5E-D2C779E5A663}" ShortID="317849559">
@@ -6443,6 +9494,11 @@
 								</BlendContainer>
 								<BlendContainer Name="PLY_Outil_Masque" ID="{31FFA97F-71D7-4EB8-936C-81B158A83E72}" ShortID="533252368">
 									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>45</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -6456,6 +9512,11 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>32</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -6465,6 +9526,320 @@
 											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="PLY_Outil_Masque" ID="{C6A9A4C9-FB17-4072-A7D9-8BC466B05961}" ShortID="179129500">
+											<PropertyList>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="4.5">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{BC9315EF-9146-423F-BC34-AB76262C582D}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PLY_Outil_Masque" ID="{4A632353-E366-4242-A467-49A259BA1CDD}" ShortID="274224444">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Outil_Masque" ID="{6F4BE2C7-6654-450A-8BE4-F4CA859FB90D}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.127705680853613"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.612987268097342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.408658178731561"/>
+																<Property Name="TrimEnd" Type="Real64" Value="3.56948147672462"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Outil_Masque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="421581373"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Outil_Masque" ID="{6F4BE2C7-6654-450A-8BE4-F4CA859FB90D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Outil_Masque_01" ID="{078268D4-6289-418D-A416-FB6F1075C78C}" ShortID="626818235">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Outil_Masque" ID="{51B40F25-6436-4845-AA13-3B76BEA6D8B5}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.127705680853613"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.612987268097342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="3.51872019348312"/>
+																<Property Name="TrimEnd" Type="Real64" Value="6.61337832915816"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Outil_Masque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="567261596"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Outil_Masque" ID="{51B40F25-6436-4845-AA13-3B76BEA6D8B5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Outil_Masque_02" ID="{F95B4045-9710-420D-BA30-65EF584D06BB}" ShortID="101388060">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Outil_Masque" ID="{188BAF4A-3478-4DFE-923E-7B4C7F2AF36E}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.127705680853613"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.612987268097342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="6.86350386972535"/>
+																<Property Name="TrimEnd" Type="Real64" Value="10.3256483767129"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Outil_Masque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="577848473"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Outil_Masque" ID="{188BAF4A-3478-4DFE-923E-7B4C7F2AF36E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Outil_Masque_03" ID="{D51CA659-3199-46D8-A015-F2238DE35728}" ShortID="571971883">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Outil_Masque" ID="{434D24B3-878C-4684-B29A-4F35328B7636}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.127705680853613"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.612987268097342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="10.3843287920856"/>
+																<Property Name="TrimEnd" Type="Real64" Value="13.7877928837005"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Outil_Masque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="358860755"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Outil_Masque" ID="{434D24B3-878C-4684-B29A-4F35328B7636}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Outil_Masque_04" ID="{BAA3AB54-691C-4170-8B50-DAFE181576B4}" ShortID="674548342">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Outil_Masque" ID="{51C8A674-B6CA-48D8-A921-B5A649597E22}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.127705680853613"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.612987268097342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="14.0811949605639"/>
+																<Property Name="TrimEnd" Type="Real64" Value="17.3086178060607"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Outil_Masque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="630562434"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Outil_Masque" ID="{51C8A674-B6CA-48D8-A921-B5A649597E22}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Outil_Masque_05" ID="{9FB00606-76A7-42B7-9366-AC9C3649DBA7}" ShortID="544846292">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Outil_Masque" ID="{A6653BB4-EBBB-4514-86B2-3B06572E6BB6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.127705680853613"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.612987268097342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="20.7707623130483"/>
+																<Property Name="TrimEnd" Type="Real64" Value="24.0568655739179"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Outil_Masque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="348189343"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Outil_Masque" ID="{A6653BB4-EBBB-4514-86B2-3B06572E6BB6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Outil_Masque_06" ID="{18B57C00-C366-4612-8255-9CDECD4F53BC}" ShortID="825186612">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Outil_Masque" ID="{A6213FD4-4C3D-4A70-AFCD-4EB18208BAB5}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.127705680853613"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.612987268097342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="24.1155459892906"/>
+																<Property Name="TrimEnd" Type="Real64" Value="27.3429688347875"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Outil_Masque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="161398782"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Outil_Masque" ID="{A6213FD4-4C3D-4A70-AFCD-4EB18208BAB5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Outil_Masque_07" ID="{1E8D1C8B-3CFF-4FE5-B8B9-2D024B8D73E3}" ShortID="841511199">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Outil_Masque" ID="{907DA1E5-6312-4B89-93B4-DB90261AA3D6}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.127705680853613"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.612987268097342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="30.6877525110297"/>
+																<Property Name="TrimEnd" Type="Real64" Value="33.6804536950359"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Outil_Masque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="601292017"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Outil_Masque" ID="{907DA1E5-6312-4B89-93B4-DB90261AA3D6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PLY_Outil_Masque_08" ID="{F3A5143C-2EE9-465E-8037-37F3A23C3C35}" ShortID="264301323">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PLY_Outil_Masque" ID="{28AB8F28-DFB2-4BF4-9B56-285BAAE24501}">
+															<PropertyList>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.127705680853613"/>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.612987268097342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="34.0346409161491"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>PLY_Outil_Masque.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="481904345"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PLY_Outil_Masque" ID="{28AB8F28-DFB2-4BF4-9B56-285BAAE24501}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<StateInfo>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="PLY_Has_Mask" ID="{5B622C16-72EB-497E-93BA-33C2B7DF0E61}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="No" ID="{802059AB-F709-44CD-A8E7-E22D9BBAF4FA}"/>
+												<CustomState Name="" ID="{EF06309B-129F-453C-92CD-5F07F9993347}" ShortID="718122970">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64" Value="-108"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="Yes" ID="{C0D12FCC-CE17-4C38-B7AD-A9B4D8A87FD9}"/>
+												<CustomState Name="" ID="{21B14753-D13F-41AC-B17B-415AC715CE56}" ShortID="888902984"/>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
 								</BlendContainer>
 								<BlendContainer Name="PLY_Outil_Jetpack" ID="{B8901287-FD11-495E-A779-3BA36A7C0D21}" ShortID="804165398">
 									<PropertyList>
@@ -6498,7 +9873,6 @@
 												<ModifierInfo>
 													<Modifier Name="" ID="{DF6F0F32-35A9-4267-9792-1B06C45FE930}">
 														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
 															<Property Name="Max" Type="Real64" Value="200"/>
 															<Property Name="Min" Type="Real64" Value="-200"/>
 														</PropertyList>
@@ -6515,6 +9889,46 @@
 											<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="PLY_Outil_Balise" ID="{7BA05DB4-A5DA-46DA-A67B-0A7775F2CC74}" ShortID="861685920">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{08AD4945-F527-46ED-B446-3E4A2F9F0EB8}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="PLY" ID="{F2EE8290-8726-422E-8CF7-D2DD6FBF2CC9}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PLY_Outil_Balise" ID="{1041F1D5-AF96-4E76-89F8-9EE6DC72A445}">
+													<PropertyList>
+														<Property Name="FadeInDuration" Type="Real64" Value="0.0892859195402299"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.647322916666667"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.483632064176245"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.86458991858238"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>PLY_Outil_Balise.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="865677668"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PLY_Outil_Balise" ID="{1041F1D5-AF96-4E76-89F8-9EE6DC72A445}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 								</BlendContainer>
 							</ChildrenList>
 						</ActorMixer>
