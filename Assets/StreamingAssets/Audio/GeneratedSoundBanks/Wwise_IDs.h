@@ -81,7 +81,7 @@ namespace AK
         static const AkUniqueID PLY_ATTAQUE_FLASHGRENADE = 3590418373U;
         static const AkUniqueID PLY_ATTAQUE_HARPON = 3844143789U;
         static const AkUniqueID PLY_ATTAQUE_LANCE = 2310310918U;
-        static const AkUniqueID PLY_ATTAQUE_MACHETTE = 1539249684U;
+        static const AkUniqueID PLY_ATTAQUE_MACHETTE_CUT = 525081557U;
         static const AkUniqueID PLY_ATTAQUE_POING = 2029416014U;
         static const AkUniqueID PLY_ATTAQUE_TRIDENT = 3649795787U;
         static const AkUniqueID PLY_DEGAT_BOUCLIER = 1552418498U;
@@ -117,6 +117,7 @@ namespace AK
         static const AkUniqueID PLY_MULTITOOL_TROMPE = 467761838U;
         static const AkUniqueID PLY_MULTITOOL_TRONC = 2648129411U;
         static const AkUniqueID PLY_MULTITOOL_TUNGSTONE = 3906859172U;
+        static const AkUniqueID PLY_NEWPLAY = 3864893555U;
         static const AkUniqueID PLY_OUTIL_ADN = 3794845510U;
         static const AkUniqueID PLY_OUTIL_BALISE = 3908370237U;
         static const AkUniqueID PLY_OUTIL_JETPACK = 2796654087U;
@@ -220,6 +221,18 @@ namespace AK
                 static const AkUniqueID PAUSE_ON = 3537680115U;
             } // namespace STATE
         } // namespace PAUSE
+
+        namespace PLY_HAS_MASK
+        {
+            static const AkUniqueID GROUP = 3586844446U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NO = 1668749452U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID YES = 979470758U;
+            } // namespace STATE
+        } // namespace PLY_HAS_MASK
 
         namespace PLY_VIE
         {

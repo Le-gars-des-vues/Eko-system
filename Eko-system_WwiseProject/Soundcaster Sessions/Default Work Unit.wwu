@@ -6,6 +6,10 @@
 				<SoundcasterSession Name="New Soundcaster Session" ID="{74E969A7-5167-4C6F-8481-02A77151A6AA}">
 					<ModuleList>
 						<Module>
+							<ObjectRef Name="AMB_SousMarine" ID="{C075D3EA-C72C-4EB9-84B1-22F7DCC4EE3D}" WorkUnitID="{C6A5AA25-AC90-4FCD-8B67-2DD93A43488E}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="UI_Texte" ID="{F886B0AC-2241-4C0D-BDF6-A9AE1F15AD0E}" WorkUnitID="{0FF3E3B6-B045-4639-8419-4EDD0A23D091}"/>
 							<Position X="0" Y="1"/>
 						</Module>
@@ -70,6 +74,10 @@
 							<Position X="3" Y="2"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="LIF_Rhinortue_Degat" ID="{D5730711-FBBF-4E9E-A01D-9FE21EE43840}" WorkUnitID="{F7070506-65F4-4D87-BE28-A0C6903A5DEC}"/>
+							<Position X="3" Y="3"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="AMB_SousMarine" ID="{C075D3EA-C72C-4EB9-84B1-22F7DCC4EE3D}" WorkUnitID="{C6A5AA25-AC90-4FCD-8B67-2DD93A43488E}"/>
 							<Position X="4" Y="1"/>
 						</Module>
@@ -85,7 +93,7 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="AMB_Base_Etage" ID="{D5F1BE25-0DCF-42D1-8364-B313A80F5D45}"/>
-							<Value>100</Value>
+							<Value>0</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="SC_PlanteCarnivore" ID="{448474FD-54F9-42FF-BF8C-3CF9182EE4C4}"/>
@@ -93,11 +101,11 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Temps" ID="{5AD906E2-92DC-45A4-A4B0-04474023F7AD}"/>
-							<Value>126.009693053312</Value>
+							<Value>600</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="PLY_Sante" ID="{6852CAED-DFBD-4967-BE2D-E11663A50975}"/>
-							<Value>0</Value>
+							<Value>100</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="AMB_Distance" ID="{6AEAC799-5511-4CF2-BBE2-4B787D95A5C0}"/>
@@ -108,6 +116,7 @@
 						<CurrentStateRef Name="None" ID="{C8696E1D-9CDA-4908-953E-EB08C7C9F7C9}"/>
 						<CurrentStateRef Name="AMB_Base" ID="{5E66AE8B-1F81-41FB-9ED0-A39711E3D3A3}"/>
 						<CurrentStateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+						<CurrentStateRef Name="None" ID="{C58ED205-A942-4887-A696-5CDFE97A7D5F}"/>
 						<CurrentStateRef Name="None" ID="{55196173-2010-40BD-8E3B-2CFE55B07F75}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true">

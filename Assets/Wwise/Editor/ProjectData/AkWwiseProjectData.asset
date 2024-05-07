@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 394d9c91df19c64db22b39c25dedc1aa
     GuidInternal: 
-    m_lastTime: -8584907079675597071
+    m_lastTime: -8584885639600522839
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: dae80dcdaba679429a003a71798c6800
     GuidInternal: 
-    m_lastTime: -8584867627234251876
+    m_lastTime: -8584865405109039462
     List:
     - name: AMB
       guid: 1fa23fb5525fc5499b515a38b4ff648e
@@ -650,7 +650,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: f081127f4a18e8468d1e2bf50e0763aa
     GuidInternal: 
-    m_lastTime: -8584875270886580769
+    m_lastTime: -8584875272452385439
     List:
     - name: Main
       guid: 178d032ab1091548b518941591c69968
@@ -678,7 +678,7 @@ MonoBehaviour:
     ParentPath: Events\AMB
     guid: 25aaa5c690accd4f8b672dd93a43488e
     GuidInternal: 
-    m_lastTime: -8584868993661520219
+    m_lastTime: -8584865349542913407
     List:
     - name: AMB_Base
       guid: 6d5d932ef5cb5d4e857686200d6ce732
@@ -759,7 +759,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 1b1daa41b9aaa140865acfc7b74ca617
     GuidInternal: 
-    m_lastTime: -8584907079675953251
+    m_lastTime: -8584868107245833636
     List: []
   - PhysicalPath: Events\ENV.wwu
     PathAndIcons:
@@ -772,7 +772,7 @@ MonoBehaviour:
     ParentPath: Events\ENV
     guid: b8ec801d24536a49ab54532363aba296
     GuidInternal: 
-    m_lastTime: -8584865958686675117
+    m_lastTime: -8584866278004222690
     List:
     - name: ENV_Base
       guid: 9daf2ccac04a844ea6238dc8a15d157e
@@ -1015,8 +1015,8 @@ MonoBehaviour:
         guid: e419a4fa9375394a807b9e0b0b49869e
       Path: Events\ENV\ENV_Base\ENV_Base_Robot
       maxAttenuation: 100
-      maxDuration: 2.2859383
-      minDuration: 1.2051446
+      maxDuration: 1.6164025
+      minDuration: 0.852166
     - name: ENV_Base_Tablette
       guid: 522c4b7c8528444799fe258d38539329
       id: 3447737476
@@ -1106,8 +1106,8 @@ MonoBehaviour:
         guid: 4808e044c710fd478c77647249e0def5
       Path: Events\ENV\ENV_Mur
       maxAttenuation: 100
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 37.04125
+      minDuration: 27.872396
     - name: ENV_Oursin
       guid: 038960bced9eb048bfbbd864d2d23585
       id: 827202553
@@ -1238,7 +1238,7 @@ MonoBehaviour:
     ParentPath: Events\LIF
     guid: 060507f7f465874dbe28a0c6903a5dec
     GuidInternal: 
-    m_lastTime: -8584867679109058182
+    m_lastTime: -8584868107245773836
     List:
     - name: LIF_Immobile
       guid: 4edd59c10be0bb43b55ba051f0a34c48
@@ -2033,8 +2033,8 @@ MonoBehaviour:
         guid: 401abb8af00aa043b86926702f250970
       Path: Events\LIF\LIF_Mobile\LIF_Salamandre\LIF_Salamandre_Degat
       maxAttenuation: 100
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1.0625082
+      minDuration: 0.27269337
     - name: LIF_Salamandre_Mort
       guid: 69c51b898cbac240a877abb228b4910d
       id: 1913692056
@@ -2250,7 +2250,7 @@ MonoBehaviour:
     ParentPath: Events\MUS
     guid: d40a332ac4bb1344adf4fb035d7210ac
     GuidInternal: 
-    m_lastTime: -8584867679109058182
+    m_lastTime: -8584868107245273447
     List:
     - name: MUS_Alerte
       guid: 67377110a2289c4384ff90bf76b78365
@@ -2337,7 +2337,7 @@ MonoBehaviour:
     ParentPath: Events\PLY
     guid: 660195bf917e784f83108aaf9eba5a57
     GuidInternal: 
-    m_lastTime: -8584867679109058182
+    m_lastTime: -8584865405108639065
     List:
     - name: PLY_Attaque
       guid: f3fb3285d620b247b63577a64456ef5c
@@ -2434,10 +2434,10 @@ MonoBehaviour:
         guid: bfc787378b1c38428ed59a6755d535be
       Path: Events\PLY\PLY_Attaque\PLY_Attaque_Lance
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.6364566
+      minDuration: 0.3395209
     - name: PLY_Attaque_Machette
-      guid: e38f0ea6300b19448bc9a5b8f1a390b2
+      guid: 19126e6ba431724a8515692f144215ca
       id: 1539249684
       PathAndIcons:
       - ElementName: Events
@@ -2450,12 +2450,58 @@ MonoBehaviour:
         ObjectType: 4
         guid: f3fb3285d620b247b63577a64456ef5c
       - ElementName: PLY_Attaque_Machette
-        ObjectType: 3
-        guid: e38f0ea6300b19448bc9a5b8f1a390b2
+        ObjectType: 4
+        guid: 19126e6ba431724a8515692f144215ca
       Path: Events\PLY\PLY_Attaque\PLY_Attaque_Machette
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: PLY_Attaque_Machette_Cut
+      guid: e38f0ea6300b19448bc9a5b8f1a390b2
+      id: 525081557
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Attaque
+        ObjectType: 4
+        guid: f3fb3285d620b247b63577a64456ef5c
+      - ElementName: PLY_Attaque_Machette
+        ObjectType: 4
+        guid: 19126e6ba431724a8515692f144215ca
+      - ElementName: PLY_Attaque_Machette_Cut
+        ObjectType: 3
+        guid: e38f0ea6300b19448bc9a5b8f1a390b2
+      Path: Events\PLY\PLY_Attaque\PLY_Attaque_Machette\PLY_Attaque_Machette_Cut
+      maxAttenuation: 0
+      maxDuration: 1.9319074
+      minDuration: 1.4861442
+    - name: PLY_Attaque_Machette_Miss
+      guid: d29f03fcb2b332409c423aaa7b1e6082
+      id: 2704671015
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Attaque
+        ObjectType: 4
+        guid: f3fb3285d620b247b63577a64456ef5c
+      - ElementName: PLY_Attaque_Machette
+        ObjectType: 4
+        guid: 19126e6ba431724a8515692f144215ca
+      - ElementName: PLY_Attaque_Machette_Miss
+        ObjectType: 3
+        guid: d29f03fcb2b332409c423aaa7b1e6082
+      Path: Events\PLY\PLY_Attaque\PLY_Attaque_Machette\PLY_Attaque_Machette_Miss
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: PLY_Attaque_Poing
       guid: 1e26e03f7102e24a92532f74157f9c17
       id: 2029416014
@@ -2494,8 +2540,8 @@ MonoBehaviour:
         guid: 2ec01e519bba8c4fa79569c665ab0d1f
       Path: Events\PLY\PLY_Attaque\PLY_Attaque_Trident
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1.0453107
+      minDuration: 0.43833193
     - name: PLY_Degat
       guid: 2f2f62278833c04e8b4a423cb6a8a6b5
       id: 3021703992
@@ -3335,6 +3381,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.586667
       minDuration: 1.2593384
+    - name: PLY_NewPlay
+      guid: 24def465fa9ed848bccbf70078218ee7
+      id: 3864893555
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_NewPlay
+        ObjectType: 3
+        guid: 24def465fa9ed848bccbf70078218ee7
+      Path: Events\PLY\PLY_NewPlay
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: PLY_Outil
       guid: 515694126efad5428acbe7ec37196fce
       id: 1616947128
@@ -3591,7 +3654,7 @@ MonoBehaviour:
     ParentPath: Events\SWT
     guid: 2e9c3d1a0de0b449a20d37ab65c066ab
     GuidInternal: 
-    m_lastTime: -8584867679109058182
+    m_lastTime: -8584868107245467184
     List:
     - name: SWT_BoisMoussu
       guid: ba656937a8394248a6485ff43ef7568d
@@ -3753,7 +3816,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: b6e3f30f45b0394684194edd0a23d091
     GuidInternal: 
-    m_lastTime: -8584867627234261891
+    m_lastTime: -8584865405108438630
     List:
     - name: UI_Amelioration
       guid: 9dda6e5766be2f4b928a70d3864e2984
@@ -5219,8 +5282,8 @@ MonoBehaviour:
         guid: d2b226b4f1b4e549a8c27ee19f84b3e4
       Path: Events\UI\UI_Texte\UI_Texte_Fin
       maxAttenuation: 0
-      maxDuration: 0.17522916
-      minDuration: 0.17522916
+      maxDuration: 0.15371373
+      minDuration: 0.15371373
     - name: UI_Unlock
       guid: 13ca5e5275544947af83db49bec4fed0
       id: 734155102
@@ -5350,7 +5413,7 @@ MonoBehaviour:
     ParentPath: Events\VO
     guid: 7f13dcded35b164f9fdebe68eb968c62
     GuidInternal: 
-    m_lastTime: -8584867679109048187
+    m_lastTime: -8584868102832858851
     List:
     - name: VO_Joueur
       guid: 6cd8a9b46a4a7a4fa26ac33694cda99a
@@ -5578,7 +5641,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 9811ddc43ccb924c821d0ec50fcea66e
     GuidInternal: 
-    m_lastTime: -8584865958686675117
+    m_lastTime: -8584866245217616940
     List:
     - name: AMB_Base_Etage
       guid: 25bef1d5cf0dd1428364b313a80f5d45
@@ -5732,7 +5795,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: a5966061a5a87748b70206bef02992f2
     GuidInternal: 
-    m_lastTime: -8584870750643637512
+    m_lastTime: -8584865405108239580
     List:
     - name: AMB
       guid: 63c72ec4abfec64dbbe2de09e34e2a28
@@ -5896,6 +5959,72 @@ MonoBehaviour:
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
+    - name: PLY_Has_Mask
+      guid: 162c625beb727e4993ba33c2b7df0e61
+      id: 3586844446
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: a5966061a5a87748b70206bef02992f2
+      - ElementName: PLY_Has_Mask
+        ObjectType: 9
+        guid: 162c625beb727e4993ba33c2b7df0e61
+      Path: States\Default Work Unit\PLY_Has_Mask
+      values:
+      - name: No
+        guid: ab59208009f7cd44a8e7e22d9bbaf4fa
+        id: 1668749452
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: a5966061a5a87748b70206bef02992f2
+        - ElementName: PLY_Has_Mask
+          ObjectType: 9
+          guid: 162c625beb727e4993ba33c2b7df0e61
+        - ElementName: No
+          ObjectType: 8
+          guid: ab59208009f7cd44a8e7e22d9bbaf4fa
+      - name: None
+        guid: 05d28ec542a98748a6965cdfe97a7d5f
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: a5966061a5a87748b70206bef02992f2
+        - ElementName: PLY_Has_Mask
+          ObjectType: 9
+          guid: 162c625beb727e4993ba33c2b7df0e61
+        - ElementName: None
+          ObjectType: 8
+          guid: 05d28ec542a98748a6965cdfe97a7d5f
+      - name: Yes
+        guid: cc2fd1c017ce384cb7ada9b4d8a87fd9
+        id: 979470758
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: a5966061a5a87748b70206bef02992f2
+        - ElementName: PLY_Has_Mask
+          ObjectType: 9
+          guid: 162c625beb727e4993ba33c2b7df0e61
+        - ElementName: Yes
+          ObjectType: 8
+          guid: cc2fd1c017ce384cb7ada9b4d8a87fd9
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
     - name: PLY_Vie
       guid: 5a11995dc063b647a7420f106195d6ef
       id: 1697020375
@@ -6040,7 +6169,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 520428b9ea2bf243be1b122445f69e14
     GuidInternal: 
-    m_lastTime: -8584878909119250781
+    m_lastTime: -8584879605392732928
     List:
     - name: Pas
       guid: 799569280706c14088d486a441bde814
@@ -6209,11 +6338,11 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 66336182340d9149a19c6c6c43745cf5
     GuidInternal: 
-    m_lastTime: -8584907079675607138
+    m_lastTime: -8584885639600522839
     List: []
-  ExpandedFileSystemItemIds: 0200000050000000
-  ExpandedWaapiItemIds: 0200000050000000
+  ExpandedFileSystemItemIds: 
+  ExpandedWaapiItemIds: 
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 1
+  currentDataSource: 0
   CurrentPluginConfig: 
