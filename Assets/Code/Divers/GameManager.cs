@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using System.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -96,9 +97,11 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         else
             instance = this;
+
+        SceneLoader.allScenesLoaded += StartScript;
     }
 
-    void Start()
+    void StartScript()
     {
         TimeLeft = initialTime;
         TimerOn = false;
@@ -187,6 +190,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         if (TimerOn)
         {
             if (TimeLeft > 0)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.SceneManagement;
 
 public class BuildButtonSide : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class BuildButtonSide : MonoBehaviour
 
     private void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         if (player.buildingIsOpen && !isActive)
         {
             isActive = true;

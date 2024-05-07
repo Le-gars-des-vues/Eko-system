@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.U2D.IK;
 using Cinemachine;
+using System.SceneManagement;
 
 public class PlayerPermanent : MonoBehaviour, IDataPersistance
 {
@@ -254,6 +255,8 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     // Update is called once per frame
     void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         uiOpened = IsInUI();
 
         if (uiOpened && !cameraTrigger)
@@ -320,6 +323,24 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
         //Dans l'eau, l'oxygen descend
         RaycastHit2D headUnderWater = Physics2D.Raycast(head.transform.position, Vector2.up, canBreathRaycast, LayerMask.GetMask("Water"));
+        if (headUnderWater)
+        {
+            if (!AudioManager.instance.underwaterIsPlaying)
+            {
+                AudioManager.instance.underwaterIsPlaying = true;
+                AudioManager.instance.PlaySoundtrack(AudioManager.instance.underwaterSoundtrack);
+            }
+        }
+        else
+        {
+            if (AudioManager.instance.underwaterIsPlaying)
+            {
+                AudioManager.instance.underwaterIsPlaying = false;
+                AudioManager.instance.PlaySoundtrack(AudioManager.instance.forestSountrack);
+                AudioManager.instance.forestIsPlaying = true;
+            }
+        }
+
         if (headUnderWater && !isInAirPocket)
         {
             groundPlayerController.SetGravityScale(underWaterGravityScale);
@@ -1368,23 +1389,12 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         isUnderwater = isTrue;
         if (isTrue)
         {
-            if (!AudioManager.instance.underwaterIsPlaying)
-            {
-                AudioManager.instance.underwaterIsPlaying = true;
-                AudioManager.instance.PlaySoundtrack(AudioManager.instance.underwaterSoundtrack);
-            }
             groundPlayerController.SetGravityScale(underWaterGravityScale);
             playerRb.drag = underWaterDrag;
             playerRb.angularDrag = underWaterAngularDrag;
         }
         else
         {
-            if (AudioManager.instance.underwaterIsPlaying)
-            {
-                AudioManager.instance.underwaterIsPlaying = false;
-                AudioManager.instance.PlaySoundtrack(AudioManager.instance.forestSountrack);
-                AudioManager.instance.forestIsPlaying = true;
-            }
             groundPlayerController.SetGravityScale(groundPlayerController.gravityScale);
             playerRb.drag = initialDrag;
             playerRb.angularDrag = initialAngularDrag;

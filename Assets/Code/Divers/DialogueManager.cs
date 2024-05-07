@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -43,9 +44,11 @@ public class DialogueManager : MonoBehaviour
             Destroy(this);
         else
             instance = this;
+
+        SceneLoader.allScenesLoaded += StartScript;
     }
 
-    private void Start()
+    private void StartScript()
     {
         dialogueScreen = GameObject.Find("DialogueScreen");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
@@ -53,6 +56,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         //Si le joueur est en dialogue
         if (player.isInDialogue)
         {

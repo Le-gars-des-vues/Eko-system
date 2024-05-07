@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using System.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -18,7 +19,12 @@ public class CameraController : MonoBehaviour
     private float currentAlpha = 0;
     [SerializeField] float fadeSpeed;
 
-    private void Start()
+    private void Awake()
+    {
+        SceneLoader.allScenesLoaded += StartScript;
+    }
+
+    private void StartScript()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         vCam.Follow = player;
@@ -26,6 +32,8 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, fadeSpeed * Time.deltaTime);
         isoldatedView.color = new Color(isoldatedView.color.r, isoldatedView.color.g, isoldatedView.color.b, currentAlpha);
 

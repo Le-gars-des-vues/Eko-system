@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.SceneManagement;
 
 public class ForegroundFade : MonoBehaviour
 {
@@ -12,8 +13,13 @@ public class ForegroundFade : MonoBehaviour
     private float currentAlpha;
     [SerializeField] float fadeSpeed;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
+    {
+        SceneLoader.allScenesLoaded += StartScript;
+    }
+
+    void StartScript()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
         currentAlpha = 1;
@@ -22,6 +28,8 @@ public class ForegroundFade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, fadeSpeed * Time.deltaTime);
         //Debug.Log(player.gameObject.transform.position.y - transform.position.y);
 

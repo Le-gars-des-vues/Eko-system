@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.SceneManagement;
 
 public class InventoryButtons : MonoBehaviour
 {
     PlayerPermanent player;
     public int index = 0;
 
+    private void Awake()
+    {
+        SceneLoader.allScenesLoaded += StartScript;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    void StartScript()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }

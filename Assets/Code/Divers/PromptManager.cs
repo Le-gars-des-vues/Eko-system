@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.SceneManagement;
 
 public class PromptManager : MonoBehaviour
 {
@@ -44,9 +45,11 @@ public class PromptManager : MonoBehaviour
             Destroy(this);
         else
             instance = this;
+
+        SceneLoader.allScenesLoaded += StartScript;
     }
 
-    private void Start()
+    private void StartScript()
     {
         prompt = GameObject.Find("Prompt");
         promptText = prompt.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();

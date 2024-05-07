@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using System.SceneManagement;
 
 public class Base : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class Base : MonoBehaviour
         else
             instance = this;
 
+        SceneLoader.allScenesLoaded += StartScript;
+
         background = GameObject.Find("ParallaxBackground");
         if (isSceneLoaded)
         {
@@ -49,7 +52,7 @@ public class Base : MonoBehaviour
         //buildButton.SetActive(true);
     }
 
-    private void Start()
+    private void StartScript()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         if (player.GetComponent<PlayerPermanent>().spawnAtBase)
@@ -63,6 +66,8 @@ public class Base : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         if (player != null)
         {
             if ((player.GetComponent<PlayerPermanent>().spawnAtBase && Tutorial.instance.readyToGoOut) || !player.GetComponent<PlayerPermanent>().spawnAtBase)

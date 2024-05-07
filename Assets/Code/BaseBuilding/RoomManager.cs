@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.SceneManagement;
 
 public class RoomManager : MonoBehaviour
 {
@@ -26,10 +27,12 @@ public class RoomManager : MonoBehaviour
             Destroy(this);
         else
             instance = this;
+
+        SceneLoader.allScenesLoaded += StartScript;
     }
 
     // Start is called before the first frame update
-    void Start()
+    void StartScript()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }

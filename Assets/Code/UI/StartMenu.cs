@@ -2,20 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using System.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    [SerializeField] GameObject cresdits;
+    [SerializeField] GameObject credits;
+    [SerializeField] GameObject loadingScreen;
+    [SerializeField] Animator introAnim;
+
     // Start is called before the first frame update
-    void Start(){
-        cresdits = transform.Find("cresdits").gameObject;
-        cresdits.SetActive(false);
+    void Start()
+    {
+        credits.SetActive(false);
+        loadingScreen = GameObject.Find("SceneLoader");
     }
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("MainScene");
+        //SceneManager.LoadScene("MainScene");
+        //loadingScreen.GetComponent<SceneLoader>().LoadGame();
+        introAnim.SetTrigger("isIntro");
         Debug.Log("LoadMainScene");
     }
 
@@ -27,11 +33,11 @@ public class StartMenu : MonoBehaviour
 
     public void ShowCredits()
     {
-        cresdits.SetActive(true);
+        credits.SetActive(true);
     }
 
     public void HideCredits()
     {
-        cresdits.SetActive(false);
+        credits.SetActive(false);
     }
 }

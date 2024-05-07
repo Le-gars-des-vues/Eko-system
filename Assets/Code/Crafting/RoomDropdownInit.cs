@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System.SceneManagement;
 
 public class RoomDropdownInit : MonoBehaviour
 {
@@ -69,6 +70,8 @@ public class RoomDropdownInit : MonoBehaviour
     }
     public void changementInfo()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         currentRecipe = this.gameObject.GetComponent<TMP_Dropdown>().value;
 
         theCraftingSystem.GetComponent<RoomCrafting>().RoomCraftCheck();

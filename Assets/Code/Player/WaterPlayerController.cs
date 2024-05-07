@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental;
 using UnityEngine;
+using System.SceneManagement;
 
 public class WaterPlayerController : MonoBehaviour
 {
@@ -90,6 +91,8 @@ public class WaterPlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (SceneLoader.instance.isLoading) return;
+
         if (collision.gameObject.tag == "Water")
         {
             Debug.Log("Exited Water");

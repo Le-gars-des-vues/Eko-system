@@ -313,10 +313,4 @@ public class DialogueSpeaker : MonoBehaviour
         speechBubbleText.text = "";
         speechBubbleTextB.text = "";
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere((Vector2)transform.parent.transform.position + speakerOffset, 0.1f);
-    }
 }

@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.SceneManagement;
 
 public class RoomCrafting : MonoBehaviour
 {
@@ -54,7 +55,8 @@ public class RoomCrafting : MonoBehaviour
     }
     public void RoomCraftCheck()
     {
-        
+        if (SceneLoader.instance.isLoading) return;
+
         compteurItem1 = 0; 
         compteurItem2 = 0;
         compteurItem3 = 0;

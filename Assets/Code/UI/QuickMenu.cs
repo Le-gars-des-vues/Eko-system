@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.SceneManagement;
 
 public class QuickMenu : MonoBehaviour
 {
@@ -54,9 +55,11 @@ public class QuickMenu : MonoBehaviour
             Destroy(this);
         else
             instance = this;
+
+        SceneLoader.allScenesLoaded += StartScript;
     }
 
-    private void Start()
+    private void StartScript()
     {
         anim = GetComponent<Animator>();
         ShowInfos();
@@ -67,6 +70,8 @@ public class QuickMenu : MonoBehaviour
 
     private void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         if (!isAnimating && !PromptManager.instance.promptOpen)
         {
             if (Input.GetKeyDown(KeyCode.Z) && Tutorial.instance.hasUnlockedInfos)

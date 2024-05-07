@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using System.SceneManagement;
 
 public class GroundPlayerController : MonoBehaviour
 {
@@ -760,6 +761,8 @@ public class GroundPlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (SceneLoader.instance.isLoading) return;
+
         if (collision.gameObject.tag == "Water" && !player.waterPlayerController.enabled)
         {
             if (!Tutorial.instance.firstTimeWater)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.SceneManagement;
 
 public class ParallaxBackground : MonoBehaviour
 {
@@ -11,8 +12,13 @@ public class ParallaxBackground : MonoBehaviour
     private float currentAlpha;
     [SerializeField] float fadeSpeed;
 
+    private void Awake()
+    {
+        SceneLoader.allScenesLoaded += StartScript;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    void StartScript()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
         currentAlpha = 1;
@@ -21,6 +27,8 @@ public class ParallaxBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, fadeSpeed * Time.deltaTime);
         //Debug.Log(player.gameObject.transform.position.y - transform.position.y);
 

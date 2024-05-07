@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.SceneManagement;
 
 
 [RequireComponent(typeof(ItemGrid))]
@@ -13,13 +14,15 @@ public class GridInterract : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     RectTransform rectTransform;
     PlayerPermanent player;
 
-    void Start()
+    void StartScript()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (SceneLoader.instance.isLoading) return;
+
         if (player.uiOpened)
         {
             inventoryController.SelectedItemGrid = itemGrid;
@@ -39,6 +42,8 @@ public class GridInterract : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (SceneLoader.instance.isLoading) return;
+
         inventoryController.SelectedItemGrid=null;
         if (inventoryController.selectedItem != null)
         {
@@ -49,6 +54,7 @@ public class GridInterract : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void Awake()
     {
+        SceneLoader.allScenesLoaded += StartScript;
         inventoryController = FindObjectOfType(typeof(InventoryController)) as InventoryController;
         itemGrid = GetComponent<ItemGrid>();
     }

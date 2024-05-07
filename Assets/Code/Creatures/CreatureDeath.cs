@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.IK;
-
+using System.SceneManagement;
 using BehaviorTree;
 
 public class CreatureDeath : MonoBehaviour
@@ -41,7 +41,7 @@ public class CreatureDeath : MonoBehaviour
 
     float drag;
     float angularDrag;
-    
+
 
     // Start is called before the first frame update
     void OnEnable()
@@ -52,6 +52,8 @@ public class CreatureDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         if (!isInPod)
         {
             if (CanExtract())

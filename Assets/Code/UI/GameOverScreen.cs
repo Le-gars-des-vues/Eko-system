@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D.IK;
+using System.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
@@ -9,7 +7,12 @@ public class GameOverScreen : MonoBehaviour
     public GameObject gameOverScreen;
     public Vector2 respawnPoint;
 
-    private void Start()
+    private void Awake()
+    {
+        SceneLoader.allScenesLoaded += StartScript;
+    }
+
+    private void StartScript()
     {
         respawnPoint = GameObject.Find("Base").transform.Find("Interior").transform.Find("FirstFloor").transform.Find("NewCycle").transform.position;
     }

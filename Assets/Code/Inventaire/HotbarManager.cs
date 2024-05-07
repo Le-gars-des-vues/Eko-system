@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.SceneManagement;
 
 public class HotbarManager : MonoBehaviour
 {
@@ -14,7 +15,12 @@ public class HotbarManager : MonoBehaviour
 
     [SerializeField] GameObject multiToolHighlight;
 
-    private void Start()
+    private void Awake()
+    {
+        SceneLoader.allScenesLoaded += StartScript;
+    }
+
+    private void StartScript()
     {
         grids = new List<ItemGrid>();
         for (int i = 0; i < hotbars.Length; i++)
@@ -38,6 +44,8 @@ public class HotbarManager : MonoBehaviour
     }
     void Update()
     {
+        if (SceneLoader.instance.isLoading) return;
+
         if (!PromptManager.instance.promptOpen)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))

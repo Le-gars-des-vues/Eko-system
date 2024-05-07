@@ -57,6 +57,7 @@ public class NodeGrid : MonoBehaviour
         Debug.Log("Grid created");
     }
 
+    /*
     private void OnEnable()
     {
         if (isSceneLoading)
@@ -76,6 +77,7 @@ public class NodeGrid : MonoBehaviour
         if (isSceneLoading)
             SceneLoader.MakeActiveScene(SceneLoader.Scene.World);
     }
+    */
 
     public int MaxSize
     {
