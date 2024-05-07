@@ -83,6 +83,21 @@ namespace System.SceneManagement
         {
             await LoadSceneGroup(0);
         }
+
+        public async void LoadSandbox()
+        {
+            await LoadSceneGroup(2);
+        }
+
+        public async void LoadForest1()
+        {
+            await LoadSceneGroup(3);
+        }
+
+        public async void LoadGym_1()
+        {
+            await LoadSceneGroup(4);
+        }
     }
 
     public class LoadingProgress : IProgress<float>
