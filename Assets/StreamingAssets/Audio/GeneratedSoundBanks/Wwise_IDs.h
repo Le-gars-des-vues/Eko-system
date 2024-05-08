@@ -107,6 +107,7 @@ namespace AK
         static const AkUniqueID PLY_MULTITOOL_BARK = 895662967U;
         static const AkUniqueID PLY_MULTITOOL_BONE = 695905659U;
         static const AkUniqueID PLY_MULTITOOL_CHARGE = 1777682481U;
+        static const AkUniqueID PLY_MULTITOOL_CHARGE_ACCEL = 2240320236U;
         static const AkUniqueID PLY_MULTITOOL_CORALLIUM = 427638723U;
         static const AkUniqueID PLY_MULTITOOL_FIN = 1838506108U;
         static const AkUniqueID PLY_MULTITOOL_FISHEYES = 2750889197U;

@@ -4626,33 +4626,6 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="UI_Cubicule_Ouvrir_v2" ID="{7C190D4F-EA35-45C7-81F3-4306BA248D10}" ShortID="593266243">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="UI_Cubicule_Ouvrir_v2" ID="{C771F375-4578-49A3-B8CA-2CCDA9AAF884}">
-											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.471202887275242"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="1.31182883817427"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>UI_Cubicule_Ouvrir_v2.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="130593204"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="UI_Cubicule_Ouvrir_v2" ID="{C771F375-4578-49A3-B8CA-2CCDA9AAF884}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
 								<Sound Name="UI_Cubicule_Ouvrir_v1" ID="{4B8D9B9B-1535-4785-BBC3-A074649DEE85}" ShortID="904738278">
 									<PropertyList>
 										<Property Name="Inclusion" Type="bool">
@@ -4680,6 +4653,35 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_Cubicule_Ouvrir_v1" ID="{37840D4A-33E2-4D94-B328-DC0D13B3A6CC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="UI_Cubicule_Ouvrir_v3" ID="{E9234733-2F73-4AC5-ABDD-52B2156B8898}" ShortID="701487842">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="UI_Cubicule_Ouvrir_v3" ID="{0390FF0B-81FC-4DE6-BB54-33A3BED8352E}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0609397072490706"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.444501394052045"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.0824478392193308"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.43387546468401"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>UI_Cubicule_Ouvrir_v3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="968887621"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="UI_Cubicule_Ouvrir_v3" ID="{0390FF0B-81FC-4DE6-BB54-33A3BED8352E}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
@@ -4714,6 +4716,83 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_JoueurVise_Stop_v1" ID="{9B8F340E-A928-4F96-A55E-1C03AF3ADE43}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</BlendContainer>
+						<BlendContainer Name="UI_Cubicule_Fermer" ID="{B018188C-4CD1-462B-9B76-51D49EA5405E}" ShortID="167481649">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{813956C1-6DB3-4713-BF24-6AEDFE5862BA}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="UI_Cubicule_Ouvrir_v2" ID="{C46F4493-E4E9-40E1-A14E-61116F4862D6}" ShortID="796317625">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="UI_Cubicule_Ouvrir_v2" ID="{D22F3D67-9E1B-469A-B5E9-3F6F37F8448B}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.471202887275242"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.31182883817427"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>UI_Cubicule_Ouvrir_v2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="130593204"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="UI_Cubicule_Ouvrir_v2" ID="{D22F3D67-9E1B-469A-B5E9-3F6F37F8448B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="UI_Cubicule_Ouvrir_v1" ID="{7CB91427-D851-418A-B327-1F849237D1B3}" ShortID="632437538">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="UI_Cubicule_Ouvrir_v1" ID="{A275EA60-5E45-469A-AAF5-CBE7947C78A4}">
+											<Language>SFX</Language>
+											<AudioFile>UI_Cubicule_Ouvrir_v1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="336191683"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="UI_Cubicule_Ouvrir_v1" ID="{A275EA60-5E45-469A-AAF5-CBE7947C78A4}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
