@@ -35,6 +35,7 @@ namespace AK
         static const AkUniqueID ENV_OURSIN = 827202553U;
         static const AkUniqueID ENV_PIEGEPIQUES = 2451493374U;
         static const AkUniqueID ENV_PLANTESOUSMARINE = 630271425U;
+        static const AkUniqueID ENV_PLANTESOUSMARINE_SORTIE = 4279094094U;
         static const AkUniqueID ENV_PORTEFERMETURE = 1930754588U;
         static const AkUniqueID ENV_PORTEOUVERTURE = 1952691670U;
         static const AkUniqueID ENV_TELEPORTE = 3801493381U;
@@ -223,6 +224,18 @@ namespace AK
                 static const AkUniqueID PAUSE_ON = 3537680115U;
             } // namespace STATE
         } // namespace PAUSE
+
+        namespace PLY_FIRST_SPAWN
+        {
+            static const AkUniqueID GROUP = 658831197U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NO = 1668749452U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID YES = 979470758U;
+            } // namespace STATE
+        } // namespace PLY_FIRST_SPAWN
 
         namespace PLY_HAS_MASK
         {

@@ -81,7 +81,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1929160180	AMB_ForetEtGrotte			\AMB\AMB_ForetEtGrotte	
 	1930754588	ENV_PorteFermeture			\ENV\ENV_PorteFermeture	
 	1952691670	ENV_PorteOuverture			\ENV\ENV_PorteOuverture	
-	2002248472	UI_MenuPrincipal_Play			\UI\UI_MenuPrincipal\UI_MenuPrincipal_Play	
+	2002248472	UI_MenuPrincipal_Play			\UI\UI_Menus\UI_MenuPrincipal\UI_MenuPrincipal_Play	
 	2029416014	PLY_Attaque_Poing			\PLY\PLY_Attaque\PLY_Attaque_Poing	
 	2030651275	PLY_Attaque_Arc			\PLY\PLY_Attaque\PLY_Attaque_Arc	
 	2074960899	UI_Construire_Batiment			\UI\UI_Menus\UI_Base\UI_Batiment\UI_Construire\UI_Construire_Batiment	
@@ -92,13 +92,13 @@ Event	ID	Name			Wwise Object Path	Notes
 	2154149272	LIF_Poisson_Degat			\LIF\LIF_Mobile\LIF_Poisson\LIF_Poisson_Degat	
 	2189212075	PLY_Pas_Metal			\PLY\PLY_Pas\PLY_Pas_Metal	
 	2206882645	ENV_Base_Map			\ENV\ENV_Base\ENV_Base_Map	
-	2218464650	UI_MenuPrincipal_Desktop			\UI\UI_MenuPrincipal\UI_MenuPrincipal_Desktop	
+	2218464650	UI_MenuPrincipal_Desktop			\UI\UI_Menus\UI_MenuPrincipal\UI_MenuPrincipal_Desktop	
 	2233307546	UI_Construire_Arme			\UI\UI_Menus\UI_Base\UI_Batiment\UI_Construire\UI_Construire_Arme	
 	2286571659	UI_Construire_Materiau			\UI\UI_Menus\UI_Base\UI_Batiment\UI_Construire\UI_Construire_Materiau	
 	2291972081	AMB_Base			\AMB\AMB_Base	
 	2295926980	UI_HotbarDeplacement			\UI\UI_HotbarDeplacement	
 	2310310918	PLY_Attaque_Lance			\PLY\PLY_Attaque\PLY_Attaque_Lance	
-	2325734807	UI_MenuPrincipal_Survol			\UI\UI_MenuPrincipal\UI_MenuPrincipal_Survol	
+	2325734807	UI_MenuPrincipal_Survol			\UI\UI_Menus\UI_MenuPrincipal\UI_MenuPrincipal_Survol	
 	2341087864	PLY_Grimpe_Balance			\PLY\PLY_Grimpe\PLY_Grimpe_Balance	
 	2345533597	UI_Barre_Bouclier_Vide			\UI\UI_Barre\UI_Barre_Bouclier\UI_Barre_Bouclier_Vide	
 	2446265780	UI_Atelier_Ouvrir			\UI\UI_Menus\UI_Base\UI_Atelier\UI_Atelier_Ouvrir	
@@ -180,6 +180,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	4159984555	PLY_Pas_Roche			\PLY\PLY_Pas\PLY_Pas_Roche	
 	4177524486	UI_Vente_Ouvrir			\UI\UI_Menus\UI_Base\UI_Vente\UI_Vente_Ouvrir	
 	4267496478	PLY_Multitool_Lushalite			\PLY\PLY_Multitool\PLY_Multitool_Ressources\PLY_Multitool_Lushalite	
+	4279094094	ENV_PlanteSousMarine_Sortie			\ENV\ENV_PlanteSousMarine_Sortie	
 	4283987504	UI_General_Fermer			\UI\UI_Menus\UI_General\UI_General_Fermer	
 	4285823446	AMB_SousMarine			\AMB\AMB_SousMarine	
 
@@ -195,10 +196,14 @@ Switch	ID	Name	Switch Group			Notes
 	3792916879	Pas_Roche	Pas_Materiau			
 
 State Group	ID	Name			Wwise Object Path	Notes
+	658831197	PLY_First_Spawn			\Default Work Unit\PLY_First_Spawn	
 	3586844446	PLY_Has_Mask			\Default Work Unit\PLY_Has_Mask	
 	4176303900	AMB_BaseAForetEtGrotte			\Default Work Unit\AMB\AMB_BaseAForetEtGrotte	
 
 State	ID	Name	State Group			Notes
+	748895195	None	PLY_First_Spawn			
+	979470758	Yes	PLY_First_Spawn			
+	1668749452	No	PLY_First_Spawn			
 	748895195	None	PLY_Has_Mask			
 	979470758	Yes	PLY_Has_Mask			
 	1668749452	No	PLY_Has_Mask			
@@ -209,6 +214,7 @@ State	ID	Name	State Group			Notes
 Custom State	ID	Name	State Group	Owner		Notes
 	718122970	No	PLY_Has_Mask	\Actor-Mixer Hierarchy\PLY\PLY\PLY_Outil\PLY_Outil_Masque		
 	1019926460	Yes	PLY_Has_Mask	\Actor-Mixer Hierarchy\VO\VO\VO_Joueur\VO_Joueur_Inspire		
+	1068960499	Yes	PLY_First_Spawn	\Actor-Mixer Hierarchy\VO\VO\VO_Joueur\VO_Joueur_Inspire		
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	307962810	Temps			\Default Work Unit\Temps	
@@ -271,7 +277,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	17970472	VO_Narrateur_Neutre-047	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\VO_Narrateur_Neutre-047_10C4C929.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Narrateur\VO_Narrateur\VO_Narrateur_Neutre_\VO_Narrateur_Neutre-047		234892
 	19714962	UI_GeneralUI_Ouvrir_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_GeneralUI_Ouvrir_v1_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_General\UI_General_Ouvrir\UI_GeneralUI_Ouvrir_v1		73852
 	19817003	Voice Passif-004	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Voice Passif-004_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Passif\Voice_Passif\Voice Passif-004		294084
-	22873282	AMB_Grotte_L3_2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_2		516144
 	23816988	PLY_Attaque_Harpon_L1_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Harpon_L1_A0090314.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Harpon\PLY_Attaque_Harpon_L1\PLY_Attaque_Harpon_L1_09		123536
 	26624252	LIF_Moustique_Degat_3L1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Moustique_Degat_3L1_FBC464DE.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Moustique\LIF_Moustique_Degat\LIF_Moustique_Degat_L1\LIF_Moustique_Degat_3L1		261244
 	27774248	FS_Metal2_0_10	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_Metal2.0_10_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Metal\FS_Metal2_0_10		39548
@@ -281,7 +286,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	32305500	Pluie_03	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Pluie_3_75FDECC1.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_Tempete\Tempete\Tempete_1\Pluie_03		5482998
 	33012233	VO_Joueur_Degat_07	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 2_27F50C57.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Degat\PLY_Degat_Poison\VO_Joueur_Degat\VO_Joueur_Degat\VO_Joueur_Degat_07		203760
 	33020486	LIF_PlanteCarnivore_Passif_L2_03	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_PlanteCarnivore_Passif_L2_F1B44A80.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Passif\LIF_PlanteCarnivore_Passif_L2\LIF_PlanteCarnivore_Passif_L2_03		347884
-	33076637	PlanteCarnivoreAttaque_PH	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PlanteCarnivoreAttaque_PH_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Attaque\PlanteCarnivoreAttaque_PH		246028
 	33141520	LIF_Salamandre_Touche-003	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Salamandre_Touche-003_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Touche\LIF_Salamandre_Touche\LIF_Salamandre_Touche-003		31372
 	34074835	LIF_Requin_Degats_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Requin_Degats_A7EF7290.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Requin\LIF_Requin_Degat\LIF_Requin_Degat_L2\LIF_Requin_Degats_04		106428
 	35295274	Pluie_3	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Pluie_3_253D15A9.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_Tempete\Tempete\Tempete_1\Pluie_3		5742032
@@ -313,7 +317,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	68968614	AMB_Foret_Various_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_Various_2_C01F7566.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_Various\AMB_Foret_Various_09		1128196
 	69917688	UI_TabFermeture_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_TabFermeture_v1_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_Carte\UI_Carte_Fermer\UI_TabFermeture_v1		62220
 	70823165	FS_GrassMain_23	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_GrassMain_23_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Terre\PLY_Pas_Marche_Terre_L1\FS_GrassMain_23		67152
-	71027482	Vente_Casino_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Vente_Casino_v1_5BD56C55.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_Base\UI_Vente\UI_Vente_Vendre\Vente_Casino_v1		480224
+	71027482	Vente_Casino_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Vente_Casino_v1_2E4D378B.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_Base\UI_Vente\UI_Vente_Vendre\Vente_Casino_v1		480224
 	72651187	LIF_Requin_Degat_v2_05	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Requin_Degat_v2_67DA832E.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Requin\LIF_Requin_Degat\LIF_Requin_Degat\LIF_Requin_Degat_v2_05		206264
 	75792132	LIF_Requin_Attaque_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Requin_Attaque_51ED12F6.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Requin\LIF_Requin_Attaque\LIF_Requin_Attaque\LIF_Requin_Attaque_04		486868
 	78276103	LIF_Moustique_Degat_4L2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Moustique_Degat_4L2_1B3EEFD1.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Moustique\LIF_Moustique_Degat\LIF_Moustique_Degat_L2\LIF_Moustique_Degat_4L2		273100
@@ -328,8 +332,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	94866023	UI_HotbarDeplacement_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_HotbarDeplacement_v1_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI\UI_HotbarDeplacement\UI_HotbarDeplacement_v1		8918
 	95533244	AMB_Foret_Various_08	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_Various_2_FD89C673.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_Various\AMB_Foret_Various_08		1128196
 	97592930	PLY_Attaque_Lance_05	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Lance_C6AC7A16.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Lance\PLY_Attaque_Lance\PLY_Attaque_Lance_05		84668
+	98803161	Main EK-0_01_4-4_70BPM_L8M	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Main EK-0_01_4-4_70BPM_L8M_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUS_MenuPrincipal\Main EK-0_01_4-4_70BPM_L8M\Main EK-0_01_4-4_70BPM_L8M		7899528
 	105979367	LIF_Salamandre_Mort-001	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Salamandre_Mort-001_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Mort\LIF_Salamandre_Mort\LIF_Salamandre_Mort-001		203384
-	106299074	AMB_Grotte_L3_7	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_7_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_7		455288
 	106501362	UI_Amelioration_Ouvrir_v3	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_Amelioration_Ouvrir_v3_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_Amelioration_ReuseSongs\UI_Amelioration_Ouvrir\UI_Amelioration_Ouvrir_v3		20632
 	107987347	MUS_IntoTheForest_HiMid 1 REC	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\MUS_IntoTheForest_HiMid\MUS_IntoTheForest_HiMid 1 REC_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_HiMid\MUS_IntoTheForest_HiMid 1 REC		2784096
 	110495558	PLY_Attaque_FlashGrenade_06	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_FlashGrenade_06CEEF7B.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade_06		137956
@@ -338,7 +342,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	112692764	PLY_Nage_1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Nage_1_5CD812D5.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Eau\PLY_Eau_Rebondis\PLY_Nage_L3\PLY_Nage_1		169004
 	115530221	FS_Papier_17	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_Papier_17_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Terre\PLY_Pas_Marche_Terre_L3\FS_Papier_17		96412
 	117036888	ENV_Tempete_Thunder Rec-003	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Tempete_Thunder Rec-003_256953E8.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Tonnerre\ENV_Tonnerre\ENV_Tempete_Thunder Rec-003		976880
-	120744920	MenuMortRetourPrincipal_PH	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\MenuMortRetourPrincipal_PH_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_MenuMort\UI_MenuMort_RetourPrincipal\MenuMortRetourPrincipal_PH		302188
 	120814222	LIF_PlanteCarnivore_Passif_L2_07	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_PlanteCarnivore_Passif_L2_F737605E.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Passif\LIF_PlanteCarnivore_Passif_L2\LIF_PlanteCarnivore_Passif_L2_07		302676
 	121236444	LIF_Meduse_degat 2_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Meduse_degat 2_2644F003.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Meduse\LIF_Meduse_Degat\LIF_Meduse_Degat\LIF_Meduse_degat 2_04		289632
 	122014534	VO_Joueur_Attaque	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 1_43483BA8.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Joueur\VO_Joueur_Attaque\VO_Joueur_Attaque\VO_Joueur_Attaque		151932
@@ -357,6 +360,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	139603926	PLY_Attaque_Harpon_L1_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Harpon_L1_01FF9A40.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Harpon\PLY_Attaque_Harpon_L1\PLY_Attaque_Harpon_L1_02		101860
 	141184785	PLY_Nage_12	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Nage_3_97DCC9E4.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Eau\PLY_Eau_Nage\PLY_Nage_L1\PLY_Nage_12		119156
 	146421939	ENV_Base_Robot_L1-032	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Base_Robot_L1-032_10C4C929.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Base\ENV_Base_Robot\ENV_Base_Robot_L1\ENV_Base_Robot_L1-032		283436
+	146926294	Main EK-0_03_4-4_70BPM_L8M	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Main EK-0_03_4-4_70BPM_L8M_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUS_MenuPrincipal\Main EK-0_03_4-4_70BPM_L8M\Main EK-0_03_4-4_70BPM_L8M		7899528
 	148406443	FS_Metal2_0_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_Metal2.0_09_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Metal\FS_Metal2_0_09		39548
 	150526086	PLY_Nage_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Nage_3_D5BCCD93.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Eau\PLY_Eau_Nage\PLY_Nage_L1\PLY_Nage_04		147732
 	150700644	Voice Passif-002	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Voice Passif-002_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Passif\Voice_Passif\Voice Passif-002		150216
@@ -378,7 +382,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	180165786	UI_JoueurVise_v3	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_JoueurVise_v3_1D074A9A.wem		\Actor-Mixer Hierarchy\UI\UI\UI_JoueurVise\UI_JoueurVise_v3		1508952
 	180318060	VO_Narrateur_Neutre-004	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\VO_Narrateur_Neutre-004_10C4C929.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Narrateur\VO_Narrateur\VO_Narrateur_Neutre_\VO_Narrateur_Neutre-004		246160
 	180591066	ENV_Base_Robot_L1-025	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Base_Robot_L1-025_10C4C929.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Base\ENV_Base_Robot\ENV_Base_Robot_L1\ENV_Base_Robot_L1-025		292192
-	183610218	AMB_Grotte_L3_11	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_11_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_11		1399860
+	181846294	AMB_Grotte_L1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L1_FC2FA8E1.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_Grotte\AMB_Grotte_L1		2633288
 	184769739	UI_Respiration	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_Respiration_D79FB2B7.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Respiration\UI_Respiration		141408
 	185604046	ENV_Base_Teleporteur_L3	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Base_Teleporteur_L3_BF058C78.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Base\ENV_Base_Teleporteur\ENV_Base_Teleporteur_L3		8229572
 	185974813	Hi C7 REC_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Hi C7 REC_v2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_Hi\Hi C7 REC_v2		1152096
@@ -409,9 +413,10 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	224617764	VO_Joueur_Effort	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 6_EB1C7E06.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Joueur\VO_Joueur_Effort\VO_Joueur_Effort\VO_Joueur_Effort		127632
 	224879936	Mid D4 REC_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Mid D4 REC_v2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_Mid\Mid D4 REC_v2		2984668
 	224972031	LIF_Salamandre_Passif-001	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Salamandre_Passif-001_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Passif\LIF_Salamandre_Passif\LIF_Salamandre_Passif-001		1936036
+	227192297	Main EK-0_05_4-4_70BPM_L8M	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Main EK-0_05_4-4_70BPM_L8M_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUS_MenuPrincipal\Main EK-0_05_4-4_70BPM_L8M\Main EK-0_05_4-4_70BPM_L8M		7899528
 	227667919	AMB_Foret_Various_2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_Various_2_84BE94BF.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_Various\AMB_Foret_Various_2		841276
 	229541342	PLY_Ramasse	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Ramasse_7EB91734.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Ramasse\PLY_Ramasse		152888
-	231728980	PLY_Attaque_Trident_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_3E8BC07F.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Trident\PLY_Attaque_Trident_\PLY_Attaque_Trident_09		180208
+	231728980	PLY_Attaque_Trident_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_3E8BC07F.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Attaque\PLY_Attaque_Trident_\PLY_Attaque_Trident_09		180208
 	233659984	LIF_Water_Moove_03	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Water_Moove_014C1601.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Meduse\LIF_Meduse_Moove\LIF_Water_Moove\LIF_Water_Moove_03		1017432
 	235209736	LIF_Poisson_Degat_05	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Poisson_Degat_2_3221A4C8.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Poisson\LIF_Poisson_Degat\LIF_Poisson_Degat\LIF_Poisson_Degat_05		148376
 	235935857	LIF_Salamandre_Touche-005	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Salamandre_Touche-005_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Touche\LIF_Salamandre_Touche\LIF_Salamandre_Touche-005		31372
@@ -428,6 +433,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	250325720	VO_Narrateur_Neutre-011	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\VO_Narrateur_Neutre-011_10C4C929.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Narrateur\VO_Narrateur\VO_Narrateur_Neutre_\VO_Narrateur_Neutre-011		234396
 	251879149	AMB_Foret_CloseBird_01	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_CloseBird_75291086.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_CloseBird\AMB_Foret_CloseBird_01		454416
 	252083416	VO_Joueur_Degat_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 2_9B83CBF5.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Degat\PLY_Degat_Poison\VO_Joueur_Degat\VO_Joueur_Degat\VO_Joueur_Degat_04		197576
+	253420355	Main EK-0_06_4-4_70BPM_L8M	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Main EK-0_06_4-4_70BPM_L8M_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUS_MenuPrincipal\Main EK-0_06_4-4_70BPM_L8M\Main EK-0_06_4-4_70BPM_L8M		7899528
 	253750133	PLY_Multitool_Trompe	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Multitool_Trompe_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Multitool\PLY_Multitool_Ressources\PLY_Multitool_Trompe\PLY_Multitool_Trompe		21016
 	254995042	ENV_Base_Robot_L1-021	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Base_Robot_L1-021_10C4C929.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Base\ENV_Base_Robot\ENV_Base_Robot_L1\ENV_Base_Robot_L1-021		304316
 	256268512	LIF_Poisson_Degat_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Poisson_Degat_2_6525003C.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Poisson\LIF_Poisson_Degat\LIF_Poisson_Degat\LIF_Poisson_Degat_02		84272
@@ -499,9 +505,10 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	358860755	PLY_Outil_Masque_03	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Outil_Masque_83FA5C16.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Outil\PLY_Outil_Masque\PLY_Outil_Masque\PLY_Outil_Masque_03		653608
 	359539423	LIF_PlanteCarnivore_Passif_L2_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_PlanteCarnivore_Passif_L2_57FFF428.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Passif\LIF_PlanteCarnivore_Passif_L2\LIF_PlanteCarnivore_Passif_L2_09		295724
 	363766631	Hi A#6 REC_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Hi A#6 REC_v2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_Hi\Hi A#6 REC_v2		1152096
-	364249915	PLY_Attaque_Trident_06	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_7CD50C85.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Trident\PLY_Attaque_Trident_\PLY_Attaque_Trident_06		151312
+	364249915	PLY_Attaque_Trident_06	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_7CD50C85.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Attaque\PLY_Attaque_Trident_\PLY_Attaque_Trident_06		151312
 	364837828	LIF_Rhinortue_Passif_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Rhinortue_Passif_E9880BB8.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Rhinortue\LIF_Rhinortue_Passif\LIF_Rhinortue_Passif_\LIF_Rhinortue_Passif_02		1091376
 	365611638	LIF_PlanteCarnivore_Passif_L2_06	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_PlanteCarnivore_Passif_L2_68624453.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Passif\LIF_PlanteCarnivore_Passif_L2\LIF_PlanteCarnivore_Passif_L2_06		233128
+	365776997	AMB_Grotte_L2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L2_97D5C10E.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_Grotte\AMB_Grotte_L2\AMB_Grotte_L2		1511568
 	366740170	FS_Papier_16	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_Papier_16_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Terre\PLY_Pas_Marche_Terre_L3\FS_Papier_16		96412
 	367241721	AMB_SousMarine_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_SousMarine_3BE6E8F0.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_SousMarine\AMB_SousMarine\AMB_SousMarine_04		524304
 	368308892	AMB_SousMarine_01	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_SousMarine_2153C4F6.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_SousMarine\AMB_SousMarine\AMB_SousMarine_01		535112
@@ -523,16 +530,15 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	388424272	VO_Joueur_Attaque_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 1_2C9EF20D.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Joueur\VO_Joueur_Attaque\VO_Joueur_Attaque\VO_Joueur_Attaque_09		109396
 	389068500	LIF_Salamandre_Degat-004	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Salamandre_Degat-004_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Degat\LIF_Salamandre_Degat\LIF_Salamandre_Degat-004		103304
 	390409820	VO_Joueur_Effort_03	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 6_0D851327.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Joueur\VO_Joueur_Effort\VO_Joueur_Effort\VO_Joueur_Effort_03		199360
-	391249433	AMB_Grotte_L3_6	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_6_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_6		427000
 	392683132	AMB_Base	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Base_0AD45B72.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_Base\AMB_Base_Etage-1\AMB_Base		4629718
 	394622159	VO_Joueur_Mort_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 3_B00DB46B.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Joueur\VO_Joueur_Mort\VO_Joueur_Mort\VO_Joueur_Mort_02		783924
+	397663575	Main EK-0_04_4-4_70BPM_L8M	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Main EK-0_04_4-4_70BPM_L8M_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUS_MenuPrincipal\Main EK-0_04_4-4_70BPM_L8M\Main EK-0_04_4-4_70BPM_L8M		7899528
 	399086820	LIF_Rhinortue_Passif_08	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Rhinortue_Passif_33E3F9D6.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Rhinortue\LIF_Rhinortue_Passif\LIF_Rhinortue_Passif_\LIF_Rhinortue_Passif_08		1053744
 	401200787	LIF_Rhinortue_Mort_01	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Rhinortue_Mort_5458DF90.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Rhinortue\LIF_Rhinortue_Mort\LIF_Rhinortue_Mort\LIF_Rhinortue_Mort_01		218524
 	406240487	PLY_Attaque_FlashGrenade_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_FlashGrenade_86E789D2.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade_04		176740
 	407286562	LIF_Poisson_Degat_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Poisson_Degat_2_4DB3C834.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Poisson\LIF_Poisson_Degat\LIF_Poisson_Degat\LIF_Poisson_Degat_09		153668
 	408908930	LowMid G2 REC_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LowMid G2 REC_v2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_LowMid\LowMid G2 REC_v2		7122544
 	410371760	AMB_Foret_Crickets	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_Crickets_3453E629.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_Crickets		2057288
-	410560239	AMB_Grotte_L3_10	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_10_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_10		783572
 	410723692	UI_Inventaire_Intervertir_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_Inventaire_Intervertir_v1_90A384A6.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_Inventaire\UI_Inventaire_Intervertir\UI_Inventaire_Intervertir_v1		40820
 	411790133	PLY_Multitool_Lushalite_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Multitool_Lushalite_v1_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Multitool\PLY_Multitool_Ressources\PLY_Multitool_Lushalite\PLY_Multitool_Lushalite_v1		69752
 	412925337	VO_Joueur_Attaque_05	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 1_81A9CBA4.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Joueur\VO_Joueur_Attaque\VO_Joueur_Attaque\VO_Joueur_Attaque_05		164280
@@ -543,7 +549,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	418797998	LIF_Meduse_degat 2_08	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Meduse_degat 2_88F94335.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Meduse\LIF_Meduse_Degat\LIF_Meduse_Degat\LIF_Meduse_degat 2_08		203696
 	420316114	UI_MenuPrincipal_Play_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_MenuPrincipal_Play_v1_39429E31.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_MenuPrincipal\UI_MenuPrincipal_Play\UI_MenuPrincipal_Play_v1		669124
 	421581373	PLY_Outil_Masque	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Outil_Masque_1A9E8BA0.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Outil\PLY_Outil_Masque\PLY_Outil_Masque\PLY_Outil_Masque		607020
-	422803689	PLY_Attaque_Trident_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_81BC5679.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Trident\PLY_Attaque_Trident_\PLY_Attaque_Trident_04		163360
+	422803689	PLY_Attaque_Trident_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_81BC5679.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Attaque\PLY_Attaque_Trident_\PLY_Attaque_Trident_04		163360
 	424150538	PLY_Multitool_Ecorce	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Multitool_Ecorce_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Multitool\PLY_Multitool_Ressources\PLY_Multitool_Bark\PLY_Multitool_Ecorce		21016
 	424336240	LIF_Moustique_Degat_6L1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Moustique_Degat_6L1_C12D20C1.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Moustique\LIF_Moustique_Mort\LIF_Moustique_Mort_L1\LIF_Moustique_Degat_6L1		280232
 	426702362	LIF_Requin_Degat_v2_08	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Requin_Degat_v2_E9998C6F.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Requin\LIF_Requin_Degat\LIF_Requin_Degat\LIF_Requin_Degat_v2_08		230024
@@ -623,7 +629,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	530950414	LIF_Meduse_Attaque_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Meduse_Attaque_C23A30A4.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Meduse\LIF_Meduse_Attaque\LIF_Meduse_Attaque\LIF_Meduse_Attaque_04		472508
 	532192367	PLY_Attaque_FlashGrenade	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_FlashGrenade_6F118ED5.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade		145284
 	532936045	LIF_Rhinortue_Degat_Attaque_03	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Rhinortue_Degat_Attaque_DDD34B96.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Rhinortue\LIF_Rhinortue_Mort\LIF_Rhinortue_Attaque\LIF_Rhinortue_Degat_Attaque_03		459412
-	533693791	AMB_Grotte_L3_3	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_3_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_3		409860
 	534322574	AMB_Foret_CloseBird_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_CloseBird_2_515109DE.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_CloseBird_2\AMB_Foret_CloseBird_02		558948
 	538407726	LIF_PlanteCarnivore_Passif_L1_05	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_PlanteCarnivore_Passif_L1_06621020.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Passif\LIF_PlanteCarnivore_Passif_L1\LIF_PlanteCarnivore_Passif_L1_05		608356
 	539003864	FS_Papier_12	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_Papier_12_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Terre\PLY_Pas_Marche_Terre_L3\FS_Papier_12		96412
@@ -644,7 +649,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	559653523	PLY_Attaque_Machette-010	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Machette-010_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Machette\PLY_Attaque_Machette_Miss\PLY_Attaque_Machette_Miss\PLY_Attaque_Machette-010		303704
 	559970004	166573-Bullet-Hit-Body-Flesh_16	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\166573-Bullet-Hit-Body-Flesh_16_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Moustique\LIF_Moustique_Degat\LIF_Moustique_Degat_G\166573-Bullet-Hit-Body-Flesh_16		29792
 	561812457	AMB_Foret_Various_03	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_Various_16DBE7B0.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_Various\AMB_Foret_Various_03		1326904
-	563288796	AMB_Grotte_L3_4	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_4_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_4		560716
 	564122726	PLY_Attaque_Lance_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Lance_17CE760C.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Lance\PLY_Attaque_Lance\PLY_Attaque_Lance_02		79940
 	565665096	VO_Narrateur_Neutre-031	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\VO_Narrateur_Neutre-031_10C4C929.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Narrateur\VO_Narrateur\VO_Narrateur_Neutre_\VO_Narrateur_Neutre-031		249404
 	565814018	AMB_Base	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Base_33B11F46.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_Base\AMB_Base_Etage-3\AMB_Base		4629718
@@ -657,13 +661,13 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	575769636	LIF_Moustique_Degat_4L1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Moustique_Degat_4L1_BAFA8663.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Moustique\LIF_Moustique_Degat\LIF_Moustique_Degat_L1\LIF_Moustique_Degat_4L1		308696
 	577293708	PLY_Multitool_Charge	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Multitool_Charge_D4DAE684.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Multitool\PLY_Multitool_Charge\PLY_Multitool_Charge		1211248
 	577848473	PLY_Outil_Masque_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Outil_Masque_A444C27F.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Outil\PLY_Outil_Masque\PLY_Outil_Masque\PLY_Outil_Masque_02		664876
-	579719692	PLY_Attaque_Trident_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_20C36BAA.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Trident\PLY_Attaque_Trident_\PLY_Attaque_Trident_02		161636
+	579719692	PLY_Attaque_Trident_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_20C36BAA.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Attaque\PLY_Attaque_Trident_\PLY_Attaque_Trident_02		161636
+	581102119	Main EK-0_02_4-4_70BPM_L8M	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Main EK-0_02_4-4_70BPM_L8M_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUS_MenuPrincipal\Main EK-0_02_4-4_70BPM_L8M\Main EK-0_02_4-4_70BPM_L8M		7899528
 	582370662	PLY_Saute	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Saute_A1C4ADF0.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Saute\PLY_Saute		11188
 	583900535	Bass G1 REC_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Bass G1 REC_v2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_Bass\Bass G1 REC_v2		5280096
 	584035463	AMB_Foret_Swamp_2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_Swamp_2_10445C94.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_Swamp_2		3291572
 	584334517	PLY_Nage_07	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Nage_3_D2ECC727.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Eau\PLY_Eau_Nage\PLY_Nage_L1\PLY_Nage_07		142972
 	585493372	ENV_Base_Tablette	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Base_Tablette_C939A79C.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Base\ENV_Base_Tablette\ENV_Base_Tablette		5227000
-	586126585	AMB_Grotte_L3_5	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_5_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_5		776716
 	586588224	166607-Bullet-Hit-Body-Flesh_01	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\166607-Bullet-Hit-Body-Flesh_01_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Moustique\LIF_Moustique_Degat\LIF_Moustique_Degat_G\166607-Bullet-Hit-Body-Flesh_01		22624
 	587569869	PLY_Degat_Poison_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Degat_Poison_3EA53581.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Degat\PLY_Degat_Poison\PLY_Degat_Poison\PLY_Degat_Poison_09		79816
 	588118669	LIF_Poisson_Degat_01	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Poisson_Degat_2_14F6C536.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Poisson\LIF_Poisson_Degat\LIF_Poisson_Degat\LIF_Poisson_Degat_01		121904
@@ -680,6 +684,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	601280793	UI_Vente_Fermer_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_Vente_Fermer_v2_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_Base\UI_Vente\UI_Vente_Fermer\UI_Vente_Fermer_v2		48096
 	601292017	PLY_Outil_Masque_07	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Outil_Masque_5CA993B7.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Outil\PLY_Outil_Masque\PLY_Outil_Masque\PLY_Outil_Masque_07		574744
 	601984271	VO_Joueur_Attaque_07	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 1_027FE54D.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Joueur\VO_Joueur_Attaque\VO_Joueur_Attaque\VO_Joueur_Attaque_07		209660
+	605105769	Main EK-0_07_4-4_70BPM_L8M	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Main EK-0_07_4-4_70BPM_L8M_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUS_MenuPrincipal\Main EK-0_07_4-4_70BPM_L8M\Main EK-0_07_4-4_70BPM_L8M		7899528
 	608143840	Voice Degat-004	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Voice Degat-004_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Degat\Voice_Degat\Voice Degat-004		143964
 	610092341	PLY_Attaque_Harpon_L1_08	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Harpon_L1_B1365FB2.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Harpon\PLY_Attaque_Harpon_L1\PLY_Attaque_Harpon_L1_08		104928
 	611534099	FS_Papier_13	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_Papier_13_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Terre\PLY_Pas_Marche_Terre_L3\FS_Papier_13		96412
@@ -717,17 +722,16 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	654784606	FS_Papier_07	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_Papier_07_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Terre\PLY_Pas_Marche_Terre_L3\FS_Papier_07		96412
 	655808484	LowMid D3 REC_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LowMid D3 REC_v2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_LowMid\LowMid D3 REC_v2		7122544
 	658033047	VO_Joueur_Degat_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Ingame - Track 2_64E96AA9.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Degat\PLY_Degat_Poison\VO_Joueur_Degat\VO_Joueur_Degat\VO_Joueur_Degat_02		156124
-	661437950	AMB_Grotte_L3_1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_1_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_1		325000
 	663322381	AMB_Foret_Wartog_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_Wartog_866BFF5A.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_Wartog\AMB_Foret_Wartog_02		588132
 	664148619	LIF_Requin_Attaque_05	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Requin_Attaque_275CE059.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Requin\LIF_Requin_Attaque\LIF_Requin_Attaque\LIF_Requin_Attaque_05		570304
 	665190911	166526-Bullet-Hit-Body-Flesh_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\166526-Bullet-Hit-Body-Flesh_09_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Moustique\LIF_Moustique_Degat\LIF_Moustique_Degat_G\166526-Bullet-Hit-Body-Flesh_09		55392
 	667465616	Hi G6 REC_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Hi G6 REC_v2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_Hi\Hi G6 REC_v2		1152096
-	670705536	AMB_Grotte_L3_9	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_9_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_9		606144
 	673137506	Bass E1 REC_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Bass E1 REC_v2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_Bass\Bass E1 REC_v2		5280096
-	674551847	UI_MenuPrincipal_Survol_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_MenuPrincipal_Survol_v2_81AE789F.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_MenuPrincipal\UI_MenuPrincipal_Survol\UI_MenuPrincipal_Survol_v2		96096
+	674551847	UI_MenuPrincipal_Survol_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_MenuPrincipal_Survol_v2_CA209C94.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_MenuPrincipal\UI_MenuPrincipal_Survol\UI_MenuPrincipal_Survol_v2		96096
 	675584960	Mid C4 REC_v2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Mid C4 REC_v2_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_Mid\Mid C4 REC_v2		2984668
 	675664644	Mange_v1-002	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Mange_v1-002_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Mange\PLY_Mange_Detox\Mange\Mange_v1-002		49348
 	676633998	FS_GrassMain_20	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_GrassMain_20_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Terre\PLY_Pas_Marche_Terre_L1\FS_GrassMain_20		67152
+	676727856	Main EK-0_08_4-4_70BPM_L8M	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\Main EK-0_08_4-4_70BPM_L8M_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MUS_MenuPrincipal\Main EK-0_08_4-4_70BPM_L8M\Main EK-0_08_4-4_70BPM_L8M		7899528
 	677004657	LIF_Rhinortue_Passif_07	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Rhinortue_Passif_DD851E76.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Rhinortue\LIF_Rhinortue_Degat\LIF_Rhinortue_Passif_\LIF_Rhinortue_Passif_07		124204
 	677012577	ENV_Tempete_Wind Stereo Rec	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Tempete_Wind Stereo Rec_C5ECC683.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_Tempete\Tempete\Tempete_1\ENV_Tempete_Wind Stereo Rec		7680144
 	677660563	ENV_Base_Robot_L2_3	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Base_Robot_L2_3_10C4C929.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Base\ENV_Base_Robot\ENV_Base_Robot_L2\ENV_Base_Robot_L2_3		255572
@@ -783,7 +787,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	766031569	PLY_Degat_Poison_13	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Degat_Poison_5A3181A0.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Degat\PLY_Degat_Poison\PLY_Degat_Poison\PLY_Degat_Poison_13		106012
 	768812133	MUS_IntoTheForest_HiMid 2 REC	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\MUS_IntoTheForest_HiMid\MUS_IntoTheForest_HiMid 2 REC_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_MUS\MUS_IntoTheForest_HiMid\MUS_IntoTheForest_HiMid 2 REC		3168096
 	768835146	ENV_Tempete_Rain Rec	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Tempete_Rain Rec_148D7AF6.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_Tempete\Tempete\Tempete_1\ENV_Tempete_Rain Rec		3840144
-	768850449	UI_MenuMort_RetourPrincipal	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_MenuMort_RetourPrincipal_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_MenuMort\UI_MenuMort_RetourPrincipal\UI_MenuMort_RetourPrincipal		230940
+	768850449	UI_MenuMort_RetourPrincipal	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_MenuMort_RetourPrincipal_53F556C0.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_MenuMort\UI_MenuMort_RetourPrincipal\UI_MenuMort_RetourPrincipal		230940
 	769147433	VO_Narrateur_Neutre-012	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\VO_Narrateur_Neutre-012_10C4C929.wem		\Actor-Mixer Hierarchy\VO\VO\VO_Narrateur\VO_Narrateur\VO_Narrateur_Neutre_\VO_Narrateur_Neutre-012		235248
 	771344330	LIF_PlanteCarnivore_Passif_L1_06	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_PlanteCarnivore_Passif_L1_A7FD8443.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Passif\LIF_PlanteCarnivore_Passif_L1\LIF_PlanteCarnivore_Passif_L1_06		592068
 	771356322	LIF_Salamandre_Degat-003	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Salamandre_Degat-003_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Degat\LIF_Salamandre_Degat\LIF_Salamandre_Degat-003		103304
@@ -851,7 +855,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	891285907	166542-Bullet-Hit-Body-Flesh_06	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\166542-Bullet-Hit-Body-Flesh_06_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Moustique\LIF_Moustique_Degat\LIF_Moustique_Degat_G\166542-Bullet-Hit-Body-Flesh_06		35936
 	892882947	ENV_Atelier_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Atelier_v1_57FAB0EB.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Base\ENV_Base_Atelier\ENV_Atelier_v1		1536144
 	893658050	LIF_Rhinortue_Mort	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Rhinortue_Mort_DF59CAF7.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Rhinortue\LIF_Rhinortue_Mort\LIF_Rhinortue_Mort\LIF_Rhinortue_Mort		276756
-	894184392	AMB_Grotte_L1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L1_FC2FA8E1.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L1		2633288
+	894184392	AMB_Grotte_L1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L1_A39D1E7B.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L1		2674832
 	896322930	LIF_Water_Moove_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Water_Moove_900816DB.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Meduse\LIF_Meduse_Moove\LIF_Water_Moove\LIF_Water_Moove_04		973204
 	897220296	ENV_Base_Teleporteur_L2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Base_Teleporteur_L2_71CF667C.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Base\ENV_Base_Teleporteur\ENV_Base_Teleporteur_L2		6980396
 	897990736	UI_JoueurVise_Stop_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_JoueurVise_Stop_v1_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Joueur_Vise_Stop\UI_JoueurVise_Stop_v1		70500
@@ -866,7 +870,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	911462759	ENV_Tempete_Thunder Rec-002	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Tempete_Thunder Rec-002_9512FD96.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Tonnerre\ENV_Tonnerre\ENV_Tempete_Thunder Rec-002		1191704
 	912656198	LIF_Rhinortue_Saut	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Rhinortue_Saut_3C0D8A19.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Rhinortue\LIF_Rhinortue_Saut\LIF_Rhinortue_Saut_\LIF_Rhinortue_Saut		186792
 	915811521	AMB_Foret_CloseBird_2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Foret_CloseBird_2_AD31BE59.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Foret\AMB_Foret_SFX\AMB_Foret_CloseBird_2\AMB_Foret_CloseBird_2		616932
-	918051677	AMB_Grotte_L3_12	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_12_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_12		415860
 	920200723	PLY_Attaque_FlashGrenade_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_FlashGrenade_9B065818.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade_02		107996
 	923132098	LIF_Salamandre_Degat-005	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Salamandre_Degat-005_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Degat\LIF_Salamandre_Degat\LIF_Salamandre_Degat-005		103304
 	923802760	ENV_Tempete_Thunder Rec-001	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Tempete_Thunder Rec-001_DDBCFB5C.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Tonnerre\ENV_Tonnerre\ENV_Tempete_Thunder Rec-001		698276
@@ -881,7 +884,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	946101210	PLY_Multitool_Racine	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Multitool_Racine_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Multitool\PLY_Multitool_Ressources\PLY_Multitool_Racine\PLY_Multitool_Racine		21016
 	949662812	UI_Commun_Yes_v2_L1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_Commun_Yes_v2_L1_5C50A79F.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_Commun\UI_Commun_Yes\UI_Commun_Yes_v2_L1		32128
 	951210013	UI_Commun_Yes_v1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\UI_Commun_Yes_v1_E3C20E6C.wem		\Actor-Mixer Hierarchy\UI\UI\UI_Menus\UI_Commun\UI_Commun_Yes\UI_Commun_Yes_v1		24552
-	952970103	AMB_Grotte_L3_8	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\AMB_Grotte_L3_8_10C4C929.wem		\Actor-Mixer Hierarchy\AMB\AMB\AMB_switch\AMB_ForetAGrotte_Crossfade\AMB_Grotte\AMB_Grotte_L3\AMB_Grotte_L3_8		466428
 	957830557	PLY_Attaque_Harpon_L1	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Harpon_L1_A1F4CC64.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Harpon\PLY_Attaque_Harpon_L1\PLY_Attaque_Harpon_L1		137516
 	957859427	PLY_Attaque_Poing_01	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Poing_A7832E72.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Poing\PLY_Attaque_Poing\PLY_Attaque_Poing_01		66068
 	958219253	LIF_Requin_Degats_02	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Requin_Degats_7AA24F40.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Requin\LIF_Requin_Degat\LIF_Requin_Degat_L2\LIF_Requin_Degats_02		130956
@@ -940,7 +942,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	1061293591	LIF_Salamandre_Touche-002	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Salamandre_Touche-002_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Salamandre\LIF_Salamandre_Touche\LIF_Salamandre_Touche\LIF_Salamandre_Touche-002		31372
 	1061937019	PLY_Attaque_Lance_01	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Lance_082E2EF8.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Lance\PLY_Attaque_Lance\PLY_Attaque_Lance_01		75492
 	1061943509	LIF_Requin_Mort	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\LIF_Requin_Mort_10C4C929.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_Requin\LIF_Requin_Mort\LIF_Requin_Mort\LIF_Requin_Mort		8229572
-	1063617042	PLY_Attaque_Trident_01	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_56784D9D.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Attaque\PLY_Attaque_Trident\PLY_Attaque_Trident_\PLY_Attaque_Trident_01		147016
+	1063617042	PLY_Attaque_Trident_01	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Attaque_Trident_56784D9D.wem		\Actor-Mixer Hierarchy\LIF\LIF\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Attaque\PLY_Attaque_Trident_\PLY_Attaque_Trident_01		147016
 	1064452652	ENV_Base_Map_L2	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\ENV_Base_Map_L2_5AE762FE.wem		\Actor-Mixer Hierarchy\ENV\ENV\ENV_Base\ENV_Base_Map\ENV_Base_Map_L2		3764360
 	1066836060	FS_GrassMain_09	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\FS_GrassMain_09_10C4C929.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Pas\PLY_Pas_Marche\PLY_Pas_Marche_Terre\PLY_Pas_Marche_Terre_L1\FS_GrassMain_09		67152
 	1068309541	PLY_Nage_04	C:\EK-0\Eko-system\Eko-system_WwiseProject\.cache\Windows\SFX\PLY_Nage_1_7690D238.wem		\Actor-Mixer Hierarchy\PLY\PLY\PLY_Eau\PLY_Eau_Rebondis\PLY_Nage_L3\PLY_Nage_04		257104

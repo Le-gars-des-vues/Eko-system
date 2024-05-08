@@ -244,7 +244,41 @@
 								</Event>
 								<Event Name="UI_MenuMort_RetourPrincipal" ID="{41FFE594-3A0A-4841-8FB7-7EB56D80C8EF}">
 									<ChildrenList>
+										<Action Name="" ID="{EDD91634-D6CB-4F9E-97C2-3AE226E39699}" ShortID="1052582465">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="26"/>
+												<Property Name="Lowpass" Type="int16" Value="100"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_MenuMort_RetourPrincipal" ID="{A71D377F-5254-4EC9-A983-DF1C2CE54E72}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 										<Action Name="" ID="{818E75D4-B77D-4FF7-91C7-70F30C96236C}" ShortID="587980437">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_MenuMort_RetourPrincipal" ID="{A71D377F-5254-4EC9-A983-DF1C2CE54E72}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{DDA6AB54-1738-41F9-9BA1-298986137711}" ShortID="1404758">
+											<PropertyList>
+												<Property Name="Delay" Type="Real64" Value="0.2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_MenuMort_RetourPrincipal" ID="{A71D377F-5254-4EC9-A983-DF1C2CE54E72}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{318AB317-0636-4963-905E-2164BDAC5087}" ShortID="764929192">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="26"/>
+												<Property Name="Delay" Type="Real64" Value="0.01"/>
+												<Property Name="FadeInCurve" Type="int16" Value="7"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="UI_MenuMort_RetourPrincipal" ID="{A71D377F-5254-4EC9-A983-DF1C2CE54E72}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
@@ -653,6 +687,64 @@
 								</Folder>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="UI_MenuPrincipal" ID="{900D9EBE-9C13-4880-9839-ACB6415A76B9}" ShortID="356568825">
+							<ChildrenList>
+								<Event Name="UI_MenuPrincipal_Desktop" ID="{A4A9984D-54F9-4361-BC4D-67E710B9D9F9}">
+									<ChildrenList>
+										<Action Name="" ID="{BB8A39A1-0990-4B71-ACFF-5BEBF39AAABA}" ShortID="75764597">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_MenuPrincipal_Desktop" ID="{20F3EB3E-A6C7-4E25-A479-38FCDF669995}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{FB180B13-A8C3-4932-883A-69A620877318}" ShortID="961589024">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="MUS_MenuPrincipal" ID="{E9ADD2B3-26CE-4595-BBCB-8A7D578EB479}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_MenuPrincipal_Play" ID="{24D95DB3-F487-49AA-A49B-4E53C6104986}">
+									<ChildrenList>
+										<Action Name="" ID="{9FEADABB-29F7-4314-AAF3-319D5874A06F}" ShortID="771824135">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_MenuPrincipal_Play" ID="{CED3DF2D-AF55-4E1A-83ED-584D7D767E4D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{501BFE98-9CF1-4B05-9782-B8ABF090F81B}" ShortID="184565778">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Yes" ID="{63356ED3-750D-4B90-A9CB-0F9FCB66804E}" WorkUnitID="{616096A5-A8A5-4877-B702-06BEF02992F2}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="UI_MenuPrincipal_Survol" ID="{7C97B693-279F-4E4D-8213-0B05E8E49A50}">
+									<ChildrenList>
+										<Action Name="" ID="{6E15A68D-6153-48A8-BC1B-757DC532EFE0}" ShortID="943467336">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="UI_MenuPrincipal_Survol" ID="{341A70D0-3653-478D-9A57-2023E2329F35}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Event Name="UI_Respiration" ID="{6C6FF602-1C68-41E7-9EF3-CE54605971F0}">
@@ -874,43 +966,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Folder Name="UI_MenuPrincipal" ID="{900D9EBE-9C13-4880-9839-ACB6415A76B9}" ShortID="356568825">
-					<ChildrenList>
-						<Event Name="UI_MenuPrincipal_Desktop" ID="{A4A9984D-54F9-4361-BC4D-67E710B9D9F9}">
-							<ChildrenList>
-								<Action Name="" ID="{BB8A39A1-0990-4B71-ACFF-5BEBF39AAABA}" ShortID="75764597">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="UI_MenuPrincipal_Desktop" ID="{20F3EB3E-A6C7-4E25-A479-38FCDF669995}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="UI_MenuPrincipal_Play" ID="{24D95DB3-F487-49AA-A49B-4E53C6104986}">
-							<ChildrenList>
-								<Action Name="" ID="{9FEADABB-29F7-4314-AAF3-319D5874A06F}" ShortID="771824135">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="UI_MenuPrincipal_Play" ID="{CED3DF2D-AF55-4E1A-83ED-584D7D767E4D}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="UI_MenuPrincipal_Survol" ID="{7C97B693-279F-4E4D-8213-0B05E8E49A50}">
-							<ChildrenList>
-								<Action Name="" ID="{6E15A68D-6153-48A8-BC1B-757DC532EFE0}" ShortID="943467336">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="UI_MenuPrincipal_Survol" ID="{341A70D0-3653-478D-9A57-2023E2329F35}" WorkUnitID="{66EFD2B5-A70A-4CF0-8B96-CFEBA8103E6F}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

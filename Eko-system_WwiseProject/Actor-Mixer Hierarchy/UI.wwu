@@ -564,6 +564,11 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -646,6 +651,11 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-9</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -657,6 +667,13 @@
 											</ReferenceList>
 											<ChildrenList>
 												<Sound Name="MenuMortRetourPrincipal_PH" ID="{8D95A5A0-6C61-44C0-ACAA-ED817255D6F4}" ShortID="982890277">
+													<PropertyList>
+														<Property Name="Inclusion" Type="bool">
+															<ValueList>
+																<Value>False</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -689,6 +706,12 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="UI_MenuMort_RetourPrincipal" ID="{71AF09C7-4D1B-4DF6-8059-39F5C3D66EB0}">
+															<PropertyList>
+																<Property Name="CrossfadeShape" Type="int16" Value="8"/>
+																<Property Name="FadeInDuration" Type="Real64" Value="0.176643068720379"/>
+																<Property Name="FadeInShape" Type="int16" Value="8"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>UI_MenuMort_RetourPrincipal.wav</AudioFile>
 															<MediaIDList>
@@ -706,6 +729,8 @@
 								</ActorMixer>
 								<ActorMixer Name="UI_General" ID="{B6E9CDED-2AC8-4C17-8DE7-C17C9B66E834}" ShortID="524420814">
 									<PropertyList>
+										<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -713,6 +738,7 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="SpeakerPanning" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -725,7 +751,13 @@
 									<ChildrenList>
 										<BlendContainer Name="UI_General_Ouvrir" ID="{037A1C93-F6F8-4FB7-A829-0D125C17C47F}" ShortID="640311416">
 											<PropertyList>
+												<Property Name="3DPosition" Type="int16" Value="2"/>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-300</Value>
+													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{7112A9DB-6065-445E-BFEA-EBAF91AED1B2}">
@@ -739,6 +771,135 @@
 												</Property>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<Custom CreatedFrom="{39D398B3-A710-454F-966B-1FFCAA471AF9}">
+														<Attenuation Name="New Attenuation_01 (Custom)" ID="{77404045-BDD2-4861-A9F1-6D7628774105}" ShortID="809040057">
+															<CurveUsageInfoList>
+																<VolumeDryUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="VolumeDry" ID="{1DDBB7B3-94CF-45C2-BC7F-A1C254CCB078}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>0</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</VolumeDryUsage>
+																<VolumeWetGameUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetGameUsage>
+																<VolumeWetUserUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetUserUsage>
+																<LowPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</LowPassFilterUsage>
+																<HighPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</HighPassFilterUsage>
+																<SpreadUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="Spread" ID="{425ACACB-A942-4324-82EF-C96EBB79B7AC}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="1"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>51.67464</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>3.49463</XPos>
+																					<YPos>52.15312</YPos>
+																					<Flags>0</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>12.6344</XPos>
+																					<YPos>74.16268</YPos>
+																					<Flags>0</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>33.97129</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</SpreadUsage>
+																<FocusUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None">
+																		<Curve Name="Focus" ID="{7DD8F7BC-A0C5-4F08-A7D1-4DBCE2A718D4}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="1"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>100</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>100</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</FocusUsage>
+																<ObstructionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionVolumeUsage>
+																<ObstructionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionLPFUsage>
+																<ObstructionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionHPFUsage>
+																<OcclusionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionVolumeUsage>
+																<OcclusionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionLPFUsage>
+																<OcclusionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionHPFUsage>
+																<DiffractionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionVolumeUsage>
+																<DiffractionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionLPFUsage>
+																<DiffractionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionHPFUsage>
+																<TransmissionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionVolumeUsage>
+																<TransmissionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionLPFUsage>
+																<TransmissionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionHPFUsage>
+															</CurveUsageInfoList>
+														</Attenuation>
+													</Custom>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 												</Reference>
@@ -770,10 +931,42 @@
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<PositioningInfo>
+												<Position Name="" ID="{4248A018-E434-44F4-8CFF-5FFF97BA96C1}">
+													<ChildrenList>
+														<Path2D Name="UI_General_Fermer_Path" ID="{2BF01C3A-365A-4163-A50C-15F76930C188}">
+															<PropertyList>
+																<Property Name="Duration" Type="Uint32" Value="700"/>
+															</PropertyList>
+															<PointList>
+																<Point>
+																	<XPos>-74.27937</XPos>
+																	<YPos>1.08224</YPos>
+																	<Flags>12</Flags>
+																	<Time>0</Time>
+																</Point>
+																<Point>
+																	<XPos>-22.39469</XPos>
+																	<YPos>0.86579</YPos>
+																	<Flags>0</Flags>
+																	<Time>700</Time>
+																</Point>
+															</PointList>
+														</Path2D>
+													</ChildrenList>
+												</Position>
+											</PositioningInfo>
 										</BlendContainer>
 										<BlendContainer Name="UI_General_Fermer" ID="{05EA9BA7-4993-4E41-AA4C-BF22C4D2FC24}" ShortID="48886552">
 											<PropertyList>
+												<Property Name="3DPosition" Type="int16" Value="2"/>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-300</Value>
+													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{DE5504BD-CA4B-4F63-A4DA-22008921054A}">
@@ -785,8 +978,128 @@
 														</ModifierInfo>
 													</ModifierList>
 												</Property>
+												<Property Name="SpeakerPanning" Type="int16" Value="1"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<Custom CreatedFrom="{39D398B3-A710-454F-966B-1FFCAA471AF9}">
+														<Attenuation Name="New Attenuation_01 (Custom)" ID="{85E4FD9F-81CD-45D7-997C-5D459B0765A4}" ShortID="894594757">
+															<CurveUsageInfoList>
+																<VolumeDryUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="VolumeDry" ID="{690A0EEE-900A-410C-A5EE-B94B8B5248BD}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>0</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</VolumeDryUsage>
+																<VolumeWetGameUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetGameUsage>
+																<VolumeWetUserUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetUserUsage>
+																<LowPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</LowPassFilterUsage>
+																<HighPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</HighPassFilterUsage>
+																<SpreadUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="Spread" ID="{0E331E07-1DB5-4DA0-8350-F3F57090092F}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="1"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>17.59702</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>22.61209</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</SpreadUsage>
+																<FocusUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None">
+																		<Curve Name="Focus" ID="{BD4399B9-F8B9-486D-A2D7-1397F677DB92}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="1"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>100</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>100</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</FocusUsage>
+																<ObstructionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionVolumeUsage>
+																<ObstructionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionLPFUsage>
+																<ObstructionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionHPFUsage>
+																<OcclusionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionVolumeUsage>
+																<OcclusionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionLPFUsage>
+																<OcclusionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionHPFUsage>
+																<DiffractionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionVolumeUsage>
+																<DiffractionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionLPFUsage>
+																<DiffractionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionHPFUsage>
+																<TransmissionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionVolumeUsage>
+																<TransmissionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionLPFUsage>
+																<TransmissionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionHPFUsage>
+															</CurveUsageInfoList>
+														</Attenuation>
+													</Custom>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 												</Reference>
@@ -818,6 +1131,32 @@
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{CA4E4213-0955-4017-9DDE-0AB796DBA2C8}"/>
+												<Position Name="" ID="{2E5C9500-A7F9-4902-886E-09F77B0FDA97}">
+													<ChildrenList>
+														<Path2D Name="UI_General_Fermer_Path" ID="{000BEA1F-99AC-4F3D-9B8E-55E399002C29}">
+															<PropertyList>
+																<Property Name="Duration" Type="Uint32" Value="500"/>
+															</PropertyList>
+															<PointList>
+																<Point>
+																	<XPos>-22.39468</XPos>
+																	<YPos>-100</YPos>
+																	<Flags>12</Flags>
+																	<Time>0</Time>
+																</Point>
+																<Point>
+																	<XPos>-93.79157</XPos>
+																	<YPos>-100</YPos>
+																	<Flags>0</Flags>
+																	<Time>500</Time>
+																</Point>
+															</PointList>
+														</Path2D>
+													</ChildrenList>
+												</Position>
+											</PositioningInfo>
 										</BlendContainer>
 										<BlendContainer Name="UI_General_Pick" ID="{914635FA-BA95-4F3A-B61C-27A771E6EB35}" ShortID="86070112">
 											<ReferenceList>
@@ -854,6 +1193,14 @@
 											</ChildrenList>
 										</BlendContainer>
 									</ChildrenList>
+									<PositioningInfo>
+										<Panner Name="" ID="{EC7E05AD-407B-4B71-AD22-DB1C26ACEEDD}">
+											<PropertyList>
+												<Property Name="PanX" Type="Real64" Value="0.496277915632736"/>
+												<Property Name="PanY" Type="Real64" Value="1.88737914186277E-15"/>
+											</PropertyList>
+										</Panner>
+									</PositioningInfo>
 								</ActorMixer>
 								<ActorMixer Name="UI_Carte" ID="{22ED593B-1B3D-4610-8D4E-A3A096AC36F9}" ShortID="827669898">
 									<ReferenceList>
@@ -1876,6 +2223,11 @@
 											<ChildrenList>
 												<BlendContainer Name="UI_Batiment_Ouvrir" ID="{07434F90-0D1C-4B24-AEBA-617C5B47E2DB}" ShortID="162822945">
 													<PropertyList>
+														<Property Name="Lowpass" Type="int16">
+															<ValueList>
+																<Value>39</Value>
+															</ValueList>
+														</Property>
 														<Property Name="Pitch" Type="int32">
 															<ModifierList>
 																<ModifierInfo>
@@ -1887,6 +2239,11 @@
 																	</Modifier>
 																</ModifierInfo>
 															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
 														</Property>
 													</PropertyList>
 													<ReferenceList>
@@ -1924,6 +2281,11 @@
 												</BlendContainer>
 												<BlendContainer Name="UI_Batiment_Fermer" ID="{CD770DBC-91E9-4DE8-8456-662E84A82D62}" ShortID="889086526">
 													<PropertyList>
+														<Property Name="Lowpass" Type="int16">
+															<ValueList>
+																<Value>39</Value>
+															</ValueList>
+														</Property>
 														<Property Name="Pitch" Type="int32">
 															<ModifierList>
 																<ModifierInfo>
@@ -1935,6 +2297,11 @@
 																	</Modifier>
 																</ModifierInfo>
 															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
 														</Property>
 													</PropertyList>
 													<ReferenceList>
@@ -2047,28 +2414,6 @@
 																		<ActiveSource Name="ConstruireAmeliorationUtilitaire_PH" ID="{A166A3E1-003B-4FF8-93EF-5D098CD03A9C}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
-																<Sound Name="UI_Construire_Ameliorations_Utilitz" ID="{EAD8FE12-9A52-4EA3-957C-98C0EF5ADEA1}" ShortID="762190152">
-																	<ReferenceList>
-																		<Reference Name="Conversion">
-																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
-																		</Reference>
-																		<Reference Name="OutputBus">
-																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
-																		</Reference>
-																	</ReferenceList>
-																	<ChildrenList>
-																		<AudioFileSource Name="UI_Construire_Ameliorations_Utilitz" ID="{EC7DDAA9-1C9F-41B7-BBD5-F37CB8E09A57}">
-																			<Language>SFX</Language>
-																			<AudioFile>UI_Construire_Ameliorations_Utilitz.wav</AudioFile>
-																			<MediaIDList>
-																				<MediaID ID="225680182"/>
-																			</MediaIDList>
-																		</AudioFileSource>
-																	</ChildrenList>
-																	<ActiveSourceList>
-																		<ActiveSource Name="UI_Construire_Ameliorations_Utilitz" ID="{EC7DDAA9-1C9F-41B7-BBD5-F37CB8E09A57}" Platform="Linked"/>
-																	</ActiveSourceList>
-																</Sound>
 															</ChildrenList>
 														</BlendContainer>
 														<BlendContainer Name="UI_Construire_Batiment" ID="{076E6702-97F0-4061-AD32-B5A376785D1C}" ShortID="310978830">
@@ -2124,7 +2469,11 @@
 																		<ActiveSource Name="ConstruireAmeliorationCombat_PH" ID="{3311DABF-328A-4505-A66D-D2F8BD9F3790}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
-																<Sound Name="UI_Construire_Ameliorations_Combat" ID="{3117D5F0-B3BF-49FF-B963-C38830EDD4B3}" ShortID="423261952">
+																<Sound Name="UI_Construire_Ameliorations_Bouclier" ID="{9F2B3647-78F0-43E6-A98E-9F981BEA3CEB}" ShortID="769038068">
+																	<PropertyList>
+																		<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																		<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -2134,16 +2483,16 @@
 																		</Reference>
 																	</ReferenceList>
 																	<ChildrenList>
-																		<AudioFileSource Name="UI_Construire_Ameliorations_Combat" ID="{CB95208A-F881-4941-8BF4-B86E1B3F5769}">
+																		<AudioFileSource Name="UI_Construire_Ameliorations_Bouclier" ID="{2FCB0EDB-9A50-4028-8A66-B349905FF53A}">
 																			<Language>SFX</Language>
-																			<AudioFile>UI_Construire_Ameliorations_Combat.wav</AudioFile>
+																			<AudioFile>UI_Construire_Ameliorations_Bouclier.wav</AudioFile>
 																			<MediaIDList>
-																				<MediaID ID="62340369"/>
+																				<MediaID ID="1073100842"/>
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
 																	<ActiveSourceList>
-																		<ActiveSource Name="UI_Construire_Ameliorations_Combat" ID="{CB95208A-F881-4941-8BF4-B86E1B3F5769}" Platform="Linked"/>
+																		<ActiveSource Name="UI_Construire_Ameliorations_Bouclier" ID="{2FCB0EDB-9A50-4028-8A66-B349905FF53A}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
@@ -2230,34 +2579,32 @@
 																		<ActiveSource Name="UI_Construire_Ameliorations_Recolte" ID="{00F92D51-F41C-4DD4-AFD4-E1FCE1CA4A24}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
-																<Sound Name="UI_Construire_Ameliorations_RecolteÉv2" ID="{3A394095-8101-4F35-BBB6-035061D876E4}" ShortID="233007624">
+																<Sound Name="UI_Construire_Ameliorations_Endurance" ID="{BCF8A73A-453D-4444-B998-1FB7CFF979BA}" ShortID="480102305">
+																	<PropertyList>
+																		<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
 																		</Reference>
 																		<Reference Name="OutputBus">
-																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																			<ObjectRef Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 																		</Reference>
 																	</ReferenceList>
 																	<ChildrenList>
-																		<AudioFileSource Name="UI_Construire_Ameliorations_RecolteÉv2" ID="{984AFFD9-66DB-4DF9-9B7A-34BCF89497B7}">
-																			<PropertyList>
-																				<Property Name="CrossfadeShape" Type="int16" Value="8"/>
-																				<Property Name="FadeInShape" Type="int16" Value="8"/>
-																				<Property Name="FadeOutDuration" Type="Real64" Value="0.605725378787879"/>
-																				<Property Name="FadeOutShape" Type="int16" Value="1"/>
-																				<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-																				<Property Name="TrimEnd" Type="Real64" Value="2.06625946969697"/>
-																			</PropertyList>
+																		<AudioFileSource Name="UI_Construire_Ameliorations_Endurance" ID="{78C6951A-49AC-489E-8881-032972A03BED}">
 																			<Language>SFX</Language>
-																			<AudioFile>UI_Construire_Ameliorations_RecolteÉv2.wav</AudioFile>
+																			<AudioFile>UI_Construire_Ameliorations_Endurance.wav</AudioFile>
 																			<MediaIDList>
-																				<MediaID ID="338117178"/>
+																				<MediaID ID="928050316"/>
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
+																	<PositioningInfo>
+																		<Panner Name="" ID="{EDE6AED0-6FA5-4B68-83E7-CA6CBA4066D5}"/>
+																	</PositioningInfo>
 																	<ActiveSourceList>
-																		<ActiveSource Name="UI_Construire_Ameliorations_RecolteÉv2" ID="{984AFFD9-66DB-4DF9-9B7A-34BCF89497B7}" Platform="Linked"/>
+																		<ActiveSource Name="UI_Construire_Ameliorations_Endurance" ID="{78C6951A-49AC-489E-8881-032972A03BED}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
@@ -2317,10 +2664,9 @@
 																		<ActiveSource Name="ConstruireAmeliorationBouclier_PH" ID="{FE2DC7E9-974D-4405-A056-1CA8B5CF847B}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
-																<Sound Name="UI_Construire_Ameliorations_Bouclier" ID="{9F2B3647-78F0-43E6-A98E-9F981BEA3CEB}" ShortID="769038068">
+																<Sound Name="UI_Construire_Ameliorations_Sante" ID="{7C07B0F4-4BA2-458B-B71E-1AB844B37511}" ShortID="955583589">
 																	<PropertyList>
 																		<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
-																		<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
@@ -2331,16 +2677,19 @@
 																		</Reference>
 																	</ReferenceList>
 																	<ChildrenList>
-																		<AudioFileSource Name="UI_Construire_Ameliorations_Bouclier" ID="{2FCB0EDB-9A50-4028-8A66-B349905FF53A}">
+																		<AudioFileSource Name="UI_Construire_Ameliorations_Sante" ID="{7AEA1ADB-CF13-4D98-8D16-D7B3DB7710CC}">
 																			<Language>SFX</Language>
-																			<AudioFile>UI_Construire_Ameliorations_Bouclier.wav</AudioFile>
+																			<AudioFile>UI_Construire_Ameliorations_Sante.wav</AudioFile>
 																			<MediaIDList>
-																				<MediaID ID="1073100842"/>
+																				<MediaID ID="296606178"/>
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
+																	<PositioningInfo>
+																		<Panner Name="" ID="{6A11C10B-C6FC-4072-9C79-F1645F3553F7}"/>
+																	</PositioningInfo>
 																	<ActiveSourceList>
-																		<ActiveSource Name="UI_Construire_Ameliorations_Bouclier" ID="{2FCB0EDB-9A50-4028-8A66-B349905FF53A}" Platform="Linked"/>
+																		<ActiveSource Name="UI_Construire_Ameliorations_Sante" ID="{7AEA1ADB-CF13-4D98-8D16-D7B3DB7710CC}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
@@ -2361,6 +2710,11 @@
 																			</Modifier>
 																		</ModifierInfo>
 																	</ModifierList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-3</Value>
+																	</ValueList>
 																</Property>
 															</PropertyList>
 															<ReferenceList>
@@ -2401,7 +2755,15 @@
 																		<ActiveSource Name="ConstruireAmeliorationSante_PH" ID="{E2A26235-8351-4D23-AB50-F20862E7C89B}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
-																<Sound Name="UI_Construire_Ameliorations_Sante" ID="{7C07B0F4-4BA2-458B-B71E-1AB844B37511}" ShortID="955583589">
+																<Sound Name="UI_Construire_Ameliorations_RecolteÉv2" ID="{3A394095-8101-4F35-BBB6-035061D876E4}" ShortID="233007624">
+																	<PropertyList>
+																		<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>3</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -2411,16 +2773,55 @@
 																		</Reference>
 																	</ReferenceList>
 																	<ChildrenList>
-																		<AudioFileSource Name="UI_Construire_Ameliorations_Sante" ID="{7AEA1ADB-CF13-4D98-8D16-D7B3DB7710CC}">
+																		<AudioFileSource Name="UI_Construire_Ameliorations_RecolteÉv2" ID="{984AFFD9-66DB-4DF9-9B7A-34BCF89497B7}">
+																			<PropertyList>
+																				<Property Name="CrossfadeShape" Type="int16" Value="8"/>
+																				<Property Name="FadeInShape" Type="int16" Value="8"/>
+																				<Property Name="FadeOutDuration" Type="Real64" Value="0.605725378787879"/>
+																				<Property Name="FadeOutShape" Type="int16" Value="1"/>
+																				<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																				<Property Name="TrimEnd" Type="Real64" Value="2.06625946969697"/>
+																			</PropertyList>
 																			<Language>SFX</Language>
-																			<AudioFile>UI_Construire_Ameliorations_Sante.wav</AudioFile>
+																			<AudioFile>UI_Construire_Ameliorations_RecolteÉv2.wav</AudioFile>
 																			<MediaIDList>
-																				<MediaID ID="296606178"/>
+																				<MediaID ID="338117178"/>
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
+																	<PositioningInfo>
+																		<Panner Name="" ID="{E1F97A84-AFDD-4CDC-A270-B1B853950B7B}"/>
+																	</PositioningInfo>
 																	<ActiveSourceList>
-																		<ActiveSource Name="UI_Construire_Ameliorations_Sante" ID="{7AEA1ADB-CF13-4D98-8D16-D7B3DB7710CC}" Platform="Linked"/>
+																		<ActiveSource Name="UI_Construire_Ameliorations_RecolteÉv2" ID="{984AFFD9-66DB-4DF9-9B7A-34BCF89497B7}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="UI_Construire_Ameliorations_Utilitz" ID="{EAD8FE12-9A52-4EA3-957C-98C0EF5ADEA1}" ShortID="762190152">
+																	<PropertyList>
+																		<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="UI_Construire_Ameliorations_Utilitz" ID="{EC7DDAA9-1C9F-41B7-BBD5-F37CB8E09A57}">
+																			<Language>SFX</Language>
+																			<AudioFile>UI_Construire_Ameliorations_Utilitz.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="225680182"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<PositioningInfo>
+																		<Panner Name="" ID="{E137C133-D598-4900-83C4-70BE8B1E9F6F}"/>
+																	</PositioningInfo>
+																	<ActiveSourceList>
+																		<ActiveSource Name="UI_Construire_Ameliorations_Utilitz" ID="{EC7DDAA9-1C9F-41B7-BBD5-F37CB8E09A57}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
@@ -2478,7 +2879,10 @@
 																		<ActiveSource Name="ConstruireAmeliorationEndurance_PH" ID="{C2159C67-DC24-4FD9-B367-FA02EB9A38F3}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
-																<Sound Name="UI_Construire_Ameliorations_Endurance" ID="{BCF8A73A-453D-4444-B998-1FB7CFF979BA}" ShortID="480102305">
+																<Sound Name="UI_Construire_Ameliorations_Combat" ID="{3117D5F0-B3BF-49FF-B963-C38830EDD4B3}" ShortID="423261952">
+																	<PropertyList>
+																		<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																	</PropertyList>
 																	<ReferenceList>
 																		<Reference Name="Conversion">
 																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -2488,16 +2892,19 @@
 																		</Reference>
 																	</ReferenceList>
 																	<ChildrenList>
-																		<AudioFileSource Name="UI_Construire_Ameliorations_Endurance" ID="{78C6951A-49AC-489E-8881-032972A03BED}">
+																		<AudioFileSource Name="UI_Construire_Ameliorations_Combat" ID="{CB95208A-F881-4941-8BF4-B86E1B3F5769}">
 																			<Language>SFX</Language>
-																			<AudioFile>UI_Construire_Ameliorations_Endurance.wav</AudioFile>
+																			<AudioFile>UI_Construire_Ameliorations_Combat.wav</AudioFile>
 																			<MediaIDList>
-																				<MediaID ID="928050316"/>
+																				<MediaID ID="62340369"/>
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
+																	<PositioningInfo>
+																		<Panner Name="" ID="{919B1EC9-1DDA-411C-9D0A-180F2329BA83}"/>
+																	</PositioningInfo>
 																	<ActiveSourceList>
-																		<ActiveSource Name="UI_Construire_Ameliorations_Endurance" ID="{78C6951A-49AC-489E-8881-032972A03BED}" Platform="Linked"/>
+																		<ActiveSource Name="UI_Construire_Ameliorations_Combat" ID="{CB95208A-F881-4941-8BF4-B86E1B3F5769}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
@@ -2804,7 +3211,7 @@
 																<AudioFileSource Name="Vente_Casino_v1" ID="{BA2E9840-7BF5-4A77-82D9-39CD9A8D6AF1}">
 																	<PropertyList>
 																		<Property Name="CrossfadeShape" Type="int16" Value="8"/>
-																		<Property Name="FadeInDuration" Type="Real64" Value="0.0622771392081737"/>
+																		<Property Name="FadeInDuration" Type="Real64" Value="0.0545316718587747"/>
 																		<Property Name="FadeInShape" Type="int16" Value="9"/>
 																		<Property Name="FadeOutShape" Type="int16" Value="1"/>
 																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
@@ -2846,8 +3253,8 @@
 																										<Flags>0</Flags>
 																									</Point>
 																									<Point>
-																										<XPos>0.13536</XPos>
-																										<YPos>-1</YPos>
+																										<XPos>0.0886</XPos>
+																										<YPos>0</YPos>
 																										<Flags>0</Flags>
 																									</Point>
 																									<Point>
@@ -3585,7 +3992,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-7</Value>
+												<Value>-10</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
