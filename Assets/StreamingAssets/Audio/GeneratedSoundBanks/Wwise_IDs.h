@@ -72,6 +72,7 @@ namespace AK
         static const AkUniqueID LIF_SALAMANDRE_DEGAT = 2896018305U;
         static const AkUniqueID LIF_SALAMANDRE_MORT = 1913692056U;
         static const AkUniqueID LIF_SALAMANDRE_PASSIF = 2700451624U;
+        static const AkUniqueID LIF_SALAMANDRE_SAUT = 1236887133U;
         static const AkUniqueID LIF_SALAMANDRE_TOUCHE = 1192081232U;
         static const AkUniqueID LIF_SINGE_ATTAQUE = 1378523713U;
         static const AkUniqueID LIF_SINGE_DEGAT = 2838347287U;
