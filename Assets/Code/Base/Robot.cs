@@ -36,6 +36,7 @@ public class Robot : MonoBehaviour
     bool hasSeenStorm;
     bool cameBackWithQuota;
     bool cameBackWithoutQuota;
+    bool talkedAboutUpgrades;
     [SerializeField] GameObject ressourceToGive;
     [SerializeField] GameObject ressourceToSell;
     Vector2 initialPos;
@@ -173,7 +174,6 @@ public class Robot : MonoBehaviour
         {
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[4]);
             hasShowedCrafting = true;
-            isInTour = false;
         }
     }
 
@@ -202,6 +202,18 @@ public class Robot : MonoBehaviour
             cameBackWithQuota = true;
             GoToCrafting();
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[9]);
+        }
+        else if (!hasShowedBuilding && Tutorial.instance.day2)
+        {
+            hasShowedBuilding = true;
+            GoToCrafting();
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[11]);
+        }
+        else if (!talkedAboutUpgrades && Tutorial.instance.day3)
+        {
+            hasShowedBuilding = true;
+            GoToCrafting();
+            baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[12]);
         }
     }
 

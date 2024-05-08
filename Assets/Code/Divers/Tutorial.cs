@@ -29,6 +29,9 @@ public class Tutorial : MonoBehaviour
     public bool cameBackWithQuota;
     public bool cameBackWithoutQuota;
 
+    public bool day2;
+    public bool day3;
+
     private void Awake()
     {
         if (instance != null)
