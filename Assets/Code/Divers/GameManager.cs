@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
                 {
                     twoMinLeft = true;
                     QuickMenu.instance.frame.sprite = timeLeft[4];
-                    QuickMenu.instance.anim.SetBool("isBlinking", true);
+                    //QuickMenu.instance.anim.SetBool("isBlinking", true);
                 }
                 else if (TimeLeft < 240 && !fourMinLeft)
                 {

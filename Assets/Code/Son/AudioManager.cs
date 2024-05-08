@@ -5,10 +5,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+    public List<GameObject> soundtracks = new List<GameObject>();
 
     [Header("Ambient Noises")]
-    public AK.Wwise.RTPC soundtrackRTPC;
-    [SerializeField] [Range(0, 30)] float rtpcValue;
+    public AK.Wwise.RTPC forestRTPC;
+    public AK.Wwise.RTPC stormRTPC;
+    public AK.Wwise.RTPC deepnessRTPC;
     public AK.Wwise.Event forestSountrack;
     public AK.Wwise.Event baseSoundtrack;
     public AK.Wwise.Event underwaterSoundtrack;
@@ -171,11 +173,6 @@ public class AudioManager : MonoBehaviour
             Destroy(this);
         else
             instance = this;
-    }
-
-    private void Update()
-    {
-        soundtrackRTPC.SetValue(gameObject, rtpcValue);
     }
 
     public void StopSoundtrack()

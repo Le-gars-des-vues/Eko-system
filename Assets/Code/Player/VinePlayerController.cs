@@ -126,7 +126,7 @@ public class VinePlayerController : MonoBehaviour
         transform.position = new Vector2(attachedVine.transform.position.x + (vineOffset * facingDirection), attachedVine.transform.position.y);
 
         //Reactive le rigidbody du joueur
-        GetComponent<Rigidbody2D>().isKinematic = false;
+        GetComponent<Rigidbody2D>().simulated = true;
 
         //Reactive les controls au sol du joueur
         GetComponent<GroundPlayerController>().enabled = true;

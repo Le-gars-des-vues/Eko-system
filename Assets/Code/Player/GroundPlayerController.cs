@@ -380,7 +380,7 @@ public class GroundPlayerController : MonoBehaviour
                 GetComponent<VinePlayerController>().Attach(nearestVine, rb.velocity);
 
                 //Desactive le rigidbody
-                rb.isKinematic = true;
+                rb.simulated = false;
 
                 //Reinitialise la vigne la plus proche
                 nearestVine = null;
