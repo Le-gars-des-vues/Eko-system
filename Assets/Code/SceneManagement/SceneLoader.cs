@@ -39,6 +39,11 @@ namespace System.SceneManagement
             manager.OnSceneGroupLoaded += () => Debug.Log("Scene group loaded");
         }
 
+        private void Start()
+        {
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        }
+
         private void Update()
         {
             if (!isLoading) return;
@@ -68,7 +73,8 @@ namespace System.SceneManagement
             EnableLoadingCanvas();
             await manager.LoadScenes(sceneGroup[index], progress);
             allScenesLoaded?.Invoke();
-            SceneManager.UnloadSceneAsync("MainMenu");
+            Debug.Log("Script started!");
+            allScenesLoaded = null;
             EnableLoadingCanvas(false);
         }
 
@@ -76,7 +82,7 @@ namespace System.SceneManagement
         {
             isLoading = enable;
             loadingCanvas.gameObject.SetActive(enable);
-            //loadingCamera.gameObject.SetActive(enable);
+            loadingCamera.gameObject.SetActive(enable);
         }
 
         public async void LoadGame()
@@ -97,6 +103,11 @@ namespace System.SceneManagement
         public async void LoadGym_1()
         {
             await LoadSceneGroup(4);
+        }
+
+        public async void LoadMainMenu()
+        {
+            await LoadSceneGroup(1);
         }
     }
 

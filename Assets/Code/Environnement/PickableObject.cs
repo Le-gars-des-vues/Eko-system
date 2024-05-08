@@ -146,7 +146,7 @@ public class PickableObject : MonoBehaviour
             {
                 if (!isPickedUp && player.CanMove())
                 {
-                    if ((player.objectInRightHand != null || gameObject.tag == "Ressource" || gameObject.tag == "Gear") && !isBeingPickedUp)
+                    if ((player.objectInRightHand != null || gameObject.tag == "Ressource" || gameObject.tag == "Gear" || gameObject.tag == "Ammo") && !isBeingPickedUp)
                     {
                         StartCoroutine(PickUpAnimation());
                     }
@@ -175,7 +175,7 @@ public class PickableObject : MonoBehaviour
                 }
                 //transform.rotation = Quaternion.Euler(0, 0, angle);
             }
-            else if (gameObject.tag == "OneHandedWeapon" && player.CanMove())
+            else if ((gameObject.tag == "OneHandedWeapon" || gameObject.tag == "Bow") && player.CanMove())
             {
                 Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -271,7 +271,7 @@ public class PickableObject : MonoBehaviour
             AudioManager.instance.PlaySound(AudioManager.instance.pickUp, player.gameObject);
 
             //Si c'est n'est pas une ressource ou du gear
-            if (gameObject.tag != "Ressource" && gameObject.tag != "Gear")
+            if (gameObject.tag != "Ressource" && gameObject.tag != "Gear" && gameObject.tag != "Ammo")
             {
                 for (int i = hotbar.Count - 1; i >= 0; i--)
                 {
@@ -305,7 +305,10 @@ public class PickableObject : MonoBehaviour
             //Si l'item n'a pas ete placer, on le place dans l'inventaire
             if (!hasBeenPlaced)
             {
-                inventoryItem.stackAmount = item.stackAmount;
+                if (gameObject.tag == "Ammo")
+                    inventoryItem.stackAmount = 1;
+                else
+                    inventoryItem.stackAmount = item.stackAmount;
                 inventoryItem.Set(itemData, inventory);
                 inventoryItem.sprites = item.sprites;
                 if (inventoryItem.sprites.Length > 0)
@@ -326,10 +329,12 @@ public class PickableObject : MonoBehaviour
                 itemInInventory.tag = "Ressource";
             if (gameObject.tag == "Gear")
                 itemInInventory.tag = "Gear";
+            if (gameObject.tag == "Ammo")
+                itemInInventory.tag = "Ammo";
         }
 
         //Si l'objet n'est pas une ressource ou du gear
-        if (gameObject.tag != "Ressource" && gameObject.tag != "Gear")
+        if (gameObject.tag != "Ressource" && gameObject.tag != "Gear" && gameObject.tag != "Ammo")
         {
             Tutorial.instance.ListenForInputs("hasPickedUpSpear");
 

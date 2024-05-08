@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event porteFermeture;
     public AK.Wwise.Event robotEnv;
     public AK.Wwise.Event teleporteurEnv;
+    public AK.Wwise.Event elevatorSound;
 
     [Header("UI Sounds")]
     //Inventaire

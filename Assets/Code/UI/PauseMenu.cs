@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -38,7 +39,9 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        AkSoundEngine.StopAll();
+        //SceneManager.LoadScene("MainMenu");
+        SceneLoader.instance.LoadMainMenu();
         Debug.Log("LoadMainMenu");
     }
 

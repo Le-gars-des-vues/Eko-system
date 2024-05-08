@@ -23,10 +23,11 @@ public class Base : MonoBehaviour
     [SerializeField] Animator insideDoorsAnim;
     [SerializeField] GameObject buildButton;
 
-    [SerializeField] GameObject background;
     [SerializeField] GameObject baseBackground;
     [SerializeField] Light2D pixelLight;
-
+    [SerializeField] List<DialogueSpeaker> robotDialogue = new List<DialogueSpeaker>();
+    [SerializeField] GameObject toolTipEnter;
+    [SerializeField] GameObject toolTipExit;
     public bool isSceneLoaded = true;
 
     public bool isInside;
@@ -41,7 +42,6 @@ public class Base : MonoBehaviour
 
         SceneLoader.allScenesLoaded += StartScript;
 
-        background = GameObject.Find("ParallaxBackground");
         if (isSceneLoaded)
         {
             transform.position = new Vector2(135.3f, 4.6f);
@@ -60,6 +60,9 @@ public class Base : MonoBehaviour
             //background.SetActive(false);
             Teleport(false, true, baseSpawnPoint.position);
         }
+        Camera.main.GetComponent<CameraController>().vCam.Follow = player.transform;
+        StartCoroutine(player.GetComponent<PlayerPermanent>().MoveCamera("NormalZoom"));
+        Camera.main.GetComponent<CameraController>().vCam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, Camera.main.GetComponent<CameraController>().vCam.transform.position.z);
         buildButton.SetActive(true);
     }
 
@@ -81,6 +84,7 @@ public class Base : MonoBehaviour
                         AudioManager.instance.PlaySound(AudioManager.instance.porteOuverture, leftDoorAnim.gameObject);
                         leftDoorAnim.SetBool("isOpen", true);
                         rightDoorAnim.SetBool("isOpen", true);
+                        toolTipEnter.SetActive(true);
                     }
                     else if (Vector2.Distance(player.transform.position, door) > distanceOpenThreshold && outsideDoorOpened)
                     {
@@ -88,6 +92,7 @@ public class Base : MonoBehaviour
                         AudioManager.instance.PlaySound(AudioManager.instance.porteFermeture, leftDoorAnim.gameObject);
                         leftDoorAnim.SetBool("isOpen", false);
                         rightDoorAnim.SetBool("isOpen", false);
+                        toolTipEnter.SetActive(false);
                     }
                 }
                 else
@@ -100,6 +105,7 @@ public class Base : MonoBehaviour
                             insideDoorOpened = true;
                             AudioManager.instance.PlaySound(AudioManager.instance.porteOuverture, insideDoorsAnim.gameObject);
                             insideDoorsAnim.SetBool("isOpen", true);
+                            toolTipExit.SetActive(true);
                         }
                     }
                     else if (Vector2.Distance(player.transform.position, baseEntryPoint.position) > distanceOpenThreshold && insideDoorOpened)
@@ -107,6 +113,7 @@ public class Base : MonoBehaviour
                         insideDoorOpened = false;
                         AudioManager.instance.PlaySound(AudioManager.instance.porteFermeture, insideDoorsAnim.gameObject);
                         insideDoorsAnim.SetBool("isOpen", false);
+                        toolTipExit.SetActive(false);
                     }
                 }
 
@@ -130,6 +137,10 @@ public class Base : MonoBehaviour
                         if (GameManager.instance.TimeLeft > 0)
                         {
                             Teleport(true, false, door);
+                            foreach (DialogueSpeaker speaker in robotDialogue)
+                            {
+                                speaker.EndDialogue();
+                            }
                             if (!GameManager.instance.TimerOn)
                                 GameManager.instance.TimerOn = true;
                         }

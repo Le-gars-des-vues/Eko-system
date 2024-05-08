@@ -93,7 +93,7 @@ Transform:
   m_GameObject: {fileID: 1951687052009252968}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.66, y: -0.82, z: 0}
+  m_LocalPosition: {x: -0.46, y: -2.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110,7 +110,7 @@ LineRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 0
   m_LightProbeUsage: 0
@@ -143,7 +143,10 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0.39, y: 3.42, z: 0}
+  - {x: 6.61, y: 3.31, z: 0}
+  - {x: 7.79, y: 1.7, z: 0}
+  - {x: 6.14, y: 1.54, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 5
@@ -152,7 +155,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.42108256
+        value: 0.9126826
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -161,12 +164,12 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.18273926
-        inSlope: 0.050069187
-        outSlope: 0.050069187
+        value: 0.26222694
+        inSlope: 0.13889034
+        outSlope: 0.13889034
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.10138255
+        inWeight: 0.25678128
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -227,14 +230,14 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   isFixed: 1
   anchoredStart: {fileID: 8057215218135659076}
-  segmentAmount: 75
-  segmentsLength: 0.3
+  segmentAmount: 60
+  segmentsLength: 0.2
   followMouse: 0
   followTransform: {fileID: 7642557985948974014}
   MyRenderer: {fileID: 0}
   MySortingLayer: PixelateBackground
   MySortingOrderInLayer: 0
-  changeSortingLayer: 0
+  changeSortingLayer: 1
 --- !u!1 &2140150246248909465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1750,7 @@ MonoBehaviour:
   damage: 3
   attackThreshold: 3
   attackGracePeriod: 0.5
-  attackCooldown: 2
+  attackCooldown: 1
   isFacingRight: 0
   playerToTheRight: 0
   isDrawingGizmos: 1
@@ -1757,14 +1760,14 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 3.812751
-      outSlope: 3.812751
+      inSlope: 2.86983
+      outSlope: 2.86983
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.056573786
+      outWeight: 0.055999655
     - serializedVersion: 3
-      time: 1.4537209
+      time: 1.3296212
       value: 2.967939
       inSlope: -0.0018715977
       outSlope: -0.0018715977
@@ -1775,11 +1778,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 2.984146
       value: 0.009590149
-      inSlope: -6.138571
-      outSlope: -6.138571
+      inSlope: -2.944358
+      outSlope: -2.944358
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.07897065
+      inWeight: 0.06087815
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
