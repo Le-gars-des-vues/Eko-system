@@ -444,19 +444,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e922ddc0b83a1cf4495f812b251c54fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 3523332883187709208}
-  target: {fileID: 0}
-  tentacleTarget: {fileID: 899258645998627241}
-  pullForce: 10
-  minSpeed: 1
-  maxSpeed: 15
-  maxFollowDistance: 10
-  isGrabbing: 0
-  state: {fileID: 10635226556836824}
-  tentacles:
-  - {fileID: 2469553722597801611}
-  - {fileID: 7591251212722713797}
-  - {fileID: 5018229364603875493}
+  damage: 0
+  poison:
+    effectDuration: 5
+    effectMagnitude: 1
+    effectFrequency: 1
 --- !u!114 &1032593777171253670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,19 +715,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e922ddc0b83a1cf4495f812b251c54fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 3523332883187709208}
-  target: {fileID: 0}
-  tentacleTarget: {fileID: 6796669463479590360}
-  pullForce: 10
-  minSpeed: 5
-  maxSpeed: 10
-  maxFollowDistance: 10
-  isGrabbing: 0
-  state: {fileID: 10635226556836824}
-  tentacles:
-  - {fileID: 7591251212722713797}
-  - {fileID: 5018229364603875493}
-  - {fileID: 1630523014016317462}
+  damage: 0
+  poison:
+    effectDuration: 5
+    effectMagnitude: 1
+    effectFrequency: 1
 --- !u!114 &6111019675456031963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,7 +900,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1229301839634219546
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1570,19 +1554,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e922ddc0b83a1cf4495f812b251c54fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 3523332883187709208}
-  target: {fileID: 0}
-  tentacleTarget: {fileID: 4131871933600892842}
-  pullForce: 10
-  minSpeed: 5
-  maxSpeed: 10
-  maxFollowDistance: 10
-  isGrabbing: 0
-  state: {fileID: 10635226556836824}
-  tentacles:
-  - {fileID: 2469553722597801611}
-  - {fileID: 7591251212722713797}
-  - {fileID: 1630523014016317462}
+  damage: 0
+  poison:
+    effectDuration: 5
+    effectMagnitude: 1
+    effectFrequency: 1
 --- !u!114 &425211429262866031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2026,19 +2002,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e922ddc0b83a1cf4495f812b251c54fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 3523332883187709208}
-  target: {fileID: 0}
-  tentacleTarget: {fileID: 7573243892967696206}
-  pullForce: 10
-  minSpeed: 5
-  maxSpeed: 10
-  maxFollowDistance: 10
-  isGrabbing: 0
-  state: {fileID: 10635226556836824}
-  tentacles:
-  - {fileID: 2469553722597801611}
-  - {fileID: 5018229364603875493}
-  - {fileID: 1630523014016317462}
+  damage: 0
+  poison:
+    effectDuration: 5
+    effectMagnitude: 1
+    effectFrequency: 1
 --- !u!114 &7337815090742917709
 MonoBehaviour:
   m_ObjectHideFlags: 0

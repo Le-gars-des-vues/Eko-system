@@ -79,7 +79,7 @@ public class Recipes
         {14, new Recipes("Heavy Punch", "Scale", 2, "Lushalite", 2, "Dog DNA Vial", 3)},
         {15, new Recipes("DNA Extractor", "Scale", 3, "Spit", 2, "Trunk", 2)},
         {16, new Recipes("Machete", "Lushalite", 3, "Metal Sheet", 1, "Bark", 2)},
-        {17, new Recipes("Bow", "Bone", 3, "Roots", 3,"Spit",3)},
+        {17, new Recipes("Bow", "Bark", 3, "Roots", 3,"Spit",3)},
         {18, new Recipes("Trident", "Corallium", 3, "Fish Eyes", 2, "Petralucen", 1) },
         {19, new Recipes("Harpoon Gun", "Corallium", 3, "Scale", 1, "Trunk", 2) },
         //{20, new Recipes("Arrow", "Lushalite",2, "Metal Sheet",1) },

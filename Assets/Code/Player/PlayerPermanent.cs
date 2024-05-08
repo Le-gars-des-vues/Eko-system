@@ -343,7 +343,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (!AudioManager.instance.underwaterIsPlaying)
             {
                 AudioManager.instance.underwaterIsPlaying = true;
-                AudioManager.instance.PlayUnderwater();
+                AudioManager.instance.underwaterID = AudioManager.instance.PlayUnderwater();
             }
         }
         else
@@ -351,6 +351,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (AudioManager.instance.underwaterIsPlaying)
             {
                 AudioManager.instance.underwaterIsPlaying = false;
+                AkSoundEngine.StopPlayingID(AudioManager.instance.underwaterID);
                 AudioManager.instance.PlayForest();
                 AudioManager.instance.forestIsPlaying = true;
             }

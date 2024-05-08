@@ -167,11 +167,9 @@ public class JellyfishMovement : MonoBehaviour
 
     void Turn()
     {
-        Vector3 scale = transform.localScale;
+        Vector3 scale = head.localScale;
         scale.x *= -1;
-        transform.localScale = scale;
-
-        isFacingUp = !isFacingUp;
+        head.localScale = scale;
 
         isFacingRight = !isFacingRight;
     }
@@ -186,6 +184,8 @@ public class JellyfishMovement : MonoBehaviour
             force.x += minMoveSpeed;
 
         rb.AddForce(force);
+        if (!isFacingRight)
+            Turn();
     }
 
     void GoLeft(float speedFactor)
@@ -198,6 +198,8 @@ public class JellyfishMovement : MonoBehaviour
             force.x -= minMoveSpeed;
 
         rb.AddForce(force);
+        if (isFacingRight)
+            Turn();
     }
 
     void GoUp(float speedFactor)
