@@ -20,17 +20,6 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="PLY_Attaque_FlashGrenade" ID="{2C4F3A60-FF48-48DB-AB9C-DEDEDBA9247A}">
-							<ChildrenList>
-								<Action Name="" ID="{7AE27A17-C347-44E1-9F3B-C24D37A3EA1E}" ShortID="920280796">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="PLY_Attaque_FlashGrenade" ID="{0E80A91F-0708-413A-A6F1-48C1EAC59650}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
 						<Event Name="PLY_Attaque_Harpon" ID="{3863BA93-6CF9-4DC3-B894-AD069F568BD1}">
 							<ChildrenList>
 								<Action Name="" ID="{976A5518-0D63-42B5-84BD-BB5AA6463AFF}" ShortID="285069467">
@@ -97,6 +86,43 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="PLY_Attaque_Machette_Miss" ID="{0C59F174-12B3-4E62-B753-4D9625BBEF5B}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="PLY_Attaque_FlashGrenade" ID="{F890700D-71A0-4266-94B9-0E5454A05313}" ShortID="906896477">
+							<ChildrenList>
+								<Event Name="PLY_Attaque_FlashGrenade" ID="{2C4F3A60-FF48-48DB-AB9C-DEDEDBA9247A}">
+									<ChildrenList>
+										<Action Name="" ID="{7AE27A17-C347-44E1-9F3B-C24D37A3EA1E}" ShortID="920280796">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY_Attaque_FlashGrenade" ID="{0E80A91F-0708-413A-A6F1-48C1EAC59650}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="PLY_Attaque_FlashGrenade_Explode" ID="{B88C6083-3B8F-4FFE-A519-C58EE23FE404}">
+									<ChildrenList>
+										<Action Name="" ID="{50DA1B82-7DC8-4ABD-B6EB-EC915AF897E3}" ShortID="193247423">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY_Attaque_FlashGrenade_Explode" ID="{F214E193-AD0F-400E-80D9-440303A07B47}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="PLY_Attaque_FlashGrenade_Land" ID="{1D4D22C8-648A-4F0F-B53E-C730BD8BCE0C}">
+									<ChildrenList>
+										<Action Name="" ID="{BC02164F-8A54-4EB0-AA83-86C4345BBB17}" ShortID="153743266">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="PLY_Attaque_FlashGrenade_Land" ID="{67FAB513-8216-4ED9-AEC3-9B55E49A732D}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -580,6 +606,17 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="PLY_Multitool_Stop" ID="{0A181902-0D44-447D-9022-6E25EAAB4DCE}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PLY_Multitool_Charge_Accel" ID="{8083217A-96EB-4B77-9DDD-37C0E74F15F5}">
+							<ChildrenList>
+								<Action Name="" ID="{81EB049F-FEE7-4E22-B060-5C1EA96192AD}" ShortID="80131450">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PLY_Multitool_Charge_Accel" ID="{BEFECA8E-DA29-4678-B3CF-852F1EF0D8CA}" WorkUnitID="{C8F280EE-1928-491F-982A-2CAE2D805A1A}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

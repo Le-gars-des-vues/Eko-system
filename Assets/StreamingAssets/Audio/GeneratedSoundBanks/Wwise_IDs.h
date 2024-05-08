@@ -39,6 +39,7 @@ namespace AK
         static const AkUniqueID ENV_PORTEFERMETURE = 1930754588U;
         static const AkUniqueID ENV_PORTEOUVERTURE = 1952691670U;
         static const AkUniqueID ENV_TELEPORTE = 3801493381U;
+        static const AkUniqueID ENV_TELEPORTE_ARRIVEE = 3938511794U;
         static const AkUniqueID ENV_TONNERRE = 3403933012U;
         static const AkUniqueID LIF_MEDUSE_ATTAQUE = 1017987174U;
         static const AkUniqueID LIF_MEDUSE_DEGAT = 1325045648U;
@@ -82,6 +83,8 @@ namespace AK
         static const AkUniqueID MUS_MENUPRINCIPAL = 3076148986U;
         static const AkUniqueID PLY_ATTAQUE_ARC = 2030651275U;
         static const AkUniqueID PLY_ATTAQUE_FLASHGRENADE = 3590418373U;
+        static const AkUniqueID PLY_ATTAQUE_FLASHGRENADE_EXPLODE = 3332918935U;
+        static const AkUniqueID PLY_ATTAQUE_FLASHGRENADE_LAND = 335294311U;
         static const AkUniqueID PLY_ATTAQUE_HARPON = 3844143789U;
         static const AkUniqueID PLY_ATTAQUE_LANCE = 2310310918U;
         static const AkUniqueID PLY_ATTAQUE_MACHETTE_CUT = 525081557U;
@@ -104,6 +107,7 @@ namespace AK
         static const AkUniqueID PLY_MULTITOOL_BARK = 895662967U;
         static const AkUniqueID PLY_MULTITOOL_BONE = 695905659U;
         static const AkUniqueID PLY_MULTITOOL_CHARGE = 1777682481U;
+        static const AkUniqueID PLY_MULTITOOL_CHARGE_ACCEL = 2240320236U;
         static const AkUniqueID PLY_MULTITOOL_CORALLIUM = 427638723U;
         static const AkUniqueID PLY_MULTITOOL_FIN = 1838506108U;
         static const AkUniqueID PLY_MULTITOOL_FISHEYES = 2750889197U;
@@ -138,6 +142,7 @@ namespace AK
         static const AkUniqueID SWT_TERRE = 1526334054U;
         static const AkUniqueID UI_AMELIORATION_FERMER = 727215424U;
         static const AkUniqueID UI_AMELIORATION_OUVRIR = 3491591680U;
+        static const AkUniqueID UI_ATELIER_CONSTRUIRE = 1161454221U;
         static const AkUniqueID UI_ATELIER_FERMER = 3316347964U;
         static const AkUniqueID UI_ATELIER_OUVRIR = 2446265780U;
         static const AkUniqueID UI_BARRE_BOUCLIER_PLEINE = 2831445002U;

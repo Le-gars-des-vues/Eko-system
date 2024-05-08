@@ -195,6 +195,247 @@
 														<ActiveSource Name="AMB_Base_L4" ID="{E8DC661C-9F27-426F-BA5E-92C19DD498D3}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<RandomSequenceContainer Name="neon flicker" ID="{167CF537-9A5B-440D-B17B-FB8732C871B3}" ShortID="17701457">
+													<PropertyList>
+														<Property Name="Lowpass" Type="int16">
+															<ValueList>
+																<Value>39</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{3A493A00-57DC-4E33-9F9B-B74E66FF82AA}">
+																		<PropertyList>
+																			<Property Name="Max" Type="Real64" Value="50"/>
+																			<Property Name="Min" Type="Real64" Value="-50"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+														<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+														<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
+														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{C1AC2294-AF8B-4A1D-A6E7-5D55EB85BA8C}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="4"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-18</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{66AEBC6C-7B80-453E-BC8D-B6ABC936D1B3}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Min" Type="Real64" Value="-10"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="neon flicker" ID="{945D75FA-CEB6-4504-8F02-8C9CAFCA9703}" ShortID="119885838">
+															<PropertyList>
+																<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{5D6A3F5E-0863-41F5-92B8-2A61B01A58B8}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="neon flicker" ID="{C987B69B-127A-40E7-8A0B-D6D76E9E2EF5}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="1.23589053377647"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="7.04351135162034"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>neon flicker.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="876312904"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="neon flicker" ID="{C987B69B-127A-40E7-8A0B-D6D76E9E2EF5}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="neon flicker_01" ID="{CDF83A7A-FA63-48B6-BCC5-83DDAF79446F}" ShortID="55188439">
+															<PropertyList>
+																<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="neon flicker" ID="{1C3B0F75-B19B-4EDC-A082-3362080C8B60}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="9.61946785515626"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="15.2335013124054"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>neon flicker.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="453949948"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="neon flicker" ID="{1C3B0F75-B19B-4EDC-A082-3362080C8B60}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="neon flicker_02" ID="{C9B8F511-9187-4948-948A-82C3659E6432}" ShortID="3994198">
+															<PropertyList>
+																<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{1FBC4E95-148E-44E9-8BC5-4B35DDB95537}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="neon flicker" ID="{6276924E-8675-45F3-BC33-E59DA94A9EA9}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="43.0676538367505"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="49.8275369476634"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>neon flicker.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="355424526"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="neon flicker" ID="{6276924E-8675-45F3-BC33-E59DA94A9EA9}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="neon flicker_03" ID="{00D48177-2F26-41FD-AAE2-3DCDFB91094E}" ShortID="797969869">
+															<PropertyList>
+																<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{56C5F421-5D30-4985-99EF-CBA9C14F9FD3}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="neon flicker" ID="{5924F04F-5672-470A-8544-D9EFF3293171}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="68.5374551941613"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="75.5066001755739"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>neon flicker.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="595878933"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="neon flicker" ID="{5924F04F-5672-470A-8544-D9EFF3293171}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="neon flicker_05" ID="{40B4CE5B-1B49-4410-876B-BD9FEDB41CCB}" ShortID="417403747">
+															<PropertyList>
+																<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{F4EA01B1-B775-4662-B377-378C354BDB97}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Sous-marin" ID="{99147FA9-1F3B-4286-884B-2A09B12A47BF}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="neon flicker" ID="{B867AEAB-1CE6-440A-8E72-E2C209A29432}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="93.3172749945025"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="100.320944895774"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>neon flicker.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="593765013"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="neon flicker" ID="{B867AEAB-1CE6-440A-8E72-E2C209A29432}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
 											</ChildrenList>
 										</BlendContainer>
 										<BlendContainer Name="AMB_Base_Etage-2" ID="{222C0225-B0D6-4C29-A36F-FAB504F04388}" ShortID="369300816">
