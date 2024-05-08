@@ -1315,6 +1315,30 @@
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="UI_MenuPrincipal_Survol_v2" ID="{EB977A34-46F1-45C0-8153-607D6C494FAD}" ShortID="984020048">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="UI_MenuPrincipal_Survol_v2" ID="{D32FAE85-1DE0-4280-9BC9-2E70332A25B9}">
+															<Language>SFX</Language>
+															<AudioFile>UI_MenuPrincipal_Survol_v2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="674551847"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="UI_MenuPrincipal_Survol_v2" ID="{D32FAE85-1DE0-4280-9BC9-2E70332A25B9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</BlendContainer>
 										<BlendContainer Name="UI_MenuPrincipal_Desktop" ID="{20F3EB3E-A6C7-4E25-A479-38FCDF669995}" ShortID="589190891">
 											<ReferenceList>
@@ -3378,6 +3402,40 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_Cubicule_Ouvrir_v1" ID="{37840D4A-33E2-4D94-B328-DC0D13B3A6CC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</BlendContainer>
+						<BlendContainer Name="UI_Joueur_Vise_Stop" ID="{F541B073-9BA4-4E22-82AC-C0AD94CD64C8}" ShortID="399893181">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="UI_JoueurVise_Stop_v1" ID="{5D5C1340-3C01-44F0-802C-E975ED45274F}" ShortID="1012655978">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="UI_JoueurVise_Stop_v1" ID="{9B8F340E-A928-4F96-A55E-1C03AF3ADE43}">
+											<Language>SFX</Language>
+											<AudioFile>UI_JoueurVise_Stop_v1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="897990736"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="UI_JoueurVise_Stop_v1" ID="{9B8F340E-A928-4F96-A55E-1C03AF3ADE43}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
