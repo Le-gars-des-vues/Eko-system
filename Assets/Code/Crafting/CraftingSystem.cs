@@ -211,6 +211,8 @@ public class CraftingSystem : MonoBehaviour
 
     public void CraftButton()
     {
-        craftingAnim.SetTrigger("isCrafting");
+        AudioManager.instance.PlaySound(AudioManager.instance.yesButton, gameObject);
+        if (mat1Complete && mat2Complete && mat3Complete)
+            craftingAnim.SetTrigger("isCrafting");
     }
 }

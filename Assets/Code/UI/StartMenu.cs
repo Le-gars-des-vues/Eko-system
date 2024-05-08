@@ -22,6 +22,7 @@ public class StartMenu : MonoBehaviour
     {
         //SceneManager.LoadScene("MainScene");
         //loadingScreen.GetComponent<SceneLoader>().LoadGame();
+        AudioManager.instance.PlaySound(AudioManager.instance.mainMenuPlay, gameObject);
         introAnim.SetTrigger("isIntro");
         introPlaying = true;
         Debug.Log("LoadMainScene");
@@ -29,6 +30,7 @@ public class StartMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.mainMenuDesktop, gameObject);
         Application.Quit();
         Debug.Log("Quit to Desktop");
     }

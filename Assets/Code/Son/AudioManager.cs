@@ -12,9 +12,12 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event forestSountrack;
     public AK.Wwise.Event baseSoundtrack;
     public AK.Wwise.Event underwaterSoundtrack;
+    public AK.Wwise.Event stormSoundtrack;
     public bool forestIsPlaying;
     public bool baseIsPlaying;
     public bool underwaterIsPlaying;
+    public bool stormIsPlaying;
+    public bool alertIsPlaying;
     uint playingID;
 
     [Header("Base Sounds")]
@@ -23,6 +26,9 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event robotEnv;
     public AK.Wwise.Event teleporteurEnv;
     public AK.Wwise.Event elevatorSound;
+    public AK.Wwise.Event elevatorSoundStop;
+    public AK.Wwise.Event cubiculeOpen;
+    public AK.Wwise.Event cubiculeClose;
 
     [Header("UI Sounds")]
     //Inventaire
@@ -79,6 +85,15 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event gameOverTimer;
     public AK.Wwise.Event gameOverDeath;
 
+    //Pause menu
+    public AK.Wwise.Event pauseMenuOpen;
+    public AK.Wwise.Event pauseMenuClose;
+
+    //Main menu
+    public AK.Wwise.Event mainMenuDesktop;
+    public AK.Wwise.Event mainMenuPlay;
+    public AK.Wwise.Event mainMenuHover;
+
     [Header("Player Sounds")]
     public AK.Wwise.Event playerSpawn;
 
@@ -123,6 +138,8 @@ public class AudioManager : MonoBehaviour
     //Underwater
     public AK.Wwise.Event nage;
     public AK.Wwise.Event waterSplash;
+    public AK.Wwise.Event bubblePlant;
+    public AK.Wwise.Event bubblePlantStop;
 
     //Multitool
     public AK.Wwise.Event multitoolCharge;
@@ -139,6 +156,8 @@ public class AudioManager : MonoBehaviour
     [Header("Music Sounds")]
     public AK.Wwise.Event alerte;
     public AK.Wwise.Event alerteStop;
+    public AK.Wwise.Event intro;
+    public AK.Wwise.Event introStop;
 
     [Header("Hazards Sounds")]
     public AK.Wwise.Event spikeTrap;

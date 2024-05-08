@@ -268,6 +268,7 @@ public class GameManager : MonoBehaviour
                     float minCooldown = Mathf.Lerp(20, 2, timer / timeToFullStorm);
                     float maxCooldown = Mathf.Lerp(30, 5, timer / timeToFullStorm);
                     lightningCooldown = Random.Range(minCooldown, maxCooldown);
+                    AudioManager.instance.PlaySound(AudioManager.instance.thunder, gameObject);
                 }
             }
         }
@@ -284,6 +285,7 @@ public class GameManager : MonoBehaviour
             rainGround.Play();
             rainBack.Play();
             Debug.Log("Started Storm");
+            AudioManager.instance.PlaySoundtrack(AudioManager.instance.stormSoundtrack);
         }
         else
         {

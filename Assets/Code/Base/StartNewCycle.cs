@@ -47,6 +47,7 @@ public class StartNewCycle : MonoBehaviour
             {
                 isAnimating = true;
                 anim.SetBool("isOpen", true);
+                AudioManager.instance.PlaySound(AudioManager.instance.cubiculeOpen, gameObject);
             }
         }
     }
@@ -62,6 +63,7 @@ public class StartNewCycle : MonoBehaviour
             {
                 isAnimating = true;
                 anim.SetBool("isOpen", true);
+                AudioManager.instance.PlaySound(AudioManager.instance.cubiculeClose, gameObject);
             }
         }
     }

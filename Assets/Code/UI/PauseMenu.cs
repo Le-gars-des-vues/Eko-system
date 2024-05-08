@@ -27,12 +27,14 @@ public class PauseMenu : MonoBehaviour
                 PauseScreen.SetActive(true);
                 menuIsOpen = true;
                 Time.timeScale = 0;
+                AudioManager.instance.PlaySound(AudioManager.instance.pauseMenuOpen, gameObject);
             }
             else
             {
                 PauseScreen.SetActive(false);
                 menuIsOpen = false;
                 Time.timeScale = 1;
+                AudioManager.instance.PlaySound(AudioManager.instance.pauseMenuClose, gameObject);
             }
         }
     }
@@ -40,6 +42,7 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToMenu()
     {
         AkSoundEngine.StopAll();
+        AudioManager.instance.PlaySound(AudioManager.instance.backToMainMenu, gameObject);
         //SceneManager.LoadScene("MainMenu");
         SceneLoader.instance.LoadMainMenu();
         Debug.Log("LoadMainMenu");

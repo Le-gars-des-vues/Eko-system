@@ -24,13 +24,17 @@ public class ElevatorControls : MonoBehaviour
                 RaycastHit2D downCheck = Physics2D.Raycast((Vector2)transform.position - offset, Vector2.down, downRaycastLength, LayerMask.GetMask("Ground", "Default"));
                 if (!downCheck)
                     this.gameObject.GetComponent<Transform>().Translate(0, -elevatorSpeed, 0);
+                AudioManager.instance.PlaySound(AudioManager.instance.elevatorSound, gameObject);
             } 
             else if (Input.GetKey(KeyCode.W))
             {
                 RaycastHit2D upCheck = Physics2D.Raycast((Vector2)transform.position + offset, Vector2.up, upRaycastLength, LayerMask.GetMask("Ground", "Default"));
                 if (!upCheck)
                     this.gameObject.GetComponent<Transform>().Translate(0, elevatorSpeed, 0);
+                AudioManager.instance.PlaySound(AudioManager.instance.elevatorSound, gameObject);
             }
+            else
+                AudioManager.instance.PlaySound(AudioManager.instance.elevatorSoundStop, gameObject);
         }
     }
 

@@ -30,7 +30,10 @@ public class BubblePlant : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             if (!collision.gameObject.GetComponent<PlayerPermanent>().isInAirPocket)
+            {
                 collision.gameObject.GetComponent<PlayerPermanent>().isInAirPocket = true;
+                AudioManager.instance.PlaySound(AudioManager.instance.bubblePlant, gameObject);
+            }
             if (!cam.isIsoldated)
                 cam.IsolateCameraView(true);
             desiredAlpha = 1;
@@ -49,7 +52,10 @@ public class BubblePlant : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             if (collision.gameObject.GetComponent<PlayerPermanent>().isInAirPocket)
+            {
                 collision.gameObject.GetComponent<PlayerPermanent>().isInAirPocket = false;
+                AudioManager.instance.PlaySound(AudioManager.instance.bubblePlantStop, gameObject);
+            }
             isInside = false;
             if (cam.isIsoldated)
                 cam.IsolateCameraView(false);
