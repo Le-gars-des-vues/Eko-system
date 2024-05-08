@@ -265,7 +265,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{CAA9E483-07B2-4826-A475-73A3D81D6091}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{648B46F0-6FC5-74A8-9EC7-84B0C0F257A5}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -560,6 +560,10 @@
 				<File Id="101091315" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AK_Factory_IR\Churches\AK St-Katharinen.wav</ShortName>
 					<CachePath>Plugins/Wwise Convolution Reverb/AK_Factory_IR/Churches/AK St-Katharinen_3A1E8D95.wem</CachePath>
+				</File>
+				<File Id="103404050" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Attaque_Arc_1.wav</ShortName>
+					<CachePath>SFX/PLY_Attaque_Arc_1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="105979367" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Salamandre_Mort-001.wav</ShortName>
@@ -1669,6 +1673,10 @@
 					<ShortName>PLY_Attaque_Poing.wav</ShortName>
 					<CachePath>SFX/PLY_Attaque_Poing_77D736FF.wem</CachePath>
 				</File>
+				<File Id="491010124" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Attaque_Arc_3.wav</ShortName>
+					<CachePath>SFX/PLY_Attaque_Arc_3_10C4C929.wem</CachePath>
+				</File>
 				<File Id="491384156" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ingame - Track 2.wav</ShortName>
 					<CachePath>SFX/Ingame - Track 2_75378C84.wem</CachePath>
@@ -2228,6 +2236,10 @@
 				<File Id="677012577" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ENV_Tempete_Wind Stereo Rec.wav</ShortName>
 					<CachePath>SFX/ENV_Tempete_Wind Stereo Rec_C5ECC683.wem</CachePath>
+				</File>
+				<File Id="677651639" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Attaque_Arc_4.wav</ShortName>
+					<CachePath>SFX/PLY_Attaque_Arc_4_10C4C929.wem</CachePath>
 				</File>
 				<File Id="677660563" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>ENV_Base_Robot_L2_3.wav</ShortName>
@@ -3052,6 +3064,10 @@
 				<File Id="1036072939" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Foret_Various.wav</ShortName>
 					<CachePath>SFX/AMB_Foret_Various_172A8D1B.wem</CachePath>
+				</File>
+				<File Id="1040313389" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PLY_Attaque_Arc_2.wav</ShortName>
+					<CachePath>SFX/PLY_Attaque_Arc_2_10C4C929.wem</CachePath>
 				</File>
 				<File Id="1044363562" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ingame - Track 6.wav</ShortName>
@@ -3954,7 +3970,14 @@
 						<MediaRef Id="676727856"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2030651275" Name="PLY_Attaque_Arc" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2030651275" Name="PLY_Attaque_Arc" DurationType="OneShot" DurationMin="0.8908987" DurationMax="1.122462">
+					<MediaRefs>
+						<MediaRef Id="103404050"/>
+						<MediaRef Id="491010124"/>
+						<MediaRef Id="677651639"/>
+						<MediaRef Id="1040313389"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="3590418373" Name="PLY_Attaque_FlashGrenade" DurationType="OneShot" DurationMin="0.50044507" DurationMax="1.2260135">
 					<MediaRefs>
 						<MediaRef Id="14208735"/>
@@ -5192,5 +5215,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{EE19BF80-2BA9-6064-868B-C9F1D622382C}</FileHash>
+	<FileHash>{CEAF666F-B000-E84C-9271-69E487A006EF}</FileHash>
 </SoundBanksInfo>
