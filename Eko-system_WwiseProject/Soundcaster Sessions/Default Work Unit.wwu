@@ -93,6 +93,14 @@
 							<ObjectRef Name="ENV_PlanteSousMarine_Sortie" ID="{A524499E-50E5-4311-96B0-664E467A7551}" WorkUnitID="{1D80ECB8-5324-496A-AB54-532363ABA296}"/>
 							<Position X="5" Y="0"/>
 						</Module>
+						<Module>
+							<ObjectRef Name="AMB_Tempete" ID="{55774B3A-2C05-4C59-8E04-06F29FF687C5}" WorkUnitID="{AA174172-4204-4318-BFB0-9DAA1AD3BE39}"/>
+							<Position X="5" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="ENV_Tonnerre" ID="{5E33EB60-EC2C-45B4-9549-825A93A9A536}" WorkUnitID="{04F76E87-D2FD-4A2C-8E9C-9B3294EB319D}"/>
+							<Position X="6" Y="1"/>
+						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
@@ -109,11 +117,19 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Temps" ID="{5AD906E2-92DC-45A4-A4B0-04474023F7AD}"/>
-							<Value>600</Value>
+							<Value>73</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Tempete_InBase" ID="{DDF91633-53CC-48C5-ABB4-3C1D35B6DE70}"/>
+							<Value>70</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="PLY_Sante" ID="{6852CAED-DFBD-4967-BE2D-E11663A50975}"/>
 							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Tempete" ID="{F299B8CE-D6B1-4CE0-A8FA-4F56F267FD72}"/>
+							<Value>26</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="AMB_Distance" ID="{6AEAC799-5511-4CF2-BBE2-4B787D95A5C0}"/>

@@ -320,6 +320,7 @@ namespace AK
         static const AkUniqueID SC_PLANTECARNIVORE = 2185427101U;
         static const AkUniqueID SFXVOLUME = 988953028U;
         static const AkUniqueID TEMPETE = 2981722741U;
+        static const AkUniqueID TEMPETE_INBASE = 1628184326U;
         static const AkUniqueID TEMPS = 307962810U;
         static const AkUniqueID VOICEVOLUME = 414646191U;
     } // namespace GAME_PARAMETERS

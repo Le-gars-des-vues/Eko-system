@@ -37,7 +37,7 @@
 				</AuxBus>
 			</AuxBusses>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{32947061-97A5-88BB-98C7-728FC8222786}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{E1AFA7B6-AA4E-68A2-9DBB-425133056F71}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Media>
@@ -135,6 +135,7 @@
 				<GameParameter Id="414646191" Name="VoiceVolume"/>
 				<GameParameter Id="661698884" Name="AMB_Base_Etage"/>
 				<GameParameter Id="988953028" Name="SFXVolume"/>
+				<GameParameter Id="1628184326" Name="Tempete_InBase"/>
 				<GameParameter Id="2185427101" Name="SC_PlanteCarnivore"/>
 				<GameParameter Id="2342375655" Name="AMB_Distance"/>
 				<GameParameter Id="2346531308" Name="MusicVolume"/>
@@ -264,7 +265,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{F5D49F52-3FE3-7B8E-6195-8E5351228678}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{A1969B46-BC0D-5728-AABA-A62130A3DBD6}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -2804,10 +2805,6 @@
 					<ShortName>LIF_Salamandre_Degat-005.wav</ShortName>
 					<CachePath>SFX/LIF_Salamandre_Degat-005_10C4C929.wem</CachePath>
 				</File>
-				<File Id="923802760" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>ENV_Tempete_Thunder Rec-001.wav</ShortName>
-					<CachePath>SFX/ENV_Tempete_Thunder Rec-001_DDBCFB5C.wem</CachePath>
-				</File>
 				<File Id="927671925" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>UI_Texte_Fin.wav</ShortName>
 					<CachePath>SFX/UI_Texte_Fin_582EDF38.wem</CachePath>
@@ -3391,11 +3388,10 @@
 						<MediaRef Id="791882632"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3403933012" Name="ENV_Tonnerre" MaxAttenuation="100" DurationType="Infinite">
+				<Event Id="3403933012" Name="ENV_Tonnerre" MaxAttenuation="100" DurationType="OneShot" DurationMin="4.037882" DurationMax="7.81944">
 					<MediaRefs>
 						<MediaRef Id="117036888"/>
 						<MediaRef Id="911462759"/>
-						<MediaRef Id="923802760"/>
 						<MediaRef Id="943933697"/>
 					</MediaRefs>
 				</Event>
@@ -5095,6 +5091,7 @@
 			<GameParameters>
 				<GameParameter Id="307962810" Name="Temps"/>
 				<GameParameter Id="661698884" Name="AMB_Base_Etage"/>
+				<GameParameter Id="1628184326" Name="Tempete_InBase"/>
 				<GameParameter Id="2185427101" Name="SC_PlanteCarnivore"/>
 				<GameParameter Id="2342375655" Name="AMB_Distance"/>
 				<GameParameter Id="2769016988" Name="PLY_Sante"/>
@@ -5155,5 +5152,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0BA564DF-AAFB-E463-C0E0-CCB7130EC019}</FileHash>
+	<FileHash>{8819F171-0A08-45B4-E6F2-B2D314F3E113}</FileHash>
 </SoundBanksInfo>

@@ -6369,9 +6369,16 @@
 								<Property Name="BlendBehavior" Type="int16" Value="1"/>
 								<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
 								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{338DD9BE-3BC6-422B-8222-79BA1DD168C3}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-12</Value>
+										<Value>-15</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -6386,6 +6393,13 @@
 							<ChildrenList>
 								<RandomSequenceContainer Name="Tempete" ID="{83FFFB1A-95A6-4BF1-A720-8BD56E6C8D25}" ShortID="679037594">
 									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{0894E131-38E7-45AE-836F-E8BE3AD72918}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
 												<Value>-8</Value>
@@ -6404,6 +6418,13 @@
 										<BlendContainer Name="Tempete_1" ID="{5E7A67E0-7928-4444-B4E0-1593DD00864A}" ShortID="741706271">
 											<PropertyList>
 												<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{05A8B39E-FF40-4329-B633-0940AD4C3643}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -8997,6 +9018,55 @@
 									</ChildrenList>
 								</RandomSequenceContainer>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{21F51B4D-1718-4802-8779-14E8B169B399}" ShortID="660513183">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Tempete_InBase" ID="{DDF91633-53CC-48C5-ABB4-3C1D35B6DE70}" WorkUnitID="{C4DD1198-CB3C-4C92-821D-0EC50FCEA66E}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{AF933010-73A3-4C84-916D-306B1B78AE2C}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>49.73166</XPos>
+																		<YPos>-1</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>49.73266</XPos>
+																		<YPos>60</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>60</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</BlendContainer>
 						<BlendContainer Name="AMB_Grotte" ID="{035B73A9-1D72-4759-82B3-1DD1C6FD027E}" ShortID="441094767">
 							<PropertyList>
