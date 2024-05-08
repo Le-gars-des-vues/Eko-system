@@ -45,9 +45,6 @@ public class DialogueSpeaker : MonoBehaviour
     {
         if (currentDialogue != null)
         {
-            if (Time.time > 5f && !player.isInBase)
-                EndDialogue();
-
             if (player.isInDialogue)
             {
                 if (dialogueIndex < currentDialogue.Count - 1 && !currentDialogue[dialogueIndex + 1].dialogueMode && !isSpeaking)

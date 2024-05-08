@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Transform player;
     [SerializeField] private Transform target;
-    [SerializeField] private CinemachineVirtualCamera vCam;
+    public CinemachineVirtualCamera vCam;
     [SerializeField] private float xThreshold;
     [SerializeField] private float yThreshold;
 
@@ -19,15 +19,10 @@ public class CameraController : MonoBehaviour
     private float currentAlpha = 0;
     [SerializeField] float fadeSpeed;
 
-    private void Awake()
-    {
-        SceneLoader.allScenesLoaded += StartScript;
-    }
 
-    private void StartScript()
+    private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        vCam.Follow = player;
+        vCam.m_Lens.OrthographicSize = 8.2f;
     }
 
     private void Update()
@@ -37,13 +32,13 @@ public class CameraController : MonoBehaviour
         currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, fadeSpeed * Time.deltaTime);
         isoldatedView.color = new Color(isoldatedView.color.r, isoldatedView.color.g, isoldatedView.color.b, currentAlpha);
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetMouseButtonDown(1))
             vCam.Follow = target.transform;
 
-        if (Input.GetKey(KeyCode.Tab))
+        if (Input.GetMouseButton(1))
             AimLogic();
 
-        if (Input.GetKeyUp(KeyCode.Tab))
+        if (Input.GetMouseButtonUp(1))
             vCam.Follow = player;
     }
 

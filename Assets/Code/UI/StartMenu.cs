@@ -7,7 +7,7 @@ using System.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     [SerializeField] GameObject credits;
-    [SerializeField] GameObject loadingScreen;
+    [SerializeField] GameObject sceneLoader;
     [SerializeField] Animator introAnim;
     bool introPlaying = false;
 
@@ -15,7 +15,7 @@ public class StartMenu : MonoBehaviour
     void Start()
     {
         credits.SetActive(false);
-        loadingScreen = GameObject.Find("SceneLoader");
+        sceneLoader = GameObject.Find("SceneLoader");
     }
 
     public void PlayGame()

@@ -211,7 +211,7 @@ public class Robot : MonoBehaviour
         }
         else if (!talkedAboutUpgrades && Tutorial.instance.day3)
         {
-            hasShowedBuilding = true;
+            talkedAboutUpgrades = true;
             GoToCrafting();
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[12]);
         }

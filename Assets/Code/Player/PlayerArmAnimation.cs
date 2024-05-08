@@ -221,6 +221,20 @@ public class PlayerArmAnimation : MonoBehaviour
                             armTarget.position = pickupInitialPos;
                             transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                         }
+                        else if (playerScript.objectInRightHand.tag == "Bow")
+                        {
+                            pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
+                            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                            Vector2 offset = mousePos - pickupInitialPos;
+                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Time.deltaTime);
+                            if (Input.GetMouseButton(0))
+                            {
+                                playerScript.objectInRightHand.GetComponent<Animator>().SetBool("isDrawing", true);
+                            }
+                            else
+                                playerScript.objectInRightHand.GetComponent<Animator>().SetBool("isDrawing", false);
+                        }
                         else if (playerScript.objectInRightHand.tag == "OneHandedWeapon")
                         {
                             pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
@@ -243,7 +257,7 @@ public class PlayerArmAnimation : MonoBehaviour
             //Animation du bras gauche
             else if (gameObject.name == "LeftArmSolver_Target")
             {
-                if (Input.GetMouseButtonDown(1) && playerScript.hasPunch)
+                if (Input.GetKeyDown(KeyCode.Q) && playerScript.hasPunch)
                 {
                     StartCoroutine(Punch());
                 }
@@ -262,6 +276,12 @@ public class PlayerArmAnimation : MonoBehaviour
                             }
                         }
                         else if (playerScript.objectInRightHand.tag == "TwoHandedWeapon")
+                        {
+                            handCanMove = false;
+                            armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
+                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
+                        }
+                        else if (playerScript.objectInRightHand.tag == "Bow")
                         {
                             handCanMove = false;
                             armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;

@@ -66,12 +66,13 @@ namespace System.SceneManagement
 
             int sceneCount = SceneManager.sceneCount;
 
-            for (var i = sceneCount - 1; i > 0; i++)
+            for (var i = sceneCount - 1; i > 0; i--)
             {
                 var sceneAt = SceneManager.GetSceneAt(i);
                 if (!sceneAt.isLoaded) continue;
 
                 var sceneName = sceneAt.name;
+                if (sceneName == "Bootstrapper") continue;
                 scenes.Add(sceneName);
             }
 

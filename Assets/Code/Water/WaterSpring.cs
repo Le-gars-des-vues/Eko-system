@@ -21,7 +21,7 @@ public class WaterSpring : MonoBehaviour
     {
         if (Mathf.Abs(velocity) < 1)
         {
-            velocity += Random.Range(-0.5f, 0.5f) / resistance;
+            velocity += Random.Range(-0.3f, 0.3f) / resistance;
         }
     }
 

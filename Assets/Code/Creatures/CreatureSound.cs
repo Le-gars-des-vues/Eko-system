@@ -17,4 +17,9 @@ public class CreatureSound : MonoBehaviour
     {
         idleSoundID = idleSound.Post(gameObject);
     }
+
+    private void OnDisable()
+    {
+        AkSoundEngine.StopPlayingID(idleSoundID);
+    }
 }
