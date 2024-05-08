@@ -22,9 +22,12 @@ public class PlayerLegAnimation : MonoBehaviour
     private bool isRunning = false;
     private bool thereIsAWall;
     [SerializeField] private float legOffset;
-    [SerializeField] private Vector2 jumpUpOffsets;
-    [SerializeField] private Vector2 jumpMidOffsets;
-    [SerializeField] private Vector2 jumpDownOffsets;
+    [HideInInspector][SerializeField] private Vector2 jumpUpOffsets;
+    [HideInInspector] [SerializeField] private Vector2 jumpMidOffsets;
+    [HideInInspector] [SerializeField] private Vector2 jumpDownOffsets;
+    [SerializeField] Vector2 climbUpOffset;
+    [SerializeField] Vector2 climbDownOffset;
+    [SerializeField] Transform climbTarget;
     [SerializeField] private float legAirMotion;
     private float facingDirection;
     private bool isFacingRight;
@@ -76,118 +79,11 @@ public class PlayerLegAnimation : MonoBehaviour
 
         //Detecte le changement de direction pour reinitialiser la position des pieds;
         CheckDirectionToFace(player.GetComponent<PlayerPermanent>().isFacingRight);
-
-        if (player.GetComponent<GroundPlayerController>().enabled)
+        if (player.GetComponent<PlayerPermanent>().isHanging)
         {
-            if (player.GetComponent<GroundPlayerController>().isGrounded != isLanding)
-            {
-                ResetPosition();
-            }
-            isLanding = player.GetComponent<GroundPlayerController>().isGrounded;
-
-            if (player.GetComponent<GroundPlayerController>().isGrounded)
-            {
-                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-                    isRunning = true;
-                else if ((!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) && isRunning)
-                {
-                    isRunning = false;
-                    currentTarget.position = transform.position;
-                }
-
-                //Empeche l'animation des jambes s'il y a un mur devant
-                RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y), Vector2.right * facingDirection, 0.5f, layerMask);
-                if (wallCheck.collider != null)
-                    thereIsAWall = true;
-                else
-                    thereIsAWall = false;
-
-                if (isRunning && player.GetComponent<PlayerPermanent>().CanMove())
-                {
-                    //Calcule la distance entre la cible du pied et sa position actuelle
-                    targetDistance = Vector2.Distance(currentTarget.position, desiredTarget.position);
-
-                    //Si la distance depasse le seuile et qu'il n'y a pas de mur devant, la position du pied devient celle de la cible
-                    if (targetDistance > threshold && otherFoot.targetDistance > 1.2f && !thereIsAWall)
-                    {
-                        currentTarget.position = desiredTarget.position;
-                    }
-
-                    //Distance entre la cible actuelle et la position du pied
-                    footMovement = Vector2.Distance(transform.position, currentTarget.position);
-
-                    //Si le pied est en train de bouger
-                    if (footMovement > 0.1f)
-                    {
-                        //On augmente le timer pour la courbe d'animation
-                        stepTimer += Time.deltaTime;
-
-                        //On bouge le pied en ajoutant de la hauteur selon la courbe d'animation
-                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
-                    }
-                    else
-                    {
-                        //Reset le timer
-                        stepTimer = 0;
-                        transform.position = currentTarget.position;
-                    }
-                }
-                else
-                {
-                    RaycastHit2D hit = Physics2D.Raycast(new Vector2(player.transform.position.x + legOffset * facingDirection, player.transform.position.y), -Vector2.up, 2f, layerMask);
-                    if (hit.collider != null)
-                    {
-                        currentTarget.position = Vector2.Lerp(currentTarget.position, new Vector2(hit.point.x, hit.point.y), speed * Time.deltaTime);
-                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y), speed * Time.deltaTime);
-                    }
-                }
-
-                if (Input.GetKey(KeyCode.LeftShift) && !player.GetComponent<PlayerPermanent>().staminaDepleted)
-                    speed = fastAnimSpeed;
-                else
-                    speed = normalAnimSpeed;
-
-            }
-            else
-            {
-                if (player.GetComponent<Rigidbody2D>().velocity.y > -4f)
-                {
-                    currentTarget.position = new Vector2(player.transform.position.x + (jumpMidOffsets.x * facingDirection), player.transform.position.y + jumpMidOffsets.y);
-                    transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, 5 * Time.deltaTime);
-                }
-                else
-                {
-                    currentTarget.position = new Vector2(player.transform.position.x + (jumpDownOffsets.x + player.GetComponent<Rigidbody2D>().velocity.x * legAirMotion), player.transform.position.y + jumpDownOffsets.y);
-                    transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, 3 * Time.deltaTime);
-                }
-            }
-        }
-        else if (player.GetComponent<WaterPlayerController>().enabled)
-        {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-            {
-                isSwimming = true;
-            }
-            else
-            {
-                isSwimming = false;
-                currentTarget.position = transform.position;
-            }
-
-            /*
-                 if (Input.GetKey(KeyCode.LeftShift) && !playerScript.staminaDepleted)
-                 {
-                     speed = fastAnimSpeed;
-                     curveSpeed = 2f;
-                 }
-                 else
-                 {
-                     speed = normalAnimSpeed;
-                     curveSpeed = 1f;
-                 }
-                 */
-
-            //Un des deux bras va vers l'arriere en premier
+            //Reset la position initiale
+            climbTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + climbUpOffset.x * facingDirection, player.transform.position.y + climbUpOffset.y), speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(climbTarget.position.x, climbTarget.position.y), speed * Time.deltaTime);
             if (gameObject.name == "RightLegSolver_Target")
             {
                 if (goingForward == otherFoot.goingForward)
@@ -195,37 +91,188 @@ public class PlayerLegAnimation : MonoBehaviour
                     goingForward = !goingForward;
                 }
             }
-
-
-            Vector2 legOrigin = new Vector2(player.transform.position.x, player.transform.position.y - 0.7f);
-            Vector2 movement = new Vector2(legOrigin.x - Input.GetAxis("Horizontal"), legOrigin.y - Input.GetAxis("Vertical")); ;//new Vector2(player.transform.position.x + Input.GetAxis("Horizontal"), player.transform.position.y + Input.GetAxis("Vertical")) - legOrigin;
-            underwaterPivot.position = isSwimming ? movement : movement + Vector2.down;
-            underwaterPivot.transform.up = (movement - legOrigin).normalized;
-
-            speed = 2;
-
+        }
+        else if (player.GetComponent<PlayerPermanent>().isClimbing)
+        {
             //Mesure la distance entre la cible et notre position
-            targetDistance = Mathf.Abs(Vector2.Distance(transform.position, underwaterTarget.position));
-            //stepTimer += Time.deltaTime * curveSpeed;
-            stepTimer += Time.deltaTime;
+            targetDistance = Mathf.Abs(Vector2.Distance(transform.position, climbTarget.position));
+            stepTimer += Time.deltaTime * curveSpeed;
+
+            //Cree la position a l'avant et l'arriere du joueur ou va venir se placer la cible
+            Vector2 upFootPos = new Vector2(player.transform.position.x + climbUpOffset.x * facingDirection, player.transform.position.y + climbUpOffset.y);
+            Vector2 downFootPos = new Vector2(player.transform.position.x + climbDownOffset.x * facingDirection, player.transform.position.y + climbDownOffset.y);
 
             //Dependement de si le bras doit aller vers l'avant ou vers l'arriere, la position de la cible est assigne a l'un des deux emplacements
-            underwaterTarget.position = goingForward ? underwaterPivot.Find("Point2").position : underwaterPivot.Find("Point1").position;
-
-            //La position du bras lerp vers celle de la cible
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(underwaterTarget.position.x, underwaterTarget.position.y) /* + yCurve.Evaluate(stepTimer)*/, speed * Time.deltaTime);
+            climbTarget.position = goingForward ? upFootPos : downFootPos;
 
             //Si la distance est assez petite. Le timer previent que le bras revienne vers la meme cible
             if (targetDistance <= 0.01f && stepTimer > 0.2f)
                 reachedPos = true;
 
+            //La position du bras lerp vers celle de la cible
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(climbTarget.position.x, climbTarget.position.y), speed * Time.deltaTime);
+
             //Si la position de la cible est atteinte pour les deux bras ou que l'autre main ne peut pas bouger
-            if (reachedPos == true && otherFoot.targetDistance < 0.01f)
+            if (reachedPos == true && (otherFoot.targetDistance < 0.01f))
             {
                 //La cible va a l'autre position (avant ou arriere) car le bras change de direction
                 reachedPos = false;
                 goingForward = !goingForward;
                 stepTimer = 0;
+            }
+        }
+        else
+        {
+            if (player.GetComponent<GroundPlayerController>().enabled)
+            {
+                if (player.GetComponent<GroundPlayerController>().isGrounded != isLanding)
+                {
+                    ResetPosition();
+                }
+                isLanding = player.GetComponent<GroundPlayerController>().isGrounded;
+
+                if (player.GetComponent<GroundPlayerController>().isGrounded)
+                {
+                    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                        isRunning = true;
+                    else if ((!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) && isRunning)
+                    {
+                        isRunning = false;
+                        currentTarget.position = transform.position;
+                    }
+
+                    //Empeche l'animation des jambes s'il y a un mur devant
+                    RaycastHit2D wallCheck = Physics2D.Raycast(new Vector2(player.transform.position.x, player.transform.position.y), Vector2.right * facingDirection, 0.5f, layerMask);
+                    if (wallCheck.collider != null)
+                        thereIsAWall = true;
+                    else
+                        thereIsAWall = false;
+
+                    if (isRunning && player.GetComponent<PlayerPermanent>().CanMove())
+                    {
+                        //Calcule la distance entre la cible du pied et sa position actuelle
+                        targetDistance = Vector2.Distance(currentTarget.position, desiredTarget.position);
+
+                        //Si la distance depasse le seuile et qu'il n'y a pas de mur devant, la position du pied devient celle de la cible
+                        if (targetDistance > threshold && otherFoot.targetDistance > 1.2f && !thereIsAWall)
+                        {
+                            currentTarget.position = desiredTarget.position;
+                        }
+
+                        //Distance entre la cible actuelle et la position du pied
+                        footMovement = Vector2.Distance(transform.position, currentTarget.position);
+
+                        //Si le pied est en train de bouger
+                        if (footMovement > 0.1f)
+                        {
+                            //On augmente le timer pour la courbe d'animation
+                            stepTimer += Time.deltaTime;
+
+                            //On bouge le pied en ajoutant de la hauteur selon la courbe d'animation
+                            transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            //Reset le timer
+                            stepTimer = 0;
+                            transform.position = currentTarget.position;
+                        }
+                    }
+                    else
+                    {
+                        RaycastHit2D hit = Physics2D.Raycast(new Vector2(player.transform.position.x + legOffset * facingDirection, player.transform.position.y), -Vector2.up, 2f, layerMask);
+                        if (hit.collider != null)
+                        {
+                            currentTarget.position = Vector2.Lerp(currentTarget.position, new Vector2(hit.point.x, hit.point.y), speed * Time.deltaTime);
+                            transform.position = Vector2.MoveTowards(transform.position, new Vector2(currentTarget.position.x, currentTarget.position.y), speed * Time.deltaTime);
+                        }
+                    }
+
+                    if (Input.GetKey(KeyCode.LeftShift) && !player.GetComponent<PlayerPermanent>().staminaDepleted)
+                        speed = fastAnimSpeed;
+                    else
+                        speed = normalAnimSpeed;
+
+                }
+                else
+                {
+                    if (player.GetComponent<Rigidbody2D>().velocity.y > -4f)
+                    {
+                        currentTarget.position = new Vector2(player.transform.position.x + (jumpMidOffsets.x * facingDirection), player.transform.position.y + jumpMidOffsets.y);
+                        transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, 5 * Time.deltaTime);
+                    }
+                    else
+                    {
+                        currentTarget.position = new Vector2(player.transform.position.x + (jumpDownOffsets.x + player.GetComponent<Rigidbody2D>().velocity.x * legAirMotion), player.transform.position.y + jumpDownOffsets.y);
+                        transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, 3 * Time.deltaTime);
+                    }
+                }
+            }
+            else if (player.GetComponent<WaterPlayerController>().enabled)
+            {
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+                {
+                    isSwimming = true;
+                }
+                else
+                {
+                    isSwimming = false;
+                    currentTarget.position = transform.position;
+                }
+
+                /*
+                     if (Input.GetKey(KeyCode.LeftShift) && !playerScript.staminaDepleted)
+                     {
+                         speed = fastAnimSpeed;
+                         curveSpeed = 2f;
+                     }
+                     else
+                     {
+                         speed = normalAnimSpeed;
+                         curveSpeed = 1f;
+                     }
+                     */
+
+                //Un des deux bras va vers l'arriere en premier
+                if (gameObject.name == "RightLegSolver_Target")
+                {
+                    if (goingForward == otherFoot.goingForward)
+                    {
+                        goingForward = !goingForward;
+                    }
+                }
+
+
+                Vector2 legOrigin = new Vector2(player.transform.position.x, player.transform.position.y - 0.7f);
+                Vector2 movement = new Vector2(legOrigin.x - Input.GetAxis("Horizontal"), legOrigin.y - Input.GetAxis("Vertical")); ;//new Vector2(player.transform.position.x + Input.GetAxis("Horizontal"), player.transform.position.y + Input.GetAxis("Vertical")) - legOrigin;
+                underwaterPivot.position = isSwimming ? movement : movement + Vector2.down;
+                underwaterPivot.transform.up = (movement - legOrigin).normalized;
+
+                speed = 2;
+
+                //Mesure la distance entre la cible et notre position
+                targetDistance = Mathf.Abs(Vector2.Distance(transform.position, underwaterTarget.position));
+                //stepTimer += Time.deltaTime * curveSpeed;
+                stepTimer += Time.deltaTime;
+
+                //Dependement de si le bras doit aller vers l'avant ou vers l'arriere, la position de la cible est assigne a l'un des deux emplacements
+                underwaterTarget.position = goingForward ? underwaterPivot.Find("Point2").position : underwaterPivot.Find("Point1").position;
+
+                //La position du bras lerp vers celle de la cible
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(underwaterTarget.position.x, underwaterTarget.position.y) /* + yCurve.Evaluate(stepTimer)*/, speed * Time.deltaTime);
+
+                //Si la distance est assez petite. Le timer previent que le bras revienne vers la meme cible
+                if (targetDistance <= 0.01f && stepTimer > 0.2f)
+                    reachedPos = true;
+
+                //Si la position de la cible est atteinte pour les deux bras ou que l'autre main ne peut pas bouger
+                if (reachedPos == true && otherFoot.targetDistance < 0.01f)
+                {
+                    //La cible va a l'autre position (avant ou arriere) car le bras change de direction
+                    reachedPos = false;
+                    goingForward = !goingForward;
+                    stepTimer = 0;
+                }
             }
         }
     }
@@ -271,9 +318,11 @@ public class PlayerLegAnimation : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), 0.05f);
-        Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), 0.05f);
-        Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpMidOffsets.x, player.transform.position.y + jumpMidOffsets.y), 0.05f);
+        //Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), 0.05f);
+        //Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), 0.05f);
+        //Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpMidOffsets.x, player.transform.position.y + jumpMidOffsets.y), 0.05f);
+        Gizmos.DrawSphere(new Vector2(player.transform.position.x + climbUpOffset.x, player.transform.position.y + climbUpOffset.y), 0.05f);
+        Gizmos.DrawSphere(new Vector2(player.transform.position.x + climbDownOffset.x, player.transform.position.y + climbDownOffset.y), 0.05f);
     }
     
 }

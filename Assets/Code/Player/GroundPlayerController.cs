@@ -313,6 +313,8 @@ public class GroundPlayerController : MonoBehaviour
         }
         else
         {
+            player.isClimbing = false;
+            player.isHanging = false;
             isSliding = false;
             if (climbSoundPlaying)
             {
@@ -530,6 +532,10 @@ public class GroundPlayerController : MonoBehaviour
     {
         if (!player.staminaDepleted || player.hasBionics)
         {
+            player.isClimbing = false;
+            player.isHanging = false;
+            climbSoundPlaying = false;
+            AudioManager.instance.PlaySound(AudioManager.instance.playerClimbStop, gameObject);
             AudioManager.instance.PlaySound(AudioManager.instance.voJump, gameObject);
             Tutorial.instance.ListenForInputs("hasWallJumped");
             if (!player.hasBionics)
@@ -561,7 +567,6 @@ public class GroundPlayerController : MonoBehaviour
 
     private void Slide()
     {
-
         float speedDif = slideSpeed - rb.velocity.y;
         float movement = speedDif * slideAccel;
         //So, we clamp the movement here to prevent any over corrections (these aren't noticeable in the Run)
@@ -572,6 +577,8 @@ public class GroundPlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
+                player.isClimbing = true;
+                player.isHanging = false;
                 if (!climbSoundPlaying)
                 {
                     climbSoundPlaying = true;
@@ -589,6 +596,8 @@ public class GroundPlayerController : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.S))
             {
+                player.isClimbing = true;
+                player.isHanging = false;
                 if (!climbSoundPlaying)
                 {
                     climbSoundPlaying = true;
@@ -606,6 +615,10 @@ public class GroundPlayerController : MonoBehaviour
             }
             else
             {
+                player.isClimbing = false;
+                player.isHanging = true;
+                climbSoundPlaying = false;
+                AudioManager.instance.PlaySound(AudioManager.instance.playerClimbStop, gameObject);
                 Tutorial.instance.ListenForInputs("hasHanged");
 
                 if (rb.velocity.y > 0)
@@ -618,7 +631,13 @@ public class GroundPlayerController : MonoBehaviour
             }
         }
         else
+        {
+            player.isClimbing = false;
+            player.isHanging = false;
+            climbSoundPlaying = false;
+            AudioManager.instance.PlaySound(AudioManager.instance.playerClimbStop, gameObject);
             AudioManager.instance.PlaySound(AudioManager.instance.noStamina, gameObject);
+        }
     }
 
     public void VineJump()

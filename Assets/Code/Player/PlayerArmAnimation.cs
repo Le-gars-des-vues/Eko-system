@@ -53,6 +53,9 @@ public class PlayerArmAnimation : MonoBehaviour
     [HideInInspector] [SerializeField] private Vector2 jumpUpOffsets;
     [HideInInspector] [SerializeField] private Vector2 jumpDownOffsets;
 
+    [SerializeField] Vector2 climbUpOffset;
+    [SerializeField] Vector2 climbDownOffset;
+
     [Header("Punch Variables")]
     [SerializeField] Collider2D punchCollider;
     bool isPunching;
@@ -86,170 +89,209 @@ public class PlayerArmAnimation : MonoBehaviour
             //Animation du bras droit
             if (gameObject.name == "RightArmSolver_Target")
             {
-                //Si la main est vide ou qu'elle tient un objet lancable ou utilisable
-                if (playerScript.objectInRightHand == null)
+                if (playerScript.isHanging)
                 {
-                    //La main peut bouger
-                    handCanMove = true;
+                    //Reset la position initiale
+                    armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + climbUpOffset.x * facingDirection, player.transform.position.y + climbUpOffset.y), speed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(armTarget.position.x, armTarget.position.y), speed * Time.deltaTime);
+                    goingForward = true;
                 }
-                //Si la main est vide
-                else if (playerScript.objectInRightHand != null)
+                else if (playerScript.isClimbing)
                 {
-                    if (playerScript.objectInRightHand.tag == "Usable" || playerScript.objectInRightHand.tag == "Throwable")
-                    {
-                        if (playerScript.objectInRightHand.tag == "Throwable" && Input.GetMouseButton(0))
-                        {
-                            handCanMove = false;
-                            Vector2 throwPos = Vector2.Lerp(new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y),
-                                        new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
-                                        playerScript.objectInRightHand.GetComponent<ThrowableObject>().timer / playerScript.objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
+                    //Mesure la distance entre la cible et notre position
+                    targetDistance = Mathf.Abs(Vector2.Distance(transform.position, armTarget.position));
+                    stepTimer += Time.deltaTime * curveSpeed;
 
-                            armTarget.position = throwPos;
-                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
-                        }
-                        else
-                        {
-                            //La main peut bouger
-                            handCanMove = true;
-                        }
-                    }
-                    else
+                    //Cree la position a l'avant et l'arriere du joueur ou va venir se placer la cible
+                    forwardArmPos = new Vector2(player.transform.position.x + climbUpOffset.x * facingDirection, player.transform.position.y + climbUpOffset.y);
+                    backwardArmPos = new Vector2(player.transform.position.x + climbDownOffset.x * facingDirection, player.transform.position.y + climbDownOffset.y);
+
+                    //Dependement de si le bras doit aller vers l'avant ou vers l'arriere, la position de la cible est assigne a l'un des deux emplacements
+                    armTarget.position = goingForward ? forwardArmPos : backwardArmPos;
+
+                    //Si la distance est assez petite. Le timer previent que le bras revienne vers la meme cible
+                    if (targetDistance <= 0.01f && stepTimer > 0.2f)
+                        reachedPos = true;
+
+                    //La position du bras lerp vers celle de la cible
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(armTarget.position.x, armTarget.position.y + yCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
+
+                    //Si la position de la cible est atteinte pour les deux bras ou que l'autre main ne peut pas bouger
+                    if (reachedPos == true && (otherArm.targetDistance < 0.01f))
                     {
-                        handCanMove = false;
-                        //Si le joueur lance quelque chose
-                        if (playerScript.objectInRightHand.tag == "Spear")
+                        //La cible va a l'autre position (avant ou arriere) car le bras change de direction
+                        reachedPos = false;
+                        goingForward = !goingForward;
+                        stepTimer = 0;
+                    }
+                }
+                else
+                {
+                    //Si la main est vide ou qu'elle tient un objet lancable ou utilisable
+                    if (playerScript.objectInRightHand == null)
+                    {
+                        //La main peut bouger
+                        handCanMove = true;
+                    }
+                    //Si la main est vide
+                    else if (playerScript.objectInRightHand != null)
+                    {
+                        if (playerScript.objectInRightHand.tag == "Usable" || playerScript.objectInRightHand.tag == "Throwable")
                         {
-                            if (Input.GetMouseButton(0))
+                            if (playerScript.objectInRightHand.tag == "Throwable" && Input.GetMouseButton(0))
                             {
+                                handCanMove = false;
                                 Vector2 throwPos = Vector2.Lerp(new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y),
-                                    new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
-                                    playerScript.objectInRightHand.GetComponent<ThrowableObject>().timer / playerScript.objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
+                                            new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
+                                            playerScript.objectInRightHand.GetComponent<ThrowableObject>().timer / playerScript.objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
 
                                 armTarget.position = throwPos;
                                 transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                             }
                             else
                             {
-                                //Position initiale de la main sur la lance
-                                pickupInitialPos = new Vector2(player.transform.position.x + (armWeaponOffsets.x * facingDirection), player.transform.position.y + armWeaponOffsets.y);
-                                //Position de la souris et direction du mouvement de la souris
-                                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                                Vector2 mouseDirection = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-
-                                //Check pour voir si la souris va dans la meme direction que celle qui fait face au joueur
-                                float isPointingRight = mouseDirection.x > 0 ? 1 : -1;
-                                bool lookingUp = mousePos.y - player.transform.position.y >= 0 ? true : false;
-                                bool isPointingUp = mouseDirection.y > 0 ? true : false;
-
-                                //Si on bouge la souris
-                                if (mouseDirection.magnitude != 0)
+                                //La main peut bouger
+                                handCanMove = true;
+                            }
+                        }
+                        else
+                        {
+                            handCanMove = false;
+                            //Si le joueur lance quelque chose
+                            if (playerScript.objectInRightHand.tag == "Spear")
+                            {
+                                if (Input.GetMouseButton(0))
                                 {
-                                    armMovementTime = Time.time;
-                                    if (Mathf.Abs(mouseDirection.y) < 0.3f)
-                                    {
-                                        //Si la souris de ne va pas dans la meme direction que le joueur regarde
-                                        if (isPointingRight != facingDirection)
-                                        {
-                                            //La main recule
-                                            Vector2 offset = pickupInitialPos - mousePos;
-                                            Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
-                                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime * 2);
-                                        }
-                                        //Sinon la main avance
-                                        else
-                                        {
-                                            Vector2 offset = mousePos - pickupInitialPos;
-                                            Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
-                                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
-                                        }
-                                    }
-                                    else if (Mathf.Abs(mouseDirection.x) < 0.3f)
-                                    {
-                                        //Si la souris de ne va pas dans la meme direction que le joueur regarde
-                                        if (lookingUp != isPointingUp)
-                                        {
-                                            //La main recule
-                                            Vector2 offset = pickupInitialPos - mousePos;
-                                            Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
-                                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
-                                        }
-                                        //Sinon la main avance
-                                        else
-                                        {
-                                            Vector2 offset = mousePos - pickupInitialPos;
-                                            Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
-                                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        //Si la souris de ne va pas dans la meme direction que le joueur regarde
-                                        if ((isPointingRight != facingDirection && lookingUp != isPointingUp))
-                                        {
-                                            //La main recule
-                                            Vector2 offset = pickupInitialPos - mousePos;
-                                            Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
-                                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
-                                        }
-                                        //Sinon la main avance
-                                        else
-                                        {
-                                            Vector2 offset = mousePos - pickupInitialPos;
-                                            Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
-                                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
-                                        }
-                                    }
-                                }
+                                    Vector2 throwPos = Vector2.Lerp(new Vector2(player.transform.position.x + (jumpDownOffsets.x * facingDirection), player.transform.position.y + jumpDownOffsets.y),
+                                        new Vector2(player.transform.position.x + (armUpOffsets.x * facingDirection), player.transform.position.y + armUpOffsets.y),
+                                        playerScript.objectInRightHand.GetComponent<ThrowableObject>().timer / playerScript.objectInRightHand.GetComponent<ThrowableObject>().timeToMaxThrow);
 
-                                //Si cela fait un moment que la souris n'a pas bouge, la main revient a sa position initiale
-                                if (Time.time - armMovementTime > armMovementCooldown)
-                                {
-                                    armTarget.position = pickupInitialPos;
+                                    armTarget.position = throwPos;
                                     transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                                 }
+                                else
+                                {
+                                    //Position initiale de la main sur la lance
+                                    pickupInitialPos = new Vector2(player.transform.position.x + (armWeaponOffsets.x * facingDirection), player.transform.position.y + armWeaponOffsets.y);
+                                    //Position de la souris et direction du mouvement de la souris
+                                    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                                    Vector2 mouseDirection = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
+                                    //Check pour voir si la souris va dans la meme direction que celle qui fait face au joueur
+                                    float isPointingRight = mouseDirection.x > 0 ? 1 : -1;
+                                    bool lookingUp = mousePos.y - player.transform.position.y >= 0 ? true : false;
+                                    bool isPointingUp = mouseDirection.y > 0 ? true : false;
+
+                                    //Si on bouge la souris
+                                    if (mouseDirection.magnitude != 0)
+                                    {
+                                        armMovementTime = Time.time;
+                                        if (Mathf.Abs(mouseDirection.y) < 0.3f)
+                                        {
+                                            //Si la souris de ne va pas dans la meme direction que le joueur regarde
+                                            if (isPointingRight != facingDirection)
+                                            {
+                                                //La main recule
+                                                Vector2 offset = pickupInitialPos - mousePos;
+                                                Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
+                                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime * 2);
+                                            }
+                                            //Sinon la main avance
+                                            else
+                                            {
+                                                Vector2 offset = mousePos - pickupInitialPos;
+                                                Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
+                                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                            }
+                                        }
+                                        else if (Mathf.Abs(mouseDirection.x) < 0.3f)
+                                        {
+                                            //Si la souris de ne va pas dans la meme direction que le joueur regarde
+                                            if (lookingUp != isPointingUp)
+                                            {
+                                                //La main recule
+                                                Vector2 offset = pickupInitialPos - mousePos;
+                                                Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
+                                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                            }
+                                            //Sinon la main avance
+                                            else
+                                            {
+                                                Vector2 offset = mousePos - pickupInitialPos;
+                                                Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
+                                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            //Si la souris de ne va pas dans la meme direction que le joueur regarde
+                                            if ((isPointingRight != facingDirection && lookingUp != isPointingUp))
+                                            {
+                                                //La main recule
+                                                Vector2 offset = pickupInitialPos - mousePos;
+                                                Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.green);
+                                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                            }
+                                            //Sinon la main avance
+                                            else
+                                            {
+                                                Vector2 offset = mousePos - pickupInitialPos;
+                                                Debug.DrawRay(pickupInitialPos, offset * armMovementRadius, Color.red);
+                                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                                            }
+                                        }
+                                    }
+
+                                    //Si cela fait un moment que la souris n'a pas bouge, la main revient a sa position initiale
+                                    if (Time.time - armMovementTime > armMovementCooldown)
+                                    {
+                                        armTarget.position = pickupInitialPos;
+                                        transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
+                                    }
+                                }
                             }
-                        }
-                        else if (playerScript.objectInRightHand.tag == "TwoHandedWeapon")
-                        {
-                            pickupInitialPos = new Vector2(player.transform.position.x, player.transform.position.y - 0.5f);
-                            armTarget.position = pickupInitialPos;
-                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
-                        }
-                        else if (playerScript.objectInRightHand.tag == "Bow")
-                        {
-                            pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
-                            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                            Vector2 offset = mousePos - pickupInitialPos;
-                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Time.deltaTime);
-                            if (Input.GetMouseButton(0))
+                            else if (playerScript.objectInRightHand.tag == "TwoHandedWeapon")
                             {
-                                playerScript.objectInRightHand.GetComponent<Animator>().SetBool("isDrawing", true);
+                                pickupInitialPos = new Vector2(player.transform.position.x, player.transform.position.y - 0.5f);
+                                armTarget.position = pickupInitialPos;
+                                transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * Time.deltaTime);
                             }
-                            else
-                                playerScript.objectInRightHand.GetComponent<Animator>().SetBool("isDrawing", false);
-                        }
-                        else if (playerScript.objectInRightHand.tag == "OneHandedWeapon")
-                        {
-                            pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
-                            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                            Vector2 offset = mousePos - pickupInitialPos;
-                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
-                        }
-                        else if (playerScript.objectInRightHand.tag == "MultiTool")
-                        {
-                            pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
-                            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                            Vector2 offset = mousePos - pickupInitialPos;
-                            armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
-                            transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Time.deltaTime);
+                            else if (playerScript.objectInRightHand.tag == "Bow")
+                            {
+                                pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
+                                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                                Vector2 offset = mousePos - pickupInitialPos;
+                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Time.deltaTime);
+                                if (Input.GetMouseButton(0))
+                                {
+                                    playerScript.objectInRightHand.GetComponent<Animator>().SetBool("isDrawing", true);
+                                }
+                                else
+                                    playerScript.objectInRightHand.GetComponent<Animator>().SetBool("isDrawing", false);
+                            }
+                            else if (playerScript.objectInRightHand.tag == "OneHandedWeapon")
+                            {
+                                pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
+                                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                                Vector2 offset = mousePos - pickupInitialPos;
+                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, weaponSpeed * Mathf.Max(Mathf.Abs(Input.GetAxis("Mouse X")), Mathf.Abs(Input.GetAxis("Mouse Y"))) * Time.deltaTime);
+                            }
+                            else if (playerScript.objectInRightHand.tag == "MultiTool")
+                            {
+                                pickupInitialPos = new Vector2(player.transform.position.x + (-0.4f * facingDirection), player.transform.position.y);
+                                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                                Vector2 offset = mousePos - pickupInitialPos;
+                                armTarget.position = Vector2.ClampMagnitude(offset, armMovementRadius);
+                                transform.position = Vector2.MoveTowards(transform.position, (Vector3)pickupInitialPos + armTarget.position, speed * Time.deltaTime);
+                            }
                         }
                     }
                 }
@@ -257,47 +299,86 @@ public class PlayerArmAnimation : MonoBehaviour
             //Animation du bras gauche
             else if (gameObject.name == "LeftArmSolver_Target")
             {
-                if (Input.GetKeyDown(KeyCode.Q) && playerScript.hasPunch)
+                if (playerScript.isHanging)
                 {
-                    StartCoroutine(Punch());
+                    //Reset la position initiale
+                    armTarget.position = Vector2.Lerp(transform.position, new Vector2(player.transform.position.x + climbDownOffset.x * facingDirection, player.transform.position.y + climbDownOffset.y), speed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(armTarget.position.x, armTarget.position.y), speed * Time.deltaTime);
+                    goingForward = false;
                 }
-                else if (!isPunching)
+                else if (playerScript.isClimbing)
                 {
-                    //Si la main gauche n'est pas vide
-                    if (playerScript.objectInRightHand != null)
+                    //Mesure la distance entre la cible et notre position
+                    targetDistance = Mathf.Abs(Vector2.Distance(transform.position, armTarget.position));
+                    stepTimer += Time.deltaTime * curveSpeed;
+
+                    //Cree la position a l'avant et l'arriere du joueur ou va venir se placer la cible
+                    forwardArmPos = new Vector2(player.transform.position.x + climbUpOffset.x * facingDirection, player.transform.position.y + climbUpOffset.y);
+                    backwardArmPos = new Vector2(player.transform.position.x + climbDownOffset.x * facingDirection, player.transform.position.y + climbDownOffset.y);
+
+                    //Dependement de si le bras doit aller vers l'avant ou vers l'arriere, la position de la cible est assigne a l'un des deux emplacements
+                    armTarget.position = goingForward ? forwardArmPos : backwardArmPos;
+
+                    //Si la distance est assez petite. Le timer previent que le bras revienne vers la meme cible
+                    if (targetDistance <= 0.01f && stepTimer > 0.2f)
+                        reachedPos = true;
+
+                    //La position du bras lerp vers celle de la cible
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(armTarget.position.x, armTarget.position.y + yCurve.Evaluate(stepTimer)), speed * Time.deltaTime);
+
+                    //Si la position de la cible est atteinte pour les deux bras ou que l'autre main ne peut pas bouger
+                    if (reachedPos == true && (otherArm.targetDistance < 0.01f))
                     {
-                        if (playerScript.objectInRightHand.tag == "Spear")
+                        //La cible va a l'autre position (avant ou arriere) car le bras change de direction
+                        reachedPos = false;
+                        goingForward = !goingForward;
+                        stepTimer = 0;
+                    }
+                }
+                else
+                {
+                    if (Input.GetKeyDown(KeyCode.Q) && playerScript.hasPunch)
+                    {
+                        StartCoroutine(Punch());
+                    }
+                    else if (!isPunching)
+                    {
+                        //Si la main gauche n'est pas vide
+                        if (playerScript.objectInRightHand != null)
                         {
-                            handCanMove = false;
-                            if (!Input.GetMouseButton(0))
+                            if (playerScript.objectInRightHand.tag == "Spear")
                             {
+                                handCanMove = false;
+                                if (!Input.GetMouseButton(0))
+                                {
+                                    armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
+                                    transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
+                                }
+                            }
+                            else if (playerScript.objectInRightHand.tag == "TwoHandedWeapon")
+                            {
+                                handCanMove = false;
                                 armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
                                 transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
                             }
+                            else if (playerScript.objectInRightHand.tag == "Bow")
+                            {
+                                handCanMove = false;
+                                armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
+                                transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
+                            }
+                            //Sinon la main peut bouger
+                            else
+                                handCanMove = true;
                         }
-                        else if (playerScript.objectInRightHand.tag == "TwoHandedWeapon")
-                        {
-                            handCanMove = false;
-                            armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
-                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
-                        }
-                        else if (playerScript.objectInRightHand.tag == "Bow")
-                        {
-                            handCanMove = false;
-                            armTarget.position = player.GetComponent<PlayerPermanent>().objectInRightHand.transform.Find("LeftHandPos").transform.position;
-                            transform.position = Vector2.MoveTowards(transform.position, armTarget.position, speed * 4 * Time.deltaTime);
-                        }
-                        //Sinon la main peut bouger
                         else
                             handCanMove = true;
                     }
-                    else
-                        handCanMove = true;
                 }
             }
 
             //Si la main peut bouger
-            if (handCanMove)
+            if (handCanMove && !playerScript.isClimbing && !playerScript.isHanging)
             {
                 //Si le joueur a son ground controller
                 if (player.GetComponent<GroundPlayerController>().enabled)
@@ -466,9 +547,11 @@ public class PlayerArmAnimation : MonoBehaviour
         //Gizmos.DrawSphere(new Vector3(player.transform.position.x + armXOffset, player.transform.position.y + armYOffset, transform.position.z), 0.05f);
         //Gizmos.DrawSphere(forwardArmPos, 0.05f);
         //Gizmos.DrawSphere(backwardArmPos, 0.05f);
-        Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), 0.05f);
-        Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), 0.05f);
-        Gizmos.DrawSphere(new Vector2(player.transform.position.x + armWeaponOffsets.x, player.transform.position.y + armWeaponOffsets.y), 0.05f);
-        Gizmos.DrawSphere(new Vector2(player.transform.position.x + armUpOffsets.x, player.transform.position.y + armUpOffsets.y), 0.05f);
+        //Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpUpOffsets.x, player.transform.position.y + jumpUpOffsets.y), 0.05f);
+        //Gizmos.DrawSphere(new Vector2(player.transform.position.x + jumpDownOffsets.x, player.transform.position.y + jumpDownOffsets.y), 0.05f);
+        //Gizmos.DrawSphere(new Vector2(player.transform.position.x + armWeaponOffsets.x, player.transform.position.y + armWeaponOffsets.y), 0.05f);
+        //Gizmos.DrawSphere(new Vector2(player.transform.position.x + armUpOffsets.x, player.transform.position.y + armUpOffsets.y), 0.05f);
+        Gizmos.DrawSphere(new Vector2(player.transform.position.x + climbUpOffset.x, player.transform.position.y + climbUpOffset.y), 0.05f);
+        Gizmos.DrawSphere(new Vector2(player.transform.position.x + climbDownOffset.x, player.transform.position.y + climbDownOffset.y), 0.05f);
     }
 }

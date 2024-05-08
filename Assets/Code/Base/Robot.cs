@@ -182,7 +182,7 @@ public class Robot : MonoBehaviour
         if (!hasDied && Tutorial.instance.hasDied)
         {
             hasDied = true;
-            GoToRespawn();
+            GoToCrafting();
             baseDialogue.PrepareDialogue(baseDialogue.dialogueSequences[5]);
         }
         else if (!hasSeenStorm && Tutorial.instance.hasSeenStorm)

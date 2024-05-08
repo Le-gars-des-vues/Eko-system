@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [Header("New Cycle Variables")]
     [SerializeField] GameObject newCycleScreen;
     [SerializeField] TextMeshProUGUI newCycleText;
+    [SerializeField] TextMeshProUGUI terminationText;
     private string textToWrite;
     public int cycleCount;
     [SerializeField] TextMeshProUGUI cycleMenuText;
@@ -326,58 +327,77 @@ public class GameManager : MonoBehaviour
     public IEnumerator NewCycle()
     {
         newCycleScreen.SetActive(true);
-        this.gameObject.GetComponent<Quota>().nouveauQuota();
-        cycleCount++;
-        switch (cycleCount)
+        if (GameObject.Find("Vente").GetComponent<Vente>().profit < gameObject.GetComponent<Quota>().quota)
         {
-            case 2:
-                this.gameObject.GetComponent<Quota>().quota = 50;
-                Tutorial.instance.day2 = true;
-                break;
-            case 3:
-                Tutorial.instance.day3 = true;
-                break;
-            default:
-                break;
+            textToWrite = "[WARNING : INSUFFICIENT FUNDS]\nTERMINATION IMMINENT";
+            newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
+            yield return new WaitForSeconds(1.1f);
+            terminationText.text = "";
+            AudioManager.instance.PlaySound(AudioManager.instance.uiTexte, Camera.main.gameObject);
+            foreach (char letter in textToWrite.ToCharArray())
+            {
+                terminationText.text += letter;
+                yield return new WaitForSeconds(0.03f);
+            }
+            AudioManager.instance.PlaySound(AudioManager.instance.uiTexteFin, Camera.main.gameObject);
+            yield return new WaitForSeconds(2f);
+            player.Death();
+            GameObject.Find("GameOverScreen").transform.Find("BackToBase").gameObject.SetActive(false);
         }
-            
-        cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
-        textToWrite = "////////////\n\nSYSTEM.REBOOT\nTERRAFORMA CORP.\n\nNEW TRANSMISSION\n.\n.\n.\n.\n\nGOOD MORNING EMPLOYEE 1212781827!\n.\n.\n.\n.\n\nCYCLE : " + cycleCount.ToString("000") + "\n.\n.\n\nQUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $\n\nEND TRANSMISSION\n\n/////////////";
-        newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
-        yield return new WaitForSeconds(1.1f);
-        newCycleText.text = "";
-        AudioManager.instance.PlaySound(AudioManager.instance.uiTexte, Camera.main.gameObject);
-        foreach(char letter in textToWrite.ToCharArray())
+        else
         {
-            newCycleText.text += letter;
-            yield return new WaitForSeconds(0.03f);
-        }
-        AudioManager.instance.PlaySound(AudioManager.instance.uiTexteFin, Camera.main.gameObject);
-        yield return new WaitForSeconds(2f);
-        newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", false);
-        yield return new WaitForSeconds(2f);
+            this.gameObject.GetComponent<Quota>().nouveauQuota();
+            cycleCount++;
+            switch (cycleCount)
+            {
+                case 2:
+                    this.gameObject.GetComponent<Quota>().quota = 50;
+                    Tutorial.instance.day2 = true;
+                    break;
+                case 3:
+                    Tutorial.instance.day3 = true;
+                    break;
+                default:
+                    break;
+            }
+            cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
+            textToWrite = "////////////\n\nSYSTEM.REBOOT\nTERRAFORMA CORP.\n\nNEW TRANSMISSION\n.\n.\n.\n.\n\nGOOD MORNING EMPLOYEE 1212781827!\n.\n.\n.\n.\n\nCYCLE : " + cycleCount.ToString("000") + "\n.\n.\n\nQUOTA: 0 / " + gameObject.GetComponent<Quota>().quota.ToString() + " $\n\nEND TRANSMISSION\n\n/////////////";
+            newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
+            yield return new WaitForSeconds(1.1f);
+            newCycleText.text = "";
+            AudioManager.instance.PlaySound(AudioManager.instance.uiTexte, Camera.main.gameObject);
+            foreach (char letter in textToWrite.ToCharArray())
+            {
+                newCycleText.text += letter;
+                yield return new WaitForSeconds(0.03f);
+            }
+            AudioManager.instance.PlaySound(AudioManager.instance.uiTexteFin, Camera.main.gameObject);
+            yield return new WaitForSeconds(2f);
+            newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", false);
+            yield return new WaitForSeconds(2f);
 
-        newCycleScreen.SetActive(false);
+            newCycleScreen.SetActive(false);
 
-        ResetTimer();
+            ResetTimer();
 
-        Debug.Log("New Cycle");
-        for (int i = 0; i <= planters.Count - 1; i++)
-        {
-            planters[i].Grow();
-        }
-        for (int i = 0; i <= enclosure.Count - 1; i++)
-        {
-            enclosure[i].Grow();
-        }
+            Debug.Log("New Cycle");
+            for (int i = 0; i <= planters.Count - 1; i++)
+            {
+                planters[i].Grow();
+            }
+            for (int i = 0; i <= enclosure.Count - 1; i++)
+            {
+                enclosure[i].Grow();
+            }
 
-        for (int i = 0; i <= teleporter.Count - 1; i++)
-        {
-            if (!teleporter[i].isPoweredUp)
-                teleporter[i].isPoweredUp = true;
+            for (int i = 0; i <= teleporter.Count - 1; i++)
+            {
+                if (!teleporter[i].isPoweredUp)
+                    teleporter[i].isPoweredUp = true;
+            }
+            QuickMenu.instance.CheckForOpenTeleporter();
+            SpawnNewObjects(false);
         }
-        QuickMenu.instance.CheckForOpenTeleporter();
-        SpawnNewObjects(false);
     }
 
     void SpawnNewObjects(bool start)

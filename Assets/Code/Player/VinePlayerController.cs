@@ -96,8 +96,10 @@ public class VinePlayerController : MonoBehaviour
                 {
                     climbSoundPlaying = false;
                     AudioManager.instance.PlaySound(AudioManager.instance.playerClimbStop, gameObject);
-                    transform.position = new Vector2(attachedVine.transform.position.x + (vineOffset * facingDirection), attachedVine.transform.position.y);
                 }
+                player.isClimbing = false;
+                player.isHanging = true;
+                transform.position = new Vector2(attachedVine.transform.position.x + (vineOffset * facingDirection), attachedVine.transform.position.y);
             }
         }
     }
@@ -137,11 +139,19 @@ public class VinePlayerController : MonoBehaviour
         GetComponent<GroundPlayerController>().VineJump();
         //Faut sauter le joueur et desactive le script de vigne
         GetComponent<VinePlayerController>().enabled = false;
+        if (climbSoundPlaying)
+        {
+            climbSoundPlaying = false;
+            AudioManager.instance.PlaySound(AudioManager.instance.playerClimbStop, gameObject);
+        }
+        player.isClimbing = false;
+        player.isHanging = false;
     }
 
     //Slide dans une direction choisi en Lerpant vers la position de la vigne au dessus ou au dessous
     public void Slide(int direction)
     {
+        player.isClimbing = true;
         if (!climbSoundPlaying)
         {
             climbSoundPlaying = true;

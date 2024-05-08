@@ -99,6 +99,9 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     bool isMaxShield;
     bool isMaxHealth;
 
+    public bool isHanging;
+    public bool isClimbing;
+
     [SerializeField] Camera pixelCamera;
     [SerializeField] GameObject pixelatedScreen;
 
