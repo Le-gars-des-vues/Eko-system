@@ -80,6 +80,7 @@ namespace AK
         static const AkUniqueID LIF_SINGE_PASSIF = 965360082U;
         static const AkUniqueID MUS_ALERTE = 50128274U;
         static const AkUniqueID MUS_ALERTE_STOP = 1776983345U;
+        static const AkUniqueID MUS_INTRO = 1219230789U;
         static const AkUniqueID MUS_MENUPRINCIPAL = 3076148986U;
         static const AkUniqueID PLY_ATTAQUE_ARC = 2030651275U;
         static const AkUniqueID PLY_ATTAQUE_FLASHGRENADE = 3590418373U;
@@ -162,6 +163,7 @@ namespace AK
         static const AkUniqueID UI_CONSTRUIRE_BATIMENT = 2074960899U;
         static const AkUniqueID UI_CONSTRUIRE_EQUIPEMENT = 1436603864U;
         static const AkUniqueID UI_CONSTRUIRE_MATERIAU = 2286571659U;
+        static const AkUniqueID UI_CUBICULE_FERMER = 1684702042U;
         static const AkUniqueID UI_CUBICULE_OUVRIR = 3866583062U;
         static const AkUniqueID UI_GAMEOVER_TEMPS = 3454429038U;
         static const AkUniqueID UI_GAMEOVER_VIE = 3136319167U;
