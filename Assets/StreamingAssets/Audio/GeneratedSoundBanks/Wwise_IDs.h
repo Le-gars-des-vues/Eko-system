@@ -35,14 +35,16 @@ namespace AK
         static const AkUniqueID ENV_OURSIN = 827202553U;
         static const AkUniqueID ENV_PIEGEPIQUES = 2451493374U;
         static const AkUniqueID ENV_PLANTESOUSMARINE = 630271425U;
+        static const AkUniqueID ENV_PLANTESOUSMARINE_SORTIE = 4279094094U;
         static const AkUniqueID ENV_PORTEFERMETURE = 1930754588U;
         static const AkUniqueID ENV_PORTEOUVERTURE = 1952691670U;
         static const AkUniqueID ENV_TELEPORTE = 3801493381U;
         static const AkUniqueID ENV_TONNERRE = 3403933012U;
         static const AkUniqueID LIF_MEDUSE_ATTAQUE = 1017987174U;
         static const AkUniqueID LIF_MEDUSE_DEGAT = 1325045648U;
+        static const AkUniqueID LIF_MEDUSE_MOOVE = 3610853919U;
+        static const AkUniqueID LIF_MEDUSE_MOOVE_STOP = 519079082U;
         static const AkUniqueID LIF_MEDUSE_MORT = 917211595U;
-        static const AkUniqueID LIF_MEDUSE_PASSIF = 1430723987U;
         static const AkUniqueID LIF_MOUSTIQUE_DEGAT = 3471878825U;
         static const AkUniqueID LIF_MOUSTIQUE_MORT = 292996144U;
         static const AkUniqueID LIF_MOUSTIQUE_PASSIF = 3251876752U;
@@ -50,14 +52,15 @@ namespace AK
         static const AkUniqueID LIF_PLANTECARNIVORE_DEGAT = 4109000626U;
         static const AkUniqueID LIF_PLANTECARNIVORE_MORT = 259530661U;
         static const AkUniqueID LIF_PLANTECARNIVORE_PASSIF = 64562537U;
-        static const AkUniqueID LIF_POISSON_ATTAQUE = 3414499982U;
         static const AkUniqueID LIF_POISSON_DEGAT = 2154149272U;
+        static const AkUniqueID LIF_POISSON_MOOVE = 2778784279U;
+        static const AkUniqueID LIF_POISSON_MOOVE_STOP = 3267496626U;
         static const AkUniqueID LIF_POISSON_MORT = 2567397059U;
-        static const AkUniqueID LIF_POISSON_PASSIF = 2342157435U;
         static const AkUniqueID LIF_REQUIN_ATTAQUE = 412913837U;
         static const AkUniqueID LIF_REQUIN_DEGAT = 3134163731U;
+        static const AkUniqueID LIF_REQUIN_MOOVE = 3404078404U;
+        static const AkUniqueID LIF_REQUIN_MOOVE_STOP = 4036828579U;
         static const AkUniqueID LIF_REQUIN_MORT = 1898723474U;
-        static const AkUniqueID LIF_REQUIN_PASSIF = 833444414U;
         static const AkUniqueID LIF_RHINORTUE_ATTAQUE = 2466167957U;
         static const AkUniqueID LIF_RHINORTUE_DEGAT = 2964860923U;
         static const AkUniqueID LIF_RHINORTUE_MORT = 1118706794U;
@@ -222,6 +225,18 @@ namespace AK
             } // namespace STATE
         } // namespace PAUSE
 
+        namespace PLY_FIRST_SPAWN
+        {
+            static const AkUniqueID GROUP = 658831197U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NO = 1668749452U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID YES = 979470758U;
+            } // namespace STATE
+        } // namespace PLY_FIRST_SPAWN
+
         namespace PLY_HAS_MASK
         {
             static const AkUniqueID GROUP = 3586844446U;
@@ -297,6 +312,7 @@ namespace AK
         static const AkUniqueID RESPIRATION = 3140998137U;
         static const AkUniqueID SC_PLANTECARNIVORE = 2185427101U;
         static const AkUniqueID SFXVOLUME = 988953028U;
+        static const AkUniqueID TEMPETE = 2981722741U;
         static const AkUniqueID TEMPS = 307962810U;
         static const AkUniqueID VOICEVOLUME = 414646191U;
     } // namespace GAME_PARAMETERS
@@ -315,6 +331,7 @@ namespace AK
         static const AkUniqueID AMB_SOUSMARINE = 4285823446U;
         static const AkUniqueID ENV = 529726550U;
         static const AkUniqueID LIF = 444705606U;
+        static const AkUniqueID LIF_SOUSMARIN = 356095544U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MASTER_SECONDARY_BUS = 805203703U;
         static const AkUniqueID NORMAL = 1160234136U;
