@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class StartNewCycle : MonoBehaviour
 {
     bool isInRange;
     bool startedANewCycle;
     float newCycleTime;
+    [SerializeField] VisualEffect SmokeVFX;
+    [SerializeField] Animator anim;
+    bool isAnimating;
 
     // Update is called once per frame
     void Update()
@@ -39,6 +43,11 @@ public class StartNewCycle : MonoBehaviour
             isInRange = true;
             if (ArrowManager.instance.targetObject != gameObject)
                 ArrowManager.instance.PlaceArrow(transform.position, "START NEW CYCLE", new Vector2(0, 1), gameObject);
+            if (!isAnimating)
+            {
+                isAnimating = true;
+                anim.SetBool("isOpen", true);
+            }
         }
     }
 
@@ -49,6 +58,11 @@ public class StartNewCycle : MonoBehaviour
             isInRange = true;
             if (ArrowManager.instance.targetObject != gameObject)
                 ArrowManager.instance.PlaceArrow(transform.position, "START NEW CYCLE", new Vector2(0, 1), gameObject);
+            if (!isAnimating)
+            {
+                isAnimating = true;
+                anim.SetBool("isOpen", true);
+            }
         }
     }
 
@@ -59,6 +73,21 @@ public class StartNewCycle : MonoBehaviour
             isInRange = false;
             if (ArrowManager.instance.targetObject == gameObject)
                 ArrowManager.instance.RemoveArrow();
+            if (isAnimating)
+            {
+                isAnimating = false;
+                anim.SetBool("isOpen", false);
+            }
         }
+    }
+
+    void StartSmoke()
+    {
+        SmokeVFX.Play();
+    }
+
+    void StopSmoke()
+    {
+        SmokeVFX.Stop();
     }
 }
