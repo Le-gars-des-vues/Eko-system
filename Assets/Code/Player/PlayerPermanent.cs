@@ -276,6 +276,10 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             StartCoroutine(MoveCamera("GoDown"));
             cameraTrigger = false;
+            if (isUsingMultiTool)
+                Cursor.SetCursor(cursorImages[2], new Vector2(32, 32), CursorMode.ForceSoftware);
+            else
+                Cursor.SetCursor(cursorImages[1], new Vector2(0, 0), CursorMode.ForceSoftware);
         }
 
         /*
