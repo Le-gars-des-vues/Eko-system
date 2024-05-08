@@ -637,6 +637,44 @@
 												</CustomStateList>
 											</StateInfo>
 										</Bus>
+										<Bus Name="LIF_SousMarin" ID="{A5730C5B-5371-41EC-89BD-35C608B72B1B}">
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="Pause" ID="{2D0B8216-30F4-4D84-A0EE-641992EB9810}"/>
+													</StateGroupInfo>
+													<StateGroupInfo>
+														<StateGroupRef Name="PLY_Vie" ID="{5D99115A-63C0-47B6-A742-0F106195D6EF}"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="Pause_On" ID="{10FF80CC-A0FD-4303-B6C1-033BFA78D263}"/>
+														<CustomState Name="" ID="{C1FE1F64-CA87-4576-8D3C-2746DAA9B9DF}" ShortID="372143966">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Mort" ID="{90B8CC6E-3569-4B33-B2B7-5EB110F07A75}"/>
+														<CustomState Name="" ID="{1C10F043-D095-4E72-854D-0DC3FA468BC5}" ShortID="1072805704">
+															<PropertyList>
+																<Property Name="BusVolume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Envie" ID="{0990322A-4BC9-4EE4-998B-A4D10B2F7968}"/>
+														<CustomState Name="" ID="{B92B312A-51ED-4575-A37B-C5C048047C5A}" ShortID="244557673"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="Pause_Off" ID="{BA975A19-2C30-4F17-8735-BFDC4E68ACDF}"/>
+														<CustomState Name="" ID="{F168098C-33BB-46B8-9E30-F1590EB4A02B}" ShortID="399420977"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
 									</ChildrenList>
 								</Bus>
 							</ChildrenList>

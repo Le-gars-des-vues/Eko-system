@@ -354,17 +354,35 @@
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="LIF_Meduse_Passif" ID="{9ED9E0F3-EB51-4DEC-9ACA-A3DABAF0360D}">
+								<Folder Name="LIF_Meduse_Moove" ID="{20DFD5FA-A1B4-4403-8F9C-E0C593C95ECA}" ShortID="858703687">
 									<ChildrenList>
-										<Action Name="" ID="{BADFF387-DC66-40F1-810E-31D5C850EABC}" ShortID="956695847">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="LIF_Meduse_Passif" ID="{55F1F008-CB76-4EFB-9737-5B3BB5A895F1}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
+										<Event Name="LIF_Meduse_Moove" ID="{9ED9E0F3-EB51-4DEC-9ACA-A3DABAF0360D}">
+											<ChildrenList>
+												<Action Name="" ID="{BADFF387-DC66-40F1-810E-31D5C850EABC}" ShortID="956695847">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="LIF_Meduse_Moove" ID="{55F1F008-CB76-4EFB-9737-5B3BB5A895F1}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="LIF_Meduse_Moove_Stop" ID="{77A6B2AC-E290-4CC0-A17C-6286B09BFF68}">
+											<ChildrenList>
+												<Action Name="" ID="{0301AD0B-1F31-4ACF-8B6A-FACD80BA2C87}" ShortID="589128969">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="LIF_Meduse_Moove" ID="{55F1F008-CB76-4EFB-9737-5B3BB5A895F1}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
-								</Event>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="LIF_Requin" ID="{4EE5FF28-C04E-4E7C-9AE5-C7B16BF9688A}" ShortID="985061562">
@@ -402,32 +420,39 @@
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="LIF_Requin_Passif" ID="{6891F76E-3D94-41FE-AB63-C7DA57CD9E0F}">
+								<Folder Name="LIF_Requin_Moove" ID="{8D05FF77-8B4C-49AA-B136-5CBAFBD8D75F}" ShortID="16653505">
 									<ChildrenList>
-										<Action Name="" ID="{7C876358-476E-49E5-9F90-C5051BFE1BB1}" ShortID="189041033">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="LIF_Requin_Passif" ID="{D8701440-8515-484A-9574-FC345FF46EE1}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
+										<Event Name="LIF_Requin_Moove_Stop" ID="{48B66250-0CAA-4ED2-9818-4E054EB1494B}">
+											<ChildrenList>
+												<Action Name="" ID="{05CC6B20-EB18-413D-8D49-88A8762E321B}" ShortID="688195969">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="LIF_Requin_Moove" ID="{D8701440-8515-484A-9574-FC345FF46EE1}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="LIF_Requin_Moove" ID="{6891F76E-3D94-41FE-AB63-C7DA57CD9E0F}">
+											<ChildrenList>
+												<Action Name="" ID="{7C876358-476E-49E5-9F90-C5051BFE1BB1}" ShortID="189041033">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="LIF_Requin_Moove" ID="{D8701440-8515-484A-9574-FC345FF46EE1}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
-								</Event>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="LIF_Poisson" ID="{8CC47507-D252-4050-A219-1DCE2B9AE6E0}" ShortID="1020534692">
 							<ChildrenList>
-								<Event Name="LIF_Poisson_Attaque" ID="{234C728D-51E3-4042-9863-2A8E17DEB92B}">
-									<ChildrenList>
-										<Action Name="" ID="{621BDC97-CF45-4967-B5BA-9C7241F528F7}" ShortID="651781532">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="LIF_Poisson_Attaque" ID="{332900F5-F73F-4FE7-BF7A-A60153165D8C}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
 								<Event Name="LIF_Poisson_Degat" ID="{8380AFC3-874E-4D07-A7B9-AC512D961FD6}">
 									<ChildrenList>
 										<Action Name="" ID="{46F12FCA-1109-44BA-8457-408DE716490C}" ShortID="408660794">
@@ -450,17 +475,35 @@
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="LIF_Poisson_Passif" ID="{E31AA9AB-6205-46EF-89D7-01E1931F564F}">
+								<Folder Name="LIF_Poisson_Moove" ID="{9F7B1DBC-C63C-425C-8D85-815973DEBAB0}" ShortID="193262393">
 									<ChildrenList>
-										<Action Name="" ID="{F7BC922B-35F8-4A36-89D6-90B0CAC38B1B}" ShortID="704868141">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="LIF_Poisson_Passif" ID="{E38566B1-F070-479B-AAF3-095EB4C44202}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
+										<Event Name="LIF_Poisson_Moove_Stop" ID="{C3605388-CA75-4BC0-8C95-581DEC1E9B39}">
+											<ChildrenList>
+												<Action Name="" ID="{A4D3DDEA-E99C-446B-BE68-063976D33C4B}" ShortID="133005056">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="LIF_Poisson_Moove" ID="{E38566B1-F070-479B-AAF3-095EB4C44202}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="LIF_Poisson_Moove" ID="{E31AA9AB-6205-46EF-89D7-01E1931F564F}">
+											<ChildrenList>
+												<Action Name="" ID="{F7BC922B-35F8-4A36-89D6-90B0CAC38B1B}" ShortID="704868141">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="LIF_Poisson_Moove" ID="{E38566B1-F070-479B-AAF3-095EB4C44202}" WorkUnitID="{7E8E479A-923F-4097-A181-F9941E856238}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
-								</Event>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
