@@ -6,6 +6,12 @@ public class Portal : MonoBehaviour
 {
     bool isInRange;
     public bool isBaseTeleporter;
+    uint teleporterSoundID;
+
+    private void OnEnable()
+    {
+        teleporterSoundID = AudioManager.instance.PlaySound(AudioManager.instance.teleporteurEnv, gameObject);
+    }
 
     // Update is called once per frame
     void Update()
@@ -60,5 +66,10 @@ public class Portal : MonoBehaviour
             if (!isBaseTeleporter && ArrowManager.instance.targetObject == gameObject)
                 ArrowManager.instance.RemoveArrow();
         }
+    }
+
+    private void OnDisable()
+    {
+        AkSoundEngine.StopPlayingID(teleporterSoundID);
     }
 }

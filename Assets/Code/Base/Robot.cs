@@ -268,6 +268,11 @@ public class Robot : MonoBehaviour
         PromptManager.onButtonNull = RefuseTour;
     }
 
+    public void PlaySound()
+    {
+        AudioManager.instance.PlaySound(AudioManager.instance.robotEnv, gameObject);
+    }
+
     void IsInTour()
     {
         isInTour = true;

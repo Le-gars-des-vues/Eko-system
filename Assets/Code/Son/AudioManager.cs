@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
     [Header("Base Sounds")]
     public AK.Wwise.Event porteOuverture;
     public AK.Wwise.Event porteFermeture;
+    public AK.Wwise.Event robotEnv;
+    public AK.Wwise.Event teleporteurEnv;
 
     [Header("UI Sounds")]
     //Inventaire
