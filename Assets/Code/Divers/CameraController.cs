@@ -19,9 +19,17 @@ public class CameraController : MonoBehaviour
     private float currentAlpha = 0;
     [SerializeField] float fadeSpeed;
 
-
-    private void Start()
+    private void Awake()
     {
+        SceneLoader.allScenesLoaded += StartScript;
+    }
+
+    private void StartScript()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        vCam.Follow = player;
+        StartCoroutine(player.gameObject.GetComponent<PlayerPermanent>().MoveCamera("NormalZoom"));
+        vCam.transform.position = new Vector3(player.position.x, player.position.y, vCam.transform.position.z);
         vCam.m_Lens.OrthographicSize = 8.2f;
     }
 

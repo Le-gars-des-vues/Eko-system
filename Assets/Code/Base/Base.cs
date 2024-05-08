@@ -60,9 +60,6 @@ public class Base : MonoBehaviour
             //background.SetActive(false);
             Teleport(false, true, baseSpawnPoint.position);
         }
-        Camera.main.GetComponent<CameraController>().vCam.Follow = player.transform;
-        StartCoroutine(player.GetComponent<PlayerPermanent>().MoveCamera("NormalZoom"));
-        Camera.main.GetComponent<CameraController>().vCam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, Camera.main.GetComponent<CameraController>().vCam.transform.position.z);
         buildButton.SetActive(true);
     }
 

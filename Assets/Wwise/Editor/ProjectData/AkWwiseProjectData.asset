@@ -795,7 +795,7 @@ MonoBehaviour:
     ParentPath: Events\ENV
     guid: b8ec801d24536a49ab54532363aba296
     GuidInternal: 
-    m_lastTime: -8584864363389657631
+    m_lastTime: -8584864292148025797
     List:
     - name: ENV_Base
       guid: 9daf2ccac04a844ea6238dc8a15d157e
@@ -1234,6 +1234,23 @@ MonoBehaviour:
       maxDuration: 1.4692596
       minDuration: 1.1661521
     - name: ENV_Teleporte
+      guid: c268afd8d523f145932f9c5bac0b328a
+      id: 3801493381
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: ENV
+        ObjectType: 12
+        guid: b8ec801d24536a49ab54532363aba296
+      - ElementName: ENV_Teleporte
+        ObjectType: 4
+        guid: c268afd8d523f145932f9c5bac0b328a
+      Path: Events\ENV\ENV_Teleporte
+      maxAttenuation: 100
+      maxDuration: 1.0111458
+      minDuration: 1.0111458
+    - name: ENV_Teleporte
       guid: 27f9635ebca58c4ab749f49cbba4ed1e
       id: 3801493381
       PathAndIcons:
@@ -1244,12 +1261,35 @@ MonoBehaviour:
         ObjectType: 12
         guid: b8ec801d24536a49ab54532363aba296
       - ElementName: ENV_Teleporte
+        ObjectType: 4
+        guid: c268afd8d523f145932f9c5bac0b328a
+      - ElementName: ENV_Teleporte
         ObjectType: 3
         guid: 27f9635ebca58c4ab749f49cbba4ed1e
-      Path: Events\ENV\ENV_Teleporte
+      Path: Events\ENV\ENV_Teleporte\ENV_Teleporte
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: ENV_Teleporte_Arrivee
+      guid: 7a724d39bf998f4e91ba978091d66a48
+      id: 3938511794
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: ENV
+        ObjectType: 12
+        guid: b8ec801d24536a49ab54532363aba296
+      - ElementName: ENV_Teleporte
+        ObjectType: 4
+        guid: c268afd8d523f145932f9c5bac0b328a
+      - ElementName: ENV_Teleporte_Arrivee
+        ObjectType: 3
+        guid: 7a724d39bf998f4e91ba978091d66a48
+      Path: Events\ENV\ENV_Teleporte\ENV_Teleporte_Arrivee
       maxAttenuation: 100
-      maxDuration: 1.0111458
-      minDuration: 1.0111458
+      maxDuration: 0.5632651
+      minDuration: 0.5632651
     - name: ENV_Tonnerre
       guid: bdaaae0f260af648b16490d5f0a74998
       id: 3403933012
@@ -1631,8 +1671,8 @@ MonoBehaviour:
         guid: 712b9d70f03d56418a831f56f6b06bdd
       Path: Events\LIF\LIF_Mobile\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Degat
       maxAttenuation: 100
-      maxDuration: 1.4264388
-      minDuration: 1.1321652
+      maxDuration: 1.0625082
+      minDuration: 0.27269337
     - name: LIF_PlanteCarnivore_Mort
       guid: 54e2b816f11c6b42a0c73bb64242260f
       id: 259530661
@@ -1654,8 +1694,8 @@ MonoBehaviour:
         guid: 54e2b816f11c6b42a0c73bb64242260f
       Path: Events\LIF\LIF_Mobile\LIF_PlanteCarnivore\LIF_PlanteCarnivore_Mort
       maxAttenuation: 100
-      maxDuration: 1.2679379
-      minDuration: 1.0063629
+      maxDuration: 0
+      minDuration: 0
     - name: LIF_PlanteCarnivore_Passif
       guid: 00cd03c87c1d2c47a14d476d4ec63a5f
       id: 64562537
@@ -2510,7 +2550,7 @@ MonoBehaviour:
     ParentPath: Events\PLY
     guid: 660195bf917e784f83108aaf9eba5a57
     GuidInternal: 
-    m_lastTime: -8584864363389647366
+    m_lastTime: -8584864292148015783
     List:
     - name: PLY_Attaque
       guid: f3fb3285d620b247b63577a64456ef5c
@@ -2550,6 +2590,26 @@ MonoBehaviour:
       maxDuration: 0
       minDuration: 0
     - name: PLY_Attaque_FlashGrenade
+      guid: 0d7090f8a071664294b90e5454a05313
+      id: 3590418373
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Attaque
+        ObjectType: 4
+        guid: f3fb3285d620b247b63577a64456ef5c
+      - ElementName: PLY_Attaque_FlashGrenade
+        ObjectType: 4
+        guid: 0d7090f8a071664294b90e5454a05313
+      Path: Events\PLY\PLY_Attaque\PLY_Attaque_FlashGrenade
+      maxAttenuation: 0
+      maxDuration: 1.2260135
+      minDuration: 0.50044507
+    - name: PLY_Attaque_FlashGrenade
       guid: 603a4f2c48ffdb48ab9cdededba9247a
       id: 3590418373
       PathAndIcons:
@@ -2563,12 +2623,61 @@ MonoBehaviour:
         ObjectType: 4
         guid: f3fb3285d620b247b63577a64456ef5c
       - ElementName: PLY_Attaque_FlashGrenade
+        ObjectType: 4
+        guid: 0d7090f8a071664294b90e5454a05313
+      - ElementName: PLY_Attaque_FlashGrenade
         ObjectType: 3
         guid: 603a4f2c48ffdb48ab9cdededba9247a
-      Path: Events\PLY\PLY_Attaque\PLY_Attaque_FlashGrenade
+      Path: Events\PLY\PLY_Attaque\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade
       maxAttenuation: 0
-      maxDuration: 1.2260135
-      minDuration: 0.50044507
+      maxDuration: -1
+      minDuration: -1
+    - name: PLY_Attaque_FlashGrenade_Explode
+      guid: 83608cb88f3bfe4fa519c58ee23fe404
+      id: 3332918935
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Attaque
+        ObjectType: 4
+        guid: f3fb3285d620b247b63577a64456ef5c
+      - ElementName: PLY_Attaque_FlashGrenade
+        ObjectType: 4
+        guid: 0d7090f8a071664294b90e5454a05313
+      - ElementName: PLY_Attaque_FlashGrenade_Explode
+        ObjectType: 3
+        guid: 83608cb88f3bfe4fa519c58ee23fe404
+      Path: Events\PLY\PLY_Attaque\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade_Explode
+      maxAttenuation: 0
+      maxDuration: 1.0044405
+      minDuration: 0.7588464
+    - name: PLY_Attaque_FlashGrenade_Land
+      guid: c8224d1d8a640f4fb53ec730bd8bce0c
+      id: 335294311
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Attaque
+        ObjectType: 4
+        guid: f3fb3285d620b247b63577a64456ef5c
+      - ElementName: PLY_Attaque_FlashGrenade
+        ObjectType: 4
+        guid: 0d7090f8a071664294b90e5454a05313
+      - ElementName: PLY_Attaque_FlashGrenade_Land
+        ObjectType: 3
+        guid: c8224d1d8a640f4fb53ec730bd8bce0c
+      Path: Events\PLY\PLY_Attaque\PLY_Attaque_FlashGrenade\PLY_Attaque_FlashGrenade_Land
+      maxAttenuation: 0
+      maxDuration: 0.27830547
+      minDuration: 0.12541147
     - name: PLY_Attaque_Harpon
       guid: 93ba6338f96cc34db894ad069f568bd1
       id: 3844143789
@@ -2753,23 +2862,6 @@ MonoBehaviour:
       maxDuration: 1.0625082
       minDuration: 0.27269337
     - name: PLY_Degat_Poison
-      guid: 4e12b09f9684ec4ca43aa59c1490218d
-      id: 3033921371
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: PLY
-        ObjectType: 12
-        guid: 660195bf917e784f83108aaf9eba5a57
-      - ElementName: PLY_Degat_Poison
-        ObjectType: 4
-        guid: 4e12b09f9684ec4ca43aa59c1490218d
-      Path: Events\PLY\PLY_Degat_Poison
-      maxAttenuation: 0
-      maxDuration: 2.055337
-      minDuration: 0.26397648
-    - name: PLY_Degat_Poison
       guid: 8281eb3858567b4a97b9a4a06b82a613
       id: 3033921371
       PathAndIcons:
@@ -2786,6 +2878,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 8281eb3858567b4a97b9a4a06b82a613
       Path: Events\PLY\PLY_Degat_Poison\PLY_Degat_Poison
+      maxAttenuation: 0
+      maxDuration: 2.055337
+      minDuration: 0.26397648
+    - name: PLY_Degat_Poison
+      guid: 4e12b09f9684ec4ca43aa59c1490218d
+      id: 3033921371
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Degat_Poison
+        ObjectType: 4
+        guid: 4e12b09f9684ec4ca43aa59c1490218d
+      Path: Events\PLY\PLY_Degat_Poison
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -3169,6 +3278,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: PLY_Multitool_Charge_Accel
+      guid: 7a218380eb96774b9ddd37c0e74f15f5
+      id: 2240320236
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: PLY
+        ObjectType: 12
+        guid: 660195bf917e784f83108aaf9eba5a57
+      - ElementName: PLY_Multitool
+        ObjectType: 4
+        guid: 1f996b0886d3344f94868b07303e0fe2
+      - ElementName: PLY_Multitool_Charge_Accel
+        ObjectType: 3
+        guid: 7a218380eb96774b9ddd37c0e74f15f5
+      Path: Events\PLY\PLY_Multitool\PLY_Multitool_Charge_Accel
+      maxAttenuation: 0
+      maxDuration: 3.3297963
+      minDuration: 3.3297963
     - name: PLY_Multitool_Corallium
       guid: 2fe41b88fcb5ec49801d9086a0626e44
       id: 427638723
@@ -3646,8 +3775,8 @@ MonoBehaviour:
         guid: 5a1e61e0f712e74994a85267570e42f4
       Path: Events\PLY\PLY_Outil\PLY_Outil_Jetpack
       maxAttenuation: 0
-      maxDuration: 17.39816
-      minDuration: 13.808929
+      maxDuration: -1
+      minDuration: -1
     - name: PLY_Outil_Masque
       guid: b9769c40fca24848a27130aa7c7bb25f
       id: 4068075439
@@ -3989,7 +4118,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: b6e3f30f45b0394684194edd0a23d091
     GuidInternal: 
-    m_lastTime: -8584864363389637370
+    m_lastTime: -8584864292148015783
     List:
     - name: UI_Amelioration
       guid: 9dda6e5766be2f4b928a70d3864e2984
@@ -4089,6 +4218,32 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: UI_Atelier_Construire
+      guid: afe757e6692944418d098ce1de6427d7
+      id: 1161454221
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: b6e3f30f45b0394684194edd0a23d091
+      - ElementName: UI_Menus
+        ObjectType: 4
+        guid: cb048bdbbcc6eb498a2e54820097e1fb
+      - ElementName: UI_Base
+        ObjectType: 4
+        guid: 4feb2c253ace0f47ae504d48fde0e789
+      - ElementName: UI_Atelier
+        ObjectType: 4
+        guid: a40e6822ac003f4c9399d429cf8ac677
+      - ElementName: UI_Atelier_Construire
+        ObjectType: 3
+        guid: afe757e6692944418d098ce1de6427d7
+      Path: Events\UI\UI_Menus\UI_Base\UI_Atelier\UI_Atelier_Construire
+      maxAttenuation: 0
+      maxDuration: 4.1503844
+      minDuration: 4.1503844
     - name: UI_Atelier_Fermer
       guid: 8695747baf86f9459a1dde3d94c3a71c
       id: 3316347964
@@ -4613,8 +4768,8 @@ MonoBehaviour:
         guid: 7139d406b99b744f90d0d2dc411524c8
       Path: Events\UI\UI_Menus\UI_Base\UI_Batiment\UI_Construire\UI_Construire_Ameliorations
       maxAttenuation: 0
-      maxDuration: 2.25
-      minDuration: 2.25
+      maxDuration: 2.1428542
+      minDuration: 2.1428542
     - name: UI_Construire_Arme
       guid: 36156f16b3b5634a9032839291be10ef
       id: 2233307546
@@ -4642,8 +4797,8 @@ MonoBehaviour:
         guid: 36156f16b3b5634a9032839291be10ef
       Path: Events\UI\UI_Menus\UI_Base\UI_Batiment\UI_Construire\UI_Construire_Arme
       maxAttenuation: 0
-      maxDuration: 1.3839375
-      minDuration: 1.3839375
+      maxDuration: 2.1428542
+      minDuration: 2.1428542
     - name: UI_Construire_Batiment
       guid: 12633be891d1f84ca704cd6bb45a7632
       id: 2074960899
@@ -4671,8 +4826,8 @@ MonoBehaviour:
         guid: 12633be891d1f84ca704cd6bb45a7632
       Path: Events\UI\UI_Menus\UI_Base\UI_Batiment\UI_Construire\UI_Construire_Batiment
       maxAttenuation: 0
-      maxDuration: 2.1428542
-      minDuration: 2.1428542
+      maxDuration: 2.25
+      minDuration: 2.25
     - name: UI_Construire_Equipement
       guid: ebfdd8343e80294e9d5fefc69c35ac86
       id: 1436603864
@@ -4700,8 +4855,8 @@ MonoBehaviour:
         guid: ebfdd8343e80294e9d5fefc69c35ac86
       Path: Events\UI\UI_Menus\UI_Base\UI_Batiment\UI_Construire\UI_Construire_Equipement
       maxAttenuation: 0
-      maxDuration: 2.0662594
-      minDuration: 2.0662594
+      maxDuration: 1.3839375
+      minDuration: 1.3839375
     - name: UI_Construire_Materiau
       guid: b35313ce13efc34b9fefec9bcbd962a6
       id: 2286571659
@@ -4729,8 +4884,25 @@ MonoBehaviour:
         guid: b35313ce13efc34b9fefec9bcbd962a6
       Path: Events\UI\UI_Menus\UI_Base\UI_Batiment\UI_Construire\UI_Construire_Materiau
       maxAttenuation: 0
-      maxDuration: 2.1428542
-      minDuration: 2.1428542
+      maxDuration: 2.5714376
+      minDuration: 2.5714376
+    - name: UI_Cubicule_Fermer
+      guid: 5a32c82346d46340a1df6ffe48e99d1f
+      id: 1684702042
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: b6e3f30f45b0394684194edd0a23d091
+      - ElementName: UI_Cubicule_Fermer
+        ObjectType: 3
+        guid: 5a32c82346d46340a1df6ffe48e99d1f
+      Path: Events\UI\UI_Cubicule_Fermer
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: UI_Cubicule_Ouvrir
       guid: c5c9dfda47c7b04f91fc9d2792beed3c
       id: 3866583062
@@ -5413,6 +5585,23 @@ MonoBehaviour:
       maxDuration: -1
       minDuration: -1
     - name: UI_Texte
+      guid: b8b75b44a90f354e8d5ecbde2bc3f742
+      id: 3496921912
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: b6e3f30f45b0394684194edd0a23d091
+      - ElementName: UI_Texte
+        ObjectType: 4
+        guid: b8b75b44a90f354e8d5ecbde2bc3f742
+      Path: Events\UI\UI_Texte
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI_Texte
       guid: acb086f841220d4cbdf6a9ae1f15ad0e
       id: 3496921912
       PathAndIcons:
@@ -5429,23 +5618,6 @@ MonoBehaviour:
         ObjectType: 3
         guid: acb086f841220d4cbdf6a9ae1f15ad0e
       Path: Events\UI\UI_Texte\UI_Texte
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: UI_Texte
-      guid: b8b75b44a90f354e8d5ecbde2bc3f742
-      id: 3496921912
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: UI
-        ObjectType: 12
-        guid: b6e3f30f45b0394684194edd0a23d091
-      - ElementName: UI_Texte
-        ObjectType: 4
-        guid: b8b75b44a90f354e8d5ecbde2bc3f742
-      Path: Events\UI\UI_Texte
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
