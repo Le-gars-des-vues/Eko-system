@@ -5312,7 +5312,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>12</Value>
+										<Value>3</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -5351,6 +5351,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="PlanteCarnivoreDegat_PH" ID="{1EDD1876-E540-4C7B-9D76-F959856B9746}" ShortID="244483696">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -5372,6 +5379,276 @@
 												<ActiveSource Name="PlanteCarnivoreDegat_PH" ID="{5E550EB4-3365-42D2-88E3-B4F82A4D86F7}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="LIF_Moustique_Degat_G" ID="{F0185046-F703-45AC-98C2-CA4F332C61E5}" ShortID="773970745">
+											<PropertyList>
+												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-660</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B2616FF6-5789-4DDF-8696-5FF22976ADB5}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D4522146-99F9-456C-A8DF-5A20B12005CF}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-20</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="166526-Bullet-Hit-Body-Flesh_09" ID="{583FCB60-BCB9-46D0-8574-3E0685F9E132}" ShortID="214252579">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{C6634397-F3BB-4B56-89B5-171CF40009EF}">
+															<Language>SFX</Language>
+															<AudioFile>166526-Bullet-Hit-Body-Flesh_09.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="665190911"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166526-Bullet-Hit-Body-Flesh_09" ID="{C6634397-F3BB-4B56-89B5-171CF40009EF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166542-Bullet-Hit-Body-Flesh_06" ID="{719AC2F7-986A-416F-AE7D-919A6B2F7CBC}" ShortID="104276323">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{12B63E38-27B9-4A34-A4AB-E4A22F0DD490}">
+															<Language>SFX</Language>
+															<AudioFile>166542-Bullet-Hit-Body-Flesh_06.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="891285907"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166542-Bullet-Hit-Body-Flesh_06" ID="{12B63E38-27B9-4A34-A4AB-E4A22F0DD490}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166547-Bullet-Hit-Body-Flesh_07" ID="{5AC4420B-DE2C-407C-8EE1-8E70C314FAEF}" ShortID="664448320">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{05324A3D-3050-4320-A1B4-10936FB3AB85}">
+															<Language>SFX</Language>
+															<AudioFile>166547-Bullet-Hit-Body-Flesh_07.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="176342500"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166547-Bullet-Hit-Body-Flesh_07" ID="{05324A3D-3050-4320-A1B4-10936FB3AB85}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166553-Bullet-Hit-Body-Flesh_05" ID="{2FBD8981-9093-4835-AEEA-49FDD8C07EF2}" ShortID="746489583">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{E15B4846-E851-4D0B-B2B3-A9960A70E794}">
+															<Language>SFX</Language>
+															<AudioFile>166553-Bullet-Hit-Body-Flesh_05.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="758217916"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166553-Bullet-Hit-Body-Flesh_05" ID="{E15B4846-E851-4D0B-B2B3-A9960A70E794}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166559-Bullet-Hit-Body-Flesh_14" ID="{A0B8A657-FDB2-4718-96F0-BFE869FFF304}" ShortID="939798368">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{D8959E08-1936-4E3B-B1DA-E637516C361C}">
+															<Language>SFX</Language>
+															<AudioFile>166559-Bullet-Hit-Body-Flesh_14.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="502963919"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166559-Bullet-Hit-Body-Flesh_14" ID="{D8959E08-1936-4E3B-B1DA-E637516C361C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166573-Bullet-Hit-Body-Flesh_16" ID="{FA9AF50D-0453-4E1F-97AF-0D600F0B824E}" ShortID="468098845">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{F075DCF0-865C-4F3B-A836-573C413A6B16}">
+															<Language>SFX</Language>
+															<AudioFile>166573-Bullet-Hit-Body-Flesh_16.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="559970004"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166573-Bullet-Hit-Body-Flesh_16" ID="{F075DCF0-865C-4F3B-A836-573C413A6B16}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166582-Bullet-Hit-Body-Flesh_11" ID="{FC572637-7F2F-4720-A38D-32C5872659C2}" ShortID="334307255">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{4874DD9E-27A9-40F3-941C-03996CC3455E}">
+															<Language>SFX</Language>
+															<AudioFile>166582-Bullet-Hit-Body-Flesh_11.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="588728228"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166582-Bullet-Hit-Body-Flesh_11" ID="{4874DD9E-27A9-40F3-941C-03996CC3455E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166588-Bullet-Hit-Body-Flesh_10" ID="{3C14AF85-137B-4C6D-B41E-D21013BE562C}" ShortID="956708616">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{19CC7C67-8C79-4772-A96E-58E6346AC1A1}">
+															<Language>SFX</Language>
+															<AudioFile>166588-Bullet-Hit-Body-Flesh_10.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="352848444"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166588-Bullet-Hit-Body-Flesh_10" ID="{19CC7C67-8C79-4772-A96E-58E6346AC1A1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166597-Bullet-Hit-Body-Flesh_02" ID="{777FF7F7-365C-4DC2-977C-6003D9EA5F83}" ShortID="984170763">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{B51FE808-B902-4148-A9D3-2EA879E50CE6}">
+															<Language>SFX</Language>
+															<AudioFile>166597-Bullet-Hit-Body-Flesh_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="474658866"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166597-Bullet-Hit-Body-Flesh_02" ID="{B51FE808-B902-4148-A9D3-2EA879E50CE6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="166607-Bullet-Hit-Body-Flesh_01" ID="{5ADCFC2B-0EF2-4300-90D2-45A6A9CA4781}" ShortID="259237050">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{E4F6F159-1F00-4C94-BC2E-354B457DFD01}">
+															<Language>SFX</Language>
+															<AudioFile>166607-Bullet-Hit-Body-Flesh_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="586588224"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="166607-Bullet-Hit-Body-Flesh_01" ID="{E4F6F159-1F00-4C94-BC2E-354B457DFD01}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</BlendContainer>
 								<BlendContainer Name="LIF_PlanteCarnivore_Passif" ID="{4CB1A627-70FF-45BE-B93D-57BCD7BDAAA0}" ShortID="60256943">
@@ -5391,7 +5668,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-9</Value>
+												<Value>-12</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -6053,6 +6330,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="PlanteCarnivoreMort_PH" ID="{5981CCDA-917E-4D97-B6A5-85B827FC9D6A}" ShortID="203629990">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -6102,6 +6386,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="PlanteCarnivoreAlerte_PH" ID="{721B3349-7204-422D-A3BB-1FCBA272B3DD}" ShortID="284954965">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -6142,7 +6433,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-15</Value>
+												<Value>9</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
