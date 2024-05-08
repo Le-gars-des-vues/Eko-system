@@ -20,8 +20,13 @@ public class WaterPlayerController : MonoBehaviour
     private bool dashing = false;
     public bool isSwimming;
 
+    private void Awake()
+    {
+        SceneLoader.allScenesLoaded += StartScript;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    void StartScript()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<PlayerPermanent>();
@@ -95,7 +100,6 @@ public class WaterPlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Water")
         {
-            Debug.Log("Exited Water");
             if (player.colliderShapeIsChanged)
             {
                 player.ChangeColliderShape(false);

@@ -8,9 +8,6 @@ public class AudioManager : MonoBehaviour
     public List<GameObject> soundtracks = new List<GameObject>();
 
     [Header("Ambient Noises")]
-    public AK.Wwise.RTPC forestRTPC;
-    public AK.Wwise.RTPC stormRTPC;
-    public AK.Wwise.RTPC deepnessRTPC;
     public AK.Wwise.Event forestSountrack;
     public AK.Wwise.Event baseSoundtrack;
     public AK.Wwise.Event underwaterSoundtrack;
@@ -180,10 +177,25 @@ public class AudioManager : MonoBehaviour
         AkSoundEngine.StopPlayingID(playingID);
     }
 
-    public void PlaySoundtrack(AK.Wwise.Event myEvent)
+
+    public void PlayForest()
     {
-        AkSoundEngine.StopPlayingID(playingID);
-        playingID = myEvent.Post(gameObject);
+        forestSountrack.Post(soundtracks[0]);
+    }
+
+    public void PlayUnderwater()
+    {
+        underwaterSoundtrack.Post(soundtracks[1]);
+    }
+
+    public void PlayBase()
+    {
+        baseSoundtrack.Post(soundtracks[2]);
+    }
+
+    public void PlayStorm()
+    {
+        stormSoundtrack.Post(soundtracks[3]);
     }
 
     public uint PlaySound(AK.Wwise.Event myEvent, GameObject obj)

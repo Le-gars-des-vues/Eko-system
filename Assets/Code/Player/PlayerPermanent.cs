@@ -310,7 +310,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
                 if (!AudioManager.instance.baseIsPlaying)
                 {
                     AudioManager.instance.forestIsPlaying = false;
-                    AudioManager.instance.PlaySound(AudioManager.instance.baseSoundtrack, Base.instance.gameObject);
+                    AudioManager.instance.PlayBase();
                     AudioManager.instance.baseIsPlaying = true;
                 }
             }
@@ -320,7 +320,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (!AudioManager.instance.forestIsPlaying)
             {
                 AudioManager.instance.baseIsPlaying = false;
-                AudioManager.instance.PlaySound(AudioManager.instance.forestSountrack, AudioManager.instance.gameObject);
+                AudioManager.instance.PlayForest();
                 AudioManager.instance.forestIsPlaying = true;
             }
             if (isInBase)
@@ -343,7 +343,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (!AudioManager.instance.underwaterIsPlaying)
             {
                 AudioManager.instance.underwaterIsPlaying = true;
-                AudioManager.instance.PlaySoundtrack(AudioManager.instance.underwaterSoundtrack);
+                AudioManager.instance.PlayUnderwater();
             }
         }
         else
@@ -351,7 +351,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (AudioManager.instance.underwaterIsPlaying)
             {
                 AudioManager.instance.underwaterIsPlaying = false;
-                AudioManager.instance.PlaySoundtrack(AudioManager.instance.forestSountrack);
+                AudioManager.instance.PlayForest();
                 AudioManager.instance.forestIsPlaying = true;
             }
         }

@@ -285,7 +285,7 @@ public class GameManager : MonoBehaviour
             rainGround.Play();
             rainBack.Play();
             Debug.Log("Started Storm");
-            AudioManager.instance.PlaySoundtrack(AudioManager.instance.stormSoundtrack);
+            AudioManager.instance.PlayStorm();
         }
         else
         {
