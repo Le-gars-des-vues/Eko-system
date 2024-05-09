@@ -26,7 +26,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public float maxHp;
     public float currentHp;
     public Slider hpSlider;
-    private bool isInvincible;
+    public bool isInvincible;
     private Color invisible;
     [SerializeField] private Material ogMaterials;
     [SerializeField] private Material flashMaterial;
@@ -95,6 +95,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
     public Coroutine poison;
     public bool isPoisoned;
+    public float poisonTimer;
 
     bool isMaxShield;
     bool isMaxHealth;
@@ -1378,6 +1379,14 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         }
     }
 
+    public void StopPoison()
+    {
+        StopCoroutine(poison);
+        poison = null;
+        hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", false);
+        AudioManager.instance.PlaySound(AudioManager.instance.poisonStop, gameObject);
+    }
+
     public IEnumerator Poison(float duration, float tickDamage, float tickInterval)
     {
         if ((hasShield1 || hasShield2) && currentShield > 0)
@@ -1388,16 +1397,15 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             AudioManager.instance.PlaySound(AudioManager.instance.poison, gameObject);
             hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", true);
-            float timer = 0;
-            while (timer < duration)
+            poisonTimer = 0;
+            while (poisonTimer < duration)
             {
-                timer += tickInterval;
+                poisonTimer += tickInterval;
                 ChangeHp(-tickDamage, false);
                 yield return new WaitForSeconds(tickInterval);
             }
-            hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", false);
-            poison = null;
-            AudioManager.instance.PlaySound(AudioManager.instance.poisonStop, gameObject);
+            StopPoison();
+            yield return null;
         }
     }
 

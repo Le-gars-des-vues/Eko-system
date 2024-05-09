@@ -19,6 +19,7 @@ public class FishBT : BTree
     {
         BehaviorNode root = new Selector(new List<BehaviorNode>
         {
+            new CheckActivationDistance(state, state.activationRange),
             new TransferInfos(gameObject, target), 
             new Sequence(new List<BehaviorNode>
             {

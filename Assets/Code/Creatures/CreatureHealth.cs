@@ -16,7 +16,7 @@ public class CreatureHealth : MonoBehaviour
     [SerializeField] Material flashMaterial;
     [SerializeField] private List<SpriteRenderer> creatureGFX = new List<SpriteRenderer>();
     [SerializeField] bool usesLineRenderer = false;
-    [SerializeField] private List<LineRenderer> lines = new List<LineRenderer>();
+    public List<LineRenderer> lines = new List<LineRenderer>();
     private List<Material> ogMaterials = new List<Material>();
 
     // Start is called before the first frame update

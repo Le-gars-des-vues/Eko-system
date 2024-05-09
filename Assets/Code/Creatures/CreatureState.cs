@@ -54,8 +54,13 @@ public class CreatureState : MonoBehaviour
     [SerializeField] Transform target;
     public bool debug = false;
 
+    public Transform player;
+    public float activationRange = 50;
+    public bool playerInRange;
+
     private void OnEnable()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         currentFood = maxFood;
         minSenseOfSmellRadius = senseOfSmell;
         maxSenseOfSmellRadius = senseOfSmell * maxSenseOfSmellFactor;
