@@ -193,6 +193,7 @@ namespace AK
         static const AkUniqueID UI_TEXTE = 3496921912U;
         static const AkUniqueID UI_TEXTE_FIN = 3168475150U;
         static const AkUniqueID UI_UNLOCK = 734155102U;
+        static const AkUniqueID UI_VENTE_CASINO = 1866361278U;
         static const AkUniqueID UI_VENTE_FERMER = 2605645130U;
         static const AkUniqueID UI_VENTE_OUVRIR = 4177524486U;
         static const AkUniqueID UI_VENTE_VENDRE = 762427217U;
