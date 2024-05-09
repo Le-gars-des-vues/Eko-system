@@ -55,6 +55,7 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event sellingScreenOpen;
     public AK.Wwise.Event sellingScreenClose;
     public AK.Wwise.Event sellingScreenSell;
+    public AK.Wwise.Event sellingScreenCasino;
 
     //Upgrade
     public AK.Wwise.Event upgradeOuvrir;

@@ -195,10 +195,20 @@ public class PickableObject : MonoBehaviour
         GetComponent<InventoryItem>().currentDurability -= damage;
         if(GetComponent<InventoryItem>().currentDurability <= 0)
         {
+            PromptManager.instance.SendNotification(false, "WEAPON BROKE!", GetComponent<InventoryItem>().itemData.itemName + " broke!", GetComponent<InventoryItem>().itemData.itemIcon);
+            player.UnequipObject();
+            Destroy(gameObject);
             if (!Tutorial.instance.firstWeaponBreak)
             {
                 Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[3].text);
                 Tutorial.instance.firstWeaponBreak = true;
+            }
+            if (gameObject.tag == "Spear")
+            {
+                if (itemInInventory != null)
+                {
+                    itemInInventory.GetComponent<InventoryItem>().Delete();
+                }
             }
         }
         if (itemInInventory != null)

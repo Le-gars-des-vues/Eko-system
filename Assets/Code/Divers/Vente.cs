@@ -60,6 +60,7 @@ public class Vente : MonoBehaviour
                 }
             }
         }
+        AudioManager.instance.PlaySound(AudioManager.instance.sellingScreenCasino, Camera.main.gameObject);
         casinoScreen.SetTrigger("isCasino");
         casinoCoins.SetActive(true);
         yield return null;

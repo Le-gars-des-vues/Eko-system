@@ -21930,6 +21930,8 @@ GameObject:
   - component: {fileID: 3552968628677138252}
   - component: {fileID: 7419340658388093739}
   - component: {fileID: 4516659468889266037}
+  - component: {fileID: 2018935041589294222}
+  - component: {fileID: 1392191699945595680}
   - component: {fileID: 2230085884062652205}
   m_Layer: 3
   m_Name: Player
@@ -22229,6 +22231,7 @@ MonoBehaviour:
   maxHp: 20
   currentHp: 0
   hpSlider: {fileID: 0}
+  isInvincible: 0
   ogMaterials: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   flashMaterial: {fileID: 2100000, guid: a713638f9cfc91947904107ced72e1b3, type: 2}
   dissolveMaterial: {fileID: 2100000, guid: c49db02f1eb9f444e841c49228f978bd, type: 2}
@@ -22271,6 +22274,7 @@ MonoBehaviour:
   timeToHarvest: 5
   isHarvesting: 0
   isPoisoned: 0
+  poisonTimer: 0
   isHanging: 0
   isClimbing: 0
   pixelCamera: {fileID: 0}
@@ -22402,6 +22406,40 @@ MonoBehaviour:
   - {fileID: 2800000, guid: beb337938995bc041a9189f56345a73d, type: 3}
   hasBuiltMap: 0
   hasBuiltStorage: 0
+--- !u!114 &2018935041589294222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7663076894669458335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf10238a6d91e04da190da0bfc74e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respiration:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a171180d7d827634590489ad6c69293c, type: 2}
+  rtpcValue: 100
+--- !u!114 &1392191699945595680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7663076894669458335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd39ee0a77e682f4ab1030eb49f4d137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sante:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 385b822913ad35148bf9b7a453c24e6e, type: 2}
+  rtpcValue: 100
 --- !u!114 &2230085884062652205
 MonoBehaviour:
   m_ObjectHideFlags: 0

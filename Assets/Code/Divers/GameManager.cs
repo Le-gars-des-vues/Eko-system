@@ -289,7 +289,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AkSoundEngine.StopPlayingID(stormSoundID);
             rainFront.Stop();
             rainGround.Stop();
             rainBack.Stop();
@@ -347,7 +346,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Storm(false);
+            AkSoundEngine.StopPlayingID(stormSoundID);
             AudioManager.instance.soundtracks[3].GetComponent<TempeteRTPC>().rtpcValue = 120;
             this.gameObject.GetComponent<Quota>().nouveauQuota();
             cycleCount++;
