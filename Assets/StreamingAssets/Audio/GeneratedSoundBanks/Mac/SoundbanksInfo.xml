@@ -265,7 +265,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{648B46F0-6FC5-74A8-9EC7-84B0C0F257A5}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{7D04261B-77E9-CBC2-07B4-4B45C852D70A}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -492,10 +492,6 @@
 				<File Id="70823165" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FS_GrassMain_23.wav</ShortName>
 					<CachePath>SFX/FS_GrassMain_23_10C4C929.wem</CachePath>
-				</File>
-				<File Id="71027482" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Vente_Casino_v1.wav</ShortName>
-					<CachePath>SFX/Vente_Casino_v1_2E4D378B.wem</CachePath>
 				</File>
 				<File Id="72651187" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Requin_Degat_v2.wav</ShortName>
@@ -1944,6 +1940,10 @@
 				<File Id="582370662" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PLY_Saute.wav</ShortName>
 					<CachePath>SFX/PLY_Saute_A1C4ADF0.wem</CachePath>
+				</File>
+				<File Id="583732361" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Vente_Casino_v1.wav</ShortName>
+					<CachePath>SFX/Vente_Casino_v1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="583900535" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Bass G1 REC_v2.wav</ShortName>
@@ -5020,6 +5020,11 @@
 						<MediaRef Id="960434770"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1866361278" Name="UI_Vente_Casino" DurationType="OneShot" DurationMin="2.5006666" DurationMax="2.5006666">
+					<MediaRefs>
+						<MediaRef Id="583732361"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="2605645130" Name="UI_Vente_Fermer" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
 					<MediaRefs>
 						<MediaRef Id="601280793"/>
@@ -5030,9 +5035,8 @@
 						<MediaRef Id="55861736"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="762427217" Name="UI_Vente_Vendre" DurationType="OneShot" DurationMin="2.6006665" DurationMax="2.6006665">
+				<Event Id="762427217" Name="UI_Vente_Vendre" DurationType="OneShot" DurationMin="0.6014375" DurationMax="0.6014375">
 					<MediaRefs>
-						<MediaRef Id="71027482"/>
 						<MediaRef Id="275627558"/>
 					</MediaRefs>
 				</Event>
@@ -5215,5 +5219,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{2E774936-1F2E-D4B2-F0F7-BD706C15C80A}</FileHash>
+	<FileHash>{9C325237-2BAB-99D9-8E7F-2FD093C30261}</FileHash>
 </SoundBanksInfo>
