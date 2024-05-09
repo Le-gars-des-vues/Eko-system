@@ -79,6 +79,10 @@ public class FrogMovement : MonoBehaviour
     private Vector3 lastPosition; // Last recorded position of the creature
     private float timeSinceLastCheck = 0f;
 
+    [Header("Poison Variables")]
+    [SerializeField] private float damage;
+    [SerializeField] StatusEffect poison;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -690,6 +694,20 @@ public class FrogMovement : MonoBehaviour
         {
             Vector2 inertia = -rb.velocity * inertiaFactor;
             rb.AddForce(inertia);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (!collision.gameObject.GetComponent<PlayerPermanent>().isInvincible)
+            {
+                if (collision.gameObject.GetComponent<PlayerPermanent>().poison != null)
+                    collision.gameObject.GetComponent<PlayerPermanent>().StopPoison();
+                collision.gameObject.GetComponent<PlayerPermanent>().poison = StartCoroutine(collision.gameObject.GetComponent<PlayerPermanent>().Poison(poison.effectDuration, poison.effectMagnitude, poison.effectFrequency));
+            }
+            collision.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
         }
     }
 

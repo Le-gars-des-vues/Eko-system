@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
     public float initialTime;
     public bool TimerOn = false;
     [SerializeField] List<Sprite> timeLeft = new List<Sprite>();
-    bool eightMinLeft;
-    bool sixMinLeft;
-    bool fourMinLeft;
-    bool twoMinLeft;
+    public bool eightMinLeft = false;
+    public bool sixMinLeft = false;
+    public bool fourMinLeft = false;
+    public bool twoMinLeft = false;
 
     public PlayerPermanent player;
 
@@ -253,6 +253,7 @@ public class GameManager : MonoBehaviour
 
             if (isStorm)
             {
+                AudioManager.instance.soundtracks[3].GetComponent<TempeteRTPC>().rtpcValue -= Time.deltaTime;
                 stormVolume.weight = Mathf.Lerp(0, 1, timer / timeToFullStorm);
                 var emissionF = rainFront.emission;
                 var emissionG = rainGround.emission;
@@ -279,7 +280,6 @@ public class GameManager : MonoBehaviour
         isStorm = isTrue;
         if (isTrue)
         {
-            //stormSoundID = AudioManager.instance.PlaySound(AudioManager.instance.storm, Camera.main.gameObject);
             lightningTime = Time.time;
             rainFront.Play();
             rainGround.Play();
@@ -317,7 +317,6 @@ public class GameManager : MonoBehaviour
     void ResetTimer()
     {
         TimeLeft = initialTime;
-        QuickMenu.instance.anim.SetBool("isBlinking", false);
         QuickMenu.instance.frame.sprite = timeLeft[0];
         timer = 0;
         twoMinLeft = false;
@@ -348,12 +347,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Storm(false);
+            AudioManager.instance.soundtracks[3].GetComponent<TempeteRTPC>().rtpcValue = 120;
             this.gameObject.GetComponent<Quota>().nouveauQuota();
             cycleCount++;
             switch (cycleCount)
             {
                 case 2:
-                    this.gameObject.GetComponent<Quota>().quota = 50;
                     Tutorial.instance.day2 = true;
                     break;
                 case 3:

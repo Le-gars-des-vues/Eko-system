@@ -87,7 +87,7 @@ public class Recipes
         {23, new Recipes("Signal Amplifier", "Aquabulbus", 1, "Battery",1,"Wires",1)},
         {24, new Recipes("Waterproof Chip", "Petralucen", 1, "Fin", 1, "Rubiol",2)},
         {25, new Recipes("Stretching Fibers", "Tentacle", 2, "Fish Eyes",1,"Trunk",2)},
-        {26, new Recipes("Map Tag", "Signal Amplifier", 1, "Rubiol", 2, "Petralucen",2)},
+        {26, new Recipes("Beacon", "Signal Amplifier", 1, "Rubiol", 2, "Petralucen",2)},
         {27, new Recipes("Map Upgrade 2", "Waterproof Chip", 1, "Stretching Fibers", 2)},
         {28, new Recipes("Gathering Upgrade 2", "Waterproof Chip", 1, "Signal Amplifier", 1)},
         {29, new Recipes("Combat Upgrade 2", "Waterproof Chip", 1, "Reinforced Plate", 2, "Petralucen",2)},

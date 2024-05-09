@@ -363,12 +363,14 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             groundPlayerController.SetGravityScale(underWaterGravityScale);
             currentOxygen -= oxygenDepleteRate * Time.deltaTime;
             SetBar(oxygenSlider, currentOxygen);
+            GetComponent<RespirationRTPC>().rtpcValue = Mathf.Lerp(0, 100, currentOxygen / maxOxygen);
         }
         else if ((!headUnderWater || isInAirPocket) && currentOxygen < maxOxygen)
         {
             groundPlayerController.SetGravityScale(0f);
             currentOxygen += oxygenRegainRate * Time.deltaTime;
             SetBar(oxygenSlider, currentOxygen);
+            GetComponent<RespirationRTPC>().rtpcValue = Mathf.Lerp(0, 100, currentOxygen / maxOxygen);
         }
 
         currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, fadeSpeed * Time.deltaTime);
@@ -630,6 +632,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
             SetBar(hpSlider, currentHp);
         }
+        GetComponent<SanteRTPC>().rtpcValue = Mathf.Lerp(0, 100, currentHp / maxHp);
     }
 
     IEnumerator ShieldHit()

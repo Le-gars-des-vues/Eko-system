@@ -5,7 +5,7 @@ using BehaviorTree;
 
 public class CheckForTargetInRange : BehaviorNode
 {
-    private LayerMask layerMask = LayerMask.GetMask("Player", "Default", "Pixelate");
+    private LayerMask layerMask = LayerMask.GetMask("Player", "Pixelate");
 
     private Transform transform;
     private float senseOfSmell;
