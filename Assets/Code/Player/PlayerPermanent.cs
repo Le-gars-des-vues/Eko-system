@@ -26,7 +26,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     public float maxHp;
     public float currentHp;
     public Slider hpSlider;
-    private bool isInvincible;
+    public bool isInvincible;
     private Color invisible;
     [SerializeField] private Material ogMaterials;
     [SerializeField] private Material flashMaterial;
@@ -95,6 +95,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
     public Coroutine poison;
     public bool isPoisoned;
+    public float poisonTimer;
 
     bool isMaxShield;
     bool isMaxHealth;
@@ -343,7 +344,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (!AudioManager.instance.underwaterIsPlaying)
             {
                 AudioManager.instance.underwaterIsPlaying = true;
-                AudioManager.instance.PlayUnderwater();
+                AudioManager.instance.underwaterID = AudioManager.instance.PlayUnderwater();
             }
         }
         else
@@ -351,6 +352,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (AudioManager.instance.underwaterIsPlaying)
             {
                 AudioManager.instance.underwaterIsPlaying = false;
+                AkSoundEngine.StopPlayingID(AudioManager.instance.underwaterID);
                 AudioManager.instance.PlayForest();
                 AudioManager.instance.forestIsPlaying = true;
             }
@@ -361,12 +363,14 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             groundPlayerController.SetGravityScale(underWaterGravityScale);
             currentOxygen -= oxygenDepleteRate * Time.deltaTime;
             SetBar(oxygenSlider, currentOxygen);
+            GetComponent<RespirationRTPC>().rtpcValue = Mathf.Lerp(0, 100, currentOxygen / maxOxygen);
         }
         else if ((!headUnderWater || isInAirPocket) && currentOxygen < maxOxygen)
         {
             groundPlayerController.SetGravityScale(0f);
             currentOxygen += oxygenRegainRate * Time.deltaTime;
             SetBar(oxygenSlider, currentOxygen);
+            GetComponent<RespirationRTPC>().rtpcValue = Mathf.Lerp(0, 100, currentOxygen / maxOxygen);
         }
 
         currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, fadeSpeed * Time.deltaTime);
@@ -628,6 +632,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
 
             SetBar(hpSlider, currentHp);
         }
+        GetComponent<SanteRTPC>().rtpcValue = Mathf.Lerp(0, 100, currentHp / maxHp);
     }
 
     IEnumerator ShieldHit()
@@ -1377,6 +1382,14 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         }
     }
 
+    public void StopPoison()
+    {
+        StopCoroutine(poison);
+        poison = null;
+        hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", false);
+        AudioManager.instance.PlaySound(AudioManager.instance.poisonStop, gameObject);
+    }
+
     public IEnumerator Poison(float duration, float tickDamage, float tickInterval)
     {
         if ((hasShield1 || hasShield2) && currentShield > 0)
@@ -1387,16 +1400,15 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         {
             AudioManager.instance.PlaySound(AudioManager.instance.poison, gameObject);
             hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", true);
-            float timer = 0;
-            while (timer < duration)
+            poisonTimer = 0;
+            while (poisonTimer < duration)
             {
-                timer += tickInterval;
+                poisonTimer += tickInterval;
                 ChangeHp(-tickDamage, false);
                 yield return new WaitForSeconds(tickInterval);
             }
-            hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", false);
-            poison = null;
-            AudioManager.instance.PlaySound(AudioManager.instance.poisonStop, gameObject);
+            StopPoison();
+            yield return null;
         }
     }
 

@@ -19,11 +19,12 @@ public class JellyfishMovement : MonoBehaviour
     [Header("Checks")]
     public bool isStopped;
     public bool isFacingRight = true;
-    public bool isFacingUp = true;
+    public bool isFacingDown = true;
     public int facingDirection = 1;
     bool targetIsRight;
     bool targetIsUp;
     float dist = 0;
+    bool tentaclesActive = true;
 
     [Header("Sight Variables")]
     public Transform head;
@@ -76,7 +77,6 @@ public class JellyfishMovement : MonoBehaviour
         else if (dist < slowDownThreshold)
             moveSpeed = Mathf.Lerp(maxMoveSpeed, minMoveSpeed, (slowDownThreshold - dist / slowDownThreshold));
         
-        /*
         if (dist > 0.5f)
         {
             if (state.isPathfinding && pathfinding.path != null)
@@ -94,15 +94,14 @@ public class JellyfishMovement : MonoBehaviour
         }
         else
         {
-            float angle = isFacingUp ? 0 : 180;
+            float angle = isFacingDown ? 90 : 270;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotateSpeed * Time.deltaTime);
         }
 
-        if (Mathf.Abs(transform.rotation.eulerAngles.z) >= 95 && isFacingUp)
+        if (Mathf.Abs(transform.rotation.eulerAngles.z) >= 95 && isFacingDown)
             Turn();
-        else if (Mathf.Abs(transform.rotation.eulerAngles.z) < 85 && !isFacingUp)
+        else if (Mathf.Abs(transform.rotation.eulerAngles.z) < 85 && !isFacingDown)
             Turn();
-        */
 
 
         if (state.isPathfinding)
@@ -123,6 +122,23 @@ public class JellyfishMovement : MonoBehaviour
                     pathfinding.StopPathFinding();
                 }
                 lastPosition = transform.position;
+            }
+        }
+
+        if (!state.playerInRange && tentaclesActive)
+        {
+            tentaclesActive = false;
+            foreach(LineRenderer line in GetComponent<CreatureHealth>().lines)
+            {
+                line.enabled = false;
+            }
+        }
+        else if (state.playerInRange && !tentaclesActive)
+        {
+            tentaclesActive = true;
+            foreach (LineRenderer line in GetComponent<CreatureHealth>().lines)
+            {
+                line.enabled = true;
             }
         }
     }
@@ -167,12 +183,11 @@ public class JellyfishMovement : MonoBehaviour
 
     void Turn()
     {
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        Vector3 scale = head.localScale;
+        scale.y *= -1;
+        head.localScale = scale;
 
-        isFacingUp = !isFacingUp;
-
+        isFacingDown = !isFacingDown;
         isFacingRight = !isFacingRight;
     }
 
@@ -186,6 +201,8 @@ public class JellyfishMovement : MonoBehaviour
             force.x += minMoveSpeed;
 
         rb.AddForce(force);
+        //if (!isFacingRight)
+            //Turn();
     }
 
     void GoLeft(float speedFactor)
@@ -198,6 +215,8 @@ public class JellyfishMovement : MonoBehaviour
             force.x -= minMoveSpeed;
 
         rb.AddForce(force);
+        //if (isFacingRight)
+            //Turn();
     }
 
     void GoUp(float speedFactor)

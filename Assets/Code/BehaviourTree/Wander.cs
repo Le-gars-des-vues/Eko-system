@@ -33,9 +33,17 @@ public class Wander : BehaviorNode
 
     public override NodeState Evaluate()
     {
+        /*
+        if (Vector2.Distance(creature.position, creature.gameObject.GetComponent<CreatureState>().player.transform.position) > creature.gameObject.GetComponent<CreatureState>().activationRange)
+        {
+            state = NodeState.FAILURE;
+            return state;
+        }
+        */
+
         if (isWaiting)
         {
-            waitTimer += Time.deltaTime;
+            waitTimer += Time.deltaTime * 12;
             if (waitTimer >= waitTime)
             {
                 isWaiting = false;

@@ -2208,11 +2208,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -312
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3575059847530074777, guid: ac26ca54116770549b2479802b7a1912, type: 3}
+    - {fileID: 6242157117422438356, guid: ac26ca54116770549b2479802b7a1912, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac26ca54116770549b2479802b7a1912, type: 3}
+--- !u!1 &1296322269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3973328789026245091, guid: ac26ca54116770549b2479802b7a1912, type: 3}
+  m_PrefabInstance: {fileID: 1296322268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1418335037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,7 +2576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0050049, y: -0.0025024}
+  m_AnchoredPosition: {x: 0.0050049, y: 88}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1608645082
@@ -3015,6 +3022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4948c9d84c3d8a74aab65c3c25883d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 1296322269}
   colorHex: {r: 0, g: 0, b: 0, a: 0}
   speechBubbleText: {fileID: 583633192}
   introText:
@@ -3081,14 +3089,6 @@ MonoBehaviour:
       dialogueMode: 0
       text: ' Now, suit up, and prepare yourself to enter history as the explorer
         of a brand new world filled with adventures and opportunities!'
-  speechSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  stopSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
   dialogueIndex: 0
 --- !u!95 &1805000153
 Animator:

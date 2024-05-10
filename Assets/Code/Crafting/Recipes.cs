@@ -62,8 +62,7 @@ public class Recipes
     public static Dictionary<int,Recipes> listOfRecipes = new()
     {
         {0, new Recipes("Repair Multi-tool", "Roots", 1)},
-        //{1, new Recipes("Microprocessor", "Tugnstone", 1, "Roots", 1, "Rubiol", 2) },
-        {1, new Recipes("Microprocessor", "Trunk", 1) },
+        {1, new Recipes("Microprocessor", "Tugnstone", 1, "Roots", 1, "Rubiol", 2) },
         {2, new Recipes("Cured Leather", "Bark", 1, "Moss", 2, "Spit", 1)},
         {3, new Recipes("Battery", "Tugnstone", 2, "Wires",1,"Rubiol",1)},
         {4, new Recipes("Metal Sheet", "Tugnstone", 3)},
@@ -79,18 +78,16 @@ public class Recipes
         {14, new Recipes("Heavy Punch", "Scale", 2, "Lushalite", 2, "Dog DNA Vial", 3)},
         {15, new Recipes("DNA Extractor", "Scale", 3, "Spit", 2, "Trunk", 2)},
         {16, new Recipes("Machete", "Lushalite", 3, "Metal Sheet", 1, "Bark", 2)},
-        {17, new Recipes("Bow", "Bone", 3, "Roots", 3,"Spit",3)},
+        {17, new Recipes("Bow", "Bark", 3, "Roots", 3,"Spit",3)},
         {18, new Recipes("Trident", "Corallium", 3, "Fish Eyes", 2, "Petralucen", 1) },
         {19, new Recipes("Harpoon Gun", "Corallium", 3, "Scale", 1, "Trunk", 2) },
-        //{20, new Recipes("Arrow", "Lushalite",2, "Metal Sheet",1) },
-        {20, new Recipes("Arrow", "Trunk", 1)},
-        //{21, new Recipes("Harpoon", "Corallium", 3, "Reinforced Plate", 1)},
-        {21, new Recipes("Harpoon", "Trunk", 1)},
+        {20, new Recipes("Arrow", "Lushalite",2, "Metal Sheet",1) },
+        {21, new Recipes("Harpoon", "Corallium", 3, "Reinforced Plate", 1)},
         {22, new Recipes("Reinforced Plate", "Fin", 3)},
         {23, new Recipes("Signal Amplifier", "Aquabulbus", 1, "Battery",1,"Wires",1)},
         {24, new Recipes("Waterproof Chip", "Petralucen", 1, "Fin", 1, "Rubiol",2)},
         {25, new Recipes("Stretching Fibers", "Tentacle", 2, "Fish Eyes",1,"Trunk",2)},
-        {26, new Recipes("Map Tag", "Signal Amplifier", 1, "Rubiol", 2, "Petralucen",2)},
+        {26, new Recipes("Beacon", "Signal Amplifier", 1, "Rubiol", 2, "Petralucen",2)},
         {27, new Recipes("Map Upgrade 2", "Waterproof Chip", 1, "Stretching Fibers", 2)},
         {28, new Recipes("Gathering Upgrade 2", "Waterproof Chip", 1, "Signal Amplifier", 1)},
         {29, new Recipes("Combat Upgrade 2", "Waterproof Chip", 1, "Reinforced Plate", 2, "Petralucen",2)},
@@ -112,20 +109,13 @@ public class Recipes
         {44, new Recipes("Stamina Upgrade 3", "Quantum Chip", 1, "Magnetyne", 3,"Bone",3)},
         */
     };
-    public static Dictionary<int,Recipes> listOfBasePods = new()
+    public static Dictionary<int, Recipes> listOfBasePods = new()
     {
-        /*
-        {0, new Recipes("Storage Room", "Metal Sheet", 3, "Battery", 1,"Lushalite",3)},
-        {1, new Recipes("Map Room", "Metal Sheet", 3, "Scale", 2, "Rubiol", 2) },
-        {2, new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery",1,"Cured Leather",2)},
-        {3 ,new Recipes("Planter Room", "Metal Sheet", 3,"Battery", 1, "Rubiol",3)},
-        {4, new Recipes("Teleporter Room", "Reinforced Plate", 3, "Signal Amplifier", 1, "Rubiol", 52}
-        */
-        { 0, new Recipes("Storage Room", "Trunk", 1) },
-        { 1, new Recipes("Map Room", "Trunk", 1) },
-        { 2, new Recipes("Enclosure Room", "Trunk", 1) },
-        { 3, new Recipes("Planter Room", "Trunk", 1) },
-        { 4, new Recipes("Teleporter Room", "Trunk", 1) }
+        { 0, new Recipes("Storage Room", "Metal Sheet", 3, "Battery", 1, "Lushalite", 3) },
+        { 1, new Recipes("Map Room", "Metal Sheet", 3, "Scale", 2, "Rubiol", 2) },
+        { 2, new Recipes("Enclosure Room", "Metal Sheet", 3, "Battery", 1, "Cured Leather", 2) },
+        { 3, new Recipes("Planter Room", "Metal Sheet", 3, "Battery", 1, "Rubiol", 3) },
+        { 4, new Recipes("Teleporter Room", "Reinforced Plate", 3, "Signal Amplifier", 1, "Rubiol", 2)}
     };
 
     public static Dictionary<string, bool> discoveredRessources = new()

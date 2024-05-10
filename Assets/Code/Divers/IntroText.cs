@@ -6,13 +6,11 @@ using System.SceneManagement;
 
 public class IntroText : MonoBehaviour
 {
+    [SerializeField] GameObject mainMenu;
     [SerializeField] Color colorHex;
     [SerializeField] TextMeshProUGUI speechBubbleText;
 
     public DialogueSequence introText;
-
-    public AK.Wwise.Event speechSound;
-    public AK.Wwise.Event stopSound;
 
     Coroutine dialogue;
     public int dialogueIndex = 0;
@@ -20,8 +18,6 @@ public class IntroText : MonoBehaviour
     public void IntroStartDialogue()
     {
         dialogue = StartCoroutine(Speech(introText.dialogueSequence[dialogueIndex].text));
-        if (speechSound != null)
-            speechSound.Post(gameObject);
     }
 
     public void IntroNextSentence()
@@ -31,8 +27,6 @@ public class IntroText : MonoBehaviour
         {
             StopCoroutine(dialogue);
             dialogue = StartCoroutine(Speech(introText.dialogueSequence[dialogueIndex].text));
-            if (speechSound != null)
-                speechSound.Post(gameObject);
         }
         else
             IntroEndDialogue();
@@ -42,8 +36,6 @@ public class IntroText : MonoBehaviour
     {
         StopCoroutine(dialogue);
         StopDialogue();
-        if (stopSound != null)
-            stopSound.Post(gameObject);
     }
 
     public IEnumerator Speech(string textToWrite = null)
@@ -81,14 +73,13 @@ public class IntroText : MonoBehaviour
                 }
             }
         }
-        if (stopSound != null)
-            stopSound.Post(gameObject);
         yield return null;
     }
 
     public void StartGame()
     {
         GameObject.Find("SceneLoader").GetComponent<SceneLoader>().LoadGame();
+        AkSoundEngine.StopPlayingID(mainMenu.GetComponent<StartMenu>().introID);
     }
 
     public void StopDialogue()

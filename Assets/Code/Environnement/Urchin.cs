@@ -18,10 +18,13 @@ public class Urchin : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            if (!collision.gameObject.GetComponent<PlayerPermanent>().isInvincible)
+            {
+                if (collision.gameObject.GetComponent<PlayerPermanent>().poison != null)
+                    collision.gameObject.GetComponent<PlayerPermanent>().StopPoison();
+                collision.gameObject.GetComponent<PlayerPermanent>().poison = StartCoroutine(collision.gameObject.GetComponent<PlayerPermanent>().Poison(poison.effectDuration, poison.effectMagnitude, poison.effectFrequency));
+            }
             collision.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
-            if (collision.gameObject.GetComponent<PlayerPermanent>().poison != null)
-                StopCoroutine(collision.gameObject.GetComponent<PlayerPermanent>().poison);
-            collision.gameObject.GetComponent<PlayerPermanent>().poison = StartCoroutine(collision.gameObject.GetComponent<PlayerPermanent>().Poison(poison.effectDuration, poison.effectMagnitude, poison.effectFrequency));
         }
     }
 }

@@ -30,7 +30,7 @@ namespace System.SceneManagement
             else
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
+                //DontDestroyOnLoad(gameObject);
             }
 
 
@@ -87,6 +87,7 @@ namespace System.SceneManagement
 
         public async void LoadGame()
         {
+            GameObject.Find("Intro").GetComponent<Animator>().SetBool("isIntro", false);
             await LoadSceneGroup(0);
         }
 

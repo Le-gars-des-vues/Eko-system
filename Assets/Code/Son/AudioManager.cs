@@ -17,7 +17,8 @@ public class AudioManager : MonoBehaviour
     public bool underwaterIsPlaying;
     public bool stormIsPlaying;
     public bool alertIsPlaying;
-    uint playingID;
+    public uint underwaterID;
+    public uint playingID;
 
     [Header("Base Sounds")]
     public AK.Wwise.Event porteOuverture;
@@ -54,6 +55,7 @@ public class AudioManager : MonoBehaviour
     public AK.Wwise.Event sellingScreenOpen;
     public AK.Wwise.Event sellingScreenClose;
     public AK.Wwise.Event sellingScreenSell;
+    public AK.Wwise.Event sellingScreenCasino;
 
     //Upgrade
     public AK.Wwise.Event upgradeOuvrir;
@@ -155,8 +157,8 @@ public class AudioManager : MonoBehaviour
     [Header("Music Sounds")]
     public AK.Wwise.Event alerte;
     public AK.Wwise.Event alerteStop;
+    public AK.Wwise.Event mainMenuMusic;
     public AK.Wwise.Event intro;
-    public AK.Wwise.Event introStop;
 
     [Header("Hazards Sounds")]
     public AK.Wwise.Event spikeTrap;
@@ -177,15 +179,14 @@ public class AudioManager : MonoBehaviour
         AkSoundEngine.StopPlayingID(playingID);
     }
 
-
     public void PlayForest()
     {
         forestSountrack.Post(soundtracks[0]);
     }
 
-    public void PlayUnderwater()
+    public uint PlayUnderwater()
     {
-        underwaterSoundtrack.Post(soundtracks[1]);
+        return underwaterSoundtrack.Post(soundtracks[1]);
     }
 
     public void PlayBase()

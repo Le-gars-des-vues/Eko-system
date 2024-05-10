@@ -317,10 +317,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 217441617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74cc290c298f297429efcefe2de40285, type: 3}
+  m_Script: {fileID: 11500000, guid: 86463f7763a7f004baedd403c5d8b8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RTPC:
+  distance:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 3d9e18b9c49ea64489178d11bf3cc8c8, type: 2}
@@ -1143,6 +1143,8 @@ MonoBehaviour:
   underwaterIsPlaying: 0
   stormIsPlaying: 0
   alertIsPlaying: 0
+  underwaterID: 0
+  playingID: 0
   porteOuverture:
     idInternal: 0
     valueGuidInternal: 
@@ -1243,6 +1245,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 6ed4e005fcca5d44fbffba3832e28bbe, type: 2}
+  sellingScreenCasino:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 67093a862465630478505587e120c9d6, type: 2}
   upgradeOuvrir:
     idInternal: 0
     valueGuidInternal: 
@@ -1495,14 +1501,14 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
+  mainMenuMusic:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 112c3aac3cce27b4e838d5af52dc6855, type: 2}
   intro:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: a1a20acafa46e0e479719bb4d0d3c0bc, type: 2}
-  introStop:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: ce56485dd9a0179429016ba08fc5a99e, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: d5af295934de6d6449423e249dfaec82, type: 2}
   spikeTrap:
     idInternal: 0
     valueGuidInternal: 
@@ -1584,14 +1590,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1641063642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74cc290c298f297429efcefe2de40285, type: 3}
+  m_Script: {fileID: 11500000, guid: e83d73cab5b472f41ba81cd1b7e81814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RTPC:
+  deepness:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 897a34cd5c75d684b82d7f35acd17f09, type: 2}
-  rtpcValue: 0
+  rtpcValue: 20.6
 --- !u!1 &1798746257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,10 +1805,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1994866564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74cc290c298f297429efcefe2de40285, type: 3}
+  m_Script: {fileID: 11500000, guid: b7dc4a3ceca52084fab0ce7263d8cb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RTPC:
+  baseEtage:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 05a71d5bef9948744a3df862e8d73a51, type: 2}
@@ -1851,11 +1857,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74cc290c298f297429efcefe2de40285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RTPC:
+  tempete:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 188cb3070773dc6418945edf54706faa, type: 2}
-  rtpcValue: 0
+  rtpcValue: 120
+  tempeteBase:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a691d23ea06e007418b0833d3f44ac98, type: 2}
+  rtpcValue2: 0
 --- !u!1 &2125699638
 GameObject:
   m_ObjectHideFlags: 0
