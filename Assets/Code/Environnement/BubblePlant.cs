@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BubblePlant : MonoBehaviour
 {
-    bool isInside;
     CameraController cam;
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] GameObject maskWater;
     [SerializeField] GameObject maskIsolate;
+    [SerializeField] ParticleSystem bubbles;
 
-    private float desiredAlpha = 0;
-    private float currentAlpha = 0;
+    private float desiredAlpha = 1;
+    private float currentAlpha = 1;
     [SerializeField] float fadeSpeed;
 
     private void Start()
@@ -36,15 +36,11 @@ public class BubblePlant : MonoBehaviour
             }
             if (!cam.isIsoldated)
                 cam.IsolateCameraView(true);
-            desiredAlpha = 1;
+            desiredAlpha = 0;
             maskWater.SetActive(true);
             maskIsolate.SetActive(true);
+            bubbles.Stop();
         }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        isInside = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -56,12 +52,12 @@ public class BubblePlant : MonoBehaviour
                 collision.gameObject.GetComponent<PlayerPermanent>().isInAirPocket = false;
                 AudioManager.instance.PlaySound(AudioManager.instance.bubblePlantStop, gameObject);
             }
-            isInside = false;
             if (cam.isIsoldated)
                 cam.IsolateCameraView(false);
-            desiredAlpha = 0;
+            desiredAlpha = 1;
             maskWater.SetActive(false);
             maskIsolate.SetActive(false);
+            bubbles.Play();
         }
     }
 }

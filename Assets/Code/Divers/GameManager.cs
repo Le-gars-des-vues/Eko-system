@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private string textToWrite;
     public int cycleCount;
     [SerializeField] TextMeshProUGUI cycleMenuText;
+    [SerializeField] Vente sellingScreen;
 
     [Header("Spawner Variables")]
     [SerializeField] List<GameObject> dogSpawner = new List<GameObject>();
@@ -107,8 +108,9 @@ public class GameManager : MonoBehaviour
         TimeLeft = initialTime;
         TimerOn = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-        cycleCount = 0;
+        cycleCount = 1;
         cycleMenuText.text = "DAY " + cycleCount.ToString("000") + "\n_________";
+        sellingScreen = GameObject.Find("Vente").GetComponent<Vente>();
 
         storm = GameObject.Find("Storm");
         rainFront = storm.transform.GetChild(0).GetComponent<ParticleSystem>();
@@ -327,7 +329,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator NewCycle()
     {
         newCycleScreen.SetActive(true);
-        if (GameObject.Find("Vente").GetComponent<Vente>().profit < gameObject.GetComponent<Quota>().quota)
+        if (sellingScreen.profit < gameObject.GetComponent<Quota>().quota)
         {
             textToWrite = "[WARNING : INSUFFICIENT FUNDS]\nTERMINATION IMMINENT";
             newCycleScreen.GetComponent<Animator>().SetBool("fadeIn", true);
@@ -378,6 +380,9 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             newCycleScreen.SetActive(false);
+            sellingScreen.profit = 0;
+            sellingScreen.profitText.text = "0";
+            sellingScreen.profitTV.text = "0";
 
             ResetTimer();
 

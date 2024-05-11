@@ -706,6 +706,7 @@ public class FrogMovement : MonoBehaviour
                 if (collision.gameObject.GetComponent<PlayerPermanent>().poison != null)
                     collision.gameObject.GetComponent<PlayerPermanent>().StopPoison();
                 collision.gameObject.GetComponent<PlayerPermanent>().poison = StartCoroutine(collision.gameObject.GetComponent<PlayerPermanent>().Poison(poison.effectDuration, poison.effectMagnitude, poison.effectFrequency));
+                AudioManager.instance.PlaySound(AudioManager.instance.poisonTouch, collision.gameObject);
             }
             collision.gameObject.GetComponent<PlayerPermanent>().ChangeHp(-damage, true, gameObject);
         }

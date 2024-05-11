@@ -12,6 +12,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] Sprite sprite;
     [SerializeField] string robotName;
 
+    public bool brokeSpearInTutorial = false;
+
     public bool readyToGoOut = false;
     public bool firstTimeOutside = false;
     public bool firstTimeWater = false;

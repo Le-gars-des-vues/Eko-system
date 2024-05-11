@@ -39,6 +39,7 @@ public class Robot : MonoBehaviour
     bool talkedAboutUpgrades;
     [SerializeField] GameObject ressourceToGive;
     [SerializeField] GameObject ressourceToSell;
+    [SerializeField] GameObject spear;
     Vector2 initialPos;
     bool isInTour;
 
@@ -116,6 +117,14 @@ public class Robot : MonoBehaviour
             if (!isTeleporting)
             {
                 RobotTraining();
+            }
+
+            if (Tutorial.instance.brokeSpearInTutorial)
+            {
+                Tutorial.instance.brokeSpearInTutorial = false;
+                trainingRoomDialogue.EndDialogue();
+                trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[19]);
+                trainingRoomDialogue.onDialogueEnd += GiveSpear;
             }
         }
     }
@@ -427,6 +436,12 @@ public class Robot : MonoBehaviour
         StartCoroutine(Base.instance.Dissolve(sprites, 2f, false));
         trainingRoomDialogue.PrepareDialogue(trainingRoomDialogue.dialogueSequences[13]);
         trainingRoomDialogue.onNestedDialogueEnd += TalkAboutHotbar;
+    }
+
+    void GiveSpear()
+    {
+        Vector2 offset = isFacingRight ? new Vector2(2, 0) : new Vector2(-2, 0);
+        Instantiate(spear, (Vector2)transform.position + offset, transform.rotation);
     }
 
     void GiveItemToSell()

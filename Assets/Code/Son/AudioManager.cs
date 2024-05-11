@@ -9,16 +9,24 @@ public class AudioManager : MonoBehaviour
 
     [Header("Ambient Noises")]
     public AK.Wwise.Event forestSountrack;
+    public AK.Wwise.RTPC distance;
+    [Range(0, 40)] public float distanceValue;
     public AK.Wwise.Event baseSoundtrack;
+    public AK.Wwise.RTPC baseEtage;
+    [Range(0, 100)] public float baseValue;
     public AK.Wwise.Event underwaterSoundtrack;
+    public AK.Wwise.RTPC deepness;
+    [Range(2, 30)] public float deepnessValue;
     public AK.Wwise.Event stormSoundtrack;
+    public AK.Wwise.RTPC tempete;
+    [Range(0, 120)] public float tempeteValue;
+    public AK.Wwise.RTPC tempeteBase;
+    [Range(0, 100)] public float tempeteBaseValue;
     public bool forestIsPlaying;
     public bool baseIsPlaying;
     public bool underwaterIsPlaying;
-    public bool stormIsPlaying;
     public bool alertIsPlaying;
     public uint underwaterID;
-    public uint playingID;
 
     [Header("Base Sounds")]
     public AK.Wwise.Event porteOuverture;
@@ -97,6 +105,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Player Sounds")]
     public AK.Wwise.Event playerSpawn;
+    public AK.Wwise.Event playerNewGame;
 
     //Player UI
     public AK.Wwise.Event noStamina;
@@ -113,6 +122,7 @@ public class AudioManager : MonoBehaviour
 
     //Poison
     public AK.Wwise.Event poison;
+    public AK.Wwise.Event poisonTouch;
     public AK.Wwise.Event poisonStop;
 
     //Shield
@@ -174,29 +184,33 @@ public class AudioManager : MonoBehaviour
             instance = this;
     }
 
-    public void StopSoundtrack()
+    private void Update()
     {
-        AkSoundEngine.StopPlayingID(playingID);
+        distance.SetValue(gameObject, distanceValue);
+        deepness.SetValue(gameObject, deepnessValue);
+        baseEtage.SetValue(gameObject, baseValue);
+        tempete.SetValue(gameObject, tempeteValue);
+        tempeteBase.SetValue(gameObject, tempeteBaseValue);
     }
 
     public void PlayForest()
     {
-        forestSountrack.Post(soundtracks[0]);
+        forestSountrack.Post(gameObject);
     }
 
     public uint PlayUnderwater()
     {
-        return underwaterSoundtrack.Post(soundtracks[1]);
+        return underwaterSoundtrack.Post(gameObject);
     }
 
     public void PlayBase()
     {
-        baseSoundtrack.Post(soundtracks[2]);
+        baseSoundtrack.Post(gameObject);
     }
 
     public void PlayStorm()
     {
-        stormSoundtrack.Post(soundtracks[3]);
+        stormSoundtrack.Post(gameObject);
     }
 
     public uint PlaySound(AK.Wwise.Event myEvent, GameObject obj)
