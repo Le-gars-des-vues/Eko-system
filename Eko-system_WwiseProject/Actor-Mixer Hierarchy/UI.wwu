@@ -11,7 +11,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-25</Value>
+								<Value>-29</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -1666,6 +1666,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<BlendContainer Name="UI_MenuPrincipal_Play" ID="{CED3DF2D-AF55-4E1A-83ED-584D7D767E4D}" ShortID="992316898">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
@@ -4258,9 +4265,14 @@
 										<BlendContainer Name="UI_Barre_Vie_Faible" ID="{9C33A29D-BDD2-44F1-B0A7-5592B092DB55}" ShortID="666156631">
 											<PropertyList>
 												<Property Name="BlendBehavior" Type="int16" Value="1"/>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>55</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>5</Value>
+														<Value>2</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -4648,6 +4660,14 @@
 						</BlendContainer>
 						<BlendContainer Name="UI_Cubicule_Ouvrir" ID="{D8ACF7DF-2759-4392-B695-456526D56FDE}" ShortID="730973429">
 							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>20</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
 										<ModifierInfo>
@@ -4655,10 +4675,21 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-1</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Att_ENV" ID="{759B5063-5D0E-42FD-9695-D800100BFEF1}" WorkUnitID="{CCD335A6-6EAD-45E2-9897-FDF0D1651DEB}"/>
+								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{BA1F9931-38D0-4D43-982D-48F4905AD260}"/>
+								</Reference>
+								<Reference Name="Effect0" PluginName="Wwise Time Stretch" CompanyID="0" PluginID="130" PluginType="3">
+									<ObjectRef Name="New_Time_Stretch_02" ID="{83DCF797-30D8-4018-A556-7337F8AC55DE}" WorkUnitID="{95A5B5B8-B8F0-4756-8033-8EEB8F92FC22}"/>
 								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="UI" ID="{CEB8327F-DF25-47F4-AA17-DE56FF0FDF86}" WorkUnitID="{CD0DE8DA-A6AB-4279-9A00-3A71798C6800}"/>
@@ -4761,12 +4792,22 @@
 						</BlendContainer>
 						<BlendContainer Name="UI_Cubicule_Fermer" ID="{B018188C-4CD1-462B-9B76-51D49EA5405E}" ShortID="167481649">
 							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>29</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
 										<ModifierInfo>
 											<Modifier Name="" ID="{813956C1-6DB3-4713-BF24-6AEDFE5862BA}"/>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>

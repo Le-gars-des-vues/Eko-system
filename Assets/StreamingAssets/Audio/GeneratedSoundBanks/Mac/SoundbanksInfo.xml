@@ -37,7 +37,7 @@
 				</AuxBus>
 			</AuxBusses>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{E1AFA7B6-AA4E-68A2-9DBB-425133056F71}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{1630D627-98E3-03B3-7952-EE90F10FA6B5}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Media>
@@ -265,7 +265,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{7D04261B-77E9-CBC2-07B4-4B45C852D70A}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{6DACFC8E-651B-1BD9-C8C7-475325831373}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -1291,7 +1291,7 @@
 				</File>
 				<File Id="365776997" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Grotte_L2.wav</ShortName>
-					<CachePath>SFX/AMB_Grotte_L2_97D5C10E.wem</CachePath>
+					<CachePath>SFX/AMB_Grotte_L2_217CB49B.wem</CachePath>
 				</File>
 				<File Id="366740170" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>FS_Papier_16.wav</ShortName>
@@ -2751,7 +2751,7 @@
 				</File>
 				<File Id="894184392" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB_Grotte_L1.wav</ShortName>
-					<CachePath>SFX/AMB_Grotte_L1_A39D1E7B.wem</CachePath>
+					<CachePath>SFX/AMB_Grotte_L1_EC6EA5CA.wem</CachePath>
 				</File>
 				<File Id="896322930" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>LIF_Water_Moove.wav</ShortName>
@@ -3152,6 +3152,7 @@
 					<Plugin Id="556305840" Name="New_RoomVerb_05" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="556305844" Name="New_RoomVerb_01" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="701863527" Name="Inside_My_Head" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="733302482" Name="New_Time_Stretch_02" LibName="Wwise Time Stretch" LibId="8519683"/>
 					<Plugin Id="1096258038" Name="ForestAuterlitz_DenseClose" LibName="Wwise Convolution Reverb" LibId="8323075">
 						<MediaRefs>
 							<MediaRef Id="873684731"/>
@@ -3160,6 +3161,7 @@
 					<Plugin Id="1724990773" Name="New_Time_Stretch" LibName="Wwise Time Stretch" LibId="8519683"/>
 					<Plugin Id="2080929685" Name="Test_Hi" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="2185427101" Name="SC_PlanteCarnivore" LibName="Wwise Meter" LibId="8454147"/>
+					<Plugin Id="2265839006" Name="Not_A_Yellow_Submarine" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="3380986947" Name="Colossal_Cathedral_Stereo" LibName="Wwise Convolution Reverb" LibId="8323075">
 						<MediaRefs>
 							<MediaRef Id="101091315"/>
@@ -3342,14 +3344,22 @@
 				</Event>
 				<Event Id="630271425" Name="ENV_PlanteSousMarine" DurationType="Infinite">
 					<MediaRefs>
+						<MediaRef Id="8430119"/>
 						<MediaRef Id="181846294"/>
+						<MediaRef Id="209102656"/>
 						<MediaRef Id="215146308"/>
+						<MediaRef Id="248961253"/>
+						<MediaRef Id="325959823"/>
 						<MediaRef Id="365776997"/>
 						<MediaRef Id="367241721"/>
 						<MediaRef Id="368308892"/>
+						<MediaRef Id="446695842"/>
 						<MediaRef Id="499975589"/>
 						<MediaRef Id="699243073"/>
+						<MediaRef Id="762827917"/>
 						<MediaRef Id="867457597"/>
+						<MediaRef Id="981189777"/>
+						<MediaRef Id="1049675433"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="4279094094" Name="ENV_PlanteSousMarine_Sortie" DurationType="Infinite">
@@ -3953,7 +3963,7 @@
 					</MediaRefs>
 				</Event>
 				<Event Id="1776983345" Name="MUS_Alerte_Stop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="1219230789" Name="MUS_Intro" DurationType="OneShot" DurationMin="79.00435" DurationMax="79.00435">
+				<Event Id="1219230789" Name="MUS_Intro" DurationType="OneShot" DurationMin="79.30435" DurationMax="79.30435">
 					<MediaRefs>
 						<MediaRef Id="1005244804"/>
 					</MediaRefs>
@@ -4508,12 +4518,29 @@
 				</Event>
 				<Event Id="1701239554" Name="PLY_Spawn" DurationType="Infinite">
 					<MediaRefs>
+						<MediaRef Id="32305500"/>
+						<MediaRef Id="35295274"/>
+						<MediaRef Id="174266175"/>
+						<MediaRef Id="181846294"/>
 						<MediaRef Id="184769739"/>
+						<MediaRef Id="215146308"/>
 						<MediaRef Id="289254179"/>
 						<MediaRef Id="325959823"/>
+						<MediaRef Id="365776997"/>
+						<MediaRef Id="367241721"/>
+						<MediaRef Id="368308892"/>
 						<MediaRef Id="446695842"/>
+						<MediaRef Id="499975589"/>
 						<MediaRef Id="521306769"/>
+						<MediaRef Id="524440913"/>
+						<MediaRef Id="544278146"/>
+						<MediaRef Id="618912610"/>
+						<MediaRef Id="677012577"/>
+						<MediaRef Id="699243073"/>
+						<MediaRef Id="737667922"/>
 						<MediaRef Id="762827917"/>
+						<MediaRef Id="768835146"/>
+						<MediaRef Id="867457597"/>
 						<MediaRef Id="981189777"/>
 						<MediaRef Id="1049675433"/>
 					</MediaRefs>
@@ -4532,6 +4559,11 @@
 								<MediaRef Id="876312904"/>
 								<MediaRef Id="1059406787"/>
 							</MediaRefs>
+							<PluginRefs>
+								<ShareSets>
+									<PluginRef Id="2265839006"/>
+								</ShareSets>
+							</PluginRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="State" GroupId="4176303900" Id="1929160180"/>
@@ -4637,6 +4669,11 @@
 								<MediaRef Id="876312904"/>
 								<MediaRef Id="1059406787"/>
 							</MediaRefs>
+							<PluginRefs>
+								<ShareSets>
+									<PluginRef Id="2265839006"/>
+								</ShareSets>
+							</PluginRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="State" GroupId="4176303900" Id="1929160180"/>
@@ -4732,6 +4769,7 @@
 					<ActionSetState>
 						<ActionSetStateEntry GroupId="658831197" Id="1668749452" Name="No"/>
 						<ActionSetStateEntry GroupId="1697020375" Id="1698034228" Name="Envie"/>
+						<ActionSetStateEntry GroupId="4176303900" Id="2291972081" Name="AMB_Base"/>
 					</ActionSetState>
 				</Event>
 				<Event Id="2467918837" Name="SWT_BoisMoussu" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
@@ -4861,10 +4899,15 @@
 						<MediaRef Id="130593204"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3866583062" Name="UI_Cubicule_Ouvrir" DurationType="OneShot" DurationMin="1.3514277" DurationMax="1.3514277">
+				<Event Id="3866583062" Name="UI_Cubicule_Ouvrir" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.3514277" DurationMax="1.3514277">
 					<MediaRefs>
 						<MediaRef Id="968887621"/>
 					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="733302482"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
 				<Event Id="3454429038" Name="UI_GameOver_Temps" DurationType="OneShot" DurationMin="5" DurationMax="5">
 					<MediaRefs>
@@ -5219,5 +5262,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9C325237-2BAB-99D9-8E7F-2FD093C30261}</FileHash>
+	<FileHash>{A181FE50-4FAC-8D98-7FB4-FF27644AA2F7}</FileHash>
 </SoundBanksInfo>
