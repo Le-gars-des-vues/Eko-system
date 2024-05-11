@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour
         if (isTrue)
         {
             isIsoldated = true;
-            desiredAlpha = 0.95f;
+            desiredAlpha = 1f;
         }
         else
         {

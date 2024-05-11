@@ -12,10 +12,12 @@ public class CreatureSound : MonoBehaviour
     public AK.Wwise.Event atkSound;
     public AK.Wwise.Event deathSound;
     public uint idleSoundID;
+    public bool isWaterCreature;
 
-    private void Start()
+    private void OnEnable()
     {
-        idleSoundID = idleSound.Post(gameObject);
+        if (!isWaterCreature)
+            idleSoundID = idleSound.Post(gameObject);
     }
 
     private void OnDisable()

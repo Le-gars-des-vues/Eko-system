@@ -7,7 +7,6 @@ public class SellingScreen : MonoBehaviour
 {
     PlayerPermanent player;
     bool isInRange;
-    [SerializeField] GameObject tvText;
 
     [SerializeField] List<SpriteRenderer> sprites = new List<SpriteRenderer>();
     [SerializeField] List<Material> materials = new List<Material>();
@@ -19,7 +18,6 @@ public class SellingScreen : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPermanent>();
-        tvText.SetActive(false);
         ogPos = transform.position;
     }
 
@@ -38,8 +36,6 @@ public class SellingScreen : MonoBehaviour
                             player.ShowOrHideInventory(false);
                         if (!player.marketIsOpen)
                             player.ShowOrHideMarket();
-                        if (!tvText.activeSelf)
-                            tvText.SetActive(true);
                     }
                 }
                 else

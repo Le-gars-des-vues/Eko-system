@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Rendering.Universal;
+using System.SceneManagement;
 
 public class Vente : MonoBehaviour
 {
@@ -19,17 +19,23 @@ public class Vente : MonoBehaviour
     [SerializeField] GameObject casinoCoins;
     [SerializeField] Animator casinoScreen;
 
-    [SerializeField] private TextMeshProUGUI profitText;
-    [SerializeField] private TextMeshPro profitTV;
+    public TextMeshProUGUI profitText;
+    public TextMeshPro profitTV;
 
-    private void Start()
+    private void Awake()
     {
-        //profitTV = GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>();
+        SceneLoader.allScenesLoaded += StartScript;
+    }
+
+    private void StartScript()
+    {
+        profitTV = GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>();
     }
 
     public void BouttonVente()
     {
         StartCoroutine(VenteItem());
+        AudioManager.instance.PlaySound(AudioManager.instance.yesButton, gameObject);
     }
 
     IEnumerator VenteItem()
@@ -50,7 +56,7 @@ public class Vente : MonoBehaviour
                     profit += anItem.itemData.value;
                     QuickMenu.instance.quotaText.text = profit.ToString() + "/" + GameManager.instance.gameObject.GetComponent<Quota>().quota.ToString() + "$";
                     profitText.text = profit.ToString() + "$";
-                    GameObject.Find("ProfitsTV").GetComponent<TextMeshPro>().text = profit.ToString() + "$";
+                    profitTV.text = profit.ToString() + "$";
                     var coin = Instantiate(coinsEffect, anItem.transform.position, Quaternion.identity);
                     coin.GetComponent<RectTransform>().SetParent(inventaireVente);
                     anItem.Delete();

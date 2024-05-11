@@ -271,7 +271,7 @@ public class QuickMenu : MonoBehaviour
         if (teleportMenuActive)
         {
             teleporterButton.interactable = isTrue;
-            teleporterText.text = GameManager.instance.teleporter.Count + "available teleporters";
+            teleporterText.text = GameManager.instance.teleporter.Count + " available teleporters";
         }
     }
 

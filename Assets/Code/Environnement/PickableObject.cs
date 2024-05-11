@@ -198,16 +198,20 @@ public class PickableObject : MonoBehaviour
             PromptManager.instance.SendNotification(false, "WEAPON BROKE!", GetComponent<InventoryItem>().itemData.itemName + " broke!", GetComponent<InventoryItem>().itemData.itemIcon);
             player.UnequipObject();
             Destroy(gameObject);
-            if (!Tutorial.instance.firstWeaponBreak)
-            {
-                Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[3].text);
-                Tutorial.instance.firstWeaponBreak = true;
-            }
             if (gameObject.tag == "Spear")
             {
+                Tutorial.instance.brokeSpearInTutorial = true;
                 if (itemInInventory != null)
                 {
                     itemInInventory.GetComponent<InventoryItem>().Delete();
+                }
+            }
+            else
+            {
+                if (!Tutorial.instance.firstWeaponBreak)
+                {
+                    Tutorial.instance.RobotTextMessage(Tutorial.instance.tutorialTexts[3].text);
+                    Tutorial.instance.firstWeaponBreak = true;
                 }
             }
         }
@@ -309,8 +313,7 @@ public class PickableObject : MonoBehaviour
             }
             
             //Si l'item n'a pas ete placer dans la hotbar, on regarde l'inventaire du joueur
-            if (inventory == null)
-                inventory = playerInventory;
+            inventory = playerInventory;
 
             //Si l'item n'a pas ete placer, on le place dans l'inventaire
             if (!hasBeenPlaced)

@@ -219,6 +219,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.PlaySound(AudioManager.instance.playerNewGame, gameObject);
         //On assigne tout les elements relevant
         oxygenSlider = GameObject.Find("oxygenBar").GetComponent<Slider>();
         hpSlider = GameObject.Find("healthBar").GetComponent<Slider>();
@@ -352,7 +353,7 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
             if (AudioManager.instance.underwaterIsPlaying)
             {
                 AudioManager.instance.underwaterIsPlaying = false;
-                AkSoundEngine.StopPlayingID(AudioManager.instance.underwaterID);
+                //AkSoundEngine.StopPlayingID(AudioManager.instance.underwaterID);
                 AudioManager.instance.PlayForest();
                 AudioManager.instance.forestIsPlaying = true;
             }
@@ -1398,13 +1399,13 @@ public class PlayerPermanent : MonoBehaviour, IDataPersistance
         }
         else
         {
-            AudioManager.instance.PlaySound(AudioManager.instance.poison, gameObject);
             hpSlider.gameObject.GetComponent<Animator>().SetBool("isPoisoned", true);
             poisonTimer = 0;
             while (poisonTimer < duration)
             {
                 poisonTimer += tickInterval;
                 ChangeHp(-tickDamage, false);
+                AudioManager.instance.PlaySound(AudioManager.instance.poison, gameObject);
                 yield return new WaitForSeconds(tickInterval);
             }
             StopPoison();
