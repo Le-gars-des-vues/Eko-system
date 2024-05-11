@@ -9,8 +9,17 @@
 			<ChildrenList>
 				<Event Name="MUS_MenuPrincipal" ID="{ADFCBADD-921E-4830-B25D-B26E6B2F6B41}">
 					<ChildrenList>
+						<Action Name="" ID="{C8531053-F487-436B-8E62-D05E2AB76757}" ShortID="898419793">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
 						<Action Name="" ID="{CA231053-3216-428C-B000-4C74074578CC}" ShortID="1067886944">
 							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.001"/>
+								<Property Name="FadeInCurve" Type="int16" Value="7"/>
 								<Property Name="FadeOutCurve" Type="int16" Value="8"/>
 								<Property Name="FadeTime" Type="Real64" Value="3"/>
 							</PropertyList>
@@ -19,13 +28,6 @@
 									<ObjectRef Name="MUS_MenuPrincipal" ID="{E9ADD2B3-26CE-4595-BBCB-8A7D578EB479}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
 								</Reference>
 							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{C8531053-F487-436B-8E62-D05E2AB76757}" ShortID="898419793">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="3"/>
-								<Property Name="FadeTime" Type="Real64" Value="0.1"/>
-							</PropertyList>
-							<ReferenceList/>
 						</Action>
 					</ChildrenList>
 				</Event>
@@ -62,21 +64,24 @@
 				</Folder>
 				<Event Name="MUS_Intro" ID="{E94525C0-1615-4DBD-9994-83461DE66195}">
 					<ChildrenList>
-						<Action Name="" ID="{927E8194-4BAB-41BF-BA99-E09BCF2BAACB}" ShortID="293927746">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MUS_Intro" ID="{9BE1D8F2-2E51-48A8-A5CA-E46620538BC9}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
 						<Action Name="" ID="{7ECE290D-BBD3-4C26-A0E4-9E80EB67E6AB}" ShortID="892311979">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.002"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="MUS_MenuPrincipal" ID="{E9ADD2B3-26CE-4595-BBCB-8A7D578EB479}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{927E8194-4BAB-41BF-BA99-E09BCF2BAACB}" ShortID="293927746">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MUS_Intro" ID="{9BE1D8F2-2E51-48A8-A5CA-E46620538BC9}" WorkUnitID="{D7A87532-CC7E-47A0-AFA0-7CA13297E75F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
